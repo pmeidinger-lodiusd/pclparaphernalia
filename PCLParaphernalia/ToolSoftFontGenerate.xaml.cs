@@ -1757,8 +1757,8 @@ namespace PCLParaphernalia
                         bitNo = item.BitNo;
                         bitVal = ((ulong)0x01) << bitNo;
 
-                        _charCollCompPCLAll =
-                            (_charCollCompPCLAll | bitVal);
+                        _charCollCompPCLAll |=
+bitVal;
                     }
                 }
             }
@@ -2502,7 +2502,7 @@ namespace PCLParaphernalia
                     if (!item.IsChecked)
                     {
                         bitVal = ((ulong)1) << bitNo;
-                        targetCharCollComp = targetCharCollComp | bitVal;
+                        targetCharCollComp |= bitVal;
                     }
                 }
             }

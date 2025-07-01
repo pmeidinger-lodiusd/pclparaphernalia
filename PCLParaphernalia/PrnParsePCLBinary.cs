@@ -267,8 +267,8 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 binDataRem = binDataLen - 1;
-                bufRem = bufRem - 1;
-                bufOffset = bufOffset + 1;
+                bufRem--;
+                bufOffset++;
 
                 if (binDataRem > 0)
                 {
@@ -553,8 +553,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenStd;
-                bufOffset = bufOffset + lenStd;
+                bufRem -= lenStd;
+                bufOffset += lenStd;
             }
 
             return dataOK;
@@ -1113,9 +1113,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
-                binDataRem = binDataRem - lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
+                binDataRem -= lenMin;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1203,8 +1203,8 @@ namespace PCLParaphernalia
                             break;
 
                         default:
-                            bufRem = bufRem - binDataRem;
-                            bufOffset = bufOffset + binDataRem;
+                            bufRem -= binDataRem;
+                            bufOffset += binDataRem;
                             break;
                     }
                 }
@@ -1275,8 +1275,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            bufRem = bufRem - binDataLen;
-            bufOffset = bufOffset + binDataLen;
+            bufRem -= binDataLen;
+            bufOffset += binDataLen;
 
             return dataOK;
         }
@@ -1429,8 +1429,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            bufRem = bufRem - binDataLen;
-            bufOffset = bufOffset + binDataLen;
+            bufRem -= binDataLen;
+            bufOffset += binDataLen;
 
             return dataOK;
         }
@@ -1509,8 +1509,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            bufRem = bufRem - binDataLen;
-            bufOffset = bufOffset + binDataLen;
+            bufRem -= binDataLen;
+            bufOffset += binDataLen;
 
             return dataOK;
         }
@@ -1702,8 +1702,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            bufRem = bufRem - binDataLen;
-            bufOffset = bufOffset + binDataLen;
+            bufRem -= binDataLen;
+            bufOffset += binDataLen;
 
             return dataOK;
         }
@@ -2146,8 +2146,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -2382,8 +2382,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -2599,8 +2599,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -2786,8 +2786,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -3045,8 +3045,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -3346,8 +3346,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -3727,8 +3727,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -4011,8 +4011,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -4359,9 +4359,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
-                binDataRem = binDataRem - lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
+                binDataRem -= lenMin;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4565,9 +4565,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------//
 
-            bufRem = bufRem - mapSize;
-            bufOffset = bufOffset + mapSize;
-            binDataRem = binDataRem - mapSize;
+            bufRem -= mapSize;
+            bufOffset += mapSize;
+            binDataRem -= mapSize;
 
             if (binDataRem > 0)
             {
@@ -4792,9 +4792,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
-                binDataRem = binDataRem - lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
+                binDataRem -= lenMin;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4972,9 +4972,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
-                binDataRem = binDataRem - lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
+                binDataRem -= lenMin;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -5157,9 +5157,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------//
 
-            bufRem = bufRem - dataSize;
-            bufOffset = bufOffset + dataSize;
-            binDataRem = binDataRem - dataSize;
+            bufRem -= dataSize;
+            bufOffset += dataSize;
+            binDataRem -= dataSize;
 
             matrixRem -= dataSize;
 
@@ -5406,8 +5406,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
 
                 argLen = binDataRem - lenMin;
 
@@ -5475,8 +5475,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - argLen;
-                bufOffset = bufOffset + argLen;
+                bufRem -= argLen;
+                bufOffset += argLen;
             }
 
             return dataOK;
@@ -5612,8 +5612,8 @@ namespace PCLParaphernalia
                                                          table);
                 }
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -5786,9 +5786,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - 1;
-                bufOffset = bufOffset + 1;
-                binDataRem = binDataRem - 1;
+                bufRem--;
+                bufOffset++;
+                binDataRem--;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -5973,9 +5973,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------//
 
-            bufRem = bufRem - dataSize;
-            bufOffset = bufOffset + dataSize;
-            binDataRem = binDataRem - dataSize;
+            bufRem -= dataSize;
+            bufOffset += dataSize;
+            binDataRem -= dataSize;
 
             if (binDataRem > 0)
             {
@@ -6379,8 +6379,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
 
             return dataOK;
@@ -6743,9 +6743,9 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - lenMin;
-                bufOffset = bufOffset + lenMin;
-                binDataRem = binDataRem - lenMin;
+                bufRem -= lenMin;
+                bufOffset += lenMin;
+                binDataRem -= lenMin;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -6932,9 +6932,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------//
 
             chunkSize = rowCt * rowBytes;
-            bufRem = bufRem - chunkSize;
-            bufOffset = bufOffset + chunkSize;
-            binDataRem = binDataRem - chunkSize;
+            bufRem -= chunkSize;
+            bufOffset += chunkSize;
+            binDataRem -= chunkSize;
 
             if (binDataRem > 0)
             {
@@ -7119,8 +7119,8 @@ namespace PCLParaphernalia
 
                 //------------------------------------------------------------//
 
-                bufRem = bufRem - binDataRem;
-                bufOffset = bufOffset + binDataRem;
+                bufRem -= binDataRem;
+                bufOffset += binDataRem;
             }
 
             return dataOK;

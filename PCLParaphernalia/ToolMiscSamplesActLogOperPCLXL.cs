@@ -103,9 +103,9 @@ namespace PCLParaphernalia
                 temp = rgbVal;
 
                 paletteData[offset + 2] = (byte)(temp & 0xff);
-                temp = temp >> 8;
+                temp >>= 8;
                 paletteData[offset + 1] = (byte)(temp & 0xff);
-                temp = temp >> 8;
+                temp >>= 8;
                 paletteData[offset] = (byte)(temp & 0xff);
             }
         }

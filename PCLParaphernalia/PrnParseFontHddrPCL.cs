@@ -257,9 +257,9 @@ namespace PCLParaphernalia
                 processDescriptor(ref bufRem,
                                   ref bufOffset);
 
-                bufRem = bufRem - _hddrDescLen;
-                _hddrRem = _hddrRem - _hddrDescLen;
-                bufOffset = bufOffset + _hddrDescLen;
+                bufRem -= _hddrDescLen;
+                _hddrRem -= _hddrDescLen;
+                bufOffset += _hddrDescLen;
 
                 if (_validHddr)
                     _nextStage = eStage.ShowData;
@@ -409,7 +409,7 @@ namespace PCLParaphernalia
                     contType = PrnParseConstants.eContType.PCLFontHddr;
 
                     binDataLen = bufRem;
-                    _hddrRem = _hddrRem - bufRem;
+                    _hddrRem -= bufRem;
 
                     linkData.setContinuation(contType);
                 }
@@ -445,8 +445,8 @@ namespace PCLParaphernalia
                         _indxOffsetFormat,
                         _analysisLevel);
 
-                    bufRem = bufRem - binDataLen;
-                    bufOffset = bufOffset + binDataLen;
+                    bufRem -= binDataLen;
+                    bufOffset += binDataLen;
                 }
             }
 
@@ -604,8 +604,8 @@ namespace PCLParaphernalia
                         //                                                //
                         //------------------------------------------------//
 
-                        bufRem = bufRem - _hddrRem;
-                        bufOffset = bufOffset + _hddrRem;
+                        bufRem -= _hddrRem;
+                        bufOffset += _hddrRem;
 
                         _hddrRem = 0;
                         _nextStage = eStage.EndOK;
@@ -654,8 +654,8 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PCLFontHddr;
 
                 dataLen = bufRem;
-                _hddrCpyrRem = _hddrCpyrRem - bufRem;
-                _hddrRem = _hddrRem - bufRem;
+                _hddrCpyrRem -= bufRem;
+                _hddrRem -= bufRem;
 
                 _linkData.setContinuation(contType);
             }
@@ -667,7 +667,7 @@ namespace PCLParaphernalia
 
                 dataLen = _hddrCpyrRem;
                 _hddrCpyrRem = 0;
-                _hddrRem = _hddrRem - dataLen;
+                _hddrRem -= dataLen;
                 _nextStage = eStage.ShowChecksum;
             }
 
@@ -725,8 +725,8 @@ namespace PCLParaphernalia
                 firstLine = false;
             }
 
-            bufRem = bufRem - dataLen;
-            bufOffset = bufOffset + dataLen;
+            bufRem -= dataLen;
+            bufOffset += dataLen;
         }
 
         //--------------------------------------------------------------------//
@@ -1790,7 +1790,7 @@ namespace PCLParaphernalia
                 ix1 = _buf[bufOffset + 24];
 
                 if (ix1 > 127)
-                    ix1 = ix1 - 256;
+                    ix1 -= 256;
 
                 switch (ix1)
                 {
@@ -2263,7 +2263,7 @@ namespace PCLParaphernalia
                 ix1 = _buf[bufOffset + 22];
 
                 if (ix1 > 127)
-                    ix1 = ix1 - 256;
+                    ix1 -= 256;
 
                 switch (ix1)
                 {
@@ -2777,7 +2777,7 @@ namespace PCLParaphernalia
                     {
                         if (ix2 > 127)
                         {
-                            ix2 = ix2 - 256;
+                            ix2 -= 256;
                         }
 
                         if (ix1 == 0)
@@ -2884,7 +2884,7 @@ namespace PCLParaphernalia
                         ix1 + " design units");
 
                     if (ix2 > 32767)
-                        ix2 = ix2 - 65536;
+                        ix2 -= 65536;
 
                     if (ix2 == 0)
                     {
@@ -3035,8 +3035,8 @@ namespace PCLParaphernalia
                 contType = PrnParseConstants.eContType.PCLFontHddr;
 
                 binDataLen = bufRem;
-                _hddrDataRem = _hddrDataRem - bufRem;
-                _hddrRem = _hddrRem - bufRem;
+                _hddrDataRem -= bufRem;
+                _hddrRem -= bufRem;
 
                 _linkData.setContinuation(contType);
             }
@@ -3048,7 +3048,7 @@ namespace PCLParaphernalia
 
                 binDataLen = _hddrDataRem;
                 _hddrDataRem = 0;
-                _hddrRem = _hddrRem - binDataLen;
+                _hddrRem -= binDataLen;
                 _nextStage = eStage.ShowCopyright;
             }
 
@@ -3094,8 +3094,8 @@ namespace PCLParaphernalia
                     _hddrChksVal += _buf[bufOffset + i];
                 }
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
         }
     }

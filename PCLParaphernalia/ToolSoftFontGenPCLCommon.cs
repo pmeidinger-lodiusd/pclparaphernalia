@@ -1195,7 +1195,7 @@ namespace PCLParaphernalia
                 if (readRem > cDataBufLen)
                 {
                     readLen = cDataBufLen;
-                    readRem = readRem - cDataBufLen;
+                    readRem -= cDataBufLen;
                 }
                 else
                 {
@@ -1212,7 +1212,7 @@ namespace PCLParaphernalia
                                    _dataBuf,
                                    ref sumMod256);
 
-                readStart = readStart + cDataBufLen;
+                readStart += cDataBufLen;
             }
 
             if (padBytes > 0)

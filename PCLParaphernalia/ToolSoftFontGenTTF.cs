@@ -4673,7 +4673,7 @@ namespace PCLParaphernalia
 
                                         for (int j = 0;
                                              j < nameRecLength;
-                                             j = j + 2)
+                                             j += 2)
                                         {
                                             byteMS = tempBuf[j];
 

@@ -663,7 +663,7 @@ namespace PCLParaphernalia
                             if (binRem > binLen)
                             {
                                 supLen = 0;
-                                binRem = binRem - binLen;
+                                binRem -= binLen;
                             }
                             else if (binRem < binLen)
                             {
@@ -728,7 +728,7 @@ namespace PCLParaphernalia
 
                             if (binRem > binLen)
                             {
-                                binRem = binRem - binLen;
+                                binRem -= binLen;
                             }
                             else if (binRem < binLen)
                             {

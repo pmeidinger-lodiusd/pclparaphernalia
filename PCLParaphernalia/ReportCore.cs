@@ -1213,7 +1213,7 @@ namespace PCLParaphernalia
                 htmlWriter.RenderEndTag();
                 htmlWriter.WriteLine("");
 
-                valPos = valPos + maxSizeVal;
+                valPos += maxSizeVal;
             }
 
             if (valPos <= valLen)
@@ -1254,7 +1254,7 @@ namespace PCLParaphernalia
                 txtWriter.WriteLine(
                         txtVal.Substring(valPos, maxSizeVal));
 
-                valPos = valPos + maxSizeVal;
+                valPos += maxSizeVal;
             }
 
             if (valPos <= valLen)
@@ -2036,7 +2036,7 @@ namespace PCLParaphernalia
                         prefix +
                         txtVal.Substring(valPos, maxSizeVal));
 
-                valPos = valPos + maxSizeVal;
+                valPos += maxSizeVal;
                 firstLine = false;
             }
 

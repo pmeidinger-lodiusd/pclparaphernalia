@@ -1383,7 +1383,7 @@ namespace PCLParaphernalia
                         else
                             pattern[indexOp + j] = idClrT2;
 
-                        mask = mask >> 1;
+                        mask >>= 1;
                     }
                 }
 
@@ -1694,8 +1694,8 @@ namespace PCLParaphernalia
                                 {
                                     if (k != 0)
                                     {
-                                        ipByte = ipByte << 1;
-                                        opByte = opByte << 1;
+                                        ipByte <<= 1;
+                                        opByte <<= 1;
                                     }
 
                                     if ((ipByte & 0x80) != 0)
@@ -1723,8 +1723,8 @@ namespace PCLParaphernalia
                                                          maskLen,
                                                          opRow);
 
-                        indxClr1 = indxClr1 >> 1;   // next plane of colour
-                        indxClr2 = indxClr2 >> 1;   // next plane of colour
+                        indxClr1 >>= 1;   // next plane of colour
+                        indxClr2 >>= 1;   // next plane of colour
                     }
 
                     PCLWriter.rasterCompressionMode(prnWriter,

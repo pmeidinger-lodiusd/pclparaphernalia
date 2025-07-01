@@ -860,8 +860,8 @@ namespace PCLParaphernalia
                         bitNo = item.BitNo;
                         bitVal = ((ulong)0x01) << bitNo;
 
-                        _targetCharCollReqAllMSL =
-                            (_targetCharCollReqAllMSL | bitVal);
+                        _targetCharCollReqAllMSL |=
+bitVal;
                     }
                 }
             }
@@ -881,8 +881,8 @@ namespace PCLParaphernalia
                         bitNo = item.BitNo;
                         bitVal = ((ulong)0x01) << bitNo;
 
-                        _targetCharCollReqAllUnicode =
-                            (_targetCharCollReqAllUnicode | bitVal);
+                        _targetCharCollReqAllUnicode |=
+bitVal;
                     }
                 }
             }
@@ -2515,7 +2515,7 @@ namespace PCLParaphernalia
                     if (item.IsChecked)
                     {
                         bitVal = ((ulong)1) << bitNo;
-                        targetCharCollReq = targetCharCollReq | bitVal;
+                        targetCharCollReq |= bitVal;
                     }
                 }
             }

@@ -131,30 +131,30 @@ namespace PCLParaphernalia
 
             x = _samplesPCL_CID[0];
             txtColourPCL_CID_03.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_02.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_01.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCL_CID[1];
             txtColourPCL_CID_13.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_12.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_11.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCL_CID[2];
             txtColourPCL_CID_23.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_22.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_21.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCL_CID[3];
             txtColourPCL_CID_33.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_32.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCL_CID_31.Text = (x & 0xff).ToString(format);
         }
 
@@ -217,30 +217,30 @@ namespace PCLParaphernalia
 
             x = _samplesPCLXL_RGB[0];
             txtColourPCLXL_RGB_03.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_02.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_01.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCLXL_RGB[1];
             txtColourPCLXL_RGB_13.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_12.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_11.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCLXL_RGB[2];
             txtColourPCLXL_RGB_23.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_22.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_21.Text = (x & 0xff).ToString(format);
 
             x = _samplesPCLXL_RGB[3];
             txtColourPCLXL_RGB_33.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_32.Text = (x & 0xff).ToString(format);
-            x = x >> 8;
+            x >>= 8;
             txtColourPCLXL_RGB_31.Text = (x & 0xff).ToString(format);
         }
 
@@ -994,7 +994,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < planeSig; i++)
                 {
                     mask = ((mask << 8) & 0xffffff) | 0xff;
-                    newComp = newComp << 8;
+                    newComp <<= 8;
                 }
 
                 sampleDef[sampleNo] = (oldVal & mask) | newComp;
@@ -1022,7 +1022,7 @@ namespace PCLParaphernalia
 
                 for (int i = 1; i < planeNo; i++)
                 {
-                    x = x >> 8;
+                    x >>= 8;
                 }
 
                 txtOldVal = (x & 0xff).ToString(format);

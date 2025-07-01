@@ -253,7 +253,7 @@ namespace PCLParaphernalia
                     }
 
                     firstLine = false;
-                    crntOffset = crntOffset + sliceLen;
+                    crntOffset += sliceLen;
                 }
             }
         }
@@ -555,7 +555,7 @@ namespace PCLParaphernalia
                                                     showSubCode,
                                                     showCharSet);
 
-                        line = line + showChar;
+                        line += showChar;
                     }
                 }
                 else if (utf8Char)
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
                         else
                             showChar = "[invalid UTF-8]";
 
-                        line = line + showChar;
+                        line += showChar;
 
                         lineLen += seqLen;
                         offset += (seqLen - 1);
@@ -674,7 +674,7 @@ namespace PCLParaphernalia
                                                 showSubCode,
                                                 showCharSet);
 
-                        line = line + showChar;
+                        line += showChar;
                         lineLen++;
                     }
                 }
@@ -1297,7 +1297,7 @@ namespace PCLParaphernalia
             for (int j = hexStart; j < hexEnd; j++)
             {
                 sub = (buf[j]);
-                sub = sub >> 4;
+                sub >>= 4;
                 crntByte = PrnParseConstants.cHexBytes[sub];
                 hexBuf[hexPtr++] = (char)crntByte;
 

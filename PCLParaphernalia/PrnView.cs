@@ -343,7 +343,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    blockStart = blockStart + blockLen;
+                    blockStart += blockLen;
 
                     if ((offsetEnd != -1) && (blockStart > offsetEnd))
                         endReached = true;
@@ -438,7 +438,7 @@ namespace PCLParaphernalia
                 }
 
                 sub = crntByte;
-                sub = sub >> 4;
+                sub >>= 4;
 
                 cx = PrnParseConstants.cHexChars[sub];
 

@@ -283,7 +283,7 @@ namespace PCLParaphernalia
                     contType = PrnParseConstants.eContType.PCLXLFontHddr;
 
                     binDataLen = bufRem;
-                    _hddrRem = _hddrRem - bufRem;
+                    _hddrRem -= bufRem;
 
                     linkData.setContinuation(contType);
                 }
@@ -319,8 +319,8 @@ namespace PCLParaphernalia
                         _indxOffsetFormat,
                         _analysisLevel);
 
-                    bufRem = bufRem - binDataLen;
-                    bufOffset = bufOffset + binDataLen;
+                    bufRem -= binDataLen;
+                    bufOffset += binDataLen;
                 }
             }
 

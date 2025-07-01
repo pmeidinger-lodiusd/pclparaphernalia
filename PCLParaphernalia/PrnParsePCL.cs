@@ -265,7 +265,7 @@ namespace PCLParaphernalia
                 if (downloadRem > bufRem)
                 {
                     binDataLen = bufRem;
-                    downloadRem = downloadRem - bufRem;
+                    downloadRem -= bufRem;
                 }
                 else
                 {
@@ -330,8 +330,8 @@ namespace PCLParaphernalia
                                            prefixB);
                 }
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
             else if (contType == PrnParseConstants.eContType.PCLFontHddr)
             {
@@ -1673,7 +1673,7 @@ namespace PCLParaphernalia
 
                     p_or_TChar = PrnParseConstants.asciiSUB;    // will not match any table entries //
 
-                    i = i - 1;                                  // point back to byte before <Esc>  //
+                    i--;                                  // point back to byte before <Esc>  //
                 }
                 else
                 {
@@ -2371,7 +2371,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    vPosCrnt = vPosCrnt + vtLen;
+                    vPosCrnt += vtLen;
 
                     if (comboSeq)
                         vPosNext = vPosCrnt;
@@ -2477,8 +2477,8 @@ namespace PCLParaphernalia
                             //------------------------------------------------//
 
                             seqLen = seqOffset + (vPosCrnt - vPosFirst);
-                            bufRem = bufRem - seqLen;
-                            bufOffset = bufOffset + seqLen;
+                            bufRem -= seqLen;
+                            bufOffset += seqLen;
 
                             seqOffset = 0;
                             vPosFirst = vPosCrnt;
@@ -2499,8 +2499,8 @@ namespace PCLParaphernalia
                                 _linkData.DataLen += vInt;
                             }
 
-                            i = i + binDataLen;
-                            vPosCrnt = vPosCrnt + binDataLen;
+                            i += binDataLen;
+                            vPosCrnt += binDataLen;
 
                             continuation = parseSequenceEmbeddedData(
                                                 ref bufRem,
@@ -2516,8 +2516,8 @@ namespace PCLParaphernalia
                                                 ref invalidSeq);
 
                             vPosFirst = vPosCrnt;
-                            bufRem = bufRem - binDataLen;
-                            bufOffset = bufOffset + binDataLen;
+                            bufRem -= binDataLen;
+                            bufOffset += binDataLen;
                             /*
                             i = i + binDataLen;
                             vPosCrnt = vPosCrnt + binDataLen;
@@ -2560,8 +2560,8 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             processedLen = seqOffset + (vPosCrnt - vPosFirst);
-            bufRem = bufRem - processedLen;
-            bufOffset = bufOffset + processedLen;
+            bufRem -= processedLen;
+            bufOffset += processedLen;
 
             if (continuation)
             {
@@ -2793,8 +2793,8 @@ namespace PCLParaphernalia
                     opFixed + seqSlice,
                     descText);
 
-                len = len - sliceLen;
-                sliceOffset = sliceOffset + sliceLen;
+                len -= sliceLen;
+                sliceOffset += sliceLen;
                 opSeqOffset = opSeqFixLen + prefixLen;
 
                 sliceMax = PrnParseConstants.cRptA_colMax_Seq - opSeqOffset;
@@ -3422,7 +3422,7 @@ namespace PCLParaphernalia
 
                         downloadRem = binDataLen;
                         binDataLen = endPos - startPos;
-                        downloadRem = downloadRem - binDataLen;
+                        downloadRem -= binDataLen;
 
                         if (!seqComplete)
                         {
@@ -3612,8 +3612,8 @@ namespace PCLParaphernalia
                 "<Esc>" + (char)iChar,
                 descSimple);
 
-            bufRem = bufRem - 2;
-            bufOffset = bufOffset + 2;
+            bufRem -= 2;
+            bufOffset += 2;
 
             return seqKnown;
         }

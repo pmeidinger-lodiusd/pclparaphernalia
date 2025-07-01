@@ -423,33 +423,33 @@ namespace PCLParaphernalia
             temp = sampleDef[0];
 
             palette_0[2] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_0[1] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_0[0] = (byte)(temp & 0xff);
 
             temp = sampleDef[1];
 
             palette_1[2] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_1[1] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_1[0] = (byte)(temp & 0xff);
 
             temp = sampleDef[2];
 
             palette_2[2] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_2[1] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_2[0] = (byte)(temp & 0xff);
 
             temp = sampleDef[3];
 
             palette_3[2] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_3[1] = (byte)(temp & 0xff);
-            temp = temp >> 8;
+            temp >>= 8;
             palette_3[0] = (byte)(temp & 0xff);
 
             //----------------------------------------------------------------//

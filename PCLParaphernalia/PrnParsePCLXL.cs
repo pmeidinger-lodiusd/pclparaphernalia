@@ -490,7 +490,7 @@ namespace PCLParaphernalia
                 if (_embedDataRem > bufRem)
                 {
                     binDataLen = bufRem;
-                    _embedDataRem = _embedDataRem - bufRem;
+                    _embedDataRem -= bufRem;
                 }
                 else
                 {
@@ -558,8 +558,8 @@ namespace PCLParaphernalia
                     _linkData.resetContData();
                 }
 
-                bufRem = bufRem - binDataLen;
-                bufOffset = bufOffset + binDataLen;
+                bufRem -= binDataLen;
+                bufOffset += binDataLen;
             }
             else if (contType == PrnParseConstants.eContType.PCLXLFontHddr)
             {
@@ -834,8 +834,8 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        bufOffset = bufOffset + 1;
-                        bufRem = bufRem - 1;
+                        bufOffset++;
+                        bufRem--;
                     }
                     else
                     {
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
                     _attrUint16AsUnicode = false;
 
                     tempLen = bufOffset - _attrDataStart;
-                    bufRem = bufRem + tempLen;
+                    bufRem += tempLen;
                     bufOffset = _attrDataStart;
 
                     _attrDataStarted = false;
@@ -938,7 +938,7 @@ namespace PCLParaphernalia
 
                             _continuation = true;
 
-                            _embedDataRem = _embedDataRem - bufRem;
+                            _embedDataRem -= bufRem;
                             _embedDataLen = bufRem;
 
                             contType =
@@ -979,8 +979,8 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _analysisLevel);
 
-                        bufOffset = bufOffset + _embedDataLen;
-                        bufRem = bufRem - _embedDataLen;
+                        bufOffset += _embedDataLen;
+                        bufRem -= _embedDataLen;
                     }
                 }
                 else if ((crntByte == PrnParseConstants.pclxlEmbedData)
@@ -1017,8 +1017,8 @@ namespace PCLParaphernalia
                                  PrnParseConstants.eOvlShow.Illegal,
                                  PrnParseRowTypes.eType.MsgWarning);
 
-                    bufOffset = bufOffset + 1;
-                    bufRem = bufRem - 1;
+                    bufOffset++;
+                    bufRem--;
                 }
             }
 
@@ -1235,8 +1235,8 @@ namespace PCLParaphernalia
                     _attrDataStarted = false;
                     _attrIDFound = false;
 
-                    bufOffset = bufOffset + (_attrIDLen + 1);
-                    bufRem = bufRem - (_attrIDLen + 1);
+                    bufOffset += (_attrIDLen + 1);
+                    bufRem -= (_attrIDLen + 1);
                 }
                 else if (_attrDataStarted)
                 {
@@ -1250,7 +1250,7 @@ namespace PCLParaphernalia
                     int tempLen;
 
                     tempLen = bufOffset - _attrDataStart;
-                    bufRem = bufRem + tempLen;
+                    bufRem += tempLen;
                     bufOffset = _attrDataStart;
 
                     if (_parseType == PrnParse.eParseType.MakeOverlay)
@@ -1397,8 +1397,8 @@ namespace PCLParaphernalia
                     _attrIDFound = false;
                     _attrDataStarted = false;
 
-                    bufOffset = bufOffset + (_attrIDLen + 1);
-                    bufRem = bufRem - (_attrIDLen + 1);
+                    bufOffset += (_attrIDLen + 1);
+                    bufRem -= (_attrIDLen + 1);
                 }
             }
         }
@@ -2313,8 +2313,8 @@ namespace PCLParaphernalia
 
             if (!_continuation)
             {
-                bufOffset = bufOffset + opSeqLen;
-                bufRem = bufRem - opSeqLen;
+                bufOffset += opSeqLen;
+                bufRem -= opSeqLen;
 
                 if ((bufRem == 0) && (!_attrIDFound))
                 {
@@ -2600,8 +2600,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + (dataLenSize + 1);
-                bufRem = bufRem - (dataLenSize + 1);
+                bufOffset += (dataLenSize + 1);
+                bufRem -= (dataLenSize + 1);
 
                 if (_embedDataRem < 0)
                 {
@@ -2635,7 +2635,7 @@ namespace PCLParaphernalia
 
                     _continuation = true;
 
-                    _embedDataRem = _embedDataRem - bufRem;
+                    _embedDataRem -= bufRem;
                     _embedDataLen = bufRem;
 
                     contType = PrnParseConstants.eContType.PCLXLEmbed;
@@ -2701,8 +2701,8 @@ namespace PCLParaphernalia
                     _indxOffsetFormat,
                     _analysisLevel);
 
-                bufOffset = bufOffset + _embedDataLen;
-                bufRem = bufRem - _embedDataLen;
+                bufOffset += _embedDataLen;
+                bufRem -= _embedDataLen;
             }
 
             return invalidSeqFound;
@@ -2996,8 +2996,8 @@ namespace PCLParaphernalia
                     }
                 }
 
-                bufOffset = bufOffset + hddrLen;
-                bufRem = bufRem - hddrLen;
+                bufOffset += hddrLen;
+                bufRem -= hddrLen;
             }
 
             if (invalidSeqFound)
@@ -3096,7 +3096,7 @@ namespace PCLParaphernalia
                 _attrIDFound = false;
 
                 tempLen = bufOffset - _operDataStart;
-                bufRem = bufRem + tempLen;
+                bufRem += tempLen;
                 bufOffset = _operDataStart;
 
                 if (_parseType == PrnParse.eParseType.MakeOverlay)
@@ -3215,7 +3215,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _operNum = _operNum + 1;
+                _operNum++;
 
                 if (_showOperPos)
                 {
@@ -3264,8 +3264,8 @@ namespace PCLParaphernalia
                 _attrDataStart = bufOffset + 1;
                 _operDataStart = bufOffset + 1;
 
-                bufOffset = bufOffset + 1;
-                bufRem = bufRem - 1;
+                bufOffset++;
+                bufRem--;
             }
         }
 
@@ -3416,8 +3416,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + 1;
-                bufRem = bufRem - 1;
+                bufOffset++;
+                bufRem--;
             }
         }
 
@@ -3598,7 +3598,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    chunkIpLen = chunkIpLen + sliceLen;
+                    chunkIpLen += sliceLen;
 
                     if (lastSlice)
                         decode = descText;
@@ -3696,7 +3696,7 @@ namespace PCLParaphernalia
                     if (chunkComplete)
                     {
                         chunkComplete = false;
-                        chunkOffset = chunkOffset + chunkIpLen;
+                        chunkOffset += chunkIpLen;
                         chunkIpLen = 0;
                         chunkOpLen = 0;
                         chunkOp.Clear();
@@ -3714,8 +3714,8 @@ namespace PCLParaphernalia
 
                 if (!deferItem)
                 {
-                    ipPtr = ipPtr + sliceLen;
-                    sliceOffset = sliceOffset + sliceLen;
+                    ipPtr += sliceLen;
+                    sliceOffset += sliceLen;
                 }
             }  // end of While loop
         }
@@ -3772,7 +3772,7 @@ namespace PCLParaphernalia
 
                 int k;
 
-                for (int j = 0; j < sliceLen; j = j + 2)
+                for (int j = 0; j < sliceLen; j += 2)
                 {
                     k = chunkOffset + chunkIpLen + j;
 
@@ -3788,7 +3788,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(showChar);
                 }
 
-                chunkIpLen = chunkIpLen + sliceLen;
+                chunkIpLen += sliceLen;
                 chunkOpLen = chunkOp.Length;
 
                 if (_verboseMode || lastSlice ||
@@ -3836,7 +3836,7 @@ namespace PCLParaphernalia
                     chunkOp.Append(showChar);
                 }
 
-                chunkIpLen = chunkIpLen + sliceLen;
+                chunkIpLen += sliceLen;
                 chunkOpLen = chunkOp.Length;
 
                 if (_verboseMode || lastSlice ||
@@ -3908,8 +3908,8 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         chunkOp.Append(" ");
-                        chunkOpLen = chunkOpLen + 1;
-                        chunkOpRem = chunkOpRem - 1;
+                        chunkOpLen++;
+                        chunkOpRem--;
                     }
 
                     if (lastSlice && arrayType)
@@ -3920,7 +3920,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        chunkOpRem = chunkOpRem - 2;
+                        chunkOpRem -= 2;
                     }
 
                     if (chunkOpRem <= 0)
@@ -3958,8 +3958,8 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    chunkIpLen = chunkIpLen + sliceLen;
-                    chunkOpLen = chunkOpLen + itemLen;
+                    chunkIpLen += sliceLen;
+                    chunkOpLen += itemLen;
 
                     if (lastSlice && arrayType)
                     {
@@ -3970,7 +3970,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         chunkOp.Append(" )");
-                        chunkOpLen = chunkOpLen + 2;
+                        chunkOpLen += 2;
                     }
 
                     if (_verboseMode || lastSlice)
@@ -4055,8 +4055,8 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         chunkOp.Append(" ");
-                        chunkOpLen = chunkOpLen + 1;
-                        chunkOpRem = chunkOpRem - 1;
+                        chunkOpLen++;
+                        chunkOpRem--;
                     }
 
                     if (lastSlice && arrayType)
@@ -4067,7 +4067,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        chunkOpRem = chunkOpRem - 2;
+                        chunkOpRem -= 2;
                     }
 
                     if (chunkOpRem <= 0)
@@ -4322,8 +4322,8 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    chunkIpLen = chunkIpLen + sliceLen;
-                    chunkOpLen = chunkOpLen + itemLen;
+                    chunkIpLen += sliceLen;
+                    chunkOpLen += itemLen;
 
                     if (lastSlice && arrayType)
                     {
@@ -4334,7 +4334,7 @@ namespace PCLParaphernalia
                         //----------------------------------------------------//
 
                         chunkOp.Append(" )");
-                        chunkOpLen = chunkOpLen + 2;
+                        chunkOpLen += 2;
                     }
 
                     if (_verboseMode || lastSlice)
@@ -4453,7 +4453,7 @@ namespace PCLParaphernalia
                 for (int j = hexStart; j < hexEnd; j++)
                 {
                     sub = (_buf[j]);
-                    sub = sub >> 4;
+                    sub >>= 4;
                     crntByte = PrnParseConstants.cHexBytes[sub];
                     hexBuf[hexPtr++] = (char)crntByte;
 

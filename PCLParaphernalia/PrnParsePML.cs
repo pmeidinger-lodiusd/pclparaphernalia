@@ -790,7 +790,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    chunkIpLen = chunkIpLen + sliceLen;
+                    chunkIpLen += sliceLen;
 
                     if (lastSlice)
                         decode = descText;
@@ -880,7 +880,7 @@ namespace PCLParaphernalia
                     if (chunkComplete)
                     {
                         chunkComplete = false;
-                        chunkOffset = chunkOffset + chunkIpLen;
+                        chunkOffset += chunkIpLen;
                         chunkIpLen = 0;
                         chunkOpLen = 0;
                         chunkOp.Clear();
@@ -896,8 +896,8 @@ namespace PCLParaphernalia
 
                 firstSlice = false;
 
-                ipPtr = ipPtr + sliceLen;
-                sliceOffset = sliceOffset + sliceLen;
+                ipPtr += sliceLen;
+                sliceOffset += sliceLen;
             }  // end of While loop
         }
 
@@ -972,7 +972,7 @@ namespace PCLParaphernalia
                     {
                         // continuation
 
-                        item = item * 256;
+                        item *= 256;
                         item += thisByte;
                     }
                     else if (thisByte > 127)
@@ -1323,7 +1323,7 @@ namespace PCLParaphernalia
                 chunkOp.Append("*** unknown type ***");
             }
 
-            chunkIpLen = chunkIpLen + sliceLen;
+            chunkIpLen += sliceLen;
             chunkOpLen = chunkOp.Length;
 
             if (_verboseMode || lastSlice || seqError ||
@@ -1421,7 +1421,7 @@ namespace PCLParaphernalia
                 for (int j = hexStart; j < hexEnd; j++)
                 {
                     sub = (_buf[j]);
-                    sub = sub >> 4;
+                    sub >>= 4;
                     crntByte = PrnParseConstants.cHexBytes[sub];
                     hexBuf[hexPtr++] = (char)crntByte;
 

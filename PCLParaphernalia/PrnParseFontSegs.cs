@@ -649,9 +649,9 @@ namespace PCLParaphernalia
                     contType = _contType;
 
                     binDataLen = bufRem;
-                    _segRem = _segRem - bufRem;
-                    hddrDataRem = hddrDataRem - bufRem;
-                    hddrRem = hddrRem - bufRem;
+                    _segRem -= bufRem;
+                    hddrDataRem -= bufRem;
+                    hddrRem -= bufRem;
 
                     _linkData.setContinuation(contType);
                 }
@@ -665,8 +665,8 @@ namespace PCLParaphernalia
 
                     binDataLen = _segRem;
                     _segRem = 0;
-                    hddrDataRem = hddrDataRem - binDataLen;
-                    hddrRem = hddrRem - binDataLen;
+                    hddrDataRem -= binDataLen;
+                    hddrRem -= binDataLen;
                 }
 
                 if ((binDataLen) != 0)
@@ -700,8 +700,8 @@ namespace PCLParaphernalia
                         }
                     }
 
-                    bufRem = bufRem - binDataLen;
-                    bufOffset = bufOffset + binDataLen;
+                    bufRem -= binDataLen;
+                    bufOffset += binDataLen;
                 }
             }
 
@@ -832,10 +832,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -982,10 +982,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1128,10 +1128,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1305,10 +1305,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1469,10 +1469,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1615,10 +1615,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1813,10 +1813,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2126,10 +2126,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2275,10 +2275,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2739,10 +2739,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -2881,10 +2881,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3054,10 +3054,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3196,10 +3196,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3338,10 +3338,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3615,10 +3615,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -3820,10 +3820,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4004,10 +4004,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4244,10 +4244,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4394,10 +4394,10 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                bufOffset = bufOffset + minSegLen;
-                bufRem = bufRem - minSegLen;
-                hddrDataRem = hddrDataRem - minSegLen;
-                hddrRem = hddrRem - minSegLen;
+                bufOffset += minSegLen;
+                bufRem -= minSegLen;
+                hddrDataRem -= minSegLen;
+                hddrRem -= minSegLen;
 
                 //------------------------------------------------------------//
                 //                                                            //
