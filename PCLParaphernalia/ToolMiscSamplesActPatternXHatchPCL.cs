@@ -20,24 +20,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId           = 1;
-        const UInt16 _unitsPerInch     = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
         const UInt16 _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
 
         const Int16 _pageOriginX = (_unitsPerInch * 1);
         const Int16 _pageOriginY = (_unitsPerInch * 1);
-        const Int16 _incInch     = (_unitsPerInch * 1);
-        const Int16 _lineInc     = (_unitsPerInch * 5) / 6;
+        const Int16 _incInch = (_unitsPerInch * 1);
+        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc  = _pageOriginX;
+        const Int16 _posXDesc = _pageOriginX;
         const Int16 _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
         const Int16 _posXData2 = _posXData1 + ((3 * _incInch / 2));
         const Int16 _posXData3 = _posXData2 + ((3 * _incInch / 2));
 
-        const Int16 _posYHddr  = _pageOriginY;
+        const Int16 _posYHddr = _pageOriginY;
         const Int16 _posYDesc1 = _pageOriginY + (2 * _incInch);
         const Int16 _posYDesc2 = _pageOriginY + ((3 * _incInch / 2));
-        const Int16 _posYData  = _pageOriginY + (2 * _incInch);
+        const Int16 _posYData = _pageOriginY + (2 * _incInch);
 
         const Int16 _patternBase_300 = 300;
         const Int16 _patternBase_600 = 600;
@@ -61,7 +61,7 @@ namespace PCLParaphernalia
         static UInt16[] _patternHeights;
         static UInt16[] _patternWidths;
 
-        static String [] _patternDescs;
+        static String[] _patternDescs;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            getPatternData ();
+            getPatternData();
 
             generateJobHeader(prnWriter,
                               indxPaperSize,
@@ -419,10 +419,10 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < _patternsCt; i++)
             {
-                PCLWriter.rectangleUserFill (
+                PCLWriter.rectangleUserFill(
                     prnWriter, rectX, rectY,
                     rectHeight, rectWidth,
-                    (Int16) (_patternBase_300 + _patternIds[i]),
+                    (Int16)(_patternBase_300 + _patternIds[i]),
                     false, false);
 
                 rectY += _lineInc;
@@ -465,17 +465,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void getPatternData ()
+        private static void getPatternData()
         {
             _patternsCt = PCLPatternDefs.getCount(
                 PCLPatternDefs.eType.CrossHatch);
 
-            _patternIds     = new UInt16[_patternsCt]; 
-            _patternHeights = new UInt16[_patternsCt]; 
-            _patternWidths  = new UInt16[_patternsCt]; 
-            _patternDescs   = new String[_patternsCt]; 
+            _patternIds = new UInt16[_patternsCt];
+            _patternHeights = new UInt16[_patternsCt];
+            _patternWidths = new UInt16[_patternsCt];
+            _patternDescs = new String[_patternsCt];
 
-            for (Int32 i= 0; i < _patternsCt; i++)
+            for (Int32 i = 0; i < _patternsCt; i++)
             {
                 _patternIds[i] = PCLPatternDefs.getId(
                     PCLPatternDefs.eType.CrossHatch, i);
@@ -575,11 +575,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void patternDeleteSet(BinaryWriter prnWriter,
-                                             Int32        baseID)
+                                             Int32 baseID)
         {
             for (Int32 i = 0; i < _patternsCt; i++)
             {
-                PCLWriter.patternDelete (
+                PCLWriter.patternDelete(
                     prnWriter, (Int16)(baseID + _patternIds[i]));
             }
         }

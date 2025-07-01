@@ -26,8 +26,8 @@ namespace PCLParaphernalia
 
         private enum ePCLXLFontTechnology : byte
         {
-            TrueType           = 1,
-            Bitmap             = 254,
+            TrueType = 1,
+            Bitmap = 254,
         }
 
         //--------------------------------------------------------------------//
@@ -52,7 +52,7 @@ namespace PCLParaphernalia
         {
             _binReader.Close();
             _ipStream.Close();
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Boolean fontFileCopy(BinaryWriter prnWriter,
-                                           String       fontFilename)
+                                           String fontFilename)
         {
             Boolean fileOpen = false;
 
@@ -72,7 +72,7 @@ namespace PCLParaphernalia
 
             Int64 fileSize = 0;
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -84,9 +84,9 @@ namespace PCLParaphernalia
                 Int32 readSize;
 
                 Boolean endLoop;
-                                
+
                 Byte[] buf = new Byte[bufSize];
-                
+
                 endLoop = false;
 
                 while (!endLoop)
@@ -96,10 +96,10 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                       prnWriter.Write(buf, 0, readSize);
+                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -119,19 +119,18 @@ namespace PCLParaphernalia
         {
             Boolean open = false;
 
-
             if ((fileName == null) || (fileName == ""))
             {
-                MessageBox.Show ("Download font file name is null.",
+                MessageBox.Show("Download font file name is null.",
                                 "PCL XL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download font file '" + fileName +
+                MessageBox.Show("Download font file '" + fileName +
                                 "' does not exist.",
                                 "PCL XL font selection attribute invalid",
                                 MessageBoxButton.OK,
@@ -143,7 +142,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open (fileName,
+                    _ipStream = File.Open(fileName,
                                            FileMode.Open,
                                            FileAccess.Read,
                                            FileShare.None);
@@ -151,7 +150,7 @@ namespace PCLParaphernalia
 
                 catch (IOException e)
                 {
-                    MessageBox.Show ("IO Exception:\r\n" +
+                    MessageBox.Show("IO Exception:\r\n" +
                                      e.Message + "\r\n" +
                                      "Opening soft font file '" +
                                      fileName + "'",
@@ -164,16 +163,16 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
             return open;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -184,18 +183,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getFontCharacteristics(String      fontFilename,
-                                                     ref String  fontName,
+        public static Boolean getFontCharacteristics(String fontFilename,
+                                                     ref String fontName,
                                                      ref Boolean scalable,
                                                      ref Boolean bound,
-                                                     ref UInt16  symSetNo)
+                                                     ref UInt16 symSetNo)
         {
             Boolean fileOpen = false;
 
             Boolean OK = true;
 
-            UInt16 hddrOffset  = 0;
-            Int64  fileSize    = 0;
+            UInt16 hddrOffset = 0;
+            Int64 fileSize = 0;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -203,28 +202,28 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
-            if (! fileOpen)
+            if (!fileOpen)
             {
                 OK = false;
             }
             else
             {
-                OK = readHddrIntro (fontFilename,
+                OK = readHddrIntro(fontFilename,
                                     fileSize,
                                     ref fontName,
                                     ref hddrOffset);
 
                 if (OK)
                 {
-                    OK = readHddrDescriptor (hddrOffset,
+                    OK = readHddrDescriptor(hddrOffset,
                                              ref scalable,
                                              ref bound,
                                              ref symSetNo);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -240,19 +239,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrDescriptor(UInt16      hddrOffset,
+        private static Boolean readHddrDescriptor(UInt16 hddrOffset,
                                                   ref Boolean scalable,
                                                   ref Boolean bound,
-                                                  ref UInt16  symSetNo)
+                                                  ref UInt16 symSetNo)
         {
             const UInt16 symSetUnicode = 590;
-            
+
             const Byte techTrueType = 1;
-        //  const Byte techBitmap   = 254;
+            //  const Byte techBitmap   = 254;
 
             Boolean OK = true;
 
-            Byte [] hddr = new Byte[_minHddrDescLen];
+            Byte[] hddr = new Byte[_minHddrDescLen];
 
             Byte technology;
 
@@ -263,14 +262,14 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             symSetNo = (UInt16)((hddr[2] * 256) + hddr[3]);
-            
+
             if (symSetNo == symSetUnicode)
                 bound = false;
             else
                 bound = true;
 
             //----------------------------------------------------------------//
-            
+
             technology = hddr[4];
 
             if (technology == techTrueType)
@@ -279,7 +278,7 @@ namespace PCLParaphernalia
                 scalable = false;
 
             return OK;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -308,8 +307,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrIntro(String     fileName,
-                                             Int64      fileSize,
+        private static Boolean readHddrIntro(String fileName,
+                                             Int64 fileSize,
                                              ref String fontName,
                                              ref UInt16 hddrOffset)
         {
@@ -317,12 +316,12 @@ namespace PCLParaphernalia
             const Byte minFontNameLen = 12;
             const Byte maxFontNameLen = 20;
 
-            String messHeader  = "Download font file '" + fileName + "':\n\n";
+            String messHeader = "Download font file '" + fileName + "':\n\n";
             String messTrailer = "\n\nYou will have to choose another file.";
-                
+
             Boolean OK = true;
             Boolean beginFound = false;
-            
+
             Int32 hddrDescLen = 0,
                   dataLen,
                   pos;
@@ -331,7 +330,7 @@ namespace PCLParaphernalia
             {
                 MessageBox.Show(messHeader +
                                 "File size < minimum (" + minFileSize +
-                                " bytes)."                            +
+                                " bytes)." +
                                 messTrailer,
                                 "PCL XL soft font file",
                                 MessageBoxButton.OK,
@@ -420,11 +419,11 @@ namespace PCLParaphernalia
                 {
                     dataLen = (UInt16)((buf[pos + 2] * 256) + buf[pos + 1]);
 
-                    if ((dataLen < _minHddrDescLen)                           ||
-                        (buf[pos+3] != (Byte)PCLXLAttrDefiners.eTag.Ubyte)            ||
-                        (buf[pos+4] != 
-                            (Byte)PCLXLAttributes.eTag.FontHeaderLength)          ||
-                        (buf[pos+5] != (Byte)PCLXLOperators.eTag.ReadFontHeader))
+                    if ((dataLen < _minHddrDescLen) ||
+                        (buf[pos + 3] != (Byte)PCLXLAttrDefiners.eTag.Ubyte) ||
+                        (buf[pos + 4] !=
+                            (Byte)PCLXLAttributes.eTag.FontHeaderLength) ||
+                        (buf[pos + 5] != (Byte)PCLXLOperators.eTag.ReadFontHeader))
                     {
                         OK = false;
                     }
@@ -438,7 +437,7 @@ namespace PCLParaphernalia
 
                             pos += 2;
                         }
-                        else if (buf[pos] == (Byte) PCLXLEmbedDataDefs.eTag.Int)
+                        else if (buf[pos] == (Byte)PCLXLEmbedDataDefs.eTag.Int)
                         {
                             hddrDescLen = (buf[pos + 4] * 256 * 256 * 256) +
                                           (buf[pos + 5] * 256 * 256) +
@@ -446,7 +445,7 @@ namespace PCLParaphernalia
                                           (buf[pos + 7]);
 
                             pos += 5;
-                       
+
                             if (hddrDescLen < _minHddrDescLen)
                                 OK = false;
                         }
@@ -461,19 +460,19 @@ namespace PCLParaphernalia
             if (OK)
             {
                 hddrOffset = (UInt16)pos;
-                
+
                 return true;
             }
             else
             {
-                MessageBox.Show(messHeader + 
+                MessageBox.Show(messHeader +
                                 "Font file format not recognised." +
                                  messTrailer,
                                 "PCL XL soft font file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
                 return false;
-            }   
+            }
         }
     }
 }

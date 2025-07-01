@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute (Feature = "properties renaming")]
+    [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
 
     class PJLCommand
     {
@@ -21,7 +21,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PJLCommands.eRequestType _reqType;
-        private PJLCommands.eCmdFormat   _cmdFormat;
+        private PJLCommands.eCmdFormat _cmdFormat;
         private String _cmdName;
         private String _cmdDesc;
 
@@ -34,19 +34,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCommand(PJLCommands.eCmdIndex    indx,
-                          PJLCommands.eCmdFormat   format,
+        public PJLCommand(PJLCommands.eCmdIndex indx,
+                          PJLCommands.eCmdFormat format,
                           PJLCommands.eRequestType type,
-                          String                   desc)
+                          String desc)
         {
             if (indx == PJLCommands.eCmdIndex.Null)
                 _cmdName = PJLCommands.nullCmdKey;
             else
-                _cmdName   = indx.ToString ();
+                _cmdName = indx.ToString();
 
-            _cmdDesc   = desc;
+            _cmdDesc = desc;
             _cmdFormat = format;
-            _reqType   = type;
+            _reqType = type;
 
             _statsCtParent = 0;
             _statsCtChild = 0;

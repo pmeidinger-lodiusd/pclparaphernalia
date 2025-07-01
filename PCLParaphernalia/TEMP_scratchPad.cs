@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
-using System.IO;
 using System.Text;
-using System.Windows;
 
 namespace PCLParaphernalia
 {
@@ -31,11 +28,11 @@ namespace PCLParaphernalia
                                        '\u03a3'  // Sigma
                                       };
 
-            UnicodeEncoding Unicode = new UnicodeEncoding ();
+            UnicodeEncoding Unicode = new UnicodeEncoding();
 
-            int byteCount = Unicode.GetByteCount (chars, 1, 2);
+            int byteCount = Unicode.GetByteCount(chars, 1, 2);
             bytes = new Byte[byteCount];
-            int bytesEncodedCount = Unicode.GetBytes (chars, 1, 2, bytes, 0);
+            int bytesEncodedCount = Unicode.GetBytes(chars, 1, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 4
@@ -60,20 +57,20 @@ namespace PCLParaphernalia
                                        '\u03a3'  // Sigma
                                       };
 
-            UTF8Encoding utf8 = new UTF8Encoding ();
+            UTF8Encoding utf8 = new UTF8Encoding();
 
-            int byteCount = utf8.GetByteCount (chars, 1, 2);
+            int byteCount = utf8.GetByteCount(chars, 1, 2);
             bytes = new Byte[byteCount];
-            int bytesEncodedCount = utf8.GetBytes (chars, 1, 2, bytes, 0);
+            int bytesEncodedCount = utf8.GetBytes(chars, 1, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 3
             //  bytesEncodedCount   = 3
             //  bytes[]             = { '\x23', '\xce', '\xa0' }
 
-            byteCount = utf8.GetByteCount (chars, 0, 2);
+            byteCount = utf8.GetByteCount(chars, 0, 2);
             bytes = new Byte[byteCount];
-            bytesEncodedCount = utf8.GetBytes (chars, 0, 2, bytes, 0);
+            bytesEncodedCount = utf8.GetBytes(chars, 0, 2, bytes, 0);
 
             // At this point:
             //  byteCount           = 2
@@ -106,34 +103,34 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bufStd[indxStd++] = escape;
-            bufStd[indxStd++] = (Byte) '*';
-            bufStd[indxStd++] = (Byte) 'p';
+            bufStd[indxStd++] = (Byte)'*';
+            bufStd[indxStd++] = (Byte)'p';
 
-            temp = coordX.ToString ();
-            textLen = (Int16) temp.Length;
+            temp = coordX.ToString();
+            textLen = (Int16)temp.Length;
 
             for (Int32 i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (Byte) temp[i];
+                bufStd[indxStd++] = (Byte)temp[i];
             }
 
-            bufStd[indxStd++] = (Byte) 'x';
+            bufStd[indxStd++] = (Byte)'x';
 
-            temp = coordY.ToString ();
-            textLen = (Int16) temp.Length;
+            temp = coordY.ToString();
+            textLen = (Int16)temp.Length;
 
             for (Int32 i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (Byte) temp[i];
+                bufStd[indxStd++] = (Byte)temp[i];
             }
 
-            bufStd[indxStd++] = (Byte) 'Y';
+            bufStd[indxStd++] = (Byte)'Y';
 
-            textLen = (Int16) text.Length;
+            textLen = (Int16)text.Length;
 
             for (Int32 i = 0; i < textLen; i++)
             {
-                bufStd[indxStd++] = (Byte) text[i];
+                bufStd[indxStd++] = (Byte)text[i];
             }
 
             //----------------------------------------------------------------//
@@ -263,12 +260,6 @@ namespace PCLParaphernalia
             //  colDesc.Binding = bindDesc;
             }
             */
-
-
-
-
-
-
 
             /*
             //--------------------------------------------------------------------//
@@ -426,7 +417,6 @@ namespace PCLParaphernalia
                 dgAnalysis.DataContext = dataSet.Tables[0];  
             }
             */
-
 
         }
     }

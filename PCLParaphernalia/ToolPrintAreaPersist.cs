@@ -19,35 +19,35 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey                 = MainForm._regMainKey;
+        const String _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools             = "Tools";
-        const String _subKeyToolsPrintArea    = "PrintArea";
-        const String _subKeyPCL5              = "PCL5";
-        const String _subKeyPCL6              = "PCL6";
-        const String _subKeyPCL               = "PCL";
-        const String _subKeyPCLXL             = "PCLXL";
+        const String _subKeyTools = "Tools";
+        const String _subKeyToolsPrintArea = "PrintArea";
+        const String _subKeyPCL5 = "PCL5";
+        const String _subKeyPCL6 = "PCL6";
+        const String _subKeyPCL = "PCL";
+        const String _subKeyPCLXL = "PCLXL";
 
-        const String _nameCaptureFile         = "CaptureFile";
-        const String _nameFlagFormAsMacro     = "FlagFormAsMacro";
+        const String _nameCaptureFile = "CaptureFile";
+        const String _nameFlagFormAsMacro = "FlagFormAsMacro";
         const String _nameFlagCustomUseMetric = "FlagCustomUseMetric";
-        const String _nameCustomShortEdge     = "CustomShortEdge";
-        const String _nameCustomLongEdge      = "CustomLongEdge";
-        const String _nameIndxOrientation     = "IndxOrientation";
-        const String _nameIndxPaperSize       = "IndxPaperSize";
-        const String _nameIndxPaperType       = "IndxPaperType";
-        const String _nameIndxPDL             = "IndxPDL";
-        const String _nameIndxPJLCommand      = "IndxPJLCommand";
-        const String _nameIndxPlexMode        = "IndxPlexMode";
+        const String _nameCustomShortEdge = "CustomShortEdge";
+        const String _nameCustomLongEdge = "CustomLongEdge";
+        const String _nameIndxOrientation = "IndxOrientation";
+        const String _nameIndxPaperSize = "IndxPaperSize";
+        const String _nameIndxPaperType = "IndxPaperType";
+        const String _nameIndxPDL = "IndxPDL";
+        const String _nameIndxPJLCommand = "IndxPJLCommand";
+        const String _nameIndxPlexMode = "IndxPlexMode";
 
-        const Int32 _flagFalse                = 0;
-        const Int32 _flagTrue                 = 1;
-        const Int32 _indexZero                = 0;
+        const Int32 _flagFalse = 0;
+        const Int32 _flagTrue = 1;
+        const Int32 _indexZero = 0;
 
         const Int32 _customShortEdgeDefault = 4960;    // A4 dots @ 600 dpi 
-        const Int32 _customLongEdgeDefault  = 7014;    // A4 dots @ 600 dpi 
+        const Int32 _customLongEdgeDefault = 7014;    // A4 dots @ 600 dpi 
 
-        const String _defaultCaptureFilePCL   = "CaptureFile_PrintAreaPCL.prn";
+        const String _defaultCaptureFilePCL = "CaptureFile_PrintAreaPCL.prn";
         const String _defaultCaptureFilePCLXL = "CaptureFile_PrintAreaPCLXL.prn";
 
         //--------------------------------------------------------------------//
@@ -175,16 +175,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(String      pdlName,
-                                       ref Int32   indxOrientation,
-                                       ref Int32   indxPaperSize,
-                                       ref Int32   indxPaperType,
-                                       ref Int32   indxPlexMode,
-                                       ref Int32   indxPJLCommand,
+        public static void loadDataPCL(String pdlName,
+                                       ref Int32 indxOrientation,
+                                       ref Int32 indxPaperSize,
+                                       ref Int32 indxPaperType,
+                                       ref Int32 indxPlexMode,
+                                       ref Int32 indxPJLCommand,
                                        ref Boolean flagFormAsMacro,
                                        ref Boolean flagCustomUseMetric,
-                                       ref UInt16  customShortEdge,
-                                       ref UInt16  customLongEdge)
+                                       ref UInt16 customShortEdge,
+                                       ref UInt16 customLongEdge)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -203,19 +203,19 @@ namespace PCLParaphernalia
                 indxOrientation = (Int32)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
 
-                indxPaperSize   = (Int32)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (Int32)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
 
-                indxPaperType   = (Int32)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (Int32)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
 
-                indxPlexMode    = (Int32) subKey.GetValue(_nameIndxPlexMode,
+                indxPlexMode = (Int32)subKey.GetValue(_nameIndxPlexMode,
                                                           _indexZero);
 
                 indxPJLCommand = (Int32)subKey.GetValue(_nameIndxPJLCommand,
                                                          _indexZero);
 
-                tmpInt          = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
                 else
                     flagFormAsMacro = true;
 
-                tmpInt          = (Int32)subKey.GetValue(_nameFlagCustomUseMetric,
+                tmpInt = (Int32)subKey.GetValue(_nameFlagCustomUseMetric,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
                 tmpInt = (Int32)subKey.GetValue(_nameCustomLongEdge,
                                                 _customLongEdgeDefault);
 
-                customLongEdge  = (UInt16)tmpInt;
+                customLongEdge = (UInt16)tmpInt;
             }
         }
 
@@ -323,25 +323,25 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(String    pdlName,
-                                       Int32     indxOrientation,
-                                       Int32     indxPaperSize,
-                                       Int32     indxPaperType,
-                                       Int32     indxPlexMode,
-                                       Int32     indxPJLCommand,
-                                       Boolean   flagFormAsMacro,
-                                       Boolean   flagCustomUseMetric,
-                                       UInt16    customShortEdge,
-                                       UInt16    customLongEdge)
+        public static void saveDataPCL(String pdlName,
+                                       Int32 indxOrientation,
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxPlexMode,
+                                       Int32 indxPJLCommand,
+                                       Boolean flagFormAsMacro,
+                                       Boolean flagCustomUseMetric,
+                                       UInt16 customShortEdge,
+                                       UInt16 customLongEdge)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
-            
+
             String key;
 
             key = _subKeyTools + "\\" + _subKeyToolsPrintArea +
                                  "\\" + pdlName;
-            
+
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 subKey.SetValue(_nameIndxOrientation,

@@ -1,7 +1,5 @@
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PCLParaphernalia
 {
@@ -59,7 +57,7 @@ namespace PCLParaphernalia
                 object objValue = sourceKey.GetValue(valueName);
 
                 RegistryValueKind valKind = sourceKey.GetValueKind(valueName);
-                
+
                 targetKey.SetValue(valueName, objValue, valKind);
             }
 
@@ -83,9 +81,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean keyExists (
+        public static Boolean keyExists(
             RegistryKey parentKeyName,
-            String      subKeyName)
+            String subKeyName)
         {
             using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
             {

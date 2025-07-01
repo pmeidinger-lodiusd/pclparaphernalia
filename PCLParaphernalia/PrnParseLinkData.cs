@@ -18,7 +18,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-       
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -46,7 +45,7 @@ namespace PCLParaphernalia
 
         private String _makeOvlStreamName;
 
-        private PCLXLOperators.eEmbedDataType _pclxlEmbedType; 
+        private PCLXLOperators.eEmbedDataType _pclxlEmbedType;
 
         private Int32 _prefixLen;
         private Int32 _dataLen;
@@ -57,7 +56,7 @@ namespace PCLParaphernalia
         private Int32 _entryRem;
         private Int32 _entrySz1;
         private Int32 _entrySz2;
-   
+
         private Boolean _pclComboSeq;
         private Boolean _pclComboFirst;
         private Boolean _pclComboLast;
@@ -70,7 +69,7 @@ namespace PCLParaphernalia
 
         private Boolean _backTrack;
         private Boolean _eof;
-        
+
         private Byte _prefixA;
         private Byte _prefixB;
 
@@ -86,54 +85,54 @@ namespace PCLParaphernalia
 
         public PrnParseLinkData(
             PrnParse analysisOwner,
-            Int32    analysisLevel,
-            Int32    macroLevel,
+            Int32 analysisLevel,
+            Int32 macroLevel,
             PCLXLOperators.eEmbedDataType pclxlEmbedType)
         {
-            _analysisOwner         = analysisOwner;
-            _analysisLevel         = analysisLevel;
-            _macroLevel            = macroLevel;
-            _pclxlEmbedType        = pclxlEmbedType;
+            _analysisOwner = analysisOwner;
+            _analysisLevel = analysisLevel;
+            _macroLevel = macroLevel;
+            _pclxlEmbedType = pclxlEmbedType;
 
-            _contType              = PrnParseConstants.eContType.None;
-            _prefixLen             = 0;
-            _dataLen               = 0;
-            _downloadRem           = 0;
+            _contType = PrnParseConstants.eContType.None;
+            _prefixLen = 0;
+            _dataLen = 0;
+            _downloadRem = 0;
 
-            _entryCt               = 0;
-            _entryNo               = 0;
-            _entryRem              = 0;
-            _entrySz1              = 0;
-            _entrySz2              = 0;
-            
-            _backTrack             = false;
-            _prefixA               = 0x00;
-            _prefixB               = 0x00;
-            
-            _eof                   = false;
+            _entryCt = 0;
+            _entryNo = 0;
+            _entryRem = 0;
+            _entrySz1 = 0;
+            _entrySz2 = 0;
 
-            _fileSize              = 0;
-            
-            _makeOvlOffset         = 0;
-            _makeOvlSkipBegin      = -1;
-            _makeOvlSkipEnd        = -1;
-            _makeOvlAct            = PrnParseConstants.eOvlAct.None;
-            _makeOvlPos            = PrnParseConstants.eOvlPos.BeforeFirstPage;
-            _makeOvlShow           = PrnParseConstants.eOvlShow.None;
-            _makeOvlMacroId        = -1;
-            _makeOvlStreamName     = "";
-            _makeOvlPageMark       = false;
-            _makeOvlXL             = false;
-            _makeOvlEncapsulate    = false;
+            _backTrack = false;
+            _prefixA = 0x00;
+            _prefixB = 0x00;
 
-            _pclComboStart         = -1;
-            _pclComboSeq           = false;
-            _pclComboFirst         = false;
-            _pclComboLast          = false;
-            _pclComboModified      = false;
+            _eof = false;
+
+            _fileSize = 0;
+
+            _makeOvlOffset = 0;
+            _makeOvlSkipBegin = -1;
+            _makeOvlSkipEnd = -1;
+            _makeOvlAct = PrnParseConstants.eOvlAct.None;
+            _makeOvlPos = PrnParseConstants.eOvlPos.BeforeFirstPage;
+            _makeOvlShow = PrnParseConstants.eOvlShow.None;
+            _makeOvlMacroId = -1;
+            _makeOvlStreamName = "";
+            _makeOvlPageMark = false;
+            _makeOvlXL = false;
+            _makeOvlEncapsulate = false;
+
+            _pclComboStart = -1;
+            _pclComboSeq = false;
+            _pclComboFirst = false;
+            _pclComboLast = false;
+            _pclComboModified = false;
 
             _prescribeSCRC = PrnParseConstants.prescribeSCRCDefault;
-            _prescribeIntroRead    = false;
+            _prescribeIntroRead = false;
         }
 
         //--------------------------------------------------------------------//
@@ -267,20 +266,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void getContData(ref PrnParseConstants.eContType contType,
-                                ref Int32      prefixLen,
-                                ref Int32      dataLen,
-                                ref Int32      downloadRem,
-                                ref Boolean    backTrack,
-                                ref Byte       prefixA,
-                                ref Byte       prefixB)
+                                ref Int32 prefixLen,
+                                ref Int32 dataLen,
+                                ref Int32 downloadRem,
+                                ref Boolean backTrack,
+                                ref Byte prefixA,
+                                ref Byte prefixB)
         {
-            contType          = _contType;
-            prefixLen         = _prefixLen;
-            dataLen           = _dataLen;
-            downloadRem       = _downloadRem;
-            backTrack         = _backTrack;
-            prefixA           = _prefixA;
-            prefixB           = _prefixB;
+            contType = _contType;
+            prefixLen = _prefixLen;
+            dataLen = _dataLen;
+            downloadRem = _downloadRem;
+            backTrack = _backTrack;
+            prefixA = _prefixA;
+            prefixB = _prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -310,13 +309,13 @@ namespace PCLParaphernalia
                                     ref Boolean pclComboFirst,
                                     ref Boolean pclComboLast,
                                     ref Boolean pclComboModified,
-                                    ref Int64   pclComboStart)
+                                    ref Int64 pclComboStart)
         {
-            pclComboSeq      = _pclComboSeq;
-            pclComboFirst    = _pclComboFirst;
-            pclComboLast     = _pclComboLast;
+            pclComboSeq = _pclComboSeq;
+            pclComboFirst = _pclComboFirst;
+            pclComboLast = _pclComboLast;
             pclComboModified = _pclComboModified;
-            pclComboStart    = _pclComboStart;
+            pclComboStart = _pclComboStart;
         }
 
         //--------------------------------------------------------------------//
@@ -333,8 +332,8 @@ namespace PCLParaphernalia
                                   ref Byte prefixB)
         {
             prefixLen = _prefixLen;
-            prefixA   = _prefixA;
-            prefixB   = _prefixB;
+            prefixA = _prefixA;
+            prefixB = _prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -465,7 +464,7 @@ namespace PCLParaphernalia
             get { return _makeOvlPos; }
             set { _makeOvlPos = value; }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a k e O v l R e s t o r e S t a t e X L                          //
@@ -477,7 +476,7 @@ namespace PCLParaphernalia
             get { return _makeOvlRestoreStateXL; }
             set { _makeOvlRestoreStateXL = value; }
         }
- 
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a k e O v l S h o w                                              //
@@ -645,13 +644,13 @@ namespace PCLParaphernalia
 
         public void resetContData()
         {
-            _contType            = PrnParseConstants.eContType.None;
-            _prefixLen           = 0;
-            _dataLen             = 0;
-            _downloadRem         = 0;
-            _backTrack           = false;
-            _prefixA             = 0x00;
-            _prefixB             = 0x00;
+            _contType = PrnParseConstants.eContType.None;
+            _prefixLen = 0;
+            _dataLen = 0;
+            _downloadRem = 0;
+            _backTrack = false;
+            _prefixA = 0x00;
+            _prefixB = 0x00;
         }
 
         //--------------------------------------------------------------------//
@@ -665,11 +664,11 @@ namespace PCLParaphernalia
 
         public void resetPCLComboData()
         {
-            _pclComboSeq         = false;
-            _pclComboFirst       = false;
-            _pclComboLast        = false;
-            _pclComboModified    = false;
-            _pclComboStart       = -1;
+            _pclComboSeq = false;
+            _pclComboFirst = false;
+            _pclComboLast = false;
+            _pclComboModified = false;
+            _pclComboStart = -1;
         }
 
         //--------------------------------------------------------------------//
@@ -681,16 +680,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setBacktrack (PrnParseConstants.eContType contType,
+        public void setBacktrack(PrnParseConstants.eContType contType,
                                   Int32 dataLen)
         {
-            _contType          = contType;
-            _prefixLen         = 0;
-            _dataLen           = dataLen;
-            _downloadRem       = 0;
-            _backTrack         = true;
-            _prefixA           = 0x20;
-            _prefixB           = 0x20;
+            _contType = contType;
+            _prefixLen = 0;
+            _dataLen = dataLen;
+            _downloadRem = 0;
+            _backTrack = true;
+            _prefixA = 0x20;
+            _prefixB = 0x20;
         }
 
         //--------------------------------------------------------------------//
@@ -703,20 +702,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setContData(PrnParseConstants.eContType contType,
-                                Int32      prefixLen,
-                                Int32      dataLen,
-                                Int32      downloadRem,
-                                Boolean    backTrack,
-                                Byte       prefixA,
-                                Byte       prefixB)
+                                Int32 prefixLen,
+                                Int32 dataLen,
+                                Int32 downloadRem,
+                                Boolean backTrack,
+                                Byte prefixA,
+                                Byte prefixB)
         {
-            _contType          = contType;
-            _prefixLen         = prefixLen;
-            _dataLen           = dataLen;
-            _downloadRem       = downloadRem;
-            _backTrack         = backTrack;
-            _prefixA           = prefixA;
-            _prefixB           = prefixB;
+            _contType = contType;
+            _prefixLen = prefixLen;
+            _dataLen = dataLen;
+            _downloadRem = downloadRem;
+            _backTrack = backTrack;
+            _prefixA = prefixA;
+            _prefixB = prefixB;
         }
 
         //--------------------------------------------------------------------//
@@ -728,15 +727,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContinuation (PrnParseConstants.eContType contType)
+        public void setContinuation(PrnParseConstants.eContType contType)
         {
-            _contType          = contType;
-            _prefixLen         = 0;
-            _dataLen           = 0;
-            _downloadRem       = 0;
-            _backTrack         = false;
-            _prefixA           = 0x20;
-            _prefixB           = 0x20;
+            _contType = contType;
+            _prefixLen = 0;
+            _dataLen = 0;
+            _downloadRem = 0;
+            _backTrack = false;
+            _prefixA = 0x20;
+            _prefixB = 0x20;
         }
 
         //--------------------------------------------------------------------//
@@ -766,13 +765,13 @@ namespace PCLParaphernalia
                                     Boolean pclComboFirst,
                                     Boolean pclComboLast,
                                     Boolean pclComboModified,
-                                    Int64   pclComboStart)
+                                    Int64 pclComboStart)
         {
-            _pclComboSeq      = pclComboSeq;
-            _pclComboFirst    = pclComboFirst;
-            _pclComboLast     = pclComboLast;
+            _pclComboSeq = pclComboSeq;
+            _pclComboFirst = pclComboFirst;
+            _pclComboLast = pclComboLast;
             _pclComboModified = pclComboModified;
-            _pclComboStart    = pclComboStart;
+            _pclComboStart = pclComboStart;
         }
 
         //--------------------------------------------------------------------//
@@ -785,8 +784,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public void setPrefixData(Int32 prefixLen,
-                                  Byte  prefixA,
-                                  Byte  prefixB)
+                                  Byte prefixA,
+                                  Byte prefixB)
         {
             _prefixLen = prefixLen;
             _prefixA = prefixA;

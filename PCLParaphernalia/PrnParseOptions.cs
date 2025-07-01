@@ -35,11 +35,11 @@ namespace PCLParaphernalia
         private Int32 _valCharSetSubCode;
 
         private PrnParseConstants.eOptOffsetFormats _indxGenOffsetFormat;
-        
+
         private PrnParseConstants.eOptOffsetFormats _indxCurFOffsetFormat;
 
         private PrnParseConstants.eOptStatsLevel _indxStatsLevel;
-        
+
         private ToolCommonData.ePrintLang _indxCurFInitLang;
 
         private PrnParseConstants.ePCLXLBinding _indxCurFXLBinding;
@@ -112,12 +112,12 @@ namespace PCLParaphernalia
 
         public PrnParseOptions()
         {
-            Int32 ctRowTypes = PrnParseRowTypes.getCount ();
+            Int32 ctRowTypes = PrnParseRowTypes.getCount();
 
             _indxClrMapBack = new Int32[ctRowTypes];
             _indxClrMapFore = new Int32[ctRowTypes];
 
-            metricsLoad ();
+            metricsLoad();
         }
 
         //--------------------------------------------------------------------//
@@ -128,36 +128,36 @@ namespace PCLParaphernalia
 
         public PrnParseOptions(PrnParseOptions parent)
         {
-            Int32 ctRowTypes = PrnParseRowTypes.getCount ();
+            Int32 ctRowTypes = PrnParseRowTypes.getCount();
 
             _indxClrMapBack = new Int32[ctRowTypes];
             _indxClrMapFore = new Int32[ctRowTypes];
 
-            parent.getOptCharSet (ref _indxCharSetName,
+            parent.getOptCharSet(ref _indxCharSetName,
                                   ref _indxCharSetSubAct,
                                   ref _valCharSetSubCode);
 
-            parent.getOptClrMap (ref _flagClrMapUseClr,
+            parent.getOptClrMap(ref _flagClrMapUseClr,
                                  ref _indxClrMapBack,
                                  ref _indxClrMapFore);
 
-            parent.getOptClrMapStdClrs (ref _ctClrMapStdClrs,
+            parent.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                         ref _stdClrsPropertyInfo);
-            
-            parent.getOptCurF (ref _indxCurFInitLang,
+
+            parent.getOptCurF(ref _indxCurFInitLang,
                                ref _indxCurFXLBinding,
                                ref _indxCurFOffsetFormat,
                                ref _valCurFOffsetStart,
                                ref _valCurFOffsetEnd,
                                ref _valCurFOffsetMax);
-            
-            parent.getOptGeneral (ref _indxGenOffsetFormat,
+
+            parent.getOptGeneral(ref _indxGenOffsetFormat,
                                   ref _flagGenMiscAutoAnalyse,
                                   ref _flagGenDiagFileAccess);
 
-            parent.getOptHPGL2 (ref _flagHPGL2MiscBinData);
+            parent.getOptHPGL2(ref _flagHPGL2MiscBinData);
 
-            parent.getOptPCL (ref _flagPCLFontHddr,
+            parent.getOptPCL(ref _flagPCLFontHddr,
                               ref _flagPCLFontChar,
                               ref _flagPCLFontDraw,
                               ref _valPCLFontDrawHeight,
@@ -179,7 +179,7 @@ namespace PCLParaphernalia
                               ref _flagPCLTransUserPattern,
                               ref _flagPCLTransViewIlluminant);
 
-            parent.getOptPCLXL (ref _flagPCLXLFontHddr,
+            parent.getOptPCLXL(ref _flagPCLXLFontHddr,
                                 ref _flagPCLXLFontChar,
                                 ref _flagPCLXLFontDraw,
                                 ref _valPCLXLFontDrawHeight,
@@ -191,11 +191,11 @@ namespace PCLParaphernalia
                                 ref _flagPCLXLMiscBinData,
                                 ref _flagPCLXLMiscVerbose);
 
-            parent.getOptPML (ref _flagPMLWithinPCL,
+            parent.getOptPML(ref _flagPMLWithinPCL,
                               ref _flagPMLWithinPJL,
                               ref _flagPMLMiscVerbose);
-            
-            parent.getOptStats (ref _indxStatsLevel,
+
+            parent.getOptStats(ref _indxStatsLevel,
                                 ref _flagStatsExcUnusedPCLObs,
                                 ref _flagStatsExcUnusedPCLXLRes);
         }
@@ -302,9 +302,9 @@ namespace PCLParaphernalia
             ref PrnParseConstants.eOptCharSetSubActs indxSubAct,
             ref Int32 valSubCode)
         {
-            indxName       = _indxCharSetName;
-            indxSubAct     = _indxCharSetSubAct;
-            valSubCode     = _valCharSetSubCode;
+            indxName = _indxCharSetName;
+            indxSubAct = _indxCharSetSubAct;
+            valSubCode = _valCharSetSubCode;
         }
 
         //--------------------------------------------------------------------//
@@ -316,11 +316,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptClrMap (ref Boolean flagClrMapUseClr,
+        public void getOptClrMap(ref Boolean flagClrMapUseClr,
                                   ref Int32[] indxClrMapBack,
                                   ref Int32[] indxClrMapFore)
         {
-            Int32 ctRowTypes = PrnParseRowTypes.getCount ();
+            Int32 ctRowTypes = PrnParseRowTypes.getCount();
 
             flagClrMapUseClr = _flagClrMapUseClr;
 
@@ -340,11 +340,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptClrMapStdClrs (
-            ref Int32           ctClrMapStdClrs,
-            ref PropertyInfo [] stdClrsPropertyInfo)
+        public void getOptClrMapStdClrs(
+            ref Int32 ctClrMapStdClrs,
+            ref PropertyInfo[] stdClrsPropertyInfo)
         {
-            ctClrMapStdClrs     = _ctClrMapStdClrs;
+            ctClrMapStdClrs = _ctClrMapStdClrs;
             stdClrsPropertyInfo = _stdClrsPropertyInfo;
         }
 
@@ -365,12 +365,12 @@ namespace PCLParaphernalia
             ref Int32 valOffsetEnd,
             ref Int32 valOffsetMax)
         {
-            indxInitLang     = _indxCurFInitLang;
-            indxXLBinding    = _indxCurFXLBinding;
+            indxInitLang = _indxCurFInitLang;
+            indxXLBinding = _indxCurFXLBinding;
             indxOffsetFormat = _indxCurFOffsetFormat;
-            valOffsetStart   = _valCurFOffsetStart;
-            valOffsetEnd     = _valCurFOffsetEnd;
-            valOffsetMax     = _valCurFOffsetMax;
+            valOffsetStart = _valCurFOffsetStart;
+            valOffsetEnd = _valCurFOffsetEnd;
+            valOffsetMax = _valCurFOffsetMax;
         }
 
         //--------------------------------------------------------------------//
@@ -388,10 +388,10 @@ namespace PCLParaphernalia
             ref Int32 valOffsetStart,
             ref Int32 valOffsetEnd)
         {
-            indxInitLang   = _indxCurFInitLang;
-            indxXLBinding  = _indxCurFXLBinding;
+            indxInitLang = _indxCurFInitLang;
+            indxXLBinding = _indxCurFXLBinding;
             valOffsetStart = _valCurFOffsetStart;
-            valOffsetEnd   = _valCurFOffsetEnd;
+            valOffsetEnd = _valCurFOffsetEnd;
         }
 
         //--------------------------------------------------------------------//
@@ -425,8 +425,8 @@ namespace PCLParaphernalia
             ref Boolean flagAutoAnalyse,
             ref Boolean flagDiagFileAccess)
         {
-            indxOffsetFormat  = _indxGenOffsetFormat;
-            flagAutoAnalyse   = _flagGenMiscAutoAnalyse;
+            indxOffsetFormat = _indxGenOffsetFormat;
+            flagAutoAnalyse = _flagGenMiscAutoAnalyse;
             flagDiagFileAccess = _flagGenDiagFileAccess;
         }
 
@@ -456,8 +456,8 @@ namespace PCLParaphernalia
         public void getOptPCL(ref Boolean flagFontHddr,
                               ref Boolean flagFontChar,
                               ref Boolean flagFontDraw,
-                              ref Int32   valFontDrawHeight,
-                              ref Int32   valFontDrawWidth,
+                              ref Int32 valFontDrawHeight,
+                              ref Int32 valFontDrawWidth,
                               ref Boolean flagMacroDisplay,
                               ref Boolean flagMiscStyleData,
                               ref Boolean flagMiscBinData,
@@ -475,30 +475,30 @@ namespace PCLParaphernalia
                               ref Boolean flagTransUserPattern,
                               ref Boolean flagTransViewIlluminant)
         {
-            flagFontHddr        = _flagPCLFontHddr;
-            flagFontChar        = _flagPCLFontChar;
-            flagFontDraw        = _flagPCLFontDraw;
+            flagFontHddr = _flagPCLFontHddr;
+            flagFontChar = _flagPCLFontChar;
+            flagFontDraw = _flagPCLFontDraw;
 
-            valFontDrawHeight   = _valPCLFontDrawHeight;
-            valFontDrawWidth    = _valPCLFontDrawWidth;
+            valFontDrawHeight = _valPCLFontDrawHeight;
+            valFontDrawWidth = _valPCLFontDrawWidth;
 
-            flagMacroDisplay    = _flagPCLMacroDisplay;
-            
-            flagMiscStyleData   = _flagPCLMiscStyleData;
-            flagMiscBinData     = _flagPCLMiscBinData;
+            flagMacroDisplay = _flagPCLMacroDisplay;
 
-            flagTransAlphaNumId     = _flagPCLTransAlphaNumId;
-            flagTransColourLookup   = _flagPCLTransColourLookup;
-            flagTransConfIO         = _flagPCLTransConfIO;
-            flagTransConfImageData  = _flagPCLTransConfImageData;
+            flagMiscStyleData = _flagPCLMiscStyleData;
+            flagMiscBinData = _flagPCLMiscBinData;
+
+            flagTransAlphaNumId = _flagPCLTransAlphaNumId;
+            flagTransColourLookup = _flagPCLTransColourLookup;
+            flagTransConfIO = _flagPCLTransConfIO;
+            flagTransConfImageData = _flagPCLTransConfImageData;
             flagTransConfRasterData = _flagPCLTransConfRasterData;
-            flagTransDefLogPage     = _flagPCLTransDefLogPage;
-            flagTransDefSymSet      = _flagPCLTransDefSymSet;
-            flagTransDitherMatrix   = _flagPCLTransDitherMatrix;
-            flagTransDriverConf     = _flagPCLTransDriverConf;
-            flagTransEscEncText     = _flagPCLTransEscEncText;
-            flagTransPaletteConf    = _flagPCLTransPaletteConf;
-            flagTransUserPattern    = _flagPCLTransUserPattern;
+            flagTransDefLogPage = _flagPCLTransDefLogPage;
+            flagTransDefSymSet = _flagPCLTransDefSymSet;
+            flagTransDitherMatrix = _flagPCLTransDitherMatrix;
+            flagTransDriverConf = _flagPCLTransDriverConf;
+            flagTransEscEncText = _flagPCLTransEscEncText;
+            flagTransPaletteConf = _flagPCLTransPaletteConf;
+            flagTransUserPattern = _flagPCLTransUserPattern;
             flagTransViewIlluminant = _flagPCLTransViewIlluminant;
         }
 
@@ -533,23 +533,23 @@ namespace PCLParaphernalia
             flagFontHddr = _flagPCLFontHddr;
             flagFontChar = _flagPCLFontChar;
 
-            flagMacroDisplay    = _flagPCLMacroDisplay;
+            flagMacroDisplay = _flagPCLMacroDisplay;
 
-            flagMiscStyleData   = _flagPCLMiscStyleData;
-            flagMiscBinData     = _flagPCLMiscBinData;
+            flagMiscStyleData = _flagPCLMiscStyleData;
+            flagMiscBinData = _flagPCLMiscBinData;
 
-            flagTransAlphaNumId     = _flagPCLTransAlphaNumId;
-            flagTransColourLookup   = _flagPCLTransColourLookup;
-            flagTransConfIO         = _flagPCLTransConfIO;
-            flagTransConfImageData  = _flagPCLTransConfImageData;
+            flagTransAlphaNumId = _flagPCLTransAlphaNumId;
+            flagTransColourLookup = _flagPCLTransColourLookup;
+            flagTransConfIO = _flagPCLTransConfIO;
+            flagTransConfImageData = _flagPCLTransConfImageData;
             flagTransConfRasterData = _flagPCLTransConfRasterData;
-            flagTransDefLogPage     = _flagPCLTransDefLogPage;
-            flagTransDefSymSet      = _flagPCLTransDefSymSet;
-            flagTransDitherMatrix   = _flagPCLTransDitherMatrix;
-            flagTransDriverConf     = _flagPCLTransDriverConf;
-            flagTransEscEncText     = _flagPCLTransEscEncText;
-            flagTransPaletteConf    = _flagPCLTransPaletteConf;
-            flagTransUserPattern    = _flagPCLTransUserPattern;
+            flagTransDefLogPage = _flagPCLTransDefLogPage;
+            flagTransDefSymSet = _flagPCLTransDefSymSet;
+            flagTransDitherMatrix = _flagPCLTransDitherMatrix;
+            flagTransDriverConf = _flagPCLTransDriverConf;
+            flagTransEscEncText = _flagPCLTransEscEncText;
+            flagTransPaletteConf = _flagPCLTransPaletteConf;
+            flagTransUserPattern = _flagPCLTransUserPattern;
             flagTransViewIlluminant = _flagPCLTransViewIlluminant;
         }
 
@@ -584,8 +584,8 @@ namespace PCLParaphernalia
         public void getOptPCLXL(ref Boolean flagFontHddr,
                                 ref Boolean flagFontChar,
                                 ref Boolean flagFontDraw,
-                                ref Int32   valFontDrawHeight,
-                                ref Int32   valFontDrawWidth,
+                                ref Int32 valFontDrawHeight,
+                                ref Int32 valFontDrawWidth,
                                 ref Boolean flagEncUserStream,
                                 ref Boolean flagEncPCLPassThrough,
                                 ref Boolean flagEncPCLFontSelect,
@@ -593,20 +593,20 @@ namespace PCLParaphernalia
                                 ref Boolean flagMiscBinData,
                                 ref Boolean flagMiscVerbose)
         {
-            flagFontHddr      = _flagPCLXLFontHddr;
-            flagFontChar      = _flagPCLXLFontChar;
-            flagFontDraw  = _flagPCLXLFontDraw;
+            flagFontHddr = _flagPCLXLFontHddr;
+            flagFontChar = _flagPCLXLFontChar;
+            flagFontDraw = _flagPCLXLFontDraw;
 
             valFontDrawHeight = _valPCLXLFontDrawHeight;
-            valFontDrawWidth  = _valPCLXLFontDrawWidth;
+            valFontDrawWidth = _valPCLXLFontDrawWidth;
 
             flagEncUserStream = _flagPCLXLEncUserStream;
             flagEncPCLPassThrough = _flagPCLXLEncPCLPassThrough;
-            flagEncPCLFontSelect  = _flagPCLXLEncPCLFontSelect;
+            flagEncPCLFontSelect = _flagPCLXLEncPCLFontSelect;
 
-            flagMiscOperPos       = _flagPCLXLMiscOperPos;
-            flagMiscBinData       = _flagPCLXLMiscBinData;
-            flagMiscVerbose       = _flagPCLXLMiscVerbose;
+            flagMiscOperPos = _flagPCLXLMiscOperPos;
+            flagMiscBinData = _flagPCLXLMiscBinData;
+            flagMiscVerbose = _flagPCLXLMiscVerbose;
         }
 
         //--------------------------------------------------------------------//
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getOptPCLXLDraw (ref Boolean flagFontDraw,
+        public void getOptPCLXLDraw(ref Boolean flagFontDraw,
                                      ref Int32 valFontDrawHeight,
                                      ref Int32 valFontDrawWidth)
         {
@@ -671,8 +671,8 @@ namespace PCLParaphernalia
                               ref Boolean flagWithinPJL,
                               ref Boolean flagMiscVerbose)
         {
-            flagWithinPCL   = _flagPMLWithinPCL;
-            flagWithinPJL   = _flagPMLWithinPJL;
+            flagWithinPCL = _flagPMLWithinPCL;
+            flagWithinPJL = _flagPMLWithinPJL;
             flagMiscVerbose = _flagPMLMiscVerbose;
         }
 
@@ -687,14 +687,13 @@ namespace PCLParaphernalia
 
         public void getOptStats(
             ref PrnParseConstants.eOptStatsLevel indxLevel,
-            ref Boolean                          flagExcUnusedPCLObs,
-            ref Boolean                          flagExcUnusedPCLXLRes)
+            ref Boolean flagExcUnusedPCLObs,
+            ref Boolean flagExcUnusedPCLXLRes)
         {
             indxLevel = _indxStatsLevel;
-            flagExcUnusedPCLObs   = _flagStatsExcUnusedPCLObs;
+            flagExcUnusedPCLObs = _flagStatsExcUnusedPCLObs;
             flagExcUnusedPCLXLRes = _flagStatsExcUnusedPCLXLRes;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -740,18 +739,18 @@ namespace PCLParaphernalia
 
         public void metricsLoad()
         {
-            ToolPrnAnalysePersist.loadData (ref _prnFilename);
+            ToolPrnAnalysePersist.loadData(ref _prnFilename);
 
-            metricsLoadCharSet ();
-            metricsLoadClrMap ();
-            metricsLoadGen ();
-            metricsLoadHPGL2 ();
-            metricsLoadPCL ();
-            metricsLoadPCLXL ();
-            metricsLoadPML ();
-            metricsLoadStats ();
+            metricsLoadCharSet();
+            metricsLoadClrMap();
+            metricsLoadGen();
+            metricsLoadHPGL2();
+            metricsLoadPCL();
+            metricsLoadPCLXL();
+            metricsLoadPML();
+            metricsLoadStats();
 
-            metricsLoadCurF ();
+            metricsLoadCurF();
         }
 
         //--------------------------------------------------------------------//
@@ -776,23 +775,23 @@ namespace PCLParaphernalia
                                                  ref i2,
                                                  ref i3);
 
-            max = (Int32) PrnParseConstants.eOptCharSets.Max;
+            max = (Int32)PrnParseConstants.eOptCharSets.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (Int32) PrnParseConstants.eOptCharSets.ISO_8859_1;
+                i1 = (Int32)PrnParseConstants.eOptCharSets.ISO_8859_1;
 
-            _indxCharSetName = (PrnParseConstants.eOptCharSets) i1;
+            _indxCharSetName = (PrnParseConstants.eOptCharSets)i1;
 
-            max = (Int32) PrnParseConstants.eOptCharSetSubActs.Max;
+            max = (Int32)PrnParseConstants.eOptCharSetSubActs.Max;
 
             if ((i2 < 0) || (i2 >= max))
-                i2 = (Int32) PrnParseConstants.eOptCharSetSubActs.Hex;
+                i2 = (Int32)PrnParseConstants.eOptCharSetSubActs.Hex;
 
-            _indxCharSetSubAct = (PrnParseConstants.eOptCharSetSubActs) i2;
+            _indxCharSetSubAct = (PrnParseConstants.eOptCharSetSubActs)i2;
 
-            if ((i3  < PrnParseConstants.asciiSpace)    ||
-                (i3 == PrnParseConstants.asciiDEL)      ||
-                (i3  > PrnParseConstants.asciiMax8bit))
+            if ((i3 < PrnParseConstants.asciiSpace) ||
+                (i3 == PrnParseConstants.asciiDEL) ||
+                (i3 > PrnParseConstants.asciiMax8bit))
                 i3 = PrnParseConstants.asciiSubDefault;
 
             _valCharSetSubCode = i3;
@@ -815,12 +814,12 @@ namespace PCLParaphernalia
 
         private void metricsLoadClrMap()
         {
-            PrnParseRowTypes.setDefaultClrs (ref _indxClrMapBack,
+            PrnParseRowTypes.setDefaultClrs(ref _indxClrMapBack,
                                              ref _indxClrMapFore);
 
-            ToolPrnAnalysePersist.loadOptClrMap (ref _flagClrMapUseClr);
+            ToolPrnAnalysePersist.loadOptClrMap(ref _flagClrMapUseClr);
 
-            ToolPrnAnalysePersist.loadOptClrMapCrnt (ref _indxClrMapBack,
+            ToolPrnAnalysePersist.loadOptClrMapCrnt(ref _indxClrMapBack,
                                                      ref _indxClrMapFore);
 
             //----------------------------------------------------------------//
@@ -836,7 +835,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _stdClrsPropertyInfo = typeof (Colors).GetProperties ();
+            _stdClrsPropertyInfo = typeof(Colors).GetProperties();
 
             _ctClrMapStdClrs = _stdClrsPropertyInfo.Length;   // length = 141 //
         }
@@ -852,7 +851,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadCurF()
         {
-            resetOptCurF (-1);
+            resetOptCurF(-1);
         }
 
         //--------------------------------------------------------------------//
@@ -871,16 +870,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptGeneral (ref i1,
+            ToolPrnAnalysePersist.loadOptGeneral(ref i1,
                                                   ref _flagGenMiscAutoAnalyse,
                                                   ref _flagGenDiagFileAccess);
 
-            max = (Int32) PrnParseConstants.eOptOffsetFormats.Max;
+            max = (Int32)PrnParseConstants.eOptOffsetFormats.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (Int32) PrnParseConstants.eOptOffsetFormats.Decimal;
+                i1 = (Int32)PrnParseConstants.eOptOffsetFormats.Decimal;
 
-            _indxGenOffsetFormat = (PrnParseConstants.eOptOffsetFormats) i1;
+            _indxGenOffsetFormat = (PrnParseConstants.eOptOffsetFormats)i1;
 
         }
 
@@ -895,7 +894,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadHPGL2()
         {
-            ToolPrnAnalysePersist.loadOptHPGL2 (ref _flagHPGL2MiscBinData);
+            ToolPrnAnalysePersist.loadOptHPGL2(ref _flagHPGL2MiscBinData);
         }
 
         //--------------------------------------------------------------------//
@@ -909,7 +908,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadPCL()
         {
-            ToolPrnAnalysePersist.loadOptPCL (ref _flagPCLFontHddr,
+            ToolPrnAnalysePersist.loadOptPCL(ref _flagPCLFontHddr,
                                               ref _flagPCLFontChar,
                                               ref _flagPCLFontDraw,
                                               ref _valPCLFontDrawHeight,
@@ -943,7 +942,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadPCLXL()
         {
-            ToolPrnAnalysePersist.loadOptPCLXL (ref _flagPCLXLFontHddr,
+            ToolPrnAnalysePersist.loadOptPCLXL(ref _flagPCLXLFontHddr,
                                                 ref _flagPCLXLFontChar,
                                                 ref _flagPCLXLFontDraw,
                                                 ref _valPCLXLFontDrawHeight,
@@ -967,7 +966,7 @@ namespace PCLParaphernalia
 
         private void metricsLoadPML()
         {
-            ToolPrnAnalysePersist.loadOptPML (ref _flagPMLWithinPCL,
+            ToolPrnAnalysePersist.loadOptPML(ref _flagPMLWithinPCL,
                                               ref _flagPMLWithinPJL,
                                               ref _flagPMLMiscVerbose);
         }
@@ -981,24 +980,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoadStats ()
+        private void metricsLoadStats()
         {
             Int32 i1 = 0,
                   max;
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptStats (
+            ToolPrnAnalysePersist.loadOptStats(
                 ref i1,
                 ref _flagStatsExcUnusedPCLObs,
                 ref _flagStatsExcUnusedPCLXLRes);
 
-            max = (Int32) PrnParseConstants.eOptStatsLevel.Max;
+            max = (Int32)PrnParseConstants.eOptStatsLevel.Max;
 
             if ((i1 < 0) || (i1 >= max))
-                i1 = (Int32) PrnParseConstants.eOptStatsLevel.ReferencedOnly;
+                i1 = (Int32)PrnParseConstants.eOptStatsLevel.ReferencedOnly;
 
-            _indxStatsLevel = (PrnParseConstants.eOptStatsLevel) i1;
+            _indxStatsLevel = (PrnParseConstants.eOptStatsLevel)i1;
         }
 
         //--------------------------------------------------------------------//
@@ -1012,32 +1011,32 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrnAnalysePersist.saveOptCharSet (
-                (Int32) _indxCharSetName,
-                (Int32) _indxCharSetSubAct,
+            ToolPrnAnalysePersist.saveOptCharSet(
+                (Int32)_indxCharSetName,
+                (Int32)_indxCharSetSubAct,
                         _valCharSetSubCode);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptClrMap (_flagClrMapUseClr);
+            ToolPrnAnalysePersist.saveOptClrMap(_flagClrMapUseClr);
 
-            ToolPrnAnalysePersist.saveOptClrMapCrnt (_indxClrMapBack,
+            ToolPrnAnalysePersist.saveOptClrMapCrnt(_indxClrMapBack,
                                                      _indxClrMapFore);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptGeneral (
-                (Int32) _indxGenOffsetFormat,
+            ToolPrnAnalysePersist.saveOptGeneral(
+                (Int32)_indxGenOffsetFormat,
                         _flagGenMiscAutoAnalyse,
                         _flagGenDiagFileAccess);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptHPGL2 (_flagHPGL2MiscBinData);
+            ToolPrnAnalysePersist.saveOptHPGL2(_flagHPGL2MiscBinData);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPCL (_flagPCLFontHddr,
+            ToolPrnAnalysePersist.saveOptPCL(_flagPCLFontHddr,
                                               _flagPCLFontChar,
                                               _flagPCLFontDraw,
                                               _valPCLFontDrawHeight,
@@ -1061,7 +1060,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPCLXL (_flagPCLXLFontHddr,
+            ToolPrnAnalysePersist.saveOptPCLXL(_flagPCLXLFontHddr,
                                                 _flagPCLXLFontChar,
                                                 _flagPCLXLFontDraw,
                                                 _valPCLXLFontDrawHeight,
@@ -1075,13 +1074,13 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptPML (_flagPMLWithinPCL,
+            ToolPrnAnalysePersist.saveOptPML(_flagPMLWithinPCL,
                                               _flagPMLWithinPJL,
                                               _flagPMLMiscVerbose);
 
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.saveOptStats ((Int32) _indxStatsLevel,
+            ToolPrnAnalysePersist.saveOptStats((Int32)_indxStatsLevel,
                                                 _flagStatsExcUnusedPCLObs,
                                                 _flagStatsExcUnusedPCLXLRes);
         }
@@ -1101,10 +1100,10 @@ namespace PCLParaphernalia
             _indxCurFXLBinding = PrnParseConstants.ePCLXLBinding.Unknown;
             _indxCurFOffsetFormat = _indxGenOffsetFormat;
 
-            _valCurFOffsetMax = (Int32) fileSize;
+            _valCurFOffsetMax = (Int32)fileSize;
 
             _valCurFOffsetStart = 0;
-            _valCurFOffsetEnd   = -1;
+            _valCurFOffsetEnd = -1;
         }
 
         //--------------------------------------------------------------------//
@@ -1121,8 +1120,8 @@ namespace PCLParaphernalia
             PrnParseConstants.eOptCharSetSubActs indxSubAct,
             Int32 valSubCode)
         {
-            _indxCharSetName       = indxName;
-            _indxCharSetSubAct     = indxSubAct;
+            _indxCharSetName = indxName;
+            _indxCharSetSubAct = indxSubAct;
             _valCharSetSubCode = valSubCode;
         }
 
@@ -1135,13 +1134,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptClrMap (Boolean flagClrMapUseClr,
+        public void setOptClrMap(Boolean flagClrMapUseClr,
                                   Int32[] indxClrMapBack,
                                   Int32[] indxClrMapFore)
         {
             _flagClrMapUseClr = flagClrMapUseClr;
-            _indxClrMapBack   = indxClrMapBack;
-            _indxClrMapFore   = indxClrMapFore;
+            _indxClrMapBack = indxClrMapBack;
+            _indxClrMapFore = indxClrMapFore;
         }
 
         //--------------------------------------------------------------------//
@@ -1160,11 +1159,11 @@ namespace PCLParaphernalia
             Int32 valOffsetStart,
             Int32 valOffsetEnd)
         {
-            _indxCurFInitLang     = indxInitLang;
-            _indxCurFXLBinding    = indxXLBinding;
+            _indxCurFInitLang = indxInitLang;
+            _indxCurFXLBinding = indxXLBinding;
             _indxCurFOffsetFormat = indxOffsetFormat;
-            _valCurFOffsetStart   = valOffsetStart;
-            _valCurFOffsetEnd     = valOffsetEnd;
+            _valCurFOffsetStart = valOffsetStart;
+            _valCurFOffsetEnd = valOffsetEnd;
         }
 
         //--------------------------------------------------------------------//
@@ -1182,8 +1181,8 @@ namespace PCLParaphernalia
             Boolean flagDiagFileAccess)
         {
             _indxGenOffsetFormat = indxOffsetFormat;
-            _flagGenMiscAutoAnalyse  = flagMiscAutoAnalyse;
-            _flagGenDiagFileAccess  = flagDiagFileAccess;
+            _flagGenMiscAutoAnalyse = flagMiscAutoAnalyse;
+            _flagGenDiagFileAccess = flagDiagFileAccess;
         }
 
         //--------------------------------------------------------------------//
@@ -1212,8 +1211,8 @@ namespace PCLParaphernalia
         public void setOptPCL(Boolean flagFontHddr,
                               Boolean flagFontChar,
                               Boolean flagFontDraw,
-                              Int32   valFontDrawHeight,
-                              Int32   valFontDrawWidth,
+                              Int32 valFontDrawHeight,
+                              Int32 valFontDrawWidth,
                               Boolean flagMacroDisplay,
                               Boolean flagMiscStyleData,
                               Boolean flagMiscBinData,
@@ -1231,30 +1230,30 @@ namespace PCLParaphernalia
                               Boolean flagTransUserPattern,
                               Boolean flagTransViewIlluminant)
         {
-            _flagPCLFontHddr        = flagFontHddr;
-            _flagPCLFontChar        = flagFontChar;
-            _flagPCLFontDraw        = flagFontDraw;
+            _flagPCLFontHddr = flagFontHddr;
+            _flagPCLFontChar = flagFontChar;
+            _flagPCLFontDraw = flagFontDraw;
 
-            _valPCLFontDrawHeight   = valFontDrawHeight;
-            _valPCLFontDrawWidth    = valFontDrawWidth;
+            _valPCLFontDrawHeight = valFontDrawHeight;
+            _valPCLFontDrawWidth = valFontDrawWidth;
 
-            _flagPCLMacroDisplay    = flagMacroDisplay;
+            _flagPCLMacroDisplay = flagMacroDisplay;
 
-            _flagPCLMiscStyleData   = flagMiscStyleData;
-            _flagPCLMiscBinData     = flagMiscBinData;
+            _flagPCLMiscStyleData = flagMiscStyleData;
+            _flagPCLMiscBinData = flagMiscBinData;
 
-            _flagPCLTransAlphaNumId     = flagTransAlphaNumId;
-            _flagPCLTransColourLookup   = flagTransColourLookup;
-            _flagPCLTransConfIO         = flagTransConfIO;
-            _flagPCLTransConfImageData  = flagTransConfImageData;
+            _flagPCLTransAlphaNumId = flagTransAlphaNumId;
+            _flagPCLTransColourLookup = flagTransColourLookup;
+            _flagPCLTransConfIO = flagTransConfIO;
+            _flagPCLTransConfImageData = flagTransConfImageData;
             _flagPCLTransConfRasterData = flagTransConfRasterData;
-            _flagPCLTransDefLogPage     = flagTransDefLogPage;
-            _flagPCLTransDefSymSet      = flagTransDefSymSet;
-            _flagPCLTransDitherMatrix   = flagTransDitherMatrix;
-            _flagPCLTransDriverConf     = flagTransDriverConf;
-            _flagPCLTransEscEncText     = flagTransEscEncText;
-            _flagPCLTransPaletteConf    = flagTransPaletteConf;
-            _flagPCLTransUserPattern    = flagTransUserPattern;
+            _flagPCLTransDefLogPage = flagTransDefLogPage;
+            _flagPCLTransDefSymSet = flagTransDefSymSet;
+            _flagPCLTransDitherMatrix = flagTransDitherMatrix;
+            _flagPCLTransDriverConf = flagTransDriverConf;
+            _flagPCLTransEscEncText = flagTransEscEncText;
+            _flagPCLTransPaletteConf = flagTransPaletteConf;
+            _flagPCLTransUserPattern = flagTransUserPattern;
             _flagPCLTransViewIlluminant = flagTransViewIlluminant;
         }
 
@@ -1270,8 +1269,8 @@ namespace PCLParaphernalia
         public void setOptPCLXL(Boolean flagFontHddr,
                                 Boolean flagFontChar,
                                 Boolean flagFontDraw,
-                                Int32   valFontDrawHeight,
-                                Int32   valFontDrawWidth,
+                                Int32 valFontDrawHeight,
+                                Int32 valFontDrawWidth,
                                 Boolean flagEncUserStream,
                                 Boolean flagEncPCLPassThrough,
                                 Boolean flagEncPCLFontSelect,
@@ -1279,20 +1278,20 @@ namespace PCLParaphernalia
                                 Boolean flagMiscBinData,
                                 Boolean flagMiscVerbose)
         {
-            _flagPCLXLFontHddr      = flagFontHddr;
-            _flagPCLXLFontChar      = flagFontChar;
-            _flagPCLXLFontDraw  = flagFontDraw;
+            _flagPCLXLFontHddr = flagFontHddr;
+            _flagPCLXLFontChar = flagFontChar;
+            _flagPCLXLFontDraw = flagFontDraw;
 
             _valPCLXLFontDrawHeight = valFontDrawHeight;
-            _valPCLXLFontDrawWidth  = valFontDrawWidth;
+            _valPCLXLFontDrawWidth = valFontDrawWidth;
 
-            _flagPCLXLEncUserStream     = flagEncUserStream;
+            _flagPCLXLEncUserStream = flagEncUserStream;
             _flagPCLXLEncPCLPassThrough = flagEncPCLPassThrough;
-            _flagPCLXLEncPCLFontSelect  = flagEncPCLFontSelect;
+            _flagPCLXLEncPCLFontSelect = flagEncPCLFontSelect;
 
-            _flagPCLXLMiscOperPos       = flagMiscOperPos;
-            _flagPCLXLMiscBinData       = flagMiscBinData;
-            _flagPCLXLMiscVerbose       = flagMiscVerbose;
+            _flagPCLXLMiscOperPos = flagMiscOperPos;
+            _flagPCLXLMiscBinData = flagMiscBinData;
+            _flagPCLXLMiscVerbose = flagMiscVerbose;
         }
 
         //--------------------------------------------------------------------//
@@ -1308,8 +1307,8 @@ namespace PCLParaphernalia
                               Boolean flagWithinPJL,
                               Boolean flagMiscVerbose)
         {
-            _flagPMLWithinPCL   = flagWithinPCL;
-            _flagPMLWithinPJL   = flagWithinPJL;
+            _flagPMLWithinPCL = flagWithinPCL;
+            _flagPMLWithinPJL = flagWithinPJL;
             _flagPMLMiscVerbose = flagMiscVerbose;
         }
 
@@ -1322,13 +1321,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setOptStats (
+        public void setOptStats(
             PrnParseConstants.eOptStatsLevel indxLevel,
             Boolean flagExcUnusedPCLObs,
             Boolean flagExcUnusedPCLXLRes)
         {
             _indxStatsLevel = indxLevel;
-            _flagStatsExcUnusedPCLObs   = flagExcUnusedPCLObs;
+            _flagStatsExcUnusedPCLObs = flagExcUnusedPCLObs;
             _flagStatsExcUnusedPCLXLRes = flagExcUnusedPCLXLRes;
         }
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace PCLParaphernalia
 {
@@ -12,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -31,7 +30,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLSymbolSets.eSymSetGroup _group;
-        private PCLSymSetTypes.eIndex   _indxType;
+        private PCLSymSetTypes.eIndex _indxType;
         private PCLSymSetMaps.eSymSetMapId _mapId;
 
         private PCLTextParsingMethods.eIndex _parsingMethod;
@@ -43,7 +42,7 @@ namespace PCLParaphernalia
 
         private String _id;
         private UInt16 _idNum;
-        private Byte   _idAlpha;
+        private Byte _idAlpha;
 
         private Boolean _mapped = false;
 
@@ -53,39 +52,39 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLSymbolSet (PCLSymbolSets.eSymSetGroup group,
-                             PCLSymSetTypes.eIndex   indxType,
+        public PCLSymbolSet(PCLSymbolSets.eSymSetGroup group,
+                             PCLSymSetTypes.eIndex indxType,
                              PCLTextParsingMethods.eIndex parsingMethod,
-                             UInt16                     kind1,
-                             String                     alias,
-                             String                     name,
-                             Boolean                    mapped,
+                             UInt16 kind1,
+                             String alias,
+                             String name,
+                             Boolean mapped,
                              PCLSymSetMaps.eSymSetMapId mapId)
         {
-            _group         = group;
-            _indxType      = indxType;
+            _group = group;
+            _indxType = indxType;
             _parsingMethod = parsingMethod;
-            _kind1         = kind1;
-            _alias         = alias;
-            _name          = name;
+            _kind1 = kind1;
+            _alias = alias;
+            _name = name;
 
             if ((kind1 < 1)         // 1        = 0A    //
                     ||
                 (kind1 > 65530))    // 65530    = 2047Z //
             {
-                _idNum   = 0;
+                _idNum = 0;
                 _idAlpha = 0x3f;    // ? //
             }
             else
             {
-                _idNum   = (UInt16)(kind1 / 32);
+                _idNum = (UInt16)(kind1 / 32);
                 _idAlpha = (Byte)((kind1 - (_idNum * 32)) + 64);
             }
 
             _id = _idNum.ToString() + Convert.ToChar(_idAlpha);
 
-            _mapped  = mapped;
-            _mapId   = mapId;
+            _mapped = mapped;
+            _mapId = mapId;
         }
 
         //--------------------------------------------------------------------//
@@ -116,7 +115,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (! _mapped)
+                if (!_mapped)
                 {
                     return false;
                 }
@@ -156,7 +155,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (! _mapped)
+                if (!_mapped)
                 {
                     return false;
                 }
@@ -226,10 +225,10 @@ namespace PCLParaphernalia
             }
             else if (idAlpha == _idAlpha)
             {
-                matches    = true;
-                kind1      = _kind1;
-                idNum      = _idNum;
-                name       = _name;
+                matches = true;
+                kind1 = _kind1;
+                idNum = _idNum;
+                name = _name;
             }
             else
             {
@@ -264,7 +263,7 @@ namespace PCLParaphernalia
 
         public String Groupname
         {
-            get { return _group.ToString (); }
+            get { return _group.ToString(); }
         }
 
         //--------------------------------------------------------------------//
@@ -353,7 +352,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetMaps.getCodepointMax ((Int32) _mapId);
+                return PCLSymSetMaps.getCodepointMax((Int32)_mapId);
             }
         }
 
@@ -366,11 +365,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 [] MapArrayPCL
+        public UInt16[] MapArrayPCL
         {
             get
             {
-                return PCLSymSetMaps.getMapArray ((Int32) _mapId, true);
+                return PCLSymSetMaps.getMapArray((Int32)_mapId, true);
             }
         }
 
@@ -383,14 +382,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 [] MapArrayStd
+        public UInt16[] MapArrayStd
         {
             get
             {
-                return PCLSymSetMaps.getMapArray ((Int32) _mapId, false);
+                return PCLSymSetMaps.getMapArray((Int32)_mapId, false);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p A r r a y U s e r S e t                                      //
@@ -401,16 +400,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 [] MapArrayUserSet
+        public UInt16[] MapArrayUserSet
         {
             get
             {
-                return PCLSymSetMaps.getMapArrayUserSet ();
+                return PCLSymSetMaps.getMapArrayUserSet();
             }
 
             set
             {
-                PCLSymSetMaps.setMapArrayUserSet (value);
+                PCLSymSetMaps.setMapArrayUserSet(value);
             }
         }
 
@@ -436,11 +435,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mappingDiff ((Int32) _mapId);
+                    return PCLSymSetMaps.mappingDiff((Int32)_mapId);
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p p i n g P C L                                                //
@@ -462,11 +461,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((Int32) _mapId, true, false);
+                    return PCLSymSetMaps.mapping((Int32)_mapId, true, false);
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
         // M a p p i n g P C L D i f f                                        //
@@ -490,7 +489,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((Int32) _mapId, true, true);
+                    return PCLSymSetMaps.mapping((Int32)_mapId, true, true);
                 }
             }
         }
@@ -516,7 +515,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapping ((Int32) _mapId, false, false);
+                    return PCLSymSetMaps.mapping((Int32)_mapId, false, false);
                 }
             }
         }
@@ -534,19 +533,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String [] MapRowsDiff
+        public String[] MapRowsDiff
         {
             get
             {
                 if (!_mapped)
                 {
-                    String [] noMap = new String[1] { "" };
+                    String[] noMap = new String[1] { "" };
 
                     return noMap;
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRowsDiff ((Int32)_mapId);
+                    return PCLSymSetMaps.mapRowsDiff((Int32)_mapId);
                 }
             }
         }
@@ -563,19 +562,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String [] MapRowsPCL
+        public String[] MapRowsPCL
         {
             get
             {
                 if (!_mapped)
                 {
-                    String [] noMap = new String[1] { "" };
+                    String[] noMap = new String[1] { "" };
 
                     return noMap;
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((Int32)_mapId, true, false);
+                    return PCLSymSetMaps.mapRows((Int32)_mapId, true, false);
                 }
             }
         }
@@ -594,19 +593,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String [] MapRowsPCLDiff
+        public String[] MapRowsPCLDiff
         {
             get
             {
                 if (!_mapped)
                 {
-                    String [] noMap = new String[1] { "" };
+                    String[] noMap = new String[1] { "" };
 
                     return noMap;
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((Int32)_mapId, true, true);
+                    return PCLSymSetMaps.mapRows((Int32)_mapId, true, true);
                 }
             }
         }
@@ -623,19 +622,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String [] MapRowsStd
+        public String[] MapRowsStd
         {
             get
             {
                 if (!_mapped)
                 {
-                    String [] noMap = new String[1] { "" };
+                    String[] noMap = new String[1] { "" };
 
                     return noMap;
                 }
                 else
                 {
-                    return PCLSymSetMaps.mapRows ((Int32)_mapId, false, false);
+                    return PCLSymSetMaps.mapRows((Int32)_mapId, false, false);
                 }
             }
         }
@@ -735,7 +734,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                return PCLSymSetTypes.getDescShort ((Int32) _indxType);
+                return PCLSymSetTypes.getDescShort((Int32)_indxType);
             }
         }
     }

@@ -10,7 +10,7 @@ namespace PCLParaphernalia
     /// 
     /// </summary>
 
-    [System.Reflection.ObfuscationAttribute (Feature = "properties renaming")]
+    [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
 
     class PrescribeCommand
     {
@@ -35,16 +35,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrescribeCommand (String  name,
-                                 String  desc,
+        public PrescribeCommand(String name,
+                                 String desc,
                                  Boolean flagCmdIntro,
                                  Boolean flagCmdExit,
                                  Boolean flagCmdSetCRC)
         {
-            _cmdName   = name;
-            _cmdDesc   = desc;
-            _flagCmdIntro  = flagCmdIntro;
-            _flagCmdExit   = flagCmdExit;
+            _cmdName = name;
+            _cmdDesc = desc;
+            _flagCmdIntro = flagCmdIntro;
+            _flagCmdExit = flagCmdExit;
             _flagCmdSetCRC = flagCmdSetCRC;
 
             _statsCtParent = 0;

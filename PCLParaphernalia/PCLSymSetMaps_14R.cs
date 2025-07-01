@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {
@@ -34,17 +31,17 @@ namespace PCLParaphernalia
 
             const Int32 rangeCt = 3;
 
-            UInt16 [] [] rangeData = new UInt16 [rangeCt] []
+            UInt16[][] rangeData = new UInt16[rangeCt][]
             {
                 new UInt16 [2] {0x01, 0x1f},
                 new UInt16 [2] {0x20, 0x7f},
                 new UInt16 [2] {0x80, 0xff}
             };
 
-            UInt16 [] rangeSizes = new UInt16 [rangeCt];
+            UInt16[] rangeSizes = new UInt16[rangeCt];
 
-            UInt16 [] [] mapDataStd = new UInt16 [rangeCt] [];
-            UInt16 [] [] mapDataPCL = new UInt16 [rangeCt] [];
+            UInt16[][] mapDataStd = new UInt16[rangeCt][];
+            UInt16[][] mapDataPCL = new UInt16[rangeCt][];
 
             UInt16 rangeMin,
                    rangeMax,
@@ -54,14 +51,14 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (UInt16) (rangeData [i] [1] -
-                                           rangeData [i] [0] + 1);
+                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                                           rangeData[i][0] + 1);
             }
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                mapDataStd [i] = new UInt16 [rangeSizes [i]];
-                mapDataPCL [i] = new UInt16 [rangeSizes [i]];
+                mapDataStd[i] = new UInt16[rangeSizes[i]];
+                mapDataPCL[i] = new UInt16[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -70,48 +67,48 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [0] [0];
-            rangeMax = rangeData [0] [1];
-            rangeSize = rangeSizes [0];
+            rangeMin = rangeData[0][0];
+            rangeMax = rangeData[0][1];
+            rangeSize = rangeSizes[0];
 
-            mapDataStd [0] [0x01 - rangeMin] = 0x263a;
-            mapDataStd [0] [0x02 - rangeMin] = 0x263b;
-            mapDataStd [0] [0x03 - rangeMin] = 0x2665;
-            mapDataStd [0] [0x04 - rangeMin] = 0x2666;
-            mapDataStd [0] [0x05 - rangeMin] = 0x2663;
-            mapDataStd [0] [0x06 - rangeMin] = 0x2660;
-            mapDataStd [0] [0x07 - rangeMin] = 0x2022;
-            mapDataStd [0] [0x08 - rangeMin] = 0x25d8;
-            mapDataStd [0] [0x09 - rangeMin] = 0x25cb;
-            mapDataStd [0] [0x0a - rangeMin] = 0x25d9;
-            mapDataStd [0] [0x0b - rangeMin] = 0x2642;
-            mapDataStd [0] [0x0c - rangeMin] = 0x2640;
-            mapDataStd [0] [0x0d - rangeMin] = 0x266a;
-            mapDataStd [0] [0x0e - rangeMin] = 0x266b;
-            mapDataStd [0] [0x0f - rangeMin] = 0x263c;
+            mapDataStd[0][0x01 - rangeMin] = 0x263a;
+            mapDataStd[0][0x02 - rangeMin] = 0x263b;
+            mapDataStd[0][0x03 - rangeMin] = 0x2665;
+            mapDataStd[0][0x04 - rangeMin] = 0x2666;
+            mapDataStd[0][0x05 - rangeMin] = 0x2663;
+            mapDataStd[0][0x06 - rangeMin] = 0x2660;
+            mapDataStd[0][0x07 - rangeMin] = 0x2022;
+            mapDataStd[0][0x08 - rangeMin] = 0x25d8;
+            mapDataStd[0][0x09 - rangeMin] = 0x25cb;
+            mapDataStd[0][0x0a - rangeMin] = 0x25d9;
+            mapDataStd[0][0x0b - rangeMin] = 0x2642;
+            mapDataStd[0][0x0c - rangeMin] = 0x2640;
+            mapDataStd[0][0x0d - rangeMin] = 0x266a;
+            mapDataStd[0][0x0e - rangeMin] = 0x266b;
+            mapDataStd[0][0x0f - rangeMin] = 0x263c;
 
-            mapDataStd [0] [0x10 - rangeMin] = 0x25ba;
-            mapDataStd [0] [0x11 - rangeMin] = 0x25c4;
-            mapDataStd [0] [0x12 - rangeMin] = 0x2195;
-            mapDataStd [0] [0x13 - rangeMin] = 0x203c;
-            mapDataStd [0] [0x14 - rangeMin] = 0x00b6;
-            mapDataStd [0] [0x15 - rangeMin] = 0x00a7;
-            mapDataStd [0] [0x16 - rangeMin] = 0x25ac;
-            mapDataStd [0] [0x17 - rangeMin] = 0x21a8;
-            mapDataStd [0] [0x18 - rangeMin] = 0x2191;
-            mapDataStd [0] [0x19 - rangeMin] = 0x2193;
-            mapDataStd [0] [0x1a - rangeMin] = 0x2192;
-            mapDataStd [0] [0x1b - rangeMin] = 0x2190;
-            mapDataStd [0] [0x1c - rangeMin] = 0x221f;
-            mapDataStd [0] [0x1d - rangeMin] = 0x2194;
-            mapDataStd [0] [0x1e - rangeMin] = 0x25b2;
-            mapDataStd [0] [0x1f - rangeMin] = 0x25bc;
+            mapDataStd[0][0x10 - rangeMin] = 0x25ba;
+            mapDataStd[0][0x11 - rangeMin] = 0x25c4;
+            mapDataStd[0][0x12 - rangeMin] = 0x2195;
+            mapDataStd[0][0x13 - rangeMin] = 0x203c;
+            mapDataStd[0][0x14 - rangeMin] = 0x00b6;
+            mapDataStd[0][0x15 - rangeMin] = 0x00a7;
+            mapDataStd[0][0x16 - rangeMin] = 0x25ac;
+            mapDataStd[0][0x17 - rangeMin] = 0x21a8;
+            mapDataStd[0][0x18 - rangeMin] = 0x2191;
+            mapDataStd[0][0x19 - rangeMin] = 0x2193;
+            mapDataStd[0][0x1a - rangeMin] = 0x2192;
+            mapDataStd[0][0x1b - rangeMin] = 0x2190;
+            mapDataStd[0][0x1c - rangeMin] = 0x221f;
+            mapDataStd[0][0x1d - rangeMin] = 0x2194;
+            mapDataStd[0][0x1e - rangeMin] = 0x25b2;
+            mapDataStd[0][0x1f - rangeMin] = 0x25bc;
 
             //----------------------------------------------------------------//
 
             for (UInt16 i = 0; i < rangeSize; i++)
             {
-                mapDataPCL [0] [i] = mapDataStd [0] [i];
+                mapDataPCL[0][i] = mapDataStd[0][i];
             }
 
             //----------------------------------------------------------------//
@@ -120,26 +117,26 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [1] [0];
-            rangeMax = rangeData [1] [1];
-            rangeSize = rangeSizes [1];
+            rangeMin = rangeData[1][0];
+            rangeMax = rangeData[1][1];
+            rangeSize = rangeSizes[1];
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd [1] [i - rangeMin] = i;
+                mapDataStd[1][i - rangeMin] = i;
             }
 
-            mapDataStd [1] [0x7f - rangeMin] = 0x2302;
+            mapDataStd[1][0x7f - rangeMin] = 0x2302;
 
             //----------------------------------------------------------------//
 
             for (UInt16 i = 0; i < rangeSize; i++)
             {
-                mapDataPCL [1] [i] = mapDataStd [1] [i];
+                mapDataPCL[1][i] = mapDataStd[1][i];
             }
 
-            mapDataPCL [1] [0x5e - rangeMin] = 0x02c6;
-            mapDataPCL [1] [0x7e - rangeMin] = 0x02dc;
+            mapDataPCL[1][0x5e - rangeMin] = 0x02c6;
+            mapDataPCL[1][0x7e - rangeMin] = 0x02dc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -291,14 +288,14 @@ namespace PCLParaphernalia
 
             for (UInt16 i = 0; i < rangeSize; i++)
             {
-                mapDataPCL [2] [i] = mapDataStd [2] [i];
+                mapDataPCL[2][i] = mapDataStd[2][i];
             }
 
             mapDataPCL[2][0xfe - rangeMin] = 0x25aa;
 
             //----------------------------------------------------------------//
 
-            _sets.Add (new PCLSymSetMap (mapId,
+            _sets.Add(new PCLSymSetMap(mapId,
                                          rangeCt,
                                          rangeData,
                                          mapDataStd,

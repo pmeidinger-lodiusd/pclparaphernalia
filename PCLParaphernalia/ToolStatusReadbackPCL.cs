@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String readResponse ()
+        public static String readResponse()
         {
             const Int32 replyBufLen = 32768;
 
@@ -76,7 +76,7 @@ namespace PCLParaphernalia
 
             Int32 replyLen = 0;
 
-        //  Boolean readFF_A = true;            // only one <FF> expected //
+            //  Boolean readFF_A = true;            // only one <FF> expected //
             Boolean OK = false;
             Boolean replyComplete = false;
 
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.responseReadBlock (offset,
+                OK = TargetCore.responseReadBlock(offset,
                                                    bufRem,
                                                    ref replyData,
                                                    ref blockLen);
@@ -156,7 +156,7 @@ namespace PCLParaphernalia
 
             TargetCore.responseCloseConnection();
 
-            return System.Text.Encoding.ASCII.GetString (replyData,
+            return System.Text.Encoding.ASCII.GetString(replyData,
                                                          0,
                                                          replyLen);
         }
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sendRequest ()
+        public static void sendRequest()
         {
             TargetCore.requestStreamWrite(true);
         }

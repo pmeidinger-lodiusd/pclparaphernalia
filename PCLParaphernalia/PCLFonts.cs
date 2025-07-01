@@ -38,7 +38,7 @@ namespace PCLParaphernalia
             BoldItalic
         }
 
-        public enum eWidthType :  SByte
+        public enum eWidthType : SByte
         {
             UltraCompressed = -5,
             ExtraCompressed = -4,
@@ -49,7 +49,7 @@ namespace PCLParaphernalia
             ExtraExpanded = 3
         }
 
-        public enum eStrokeWeight :  SByte
+        public enum eStrokeWeight : SByte
         {
             UltraThin = -7,
             ExtraThin = -6,
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
             UltraBlack
         }
 
-        public enum eStylePosture :  Byte
+        public enum eStylePosture : Byte
         {
             Upright = 0,
             Italic,
@@ -78,17 +78,17 @@ namespace PCLParaphernalia
 
         public enum eStyleWidth : Byte
         {
-             Normal = 0,
-             Condensed,
-             Compressed,
-             ExtraCompressed,
-             UltraCompressed,
-             Reserved,
-             Expanded,
-             ExtraExpanded
+            Normal = 0,
+            Condensed,
+            Compressed,
+            ExtraCompressed,
+            UltraCompressed,
+            Reserved,
+            Expanded,
+            ExtraExpanded
         }
 
-        public enum eStyleStructure :  UInt16
+        public enum eStyleStructure : UInt16
         {
             Solid = 0,
             Outline,
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
         private static UInt16[] symSets_Unicode = new UInt16[]
             { PCLSymbolSets.translateIdToKind1("18N") };
 
-        private static UInt16 [] symSets_Europe = new UInt16 []
+        private static UInt16[] symSets_Europe = new UInt16[]
             { PCLSymbolSets.translateIdToKind1("0D"),
               PCLSymbolSets.translateIdToKind1("0H"),
               PCLSymbolSets.translateIdToKind1("0I"),
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static List<PCLFont> _fonts =
-            new List<PCLFont> ();
+            new List<PCLFont>();
 
         private static Int32 _fontsCount;
         private static Int32 _fontsCountCustom;
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
                     (v.Type == eFontType.PresetFamilyMember))
                 {
                     count++;
-                    grid.Items.Add (v);
+                    grid.Items.Add(v);
                 }
             }
 
@@ -367,13 +367,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getHPGL2FontDef (Int32    indxFont,
+        public static String getHPGL2FontDef(Int32 indxFont,
                                               eVariant variant,
-                                              UInt16   symbolSet,
-                                              Double   height,
-                                              Double   pitch)
+                                              UInt16 symbolSet,
+                                              Double height,
+                                              Double pitch)
         {
-            return _fonts [indxFont].getHPGL2FontDef (variant, symbolSet,
+            return _fonts[indxFont].getHPGL2FontDef(variant, symbolSet,
                                                       height, pitch);
         }
 
@@ -386,7 +386,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForFontArial ()
+        public static Int16 getIndexForFontArial()
         {
             return _indxFontArial;
         }
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForFontCourier ()
+        public static Int16 getIndexForFontCourier()
         {
             return _indxFontCourier;
         }
@@ -414,7 +414,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getIndexForName (String fontName)
+        public static Int16 getIndexForName(String fontName)
         {
             Boolean fontNameKnown = false;
 
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getNameForIdPCL (UInt16 typefaceId,
+        public static Boolean getNameForIdPCL(UInt16 typefaceId,
                                                ref String name)
         {
             Boolean typefaceKnown = false;
@@ -515,10 +515,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getPCLFontSelect (Int32    indxFont,
+        public static String getPCLFontSelect(Int32 indxFont,
                                                eVariant variant,
-                                               Double   height,
-                                               Double   pitch)
+                                               Double height,
+                                               Double pitch)
         {
             return _fonts[indxFont].getPCLFontSelect(variant, height, pitch);
         }
@@ -561,7 +561,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Double getPCLPitch(Int32  indxFont,
+        public static Double getPCLPitch(Int32 indxFont,
                                           Double ptSize)
         {
             return _fonts[indxFont].getPCLPitch(ptSize);
@@ -590,7 +590,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getPCLStyle(Int32    indxFont,
+        public static UInt16 getPCLStyle(Int32 indxFont,
                                           eVariant variant)
         {
             return _fonts[indxFont].getPCLStyle(variant);
@@ -619,7 +619,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 getPCLWeight(Int32    indxFont,
+        public static Int16 getPCLWeight(Int32 indxFont,
                                           eVariant variant)
         {
             return _fonts[indxFont].getPCLWeight(variant);
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getPCLXLName (Int32    indxFont,
+        public static String getPCLXLName(Int32 indxFont,
                                            eVariant variant)
         {
             return _fonts[indxFont].getPCLXLName(variant);
@@ -670,7 +670,7 @@ namespace PCLParaphernalia
         {
             Boolean typefacePreset;
 
-            typefacePreset = _fonts[indxFont].getPCLFontIdData (ref typeface,
+            typefacePreset = _fonts[indxFont].getPCLFontIdData(ref typeface,
                                                                 ref fontName);
 
             return typefacePreset;
@@ -699,9 +699,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eFontType getType (Int32 indxFont)
+        public static eFontType getType(Int32 indxFont)
         {
-            return _fonts [indxFont].Type;
+            return _fonts[indxFont].Type;
         }
 
         //--------------------------------------------------------------------//
@@ -775,7 +775,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean isSymSetInList (Int32 indxFont,
+        public static Boolean isSymSetInList(Int32 indxFont,
                                               UInt16 symSetNo)
         {
             return _fonts[indxFont].isSymSetInList(symSetNo);
@@ -840,90 +840,90 @@ namespace PCLParaphernalia
         {
             Int16 fontIndex = 0;
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.Custom,
                 "<select by characteristics>",
                 false, false, false,
-                    0,     0,     0,     0,     0,
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                    0, 0, 0, 0, 0,
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.Download,
                 "<download soft font>",
                 false, false, false,
-                    0,     0,     0,     0,     0,
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                    0, 0, 0, 0, 0,
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PrnDisk,
                 "<load from printer storage>",
                 false, false, false,
-                    0,     0,     0,     0,     0,
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                    0, 0, 0, 0, 0,
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Albertus (base value)",
-                false, true , true ,
-                    0,   266,     0,     0,     0,
+                false, true, true,
+                    0, 266, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Albertus",
-                false, true , true ,
-                    0,  4362,     0,     0,     0,
-                true ,     0,     1,     "Albertus      Md",
-                false,     0,     0,     "                ",
-                true ,     0,     4,     "Albertus      Xb",
-                false,     0,     0,     "                ",
+                false, true, true,
+                    0, 4362, 0, 0, 0,
+                true, 0, 1, "Albertus      Md",
+                false, 0, 0, "                ",
+                true, 0, 4, "Albertus      Xb",
+                false, 0, 0, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Antique Olive (base value)",
-                false, true , true ,
-                    0,    72,     0,     0,     0,
+                false, true, true,
+                    0, 72, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Antique Olive",
-                false, true , true ,
-                    0,  4168,     0,     0,     0,
-                true ,     0,     0,     "AntiqOlive      ",
-                true ,     1,     0,     "AntiqOlive    It",
-                true ,     0,     3,     "AntiqOlive    Bd",
-                false,     1,     3,     "                ",
+                false, true, true,
+                    0, 4168, 0, 0, 0,
+                true, 0, 0, "AntiqOlive      ",
+                true, 1, 0, "AntiqOlive    It",
+                true, 0, 3, "AntiqOlive    Bd",
+                false, 1, 3, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
             _indxFontArial = fontIndex;
@@ -932,73 +932,73 @@ namespace PCLParaphernalia
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Andale Mono WT J",
-                true , true, true,
-                  590, 17004,     0,     0,     0,
-                true ,     0,     0,     "Andale Mono WT J",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  590, 17004, 0, 0, 0,
+                true, 0, 0, "Andale Mono WT J",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Andale Mono WT K",
-                true , true, true,
-                  590, 17005,     0,     0,     0,
-                true ,     0,     0,     "Andale Mono WT K",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  590, 17005, 0, 0, 0,
+                true, 0, 0, "Andale Mono WT K",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Andale Mono WT S",
-                true , true, true,
-                  590, 17007,     0,     0,     0,
-                true ,     0,     0,     "Andale Mono WT S",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  590, 17007, 0, 0, 0,
+                true, 0, 0, "Andale Mono WT S",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Andale Mono WT T",
-                true , true, true,
-                  590, 17006,     0,     0,     0,
-                true ,     0,     0,     "Andale Mono WT T",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  590, 17006, 0, 0, 0,
+                true, 0, 0, "Andale Mono WT T",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Arial (base value)",
-                false, true , true ,
-                    0,   218,     0,     0,     0,
+                false, true, true,
+                    0, 218, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Arial",
-                 false, true , true ,
-                     0, 16602,     0,     0,     0,
-                 true ,     0,     0,     "Arial           ",
-                 true ,     1,     0,     "Arial         It",
-                 true ,     0,     3,     "Arial         Bd",
-                 true ,     1,     3,     "Arial       BdIt",
+                 false, true, true,
+                     0, 16602, 0, 0, 0,
+                 true, 0, 0, "Arial           ",
+                 true, 1, 0, "Arial         It",
+                 true, 0, 3, "Arial         Bd",
+                 true, 1, 3, "Arial       BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
             _fonts.Add(new PCLFont(
@@ -1006,11 +1006,11 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "Calibri",
                 false, true, true,
-                    0, 17329,     0,     0,     0,
-                true ,     0,     0,     "Calibri         ",
-                true ,     1,     0,     "Calibri       It",
-                true ,     0,     3,     "Calibri       Bd",
-                true ,     1,     3,     "Calibri     BdIt",
+                    0, 17329, 0, 0, 0,
+                true, 0, 0, "Calibri         ",
+                true, 1, 0, "Calibri       It",
+                true, 0, 3, "Calibri       Bd",
+                true, 1, 3, "Calibri     BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
             _fonts.Add(new PCLFont(
@@ -1018,238 +1018,238 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "Cambria",
                 false, true, true,
-                    0, 17328,     0,     0,     0,
-                true ,     0,     0,     "Cambria         ",
-                true ,     1,     0,     "Cambria       It",
-                true ,     0,     3,     "Cambria       Bd",
-                true ,     1,     3,     "Cambria     BdIt",
+                    0, 17328, 0, 0, 0,
+                true, 0, 0, "Cambria         ",
+                true, 1, 0, "Cambria       It",
+                true, 0, 3, "Cambria       Bd",
+                true, 1, 3, "Cambria     BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Caslon (base value)",
-                false, true , true ,
-                    0,     9,     0,     0,     0,
+                false, true, true,
+                    0, 9, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "CG Omega",
-                false, true , true ,
-                    0,  4113,     0,     0,     0,
-                true ,     0,     0,     "CG Omega        ",
-                true ,     1,     0,     "CG Omega      It",
-                true ,     0,     3,     "CG Omega      Bd",
-                true ,     1,     3,     "CG Omega    BdIt",
+                false, true, true,
+                    0, 4113, 0, 0, 0,
+                true, 0, 0, "CG Omega        ",
+                true, 1, 0, "CG Omega      It",
+                true, 0, 3, "CG Omega      Bd",
+                true, 1, 3, "CG Omega    BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "CG Times",
-                false, true , true ,
-                    0,  4101,     0,     0,     0,
-                true ,     0,     0,     "CG Times        ",
-                true ,     1,     0,     "CG Times      It",
-                true ,     0,     3,     "CG Times      Bd",
-                true ,     1,     3,     "CG Times    BdIt",
+                false, true, true,
+                    0, 4101, 0, 0, 0,
+                true, 0, 0, "CG Times        ",
+                true, 1, 0, "CG Times      It",
+                true, 0, 3, "CG Times      Bd",
+                true, 1, 3, "CG Times    BdIt",
                 symSets_Europe));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Clarendon (base value)",
-                false, true , true ,
-                    0,    44,     0,     0,     0,
+                false, true, true,
+                    0, 44, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Clarendon Condensed",
-                false, true , true ,
-                    0,  4140,     0,     0,     0,
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                true ,     4,     3,     "Clarendon   CdBd",
-                false,     0,     0,     "                ",
+                false, true, true,
+                    0, 4140, 0, 0, 0,
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                true, 4, 3, "Clarendon   CdBd",
+                false, 0, 0, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Coronet (base value)",
-                false, true , true ,
-                    0,    20,     0,     0,     0,
+                false, true, true,
+                    0, 20, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Coronet",
-                false, true , true ,
-                    0,  4116,     0,     0,     0,
-                false,     0,     0,     "                ",
-                true ,     1,     0,     "Coronet         ",
-                false,     0,     3,     "                ",
-                false,     1,     3,     "                ",
+                false, true, true,
+                    0, 4116, 0, 0, 0,
+                false, 0, 0, "                ",
+                true, 1, 0, "Coronet         ",
+                false, 0, 3, "                ",
+                false, 1, 3, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Courier (base value)",
-                false, false, true ,
-                    0,     3,     0,     0,     0,
+                false, false, true,
+                    0, 3, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
             _indxFontCourier = fontIndex;
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Courier",
-                false, false, true ,
-                    0,  4099,    60,     0,     0,
-                true ,     0,     0,     "Courier         ",
-                true ,     1,     0,     "Courier       It",
-                true ,     0,     3,     "Courier       Bd",
-                true ,     1,     3,     "Courier     BdIt",
+                false, false, true,
+                    0, 4099, 60, 0, 0,
+                true, 0, 0, "Courier         ",
+                true, 1, 0, "Courier       It",
+                true, 0, 3, "Courier       Bd",
+                true, 1, 3, "Courier     BdIt",
                 symSets_Europe));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Courier PS",
-                false, false, true ,
-                    0, 24579,    60,     0,     0,
-                true ,     0,     0,     "CourierPS       ",
-                true ,     1,     0,     "CourierPS     Ob",
-                true ,     0,     3,     "CourierPS     Bd",
-                true ,     1,     3,     "CourierPS   BdOb",
+                false, false, true,
+                    0, 24579, 60, 0, 0,
+                true, 0, 0, "CourierPS       ",
+                true, 1, 0, "CourierPS     Ob",
+                true, 0, 3, "CourierPS     Bd",
+                true, 1, 3, "CourierPS   BdOb",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Elite (base value)",
-                false, false, true ,
-                    0,     2,     0,     0,     0,
+                false, false, true,
+                    0, 2, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Garamond (base value)",
-                false, true , true ,
-                    0,   101,     0,     0,     0,
+                false, true, true,
+                    0, 101, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Garamond",
-                false, true , true ,
-                    0,  4197,     0,     0,     0,
-                true ,     0,     0,     "Garamond Antiqua",
-                true ,     1,     0,     "Garamond    Krsv",
-                true ,     0,     3,     "Garamond     Hlb",
-                true ,     1,     3,     "Garamond KrsvHlb",
+                false, true, true,
+                    0, 4197, 0, 0, 0,
+                true, 0, 0, "Garamond Antiqua",
+                true, 1, 0, "Garamond    Krsv",
+                true, 0, 3, "Garamond     Hlb",
+                true, 1, 3, "Garamond KrsvHlb",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "GW-Kai",
                 false, true, true,
-                    0, 37357,     0,     0,     0,
+                    0, 37357, 0, 0, 0,
                 // remaining values are unknown for this entry
-                true ,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Helvetica (base value)",
-                false, true , true ,
-                    0,     4,     0,     0,     0,
+                false, true, true,
+                    0, 4, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Helvetica",
-                false, true , true ,
-                    0, 24580,     0,     0,     0,
+                false, true, true,
+                    0, 24580, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Helvetica",
-                false, true , true ,
-                    0, 24580,     0,     0,     0,
-                true ,     0,     0,     "Helvetica       ",
-                true ,     1,     0,     "Helvetica     Ob",
-                true ,     0,     3,     "Helvetica     Bd",
-                true ,     1,     3,     "Helvetica   BdOb",
+                false, true, true,
+                    0, 24580, 0, 0, 0,
+                true, 0, 0, "Helvetica       ",
+                true, 1, 0, "Helvetica     Ob",
+                true, 0, 3, "Helvetica     Bd",
+                true, 1, 3, "Helvetica   BdOb",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Helvetica Narrow",
-                false, true , true ,
-                    0, 24580,     0,     0,     0,
-                true ,     4,     0,     "Helvetica     Nr",
-                true ,     5,     0,     "Helvetica   NrOb",
-                true ,     4,     3,     "Helvetica   NrBd",
-                true ,     5,     3,     "Helvetica NrBdOb",
+                false, true, true,
+                    0, 24580, 0, 0, 0,
+                true, 4, 0, "Helvetica     Nr",
+                true, 5, 0, "Helvetica   NrOb",
+                true, 4, 3, "Helvetica   NrBd",
+                true, 5, 3, "Helvetica NrBdOb",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
             _fonts.Add(new PCLFont(
@@ -1257,11 +1257,11 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "HP David",
                 false, true, true,
-                    0, 16585,     0,     0,     0,
-                true ,     0,     0,     "Dorit           ",
-                false,     0,     0,     "                ",
-                true ,     0,     3,     "Dorit         Bd",
-                false,     0,     0,     "                ",
+                    0, 16585, 0, 0, 0,
+                true, 0, 0, "Dorit           ",
+                false, 0, 0, "                ",
+                true, 0, 3, "Dorit         Bd",
+                false, 0, 0, "                ",
                 symSets_Hebrew));
 
             _fonts.Add(new PCLFont(
@@ -1269,11 +1269,11 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "HP Miryam",
                 false, true, true,
-                    0, 16584,     0,     0,     0,
-                true ,     0,     0,     "Malka           ",
-                true ,     1,     0,     "Malka         It",
-                true ,     0,     3,     "Malka         Bd",
-                false,     0,     0,     "                ",
+                    0, 16584, 0, 0, 0,
+                true, 0, 0, "Malka           ",
+                true, 1, 0, "Malka         It",
+                true, 0, 3, "Malka         Bd",
+                false, 0, 0, "                ",
                 symSets_Hebrew));
 
             _fonts.Add(new PCLFont(
@@ -1281,357 +1281,357 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "HP Narkis Tam",
                 false, true, true,
-                    0, 16587,     0,     0,     0,
-                true ,     0,     0,     "Naamit          ",
-                false,     0,     0,     "                ",
-                true ,     0,     3,     "Naamit        Bd",
-                false,     0,     0,     "                ",
+                    0, 16587, 0, 0, 0,
+                true, 0, 0, "Naamit          ",
+                false, 0, 0, "                ",
+                true, 0, 3, "Naamit        Bd",
+                false, 0, 0, "                ",
                 symSets_Hebrew));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "ITC Avant Garde (base value)",
-                false, true , true ,
-                    0,    31,     0,     0,     0,
+                false, true, true,
+                    0, 31, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "ITC Avant Garde",
-                false, true , true ,
-                    0, 24607,     0,     0,     0,
-                true ,     0,     0,     "ITCAvantGard  Bk",
-                true ,     1,     0,     "ITCAvantGardBkOb",
-                true ,     0,     2,     "ITCAvantGard  Db",
-                true ,     1,     2,     "ITCAvantGardDbOb",
+                false, true, true,
+                    0, 24607, 0, 0, 0,
+                true, 0, 0, "ITCAvantGard  Bk",
+                true, 1, 0, "ITCAvantGardBkOb",
+                true, 0, 2, "ITCAvantGard  Db",
+                true, 1, 2, "ITCAvantGardDbOb",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "ITC Bookman (base value)",
-                false, true , true ,
-                    0,    47,     0,     0,     0,
+                false, true, true,
+                    0, 47, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "ITC Bookman",
-                false, true , true ,
-                    0, 24623,     0,     0,     0,
-                true ,     0,    -3,     "ITCBookman    Lt",
-                true ,     1,    -3,     "ITCBookman    It",
-                true ,     0,     2,     "ITCBookman    Bd",
-                true ,     1,     2,     "ITCBookman  BdIt",
+                false, true, true,
+                    0, 24623, 0, 0, 0,
+                true, 0, -3, "ITCBookman    Lt",
+                true, 1, -3, "ITCBookman    It",
+                true, 0, 2, "ITCBookman    Bd",
+                true, 1, 2, "ITCBookman  BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Koufi (base value)",
-                false, true , true ,
-                    0,   168,     0,     0,     0,
+                false, true, true,
+                    0, 168, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Koufi",
-                false, false, true ,
-                    0,  4264,    60,     0,     0,
-                true ,     0,     0,     "Koufi           ",
-                false,     0,     0,     "                ",
-                true ,     0,     3,     "Koufi         Bd",
-                false,     0,     3,     "                ",
+                false, false, true,
+                    0, 4264, 60, 0, 0,
+                true, 0, 0, "Koufi           ",
+                false, 0, 0, "                ",
+                true, 0, 3, "Koufi         Bd",
+                false, 0, 3, "                ",
                 symSets_Arabic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Letter Gothic (base value)",
-                false, true , true ,
-                    0,     6,     0,     0,     0,
+                false, true, true,
+                    0, 6, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Letter Gothic",
-                false, false, true ,
-                    0,  4102,    50,     0,     0,
-                true ,     0,     0,     "LetterGothic    ",
-                true ,     1,     0,     "LetterGothic  It",
-                true ,     0,     3,     "LetterGothic  Bd",
-                false,     0,     0,     "                ",
+                false, false, true,
+                    0, 4102, 50, 0, 0,
+                true, 0, 0, "LetterGothic    ",
+                true, 1, 0, "LetterGothic  It",
+                true, 0, 3, "LetterGothic  Bd",
+                false, 0, 0, "                ",
                 symSets_Europe));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Line Printer",
                 true, false, false,
-                   14,     0,     0, 16.67,   8.5,
+                   14, 0, 0, 16.67, 8.5,
                 // remaining values are dummy values for this entry
-                true,      0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (0N)",
-                true , false, false,
-                   14,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  0N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                   14, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  0N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("0N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (1U)",
-                true , false, false,
-                   53,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  1U",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                   53, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  1U",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("1U") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (2N)",
-                true , false, false,
-                   78,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  2N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                   78, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  2N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("2N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (5N)",
-                true , false, false,
-                  174,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  5N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  174, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  5N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("5N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (6N)",
-                true , false, false,
-                  206,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  6N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  206, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  6N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("6N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (8U)",
-                true , false, false,
-                  277,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  8U",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  277, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  8U",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("8U") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (9N)",
-                true , false, false,
-                  302,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer  9N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  302, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer  9N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("9N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (10N)",
-                true , false, false,
-                  334,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer 10N",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  334, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer 10N",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("10N") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (10U)",
-                true , false, false,
-                  341,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer 10U",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  341, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer 10U",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("10U") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (11U)",
                 true, false, false,
-                 373,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer 11U",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                 373, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer 11U",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("11U") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Line Printer (12U)",
-                true , false, false,
-                  405,     0,     0, 16.67,   8.5,
-                true ,     0,     0,     "Line Printer 12U",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, false, false,
+                  405, 0, 0, 16.67, 8.5,
+                true, 0, 0, "Line Printer 12U",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("12U") }));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Marigold (base value)",
-                false, true , true ,
-                    0,   201,     0,     0,     0,
+                false, true, true,
+                    0, 201, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Marigold",
-                false, true , true ,
-                    0,  4297,     0,     0,     0,
-                true ,     0,     0,     "Marigold        ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                false, true, true,
+                    0, 4297, 0, 0, 0,
+                true, 0, 0, "Marigold        ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "MS Gothic",
                 false, true, true,
-                    0, 28825,     0,     0,     0,
+                    0, 28825, 0, 0, 0,
                 // remaining values are unknown for this entry
-                true ,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "MS Mincho",
                 false, true, true,
-                    0, 28752,     0,     0,     0,
+                    0, 28752, 0, 0, 0,
                 // remaining values are unknown for this entry
-                true ,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Naskh (base value)",
-                false, true , true ,
-                    0,    28,     0,     0,     0,
+                false, true, true,
+                    0, 28, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Naskh",
-                false, false,  true,
-                    0,  4124,    60,     0,     0,
-                true ,     0,     0,     "Naskh           ",
-                false,     0,     0,     "                ",
-                true ,     0,     3,     "Naskh         Bd",
-                false,     0,     3,     "                ",
+                false, false, true,
+                    0, 4124, 60, 0, 0,
+                true, 0, 0, "Naskh           ",
+                false, 0, 0, "                ",
+                true, 0, 3, "Naskh         Bd",
+                false, 0, 3, "                ",
                 symSets_Arabic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "New Century Schoolbook (base value)",
-                false, true , true ,
-                    0,   127,     0,     0,     0,
+                false, true, true,
+                    0, 127, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "New Century Schoolbook",
-                false, true , true ,
-                    0, 24703,     0,     0,     0,
-                true ,     0,     0,     "NwCentSchlbk Rmn",
-                true ,     1,     0,     "NwCentSchlbk  It",
-                true ,     0,     3,     "NwCentSchlbk  Bd",
-                true ,     1,     3,     "NwCentSchlbkBdIt",
+                false, true, true,
+                    0, 24703, 0, 0, 0,
+                true, 0, 0, "NwCentSchlbk Rmn",
+                true, 1, 0, "NwCentSchlbk  It",
+                true, 0, 3, "NwCentSchlbk  Bd",
+                true, 1, 3, "NwCentSchlbkBdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
             _fonts.Add(new PCLFont(
@@ -1640,10 +1640,10 @@ namespace PCLParaphernalia
                 "OCR-A",
                 true, false, true,
                     15, 104, 0, 0, 0,
-                true,      0,     0,     "OCR-A           ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "OCR-A           ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("0O") }));
 
             _fonts.Add(new PCLFont(
@@ -1652,87 +1652,87 @@ namespace PCLParaphernalia
                 "OCR-B",
                 true, false, true,
                     47, 110, 0, 0, 0,
-                true,      0,     0,     "OCR-B           ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "OCR-B           ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("1O") }));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Orator (base value)",
-                false, true , true ,
-                    0,    10,     0,     0,     0,
+                false, true, true,
+                    0, 10, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Palatino (base value)",
-                false, true , true ,
-                    0,    15,     0,     0,     0,
+                false, true, true,
+                    0, 15, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Palatino",
-                false, true , true ,
-                    0, 24591,     0,     0,     0,
-                true ,     0,     0,     "Palatino     Rmn",
-                true ,     1,     0,     "Palatino      It",
-                true ,     0,     3,     "Palatino      Bd",
-                true ,     1,     3,     "Palatino    BdIt",
+                false, true, true,
+                    0, 24591, 0, 0, 0,
+                true, 0, 0, "Palatino     Rmn",
+                true, 1, 0, "Palatino      It",
+                true, 0, 3, "Palatino      Bd",
+                true, 1, 3, "Palatino    BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Presentation (base value)",
-                false, true , true ,
-                    0,    11,     0,     0,     0,
+                false, true, true,
+                    0, 11, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Prestige (base value)",
-                false, true , true ,
-                    0,     8,     0,     0,     0,
+                false, true, true,
+                    0, 8, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
             _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Ryadh (base value)",
-                false, true , true ,
-                    0,   763,     0,     0,     0,
+                false, true, true,
+                    0, 763, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
             _fonts.Add(new PCLFont(
@@ -1740,257 +1740,257 @@ namespace PCLParaphernalia
                 eFontType.PresetTypeface,
                 "Ryadh",
                 false, true, true,
-                    0,  4859,     0,     0,     0,
-                true ,     0,     0,     "Ryadh           ",
-                false,     0,     0,     "                ",
-                true ,     0,     3,     "Ryadh         Bd",
-                false,     0,     0,     "                ",
+                    0, 4859, 0, 0, 0,
+                true, 0, 0, "Ryadh           ",
+                false, 0, 0, "                ",
+                true, 0, 3, "Ryadh         Bd",
+                false, 0, 0, "                ",
                 symSets_Arabic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "SimHei",
                 false, true, true,
-                    0, 37110,     0,     0,     0,
+                    0, 37110, 0, 0, 0,
                 // remaining values are unknown for this entry
-                true ,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "SimSun",
                 false, true, true,
-                    0, 37058,     0,     0,     0,
+                    0, 37058, 0, 0, 0,
                 // remaining values are unknown for this entry
-                true ,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Unicode));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Symbol (base value)",
-                false, true , true ,
-                    0,   302,     0,     0,     0,
+                false, true, true,
+                    0, 302, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Symbol",
-                true , true , true ,
-                  621, 16686,     0,     0,     0,
-                true ,     0,     0,     "Symbol          ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  621, 16686, 0, 0, 0,
+                true, 0, 0, "Symbol          ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("19M") }));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Symbol PS",
-                true , true , true ,
-                  621, 45358,     0,     0,     0,
-                true ,     0,     0,     "SymbolPS        ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  621, 45358, 0, 0, 0,
+                true, 0, 0, "SymbolPS        ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("19M") }));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Times (base value)",
-                false, true , true ,
-                    0,   517,     0,     0,     0,
+                false, true, true,
+                    0, 517, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Times",
-                false, true , true ,
-                    0, 25093,     0,     0,     0,
-                true ,     0,     0,     "Times        Rmn",
-                true ,     1,     0,     "Times         It",
-                true ,     0,     3,     "Times         Bd",
-                true ,     1,     3,     "Times       BdIt",
+                false, true, true,
+                    0, 25093, 0, 0, 0,
+                true, 0, 0, "Times        Rmn",
+                true, 1, 0, "Times         It",
+                true, 0, 3, "Times         Bd",
+                true, 1, 3, "Times       BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Times Roman (base value)",
-                false, true , true ,
-                    0,     5,     0,     0,     0,
+                false, true, true,
+                    0, 5, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Times New",
-                false, true , true ,
-                    0, 16901,     0,     0,     0,
-                true ,     0,     0,     "TimesNewRmn     ",
-                true ,     1,     0,     "TimesNewRmn   It",
-                true ,     0,     3,     "TimesNewRmn   Bd",
-                true ,     1,     3,     "TimesNewRmn BdIt",
+                false, true, true,
+                    0, 16901, 0, 0, 0,
+                true, 0, 0, "TimesNewRmn     ",
+                true, 1, 0, "TimesNewRmn   It",
+                true, 0, 3, "TimesNewRmn   Bd",
+                true, 1, 3, "TimesNewRmn BdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Univers (base value)",
-                false, true , true ,
-                    0,    52,     0,     0,     0,
+                false, true, true,
+                    0, 52, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Univers",
                 false, true, true,
-                    0,  4148,     0,     0,     0,
+                    0, 4148, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Univers",
-                false, true , true ,
-                    0,  4148,     0,     0,     0,
-                true ,     0,     0,     "Univers       Md",
-                true ,     1,     0,     "Univers     MdIt",
-                true ,     0,     3,     "Univers       Bd",
-                true ,     1,     3,     "Univers     BdIt",
+                false, true, true,
+                    0, 4148, 0, 0, 0,
+                true, 0, 0, "Univers       Md",
+                true, 1, 0, "Univers     MdIt",
+                true, 0, 3, "Univers       Bd",
+                true, 1, 3, "Univers     BdIt",
                 symSets_Europe));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamilyMember,
                 "Univers Condensed",
-                false, true , true ,
-                    0,  4148,     0,     0,     0,
-                true ,     4,     0,     "Univers     CdMd",
-                true ,     5,     0,     "Univers   CdMdIt",
-                true ,     4,     3,     "Univers     CdBd",
-                true ,     5,     3,     "Univers   CdBdIt",
+                false, true, true,
+                    0, 4148, 0, 0, 0,
+                true, 4, 0, "Univers     CdMd",
+                true, 5, 0, "Univers   CdMdIt",
+                true, 4, 3, "Univers     CdBd",
+                true, 5, 3, "Univers   CdBdIt",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Wingdings (base value)",
-                false, true , true ,
-                    0,  2730,     0,     0,     0,
+                false, true, true,
+                    0, 2730, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Wingdings",
-                true , true , true ,
-                18540, 31402,     0,     0,     0,
-                true ,     0,     0,     "Wingdings       ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                18540, 31402, 0, 0, 0,
+                true, 0, 0, "Wingdings       ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("579L") }));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Zapf Chancery (base value)",
-                false, true , true ,
-                    0,    43,     0,     0,     0,
+                false, true, true,
+                    0, 43, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
-        
-            _fonts.Add (new PCLFont(
+
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Zapf Chancery",
-                false, true , true ,
-                    0, 45099,     0,     0,     0,
-                false,     0,     0,     "                ",
-                true ,     1,     0,     "ZapfChanceryMdIt",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                false, true, true,
+                    0, 45099, 0, 0, 0,
+                false, 0, 0, "                ",
+                true, 1, 0, "ZapfChanceryMdIt",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 symSets_Europe_Not_Hebrew_Greek_Cyrillic));
 
-            _fonts.Add (new PCLFont (
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetFamily,
                 "Zapf Dingbats (base value)",
-                false, true , true ,
-                    0,    45,     0,     0,     0,
+                false, true, true,
+                    0, 45, 0, 0, 0,
                 // remaining values are dummy values for this entry
-                true ,     0,     0,     "                ",
-                true ,     1,     0,     "                ",
-                true ,     0,     3,     "                ",
-                true ,     1,     3,     "                ",
+                true, 0, 0, "                ",
+                true, 1, 0, "                ",
+                true, 0, 3, "                ",
+                true, 1, 3, "                ",
                 symSets_Dummy));
 
-            _fonts.Add (new PCLFont(
+            _fonts.Add(new PCLFont(
                 fontIndex++,
                 eFontType.PresetTypeface,
                 "Zapf Dingbats",
-                true , true , true ,
-                  460, 45101,     0,     0,     0,
-                true ,     0,     0,     "ZapfDingbats    ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
-                false,     0,     0,     "                ",
+                true, true, true,
+                  460, 45101, 0, 0, 0,
+                true, 0, 0, "ZapfDingbats    ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
+                false, 0, 0, "                ",
                 new UInt16[] { PCLSymbolSets.translateIdToKind1("14L") }));
 
             _fontsCount = _fonts.Count;
 
-            _fontsCountCustom   = 0;
+            _fontsCountCustom = 0;
             _fontsCountDownload = 0;
-            _fontsCountPrnDisk  = 0;
-            _fontsCountPreset   = 0;
+            _fontsCountPrnDisk = 0;
+            _fontsCountPreset = 0;
 
             foreach (PCLFont v in _fonts)
             {
@@ -2031,8 +2031,8 @@ namespace PCLParaphernalia
                                              ref UInt16 vendor,
                                              ref UInt16 basecode)
         {
-            vendor = (UInt16) (typeface >> 12);
-            basecode = (UInt16) (typeface & 0xfff);
+            vendor = (UInt16)(typeface >> 12);
+            basecode = (UInt16)(typeface & 0xfff);
 
             return;
         }
@@ -2047,7 +2047,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean variantExists(Int32    indxFont,
+        public static Boolean variantExists(Int32 indxFont,
                                             eVariant variant)
         {
             return _fonts[indxFont].variantAvailable(variant);

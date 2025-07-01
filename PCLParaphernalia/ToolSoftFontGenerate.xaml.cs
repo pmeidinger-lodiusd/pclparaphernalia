@@ -19,7 +19,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2011
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -31,23 +31,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private const String _fontRegistryRoot        = "HKEY_LOCAL_MACHINE";
-        private const String _fontRegistryKey         =
+        private const String _fontRegistryRoot = "HKEY_LOCAL_MACHINE";
+        private const String _fontRegistryKey =
             "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
 
-        private const Char   _defaultSymSetIdAlpha    = 'N';
-        private const UInt16 _defaultSymSetIdNum      = 0;
-        private const UInt16 _defaultSymSetNo         = 14;     //    0N //
-        private const UInt16 _defaultSymSetNoSymbol   = 32769;  // 1024A //
-        private const UInt16 _symSetNoUnicode         = 590;    //   18N //
-        private const UInt16 _symSetNoUnbound         = 56;     //    1X //
+        private const Char _defaultSymSetIdAlpha = 'N';
+        private const UInt16 _defaultSymSetIdNum = 0;
+        private const UInt16 _defaultSymSetNo = 14;     //    0N //
+        private const UInt16 _defaultSymSetNoSymbol = 32769;  // 1024A //
+        private const UInt16 _symSetNoUnicode = 590;    //   18N //
+        private const UInt16 _symSetNoUnbound = 56;     //    1X //
 
-        private const UInt16 _defaultPCLTypefaceNo    = 61440;
-        private const UInt16 _defaultPCLStyleNo       = 0;
-        private const SByte  _defaultPCLWeightNo      = 0;
+        private const UInt16 _defaultPCLTypefaceNo = 61440;
+        private const UInt16 _defaultPCLStyleNo = 0;
+        private const SByte _defaultPCLWeightNo = 0;
 
-        private const Int32  cSizeCharSet_8bit        = 256;
-        private const Int32  cSizeCharSet_UCS_2       = 65536;
+        private const Int32 cSizeCharSet_8bit = 256;
+        private const Int32 cSizeCharSet_UCS_2 = 65536;
 
         private enum ePCLTUse : Byte
         {
@@ -62,31 +62,31 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean _flagLogVerbose    = false;
-        private Boolean _flagFormat16      = false;
-        private Boolean _flagSegGTLastPCL  = false;
-        private Boolean _flagUsePCLT       = false;
-        private Boolean _flagVMetricsPCL   = false;
+        private Boolean _flagLogVerbose = false;
+        private Boolean _flagFormat16 = false;
+        private Boolean _flagSegGTLastPCL = false;
+        private Boolean _flagUsePCLT = false;
+        private Boolean _flagVMetricsPCL = false;
         private Boolean _flagVMetricsPCLXL = false;
 
         private Boolean _flagSymSetNullMapPCL = false;
         private Boolean _flagSymSetNullMapStd = false;
 
-        private Boolean _flagCharCollCompInhibitPCL  = false;
+        private Boolean _flagCharCollCompInhibitPCL = false;
         private Boolean _flagCharCollCompSpecificPCL = false;
 
-        private Boolean _initialised     = false;
-        private Boolean _symSetUnbound   = false;
-        private Boolean _symSetMapPCL    = false;
-        private Boolean _symSetUserSet   = false;
-        private Boolean _symbolMapping   = false;
+        private Boolean _initialised = false;
+        private Boolean _symSetUnbound = false;
+        private Boolean _symSetMapPCL = false;
+        private Boolean _symSetUserSet = false;
+        private Boolean _symbolMapping = false;
 
-        private Boolean _fontWithinTTC   = false;
+        private Boolean _fontWithinTTC = false;
 
         private ToolSoftFontGenTTF _ttfHandler;
 
         private ToolCommonData.ePrintLang _crntPDL;
-        
+
         private DataSet _dataSetLogChars;
         private DataSet _dataSetLogDonor;
         private DataSet _dataSetLogMapping;
@@ -97,10 +97,10 @@ namespace PCLParaphernalia
         private DataTable _tableLogMapping;
         private DataTable _tableLogTarget;
 
-        private ASCIIEncoding _ascii = new ASCIIEncoding ();
+        private ASCIIEncoding _ascii = new ASCIIEncoding();
 
         private Int32 _ctTTFFonts;
-        
+
         private Int32[] _subsetSymSets;
 
         private Int32 _ctMappedSymSets = 0;
@@ -115,7 +115,7 @@ namespace PCLParaphernalia
 
         private UInt16 _styleNoPCL;
 
-        private SByte  _weightNoPCL;
+        private SByte _weightNoPCL;
 
         private UInt16 _symSetNoTargetPCL;
         private UInt16 _symSetNoTargetPCLXL;
@@ -149,17 +149,17 @@ namespace PCLParaphernalia
 
         private String _fontsFolder;
 
-        private String [] _fontFiles;
-        private String [] _fontNames;
-        private String [] _fontTTCNames;
+        private String[] _fontFiles;
+        private String[] _fontNames;
+        private String[] _fontTTCNames;
 
-        private UInt32 [] _fontTTCOffsets;
+        private UInt32[] _fontTTCOffsets;
 
         private Boolean _tabPCLTPresent;
         private Boolean _tabvmtxPresent;
 
         private ObservableCollection<PCLCharCollItem> _charCollCompListUnicode =
-                    new ObservableCollection<PCLCharCollItem> ();
+                    new ObservableCollection<PCLCharCollItem>();
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSoftFontGenerate (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolSoftFontGenerate(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -192,14 +192,14 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt (
+            TargetCore.metricsReturnFileRpt(
                 ToolCommonData.eToolIds.SoftFontGenerate,
                 ref rptFileFmt,
                 ref rptChkMarks,
                 ref flagOptRptWrap);
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-                ToolSoftFontGenReport.generate (rptFileFmt,
+                ToolSoftFontGenReport.generate(rptFileFmt,
                                                 rptChkMarks,
                                                 _tableLogDonor,
                                                 _tableLogMapping,
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
                                                 _fontFilenameTTF,
                                                 _fontFilenamePCL);
             else
-                ToolSoftFontGenReport.generate (rptFileFmt,
+                ToolSoftFontGenReport.generate(rptFileFmt,
                                                 rptChkMarks,
                                                 _tableLogDonor,
                                                 _tableLogMapping,
@@ -237,14 +237,14 @@ namespace PCLParaphernalia
 
             String filename = _fontFilenamePCL;
 
-            selected = selectPCLFontFile (ref filename);
+            selected = selectPCLFontFile(ref filename);
 
             if (selected)
             {
                 _fontFilenamePCL = filename;
                 txtPCLFontFile.Text = _fontFilenamePCL;
 
-                setPCLFontFileAttributes ();
+                setPCLFontFileAttributes();
             }
         }
 
@@ -265,14 +265,14 @@ namespace PCLParaphernalia
 
             String filename = _fontFilenamePCLXL;
 
-            selected = selectPCLXLFontFile (ref filename);
+            selected = selectPCLXLFontFile(ref filename);
 
             if (selected)
             {
                 _fontFilenamePCLXL = filename;
                 txtPCLXLFontFile.Text = _fontFilenamePCLXL;
 
-                setPCLXLFontFileAttributes ();
+                setPCLXLFontFileAttributes();
             }
         }
 
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
 
         private void btnPCLGenerate_Click(object sender, EventArgs e)
         {
-            Boolean proceed      = true;
+            Boolean proceed = true;
 
             DateTime dateTimeNow = DateTime.Now;
 
@@ -307,16 +307,16 @@ namespace PCLParaphernalia
 
             ToolSoftFontGenTTF.eLicenceType licenceType;
 
-            conversionText = _ascii.GetBytes (convTextStr);
-            
-            licenceType = _ttfHandler.checkLicence (ref licenceText);
+            conversionText = _ascii.GetBytes(convTextStr);
+
+            licenceType = _ttfHandler.checkLicence(ref licenceText);
 
             if (licenceType == ToolSoftFontGenTTF.eLicenceType.NotAllowed)
             {
-                MessageBoxResult msgBoxResult = 
-                        MessageBox.Show (
+                MessageBoxResult msgBoxResult =
+                        MessageBox.Show(
                         "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +  
+                        licenceText +
                         "\n\nConversion will proceed only if you confirm " +
                         "that you are allowed to convert the font;" +
                         "\n\nDid you obtained permission from the legal owner?",
@@ -331,10 +331,10 @@ namespace PCLParaphernalia
             }
             else if (licenceType == ToolSoftFontGenTTF.eLicenceType.OwnerOnly)
             {
-                MessageBoxResult msgBoxResult = 
-                    MessageBox.Show (
+                MessageBoxResult msgBoxResult =
+                    MessageBox.Show(
                         "Donor TrueType font has a restrictive license:\n\n" +
-                        licenceText +  
+                        licenceText +
                         "\n\nConversion will proceed only if you agree " +
                         "to use the converted font solely on your own system;" +
                         "\n\nDo you agree?",
@@ -360,19 +360,19 @@ namespace PCLParaphernalia
 
                 Boolean monoSpaced = false;
 
-                _tableLogTarget.Clear ();
-                _tableLogChars.Clear ();
+                _tableLogTarget.Clear();
+                _tableLogChars.Clear();
 
-                symSetType = PCLSymbolSets.getType (_indxSymSetTarget);
-                symSetTypeID = PCLSymSetTypes.getIdPCL((Int32) symSetType);
+                symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
+                symSetTypeID = PCLSymSetTypes.getIdPCL((Int32)symSetType);
 
-                if (tabDetails.SelectedItem.Equals (tabPCL))
+                if (tabDetails.SelectedItem.Equals(tabPCL))
                 {
                     ToolSoftFontGenPCL PCLHandler =
-                        new ToolSoftFontGenPCL (_tableLogChars,
+                        new ToolSoftFontGenPCL(_tableLogChars,
                                                 _ttfHandler);
 
-                    PCLHandler.generateFont (ref _fontFilenamePCL,
+                    PCLHandler.generateFont(ref _fontFilenamePCL,
                                              ref monoSpaced,
                                              _symbolMapping,
                                              _flagFormat16,
@@ -394,12 +394,12 @@ namespace PCLParaphernalia
 
                     logFontSelectDataPCL(monoSpaced);
 
-                    setPCLFontFileAttributes ();
+                    setPCLFontFileAttributes();
                 }
-                else if (tabDetails.SelectedItem.Equals (tabPCLXL))
+                else if (tabDetails.SelectedItem.Equals(tabPCLXL))
                 {
                     ToolSoftFontGenPCLXL PCLXLHandler =
-                        new ToolSoftFontGenPCLXL (_tableLogChars,
+                        new ToolSoftFontGenPCLXL(_tableLogChars,
                                                   _ttfHandler);
 
                     Byte[] fontName =
@@ -409,9 +409,9 @@ namespace PCLParaphernalia
                     // and different overload of GetBytes to make sure that
                     // Byte [] is not overflowed.
 
-                    fontName = _ascii.GetBytes (_fontNamePCLXL);
+                    fontName = _ascii.GetBytes(_fontNamePCLXL);
 
-                    PCLXLHandler.generateFont (ref _fontFilenamePCLXL,
+                    PCLXLHandler.generateFont(ref _fontFilenamePCLXL,
                                               _symbolMapping,
                                               _symSetUnbound,
                                               _tabvmtxPresent,
@@ -425,7 +425,7 @@ namespace PCLParaphernalia
 
                     logFontSelectDataPCLXL();
 
-                    setPCLXLFontFileAttributes ();
+                    setPCLXLFontFileAttributes();
                 }
             }
         }
@@ -439,9 +439,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnReset_Click (object sender, EventArgs e)
+        private void btnReset_Click(object sender, EventArgs e)
         {
-            resetFormState ();
+            resetFormState();
         }
 
         //--------------------------------------------------------------------//
@@ -454,23 +454,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnSymSetFileBrowse_Click (object sender,
+        private void btnSymSetFileBrowse_Click(object sender,
                                                 RoutedEventArgs e)
         {
             Boolean selected;
 
             String filename = _symSetUserFile;
 
-            selected = selectSymSetFile (ref filename);
+            selected = selectSymSetFile(ref filename);
 
             if (selected)
             {
                 _symSetUserFile = filename;
                 txtSymSetFile.Text = _symSetUserFile;
 
-                checkPCLSymSetFile ();
+                checkPCLSymSetFile();
 
-                setSymSetAttributesTarget ();
+                setSymSetAttributesTarget();
             }
         }
 
@@ -488,14 +488,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void btnTTFFontFileBrowse_Click (object sender,
+        private void btnTTFFontFileBrowse_Click(object sender,
                                                 RoutedEventArgs e)
         {
             Boolean selected;
 
             String filename = _fontFileAdhocTTF;
 
-            selected = selectTTFFontFile (ref filename);
+            selected = selectTTFFontFile(ref filename);
 
             if (selected)
             {
@@ -503,7 +503,7 @@ namespace PCLParaphernalia
                 _fontFilenameTTF = filename;
                 txtTTFFile.Text = _fontFilenameTTF;
 
-                resetFormState ();
+                resetFormState();
             }
         }
 
@@ -522,11 +522,11 @@ namespace PCLParaphernalia
 
             Int32 indx;
             Int32 sfntOffset = 0;
-            
+
             UInt16 symSetNoTargetPCL;
             UInt16 symSetNoTargetPCLXL;
             UInt32 numFonts = 0;
- 
+
             String filename,
                    symSetIdTargetPCL,
                    symSetIdTargetPCLXL;
@@ -538,30 +538,30 @@ namespace PCLParaphernalia
             {
                 indx = cbTTCName.SelectedIndex;
 
-                sfntOffset = (Int32) _fontTTCOffsets[indx];
+                sfntOffset = (Int32)_fontTTCOffsets[indx];
 
-                ToolSoftFontGenLog.logNameAndValue (
+                ToolSoftFontGenLog.logNameAndValue(
                     _tableLogDonor, true, true,
                     "Font",
-                    "'" + _fontTTCNames [indx].ToString () +
-                    "' selected from '" +  _fontFilenameTTF + "' collection");
+                    "'" + _fontTTCNames[indx].ToString() +
+                    "' selected from '" + _fontFilenameTTF + "' collection");
             }
             else
             {
                 filename = _fontFilenameTTF;
 
-                indx = filename.LastIndexOf ("\\");
+                indx = filename.LastIndexOf("\\");
 
                 if (indx == -1)
                     _fontNameBase = filename;
                 else
-                    _fontNameBase = filename.Substring (indx + 1);
+                    _fontNameBase = filename.Substring(indx + 1);
 
-                indx = _fontNameBase.LastIndexOf (".");
+                indx = _fontNameBase.LastIndexOf(".");
 
                 if (indx != -1)
                 {
-                    _fontNameBase = _fontNameBase.Substring (0, indx);
+                    _fontNameBase = _fontNameBase.Substring(0, indx);
                 }
 
                 btnTTFSelect.IsEnabled = false;
@@ -571,26 +571,26 @@ namespace PCLParaphernalia
                 grpSymSetMapType.IsEnabled = false;
                 chkLogVerbose.IsEnabled = false;
 
-                _tableLogDonor.Clear ();
-                _tableLogMapping.Clear ();
-                _tableLogTarget.Clear ();
-                _tableLogChars.Clear ();
+                _tableLogDonor.Clear();
+                _tableLogMapping.Clear();
+                _tableLogTarget.Clear();
+                _tableLogChars.Clear();
 
                 if (_symSetUnbound)
                     _sizeCharSet = cSizeCharSet_UCS_2;
                 else if (_symSetUserSet)
-                    _sizeCharSet = 
-                        PCLSymbolSets.getMapArrayMax (_indxSymSetTarget) + 1;
+                    _sizeCharSet =
+                        PCLSymbolSets.getMapArrayMax(_indxSymSetTarget) + 1;
                 else
                     _sizeCharSet =
-                        PCLSymbolSets.getMapArrayMax (_indxSymSetTarget) + 1;
+                        PCLSymbolSets.getMapArrayMax(_indxSymSetTarget) + 1;
 
-                _ttfHandler = new ToolSoftFontGenTTF (_tableLogDonor,
+                _ttfHandler = new ToolSoftFontGenTTF(_tableLogDonor,
                                                       _tableLogMapping,
                                                       _flagLogVerbose,
                                                       _sizeCharSet);
 
-                flagOK = _ttfHandler.checkForTTC (_fontFilenameTTF,
+                flagOK = _ttfHandler.checkForTTC(_fontFilenameTTF,
                                                   ref typeTTC,
                                                   ref numFonts);
                 if (flagOK)
@@ -599,28 +599,28 @@ namespace PCLParaphernalia
                     {
                         _fontWithinTTC = true;
 
-                        MessageBox.Show (
+                        MessageBox.Show(
                             "Donor TrueType font is a Collection file\n\n" +
                             "Select component font & try again",
                             "Donor font type",
                              MessageBoxButton.OK,
                              MessageBoxImage.Information);
 
-                        _fontTTCOffsets = new UInt32 [numFonts];
-                        _fontTTCNames = new String [numFonts];
+                        _fontTTCOffsets = new UInt32[numFonts];
+                        _fontTTCNames = new String[numFonts];
 
-                        flagOK = _ttfHandler.getTTCData (_fontFilenameTTF,
+                        flagOK = _ttfHandler.getTTCData(_fontFilenameTTF,
                                                          numFonts,
                                                          ref _fontTTCOffsets,
                                                          ref _fontTTCNames);
 
                         if (flagOK)
                         {
-                            cbTTCName.Items.Clear ();
+                            cbTTCName.Items.Clear();
 
                             for (Int32 i = 0; i < numFonts; i++)
                             {
-                                cbTTCName.Items.Add (_fontTTCNames [i]);
+                                cbTTCName.Items.Add(_fontTTCNames[i]);
                             }
 
                             cbTTCName.SelectedIndex = 0;
@@ -634,7 +634,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (flagOK && ! typeTTC)
+            if (flagOK && !typeTTC)
             {
                 UInt16 symSetNoPCLT = 0;
                 UInt16 typefaceNoPCLT = 0;
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
                     cbTTCName.Visibility = Visibility.Hidden;
                 }
 
-                _ttfHandler.initialiseFontData (_fontFilenameTTF,
+                _ttfHandler.initialiseFontData(_fontFilenameTTF,
                                                 sfntOffset,
                                                 _indxSymSetTarget,
                                                 ref _tabPCLTPresent,
@@ -683,7 +683,7 @@ namespace PCLParaphernalia
 
                     grpSymSetMapType.Visibility = Visibility.Hidden;
 
-                    symSetNoTargetPCL   = _defaultSymSetNoSymbol;
+                    symSetNoTargetPCL = _defaultSymSetNoSymbol;
                     symSetNoTargetPCLXL = _defaultSymSetNoSymbol;
                 }
                 else
@@ -692,14 +692,14 @@ namespace PCLParaphernalia
                     {
                         grpSymSet.Visibility = Visibility.Hidden;
 
-                        symSetNoTargetPCL   = _symSetNoUnbound;
+                        symSetNoTargetPCL = _symSetNoUnbound;
                         symSetNoTargetPCLXL = _symSetNoUnicode;
                     }
                     else
                     {
                         grpSymSet.Visibility = Visibility.Visible;
-                    
-                        symSetNoTargetPCL   = _symSetNoTargetPCL;
+
+                        symSetNoTargetPCL = _symSetNoTargetPCL;
                         symSetNoTargetPCLXL = _symSetNoTargetPCLXL;
                     }
 
@@ -707,9 +707,9 @@ namespace PCLParaphernalia
                 }
 
                 symSetIdTargetPCL =
-                    PCLSymbolSets.translateKind1ToId (symSetNoTargetPCL);
+                    PCLSymbolSets.translateKind1ToId(symSetNoTargetPCL);
                 symSetIdTargetPCLXL =
-                   PCLSymbolSets.translateKind1ToId (symSetNoTargetPCLXL);
+                   PCLSymbolSets.translateKind1ToId(symSetNoTargetPCLXL);
 
                 //--------------------------------------------------------//
                 //                                                        //
@@ -759,7 +759,7 @@ namespace PCLParaphernalia
                     usePCLT = false;
                 }
 
-                _ttfHandler.getPCLFontSelectData (ref _styleNoPCL,
+                _ttfHandler.getPCLFontSelectData(ref _styleNoPCL,
                                                   ref _weightNoPCL,
                                                   ref symSetNoPCLT,
                                                   ref styleNoPCLT,
@@ -774,18 +774,18 @@ namespace PCLParaphernalia
 
                 if (usePCLT)
                 {
-                    _fontNamePCLXL = typefacePCLT.ToString ();
+                    _fontNamePCLXL = typefacePCLT.ToString();
 
                     if (!_symSetUnbound)
                     {
                         if (symSetNoPCLT == 0)
                         {
-                            _symSetNoPCL   = symSetNoTargetPCL;
+                            _symSetNoPCL = symSetNoTargetPCL;
                             _symSetNoPCLXL = symSetNoTargetPCLXL;
                         }
                         else
                         {
-                            _symSetNoPCL   = symSetNoPCLT;
+                            _symSetNoPCL = symSetNoPCLT;
                             _symSetNoPCLXL = symSetNoPCLT;
                         }
                     }
@@ -802,7 +802,7 @@ namespace PCLParaphernalia
 
                     if (!_symSetUnbound)
                     {
-                        _symSetNoPCL   = symSetNoTargetPCL;
+                        _symSetNoPCL = symSetNoTargetPCL;
                         _symSetNoPCLXL = symSetNoTargetPCLXL;
                     }
                 }
@@ -853,7 +853,7 @@ namespace PCLParaphernalia
                 {
                     tabPCL.IsSelected = true;
 
-                    if (! _flagFormat16)
+                    if (!_flagFormat16)
                         grpPCLHddrVMetrics.Visibility = Visibility.Hidden;
                 }
                 else
@@ -869,12 +869,12 @@ namespace PCLParaphernalia
 
                 grpLog.Visibility = Visibility.Visible;
 
-                txtPCLSymSetNo.Text   = _symSetNoPCL.ToString ();
-                txtPCLStyleNo.Text    = _styleNoPCL.ToString ();
-                txtPCLWeightNo.Text   = _weightNoPCL.ToString ();
-                txtPCLTypefaceNo.Text = _typefaceNoPCL.ToString ();
+                txtPCLSymSetNo.Text = _symSetNoPCL.ToString();
+                txtPCLStyleNo.Text = _styleNoPCL.ToString();
+                txtPCLWeightNo.Text = _weightNoPCL.ToString();
+                txtPCLTypefaceNo.Text = _typefaceNoPCL.ToString();
 
-                txtPCLXLSymSetNo.Text = _symSetNoPCLXL.ToString ();
+                txtPCLXLSymSetNo.Text = _symSetNoPCLXL.ToString();
             }
         }
 
@@ -891,7 +891,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbPCLCharColl_SelectionChanged (object sender,
+        void cbPCLCharColl_SelectionChanged(object sender,
                                               SelectionChangedEventArgs e)
         {
             cbPCLCharColls.SelectedItem = null;
@@ -907,13 +907,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        void cbPCLCharCollItem_PropertyChanged (object sender,
+        void cbPCLCharCollItem_PropertyChanged(object sender,
                                                  PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsChecked")
             {
                 if (!_flagCharCollCompInhibitPCL)
-                    setPCLCharCollCompArray ();
+                    setPCLCharCollCompArray();
             }
         }
 
@@ -931,7 +931,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbSymSet.HasItems)
             {
-                setSymSetAttributesTarget ();
+                setSymSetAttributesTarget();
             }
         }
 
@@ -944,7 +944,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbTTCName_SelectionChanged (object sender,
+        private void cbTTCName_SelectionChanged(object sender,
                                                 SelectionChangedEventArgs e)
         {
             _indxFontTTC = cbTTCName.SelectedIndex;
@@ -963,8 +963,8 @@ namespace PCLParaphernalia
                                                 SelectionChangedEventArgs e)
         {
             bool allowFontFileSelect;
-            
-            resetFormState ();
+
+            resetFormState();
 
             _fontWithinTTC = false;
 
@@ -1010,21 +1010,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void checkPCLSymSetFile ()
+        private void checkPCLSymSetFile()
         {
             Boolean flagOK = true;
 
             Boolean selected = true;
 
-            UInt16 [] symSetMap = new UInt16 [256];
+            UInt16[] symSetMap = new UInt16[256];
 
-            if (!File.Exists (_symSetUserFile))
+            if (!File.Exists(_symSetUserFile))
             {
                 String filename = _symSetUserFile;
 
                 flagOK = false;
 
-                MessageBox.Show (
+                MessageBox.Show(
                     "File " + _symSetUserFile + " does not exist",
                     "Symbol Set definition file",
                      MessageBoxButton.OK,
@@ -1036,7 +1036,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                selected = selectSymSetFile (ref filename);
+                selected = selectSymSetFile(ref filename);
 
                 if (selected)
                 {
@@ -1053,7 +1053,7 @@ namespace PCLParaphernalia
                 PCLSymSetTypes.eIndex symSetType =
                     PCLSymSetTypes.eIndex.Unknown;
 
-                flagOK = PCLDownloadSymSet.checkSymSetFile (
+                flagOK = PCLDownloadSymSet.checkSymSetFile(
                     _symSetUserFile,
                     ref _symSetNoUserSet,
                     ref firstCode,
@@ -1063,12 +1063,12 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-            //  PCLSymbolSets.setDataUserSet (_symSetNoUserSet, symSetMap); // already done by check...
+                //  PCLSymbolSets.setDataUserSet (_symSetNoUserSet, symSetMap); // already done by check...
             }
             else
             {
                 _symSetNoUserSet = _defaultSymSetNo;
-                PCLSymbolSets.setDataUserSetDefault (_defaultSymSetNo);
+                PCLSymbolSets.setDataUserSetDefault(_defaultSymSetNo);
 
                 txtSymSetFile.Text = "***** Invalid symbol set file *****";
             }
@@ -1139,7 +1139,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLVMetrics_Checked (object sender,
+        private void chkPCLVMetrics_Checked(object sender,
                                               RoutedEventArgs e)
         {
             _flagVMetricsPCL = true;
@@ -1154,7 +1154,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLVMetrics_Unchecked (object sender,
+        private void chkPCLVMetrics_Unchecked(object sender,
                                                 RoutedEventArgs e)
         {
             _flagVMetricsPCL = false;
@@ -1169,7 +1169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLVMetrics_Checked (object sender,
+        private void chkPCLXLVMetrics_Checked(object sender,
                                               RoutedEventArgs e)
         {
             _flagVMetricsPCLXL = true;
@@ -1184,7 +1184,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkPCLXLVMetrics_Unchecked (object sender,
+        private void chkPCLXLVMetrics_Unchecked(object sender,
                                                 RoutedEventArgs e)
         {
             _flagVMetricsPCLXL = false;
@@ -1224,21 +1224,21 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            initialiseFontList ();
+            initialiseFontList();
 
-            initialiseSymSetList ();
+            initialiseSymSetList();
 
-            initialiseLogGridDonor ();
-            initialiseLogGridMapping ();
-            initialiseLogGridTarget ();
-            initialiseLogGridChars ();
+            initialiseLogGridDonor();
+            initialiseLogGridMapping();
+            initialiseLogGridTarget();
+            initialiseLogGridChars();
+
+            //----------------------------------------------------------------//
+
+            initialisePCLCharCollCompLists();
 
             //----------------------------------------------------------------//
 
-            initialisePCLCharCollCompLists ();
-
-            //----------------------------------------------------------------//
-            
             btnPCLGenerate.Content = "Generate soft font file";
 
             //----------------------------------------------------------------//
@@ -1250,7 +1250,7 @@ namespace PCLParaphernalia
             metricsLoad();
 
             cbTTFName.SelectedIndex = _indxFont;
-            cbSymSet.SelectedIndex  = _indxSymSetSubset;
+            cbSymSet.SelectedIndex = _indxSymSetSubset;
 
             txtSymSetFile.Text = _symSetUserFile;
 
@@ -1275,9 +1275,9 @@ namespace PCLParaphernalia
                 grpPCLCharComp.Visibility = Visibility.Hidden;
                 grpSymSetMapType.Visibility = Visibility.Hidden;
 
-                checkPCLSymSetFile ();
+                checkPCLSymSetFile();
 
-                setSymSetAttributesTarget ();
+                setSymSetAttributesTarget();
             }
             else
             {
@@ -1287,7 +1287,7 @@ namespace PCLParaphernalia
                 grpSymSetMapType.Visibility = Visibility.Visible;
             }
 
-            setSymSetAttributesTarget ();
+            setSymSetAttributesTarget();
 
             //----------------------------------------------------------------//
 
@@ -1327,7 +1327,7 @@ namespace PCLParaphernalia
 
                 _charCollCompPCL = _charCollCompPCLSpecific;
 
-                populatePCLCharCollComp (_charCollCompPCL);
+                populatePCLCharCollComp(_charCollCompPCL);
             }
             else
             {
@@ -1395,16 +1395,16 @@ namespace PCLParaphernalia
             try
             {
                 _fontsFolder =
-                    Environment.GetFolderPath (Environment.SpecialFolder.Fonts);
+                    Environment.GetFolderPath(Environment.SpecialFolder.Fonts);
 
                 RegistryKey keyMain = Registry.LocalMachine;
 
-                RegistryKey key = keyMain.OpenSubKey (_fontRegistryKey);
+                RegistryKey key = keyMain.OpenSubKey(_fontRegistryKey);
 
                 _ctTTFFonts = 0;
 
                 SortedList<String, String> fontList =
-                    new SortedList<String, String> ();
+                    new SortedList<String, String>();
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1415,24 +1415,24 @@ namespace PCLParaphernalia
                 // not  .FON    etc.                                          //
                 //                                                            //
                 //------------------------------------------------------------//
-                
-                foreach (string valueName in key.GetValueNames ())
+
+                foreach (string valueName in key.GetValueNames())
                 {
-                    String value = key.GetValue (valueName).ToString ();
+                    String value = key.GetValue(valueName).ToString();
 
-                    if ((value.EndsWith (".ttf")) || (value.EndsWith (".TTF"))
+                    if ((value.EndsWith(".ttf")) || (value.EndsWith(".TTF"))
                                                   ||
-                        (value.EndsWith (".otf")) || (value.EndsWith (".OTF")))
+                        (value.EndsWith(".otf")) || (value.EndsWith(".OTF")))
                     {
                         _ctTTFFonts++;
 
-                        fontList.Add (valueName, value);
+                        fontList.Add(valueName, value);
                     }
-                    else if ((value.EndsWith (".ttc")) || (value.EndsWith (".TTC")))
+                    else if ((value.EndsWith(".ttc")) || (value.EndsWith(".TTC")))
                     {
                         _ctTTFFonts++;
 
-                        fontList.Add (valueName, value);
+                        fontList.Add(valueName, value);
                     }
                 }
 
@@ -1441,9 +1441,9 @@ namespace PCLParaphernalia
 
                 Int32 indexFontFiles = 1;
 
-                cbTTFName.Items.Clear ();
+                cbTTFName.Items.Clear();
 
-                cbTTFName.Items.Add ("< Choose font file >");
+                cbTTFName.Items.Add("< Choose font file >");
 
                 _fontFiles[0] =
                     "***** type or browse for required font file name *****";
@@ -1461,7 +1461,7 @@ namespace PCLParaphernalia
 
                 foreach (string valueName in fontList.Keys)
                 {
-                    String value = key.GetValue (valueName).ToString ();
+                    String value = key.GetValue(valueName).ToString();
                     String name;
 
                     Int32 len = valueName.Length;
@@ -1469,19 +1469,19 @@ namespace PCLParaphernalia
 
                     if (valueName.EndsWith(ttfDesc))
                     {
-                        if (valueName.EndsWith (" " + ttfDesc))
+                        if (valueName.EndsWith(" " + ttfDesc))
                             indx = len - ttfDescLen - 1;
                         else
                             indx = len - ttfDescLen;
 
-                        name = valueName.Substring (0, indx);
+                        name = valueName.Substring(0, indx);
                     }
                     else
                     {
                         name = valueName;
                     }
 
-                    cbTTFName.Items.Add (name);
+                    cbTTFName.Items.Add(name);
 
                     _fontNames[indexFontFiles] = name;
                     _fontFiles[indexFontFiles] = value;
@@ -1489,12 +1489,12 @@ namespace PCLParaphernalia
                     indexFontFiles++;
                 }
 
-                key.Close ();
-                keyMain.Close ();
+                key.Close();
+                keyMain.Close();
             }
             catch
             {
-                MessageBox.Show ("Unable to retrieve font file data from" +
+                MessageBox.Show("Unable to retrieve font file data from" +
                                  " registry",
                                  "Soft Font Generate",
                                   MessageBoxButton.OK,
@@ -1605,7 +1605,7 @@ namespace PCLParaphernalia
 
                 cbTTFTypeface.SelectedIndex = 0;
             }
-            */ 
+            */
         }
 
         //--------------------------------------------------------------------//
@@ -1619,24 +1619,24 @@ namespace PCLParaphernalia
 
         private void initialiseLogGridChars()
         {
-            _dataSetLogChars = new DataSet ();
-            _tableLogChars   = new DataTable ("Log Chars");
+            _dataSetLogChars = new DataSet();
+            _tableLogChars = new DataTable("Log Chars");
 
-            _tableLogChars.Columns.Add ("DecCode", typeof (Int32));
-            _tableLogChars.Columns.Add ("HexCode", typeof (String));
-            _tableLogChars.Columns.Add ("Unicode", typeof (String));
-            _tableLogChars.Columns.Add ("Glyph", typeof (Int32));
-            _tableLogChars.Columns.Add ("Abs", typeof (Boolean));
-            _tableLogChars.Columns.Add ("Prev", typeof (Boolean));
-            _tableLogChars.Columns.Add ("Comp", typeof (Boolean));
-            _tableLogChars.Columns.Add ("Depth", typeof (Int32));
-            _tableLogChars.Columns.Add ("Width", typeof (Int32));
-            _tableLogChars.Columns.Add ("LSB", typeof (Int32));
-            _tableLogChars.Columns.Add ("Height", typeof (Int32));
-            _tableLogChars.Columns.Add ("TSB", typeof (Int32));
-            _tableLogChars.Columns.Add ("Length", typeof (Int32));
+            _tableLogChars.Columns.Add("DecCode", typeof(Int32));
+            _tableLogChars.Columns.Add("HexCode", typeof(String));
+            _tableLogChars.Columns.Add("Unicode", typeof(String));
+            _tableLogChars.Columns.Add("Glyph", typeof(Int32));
+            _tableLogChars.Columns.Add("Abs", typeof(Boolean));
+            _tableLogChars.Columns.Add("Prev", typeof(Boolean));
+            _tableLogChars.Columns.Add("Comp", typeof(Boolean));
+            _tableLogChars.Columns.Add("Depth", typeof(Int32));
+            _tableLogChars.Columns.Add("Width", typeof(Int32));
+            _tableLogChars.Columns.Add("LSB", typeof(Int32));
+            _tableLogChars.Columns.Add("Height", typeof(Int32));
+            _tableLogChars.Columns.Add("TSB", typeof(Int32));
+            _tableLogChars.Columns.Add("Length", typeof(Int32));
 
-            _dataSetLogChars.Tables.Add (_tableLogChars);
+            _dataSetLogChars.Tables.Add(_tableLogChars);
 
             dgLogChars.DataContext = _tableLogChars;  // bind to grid
         }
@@ -1652,13 +1652,13 @@ namespace PCLParaphernalia
 
         private void initialiseLogGridDonor()
         {
-            _dataSetLogDonor = new DataSet ();
-            _tableLogDonor   = new DataTable ("Log Donor");
+            _dataSetLogDonor = new DataSet();
+            _tableLogDonor = new DataTable("Log Donor");
 
-            _tableLogDonor.Columns.Add ("Name", typeof (String));
-            _tableLogDonor.Columns.Add ("Value", typeof (String));
+            _tableLogDonor.Columns.Add("Name", typeof(String));
+            _tableLogDonor.Columns.Add("Value", typeof(String));
 
-            _dataSetLogDonor.Tables.Add (_tableLogDonor);
+            _dataSetLogDonor.Tables.Add(_tableLogDonor);
 
             dgLogDonor.DataContext = _tableLogDonor;  // bind to grid
         }
@@ -1674,13 +1674,13 @@ namespace PCLParaphernalia
 
         private void initialiseLogGridMapping()
         {
-            _dataSetLogMapping = new DataSet ();
-            _tableLogMapping   = new DataTable ("Log Mapping");
+            _dataSetLogMapping = new DataSet();
+            _tableLogMapping = new DataTable("Log Mapping");
 
-            _tableLogMapping.Columns.Add ("Name", typeof (String));
-            _tableLogMapping.Columns.Add ("Value", typeof (String));
+            _tableLogMapping.Columns.Add("Name", typeof(String));
+            _tableLogMapping.Columns.Add("Value", typeof(String));
 
-            _dataSetLogMapping.Tables.Add (_tableLogMapping);
+            _dataSetLogMapping.Tables.Add(_tableLogMapping);
 
             dgLogMapping.DataContext = _tableLogMapping;  // bind to grid
         }
@@ -1696,13 +1696,13 @@ namespace PCLParaphernalia
 
         private void initialiseLogGridTarget()
         {
-            _dataSetLogTarget = new DataSet ();
-            _tableLogTarget   = new DataTable ("Log Target");
+            _dataSetLogTarget = new DataSet();
+            _tableLogTarget = new DataTable("Log Target");
 
-            _tableLogTarget.Columns.Add ("Name", typeof (String));
-            _tableLogTarget.Columns.Add ("Value", typeof (String));
+            _tableLogTarget.Columns.Add("Name", typeof(String));
+            _tableLogTarget.Columns.Add("Value", typeof(String));
 
-            _dataSetLogTarget.Tables.Add (_tableLogTarget);
+            _dataSetLogTarget.Tables.Add(_tableLogTarget);
 
             dgLogTarget.DataContext = _tableLogTarget;  // bind to grid
         }
@@ -1716,7 +1716,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialisePCLCharCollCompLists ()
+        private void initialisePCLCharCollCompLists()
         {
             Int32 bitNo;
 
@@ -1732,9 +1732,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLCharCollItems items = new PCLCharCollItems ();
+            PCLCharCollItems items = new PCLCharCollItems();
 
-            _charCollCompListUnicode = items.loadCompListUnicode ();
+            _charCollCompListUnicode = items.loadCompListUnicode();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1750,7 +1750,7 @@ namespace PCLParaphernalia
 
                 if (bitType != PCLCharCollections.eBitType.Collection)
                 {
-                    bitSet = ! item.IsChecked;
+                    bitSet = !item.IsChecked;
 
                     if (bitSet)
                     {
@@ -1773,7 +1773,7 @@ namespace PCLParaphernalia
             foreach (PCLCharCollItem item in _charCollCompListUnicode)
             {
                 item.PropertyChanged +=
-                    new PropertyChangedEventHandler (
+                    new PropertyChangedEventHandler(
                         cbPCLCharCollItem_PropertyChanged);
             }
         }
@@ -1793,19 +1793,19 @@ namespace PCLParaphernalia
 
             cbSymSet.Items.Clear();
 
-            _ctMappedSymSets = PCLSymbolSets.getCountMapped ();
+            _ctMappedSymSets = PCLSymbolSets.getCountMapped();
 
             _subsetSymSets = new Int32[_ctMappedSymSets];
 
-            PCLSymbolSets.getIndicesMapped (0, ref _subsetSymSets);
+            PCLSymbolSets.getIndicesMapped(0, ref _subsetSymSets);
 
             for (Int32 i = 0; i < _ctMappedSymSets; i++)
             {
-                index = _subsetSymSets[i];    
-                cbSymSet.Items.Add (PCLSymbolSets.getName(index));
+                index = _subsetSymSets[i];
+                cbSymSet.Items.Add(PCLSymbolSets.getName(index));
             }
 
-            _indxSymSetDefault = PCLSymbolSets.getIndexForId (_defaultSymSetNo);
+            _indxSymSetDefault = PCLSymbolSets.getIndexForId(_defaultSymSetNo);
         }
 
         //--------------------------------------------------------------------//
@@ -1817,7 +1817,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void logFontSelectDataPCL (Boolean monoSpaced)
+        private void logFontSelectDataPCL(Boolean monoSpaced)
         {
             String baseName = "";
 
@@ -1899,7 +1899,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void logFontSelectDataPCLXL ()
+        private void logFontSelectDataPCLXL()
         {
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
@@ -1940,7 +1940,7 @@ namespace PCLParaphernalia
             ToolSoftFontGenPersist.loadDataCommon(ref indxTemp,
                                                   ref _flagLogVerbose);
 
-            if (indxTemp == (Int32) ToolCommonData.ePrintLang.PCLXL)
+            if (indxTemp == (Int32)ToolCommonData.ePrintLang.PCLXL)
                 _crntPDL = ToolCommonData.ePrintLang.PCLXL;
             else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
@@ -1957,7 +1957,7 @@ namespace PCLParaphernalia
             if ((_indxFont < 0) || (_indxFont >= _ctTTFFonts))
                 _indxFont = 0;
 
-            ToolSoftFontGenPersist.loadDataMapping (
+            ToolSoftFontGenPersist.loadDataMapping(
                 ref _indxSymSetSubset,
                 ref _symSetMapPCL,
                 ref _symSetUnbound,
@@ -1968,7 +1968,7 @@ namespace PCLParaphernalia
                 (_indxSymSetSubset >= _ctMappedSymSets))
                 _indxSymSetSubset = 0;
 
-            ToolSoftFontGenPersist.loadDataPCL (
+            ToolSoftFontGenPersist.loadDataPCL(
                 ref _fontFolderPCL,
                 ref _flagFormat16,
                 ref _flagCharCollCompSpecificPCL,
@@ -1976,7 +1976,7 @@ namespace PCLParaphernalia
                 ref _flagSegGTLastPCL,
                 ref _charCollCompPCLSpecific);
 
-            ToolSoftFontGenPersist.loadDataPCLXL (
+            ToolSoftFontGenPersist.loadDataPCLXL(
                 ref _fontFolderPCLXL,
                 ref _flagVMetricsPCLXL);
         }
@@ -1992,27 +1992,27 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolSoftFontGenPersist.saveDataCommon ((Int32) _crntPDL,
+            ToolSoftFontGenPersist.saveDataCommon((Int32)_crntPDL,
                                                    _flagLogVerbose);
 
-            ToolSoftFontGenPersist.saveDataTTF (_indxFont,
+            ToolSoftFontGenPersist.saveDataTTF(_indxFont,
                                                  _flagUsePCLT,
                                                 _fontFileAdhocTTF);
 
-            ToolSoftFontGenPersist.saveDataMapping (_indxSymSetSubset,
+            ToolSoftFontGenPersist.saveDataMapping(_indxSymSetSubset,
                                                     _symSetMapPCL,
                                                     _symSetUnbound,
                                                     _symSetUserSet,
                                                     _symSetUserFile);
 
-            ToolSoftFontGenPersist.saveDataPCL (_fontFolderPCL,
+            ToolSoftFontGenPersist.saveDataPCL(_fontFolderPCL,
                                                  _flagFormat16,
                                                  _flagCharCollCompSpecificPCL,
                                                  _flagVMetricsPCL,
                                                  _flagSegGTLastPCL,
                                                  _charCollCompPCLSpecific);
 
-            ToolSoftFontGenPersist.saveDataPCLXL (_fontFolderPCLXL,
+            ToolSoftFontGenPersist.saveDataPCLXL(_fontFolderPCLXL,
                                                  _flagVMetricsPCLXL);
         }
 
@@ -2039,7 +2039,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void populatePCLCharCollComp (UInt64 collBits)
+        private void populatePCLCharCollComp(UInt64 collBits)
         {
             UInt64 bitVal;
 
@@ -2059,7 +2059,7 @@ namespace PCLParaphernalia
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
-                //  if ((_charCollCompPCL & bitVal) == 0)
+                    //  if ((_charCollCompPCL & bitVal) == 0)
                     if ((collBits & bitVal) == 0)
                         item.IsChecked = true;
                     else
@@ -2074,8 +2074,8 @@ namespace PCLParaphernalia
                 }
             }
 
-      //    setPCLCharCollCompValue (_charCollCompPCL);
-            setPCLCharCollCompValue (collBits);
+            //    setPCLCharCollCompValue (_charCollCompPCL);
+            setPCLCharCollCompValue(collBits);
 
             _flagCharCollCompInhibitPCL = false;
         }
@@ -2089,12 +2089,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbMapSymSetPCL_Click (object sender,
+        private void rbMapSymSetPCL_Click(object sender,
                                            RoutedEventArgs e)
         {
             _symSetMapPCL = true;
 
-        //    donorSymSetChange ();
+            //    donorSymSetChange ();
         }
 
         //--------------------------------------------------------------------//
@@ -2106,12 +2106,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbMapSymSetStd_Click (object sender,
+        private void rbMapSymSetStd_Click(object sender,
                                            RoutedEventArgs e)
         {
             _symSetMapPCL = false;
 
-        //    donorSymSetChange ();
+            //    donorSymSetChange ();
         }
 
         //--------------------------------------------------------------------//
@@ -2124,7 +2124,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLCharCompAll_Click (object sender,
+        private void rbPCLCharCompAll_Click(object sender,
                                               RoutedEventArgs e)
         {
             _flagCharCollCompSpecificPCL = false;
@@ -2134,7 +2134,7 @@ namespace PCLParaphernalia
 
             _charCollCompPCL = _charCollCompPCLAll;
 
-            setPCLCharCollCompValue (_charCollCompPCL);
+            setPCLCharCollCompValue(_charCollCompPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -2147,7 +2147,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbPCLCharCompSpecific_Click (object sender,
+        private void rbPCLCharCompSpecific_Click(object sender,
                                                    RoutedEventArgs e)
         {
             _flagCharCollCompSpecificPCL = true;
@@ -2157,9 +2157,9 @@ namespace PCLParaphernalia
 
             _charCollCompPCL = _charCollCompPCLSpecific;
 
-            populatePCLCharCollComp (_charCollCompPCL);
+            populatePCLCharCollComp(_charCollCompPCL);
 
-            setPCLCharCollCompValue (_charCollCompPCL);
+            setPCLCharCollCompValue(_charCollCompPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -2232,12 +2232,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetBound_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetBound_Click(object sender, RoutedEventArgs e)
         {
             _symSetUnbound = false;
             _symSetUserSet = false;
 
-            setSymSetAttributesTarget ();
+            setSymSetAttributesTarget();
 
             grpSymSet.Visibility = Visibility.Visible;
             cbSymSet.Visibility = Visibility.Visible;
@@ -2258,12 +2258,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetUnbound_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetUnbound_Click(object sender, RoutedEventArgs e)
         {
             _symSetUnbound = true;
             _symSetUserSet = false;
 
-            setSymSetAttributesTarget ();
+            setSymSetAttributesTarget();
 
             grpSymSet.Visibility = Visibility.Hidden;
 
@@ -2283,14 +2283,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void rbSymSetUserSet_Click (object sender, RoutedEventArgs e)
+        private void rbSymSetUserSet_Click(object sender, RoutedEventArgs e)
         {
             _symSetUnbound = false;
             _symSetUserSet = true;
 
-            checkPCLSymSetFile ();
+            checkPCLSymSetFile();
 
-            setSymSetAttributesTarget ();
+            setSymSetAttributesTarget();
 
             grpSymSet.Visibility = Visibility.Visible;
             cbSymSet.Visibility = Visibility.Hidden;
@@ -2311,7 +2311,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void resetFormState ()
+        private void resetFormState()
         {
             grpPCLTTreatment.Visibility = Visibility.Visible;
             lbPCLTNotPresent.Visibility = Visibility.Hidden;
@@ -2382,7 +2382,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLFontFile (ref String fontFilename)
+        private Boolean selectPCLFontFile(ref String fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -2406,7 +2406,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPCLXLFontFile (ref String fontFilename)
+        private Boolean selectPCLXLFontFile(ref String fontFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
 
@@ -2421,7 +2421,6 @@ namespace PCLParaphernalia
             return dialogResult == true;
         }
 
-
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // s e l e c t S y m S e t F i l e                                    //
@@ -2431,7 +2430,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectSymSetFile (ref String symSetFile)
+        private Boolean selectSymSetFile(ref String symSetFile)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFile);
 
@@ -2487,7 +2486,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPCLCharCollCompArray ()
+        private void setPCLCharCollCompArray()
         {
             UInt64 targetCharCollComp = 0,
                    bitVal;
@@ -2500,7 +2499,7 @@ namespace PCLParaphernalia
                 {
                     bitNo = item.BitNo;
 
-                    if (! item.IsChecked)
+                    if (!item.IsChecked)
                     {
                         bitVal = ((UInt64)1) << bitNo;
                         targetCharCollComp = targetCharCollComp | bitVal;
@@ -2508,7 +2507,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            setPCLCharCollCompValue (targetCharCollComp);
+            setPCLCharCollCompValue(targetCharCollComp);
 
             //----------------------------------------------------------------//
 
@@ -2524,9 +2523,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPCLCharCollCompValue (UInt64 arrayVal)
+        private void setPCLCharCollCompValue(UInt64 arrayVal)
         {
-            tblkPCLCharColls.Text = "0x" + arrayVal.ToString ("x16");
+            tblkPCLCharColls.Text = "0x" + arrayVal.ToString("x16");
         }
 
         //--------------------------------------------------------------------//
@@ -2542,12 +2541,12 @@ namespace PCLParaphernalia
         {
             Int32 indx;
 
-            indx = _fontFilenamePCL.LastIndexOf ("\\");
+            indx = _fontFilenamePCL.LastIndexOf("\\");
 
             if (indx == 0)
                 _fontFolderPCL = "";
             else
-                _fontFolderPCL = _fontFilenamePCL.Substring (0, indx);
+                _fontFolderPCL = _fontFilenamePCL.Substring(0, indx);
         }
 
         //--------------------------------------------------------------------//
@@ -2563,12 +2562,12 @@ namespace PCLParaphernalia
         {
             Int32 indx;
 
-            indx = _fontFilenamePCLXL.LastIndexOf ("\\");
+            indx = _fontFilenamePCLXL.LastIndexOf("\\");
 
             if (indx == 0)
                 _fontFolderPCLXL = "";
             else
-                _fontFolderPCLXL = _fontFilenamePCLXL.Substring (0, indx);
+                _fontFolderPCLXL = _fontFilenamePCLXL.Substring(0, indx);
         }
 
         //--------------------------------------------------------------------//
@@ -2580,11 +2579,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setSymSetAttributesTarget ()
+        private void setSymSetAttributesTarget()
         {
             String idNum = "",
                    idAlpha = "";
-            
+
             if (_symSetUnbound)
             {
                 //--------------------------------------------------------//
@@ -2600,21 +2599,21 @@ namespace PCLParaphernalia
                 grpSymSetFile.Visibility = Visibility.Hidden;
                 grpSymSetMapType.Visibility = Visibility.Hidden;
 
-                _symSetNoTargetPCL   = _symSetNoUnbound;
+                _symSetNoTargetPCL = _symSetNoUnbound;
                 _symSetNoTargetPCLXL = _symSetNoUnicode;
 
-                txtPCLSymSetNo.Text = _symSetNoUnbound.ToString ();
+                txtPCLSymSetNo.Text = _symSetNoUnbound.ToString();
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUnbound,
+                PCLSymbolSets.translateKind1ToId(_symSetNoUnbound,
                                           ref idNum,
                                           ref idAlpha);
 
                 txtPCLSymSetIdNum.Text = idNum;
                 txtPCLSymSetIdAlpha.Text = idAlpha;
 
-                txtPCLXLSymSetNo.Text = _symSetNoUnicode.ToString ();
+                txtPCLXLSymSetNo.Text = _symSetNoUnicode.ToString();
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUnicode,
+                PCLSymbolSets.translateKind1ToId(_symSetNoUnicode,
                                           ref idNum,
                                           ref idAlpha);
 
@@ -2639,29 +2638,29 @@ namespace PCLParaphernalia
                 grpSymSetMapType.Visibility = Visibility.Hidden;
 
                 _indxSymSetTarget = PCLSymbolSets.IndexUserSet;
-                _symSetNoTargetPCL   = _symSetNoUserSet;
+                _symSetNoTargetPCL = _symSetNoUserSet;
                 _symSetNoTargetPCLXL = _symSetNoUserSet;
 
-                PCLSymbolSets.translateKind1ToId (_symSetNoUserSet,
+                PCLSymbolSets.translateKind1ToId(_symSetNoUserSet,
                                                   ref idNum,
                                                   ref idAlpha);
 
-                txtSymSetNo.Text = _symSetNoUserSet.ToString ();
+                txtSymSetNo.Text = _symSetNoUserSet.ToString();
 
                 txtSymSetIdNum.Text = idNum;
                 txtSymSetIdAlpha.Text = idAlpha;
 
-                _symSetType = PCLSymbolSets.getType (_indxSymSetTarget);
+                _symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort ((Int32) _symSetType);
+                    PCLSymSetTypes.getDescShort((Int32)_symSetType);
 
-                txtPCLSymSetNo.Text = _symSetNoUserSet.ToString ();
+                txtPCLSymSetNo.Text = _symSetNoUserSet.ToString();
 
                 txtPCLSymSetIdNum.Text = idNum;
                 txtPCLSymSetIdAlpha.Text = idAlpha;
 
-                txtPCLXLSymSetNo.Text = _symSetNoUserSet.ToString (); // or something else ?? //
+                txtPCLXLSymSetNo.Text = _symSetNoUserSet.ToString(); // or something else ?? //
 
                 txtPCLXLSymSetIdNum.Text = idNum;
                 txtPCLXLSymSetIdAlpha.Text = idAlpha;
@@ -2672,13 +2671,13 @@ namespace PCLParaphernalia
 
                 _indxSymSetSubset = cbSymSet.SelectedIndex;
 
-                indxSymSet = _subsetSymSets [_indxSymSetSubset];
+                indxSymSet = _subsetSymSets[_indxSymSetSubset];
 
-                _symSetGroup = PCLSymbolSets.getGroup (indxSymSet);
-                _symSetType = PCLSymbolSets.getType (indxSymSet);
+                _symSetGroup = PCLSymbolSets.getGroup(indxSymSet);
+                _symSetType = PCLSymbolSets.getType(indxSymSet);
 
-                _flagSymSetNullMapPCL = PCLSymbolSets.nullMapPCL (indxSymSet);
-                _flagSymSetNullMapStd = PCLSymbolSets.nullMapStd (indxSymSet);
+                _flagSymSetNullMapPCL = PCLSymbolSets.nullMapPCL(indxSymSet);
+                _flagSymSetNullMapStd = PCLSymbolSets.nullMapStd(indxSymSet);
 
                 if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
                     (_symSetGroup == PCLSymbolSets.eSymSetGroup.NonStd))
@@ -2702,22 +2701,22 @@ namespace PCLParaphernalia
                     txtSymSetIdAlpha.IsEnabled = false;
 
                     //--------------------------------------------------------//
-                    
+
                     txtSymSetType.Text =
-                        PCLSymSetTypes.getDescShort ((Int32) _symSetType);
+                        PCLSymSetTypes.getDescShort((Int32)_symSetType);
 
                     _indxSymSetTarget = indxSymSet;
-                    _symSetNoTargetPCL = PCLSymbolSets.getKind1 (indxSymSet);
+                    _symSetNoTargetPCL = PCLSymbolSets.getKind1(indxSymSet);
                     _symSetNoTargetPCLXL = _symSetNoTargetPCL;
 
-                    txtSymSetNo.Text = _symSetNoTargetPCL.ToString ();
+                    txtSymSetNo.Text = _symSetNoTargetPCL.ToString();
 
-                    txtPCLSymSetNo.Text = _symSetNoTargetPCL.ToString ();
-                    txtPCLXLSymSetNo.Text = _symSetNoTargetPCLXL.ToString ();
+                    txtPCLSymSetNo.Text = _symSetNoTargetPCL.ToString();
+                    txtPCLXLSymSetNo.Text = _symSetNoTargetPCLXL.ToString();
 
                     //--------------------------------------------------------//
 
-                    PCLSymbolSets.translateKind1ToId (_symSetNoTargetPCL,
+                    PCLSymbolSets.translateKind1ToId(_symSetNoTargetPCL,
                                               ref idNum,
                                               ref idAlpha);
 
@@ -2767,9 +2766,9 @@ namespace PCLParaphernalia
         private void tabDetails_SelectionChanged(object sender,
                                                  SelectionChangedEventArgs e)
         {
-            if (tabDetails.SelectedItem.Equals (tabPCLXL))
+            if (tabDetails.SelectedItem.Equals(tabPCLXL))
                 _crntPDL = ToolCommonData.ePrintLang.PCLXL;
-            else 
+            else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
         }
 
@@ -2790,7 +2789,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void translateStyleNo (UInt16 style,
+        private void translateStyleNo(UInt16 style,
                                        Boolean showSubIds,
                                        ref String posture,
                                        ref String width,
@@ -2811,7 +2810,7 @@ namespace PCLParaphernalia
             if (showSubIds)
                 subIdStructure = subId.ToString() + ": ";
             else
-                subIdStructure = ""; 
+                subIdStructure = "";
 
             switch (index)
             {
@@ -2908,7 +2907,7 @@ namespace PCLParaphernalia
 
             switch (index)
             {
-                case (Byte) PCLFonts.eStyleWidth.Normal:
+                case (Byte)PCLFonts.eStyleWidth.Normal:
                     width = subIdWidth + "Normal";
                     break;
 
@@ -2989,7 +2988,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String translateWeightNo (SByte   weight,
+        private String translateWeightNo(SByte weight,
                                           Boolean showSubIds)
         {
             Int32 subId;
@@ -3091,7 +3090,7 @@ namespace PCLParaphernalia
         {
             _fontFilenamePCL = txtPCLFontFile.Text;
 
-            setPCLFontFileAttributes ();
+            setPCLFontFileAttributes();
         }
 
         //--------------------------------------------------------------------//
@@ -3103,14 +3102,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLStyleNo_LostFocus (object sender,
+        private void txtPCLStyleNo_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
             String posture = "",
                    width = "",
                    structure = "";
 
-            if (validatePCLStyleNo (true, ref _styleNoPCL))
+            if (validatePCLStyleNo(true, ref _styleNoPCL))
             {
                 translateStyleNo(_styleNoPCL,
                                   false,
@@ -3119,8 +3118,8 @@ namespace PCLParaphernalia
                                   ref structure);
             }
 
-            txtPCLStylePosture.Text   = posture;
-            txtPCLStyleWidth.Text     = width;
+            txtPCLStylePosture.Text = posture;
+            txtPCLStyleWidth.Text = width;
             txtPCLStyleStructure.Text = structure;
         }
 
@@ -3133,7 +3132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLStyleNo_TextChanged (object sender,
+        private void txtPCLStyleNo_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
             String posture = "",
@@ -3142,15 +3141,15 @@ namespace PCLParaphernalia
 
             if (validatePCLStyleNo(false, ref _styleNoPCL))
             {
-                translateStyleNo (_styleNoPCL,
+                translateStyleNo(_styleNoPCL,
                                   false,
                                   ref posture,
                                   ref width,
                                   ref structure);
             }
 
-            txtPCLStylePosture.Text   = posture;
-            txtPCLStyleWidth.Text     = width;
+            txtPCLStylePosture.Text = posture;
+            txtPCLStyleWidth.Text = width;
             txtPCLStyleStructure.Text = structure;
         }
 
@@ -3167,25 +3166,25 @@ namespace PCLParaphernalia
                                                RoutedEventArgs e)
         {
             String idAlpha = "",
-                   idNum   = "";
+                   idNum = "";
 
             String name = "";
 
-            if (validatePCLSymSetNo (true, ref _symSetNoPCL))
+            if (validatePCLSymSetNo(true, ref _symSetNoPCL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId (_symSetNoPCL,
+                    PCLSymbolSets.translateKind1ToId(_symSetNoPCL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId (_symSetNoPCL,
+                    PCLSymbolSets.getNameForId(_symSetNoPCL,
                                                 ref name);
                 }
             }
 
             txtPCLSymSetIdNum.Text = idNum;
             txtPCLSymSetIdAlpha.Text = idAlpha;
-            txtPCLSymSetName.Text    = name.ToString();
+            txtPCLSymSetName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3205,19 +3204,19 @@ namespace PCLParaphernalia
 
             String name = "";
 
-            if (validatePCLSymSetNo (false, ref _symSetNoPCL))
+            if (validatePCLSymSetNo(false, ref _symSetNoPCL))
             {
-                PCLSymbolSets.translateKind1ToId (_symSetNoPCL,
+                PCLSymbolSets.translateKind1ToId(_symSetNoPCL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId (_symSetNoPCL,
+                PCLSymbolSets.getNameForId(_symSetNoPCL,
                                             ref name);
             }
 
-            txtPCLSymSetIdNum.Text   = idNum;
+            txtPCLSymSetIdNum.Text = idNum;
             txtPCLSymSetIdAlpha.Text = idAlpha;
-            txtPCLSymSetName.Text    = name.ToString();
+            txtPCLSymSetName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3232,24 +3231,24 @@ namespace PCLParaphernalia
         private void txtPCLTypefaceNo_LostFocus(object sender,
                                                  RoutedEventArgs e)
         {
-            UInt16 vendor   = 0,
+            UInt16 vendor = 0,
                    basecode = 0;
 
             String name = "";
 
-            if (validatePCLTypefaceNo (true, ref _typefaceNoPCL))
+            if (validatePCLTypefaceNo(true, ref _typefaceNoPCL))
             {
-                PCLFonts.translateTypeface (_typefaceNoPCL,
+                PCLFonts.translateTypeface(_typefaceNoPCL,
                                             ref vendor,
                                             ref basecode);
 
-                PCLFonts.getNameForIdPCL (_typefaceNoPCL,
+                PCLFonts.getNameForIdPCL(_typefaceNoPCL,
                                           ref name);
             }
 
             txtPCLTypefaceVendor.Text = vendor.ToString();
-            txtPCLTypefaceBase.Text   = basecode.ToString();
-            txtPCLTypefaceName.Text   = name.ToString();
+            txtPCLTypefaceBase.Text = basecode.ToString();
+            txtPCLTypefaceName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3266,19 +3265,19 @@ namespace PCLParaphernalia
         {
             String name = "";
 
-            if (validatePCLTypefaceNo (false, ref _typefaceNoPCL))
+            if (validatePCLTypefaceNo(false, ref _typefaceNoPCL))
             {
-                PCLFonts.translateTypeface (_typefaceNoPCL,
+                PCLFonts.translateTypeface(_typefaceNoPCL,
                                             ref _typefaceVendorPCL,
                                             ref _typefaceBasecodePCL);
 
-                PCLFonts.getNameForIdPCL (_typefaceNoPCL,
+                PCLFonts.getNameForIdPCL(_typefaceNoPCL,
                                           ref name);
             }
 
-            txtPCLTypefaceVendor.Text = _typefaceVendorPCL.ToString ();
-            txtPCLTypefaceBase.Text   = _typefaceBasecodePCL.ToString ();
-            txtPCLTypefaceName.Text   = name.ToString();
+            txtPCLTypefaceVendor.Text = _typefaceVendorPCL.ToString();
+            txtPCLTypefaceBase.Text = _typefaceBasecodePCL.ToString();
+            txtPCLTypefaceName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3290,14 +3289,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLWeightNo_LostFocus (object sender,
+        private void txtPCLWeightNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
             String weight = "";
 
             if (validatePCLWeightNo(true, ref _weightNoPCL))
             {
-                weight = translateWeightNo (_weightNoPCL,
+                weight = translateWeightNo(_weightNoPCL,
                                             false);
             }
 
@@ -3313,14 +3312,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtPCLWeightNo_TextChanged (object sender,
+        private void txtPCLWeightNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
             String weight = "";
 
             if (validatePCLWeightNo(false, ref _weightNoPCL))
             {
-                weight = translateWeightNo (_weightNoPCL,
+                weight = translateWeightNo(_weightNoPCL,
                                             false);
             }
 
@@ -3341,7 +3340,7 @@ namespace PCLParaphernalia
         {
             _fontFilenamePCLXL = txtPCLXLFontFile.Text;
 
-            setPCLXLFontFileAttributes ();
+            setPCLXLFontFileAttributes();
         }
 
         //--------------------------------------------------------------------//
@@ -3376,21 +3375,21 @@ namespace PCLParaphernalia
 
             String name = "";
 
-            if (validatePCLXLSymSetNo (true, ref _symSetNoPCLXL))
+            if (validatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId (_symSetNoPCLXL,
+                    PCLSymbolSets.translateKind1ToId(_symSetNoPCLXL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId (_symSetNoPCLXL,
+                    PCLSymbolSets.getNameForId(_symSetNoPCLXL,
                                                 ref name);
                 }
             }
 
-            txtPCLXLSymSetIdNum.Text   = idNum;
+            txtPCLXLSymSetIdNum.Text = idNum;
             txtPCLXLSymSetIdAlpha.Text = idAlpha;
-            txtPCLXLSymSetName.Text    = name.ToString();
+            txtPCLXLSymSetName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3410,19 +3409,19 @@ namespace PCLParaphernalia
 
             String name = "";
 
-            if (validatePCLXLSymSetNo (false, ref _symSetNoPCLXL))
+            if (validatePCLXLSymSetNo(false, ref _symSetNoPCLXL))
             {
-                PCLSymbolSets.translateKind1ToId (_symSetNoPCLXL,
+                PCLSymbolSets.translateKind1ToId(_symSetNoPCLXL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId (_symSetNoPCLXL,
+                PCLSymbolSets.getNameForId(_symSetNoPCLXL,
                                             ref name);
             }
 
             txtPCLXLSymSetIdNum.Text = idNum;
             txtPCLXLSymSetIdAlpha.Text = idAlpha;
-            txtPCLXLSymSetName.Text    = name.ToString();
+            txtPCLXLSymSetName.Text = name.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -3434,16 +3433,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtSymSetFile_LostFocus (object sender,
+        private void txtSymSetFile_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
             if (_symSetUserFile != txtSymSetFile.Text)
             {
                 _symSetUserFile = txtSymSetFile.Text;
 
-                checkPCLSymSetFile ();
-                
-                setSymSetAttributesTarget ();
+                checkPCLSymSetFile();
+
+                setSymSetAttributesTarget();
             }
         }
 
@@ -3456,7 +3455,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTTFFile_LostFocus (object sender,
+        private void txtTTFFile_LostFocus(object sender,
                                           RoutedEventArgs e)
         {
             if (_fontFileAdhocTTF != txtTTFFile.Text)
@@ -3464,7 +3463,7 @@ namespace PCLParaphernalia
                 _fontFileAdhocTTF = txtTTFFile.Text;
                 _fontFilenameTTF = txtTTFFile.Text;
 
-                resetFormState ();
+                resetFormState();
             }
         }
 
@@ -3477,7 +3476,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLStyleNo (Boolean lostFocusEvent,
+        private Boolean validatePCLStyleNo(Boolean lostFocusEvent,
                                             ref UInt16 styleNo)
         {
             const UInt16 minVal = 0;
@@ -3551,7 +3550,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLSymSetNo (Boolean lostFocusEvent,
+        private Boolean validatePCLSymSetNo(Boolean lostFocusEvent,
                                               ref UInt16 symSetNo)
         {
             const UInt16 minVal = 1;
@@ -3564,7 +3563,7 @@ namespace PCLParaphernalia
 
             String crntText = txtPCLSymSetNo.Text;
 
-            OK = UInt16.TryParse (crntText, out value);
+            OK = UInt16.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3579,7 +3578,7 @@ namespace PCLParaphernalia
                     if ((modVal < 1) || (modVal > 26))
                         OK = false;
 
-                    if ((! _symSetUnbound) && (modVal == 24))
+                    if ((!_symSetUnbound) && (modVal == 24))
                         OK = false;
                 }
             }
@@ -3592,7 +3591,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString ();
+                    String newText = defVal.ToString();
 
                     MessageBox.Show
                         ("Symbol Set (kind1) number '" + crntText +
@@ -3613,15 +3612,15 @@ namespace PCLParaphernalia
                         ("Symbol Set (kind1) number '" + crntText +
                          "' is invalid.\n\n" +
                          "Valid range is :\n\t" +
-                         minVal + " <= value <= " + maxVal + 
+                         minVal + " <= value <= " + maxVal +
                          "\nand the value modulo 32 must be in the range " +
                          "1 -> 26, excluding 24",
                          "PCL symbol set number invalid",
                          MessageBoxButton.OK,
                          MessageBoxImage.Error);
 
-                    txtPCLSymSetNo.Focus ();
-                    txtPCLSymSetNo.SelectAll ();
+                    txtPCLSymSetNo.Focus();
+                    txtPCLSymSetNo.SelectAll();
                 }
             }
 
@@ -3637,7 +3636,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLTypefaceNo (Boolean lostFocusEvent,
+        private Boolean validatePCLTypefaceNo(Boolean lostFocusEvent,
                                                 ref UInt16 typefaceNo)
         {
             const UInt16 minVal = 0;
@@ -3650,7 +3649,7 @@ namespace PCLParaphernalia
 
             String crntText = txtPCLTypefaceNo.Text;
 
-            OK = UInt16.TryParse (crntText, out value);
+            OK = UInt16.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3668,9 +3667,9 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString ();
+                    String newText = defVal.ToString();
 
-                    MessageBox.Show ("Typeface number '" + crntText +
+                    MessageBox.Show("Typeface number '" + crntText +
                                     "' is invalid.\n\n" +
                                     "Value will be reset to default '" +
                                     newText + "'",
@@ -3684,7 +3683,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    MessageBox.Show ("Typeface number '" + crntText +
+                    MessageBox.Show("Typeface number '" + crntText +
                                     "' is invalid.\n\n" +
                                     "Valid range is :\n\t" +
                                     minVal + " <= value <= " + maxVal,
@@ -3692,8 +3691,8 @@ namespace PCLParaphernalia
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
 
-                    txtPCLTypefaceNo.Focus ();
-                    txtPCLTypefaceNo.SelectAll ();
+                    txtPCLTypefaceNo.Focus();
+                    txtPCLTypefaceNo.SelectAll();
                 }
             }
 
@@ -3709,7 +3708,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLWeightNo (Boolean    lostFocusEvent,
+        private Boolean validatePCLWeightNo(Boolean lostFocusEvent,
                                              ref SByte weightNo)
         {
             const SByte minVal = -7;
@@ -3781,7 +3780,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean validatePCLXLSymSetNo (Boolean lostFocusEvent,
+        private Boolean validatePCLXLSymSetNo(Boolean lostFocusEvent,
                                               ref UInt16 symSetNo)
         {
             const UInt16 minVal = 0;
@@ -3794,7 +3793,7 @@ namespace PCLParaphernalia
 
             String crntText = txtPCLXLSymSetNo.Text;
 
-            OK = UInt16.TryParse (crntText, out value);
+            OK = UInt16.TryParse(crntText, out value);
 
             if (OK)
             {
@@ -3819,7 +3818,7 @@ namespace PCLParaphernalia
             {
                 if (lostFocusEvent)
                 {
-                    String newText = defVal.ToString ();
+                    String newText = defVal.ToString();
 
                     MessageBox.Show
                         ("Symbol Set (kind1) number '" + crntText +
@@ -3847,8 +3846,8 @@ namespace PCLParaphernalia
                          MessageBoxButton.OK,
                          MessageBoxImage.Error);
 
-                    txtPCLXLSymSetNo.Focus ();
-                    txtPCLXLSymSetNo.SelectAll ();
+                    txtPCLXLSymSetNo.Focus();
+                    txtPCLXLSymSetNo.SelectAll();
                 }
             }
 

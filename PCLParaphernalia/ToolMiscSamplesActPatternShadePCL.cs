@@ -20,23 +20,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId           = 1;
-        const UInt16 _unitsPerInch     = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
         const Int16 _pageOriginX = (_unitsPerInch * 1);
         const Int16 _pageOriginY = (_unitsPerInch * 1);
-        const Int16 _incInch     = (_unitsPerInch * 1);
-        const Int16 _lineInc     = (_unitsPerInch * 5) / 6;
+        const Int16 _incInch = (_unitsPerInch * 1);
+        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc  = _pageOriginX;
+        const Int16 _posXDesc = _pageOriginX;
         const Int16 _posXData1 = _pageOriginX + ((7 * _incInch) / 3);
-        const Int16 _posXData2 = _posXData1 + ((3 *_incInch / 2));
-        const Int16 _posXData3 = _posXData2 + ((3 *_incInch / 2));
+        const Int16 _posXData2 = _posXData1 + ((3 * _incInch / 2));
+        const Int16 _posXData3 = _posXData2 + ((3 * _incInch / 2));
 
-        const Int16 _posYHddr  = _pageOriginY;
+        const Int16 _posYHddr = _pageOriginY;
         const Int16 _posYDesc1 = _pageOriginY + (2 * _incInch);
         const Int16 _posYDesc2 = _pageOriginY + ((3 * _incInch / 2));
-        const Int16 _posYData  = _pageOriginY + (2 * _incInch);
+        const Int16 _posYData = _pageOriginY + (2 * _incInch);
 
         const Int16 _patternBase_300 = 300;
         const Int16 _patternBase_600 = 600;
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
 
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "User-defined 300 dpi");
-            
+
             posX = (Int16)(_posXData3 - logXOffset);
 
             PCLWriter.text(prnWriter, posX, posY, 0,
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
                                 indxPaperSize, indxOrientation);
 
             rectHeight = (Int16)(_lineInc / 2);
-            rectWidth  = _lineInc;
+            rectWidth = _lineInc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -567,7 +567,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void patternDeleteSet(BinaryWriter prnWriter,
-                                             Int32        baseID)
+                                             Int32 baseID)
         {
             for (Int32 i = 0; i < _patternsCt; i++)
             {

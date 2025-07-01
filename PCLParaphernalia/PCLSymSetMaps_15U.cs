@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {
@@ -28,20 +25,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_15U ()
+        private static void unicodeMap_15U()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_15U;
 
             const Int32 rangeCt = 1;
 
-            UInt16 [] [] rangeData = new UInt16 [rangeCt] []
+            UInt16[][] rangeData = new UInt16[rangeCt][]
             {
                 new UInt16 [2] {0x20, 0x7f}
             };
 
-            UInt16 [] rangeSizes = new UInt16 [rangeCt];
+            UInt16[] rangeSizes = new UInt16[rangeCt];
 
-            UInt16 [] [] mapDataPCL = new UInt16 [rangeCt] [];
+            UInt16[][] mapDataPCL = new UInt16[rangeCt][];
 
             UInt16 rangeMin,
                    rangeMax,
@@ -51,13 +48,13 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (UInt16) (rangeData [i] [1] -
-                                           rangeData [i] [0] + 1);
+                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                                           rangeData[i][0] + 1);
             }
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                mapDataPCL [i] = new UInt16 [rangeSizes [i]];
+                mapDataPCL[i] = new UInt16[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -66,13 +63,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [0] [0];
-            rangeMax = rangeData [0] [1];
-            rangeSize = rangeSizes [0];
+            rangeMin = rangeData[0][0];
+            rangeMax = rangeData[0][1];
+            rangeSize = rangeSizes[0];
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataPCL [0] [i - rangeMin] = 0xffff;    //<not a character> //
+                mapDataPCL[0][i - rangeMin] = 0xffff;    //<not a character> //
             }
 
             mapDataPCL[0][0x20 - rangeMin] = 0x0020;
@@ -157,7 +154,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            _sets.Add (new PCLSymSetMap (mapId,
+            _sets.Add(new PCLSymSetMap(mapId,
                                          rangeCt,
                                          rangeData,
                                          null,

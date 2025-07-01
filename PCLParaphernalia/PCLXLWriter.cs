@@ -45,19 +45,17 @@ namespace PCLParaphernalia
 
         private const Int32 cSizeOperator = 1;
 
-        public static readonly Byte[] rgbBlack    = { 0, 0, 0 }; // Black
+        public static readonly Byte[] rgbBlack = { 0, 0, 0 }; // Black
         public static readonly Byte[] monoPalette = { 255, 0 };  // white, black
 
-        public const UInt16 _sessionUPI      = 600;
-        public const UInt16 _pointsPerInch   = 72;
-        
+        public const UInt16 _sessionUPI = 600;
+        public const UInt16 _pointsPerInch = 72;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -155,9 +153,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrReal32(ref Byte[] buffer,
-                                         ref Int32  bufIndex,
+                                         ref Int32 bufIndex,
                                          PCLXLAttributes.eTag attributeTag,
-                                         Single     valReal32)
+                                         Single valReal32)
         {
             Byte[] tempArray;
 
@@ -187,10 +185,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrReal32XY(ref Byte[] buffer,
-                                           ref Int32  bufIndex,
+                                           ref Int32 bufIndex,
                                            PCLXLAttributes.eTag attributeTag,
-                                           Single     valReal32_x,
-                                           Single     valReal32_y)
+                                           Single valReal32_x,
+                                           Single valReal32_y)
         {
             Byte[] tempArray;
 
@@ -227,9 +225,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrSint16(ref Byte[] buffer,
-                                         ref Int32  bufIndex,
+                                         ref Int32 bufIndex,
                                          PCLXLAttributes.eTag attributeTag,
-                                         Int16      valSint16)
+                                         Int16 valSint16)
         {
             Byte[] tempArray;
 
@@ -257,10 +255,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrSint16Array(ref Byte[] buffer,
-                                              ref Int32  bufIndex,
+                                              ref Int32 bufIndex,
                                               PCLXLAttributes.eTag attributeTag,
-                                              Int16      arraySize, 
-                                              Int16[]    arraySint16)
+                                              Int16 arraySize,
+                                              Int16[] arraySint16)
         {
             Byte[] tempArray;
 
@@ -278,7 +276,7 @@ namespace PCLParaphernalia
                 buffer[bufIndex++] = tempArray[0];
                 buffer[bufIndex++] = tempArray[1];
             }
-        
+
             buffer[bufIndex++] = (Byte)PCLXLAttrDefiners.eTag.Ubyte;
             buffer[bufIndex++] = (Byte)attributeTag;
         }
@@ -296,12 +294,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrSint16Box(ref Byte[] buffer,
-                                            ref Int32  bufIndex,
+                                            ref Int32 bufIndex,
                                             PCLXLAttributes.eTag attributeTag,
-                                            Int16      valSint16_x1,
-                                            Int16      valSint16_y1,
-                                            Int16      valSint16_x2,
-                                            Int16      valSint16_y2)
+                                            Int16 valSint16_x1,
+                                            Int16 valSint16_y1,
+                                            Int16 valSint16_x2,
+                                            Int16 valSint16_y2)
         {
             Byte[] tempArray;
 
@@ -344,10 +342,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrSint16XY(ref Byte[] buffer,
-                                           ref Int32  bufIndex,
+                                           ref Int32 bufIndex,
                                            PCLXLAttributes.eTag attributeTag,
-                                           Int16      valSint16_x,
-                                           Int16      valSint16_y)
+                                           Int16 valSint16_x,
+                                           Int16 valSint16_y)
         {
             Byte[] tempArray;
 
@@ -380,9 +378,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUbyte(ref Byte[] buffer,
-                                        ref Int32  bufIndex,
+                                        ref Int32 bufIndex,
                                         PCLXLAttributes.eTag attributeTag,
-                                        Byte       valUbyte)
+                                        Byte valUbyte)
         {
             buffer[bufIndex++] = (Byte)PCLXLDataTypes.eTag.Ubyte;
 
@@ -392,7 +390,6 @@ namespace PCLParaphernalia
             buffer[bufIndex++] = (Byte)attributeTag;
         }
 
-        
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // a d d A t t r U b y t e A r r a y                          (1)     //
@@ -410,10 +407,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUbyteArray(ref Byte[] buffer,
-                                             ref Int32  bufIndex,
+                                             ref Int32 bufIndex,
                                              PCLXLAttributes.eTag attributeTag,
-                                             Int16      arraySize,
-                                             Int16[]    arraySint16)
+                                             Int16 arraySize,
+                                             Int16[] arraySint16)
         {
             Byte[] tempArray;
 
@@ -430,11 +427,11 @@ namespace PCLParaphernalia
                 tempArray = BitConverter.GetBytes(arraySint16[i]);
                 buffer[bufIndex++] = tempArray[0];
             }
-        
+
             buffer[bufIndex++] = (Byte)PCLXLAttrDefiners.eTag.Ubyte;
             buffer[bufIndex++] = (Byte)attributeTag;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // a d d A t t r U b y t e A r r a y                          (2)     //
@@ -448,10 +445,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUbyteArray(ref Byte[] buffer,
-                                             ref Int32  bufIndex,
+                                             ref Int32 bufIndex,
                                              PCLXLAttributes.eTag attributeTag,
-                                             Int16      arraySize,
-                                             Byte[]     arrayUbyte)
+                                             Int16 arraySize,
+                                             Byte[] arrayUbyte)
         {
             Byte[] tempArray;
 
@@ -467,7 +464,7 @@ namespace PCLParaphernalia
             {
                 buffer[bufIndex++] = arrayUbyte[i];
             }
-        
+
             buffer[bufIndex++] = (Byte)PCLXLAttrDefiners.eTag.Ubyte;
             buffer[bufIndex++] = (Byte)attributeTag;
         }
@@ -489,9 +486,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUbyteArray(ref Byte[] buffer,
-                                             ref Int32  bufIndex,
+                                             ref Int32 bufIndex,
                                              PCLXLAttributes.eTag attributeTag,
-                                             String     valString)
+                                             String valString)
         {
             Byte[] tempArray;
             Int16 arraySize;
@@ -499,7 +496,7 @@ namespace PCLParaphernalia
             buffer[bufIndex++] = (Byte)PCLXLDataTypes.eTag.UbyteArray;
             buffer[bufIndex++] = (Byte)PCLXLDataTypes.eTag.Uint16;
 
-            arraySize = (Int16) valString.Length;
+            arraySize = (Int16)valString.Length;
             tempArray = BitConverter.GetBytes(arraySize);
 
             buffer[bufIndex++] = tempArray[0];
@@ -507,7 +504,7 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < arraySize; i++)
             {
-                buffer[bufIndex++] = (Byte) valString[i];
+                buffer[bufIndex++] = (Byte)valString[i];
             }
 
             buffer[bufIndex++] = (Byte)PCLXLAttrDefiners.eTag.Ubyte;
@@ -527,21 +524,21 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUint16(ref Byte[] buffer,
-                                         ref Int32  bufIndex, 
+                                         ref Int32 bufIndex,
                                          PCLXLAttributes.eTag attributeTag,
-                                         UInt16     valUint16)
+                                         UInt16 valUint16)
         {
             Byte[] tempArray;
 
-            buffer[bufIndex++] = (Byte) PCLXLDataTypes.eTag.Uint16;
-            
-            tempArray            = BitConverter.GetBytes(valUint16);
+            buffer[bufIndex++] = (Byte)PCLXLDataTypes.eTag.Uint16;
+
+            tempArray = BitConverter.GetBytes(valUint16);
 
             buffer[bufIndex++] = tempArray[0];
             buffer[bufIndex++] = tempArray[1];
 
-            buffer[bufIndex++] = (Byte) PCLXLAttrDefiners.eTag.Ubyte;
-            buffer[bufIndex++] = (Byte) attributeTag;
+            buffer[bufIndex++] = (Byte)PCLXLAttrDefiners.eTag.Ubyte;
+            buffer[bufIndex++] = (Byte)attributeTag;
         }
 
         //--------------------------------------------------------------------//
@@ -557,10 +554,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUint16Array(ref Byte[] buffer,
-                                              ref Int32  bufIndex,
+                                              ref Int32 bufIndex,
                                               PCLXLAttributes.eTag attributeTag,
-                                              Int16      arraySize,
-                                              UInt16[]   arrayUint16)
+                                              Int16 arraySize,
+                                              UInt16[] arrayUint16)
         {
             Byte[] tempArray;
 
@@ -596,12 +593,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUint16Box(ref Byte[] buffer,
-                                            ref Int32  bufIndex,
+                                            ref Int32 bufIndex,
                                             PCLXLAttributes.eTag attributeTag,
-                                            UInt16     valUint16_x1,
-                                            UInt16     valUint16_y1,
-                                            UInt16     valUint16_x2,
-                                            UInt16     valUint16_y2)
+                                            UInt16 valUint16_x1,
+                                            UInt16 valUint16_y1,
+                                            UInt16 valUint16_x2,
+                                            UInt16 valUint16_y2)
         {
             Byte[] tempArray;
 
@@ -644,10 +641,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUint16XY(ref Byte[] buffer,
-                                           ref Int32  bufIndex,
+                                           ref Int32 bufIndex,
                                            PCLXLAttributes.eTag attributeTag,
-                                           UInt16     valUint16_x,
-                                           UInt16     valUint16_y)
+                                           UInt16 valUint16_x,
+                                           UInt16 valUint16_y)
         {
             Byte[] tempArray;
 
@@ -680,9 +677,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addAttrUint32(ref Byte[] buffer,
-                                         ref Int32  bufIndex,
+                                         ref Int32 bufIndex,
                                          PCLXLAttributes.eTag attributeTag,
-                                         UInt32     valUint32)
+                                         UInt32 valUint32)
         {
             Byte[] tempArray;
 
@@ -711,8 +708,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addEmbedDataIntro(ref Byte[] buffer,
-                                             ref Int32  bufIndex,
-                                             Int32      dataLen)
+                                             ref Int32 bufIndex,
+                                             Int32 dataLen)
         {
             Byte[] tempArray;
 
@@ -720,12 +717,12 @@ namespace PCLParaphernalia
 
             if (dataLen < 256)
             {
-                buffer[bufIndex++] = (Byte) PCLXLEmbedDataDefs.eTag.Byte;
+                buffer[bufIndex++] = (Byte)PCLXLEmbedDataDefs.eTag.Byte;
                 buffer[bufIndex++] = tempArray[0];
             }
             else
             {
-                buffer[bufIndex++] = (Byte) PCLXLEmbedDataDefs.eTag.Int;
+                buffer[bufIndex++] = (Byte)PCLXLEmbedDataDefs.eTag.Int;
                 buffer[bufIndex++] = tempArray[0];
                 buffer[bufIndex++] = tempArray[1];
                 buffer[bufIndex++] = tempArray[2];
@@ -744,7 +741,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void addOperator(ref Byte[] buffer,
-                                       ref Int32  bufIndex,
+                                       ref Int32 bufIndex,
                                        PCLXLOperators.eTag operatorTag)
         {
             buffer[bufIndex++] = (Byte)operatorTag;
@@ -759,9 +756,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charAngle (BinaryWriter prnWriter,
-                                      Boolean      embeddedStream,
-                                      Int16        charAngle)
+        public static void charAngle(BinaryWriter prnWriter,
+                                      Boolean embeddedStream,
+                                      Int16 charAngle)
         {
             Int32 lenBuf;
 
@@ -772,20 +769,20 @@ namespace PCLParaphernalia
             lenBuf = cSizeAttrSint16 +
                      cSizeOperator;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             //----------------------------------------------------------------//
 
-            addAttrSint16 (ref buffer,
+            addAttrSint16(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.CharAngle,
                            charAngle);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.SetCharAngle);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -798,9 +795,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charBold (BinaryWriter prnWriter,
-                                     Boolean      embeddedStream,
-                                     Single       charBoldValue)
+        public static void charBold(BinaryWriter prnWriter,
+                                     Boolean embeddedStream,
+                                     Single charBoldValue)
         {
             Int32 lenBuf;
 
@@ -811,20 +808,20 @@ namespace PCLParaphernalia
             lenBuf = cSizeAttrReal32 +
                      cSizeOperator;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             //----------------------------------------------------------------//
 
-            addAttrReal32 (ref buffer,
+            addAttrReal32(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.CharBoldValue,
                            charBoldValue);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.SetCharBoldValue);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -837,10 +834,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charScale (BinaryWriter prnWriter,
-                                      Boolean      embeddedStream,
-                                      Single       charScaleX,
-                                      Single       charScaleY)
+        public static void charScale(BinaryWriter prnWriter,
+                                      Boolean embeddedStream,
+                                      Single charScaleX,
+                                      Single charScaleY)
         {
             Int32 lenBuf;
 
@@ -851,21 +848,21 @@ namespace PCLParaphernalia
             lenBuf = cSizeAttrReal32XY +
                      cSizeOperator;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             //----------------------------------------------------------------//
 
-            addAttrReal32XY (ref buffer,
+            addAttrReal32XY(ref buffer,
                              ref indBuf,
                              PCLXLAttributes.eTag.CharScale,
                              charScaleX,
                              charScaleY);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.SetCharScale);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -878,10 +875,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charShear (BinaryWriter prnWriter,
-                                      Boolean      embeddedStream,
-                                      Single       charShearX,
-                                      Single       charShearY)
+        public static void charShear(BinaryWriter prnWriter,
+                                      Boolean embeddedStream,
+                                      Single charShearX,
+                                      Single charShearY)
         {
             Int32 lenBuf;
 
@@ -892,21 +889,21 @@ namespace PCLParaphernalia
             lenBuf = cSizeAttrReal32XY +
                      cSizeOperator;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             //----------------------------------------------------------------//
 
-            addAttrReal32XY (ref buffer,
+            addAttrReal32XY(ref buffer,
                              ref indBuf,
                              PCLXLAttributes.eTag.CharShear,
                              charShearX,
                              charShearY);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.SetCharShear);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -919,7 +916,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void embedDataIntro (BinaryWriter prnWriter,
+        public static void embedDataIntro(BinaryWriter prnWriter,
                                            Boolean embeddedStream,
                                            UInt16 hddrLen)
         {
@@ -929,7 +926,9 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            if (hddrLen > 256) lenBuf = 5; else lenBuf = 2;
+            if (hddrLen > 256)
+                lenBuf = 5; else
+                lenBuf = 2;
 
             lenBuf = cSizeAttrUint16 + cSizeOperator;
 
@@ -937,11 +936,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addEmbedDataIntro (ref buffer,
+            addEmbedDataIntro(ref buffer,
                                ref indBuf,
                                hddrLen);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -956,10 +955,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void font(BinaryWriter prnWriter,
-                                Boolean      embeddedStream,
-                                Single       pointSize,
-                                UInt16       symbolSet,
-                                String       fontName)
+                                Boolean embeddedStream,
+                                Single pointSize,
+                                UInt16 symbolSet,
+                                String fontName)
         {
             const Int32 lenHPFontName = 16;
             const Int32 lenBuf = 256;
@@ -1023,7 +1022,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontCharBegin (BinaryWriter prnWriter,
+        public static void fontCharBegin(BinaryWriter prnWriter,
                                           Boolean embeddedStream,
                                           Int16 fontNameLen,
                                           Byte[] fontName)
@@ -1042,18 +1041,17 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUbyteArray (ref buffer,
+            addAttrUbyteArray(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.FontName,
                                fontNameLen,
                                fontName);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.BeginChar);
 
-
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1066,7 +1064,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontCharEnd (BinaryWriter prnWriter,
+        public static void fontCharEnd(BinaryWriter prnWriter,
                                         Boolean embeddedStream)
         {
             Int32 lenBuf;
@@ -1081,11 +1079,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.EndChar);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1098,7 +1096,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontCharRead (BinaryWriter prnWriter,
+        public static void fontCharRead(BinaryWriter prnWriter,
                                          Boolean embeddedStream,
                                          UInt16 charCode,
                                          UInt16 charDataSize)
@@ -1114,21 +1112,21 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUint16 (ref buffer,
+            addAttrUint16(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.CharCode,
                            charCode);
 
-            addAttrUint16 (ref buffer,
+            addAttrUint16(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.CharDataSize,
                            charDataSize);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.ReadChar);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1141,10 +1139,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontHddrBegin (BinaryWriter prnWriter,
+        public static void fontHddrBegin(BinaryWriter prnWriter,
                                           Boolean embeddedStream,
                                           Int16 fontNameLen,
-                                          Byte [] fontName,
+                                          Byte[] fontName,
                                           Byte fontFormat)
         {
             Int32 lenBuf;
@@ -1162,22 +1160,22 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUbyteArray (ref buffer,
+            addAttrUbyteArray(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.FontName,
                                fontNameLen,
                                fontName);
 
-            addAttrUbyte (ref buffer,
+            addAttrUbyte(ref buffer,
                           ref indBuf,
                           PCLXLAttributes.eTag.FontFormat,
                           fontFormat);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.BeginFontHeader);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1190,7 +1188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontHddrEnd (BinaryWriter prnWriter,
+        public static void fontHddrEnd(BinaryWriter prnWriter,
                                         Boolean embeddedStream)
         {
             Int32 lenBuf;
@@ -1205,11 +1203,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.EndFontHeader);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1222,7 +1220,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontHddrRead (BinaryWriter prnWriter,
+        public static void fontHddrRead(BinaryWriter prnWriter,
                                          Boolean embeddedStream,
                                          UInt16 hddrLen)
         {
@@ -1238,16 +1236,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUint16 (ref buffer,
+            addAttrUint16(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.FontHeaderLength,
                            hddrLen);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.ReadFontHeader);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1328,7 +1326,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void imageBegin (BinaryWriter prnWriter,
+        public static void imageBegin(BinaryWriter prnWriter,
                                        Boolean embeddedStream,
                                        UInt16 srcWidth,
                                        UInt16 srcHeight,
@@ -1387,7 +1385,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void imageEnd (BinaryWriter prnWriter,
+        public static void imageEnd(BinaryWriter prnWriter,
                                      Boolean embeddedStream)
         {
             const Int32 lenBuf = 4;
@@ -1416,12 +1414,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void imageRead (BinaryWriter        prnWriter,
-                                      Boolean             embeddedStream,
-                                      UInt16              startLine,
-                                      UInt16              blockHeight,
+        public static void imageRead(BinaryWriter prnWriter,
+                                      Boolean embeddedStream,
+                                      UInt16 startLine,
+                                      UInt16 blockHeight,
                                       PCLXLAttrEnums.eVal compressMode,
-                                      Byte []             data)
+                                      Byte[] data)
         {
             const Int32 lenBuf = 64;
 
@@ -1433,32 +1431,32 @@ namespace PCLParaphernalia
             indBuf = 0;
             dataLen = data.Length;
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.StartLine,
                                        startLine);
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.BlockHeight,
                                        blockHeight);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.CompressMode,
-                                      (Byte) compressMode);
+                                      (Byte)compressMode);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.PadBytesMultiple,
                                       1);
 
-            PCLXLWriter.addAttrUint32 (ref buffer,
+            PCLXLWriter.addAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.BlockByteLength,
-                                       (UInt16) dataLen);
+                                       (UInt16)dataLen);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                      ref indBuf,
                                      PCLXLOperators.eTag.ReadImage);
 
@@ -1472,7 +1470,7 @@ namespace PCLParaphernalia
                                          buffer, ref indBuf);
 
             PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
-                                          data, ref dataLen); 
+                                          data, ref dataLen);
         }
 
         //--------------------------------------------------------------------//
@@ -1485,13 +1483,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void pageBegin(BinaryWriter prnWriter,
-                                     Int32        indxPaperSize,
-                                     Int32        indxPaperType,
-                                     Int32        indxPaperTray,
-                                     Int32        indxOrientation,
-                                     Int32        indxPlexMode,
-                                     Boolean      flagFirstPage,
-                                     Boolean      flagFrontFace)
+                                     Int32 indxPaperSize,
+                                     Int32 indxPaperType,
+                                     Int32 indxPaperTray,
+                                     Int32 indxOrientation,
+                                     Int32 indxPlexMode,
+                                     Boolean flagFirstPage,
+                                     Boolean flagFrontFace)
         {
             const Int32 lenBuf = 1024;
 
@@ -1499,40 +1497,40 @@ namespace PCLParaphernalia
 
             Int32 indBuf;
 
-            Boolean flagSimplexJob = PCLPlexModes.isSimplex (indxPlexMode);
+            Boolean flagSimplexJob = PCLPlexModes.isSimplex(indxPlexMode);
 
             indBuf = 0;
 
-            if (indxOrientation < PCLOrientations.getCount ())
+            if (indxOrientation < PCLOrientations.getCount())
             {
-                PCLXLWriter.addAttrUbyte (
+                PCLXLWriter.addAttrUbyte(
                     ref buffer,
                     ref indBuf,
                     PCLXLAttributes.eTag.Orientation,
-                    PCLOrientations.getIdPCLXL (indxOrientation));
+                    PCLOrientations.getIdPCLXL(indxOrientation));
             }
 
-            if (indxPaperSize < PCLPaperSizes.getCount ())
+            if (indxPaperSize < PCLPaperSizes.getCount())
             {
-                PCLXLWriter.addAttrUbyte (
+                PCLXLWriter.addAttrUbyte(
                     ref buffer,
                     ref indBuf,
                     PCLXLAttributes.eTag.MediaSize,
-                    PCLPaperSizes.getIdPCLXL (indxPaperSize));
+                    PCLPaperSizes.getIdPCLXL(indxPaperSize));
             }
 
             if (indxPaperTray >= 0)                 // -ve value indicates <not set>
             {
                 if (indxPaperTray < 256)
                 {
-                    PCLXLWriter.addAttrUbyte (ref buffer,
+                    PCLXLWriter.addAttrUbyte(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.MediaSource,
                                        (Byte)indxPaperTray);
                 }
                 else
                 {
-                    PCLXLWriter.addAttrUint16 (ref buffer,
+                    PCLXLWriter.addAttrUint16(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.MediaSource,
                                        (UInt16)indxPaperTray);
@@ -1542,15 +1540,15 @@ namespace PCLParaphernalia
 
             if (flagFirstPage)
             {
-                if ((indxPaperType < PCLPaperTypes.getCount ()) &&
-                    (PCLPaperTypes.getType (indxPaperType) !=
+                if ((indxPaperType < PCLPaperTypes.getCount()) &&
+                    (PCLPaperTypes.getType(indxPaperType) !=
                         PCLPaperTypes.eEntryType.NotSet))
                 {
-                    PCLXLWriter.addAttrUbyteArray (
+                    PCLXLWriter.addAttrUbyteArray(
                         ref buffer,
                         ref indBuf,
                         PCLXLAttributes.eTag.MediaType,
-                        PCLPaperTypes.getName (indxPaperType));
+                        PCLPaperTypes.getName(indxPaperType));
                 }
 
                 if (flagSimplexJob)
@@ -1595,20 +1593,20 @@ namespace PCLParaphernalia
                 }
             }
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.BeginPage);
 
-            PCLXLWriter.addAttrUint16XY (ref buffer,
+            PCLXLWriter.addAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.PageOrigin,
                                         0, 0);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetPageOrigin);
 
-            prnWriter.Write (buffer, 0, indBuf);
+            prnWriter.Write(buffer, 0, indBuf);
         }
 
         //--------------------------------------------------------------------//
@@ -1621,7 +1619,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void pageEnd(BinaryWriter prnWriter,
-                                   UInt16       pageCopies)
+                                   UInt16 pageCopies)
         {
             const Int32 lenBuf = 64;
 
@@ -1631,16 +1629,16 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            addAttrUint16 (ref buffer,
+            addAttrUint16(ref buffer,
                            ref indBuf,
                            PCLXLAttributes.eTag.PageCopies,
                            pageCopies);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.EndPage);
 
-            prnWriter.Write (buffer, 0, indBuf);
+            prnWriter.Write(buffer, 0, indBuf);
         }
 
         //--------------------------------------------------------------------//
@@ -1652,7 +1650,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternBegin (BinaryWriter prnWriter,
+        public static void patternBegin(BinaryWriter prnWriter,
                                          Boolean embeddedStream,
                                          Int16 patternID,
                                          UInt16 patWidth,
@@ -1666,52 +1664,52 @@ namespace PCLParaphernalia
         {
             const Int32 lenBuf = 64;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             Int32 indBuf;
 
             indBuf = 0;
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorMapping,
-                                     (Byte) colorMapping);
+                                     (Byte)colorMapping);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorDepth,
-                                     (Byte) colorDepth);
+                                     (Byte)colorDepth);
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.SourceWidth,
                                       patWidth);
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.SourceHeight,
                                       patHeight);
 
-            PCLXLWriter.addAttrUint16XY (ref buffer,
+            PCLXLWriter.addAttrUint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.DestinationSize,
                                         destWidth, destHeight);
 
-            PCLXLWriter.addAttrSint16 (ref buffer,
+            PCLXLWriter.addAttrSint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.PatternDefineID,
                                       patternID);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PatternPersistence,
-                                     (Byte) persistence);
+                                     (Byte)persistence);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.BeginRastPattern);
 
-            PCLXLWriter.writeStreamBlock (prnWriter, embeddedStream,
+            PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1752,12 +1750,12 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorMapping,
-                                     (Byte) colorMapping);
+                                     (Byte)colorMapping);
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.ColorDepth,
-                                     (Byte) colorDepth);
+                                     (Byte)colorDepth);
 
             PCLXLWriter.addAttrUint16(ref buffer,
                                       ref indBuf,
@@ -1782,12 +1780,12 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PatternPersistence,
-                                     (Byte) persistence);
+                                     (Byte)persistence);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.BeginRastPattern);
-            
+
             //----------------------------------------------------------------//
 
             PCLXLWriter.addAttrUint16(ref buffer,
@@ -1803,17 +1801,17 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.CompressMode,
-                                     (Byte) compressMode);
+                                     (Byte)compressMode);
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PadBytesMultiple,
                                      1);
 
-            PCLXLWriter.addAttrUint32 (ref buffer,
+            PCLXLWriter.addAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.BlockByteLength,
-                                       (UInt16) patLen);
+                                       (UInt16)patLen);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -1828,8 +1826,8 @@ namespace PCLParaphernalia
             PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.writeStreamBlock (prnWriter, embeddedStream,
-                                          pattern, ref patLen); 
+            PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
+                                          pattern, ref patLen);
 
             //----------------------------------------------------------------//
 
@@ -1850,12 +1848,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternEnd (BinaryWriter prnWriter,
-                                         Boolean    embeddedStream)
+        public static void patternEnd(BinaryWriter prnWriter,
+                                         Boolean embeddedStream)
         {
             const Int32 lenBuf = 16;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             Int32 indBuf;
 
@@ -1863,11 +1861,11 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.EndRastPattern);
 
-            PCLXLWriter.writeStreamBlock (prnWriter, embeddedStream,
+            PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
         }
 
@@ -1880,16 +1878,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternRead (BinaryWriter         prnWriter,
-                                         Boolean             embeddedStream,
-                                         UInt16              startLine,
-                                         UInt16              blockHeight,
+        public static void patternRead(BinaryWriter prnWriter,
+                                         Boolean embeddedStream,
+                                         UInt16 startLine,
+                                         UInt16 blockHeight,
                                          PCLXLAttrEnums.eVal compressMode,
-                                         Byte []             pattern)
+                                         Byte[] pattern)
         {
             const Int32 lenBuf = 64;
 
-            Byte [] buffer = new Byte [lenBuf];
+            Byte[] buffer = new Byte[lenBuf];
 
             Int32 indBuf,
                   patLen;
@@ -1899,45 +1897,45 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.StartLine,
                                       startLine);
 
-            PCLXLWriter.addAttrUint16 (ref buffer,
+            PCLXLWriter.addAttrUint16(ref buffer,
                                       ref indBuf,
                                       PCLXLAttributes.eTag.BlockHeight,
                                       blockHeight);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.CompressMode,
-                                     (Byte) compressMode);
+                                     (Byte)compressMode);
 
-            PCLXLWriter.addAttrUbyte (ref buffer,
+            PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.PadBytesMultiple,
                                      1);
 
-            PCLXLWriter.addAttrUint32 (ref buffer,
+            PCLXLWriter.addAttrUint32(ref buffer,
                                        ref indBuf,
                                        PCLXLAttributes.eTag.BlockByteLength,
-                                       (UInt16) patLen);
+                                       (UInt16)patLen);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.ReadRastPattern);
 
             //----------------------------------------------------------------//
 
-            PCLXLWriter.addEmbedDataIntro (ref buffer,
+            PCLXLWriter.addEmbedDataIntro(ref buffer,
                                           ref indBuf,
                                           patLen);
 
-            PCLXLWriter.writeStreamBlock (prnWriter, embeddedStream,
+            PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.writeStreamBlock (prnWriter, embeddedStream,
+            PCLXLWriter.writeStreamBlock(prnWriter, embeddedStream,
                                           pattern, ref patLen);
         }
 
@@ -1952,7 +1950,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangle (BinaryWriter prnWriter,
+        public static void rectangle(BinaryWriter prnWriter,
                                       Boolean embeddedStream,
                                       UInt16 coordX,
                                       UInt16 coordY,
@@ -1972,19 +1970,19 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUint16Box (ref buffer,
+            addAttrUint16Box(ref buffer,
                               ref indBuf,
                               PCLXLAttributes.eTag.BoundingBox,
                               coordX,
                               coordY,
-                              (UInt16) (coordX + width),
-                              (UInt16) (coordY + height));
+                              (UInt16)(coordX + width),
+                              (UInt16)(coordY + height));
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.Rectangle);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -1998,7 +1996,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void stdJobHeader(BinaryWriter prnWriter,
-                                        String       pjlCommand)
+                                        String pjlCommand)
         {
             const Int32 lenStd = 32;
 
@@ -2055,7 +2053,7 @@ namespace PCLParaphernalia
                          ref indStd,
                          PCLXLAttributes.eTag.DataOrg,
                          (Byte)PCLXLAttrEnums.eVal.eBinaryLowByteFirst);
-            
+
             addOperator(ref bufStd,
                         ref indStd,
                         PCLXLOperators.eTag.OpenDataSource);
@@ -2073,8 +2071,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void stdJobTrailer(BinaryWriter prnWriter,
-                                         Boolean      embeddedStream,
-                                         String       streamName)
+                                         Boolean embeddedStream,
+                                         String streamName)
         {
             const Int32 lenStd = 64;
 
@@ -2088,7 +2086,7 @@ namespace PCLParaphernalia
                                   ref indStd,
                                   PCLXLAttributes.eTag.StreamName,
                                   streamName);
-            
+
                 addOperator(ref bufStd,
                             ref indStd,
                             PCLXLOperators.eTag.RemoveStream);
@@ -2097,7 +2095,7 @@ namespace PCLParaphernalia
             addOperator(ref bufStd,
                         ref indStd,
                         PCLXLOperators.eTag.CloseDataSource);
-            
+
             addOperator(ref bufStd,
                         ref indStd,
                         PCLXLOperators.eTag.EndSession);
@@ -2127,7 +2125,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void streamBegin(BinaryWriter prnWriter,
-                                       String       streamName)
+                                       String streamName)
         {
             const Int32 lenBuf = 256;
 
@@ -2137,16 +2135,16 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            addAttrUbyteArray (ref buffer,
+            addAttrUbyteArray(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.StreamName,
                                streamName);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.BeginStream);
 
-            prnWriter.Write (buffer, 0, indBuf);
+            prnWriter.Write(buffer, 0, indBuf);
         }
 
         //--------------------------------------------------------------------//
@@ -2168,11 +2166,11 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.EndStream);
 
-            prnWriter.Write (buffer, 0, indBuf);
+            prnWriter.Write(buffer, 0, indBuf);
         }
 
         //--------------------------------------------------------------------//
@@ -2192,8 +2190,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void streamExec(BinaryWriter prnWriter,
-                                      Boolean      embeddedStream,
-                                      String       streamName)
+                                      Boolean embeddedStream,
+                                      String streamName)
         {
             const Int32 lenBuf = 64;
 
@@ -2203,16 +2201,16 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            PCLXLWriter.addAttrUbyteArray (ref buffer,
+            PCLXLWriter.addAttrUbyteArray(ref buffer,
                                           ref indBuf,
                                           PCLXLAttributes.eTag.StreamName,
                                           streamName);
 
-            PCLXLWriter.addOperator (ref buffer,
+            PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.ExecStream);
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                               buffer, ref indBuf);
         }
 
@@ -2226,8 +2224,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void streamHeader(BinaryWriter prnWriter,
-                                        Boolean      embeddedStream,
-                                        String       streamName)
+                                        Boolean embeddedStream,
+                                        String streamName)
         {
             const Int32 lenBuf = 64;
 
@@ -2239,16 +2237,16 @@ namespace PCLParaphernalia
 
             if (embeddedStream)
             {
-                addAttrUbyteArray (ref buffer,
+                addAttrUbyteArray(ref buffer,
                                    ref indBuf,
                                    PCLXLAttributes.eTag.StreamName,
                                    streamName);
 
-                addOperator (ref buffer,
+                addOperator(ref buffer,
                              ref indBuf,
                              PCLXLOperators.eTag.BeginStream);
 
-                prnWriter.Write (buffer, 0, indBuf);
+                prnWriter.Write(buffer, 0, indBuf);
                 indBuf = 0;
             }
 
@@ -2308,7 +2306,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void streamRemove(BinaryWriter prnWriter,
-                                        String       streamName)
+                                        String streamName)
         {
             const Int32 lenBuf = 256;
 
@@ -2320,16 +2318,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrUbyteArray (ref buffer,
+            addAttrUbyteArray(ref buffer,
                                ref indBuf,
                                PCLXLAttributes.eTag.StreamName,
                                streamName);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          PCLXLOperators.eTag.RemoveStream);
 
-            writeStreamBlock (prnWriter, false,
+            writeStreamBlock(prnWriter, false,
                               buffer, ref indBuf);
         }
 
@@ -2344,13 +2342,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void text(BinaryWriter prnWriter,
-                                Boolean      embeddedStream,
-                                Boolean      relativePoint,
-                                Int16[]      advanceTable,
-                                Single       pointSize,
-                                Int16        coordX,
-                                Int16        coordY,
-                                String       text)
+                                Boolean embeddedStream,
+                                Boolean relativePoint,
+                                Int16[] advanceTable,
+                                Single pointSize,
+                                Int16 coordX,
+                                Int16 coordY,
+                                String text)
         {
             const Int32 lenBuf = 512; // need to cater for text up to 180 bytes?
 
@@ -2423,9 +2421,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int16 textAdvance (Int16[] advanceTable,
-                                         Single  pointSize,
-                                         String  text)
+        public static Int16 textAdvance(Int16[] advanceTable,
+                                         Single pointSize,
+                                         String text)
         {
             Int16 textLen;
 
@@ -2459,7 +2457,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textChar (BinaryWriter prnWriter,
+        public static void textChar(BinaryWriter prnWriter,
                                      Boolean embeddedStream,
                                      Int16 advance,
                                      Single pointSize,
@@ -2484,37 +2482,37 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            addAttrSint16XY (ref buffer,
+            addAttrSint16XY(ref buffer,
                             ref indBuf,
                             PCLXLAttributes.eTag.Point,
                             coordX, coordY);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                         ref indBuf,
                         PCLXLOperators.eTag.SetCursor);
 
             codePointArray[0] = codePoint;
-            advanceArray[0]   = advance;
+            advanceArray[0] = advance;
 
-            addAttrUint16Array (ref buffer,
+            addAttrUint16Array(ref buffer,
                               ref indBuf,
                               PCLXLAttributes.eTag.TextData,
                               1,
                               codePointArray);
 
-            addAttrUbyteArray (ref buffer,
+            addAttrUbyteArray(ref buffer,
                               ref indBuf,
                               PCLXLAttributes.eTag.XSpacingData,
                               1,
                               advanceArray);
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                         ref indBuf,
                         PCLXLOperators.eTag.Text);
 
             //----------------------------------------------------------------//
 
-            writeStreamBlock (prnWriter, embeddedStream,
+            writeStreamBlock(prnWriter, embeddedStream,
                              buffer, ref indBuf);
         }
 
@@ -2528,14 +2526,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textAngled (BinaryWriter prnWriter,
-                                       Boolean      embeddedStream,
-                                       Int16[]      advanceTable,
-                                       Single       pointSize,
-                                       Int16        coordX,
-                                       Int16        coordY,
-                                       Int16        angle,
-                                       String       text)
+        public static void textAngled(BinaryWriter prnWriter,
+                                       Boolean embeddedStream,
+                                       Int16[] advanceTable,
+                                       Single pointSize,
+                                       Int16 coordX,
+                                       Int16 coordY,
+                                       Int16 angle,
+                                       String text)
         {
             const Int32 lenBuf = 512; // need to cater for text up to 180 bytes?
 
@@ -2560,7 +2558,7 @@ namespace PCLParaphernalia
             // If angle is negative, make tangent positive to cause Y increment
 
             radians = angle * (Math.PI / 180);
-            tangent = - Math.Tan(radians);
+            tangent = -Math.Tan(radians);
 
             //----------------------------------------------------------------//
 
@@ -2633,11 +2631,11 @@ namespace PCLParaphernalia
 
             indBuf = 0;
 
-            addOperator (ref buffer,
+            addOperator(ref buffer,
                          ref indBuf,
                          opTag);
 
-            writeStreamBlock (prnWriter, embeddedStream, buffer, ref indBuf);
+            writeStreamBlock(prnWriter, embeddedStream, buffer, ref indBuf);
         }
 
         //--------------------------------------------------------------------//
@@ -2671,26 +2669,26 @@ namespace PCLParaphernalia
                     lenTemp += cSizeEmbedDataByte;
 
                 Byte[] bufTemp = new Byte[lenTemp];
-                
-                addAttrUint32 (ref bufTemp,
+
+                addAttrUint32(ref bufTemp,
                               ref indTemp,
                               PCLXLAttributes.eTag.StreamDataLength,
-                              (UInt32) indBuf);
+                              (UInt32)indBuf);
 
-                addOperator (ref bufTemp,
+                addOperator(ref bufTemp,
                             ref indTemp,
                             PCLXLOperators.eTag.ReadStream);
 
-                addEmbedDataIntro (ref bufTemp,
+                addEmbedDataIntro(ref bufTemp,
                                   ref indTemp,
                                   indBuf);
 
-                prnWriter.Write (bufTemp, 0, indTemp);
+                prnWriter.Write(bufTemp, 0, indTemp);
             }
 
             //----------------------------------------------------------------//
 
-            prnWriter.Write (buffer, 0, indBuf);
+            prnWriter.Write(buffer, 0, indBuf);
             indBuf = 0;
         }
     }

@@ -40,22 +40,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParsePCLXLElementMetrics (
+        public PrnParsePCLXLElementMetrics(
             Boolean flagUbyteAsAscii,
             Boolean flagUint16AsUnicode,
             Boolean flagArrayType,
-            Int32   decodeIndent,
-            Int32   groupSize,
-            Int32   unitSize,
+            Int32 decodeIndent,
+            Int32 groupSize,
+            Int32 unitSize,
             PCLXLDataTypes.eBaseType baseDataType)
         {
-            _flagUbyteAsAscii    = flagUbyteAsAscii;
+            _flagUbyteAsAscii = flagUbyteAsAscii;
             _flagUint16AsUnicode = flagUint16AsUnicode;
-            _flagArrayType       = flagArrayType;
-            _decodeIndent        = decodeIndent;
-            _groupSize           = groupSize;
-            _unitSize            = unitSize;
-            _baseDataType        = baseDataType;
+            _flagArrayType = flagArrayType;
+            _decodeIndent = decodeIndent;
+            _groupSize = groupSize;
+            _unitSize = unitSize;
+            _baseDataType = baseDataType;
         }
 
         //--------------------------------------------------------------------//
@@ -79,18 +79,18 @@ namespace PCLParaphernalia
             ref Boolean flagUbyteAsAscii,
             ref Boolean flagUint16AsUnicode,
             ref Boolean flagArrayType,
-            ref Int32   decodeIndent,
+            ref Int32 decodeIndent,
             ref Int32 groupSize,
             ref Int32 unitSize,
             ref PCLXLDataTypes.eBaseType baseDataType)
         {
-            flagUbyteAsAscii    = _flagUbyteAsAscii;
+            flagUbyteAsAscii = _flagUbyteAsAscii;
             flagUint16AsUnicode = _flagUint16AsUnicode;
-            flagArrayType       = _flagArrayType;
-            decodeIndent        = _decodeIndent;
-            groupSize           = _groupSize;
-            unitSize            = _unitSize;
-            baseDataType        = _baseDataType;
+            flagArrayType = _flagArrayType;
+            decodeIndent = _decodeIndent;
+            groupSize = _groupSize;
+            unitSize = _unitSize;
+            baseDataType = _baseDataType;
         }
 
         //--------------------------------------------------------------------//
@@ -103,18 +103,18 @@ namespace PCLParaphernalia
             Boolean flagUbyteAsAscii,
             Boolean flagUint16AsUnicode,
             Boolean flagArrayType,
-            Int32   decodeIndent,
-            Int32   groupSize,
-            Int32   unitSize,
+            Int32 decodeIndent,
+            Int32 groupSize,
+            Int32 unitSize,
             PCLXLDataTypes.eBaseType baseDataType)
         {
-            _flagUbyteAsAscii    = flagUbyteAsAscii;
+            _flagUbyteAsAscii = flagUbyteAsAscii;
             _flagUint16AsUnicode = flagUint16AsUnicode;
-            _flagArrayType       = flagArrayType;
-            _decodeIndent        = decodeIndent;
-            _groupSize           = groupSize;
-            _unitSize            = unitSize;
-            _baseDataType        = baseDataType;
+            _flagArrayType = flagArrayType;
+            _decodeIndent = decodeIndent;
+            _groupSize = groupSize;
+            _unitSize = unitSize;
+            _baseDataType = baseDataType;
         }
     }
 }

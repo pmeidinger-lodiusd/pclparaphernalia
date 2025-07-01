@@ -53,12 +53,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PrnParseRowType[] _rowTypes = 
+        private static PrnParseRowType[] _rowTypes =
         {
             new PrnParseRowType(eType.MsgError,
                                 "Error message"),
             new PrnParseRowType(eType.MsgWarning,
-                     			"Warning message"),
+                                 "Warning message"),
             new PrnParseRowType(eType.MsgComment,
                                 "Comment"),
             new PrnParseRowType(eType.MsgDiag,
@@ -106,9 +106,9 @@ namespace PCLParaphernalia
             new PrnParseRowType(eType.PrescribeCommand,
                                 "Prescribe command")
        };
-        
+
         private static Int32 _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t C o u n t                                                    //
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc (Int32 selection)
+        public static String getDesc(Int32 selection)
         {
             return _rowTypes[selection].getDesc();
         }
@@ -167,9 +167,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDefaultClrs (
-            ref Int32 [] indxClrMapBack,
-            ref Int32 [] indxClrMapFore)
+        public static void setDefaultClrs(
+            ref Int32[] indxClrMapBack,
+            ref Int32[] indxClrMapFore)
         {
             PrnParseRowTypes.eType rowType;
 
@@ -200,7 +200,7 @@ namespace PCLParaphernalia
 
                         break;
 
-                     case PrnParseRowTypes.eType.MsgDiag:
+                    case PrnParseRowTypes.eType.MsgDiag:
 
                         indxClrMapBack[i] = (Int32)PrnParseConstants.eStdClrs.Fuchsia;
                         indxClrMapFore[i] = (Int32)PrnParseConstants.eStdClrs.Yellow;
@@ -333,7 +333,7 @@ namespace PCLParaphernalia
 
                         break;
 
-                   case PrnParseRowTypes.eType.PJLCommand:
+                    case PrnParseRowTypes.eType.PJLCommand:
 
                         indxClrMapBack[i] = (Int32)PrnParseConstants.eStdClrs.Khaki;
                         indxClrMapFore[i] = (Int32)PrnParseConstants.eStdClrs.Black;

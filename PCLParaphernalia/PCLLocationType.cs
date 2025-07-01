@@ -29,12 +29,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLLocationType(PCLLocationTypes.eType type,
-                               String                  id,
-                               String                  name)
+                               String id,
+                               String name)
         {
-            _locationType   = type;
+            _locationType = type;
             _locationIdPCL = id;
-            _locationName   = name;
+            _locationName = name;
         }
 
         //--------------------------------------------------------------------//

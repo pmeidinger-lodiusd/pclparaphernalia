@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 using System.Windows;
 
 namespace PCLParaphernalia
@@ -35,7 +34,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkIPAddress(String        ipString,
+        public static Boolean checkIPAddress(String ipString,
                                              ref IPAddress ipAddress)
         {
             Boolean OK;
@@ -68,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean readResponseBlock (Int32 offset,
+        public static Boolean readResponseBlock(Int32 offset,
                                                  Int32 bufRem,
                                                  ref Byte[] replyData,
                                                  ref Int32 blockLen)
@@ -91,7 +90,7 @@ namespace PCLParaphernalia
 
             catch (SocketException e)
             {
-                MessageBox.Show ("SocketException" +
+                MessageBox.Show("SocketException" +
                                  "Message: " + e.Message + "\n\n" +
                                  "ErrorCode: " + e.ErrorCode + "\n\n" +
                                  "SocketErrorCode: " + e.SocketErrorCode,
@@ -125,11 +124,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Int32 sendData(BinaryReader prnReader,
-                                     String       ipString,
-                                     Int32        port,
-                                     Int32        timeoutSend,
-                                     Int32        timeoutReceive,
-                                     Boolean      keepConnect)
+                                     String ipString,
+                                     Int32 port,
+                                     Int32 timeoutSend,
+                                     Int32 timeoutReceive,
+                                     Boolean keepConnect)
         {
             Int32 result = 0;
 
@@ -159,11 +158,11 @@ namespace PCLParaphernalia
                     ipEndPoint = new IPEndPoint(ipAddress,
                                                 port);
 
-                    _socket = new Socket (ipAddress.AddressFamily,
+                    _socket = new Socket(ipAddress.AddressFamily,
                                           SocketType.Stream,
                                           ProtocolType.Tcp);
 
-                    _socket.SendTimeout    = timeoutSend;
+                    _socket.SendTimeout = timeoutSend;
                     _socket.ReceiveTimeout = timeoutReceive;
 
                     // or   _socket.SetSocketOption (SocketOptionLevel.Socket,
@@ -206,7 +205,7 @@ namespace PCLParaphernalia
 
                 catch (SocketException e)
                 {
-                    MessageBox.Show ("SocketException:\n\n" +
+                    MessageBox.Show("SocketException:\n\n" +
                                      "Message: " + e.Message + "\n\n" +
                                      "ErrorCode: " + e.ErrorCode + "\n\n" +
                                      "SocketErrorCode: " + e.SocketErrorCode,

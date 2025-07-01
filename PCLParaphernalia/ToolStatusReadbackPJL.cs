@@ -22,21 +22,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateRequest (BinaryWriter prnWriter,
+        public static void generateRequest(BinaryWriter prnWriter,
                                             PJLCommands.eCmdIndex cmdIndx,
-                                            Int32        indexCategory,
-                                            Int32        indexVariable,
-                                            String       customCat,
-                                            String       customVar)
+                                            Int32 indexCategory,
+                                            Int32 indexVariable,
+                                            String customCat,
+                                            String customVar)
         {
             String seq;
 
             if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
             {
                 PJLCommands.eRequestType reqType;
-    
+
                 String cmdName;
-    
+
                 reqType = PJLCommands.getType(cmdIndx);
                 cmdName = PJLCommands.getName(cmdIndx);
 
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
                 {
                     if (indexCategory < PJLCategories.getCount())
                     {
-                        if (PJLCategories.getType (indexCategory) ==
+                        if (PJLCategories.getType(indexCategory) ==
                             PJLCategories.eCategoryType.Custom)
                         {
                             seq = "\x1b" + "%-12345X" +
@@ -59,7 +59,7 @@ namespace PCLParaphernalia
                         {
                             String categoryName;
 
-                            categoryName = PJLCategories.getName (indexCategory);
+                            categoryName = PJLCategories.getName(indexCategory);
 
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +
@@ -87,14 +87,14 @@ namespace PCLParaphernalia
                                            "@PJL " +
                                            cmdName + " " +
                                            customVar + "\x0d\x0a" +
-                                  "\x1b" + "%-12345X"; 
+                                  "\x1b" + "%-12345X";
                         }
                         else
                         {
                             String variableName;
                             String personality;
 
-                            variableName = PJLVariables.getName (indexVariable);
+                            variableName = PJLVariables.getName(indexVariable);
 
                             if (varType == PJLVariables.eVarType.PCL)
                                 personality = "LPARM : PCL ";
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String readResponse ()
+        public static String readResponse()
         {
             const Int32 replyBufLen = 32768;
 

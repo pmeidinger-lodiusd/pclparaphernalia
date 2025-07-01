@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 
 namespace PCLParaphernalia
 {
@@ -21,8 +20,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId           = 1;
-        const UInt16 _unitsPerInch     = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
         const Int16 _pageOriginX = (_unitsPerInch * 1);
         const Int16 _pageOriginY = (_unitsPerInch * 1);
@@ -67,13 +66,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter      prnWriter,
-                                       Int32             indxPaperSize,
-                                       Int32             indxPaperType,
-                                       Int32             indxOrientation,
-                                       Boolean           formAsMacro,
-                                       UInt32            codePoint,
-                                       Int32             indxFont,
+        public static void generateJob(BinaryWriter prnWriter,
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxOrientation,
+                                       Boolean formAsMacro,
+                                       UInt32 codePoint,
+                                       Int32 indxFont,
                                        PCLFonts.eVariant fontVar)
         {
             PCLOrientations.eAspect aspect;
@@ -302,14 +301,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage(BinaryWriter      prnWriter,
-                                         Int32             indxPaperSize,
-                                         Int32             indxPaperType,
-                                         Int32             indxOrientation,
-                                         Boolean           formAsMacro,
-                                         UInt16            logXOffset,
-                                         UInt32            codePoint,
-                                         Int32             indxFont,
+        private static void generatePage(BinaryWriter prnWriter,
+                                         Int32 indxPaperSize,
+                                         Int32 indxPaperType,
+                                         Int32 indxOrientation,
+                                         Boolean formAsMacro,
+                                         UInt16 logXOffset,
+                                         UInt32 codePoint,
+                                         Int32 indxFont,
                                          PCLFonts.eVariant fontVar)
         {
             Int16 posX,
@@ -354,11 +353,11 @@ namespace PCLParaphernalia
                 PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
                                codePoint.ToString("x6"));
 
-            PrnParseDataUTF8.convertUTF32ToUTF8Bytes (codePoint,
+            PrnParseDataUTF8.convertUTF32ToUTF8Bytes(codePoint,
                                                       ref utf8Len,
                                                       ref utf8Seq);
 
-            PrnParseDataUTF8.convertUTF32ToUTF8HexString (codePoint,
+            PrnParseDataUTF8.convertUTF32ToUTF8HexString(codePoint,
                                                           true,
                                                           ref utf8HexVal);
 
@@ -375,7 +374,7 @@ namespace PCLParaphernalia
             posY += _lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                           PCLFonts.getName (indxFont) +
+                           PCLFonts.getName(indxFont) +
                            " " +
                            Enum.GetName(typeof(PCLFonts.eVariant), fontVar));
 
@@ -388,7 +387,7 @@ namespace PCLParaphernalia
                                                       fontVar,
                                                       ptSize, 0));
 
-            PCLWriter.textParsingMethod (
+            PCLWriter.textParsingMethod(
                 prnWriter,
                 PCLTextParsingMethods.eIndex.m83_UTF8);
 

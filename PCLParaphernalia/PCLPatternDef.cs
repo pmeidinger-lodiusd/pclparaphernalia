@@ -19,14 +19,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private String _desc;
-		private PCLPatternDefs.eType _type;
+        private PCLPatternDefs.eType _type;
 
-        private UInt16   _id;
-        private UInt16   _idSec;
-        private UInt16   _height;
-        private UInt16   _width;
+        private UInt16 _id;
+        private UInt16 _idSec;
+        private UInt16 _height;
+        private UInt16 _width;
 
-        private Byte [] _pattern;
+        private Byte[] _pattern;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -34,21 +34,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPatternDef (String    desc,
-		                      PCLPatternDefs.eType type,
-		                      UInt16    id,
-		                      UInt16    idSec,
-		                      UInt16    height,
-		                      UInt16    width,
-                              Byte []   pattern)
+        public PCLPatternDef(String desc,
+                              PCLPatternDefs.eType type,
+                              UInt16 id,
+                              UInt16 idSec,
+                              UInt16 height,
+                              UInt16 width,
+                              Byte[] pattern)
         {
-            _desc           = desc;
-			_type           = type;
-            _id             = id;
-            _idSec          = idSec;
-            _height         = height;
-            _width          = width;
-			_pattern        = pattern;
+            _desc = desc;
+            _type = type;
+            _id = id;
+            _idSec = idSec;
+            _height = height;
+            _width = width;
+            _pattern = pattern;
         }
 
         //--------------------------------------------------------------------//
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte [] Pattern
+        public Byte[] Pattern
         {
             get { return _pattern; }
         }

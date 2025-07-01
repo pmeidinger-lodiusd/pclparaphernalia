@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace PCLParaphernalia
@@ -26,8 +25,8 @@ namespace PCLParaphernalia
 
         public const UInt16 _paperSizeUPI = 1200;
 
-        private const Byte _unknownID      = 0xff;
-        private const Byte _unknownEnum    = 0xff;
+        private const Byte _unknownID = 0xff;
+        private const Byte _unknownEnum = 0xff;
 
         public enum eIndex
         {
@@ -158,9 +157,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void customDataCopy (Int32 index)
+        public static void customDataCopy(Int32 index)
         {
-            _paperSizes[index].customDataCopy (
+            _paperSizes[index].customDataCopy(
                 _paperSizes[(Int32)eIndex.Custom]);
         }
 
@@ -179,8 +178,8 @@ namespace PCLParaphernalia
 
             foreach (PCLPaperSize v in _paperSizes)
             {
-                    count++;
-                    grid.Items.Add(v);
+                count++;
+                grid.Items.Add(v);
             }
 
             return count;
@@ -252,7 +251,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getLogicalOffset(Int32  index,
+        public static UInt16 getLogicalOffset(Int32 index,
                                               UInt16 sessionUPI,
                                               PCLOrientations.eAspect aspect)
         {
@@ -269,7 +268,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getLogPageLength (Int32 index,
+        public static UInt16 getLogPageLength(Int32 index,
                                                UInt16 sessionUPI,
                                                PCLOrientations.eAspect aspect)
         {
@@ -286,7 +285,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getLogPageWidth (Int32 index,
+        public static UInt16 getLogPageWidth(Int32 index,
                                               UInt16 sessionUPI,
                                               PCLOrientations.eAspect aspect)
         {
@@ -303,7 +302,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getMarginsLogicalLand(Int32  index,
+        public static UInt16 getMarginsLogicalLand(Int32 index,
                                                    UInt16 sessionUPI)
         {
             return _paperSizes[index].getMarginsLogicalLand(sessionUPI);
@@ -319,7 +318,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getMarginsLogicalPort(Int32  index,
+        public static UInt16 getMarginsLogicalPort(Int32 index,
                                                    UInt16 sessionUPI)
         {
             return _paperSizes[index].getMarginsLogicalPort(sessionUPI);
@@ -336,7 +335,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getMarginsUnprintable(Int32  index,
+        public static UInt16 getMarginsUnprintable(Int32 index,
                                                    UInt16 sessionUPI)
         {
             return _paperSizes[index].getMarginsUnprintable(sessionUPI);
@@ -402,7 +401,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getPaperLength(Int32  index,
+        public static UInt16 getPaperLength(Int32 index,
                                             UInt16 sessionUPI,
                                             PCLOrientations.eAspect aspect)
         {
@@ -419,7 +418,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getPaperWidth(Int32  index,
+        public static UInt16 getPaperWidth(Int32 index,
                                            UInt16 sessionUPI,
                                            PCLOrientations.eAspect aspect)
         {
@@ -436,7 +435,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getSizeLongEdge(Int32  index,
+        public static UInt16 getSizeLongEdge(Int32 index,
                                              UInt16 sessionUPI)
         {
             return _paperSizes[index].getSizeLongEdge(sessionUPI);
@@ -452,7 +451,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getSizeShortEdge(Int32  index,
+        public static UInt16 getSizeShortEdge(Int32 index,
                                               UInt16 sessionUPI)
         {
             return _paperSizes[index].getSizeShortEdge(sessionUPI);
@@ -532,13 +531,13 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            Boolean sizeIsMetric   = true;
+            Boolean sizeIsMetric = true;
             Boolean sizeIsImperial = false;
 
-            Boolean sizeIsRare     = true;
-            Boolean sizeIsCommon   = false;
+            Boolean sizeIsRare = true;
+            Boolean sizeIsCommon = false;
 
-            _paperSizes = new PCLPaperSize []
+            _paperSizes = new PCLPaperSize[]
             {
                 new PCLPaperSize(eIndex.Custom, // Custom - sizes can be overridden
                                  "<Custom>",    // name
@@ -1934,7 +1933,7 @@ namespace PCLParaphernalia
                                  300,
                                  240,
                                  200)            };
-        
+
             _paperSizeCount = _paperSizes.GetUpperBound(0) + 1;
 
             if (_paperSizeCount != _eIndexCt)
@@ -1978,11 +1977,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomLongEdge (UInt16 size,
+        public static void setCustomLongEdge(UInt16 size,
                                               UInt16 sessionUPI)
         {
             _paperSizes[(Int32)eIndex.Custom].CustomLongEdge =
-                (UInt32) ((size * _paperSizeUPI) / sessionUPI);
+                (UInt32)((size * _paperSizeUPI) / sessionUPI);
         }
 
         //--------------------------------------------------------------------//
@@ -1995,11 +1994,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setCustomShortEdge (UInt16 size,
+        public static void setCustomShortEdge(UInt16 size,
                                                UInt16 sessionUPI)
         {
             _paperSizes[(Int32)eIndex.Custom].CustomShortEdge =
-                (UInt32) ((size * _paperSizeUPI) / sessionUPI);
+                (UInt32)((size * _paperSizeUPI) / sessionUPI);
         }
     }
 }

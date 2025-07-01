@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2015
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -25,7 +25,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const Int32 _defLogPageOffLeftDPt = 170;
-        const Int32 _defLogPageOffTopDPt  = 0;
+        const Int32 _defLogPageOffTopDPt = 0;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataLogPage ()
+        private void initialiseDataLogPage()
         {
             lbOrientation.Visibility = Visibility.Visible;
             cbOrientation.Visibility = Visibility.Visible;
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
 
         public void metricsLoadDataLogPage()
         {
-            ToolMiscSamplesPersist.loadDataTypeLogPage (
+            ToolMiscSamplesPersist.loadDataTypeLogPage(
                 "PCL",
                 ref _logPageOffLeftDPt,
                 ref _logPageOffTopDPt,
@@ -193,7 +193,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagLogPageFormAsMacro (
+        private void setFlagLogPageFormAsMacro(
             Boolean setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
@@ -671,7 +671,7 @@ namespace PCLParaphernalia
         {
             const Int32 minVal = 1;
             const Int32 maxVal = 65535;
-            Int32 defVal = (Int32) (_paperLengthLogical * _unitsToDPts);
+            Int32 defVal = (Int32)(_paperLengthLogical * _unitsToDPts);
 
             Int32 value = 0;
 
@@ -744,7 +744,7 @@ namespace PCLParaphernalia
         {
             const Int32 minVal = 1;
             const Int32 maxVal = 65535;
-            Int32 defVal = (Int32) (_paperWidthLogical * _unitsToDPts);
+            Int32 defVal = (Int32)(_paperWidthLogical * _unitsToDPts);
 
             Int32 value = 0;
 

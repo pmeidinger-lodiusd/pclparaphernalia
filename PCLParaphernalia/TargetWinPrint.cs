@@ -22,13 +22,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        [StructLayout (LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
 
         public class DOCINFOA
         {
-            [MarshalAs (UnmanagedType.LPStr)] public String pDocName;
-            [MarshalAs (UnmanagedType.LPStr)] public String pOutputFile;
-            [MarshalAs (UnmanagedType.LPStr)] public String pDataType;
+            [MarshalAs(UnmanagedType.LPStr)] public String pDocName;
+            [MarshalAs(UnmanagedType.LPStr)] public String pOutputFile;
+            [MarshalAs(UnmanagedType.LPStr)] public String pDataType;
         }
 
         //--------------------------------------------------------------------//
@@ -36,104 +36,104 @@ namespace PCLParaphernalia
         public struct DRIVER_INFO_8
         {
             public UInt32 cVersion;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pName;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pEnvironment;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pDriverPath;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pDataFile;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pConfigFile;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pHelpFile;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pDependentFiles;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pMonitorName;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pDefaultDataType;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszzPreviousNames;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pName;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pEnvironment;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pDriverPath;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pDataFile;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pConfigFile;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pHelpFile;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pDependentFiles;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pMonitorName;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pDefaultDataType;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszzPreviousNames;
             public System.Runtime.InteropServices.ComTypes.FILETIME ftDriverDate;
             public UInt64 dwlDriverVersion;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszMfgName;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszOEMUrl;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszHardwareID;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszProvider;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszPrintProcessor;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszVendorSetup;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszzColorProfiles;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszInfPath;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszMfgName;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszOEMUrl;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszHardwareID;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszProvider;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszPrintProcessor;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszVendorSetup;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszzColorProfiles;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszInfPath;
             public UInt32 dwPrinterDriverAttributes;
-            [MarshalAs (UnmanagedType.LPTStr)] public String pszzCoreDriverDependencies;
+            [MarshalAs(UnmanagedType.LPTStr)] public String pszzCoreDriverDependencies;
             public System.Runtime.InteropServices.ComTypes.FILETIME ftMinInboxDriverVerDate;
             public UInt64 dwlMinInboxDriverVerVersion;
         }
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "OpenPrinterA",
+        [DllImport("winspool.drv", EntryPoint = "OpenPrinterA",
                    SetLastError = true, CharSet = CharSet.Ansi,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool OpenPrinter (
-            [MarshalAs (UnmanagedType.LPStr)] String szPrinter,
+        public static extern bool OpenPrinter(
+            [MarshalAs(UnmanagedType.LPStr)] String szPrinter,
             out IntPtr hPrinter,
             IntPtr pd);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "ClosePrinter",
+        [DllImport("winspool.drv", EntryPoint = "ClosePrinter",
                    SetLastError = true,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool ClosePrinter (
+        public static extern bool ClosePrinter(
             IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "StartDocPrinterA",
+        [DllImport("winspool.drv", EntryPoint = "StartDocPrinterA",
                    SetLastError = true, CharSet = CharSet.Ansi,
                    ExactSpelling = true,
                    CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool StartDocPrinter (
+        public static extern bool StartDocPrinter(
             IntPtr hPrinter,
             Int32 level,
-            [In, MarshalAs (UnmanagedType.LPStruct)] DOCINFOA di);
+            [In, MarshalAs(UnmanagedType.LPStruct)] DOCINFOA di);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "EndDocPrinter",
+        [DllImport("winspool.drv", EntryPoint = "EndDocPrinter",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool EndDocPrinter (
+        public static extern bool EndDocPrinter(
             IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "StartPagePrinter",
+        [DllImport("winspool.drv", EntryPoint = "StartPagePrinter",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool StartPagePrinter (
+        public static extern bool StartPagePrinter(
             IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "EndPagePrinter",
+        [DllImport("winspool.drv", EntryPoint = "EndPagePrinter",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool EndPagePrinter (
+        public static extern bool EndPagePrinter(
             IntPtr hPrinter);
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "WritePrinter",
+        [DllImport("winspool.drv", EntryPoint = "WritePrinter",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool WritePrinter (
+        public static extern bool WritePrinter(
             IntPtr hPrinter,
             IntPtr pBytes,
             Int32 dwCount,
@@ -141,12 +141,12 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("winspool.drv", EntryPoint = "GetPrinterDriverA",
+        [DllImport("winspool.drv", EntryPoint = "GetPrinterDriverA",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern bool GetPrinterDriver (
+        public static extern bool GetPrinterDriver(
             IntPtr hPrinter,
             String pEnvironment,
             UInt32 Level,
@@ -156,12 +156,12 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        [DllImport ("kernel32.dll", EntryPoint = "GetLastError",
+        [DllImport("kernel32.dll", EntryPoint = "GetLastError",
                     SetLastError = true,
                     ExactSpelling = true,
                     CallingConvention = CallingConvention.StdCall)]
 
-        public static extern UInt32 GetLastError ();
+        public static extern UInt32 GetLastError();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean isDriverXPS (IntPtr hPrinter)
+        private static Boolean isDriverXPS(IntPtr hPrinter)
         {
             UInt32 PRINTER_DRIVER_XPS_FLAG = 0x00000002;
             UInt32 ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
@@ -184,9 +184,9 @@ namespace PCLParaphernalia
             Boolean bSuccess = false;
             Boolean bDriverXPS = false;
 
-            IntPtr driverInfo = new IntPtr ();
+            IntPtr driverInfo = new IntPtr();
             Int32 buf_len = 0;
-            Int32 IntPtrSize = Marshal.SizeOf (typeof (IntPtr));
+            Int32 IntPtrSize = Marshal.SizeOf(typeof(IntPtr));
 
             driverInfo = IntPtr.Zero;
 
@@ -210,18 +210,18 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = GetPrinterDriver (hPrinter, "", 8,
+            bSuccess = GetPrinterDriver(hPrinter, "", 8,
                                          driverInfo, 0, out buf_len);
 
-            if (GetLastError () == ERROR_INSUFFICIENT_BUFFER)
+            if (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
             {
-                driverInfo = Marshal.AllocHGlobal (buf_len);
+                driverInfo = Marshal.AllocHGlobal(buf_len);
 
-                bSuccess = GetPrinterDriver (hPrinter, "", 8,
+                bSuccess = GetPrinterDriver(hPrinter, "", 8,
                                              driverInfo, buf_len, out buf_len);
 
-                var info = (DRIVER_INFO_8)Marshal.PtrToStructure (
-                    driverInfo, typeof (DRIVER_INFO_8));
+                var info = (DRIVER_INFO_8)Marshal.PtrToStructure(
+                    driverInfo, typeof(DRIVER_INFO_8));
 
                 UInt32 attributes = (UInt32)info.dwPrinterDriverAttributes;
 
@@ -245,16 +245,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean sendBytesToPrinter (String szPrinterName,
+        private static Boolean sendBytesToPrinter(String szPrinterName,
                                                    IntPtr pBytes,
                                                    Int32 dwCount)
         {
             Int32 dwError = 0,
                   dwWritten = 0;
 
-            IntPtr hPrinter = new IntPtr (0);
+            IntPtr hPrinter = new IntPtr(0);
 
-            DOCINFOA di = new DOCINFOA ();
+            DOCINFOA di = new DOCINFOA();
 
             Boolean bSuccess = false;
 
@@ -266,7 +266,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (OpenPrinter (szPrinterName.Normalize (),
+            if (OpenPrinter(szPrinterName.Normalize(),
                 out hPrinter,
                 IntPtr.Zero))
             {
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (isDriverXPS (hPrinter))
+                if (isDriverXPS(hPrinter))
                     di.pDataType = "XPS_PASS";
                 else
                     di.pDataType = "RAW";
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (StartDocPrinter (hPrinter, 1, di))
+                if (StartDocPrinter(hPrinter, 1, di))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -295,7 +295,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if (StartPagePrinter (hPrinter))
+                    if (StartPagePrinter(hPrinter))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -303,7 +303,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        bSuccess = WritePrinter (hPrinter, pBytes, dwCount,
+                        bSuccess = WritePrinter(hPrinter, pBytes, dwCount,
                                                  out dwWritten);
 
                         //----------------------------------------------------//
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        EndPagePrinter (hPrinter);
+                        EndPagePrinter(hPrinter);
                     }
 
                     //--------------------------------------------------------//
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    EndDocPrinter (hPrinter);
+                    EndDocPrinter(hPrinter);
                 }
 
                 //------------------------------------------------------------//
@@ -330,7 +330,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ClosePrinter (hPrinter);
+                ClosePrinter(hPrinter);
             }
 
             if (bSuccess == false)
@@ -342,7 +342,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                dwError = Marshal.GetLastWin32Error ();
+                dwError = Marshal.GetLastWin32Error();
             }
 
             return bSuccess;
@@ -357,16 +357,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 sendData (BinaryReader prnReader,
+        public static Int32 sendData(BinaryReader prnReader,
                                       String printerName)
         {
             Int32 result = 0;
             Int32 dwError = 0,
                   dwWritten = 0;
 
-            IntPtr hPrinter = new IntPtr (0);
+            IntPtr hPrinter = new IntPtr(0);
 
-            DOCINFOA di = new DOCINFOA ();
+            DOCINFOA di = new DOCINFOA();
 
             Boolean bSuccess = true;
 
@@ -378,7 +378,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (OpenPrinter (printerName.Normalize (),
+            if (OpenPrinter(printerName.Normalize(),
                 out hPrinter,
                 IntPtr.Zero))
             {
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (isDriverXPS (hPrinter))
+                if (isDriverXPS(hPrinter))
                     di.pDataType = "XPS_PASS";
                 else
                     di.pDataType = "RAW";
@@ -399,7 +399,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (StartDocPrinter (hPrinter, 1, di))
+                if (StartDocPrinter(hPrinter, 1, di))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    if (StartPagePrinter (hPrinter))
+                    if (StartPagePrinter(hPrinter))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -423,15 +423,15 @@ namespace PCLParaphernalia
                         Byte[] prnData = new Byte[bufLen];
 
                         prnReader.BaseStream.Position = 0;
-                        prnData = prnReader.ReadBytes (bufLen);
+                        prnData = prnReader.ReadBytes(bufLen);
 
                         while (((readLen = prnData.Length) != 0) && (bSuccess))
                         {
-                            IntPtr pUnmanagedBytes = new IntPtr (0);
+                            IntPtr pUnmanagedBytes = new IntPtr(0);
 
-                            pUnmanagedBytes = Marshal.AllocCoTaskMem (readLen);
+                            pUnmanagedBytes = Marshal.AllocCoTaskMem(readLen);
 
-                            Marshal.Copy (prnData, 0, pUnmanagedBytes, readLen);
+                            Marshal.Copy(prnData, 0, pUnmanagedBytes, readLen);
 
                             //------------------------------------------------//
                             //                                                //
@@ -439,10 +439,10 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            bSuccess = WritePrinter (hPrinter, pUnmanagedBytes,
+                            bSuccess = WritePrinter(hPrinter, pUnmanagedBytes,
                                                      readLen, out dwWritten);
 
-                            prnData = prnReader.ReadBytes (bufLen);
+                            prnData = prnReader.ReadBytes(bufLen);
 
                             //------------------------------------------------//
                             //                                                //
@@ -450,7 +450,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            Marshal.FreeCoTaskMem (pUnmanagedBytes);
+                            Marshal.FreeCoTaskMem(pUnmanagedBytes);
                         }
 
                         //----------------------------------------------------//
@@ -459,7 +459,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        EndPagePrinter (hPrinter);
+                        EndPagePrinter(hPrinter);
                     }
 
                     //--------------------------------------------------------//
@@ -468,7 +468,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    EndDocPrinter (hPrinter);
+                    EndDocPrinter(hPrinter);
                 }
 
                 //------------------------------------------------------------//
@@ -477,7 +477,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ClosePrinter (hPrinter);
+                ClosePrinter(hPrinter);
             }
 
             if (bSuccess == false)
@@ -489,7 +489,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                dwError = Marshal.GetLastWin32Error ();
+                dwError = Marshal.GetLastWin32Error();
             }
 
             return result;

@@ -26,12 +26,12 @@ namespace PCLParaphernalia
 
         private enum ePCLFontFormat : byte
         {
-            Bitmap             = 0,
-            IntellifontBound   = 10,
+            Bitmap = 0,
+            IntellifontBound = 10,
             IntellifontUnbound = 11,
-            TrueType           = 15,
-            Universal          = 16,
-            BitmapResSpec      = 20
+            TrueType = 15,
+            Universal = 16,
+            BitmapResSpec = 20
         }
 
         //--------------------------------------------------------------------//
@@ -56,7 +56,7 @@ namespace PCLParaphernalia
         {
             _binReader.Close();
             _ipStream.Close();
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Boolean fontFileCopy(BinaryWriter prnWriter,
-                                           String       fontFilename)
+                                           String fontFilename)
         {
             Boolean OK = true;
 
@@ -76,7 +76,7 @@ namespace PCLParaphernalia
 
             Int64 fileSize = 0;
 
-            fileOpen = fontFileOpen (fontFilename, ref fileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -88,9 +88,9 @@ namespace PCLParaphernalia
                 Int32 readSize;
 
                 Boolean endLoop;
-                                
+
                 Byte[] buf = new Byte[bufSize];
-                
+
                 endLoop = false;
 
                 while (!endLoop)
@@ -100,10 +100,10 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                       prnWriter.Write(buf, 0, readSize);
+                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -125,16 +125,16 @@ namespace PCLParaphernalia
 
             if ((fileName == null) || (fileName == ""))
             {
-                MessageBox.Show ("Download font file name is null.",
+                MessageBox.Show("Download font file name is null.",
                                 "PCL font selection attribute invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download font file '" + fileName +
+                MessageBox.Show("Download font file '" + fileName +
                                 "' does not exist.",
                                 "PCL font selection attribute invalid",
                                 MessageBoxButton.OK,
@@ -144,7 +144,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open (fileName,
+                _ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
@@ -153,11 +153,11 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean getFontCharacteristics (
+        public static Boolean getFontCharacteristics(
             String fontFilename,
             ref Boolean proportional,
             ref Boolean scalable,
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            fileOpen = fontFileOpen (fontFilename, ref fontFileSize);
+            fileOpen = fontFileOpen(fontFilename, ref fontFileSize);
 
             if (!fileOpen)
             {
@@ -286,14 +286,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = readHddrIntro (fontFilename,
+                OK = readHddrIntro(fontFilename,
                                     fontFileSize,
                                     ref fileOffset,
                                     ref hddrLen);
 
                 if (OK)
                 {
-                    OK = getFontSelectionData (fileOffset,
+                    OK = getFontSelectionData(fileOffset,
                                                hddrLen,
                                                ref proportional,
                                                ref scalable,
@@ -307,7 +307,7 @@ namespace PCLParaphernalia
                                                ref symSetType);
                 }
 
-                fontFileClose ();
+                fontFileClose();
             }
 
             return OK;
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean getFontSelectionData (
+        private static Boolean getFontSelectionData(
             Int32 hddrOffset,
             Int32 hddrLen,
             ref Boolean proportional,
@@ -349,17 +349,17 @@ namespace PCLParaphernalia
 
             Byte[] buf = new Byte[2];
 
-            _ipStream.Seek (hddrOffset, SeekOrigin.Begin);
+            _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
-            _binReader.Read (buf, 0, 2);
+            _binReader.Read(buf, 0, 2);
 
             hddrDescLen = (UInt16)((buf[0] << 8) + buf[1]);
 
             hddr = new Byte[hddrDescLen];       // if universal bitmap, want whole header read, inclduing segments
 
-            _ipStream.Seek (hddrOffset, SeekOrigin.Begin);
+            _ipStream.Seek(hddrOffset, SeekOrigin.Begin);
 
-            _binReader.Read (hddr, 0, hddrDescLen);
+            _binReader.Read(hddr, 0, hddrDescLen);
 
             //----------------------------------------------------------------//
 
@@ -416,7 +416,6 @@ namespace PCLParaphernalia
 
                     Boolean endSegs = false;
 
-
                     Byte[] segData;
 
                     Int32 segDataLen;
@@ -430,7 +429,7 @@ namespace PCLParaphernalia
 
                     //      _ipStream.Seek (hddrOffset, SeekOrigin.Begin); // already at correct position ?
 
-                    _binReader.Read (segData, 0, segDataLen);
+                    _binReader.Read(segData, 0, segDataLen);
 
                     offset = 0;
 
@@ -488,9 +487,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetType = PCLSymSetTypes.getIndexForIdPCL (hddr[3]);
+            symSetType = PCLSymSetTypes.getIndexForIdPCL(hddr[3]);
 
-            bound = PCLSymSetTypes.isBound ((Int32)symSetType);
+            bound = PCLSymSetTypes.isBound((Int32)symSetType);
 
             //----------------------------------------------------------------//
 
@@ -565,13 +564,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readHddrIntro (
+        private static Boolean readHddrIntro(
             String fileName,
             Int64 fontFileSize,
             ref Int32 fileOffset,
             ref UInt16 hddrLen)
         {
-            String messHeader  = "Download font file '" + fileName + "':\r\n";
+            String messHeader = "Download font file '" + fileName + "':\r\n";
             String messTrailer = "\r\nYou will have to choose another file.";
 
             Boolean OK = false;
@@ -582,7 +581,7 @@ namespace PCLParaphernalia
 
             Byte[] buf = new Byte[3];
 
-            _binReader.Read (buf, 0, 3);
+            _binReader.Read(buf, 0, 3);
 
             if ((buf[0] != '\x1b') ||
                 (buf[1] != ')') ||
@@ -596,7 +595,7 @@ namespace PCLParaphernalia
 
                 for (Int32 i = 0; i < 12; i++)
                 {
-                    x = _binReader.ReadByte ();
+                    x = _binReader.ReadByte();
 
                     if (x == 'W')
                     {
@@ -617,7 +616,7 @@ namespace PCLParaphernalia
 
             if (!OK)
             {
-                MessageBox.Show (
+                MessageBox.Show(
                     messHeader +
                     "File does not start with a valid escape" +
                     " sequence in the format <esc>)s#W" +
@@ -634,7 +633,7 @@ namespace PCLParaphernalia
 
             if ((hddrLen + fileOffset) > fontFileSize)
             {
-                MessageBox.Show (
+                MessageBox.Show(
                     messHeader +
                     "Header (offset = '" + fileOffset + "') of" +
                     "length '" + hddrLen + "' is inconsistent" +

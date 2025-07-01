@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkOldVersion (Int32 major,
+        public static Boolean checkOldVersion(Int32 major,
                                                Int32 minor,
                                                Int32 build,
                                                Int32 revision)
@@ -75,24 +75,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getVersionData (Boolean crnt,
+        public static void getVersionData(Boolean crnt,
                                            ref Int32 major,
                                            ref Int32 minor,
                                            ref Int32 build,
                                            ref Int32 revision)
         {
             if (crnt)
-            { 
-                major    = _versionMajorCrnt;
-                minor    = _versionMinorCrnt;
-                build    = _versionBuildCrnt;
+            {
+                major = _versionMajorCrnt;
+                minor = _versionMinorCrnt;
+                build = _versionBuildCrnt;
                 revision = _versionRevisionCrnt;
             }
             else
-            { 
-                major    = _versionMajorOld;
-                minor    = _versionMinorOld;
-                build    = _versionBuildOld;
+            {
+                major = _versionMajorOld;
+                minor = _versionMinorOld;
+                build = _versionBuildOld;
                 revision = _versionRevisionOld;
             }
         }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setVersionData (Boolean crnt,
+        public static void setVersionData(Boolean crnt,
                                            Int32 major,
                                            Int32 minor,
                                            Int32 build,
@@ -114,16 +114,16 @@ namespace PCLParaphernalia
         {
             if (crnt)
             {
-                _versionMajorCrnt    = major;
-                _versionMinorCrnt    = minor;
-                _versionBuildCrnt    = build;
+                _versionMajorCrnt = major;
+                _versionMinorCrnt = minor;
+                _versionBuildCrnt = build;
                 _versionRevisionCrnt = revision;
             }
             else
             {
-                _versionMajorOld    = major;
-                _versionMinorOld    = minor;
-                _versionBuildOld    = build;
+                _versionMajorOld = major;
+                _versionMinorOld = minor;
+                _versionBuildOld = build;
                 _versionRevisionOld = revision;
             }
         }

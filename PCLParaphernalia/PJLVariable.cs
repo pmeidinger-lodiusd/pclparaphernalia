@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PJLVariable(PJLVariables.eVarType type,
-                           String                name)
+                           String name)
         {
             _varType = type;
             _varName = name;

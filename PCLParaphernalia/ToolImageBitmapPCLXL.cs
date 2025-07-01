@@ -24,10 +24,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImage(BinaryWriter prnWriter,
-                                          Single       destPosX,
-                                          Single       destPosY,
-                                          Int32        destScalePercentX,
-                                          Int32        destScalePercentY)
+                                          Single destPosX,
+                                          Single destPosY,
+                                          Int32 destScalePercentX,
+                                          Int32 destScalePercentY)
         {
             const Int32 sizeStd = 1024;
 
@@ -112,9 +112,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageData(BinaryWriter prnWriter,
-                                              UInt16       srcBitsPerPixel,
-                                              Int32        srcWidth,
-                                              Int32        srcHeight)
+                                              UInt16 srcBitsPerPixel,
+                                              Int32 srcWidth,
+                                              Int32 srcHeight)
         {
             const Int32 maxImageBlock = 2048;
             const Int32 sizeStd = 64;
@@ -221,7 +221,7 @@ namespace PCLParaphernalia
                                                               firstBlock);
 
                         //     if (srcBitsPerPixel == 24)
-                        if (! indexed)
+                        if (!indexed)
                         {
                             // change BGR components to RGB //
 
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
                 imageCrntLine += imageBlockHeight;
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e I m a g e H e a d e r                              //
@@ -259,17 +259,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageHeader(BinaryWriter prnWriter,
-                                                UInt16       srcBitsPerPixel,
-                                                Int32        srcWidth,
-                                                Int32        srcHeight,
-                                                Int32        srcResX,
-                                                Int32        srcResY,
-                                                Single       destPosX,
-                                                Single       destPosY,
-                                                Int32        destScalePercentX,
-                                                Int32        destScalePercentY,
-                                                UInt32       srcPaletteEntries,
-                                                Boolean      srcBlackWhite)
+                                                UInt16 srcBitsPerPixel,
+                                                Int32 srcWidth,
+                                                Int32 srcHeight,
+                                                Int32 srcResX,
+                                                Int32 srcResY,
+                                                Single destPosX,
+                                                Single destPosY,
+                                                Int32 destScalePercentX,
+                                                Int32 destScalePercentY,
+                                                UInt32 srcPaletteEntries,
+                                                Boolean srcBlackWhite)
         {
             const Int32 sizeStd = 256;
 
@@ -279,14 +279,14 @@ namespace PCLParaphernalia
 
             Int32 destWidth = 0,
                   destHeight = 0;
-            
+
             UInt32 paletteEntries = 0,
                    paletteSize = 0;
 
             Byte colourDepth = 0,
                  colourMapping = 0,
                  colourSpace = 0;
-       
+
             //----------------------------------------------------------------//
             //                                                                //
             // Calculate destination size.                                    //
@@ -372,35 +372,35 @@ namespace PCLParaphernalia
 
             if (srcBlackWhite)
             {
-                colourSpace    = (Byte)PCLXLAttrEnums.eVal.eGray;
-                colourDepth    = (Byte)PCLXLAttrEnums.eVal.e1Bit;
-                colourMapping  = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (Byte)PCLXLAttrEnums.eVal.eGray;
+                colourDepth = (Byte)PCLXLAttrEnums.eVal.e1Bit;
+                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 2;
-                paletteSize    = 2;
+                paletteSize = 2;
             }
             else if (srcBitsPerPixel == 1)
             {
-                colourSpace    = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth    = (Byte)PCLXLAttrEnums.eVal.e1Bit;
-                colourMapping  = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (Byte)PCLXLAttrEnums.eVal.e1Bit;
+                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 0x00000001 << 1;
-                paletteSize    = 3 * paletteEntries;    // one per plane
+                paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 4)
             {
-                colourSpace    = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth    = (Byte)PCLXLAttrEnums.eVal.e4Bit;
-                colourMapping  = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
+                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (Byte)PCLXLAttrEnums.eVal.e4Bit;
+                colourMapping = (Byte)PCLXLAttrEnums.eVal.eIndexedPixel;
                 paletteEntries = 0x00000001 << 4;
-                paletteSize    = 3 * paletteEntries;    // one per plane
+                paletteSize = 3 * paletteEntries;    // one per plane
             }
             else if (srcBitsPerPixel == 24)
             {
-                colourSpace    = (Byte)PCLXLAttrEnums.eVal.eRGB;
-                colourDepth    = (Byte)PCLXLAttrEnums.eVal.e8Bit;
-                colourMapping  = (Byte)PCLXLAttrEnums.eVal.eDirectPixel;
+                colourSpace = (Byte)PCLXLAttrEnums.eVal.eRGB;
+                colourDepth = (Byte)PCLXLAttrEnums.eVal.e8Bit;
+                colourMapping = (Byte)PCLXLAttrEnums.eVal.eDirectPixel;
                 paletteEntries = 0;
-                paletteSize    = 0;
+                paletteSize = 0;
             }
 
             PCLXLWriter.addOperator(ref bufStd,
@@ -525,11 +525,11 @@ namespace PCLParaphernalia
             Int32 indStd;
 
             indStd = 0;
-            
+
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.EndImage);
-            
+
             PCLXLWriter.addOperator(ref bufStd,
                               ref indStd,
                               PCLXLOperators.eTag.PopGS);
@@ -547,13 +547,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        paperSize,
-                                       Int32        paperType,
-                                       Int32        orientation,
-                                       Single       destPosX,
-                                       Single       destPosY,
-                                       Int32        destScalePercentX,
-                                       Int32        destScalePercentY)
+                                       Int32 paperSize,
+                                       Int32 paperType,
+                                       Int32 orientation,
+                                       Single destPosX,
+                                       Single destPosY,
+                                       Int32 destScalePercentX,
+                                       Int32 destScalePercentY)
         {
             generateJobHeader(prnWriter,
                               paperSize,
@@ -579,9 +579,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32        paperSize,
-                                              Int32        paperType,
-                                              Int32        orientation)
+                                              Int32 paperSize,
+                                              Int32 paperType,
+                                              Int32 orientation)
         {
             const Int32 sizeStd = 1024;
 
@@ -590,7 +590,7 @@ namespace PCLParaphernalia
             Int32 indStd;
 
             PCLXLWriter.stdJobHeader(prnWriter, "");
- 
+
             indStd = 0;
 
             if (orientation < PCLOrientations.getCount())

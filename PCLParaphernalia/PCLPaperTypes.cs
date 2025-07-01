@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         // of the definition array; the entries must be in the same order.    //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public enum eEntryType
         {
             Standard,
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
-       
+
         private static PCLPaperType[] _paperTypes =
         {
             new PCLPaperType(eEntryType.NotSet,  "<not set>"),

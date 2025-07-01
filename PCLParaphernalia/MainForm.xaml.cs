@@ -31,21 +31,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ToolFontSample          _subFormToolFontSample          = null;
-        private ToolFormSample          _subFormToolFormSample          = null;
-        private ToolImageBitmap         _subFormToolImageBitmap         = null;
-        private ToolMakeOverlay         _subFormToolMakeOverlay         = null;
-        private ToolMiscSamples         _subFormToolMiscSamples         = null;
-  //    private ToolPatternGenerate     _subFormToolPatternGenerate     = null;
-        private ToolPrintArea           _subFormToolPrintArea           = null;
-        private ToolPrintLang           _subFormToolPrintLang           = null;
-        private ToolPrnAnalyse          _subFormToolPrnAnalyse          = null;
-        private ToolPrnPrint            _subFormToolPrnPrint            = null;
-        private ToolSoftFontGenerate    _subFormToolSoftFontGenerate    = null;
-        private ToolStatusReadback      _subFormToolStatusReadback      = null;
-        private ToolSymbolSetGenerate   _subFormToolSymbolSetGenerate   = null;
-        private ToolTrayMap             _subFormToolTrayMap             = null;
-        private ToolXXXDiags            _subFormToolXXXDiags            = null;
+        private ToolFontSample _subFormToolFontSample = null;
+        private ToolFormSample _subFormToolFormSample = null;
+        private ToolImageBitmap _subFormToolImageBitmap = null;
+        private ToolMakeOverlay _subFormToolMakeOverlay = null;
+        private ToolMiscSamples _subFormToolMiscSamples = null;
+        //    private ToolPatternGenerate     _subFormToolPatternGenerate     = null;
+        private ToolPrintArea _subFormToolPrintArea = null;
+        private ToolPrintLang _subFormToolPrintLang = null;
+        private ToolPrnAnalyse _subFormToolPrnAnalyse = null;
+        private ToolPrnPrint _subFormToolPrnPrint = null;
+        private ToolSoftFontGenerate _subFormToolSoftFontGenerate = null;
+        private ToolStatusReadback _subFormToolStatusReadback = null;
+        private ToolSymbolSetGenerate _subFormToolSymbolSetGenerate = null;
+        private ToolTrayMap _subFormToolTrayMap = null;
+        private ToolXXXDiags _subFormToolXXXDiags = null;
 
         private ToolCommonData.eToolIds _crntToolId =
             ToolCommonData.eToolIds.Min;
@@ -90,7 +90,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            MainFormPersist.loadWindowData (ref mwLeft,
+            MainFormPersist.loadWindowData(ref mwLeft,
                                            ref mwTop,
                                            ref mwHeight,
                                            ref mwWidth,
@@ -134,22 +134,22 @@ namespace PCLParaphernalia
 
             AssemblyName assemblyName = assembly.GetName();
 
-            versionMajorCrnt    = (Int32)assemblyName.Version.Major;
-            versionMinorCrnt    = (Int32)assemblyName.Version.Minor;
-            versionBuildCrnt    = (Int32)assemblyName.Version.Build;
+            versionMajorCrnt = (Int32)assemblyName.Version.Major;
+            versionMinorCrnt = (Int32)assemblyName.Version.Minor;
+            versionBuildCrnt = (Int32)assemblyName.Version.Build;
             versionRevisionCrnt = (Int32)assemblyName.Version.Revision;
 
-            MainFormData.setVersionData (true, versionMajorCrnt,
+            MainFormData.setVersionData(true, versionMajorCrnt,
                                                versionMinorCrnt,
                                                versionBuildCrnt,
                                                versionRevisionCrnt);
 
-            MainFormPersist.loadVersionData (ref versionMajorOld,
+            MainFormPersist.loadVersionData(ref versionMajorOld,
                                              ref versionMinorOld,
                                              ref versionBuildOld,
                                              ref versionRevisionOld);
 
-            MainFormData.setVersionData (false, versionMajorOld,
+            MainFormData.setVersionData(false, versionMajorOld,
                                                 versionMinorOld,
                                                 versionBuildOld,
                                                 versionRevisionOld);
@@ -174,13 +174,13 @@ namespace PCLParaphernalia
                 // Invoke default working folder dialogue.                        //
                 //                                                                //
                 //----------------------------------------------------------------//
-        
-                WorkFolder workFolder = new WorkFolder ();
+
+                WorkFolder workFolder = new WorkFolder();
 
                 Nullable<Boolean> dialogResult = workFolder.ShowDialog();
             }
 
-            MainFormPersist.saveVersionData (versionMajorCrnt,
+            MainFormPersist.saveVersionData(versionMajorCrnt,
                                              versionMinorCrnt,
                                              versionBuildCrnt,
                                              versionRevisionCrnt);
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = true;
                 menuItemTargetWinPrinter.IsChecked = false;
             }
-            else if (TargetCore.getType () == TargetCore.eTarget.WinPrinter)
+            else if (TargetCore.getType() == TargetCore.eTarget.WinPrinter)
             {
                 menuItemTargetFile.IsChecked = false;
                 menuItemTargetNetPrinter.IsChecked = false;
@@ -238,8 +238,8 @@ namespace PCLParaphernalia
                 // ***** for design time use only *****                       //
                 //                                                            //
                 //------------------------------------------------------------//
-                
-                toolXXXDiags_Selected (this, null);
+
+                toolXXXDiags_Selected(this, null);
             }
             else if (filename != "")
             {
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
                 // Load 'PRN File Analyse' tool and pass in file name.        //
                 //                                                            //
                 //------------------------------------------------------------//
-                
+
                 startToolId = ToolCommonData.eToolIds.PrnAnalyse;
 
                 toolPrnAnalyse_Selected(this, null);
@@ -289,9 +289,9 @@ namespace PCLParaphernalia
                 else if (startToolId ==
                     ToolCommonData.eToolIds.MiscSamples)
                     toolMiscSamples_Selected(this, null);
-        //      else if (startToolId ==
-        //          ToolCommonData.eToolIds.PatternGenerate)
-        //          toolPatternGenerate_Selected(this, null);
+                //      else if (startToolId ==
+                //          ToolCommonData.eToolIds.PatternGenerate)
+                //          toolPatternGenerate_Selected(this, null);
                 else if (startToolId ==
                     ToolCommonData.eToolIds.PrintArea)
                     toolPrintArea_Selected(this, null);
@@ -347,9 +347,9 @@ namespace PCLParaphernalia
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.MiscSamples)
                 _subFormToolMiscSamples.giveCrntPDL(ref _crntPDL);
-     //     else if (_crntToolId ==
-     //         ToolCommonData.eToolIds.PatternGenerate)
-     //         _subFormToolPatternGenerate.giveCrntPDL(ref _crntPDL);
+            //     else if (_crntToolId ==
+            //         ToolCommonData.eToolIds.PatternGenerate)
+            //         _subFormToolPatternGenerate.giveCrntPDL(ref _crntPDL);
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.PrintArea)
                 _subFormToolPrintArea.giveCrntPDL(ref _crntPDL);
@@ -427,9 +427,9 @@ namespace PCLParaphernalia
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.MiscSamples)
                 _subFormToolMiscSamples.resetTarget();
-    //      else if (_crntToolId ==
-    //          ToolCommonData.eToolIds.PatternGenerate)
-    //          _subFormToolPatternGenerate.resetTarget();
+            //      else if (_crntToolId ==
+            //          ToolCommonData.eToolIds.PatternGenerate)
+            //          _subFormToolPatternGenerate.resetTarget();
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.PrintArea)
                 _subFormToolPrintArea.resetTarget();
@@ -488,9 +488,9 @@ namespace PCLParaphernalia
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.MiscSamples)
                 _subFormToolMiscSamples.metricsSave();
-     //     else if (_crntToolId ==
-     //         ToolCommonData.eToolIds.PatternGenerate)
-     //         _subFormToolPatternGenerate.metricsSave();
+            //     else if (_crntToolId ==
+            //         ToolCommonData.eToolIds.PatternGenerate)
+            //         _subFormToolPatternGenerate.metricsSave();
             else if (_crntToolId ==
                 ToolCommonData.eToolIds.PrintArea)
                 _subFormToolPrintArea.metricsSave();
@@ -536,7 +536,7 @@ namespace PCLParaphernalia
             menuItemToolImageBitmap.IsChecked = false;
             menuItemToolMakeOverlay.IsChecked = false;
             menuItemToolMiscSamples.IsChecked = false;
-        //  menuItemToolPatternGenerate.IsChecked = false;
+            //  menuItemToolPatternGenerate.IsChecked = false;
             menuItemToolPrintArea.IsChecked = false;
             menuItemToolPrintLang.IsChecked = false;
             menuItemToolPrnAnalyse.IsChecked = false;
@@ -647,13 +647,13 @@ namespace PCLParaphernalia
 
         private void targetFileSelect_Click(object sender, RoutedEventArgs e)
         {
-            menuItemTargetFile.IsChecked    = true;
+            menuItemTargetFile.IsChecked = true;
             menuItemTargetNetPrinter.IsChecked = false;
             menuItemTargetWinPrinter.IsChecked = false;
 
             TargetCore.metricsSaveType(TargetCore.eTarget.File);
 
-            crntToolResetTarget ();
+            crntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -669,13 +669,13 @@ namespace PCLParaphernalia
                                                RoutedEventArgs e)
         {
             crntToolResetPDL();
-            
+
             crntToolResetSubId();
 
-            TargetFile targetFile = new TargetFile (_crntToolId, _crntSubId,
+            TargetFile targetFile = new TargetFile(_crntToolId, _crntSubId,
                                                     _crntPDL);
 
-            Nullable<Boolean> dialogResult = targetFile.ShowDialog ();
+            Nullable<Boolean> dialogResult = targetFile.ShowDialog();
 
             if (dialogResult == true)
             {
@@ -683,9 +683,9 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.metricsSaveType (TargetCore.eTarget.File);
+                TargetCore.metricsSaveType(TargetCore.eTarget.File);
 
-                crntToolResetTarget ();
+                crntToolResetTarget();
             }
         }
 
@@ -699,16 +699,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void targetNetPrinterSelect_Click (object sender,
+        private void targetNetPrinterSelect_Click(object sender,
                                                    RoutedEventArgs e)
         {
-            menuItemTargetFile.IsChecked    = false;
+            menuItemTargetFile.IsChecked = false;
             menuItemTargetNetPrinter.IsChecked = true;
             menuItemTargetWinPrinter.IsChecked = false;
 
             TargetCore.metricsSaveType(TargetCore.eTarget.NetPrinter);
 
-            crntToolResetTarget ();
+            crntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -721,13 +721,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void targetNetPrinterConfigure_Click (object sender,
+        private void targetNetPrinterConfigure_Click(object sender,
                                                       RoutedEventArgs e)
         {
             TargetNetPrintConfig targetNetPrintConfig =
-                new TargetNetPrintConfig ();
+                new TargetNetPrintConfig();
 
-            Nullable<Boolean> dialogResult = targetNetPrintConfig.ShowDialog ();
+            Nullable<Boolean> dialogResult = targetNetPrintConfig.ShowDialog();
 
             if (dialogResult == true)
             {
@@ -735,9 +735,9 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = true;
                 menuItemTargetWinPrinter.IsChecked = false;
 
-                TargetCore.metricsSaveType (TargetCore.eTarget.NetPrinter);
+                TargetCore.metricsSaveType(TargetCore.eTarget.NetPrinter);
 
-                crntToolResetTarget ();
+                crntToolResetTarget();
             }
         }
 
@@ -751,18 +751,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void targetRptFileConfigure_Click (object sender,
+        private void targetRptFileConfigure_Click(object sender,
                                                    RoutedEventArgs e)
         {
-            crntToolResetPDL ();
+            crntToolResetPDL();
 
-            crntToolResetSubId ();
+            crntToolResetSubId();
 
-            TargetRptFile targetRptFile = new TargetRptFile (_crntToolId,
+            TargetRptFile targetRptFile = new TargetRptFile(_crntToolId,
                                                              _crntSubId,
                                                              _crntPDL);
 
-            Nullable<Boolean> dialogResult = targetRptFile.ShowDialog ();
+            Nullable<Boolean> dialogResult = targetRptFile.ShowDialog();
         }
 
         //--------------------------------------------------------------------//
@@ -775,16 +775,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void targetWinPrinterSelect_Click (object sender,
+        private void targetWinPrinterSelect_Click(object sender,
                                                    RoutedEventArgs e)
         {
             menuItemTargetFile.IsChecked = false;
             menuItemTargetNetPrinter.IsChecked = false;
             menuItemTargetWinPrinter.IsChecked = true;
 
-            TargetCore.metricsSaveType (TargetCore.eTarget.WinPrinter);
+            TargetCore.metricsSaveType(TargetCore.eTarget.WinPrinter);
 
-            crntToolResetTarget ();
+            crntToolResetTarget();
         }
 
         //--------------------------------------------------------------------//
@@ -796,13 +796,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void targetWinPrinterConfigure_Click (object sender,
+        private void targetWinPrinterConfigure_Click(object sender,
                                                       RoutedEventArgs e)
         {
             TargetWinPrintConfig targetWinPrintConfig =
-                new TargetWinPrintConfig ();
+                new TargetWinPrintConfig();
 
-            Nullable<Boolean> dialogResult = targetWinPrintConfig.ShowDialog ();
+            Nullable<Boolean> dialogResult = targetWinPrintConfig.ShowDialog();
 
             if (dialogResult == true)
             {
@@ -810,9 +810,9 @@ namespace PCLParaphernalia
                 menuItemTargetNetPrinter.IsChecked = false;
                 menuItemTargetWinPrinter.IsChecked = true;
 
-                TargetCore.metricsSaveType (TargetCore.eTarget.WinPrinter);
+                TargetCore.metricsSaveType(TargetCore.eTarget.WinPrinter);
 
-                crntToolResetTarget ();
+                crntToolResetTarget();
             }
         }
 
@@ -827,24 +827,24 @@ namespace PCLParaphernalia
 
         private void toolFontSample_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolFontSample.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.FontSample;
 
-            _subFormToolFontSample = new ToolFontSample (ref _crntPDL);
+            _subFormToolFontSample = new ToolFontSample(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolFontSample.Content;
 
             _subFormToolFontSample.Content = null;
-            _subFormToolFontSample.Close ();
+            _subFormToolFontSample.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -858,24 +858,24 @@ namespace PCLParaphernalia
 
         private void toolFormSample_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolFormSample.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.FormSample;
 
-            _subFormToolFormSample = new ToolFormSample (ref _crntPDL);
+            _subFormToolFormSample = new ToolFormSample(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolFormSample.Content;
 
             _subFormToolFormSample.Content = null;
-            _subFormToolFormSample.Close ();
+            _subFormToolFormSample.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -890,16 +890,16 @@ namespace PCLParaphernalia
         private void toolImageBitmap_Selected(object sender,
                                               RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolImageBitmap.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.ImageBitmap;
 
-            _subFormToolImageBitmap = new ToolImageBitmap (ref _crntPDL);
+            _subFormToolImageBitmap = new ToolImageBitmap(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolImageBitmap.Content;
 
@@ -922,24 +922,24 @@ namespace PCLParaphernalia
         private void toolMakeOverlay_Selected(object sender,
                                               RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolMakeOverlay.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.MakeOverlay;
 
-            _subFormToolMakeOverlay = new ToolMakeOverlay (ref _crntPDL);
+            _subFormToolMakeOverlay = new ToolMakeOverlay(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolMakeOverlay.Content;
 
             _subFormToolMakeOverlay.Content = null;
-            _subFormToolMakeOverlay.Close ();
+            _subFormToolMakeOverlay.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -951,11 +951,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void toolMiscSamples_Selected (object sender,
+        private void toolMiscSamples_Selected(object sender,
                                               RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolMiscSamples.IsChecked = true;
 
@@ -964,15 +964,15 @@ namespace PCLParaphernalia
             _subFormToolMiscSamples = new ToolMiscSamples(ref _crntPDL,
                                                           ref _crntSubId);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolMiscSamples.Content;
 
             _subFormToolMiscSamples.Content = null;
-            _subFormToolMiscSamples.Close ();
+            _subFormToolMiscSamples.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
         /*
         //--------------------------------------------------------------------//
@@ -1019,16 +1019,16 @@ namespace PCLParaphernalia
 
         private void toolPrintArea_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolPrintArea.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.PrintArea;
 
-            _subFormToolPrintArea = new ToolPrintArea (ref _crntPDL);
+            _subFormToolPrintArea = new ToolPrintArea(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrintArea.Content;
 
@@ -1051,24 +1051,24 @@ namespace PCLParaphernalia
         private void toolPrintLang_Selected(object sender,
                                             RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolPrintLang.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.PrintLang;
 
-            _subFormToolPrintLang = new ToolPrintLang (ref _crntPDL);
+            _subFormToolPrintLang = new ToolPrintLang(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrintLang.Content;
 
             _subFormToolPrintLang.Content = null;
-            _subFormToolPrintLang.Close ();
+            _subFormToolPrintLang.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1083,24 +1083,24 @@ namespace PCLParaphernalia
         private void toolPrnAnalyse_Selected(object sender,
                                              RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolPrnAnalyse.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.PrnAnalyse;
 
-            _subFormToolPrnAnalyse = new ToolPrnAnalyse (ref _crntPDL);
+            _subFormToolPrnAnalyse = new ToolPrnAnalyse(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrnAnalyse.Content;
 
             _subFormToolPrnAnalyse.Content = null;
-            _subFormToolPrnAnalyse.Close ();
+            _subFormToolPrnAnalyse.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1114,24 +1114,24 @@ namespace PCLParaphernalia
 
         private void toolPrnPrint_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolPrnPrint.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.PrnPrint;
 
-            _subFormToolPrnPrint = new ToolPrnPrint (ref _crntPDL);
+            _subFormToolPrnPrint = new ToolPrnPrint(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolPrnPrint.Content;
 
             _subFormToolPrnPrint.Content = null;
-            _subFormToolPrnPrint.Close ();
+            _subFormToolPrnPrint.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1146,25 +1146,25 @@ namespace PCLParaphernalia
         private void toolSoftFontGenerate_Selected(object sender,
                                                    RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolSoftFontGenerate.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.SoftFontGenerate;
 
             _subFormToolSoftFontGenerate =
-                new ToolSoftFontGenerate (ref _crntPDL);
+                new ToolSoftFontGenerate(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolSoftFontGenerate.Content;
 
             _subFormToolSoftFontGenerate.Content = null;
-            _subFormToolSoftFontGenerate.Close ();
+            _subFormToolSoftFontGenerate.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1179,22 +1179,22 @@ namespace PCLParaphernalia
         private void toolStatusReadback_Selected(object sender,
                                                  RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolStatusReadback.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.StatusReadback;
 
-            _subFormToolStatusReadback = new ToolStatusReadback (ref _crntPDL);
+            _subFormToolStatusReadback = new ToolStatusReadback(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolStatusReadback.Content;
 
             _subFormToolStatusReadback.Content = null;
             _subFormToolStatusReadback.Close();
-            
+
             grid1.Children.Clear();
             grid1.Children.Add(content as UIElement);
         }
@@ -1208,28 +1208,28 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void toolSymbolSetGenerate_Selected (object sender,
+        private void toolSymbolSetGenerate_Selected(object sender,
                                                      RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolSymbolSetGenerate.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.SymbolSetGenerate;
 
             _subFormToolSymbolSetGenerate =
-                new ToolSymbolSetGenerate (ref _crntPDL);
+                new ToolSymbolSetGenerate(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolSymbolSetGenerate.Content;
 
             _subFormToolSymbolSetGenerate.Content = null;
-            _subFormToolSymbolSetGenerate.Close ();
+            _subFormToolSymbolSetGenerate.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1240,25 +1240,25 @@ namespace PCLParaphernalia
         // Called when the 'Tray Map' item is selected.                       //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         private void toolTrayMap_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolTrayMap.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.TrayMap;
 
-            _subFormToolTrayMap = new ToolTrayMap (ref _crntPDL);
+            _subFormToolTrayMap = new ToolTrayMap(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
-            object content = _subFormToolTrayMap.Content;  
-            
-            _subFormToolTrayMap.Content = null;    
+            object content = _subFormToolTrayMap.Content;
+
+            _subFormToolTrayMap.Content = null;
             _subFormToolTrayMap.Close();
-            
+
             grid1.Children.Clear();
             grid1.Children.Add(content as UIElement);
         }
@@ -1272,26 +1272,26 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void toolXXXDiags_Selected (object sender, RoutedEventArgs e)
+        private void toolXXXDiags_Selected(object sender, RoutedEventArgs e)
         {
-            crntToolSaveMetrics ();
-            crntToolUncheckAll ();
+            crntToolSaveMetrics();
+            crntToolUncheckAll();
 
             menuItemToolTrayMap.IsChecked = true;
 
             _crntToolId = ToolCommonData.eToolIds.XXXDiags;
 
-            _subFormToolXXXDiags = new ToolXXXDiags (ref _crntPDL);
+            _subFormToolXXXDiags = new ToolXXXDiags(ref _crntPDL);
 
-            TargetCore.metricsLoadFileCapt (_crntToolId, _crntSubId, _crntPDL);
+            TargetCore.metricsLoadFileCapt(_crntToolId, _crntSubId, _crntPDL);
 
             object content = _subFormToolXXXDiags.Content;
 
             _subFormToolXXXDiags.Content = null;
-            _subFormToolXXXDiags.Close ();
+            _subFormToolXXXDiags.Close();
 
-            grid1.Children.Clear ();
-            grid1.Children.Add (content as UIElement);
+            grid1.Children.Clear();
+            grid1.Children.Add(content as UIElement);
         }
 
         //--------------------------------------------------------------------//
@@ -1312,7 +1312,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            crntToolSaveMetrics ();
+            crntToolSaveMetrics();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1325,7 +1325,7 @@ namespace PCLParaphernalia
                 (Int32)this.Top,
                 (Int32)this.Height,
                 (Int32)this.Width,
-                (Int32) (MainFormData.WindowScale * 100));
+                (Int32)(MainFormData.WindowScale * 100));
         }
 
         //--------------------------------------------------------------------//
@@ -1358,6 +1358,6 @@ namespace PCLParaphernalia
             helpProvider1.SetHelpNavigator(this.chkMain, HelpNavigator.Topic);
             helpProvider1.SetHelpKeyword(this.chkMain, @"/HTMLHelp_Examples/jump_to_anchor.htm#AnchorSample");
         }
-        */ 
+        */
     }
 }

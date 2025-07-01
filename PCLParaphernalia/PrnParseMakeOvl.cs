@@ -21,14 +21,14 @@ namespace PCLParaphernalia
         // Constants and enumerations.                                        //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static ASCIIEncoding _ascii = new ASCIIEncoding ();
+        private static ASCIIEncoding _ascii = new ASCIIEncoding();
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -43,14 +43,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Boolean breakpoint(PrnParseLinkData linkData,
-                                        Stream            ipStream,
-                                        BinaryReader      binReader,
-                                        BinaryWriter      binWriter)
+                                        Stream ipStream,
+                                        BinaryReader binReader,
+                                        BinaryWriter binWriter)
         {
             Boolean terminate = false;
-            Boolean update    = false;
+            Boolean update = false;
 
-            Boolean ovlXL       = linkData.MakeOvlXL;
+            Boolean ovlXL = linkData.MakeOvlXL;
             Boolean encapsulate = linkData.MakeOvlEncapsulate;
 
             PrnParseConstants.eOvlAct action = linkData.MakeOvlAct;
@@ -136,15 +136,15 @@ namespace PCLParaphernalia
                         comboLast = false,
                         comboModified = false;
 
-                linkData.getPCLComboData (ref comboSeq,
+                linkData.getPCLComboData(ref comboSeq,
                                           ref comboFirst,
                                           ref comboLast,
                                           ref comboModified,
                                           ref comboStart);
 
-                crntPos   = linkData.MakeOvlOffset;
+                crntPos = linkData.MakeOvlOffset;
                 skipBegin = linkData.MakeOvlSkipBegin;
-                skipEnd   = linkData.MakeOvlSkipEnd;
+                skipEnd = linkData.MakeOvlSkipEnd;
 
                 if (skipBegin >= 0)
                 {
@@ -200,12 +200,12 @@ namespace PCLParaphernalia
                 {
                     try
                     {
-                        ipStream.Seek (crntPos, SeekOrigin.Begin);
+                        ipStream.Seek(crntPos, SeekOrigin.Begin);
                     }
 
                     catch (IOException e)
                     {
-                        MessageBox.Show ("' IO Exception:\r\n" +
+                        MessageBox.Show("' IO Exception:\r\n" +
                                          e.Message +
                                          "\r\n\r\nSeeking to offset " + crntPos,
                                          "Synchronising",
@@ -233,29 +233,29 @@ namespace PCLParaphernalia
                                 if (syncLen > bufSize)
                                     readLen = bufSize;
                                 else
-                                    readLen = (Int32) syncLen;
+                                    readLen = (Int32)syncLen;
 
                                 syncLen -= readLen;
 
-                                binReader.Read (buf, 0, readLen);
+                                binReader.Read(buf, 0, readLen);
 
                                 if (ovlXL)
                                 {
-                                    PCLXLWriter.writeStreamBlock (binWriter,
+                                    PCLXLWriter.writeStreamBlock(binWriter,
                                                                   encapsulate,
                                                                   buf,
                                                                   ref readLen);
                                 }
                                 else
                                 {
-                                    binWriter.Write (buf, 0, readLen);
+                                    binWriter.Write(buf, 0, readLen);
                                 }
                             }
                         }
 
                         catch (IOException e)
                         {
-                            MessageBox.Show ("' IO Exception:\r\n" +
+                            MessageBox.Show("' IO Exception:\r\n" +
                                              e.Message +
                                              "\r\n\r\nCopying " + readLen + " bytes",
                                              "Synchronising",
@@ -284,9 +284,9 @@ namespace PCLParaphernalia
 
                             Byte[] termByte = new Byte[1];
 
-                            readLen = (Int32) fragLen;
+                            readLen = (Int32)fragLen;
 
-                            binReader.Read (buf, 0, readLen);
+                            binReader.Read(buf, 0, readLen);
 
                             if (buf[0] != PrnParseConstants.asciiEsc)
                             {
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
 
                                 Byte[] rootBuf = new Byte[3];
 
-                                linkData.getPrefixData (ref prefixLen,
+                                linkData.getPrefixData(ref prefixLen,
                                                         ref prefixA,
                                                         ref prefixB);
 
@@ -307,7 +307,7 @@ namespace PCLParaphernalia
                                 rootBuf[1] = prefixA;
                                 rootBuf[2] = prefixB;
 
-                                binWriter.Write (rootBuf, 0, prefixLen + 1);
+                                binWriter.Write(rootBuf, 0, prefixLen + 1);
                             }
 
                             crntByte = buf[readLen - 1];
@@ -316,19 +316,19 @@ namespace PCLParaphernalia
                                                    &&
                                 (crntByte <= PrnParseConstants.pclComplexPCharHigh))
                             {
-                                crntByte = (Byte) (crntByte - 0x20);
+                                crntByte = (Byte)(crntByte - 0x20);
                             }
 
                             termByte[0] = crntByte;
 
-                            binWriter.Write (buf, 0, readLen - 1);
+                            binWriter.Write(buf, 0, readLen - 1);
 
-                            binWriter.Write (termByte, 0, 1);
+                            binWriter.Write(termByte, 0, 1);
                         }
 
                         catch (IOException e)
                         {
-                            MessageBox.Show ("' IO Exception:\r\n" +
+                            MessageBox.Show("' IO Exception:\r\n" +
                                              e.Message +
                                              "\r\n\r\nCopying " + readLen + " bytes",
                                              "Synchronising",
@@ -344,7 +344,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                linkData.MakeOvlOffset    = skipEnd;
+                linkData.MakeOvlOffset = skipEnd;
 
                 if (action == PrnParseConstants.eOvlAct.PageBoundary)
                 {
@@ -365,18 +365,18 @@ namespace PCLParaphernalia
                 else
                 {
                     linkData.MakeOvlSkipBegin =
-                        (Int32) PrnParseConstants.eOffsetPosition.Unknown;
+                        (Int32)PrnParseConstants.eOffsetPosition.Unknown;
                 }
 
                 if (action == PrnParseConstants.eOvlAct.Replace_0x77)
                 {
-                    PCLXLWriter.writeOperator (binWriter,
+                    PCLXLWriter.writeOperator(binWriter,
                                                PCLXLOperators.eTag.SetPageScale,
                                                encapsulate);
                 }
                 else if (action == PrnParseConstants.eOvlAct.PushGS)
                 {
-                    PCLXLWriter.writeOperator (binWriter,
+                    PCLXLWriter.writeOperator(binWriter,
                                                PCLXLOperators.eTag.PushGS,
                                                encapsulate);
                 }
@@ -384,7 +384,7 @@ namespace PCLParaphernalia
                 action = PrnParseConstants.eOvlAct.None;
             }
 
-            linkData.MakeOvlAct  = action;
+            linkData.MakeOvlAct = action;
 
             return terminate;
         }
@@ -431,7 +431,7 @@ namespace PCLParaphernalia
             comboModified = linkData.PclComboModified;
 
             seqBegin = fileOffset + seqStart;
-            seqEnd   = seqBegin + fragLen;
+            seqEnd = seqBegin + fragLen;
 
             if (makeOvlPosCrnt == PrnParseConstants.eOvlPos.BeforeFirstPage)
             {
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
                     makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
 
-                    checkActionPCLMacroClash (vInt, table);
+                    checkActionPCLMacroClash(vInt, table);
                 }
                 else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
                 {
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
                     makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
 
-                    checkActionPCLMacroClash (vInt, table);
+                    checkActionPCLMacroClash(vInt, table);
                 }
                 else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
                 {
@@ -531,7 +531,7 @@ namespace PCLParaphernalia
                     makeOvlActNew = PrnParseConstants.eOvlAct.Adjust;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
                 }
-                else 
+                else
                 {
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
                 }
@@ -547,21 +547,21 @@ namespace PCLParaphernalia
                 if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
                 {
                     breakpoint = true;
-                    
+
                     makeOvlActNew = PrnParseConstants.eOvlAct.PageBoundary;
                     makeOvlShowNew = PrnParseConstants.eOvlShow.None;
 
                     if (linkData.MakeOvlSkipBegin > 0)
                     {
                         Int64 pageStart = linkData.MakeOvlSkipBegin;
-                        Int64 pageLen   = seqBegin - pageStart;
+                        Int64 pageLen = seqBegin - pageStart;
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Remove,
                             indxOffsetFormat,
-                            (Int32) pageStart,
+                            (Int32)pageStart,
                             analysisLevel,
                             "",
                             "[" + pageLen + " bytes]",
@@ -578,14 +578,14 @@ namespace PCLParaphernalia
                     if (linkData.MakeOvlSkipBegin > 0)
                     {
                         Int64 pageStart = linkData.MakeOvlSkipBegin;
-                        Int64 pageLen   = seqBegin - pageStart;
+                        Int64 pageLen = seqBegin - pageStart;
 
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Remove,
                             indxOffsetFormat,
-                            (Int32) pageStart,
+                            (Int32)pageStart,
                             analysisLevel,
                             "",
                             "[" + pageLen + " bytes]",
@@ -633,7 +633,7 @@ namespace PCLParaphernalia
 
                 Int32 prefixLen = 0;
 
-                linkData.getPrefixData (ref prefixLen,
+                linkData.getPrefixData(ref prefixLen,
                                          ref iChar,
                                          ref gChar);
 
@@ -647,9 +647,9 @@ namespace PCLParaphernalia
 
                 linkData.PclComboModified = comboModified;
 
-                linkData.setContData (contType,
+                linkData.setContData(contType,
                                       prefixLen,
-                                      (Int32) seqEnd,
+                                      (Int32)seqEnd,
                                       0,
                                       true,
                                       iChar,
@@ -661,7 +661,7 @@ namespace PCLParaphernalia
                 if (makeOvlActNew == PrnParseConstants.eOvlAct.PageBegin)
                 {
                     linkData.MakeOvlSkipBegin = seqBegin;
-                    linkData.MakeOvlSkipEnd   = seqBegin;
+                    linkData.MakeOvlSkipEnd = seqBegin;
                 }
                 else if (makeOvlActNew == PrnParseConstants.eOvlAct.PageBoundary)
                 {
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
                     {
                         linkData.MakeOvlSkipBegin = seqBegin;
                     }
-                
+
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
             }
@@ -709,7 +709,7 @@ namespace PCLParaphernalia
             Int32 vInt,
             DataTable table)
         {
-            PrnParseCommon.addTextRow (
+            PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
@@ -719,7 +719,7 @@ namespace PCLParaphernalia
                 "Macro identifier " + vInt +
                 " is the specified overlay identifier");
 
-            PrnParseCommon.addTextRow (
+            PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
@@ -728,7 +728,7 @@ namespace PCLParaphernalia
                 "",
                "Run aborted");
 
-            MessageBox.Show (
+            MessageBox.Show(
                 "The specified overlay identifier " + vInt +
                 " is already used within the" +
                 " source print file",
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
             analysisLevel = linkData.AnalysisLevel;
 
             seqBegin = fileOffset + attrDataStart;
-            seqEnd   = fileOffset + attrPos + 2;    // what about 2-byte tags?
+            seqEnd = fileOffset + attrPos + 2;    // what about 2-byte tags?
 
             if (makeOvlPos == PrnParseConstants.eOvlPos.WithinOtherPages)
             {
@@ -806,7 +806,7 @@ namespace PCLParaphernalia
 
                     linkData.MakeOvlAct = attrOvlAct;
                     linkData.MakeOvlSkipBegin = fileOffset + attrDataStart;
-                    linkData.MakeOvlSkipEnd   = fileOffset + attrPos;
+                    linkData.MakeOvlSkipEnd = fileOffset + attrPos;
                 }
                 else
                 {
@@ -823,12 +823,12 @@ namespace PCLParaphernalia
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
                             indxOffsetFormat,
-                            (Int32) offset,
+                            (Int32)offset,
                             analysisLevel,
                             "PCLXL embedding",
                             "[" + copyLen + " bytes]",
@@ -883,7 +883,7 @@ namespace PCLParaphernalia
             analysisLevel = linkData.AnalysisLevel;
 
             seqBegin = fileOffset + operDataStart;
-            seqEnd   = fileOffset + operPos + 1;
+            seqEnd = fileOffset + operPos + 1;
 
             if (makeOvlPos == PrnParseConstants.eOvlPos.BeforeFirstPage)
             {
@@ -954,7 +954,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -1001,9 +1001,9 @@ namespace PCLParaphernalia
 
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.Remove;
 
-                    if (! firstPass)
+                    if (!firstPass)
                         linkData.MakeOvlPos = PrnParseConstants.eOvlPos.BetweenPages;
-                    
+
                     linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
                     linkData.MakeOvlSkipBegin = seqBegin;
                     linkData.MakeOvlSkipEnd = seqEnd;
@@ -1028,7 +1028,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -1118,12 +1118,12 @@ namespace PCLParaphernalia
                     linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
                     linkData.MakeOvlSkipEnd = seqEnd;
 
-                    PrnParseCommon.addDataRow (
+                    PrnParseCommon.addDataRow(
                         PrnParseRowTypes.eType.MsgComment,
                         table,
                         PrnParseConstants.eOvlShow.Remove,
                         indxOffsetFormat,
-                        (Int32) linkData.MakeOvlSkipBegin,
+                        (Int32)linkData.MakeOvlSkipBegin,
                         analysisLevel,
                         "",
                         "[" + pageLen + " bytes]",
@@ -1194,7 +1194,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlSkipBegin = seqEnd - 1;
                     linkData.MakeOvlSkipEnd = seqEnd;
                 }
-                else 
+                else
                 {
                     linkData.MakeOvlShow = PrnParseConstants.eOvlShow.None;
                 }
@@ -1203,19 +1203,19 @@ namespace PCLParaphernalia
             if (breakpoint)
             {
                 if ((linkData.MakeOvlEncapsulate) &&
-                    ((firstPass) || (! operHasAttrList)))
+                    ((firstPass) || (!operHasAttrList)))
                 {
                     Int64 offset = linkData.MakeOvlOffset;
                     Int64 copyLen = seqBegin - offset;
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
                             indxOffsetFormat,
-                            (Int32) offset,
+                            (Int32)offset,
                             analysisLevel,
                             "PCLXL embedding",
                             "[" + copyLen + " bytes]",
@@ -1246,7 +1246,7 @@ namespace PCLParaphernalia
         {
             Boolean breakpoint = false;
 
-            Boolean encapsulate = linkData.MakeOvlEncapsulate; 
+            Boolean encapsulate = linkData.MakeOvlEncapsulate;
 
             Int32 analysisLevel;
 
@@ -1259,8 +1259,8 @@ namespace PCLParaphernalia
             analysisLevel = linkData.AnalysisLevel;
 
             seqBegin = fileOffset + hddrEnd;
-            seqEnd   = fileOffset + hddrEnd;
-            
+            seqEnd = fileOffset + hddrEnd;
+
             if (linkData.MakeOvlRestoreStateXL)
             {
                 String descText;
@@ -1274,12 +1274,12 @@ namespace PCLParaphernalia
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow (
+                        PrnParseCommon.addDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
                             indxOffsetFormat,
-                            (Int32) offset,
+                            (Int32)offset,
                             analysisLevel,
                             "PCLXL embedding",
                             "[" + copyLen + " bytes]",
@@ -1289,7 +1289,7 @@ namespace PCLParaphernalia
 
                 linkData.MakeOvlAct = PrnParseConstants.eOvlAct.PushGS;
                 linkData.MakeOvlSkipBegin = seqEnd;
-                linkData.MakeOvlSkipEnd   = seqEnd;
+                linkData.MakeOvlSkipEnd = seqEnd;
 
                 if (encapsulate)
                     descText = "PushGS (encapsulated within" +
@@ -1297,12 +1297,12 @@ namespace PCLParaphernalia
                 else
                     descText = "PushGS";
 
-                PrnParseCommon.addDataRow (
+                PrnParseCommon.addDataRow(
                     PrnParseRowTypes.eType.PCLXLOperator,
                     table,
                     PrnParseConstants.eOvlShow.Insert,
                     indxOffsetFormat,
-                    (Int32) seqEnd,
+                    (Int32)seqEnd,
                     analysisLevel,
                     "PCLXL Operator",
                     "0x61",
@@ -1330,24 +1330,24 @@ namespace PCLParaphernalia
         {
             PrnParseConstants.eOffsetPosition crntPos;
 
-            parserPCL.setTable (table);
+            parserPCL.setTable(table);
 
             crntPos = PrnParseConstants.eOffsetPosition.StartOfFile;
 
             if (encapsulate)
             {
-                insertSequencePCL (
+                insertSequencePCL(
                     parserPCL,
                     binWriter,
                     0x26, // & //
                     0x66, // f //
                     0x59, // Y //
-                    macroId.ToString (),
+                    macroId.ToString(),
                     crntPos);
-                
+
                 crntPos = PrnParseConstants.eOffsetPosition.CrntPosition;
 
-                insertSequencePCL (
+                insertSequencePCL(
                     parserPCL,
                     binWriter,
                     0x26, // & //
@@ -1359,7 +1359,7 @@ namespace PCLParaphernalia
 
             if (restoreCursor)
             {
-                insertSequencePCL (
+                insertSequencePCL(
                     parserPCL,
                     binWriter,
                     0x26, // & //
@@ -1425,12 +1425,12 @@ namespace PCLParaphernalia
 
             vInt16 = 0;
 
-            if (Int16.TryParse (value, out vInt16))
+            if (Int16.TryParse(value, out vInt16))
                 vCheck = true;
             else
                 vCheck = false;
 
-            seqKnown = PCLComplexSeqs.checkComplexSeq (
+            seqKnown = PCLComplexSeqs.checkComplexSeq(
                             0,
                             iChar,
                             gChar,
@@ -1464,24 +1464,24 @@ namespace PCLParaphernalia
             {
                 prefixLen = 1;
 
-                seq = _ascii.GetString (seqBuf, 1, 1) + value +
-                      _ascii.GetString (seqBuf, 3, 1);
+                seq = _ascii.GetString(seqBuf, 1, 1) + value +
+                      _ascii.GetString(seqBuf, 3, 1);
             }
             else
             {
                 prefixLen = 2;
 
-                seq = _ascii.GetString (seqBuf, 1, 2) + value +
-                      _ascii.GetString (seqBuf, 3, 1);
+                seq = _ascii.GetString(seqBuf, 1, 2) + value +
+                      _ascii.GetString(seqBuf, 3, 1);
             }
 
-            parserPCL.parseSequenceComplexDisplay (
-                (Int32) position,
+            parserPCL.parseSequenceComplexDisplay(
+                (Int32)position,
                 prefixLen,
                 true,
                 PrnParseConstants.eOvlShow.Insert,
                 typeText,
-                seq.ToString (),
+                seq.ToString(),
                 descComplex,
                 value);
 
@@ -1494,18 +1494,18 @@ namespace PCLParaphernalia
             {
                 Int32 len;
 
-                binWriter.Write (seqBuf, 0, prefixLen + 1);
+                binWriter.Write(seqBuf, 0, prefixLen + 1);
 
-                len = _ascii.GetByteCount (value);
+                len = _ascii.GetByteCount(value);
 
-                binWriter.Write (_ascii.GetBytes (value), 0, len);
+                binWriter.Write(_ascii.GetBytes(value), 0, len);
 
-                binWriter.Write (seqBuf, 3, 1);
+                binWriter.Write(seqBuf, 3, 1);
             }
 
             catch (IOException e)
             {
-                MessageBox.Show ("' IO Exception:\r\n" +
+                MessageBox.Show("' IO Exception:\r\n" +
                                  e.Message,
                                  "Inserting sequences",
                                  MessageBoxButton.OK,
@@ -1522,21 +1522,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void insertTrailerPCL(PrnParsePCL  parserPCL,
-                                            DataTable    table,
+        public static void insertTrailerPCL(PrnParsePCL parserPCL,
+                                            DataTable table,
                                             BinaryWriter binWriter,
-                                            Boolean      encapsulate,
-                                            Boolean      restoreCursor)
+                                            Boolean encapsulate,
+                                            Boolean restoreCursor)
         {
             PrnParseConstants.eOffsetPosition crntPos;
 
-            parserPCL.setTable (table);
+            parserPCL.setTable(table);
 
             crntPos = PrnParseConstants.eOffsetPosition.EndOfFile;
 
             if (restoreCursor)
             {
-                insertSequencePCL (
+                insertSequencePCL(
                     parserPCL,
                     binWriter,
                     0x26, // & //
@@ -1550,7 +1550,7 @@ namespace PCLParaphernalia
 
             if (encapsulate)
             {
-                insertSequencePCL (
+                insertSequencePCL(
                     parserPCL,
                     binWriter,
                     0x26, // & //

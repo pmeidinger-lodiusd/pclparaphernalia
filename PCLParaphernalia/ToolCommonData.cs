@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         public enum eToolSubIds : Byte
         {
             None,
-                            // used by ToolPrintLang:
+            // used by ToolPrintLang:
             PCL,            //
             HPGL2,          //
             PCLXLTags,      //
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
             Unknown
         }
 
-        static String _tmpFolder = Environment.GetEnvironmentVariable ("TMP");
+        static String _tmpFolder = Environment.GetEnvironmentVariable("TMP");
 
         static String _defWorkFolder = _tmpFolder;
 
@@ -110,9 +110,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadWorkFoldername ()
+        public static void loadWorkFoldername()
         {
-            TargetPersist.loadDataWorkFolder (ref _defWorkFolder);
+            TargetPersist.loadDataWorkFolder(ref _defWorkFolder);
         }
     }
 }

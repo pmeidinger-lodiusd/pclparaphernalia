@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -25,24 +25,24 @@ namespace PCLParaphernalia
 
         private Byte _tag;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagReserved;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L E m b e d D a t a D e f                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLEmbedDataDef(Byte    tag,
+        public PCLXLEmbedDataDef(Byte tag,
                                     Boolean flagReserved,
-                                    String  description)
-	    {
-            _tag          = tag;
+                                    String description)
+        {
+            _tag = tag;
             _flagReserved = flagReserved;
-            _description  = description;
-	    }
+            _description = description;
+        }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //

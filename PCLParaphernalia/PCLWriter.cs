@@ -20,8 +20,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public const UInt16 sessionUPI               = 600;
-        public const UInt16 pointsPerInch            = 72;
+        public const UInt16 sessionUPI = 600;
+        public const UInt16 pointsPerInch = 72;
         public const UInt16 plotterUnitsPerInchHPGL2 = 1016;
 
         public enum ePushPop
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
 
             seq = "\x1b" + "*c" + codepoint + "E";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -114,7 +114,7 @@ namespace PCLParaphernalia
 
             seq = "\x1b" + "(s" + hddrLen + "W";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -126,22 +126,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void cmdHPGL2 (BinaryWriter prnWriter,
-                                     String       mnemonic,
-                                     String       parameters,
-                                     Boolean      terminate)
+        public static void cmdHPGL2(BinaryWriter prnWriter,
+                                     String mnemonic,
+                                     String parameters,
+                                     Boolean terminate)
         {
-            StringBuilder cmd = new StringBuilder ();
+            StringBuilder cmd = new StringBuilder();
 
             if (parameters == "")
-                cmd.Append (mnemonic);
+                cmd.Append(mnemonic);
             else
-                cmd.Append (mnemonic).Append (parameters);
+                cmd.Append(mnemonic).Append(parameters);
 
             if (terminate)
                 cmd.Append(";");
 
-            prnWriter.Write(cmd.ToString ().ToCharArray(), 0, cmd.Length);
+            prnWriter.Write(cmd.ToString().ToCharArray(), 0, cmd.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -155,16 +155,16 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void configureImageData(BinaryWriter prnWriter,
-                                              Byte         colourSpace,
-                                              Byte         pixelEncodingMode,
-                                              Byte         bitsPerIndex,
-                                              Byte         bitsPerPrimary_1,
-                                              Byte         bitsPerPrimary_2,
-                                              Byte         bitsPerPrimary_3)
+                                              Byte colourSpace,
+                                              Byte pixelEncodingMode,
+                                              Byte bitsPerIndex,
+                                              Byte bitsPerPrimary_1,
+                                              Byte bitsPerPrimary_2,
+                                              Byte bitsPerPrimary_3)
         {
             Int32 indStd = 0;
 
-            Byte [] seq = new Byte [11];
+            Byte[] seq = new Byte[11];
 
             seq[indStd++] = 0x1b;
             seq[indStd++] = (Byte)'*';
@@ -191,8 +191,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void cursorPosition(BinaryWriter prnWriter,
-                                          Int16        coordX,
-                                          Int16        coordY)
+                                          Int16 coordX,
+                                          Int16 coordY)
         {
             String seq;
 
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void cursorPushPop(BinaryWriter prnWriter,
-                                         ePushPop     pushPop)
+                                         ePushPop pushPop)
         {
             String seq;
 
@@ -237,8 +237,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void cursorRelative(BinaryWriter prnWriter,
-                                          Int16        coordX,
-                                          Int16        coordY)
+                                          Int16 coordX,
+                                          Int16 coordY)
         {
             String seq;
 
@@ -271,7 +271,7 @@ namespace PCLParaphernalia
             {
                 seq = "\x1b" + "*p" +
                                relX +
-                               "x"  +           // Position: Horizontal
+                               "x" +           // Position: Horizontal
                                relY +
                                "Y";             // Position: Vertical
             }
@@ -294,12 +294,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void defLogPage (BinaryWriter prnWriter,
-                                       Int32        indxOrientation,
-                                       Int16        leftOffset,
-                                       Int16        topOffset,
-                                       UInt16       pageWidth,
-                                       UInt16       pageHeight)
+        public static void defLogPage(BinaryWriter prnWriter,
+                                       Int32 indxOrientation,
+                                       Int16 leftOffset,
+                                       Int16 topOffset,
+                                       UInt16 pageWidth,
+                                       UInt16 pageHeight)
         {
             const Int32 defLogPageDataLen = 10;
 
@@ -353,9 +353,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void font(BinaryWriter prnWriter,
-                                Boolean      primary,
-                                String       symSet,
-                                String       fontSel)
+                                Boolean primary,
+                                String symSet,
+                                String fontSel)
         {
             String seq;
 
@@ -384,14 +384,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontDownloadHddr (BinaryWriter prnWriter,
-                                             UInt32       hddrLen)
+        public static void fontDownloadHddr(BinaryWriter prnWriter,
+                                             UInt32 hddrLen)
         {
             String seq;
 
             seq = "\x1b" + ")s" + hddrLen + "W";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -404,7 +404,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void fontDownloadID(BinaryWriter prnWriter,
-                                          UInt16       downloadID)
+                                          UInt16 downloadID)
         {
             String seq;
 
@@ -423,7 +423,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void fontDownloadRemove(BinaryWriter prnWriter,
-                                              UInt16       downloadID)
+                                              UInt16 downloadID)
         {
             String seq;
 
@@ -442,7 +442,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void fontDownloadSave(BinaryWriter prnWriter,
-                                            Boolean      permanent)
+                                            Boolean permanent)
         {
             String seq;
 
@@ -464,9 +464,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontFileIdAssociate (BinaryWriter prnWriter,
-                                                UInt16       fontID,
-                                                String       filename)
+        public static void fontFileIdAssociate(BinaryWriter prnWriter,
+                                                UInt16 fontID,
+                                                String filename)
         {
             String seq;
 
@@ -487,7 +487,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontFileIdAssociate (BinaryWriter prnWriter,
+        public static void fontFileIdAssociate(BinaryWriter prnWriter,
                                                 UInt16 fontID,
                                                 UInt16 fontMacroId,
                                                 String filename)
@@ -501,7 +501,7 @@ namespace PCLParaphernalia
                   "\x1b" + "&n" + fnLen + "W" + "\x05" + filename +
                   "\x1b" + "&f3X";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -534,10 +534,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void lineHorizontal(BinaryWriter prnWriter,
-                                          Int16        coordX,
-                                          Int16        coordY,
-                                          Int16        length,
-                                          Int16        stroke)
+                                          Int16 coordX,
+                                          Int16 coordY,
+                                          Int16 length,
+                                          Int16 stroke)
         {
             String seq;
 
@@ -564,10 +564,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void lineVertical(BinaryWriter prnWriter,
-                                        Int16        coordX,
-                                        Int16        coordY,
-                                        Int16        length,
-                                        Int16        stroke)
+                                        Int16 coordX,
+                                        Int16 coordY,
+                                        Int16 length,
+                                        Int16 stroke)
         {
             String seq;
 
@@ -591,8 +591,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroControl(BinaryWriter  prnWriter,
-                                        Int16         macroId,
+        public static void macroControl(BinaryWriter prnWriter,
+                                        Int16 macroId,
                                         eMacroControl control)
         {
             String seq;
@@ -603,7 +603,7 @@ namespace PCLParaphernalia
                                "0X";            // Macro: start definition
             else if (control == eMacroControl.StopDef)
                 seq = "\x1b" + "&f" +
-                          //   macroId + "y" +  // Macro: ID - don't need this
+                               //   macroId + "y" +  // Macro: ID - don't need this
                                "1X";            // Macro: end definition
             else if (control == eMacroControl.Execute)
                 seq = "\x1b" + "&f" +
@@ -640,14 +640,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroDownloadId (BinaryWriter prnWriter,
-                                            UInt16       downloadId)
+        public static void macroDownloadId(BinaryWriter prnWriter,
+                                            UInt16 downloadId)
         {
             String seq;
 
             seq = "\x1b" + "&f" + downloadId + "Y";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -660,9 +660,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroFileIdAssociate (BinaryWriter prnWriter,
-                                                 UInt16       downloadID,
-                                                 String       filename)
+        public static void macroFileIdAssociate(BinaryWriter prnWriter,
+                                                 UInt16 downloadID,
+                                                 String filename)
         {
             String seq;
 
@@ -685,8 +685,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void marginLeft (BinaryWriter prnWriter,
-                                       Int16        columns)
+        public static void marginLeft(BinaryWriter prnWriter,
+                                       Int16 columns)
         {
             String seq;
 
@@ -708,8 +708,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void marginTop (BinaryWriter prnWriter,
-                                      Int16        lines)
+        public static void marginTop(BinaryWriter prnWriter,
+                                      Int16 lines)
         {
             String seq;
 
@@ -729,9 +729,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void modeHPGL2 (BinaryWriter prnWriter,
-                                      Boolean      cursorPCL,
-                                      Boolean      penPCL)
+        public static void modeHPGL2(BinaryWriter prnWriter,
+                                      Boolean cursorPCL,
+                                      Boolean penPCL)
         {
             String seq;
 
@@ -761,8 +761,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void modePCL (BinaryWriter prnWriter,
-                                    Boolean      cursorPCL)
+        public static void modePCL(BinaryWriter prnWriter,
+                                    Boolean cursorPCL)
         {
             String seq;
 
@@ -804,7 +804,7 @@ namespace PCLParaphernalia
                            faceId +
                            "G";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -817,10 +817,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void pageHeader(BinaryWriter prnWriter,
-                                      Int32        indxPaperSize,
-                                      Int32        indxPaperType,
-                                      Int32        indxOrientation,
-                                      Int32        indxPlexMode)
+                                      Int32 indxPaperSize,
+                                      Int32 indxPaperType,
+                                      Int32 indxOrientation,
+                                      Int32 indxPlexMode)
         {
             String seq;
 
@@ -831,24 +831,24 @@ namespace PCLParaphernalia
                 Int32 len = tmpStr.Length + 1;
 
                 seq = "\x1b" + "&n" +           // Alphanumeric ID
-                               len  +
+                               len +
                                "Wd" +           // ... Paper Type
                                tmpStr;
 
                 prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
             }
 
-            seq = "\x1b" + "&l"   +
+            seq = "\x1b" + "&l" +
                            PCLPaperSizes.getIdPCL(indxPaperSize) +
-                           "a"    +             // Paper Size
+                           "a" +             // Paper Size
                            PCLOrientations.getIdPCL(indxOrientation) +
-                           "o"    +             // Orientation
+                           "o" +             // Orientation
                            PCLPlexModes.getIdPCL(indxPlexMode) +
-                           "s"    +             // plex mode 
-                           "1l"   +             // perforation skip enable
-                           "0E"   +             // Top Margin (lines)
+                           "s" +             // plex mode 
+                           "1l" +             // perforation skip enable
+                           "0E" +             // Top Margin (lines)
                   "\x1b" + "&a0L";              // Left Margin (columns)
-   
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
@@ -863,12 +863,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pageHeaderCustom (BinaryWriter prnWriter,
-                                             Int32        indxPaperType,
-                                             Int32        indxOrientation,
-                                             Int32        indxPlexMode,
-                                             UInt16       paperWidth,
-                                             UInt16       paperLength)
+        public static void pageHeaderCustom(BinaryWriter prnWriter,
+                                             Int32 indxPaperType,
+                                             Int32 indxOrientation,
+                                             Int32 indxPlexMode,
+                                             UInt16 paperWidth,
+                                             UInt16 paperLength)
         {
             String seq;
 
@@ -879,8 +879,8 @@ namespace PCLParaphernalia
 
             scale = (pointsPerInch * 10.0) / sessionUPI;
 
-            dptWidth  = (Int32) Math.Round ((scale * paperWidth));
-            dptLength = (Int32) Math.Round ((scale * paperLength));
+            dptWidth = (Int32)Math.Round((scale * paperWidth));
+            dptLength = (Int32)Math.Round((scale * paperLength));
 
             if (PCLPaperTypes.getType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet)
@@ -901,7 +901,7 @@ namespace PCLParaphernalia
                            "i" +             // Custom paper width
                            dptLength +
                            "J";              // Custom paper length
-   
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             seq = "\x1b" + "&l" +
@@ -932,18 +932,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void pageOrientation(BinaryWriter prnWriter,
-                                           String       orientId)
+                                           String orientId)
         {
             String seq;
 
             seq = "\x1b" + "&l" +               // page orientation
                            orientId +
-                           "o"  +
+                           "o" +
                            "0E" +               // Top Margin (lines)
                   "\x1b" + "&a0L";              // Left Margin (columns)
             ;
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -957,18 +957,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void paletteEntry(BinaryWriter prnWriter,
-                                        Int16        index,
-                                        Int16        colour1,
-                                        Int16        colour2,
-                                        Int16        colour3)
+                                        Int16 index,
+                                        Int16 colour1,
+                                        Int16 colour2,
+                                        Int16 colour3)
         {
             String seq;
-            
-            seq = "\x1b" + "*v" +              
+
+            seq = "\x1b" + "*v" +
                            colour1 + "a" +      // Colour Component 1
                            colour2 + "b" +      // Colour Component 2
                            colour3 + "c" +      // Colour Component 3
-                           index   + "I";       // Assign Colour Index
+                           index + "I";       // Assign Colour Index
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -984,7 +984,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void palettePushPop(BinaryWriter prnWriter,
-                                          ePushPop     pushPop)
+                                          ePushPop pushPop)
         {
             String seq;
 
@@ -1005,11 +1005,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paletteSimple(BinaryWriter   prnWriter,
+        public static void paletteSimple(BinaryWriter prnWriter,
                                          eSimplePalette palette)
         {
             String seq;
-            
+
             if (palette == eSimplePalette.RGB)
                 seq = "\x1b" + "*r3U";          // Simple Colour: RGB palette
             else if (palette == eSimplePalette.CMY)
@@ -1029,14 +1029,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paletteSimple (BinaryWriter prnWriter,
-                                          Int16        palette)
+        public static void paletteSimple(BinaryWriter prnWriter,
+                                          Int16 palette)
         {
             String seq;
 
             seq = "\x1b" + "*r" + palette + "U";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1049,7 +1049,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void paperSource(BinaryWriter prnWriter,
-                                       Int16        trayId)
+                                       Int16 trayId)
         {
             String seq;
 
@@ -1070,9 +1070,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void patternDefine(BinaryWriter prnWriter,
-                                         Int16        patternID,
-                                         Byte []      header,
-                                         Byte []      pattern)
+                                         Int16 patternID,
+                                         Byte[] header,
+                                         Byte[] pattern)
         {
             Int32 headerLen,
                   patternLen,
@@ -1080,9 +1080,9 @@ namespace PCLParaphernalia
 
             String seq = "";
 
-            headerLen  = header.Length;
+            headerLen = header.Length;
             patternLen = pattern.Length;
-            dataLen    = headerLen + patternLen;
+            dataLen = headerLen + patternLen;
 
             seq = "\x1b" + "*c" +
                   patternID + "g" +    // Pattern ID
@@ -1125,9 +1125,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternSet (BinaryWriter prnWriter,
+        public static void patternSet(BinaryWriter prnWriter,
                                        ePatternType patternType,
-                                       Int16        patternID)
+                                       Int16 patternID)
         {
             String seq = "";
 
@@ -1170,8 +1170,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternTransparency (BinaryWriter prnWriter,
-                                                Boolean      opaque)
+        public static void patternTransparency(BinaryWriter prnWriter,
+                                                Boolean opaque)
         {
             String seq = "";
 
@@ -1197,7 +1197,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void perforationSkip(BinaryWriter prnWriter,
-                                           Boolean      enable)
+                                           Boolean enable)
         {
             String seq;
 
@@ -1221,7 +1221,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pictureFrame (BinaryWriter prnWriter,
+        public static void pictureFrame(BinaryWriter prnWriter,
                                          Int16 coordX,
                                          Int16 coordY,
                                          Int16 height,
@@ -1232,9 +1232,9 @@ namespace PCLParaphernalia
             Int16 dpHeight,
                   dpWidth;
 
-            dpHeight = (Int16) ((height * pointsPerInch * 10) /
+            dpHeight = (Int16)((height * pointsPerInch * 10) /
                                  sessionUPI);
-            dpWidth  = (Int16) ((width  * pointsPerInch * 10) /
+            dpWidth = (Int16)((width * pointsPerInch * 10) /
                                  sessionUPI);
 
             seq = "\x1b" + "*p" +
@@ -1258,7 +1258,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void printDirection(BinaryWriter prnWriter,
-                                          Int16        ccwAngle)
+                                          Int16 ccwAngle)
         {
             String seq;
 
@@ -1280,9 +1280,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rasterBegin(BinaryWriter prnWriter,
-                                       Int32        srcWidth,
-                                       Int32        srcHeight,
-                                       Int32        compressMode)
+                                       Int32 srcWidth,
+                                       Int32 srcHeight,
+                                       Int32 compressMode)
         {
             String seq;
 
@@ -1290,7 +1290,7 @@ namespace PCLParaphernalia
                            srcWidth + "s" +     // Source Width
                            srcHeight + "t" +    // Source Height
                            "1A" +               // Start Raster Graphics: at X
-                  "\x1b" + "*b" + 
+                  "\x1b" + "*b" +
                            compressMode + "M";  // Compression mode
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1319,17 +1319,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rasterBegin(BinaryWriter prnWriter,
-                                       Int32        srcWidth,
-                                       Int32        srcHeight,
-                                       Int32        srcResX,
-                                       Int32        srcResY,
-                                       Int32        destScalePercentX,
-                                       Int32        destScalePercentY,
-                                       Int32        compressionMode)
+                                       Int32 srcWidth,
+                                       Int32 srcHeight,
+                                       Int32 srcResX,
+                                       Int32 srcResY,
+                                       Int32 destScalePercentX,
+                                       Int32 destScalePercentY,
+                                       Int32 compressionMode)
         {
             String seq;
-            
-            Int32 destWidth  = 0,
+
+            Int32 destWidth = 0,
                   destHeight = 0;
 
             seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
@@ -1342,7 +1342,7 @@ namespace PCLParaphernalia
                 (destScalePercentY == 100))
             {
                 seq = "\x1b" + "*r1A" +         // Start Raster Graphics: at X
-                      "\x1b" + "*b" + 
+                      "\x1b" + "*b" +
                       compressionMode + "M";    // Compression mode
             }
             else
@@ -1368,7 +1368,7 @@ namespace PCLParaphernalia
                               (destScalePercentY / 100);
 
                 seq = "\x1b" + "*t" +
-                               destWidth  +
+                               destWidth +
                                "h" +            // Raster Width: Destinatation
                                destHeight +
                                "V" +            // Raster Height: Destinatation
@@ -1390,11 +1390,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rasterCompressionMode(BinaryWriter prnWriter,
-                                                 Int32        compressMode)
+                                                 Int32 compressMode)
         {
             String seq;
 
-            seq = "\x1b" + "*b" + 
+            seq = "\x1b" + "*b" +
                            compressMode + "M";  // Compression mode
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -1427,9 +1427,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterResolution (BinaryWriter prnWriter,
-                                             Int32        indxRasterResolution,
-                                             Boolean      valueIsIndex)
+        public static void rasterResolution(BinaryWriter prnWriter,
+                                             Int32 indxRasterResolution,
+                                             Boolean valueIsIndex)
         {
             String seq;
 
@@ -1438,18 +1438,18 @@ namespace PCLParaphernalia
             if (valueIsIndex)
             {
                 rasterRes =
-                    PCLRasterResolutions.getValue (indxRasterResolution);
+                    PCLRasterResolutions.getValue(indxRasterResolution);
             }
             else
             {
-                rasterRes = (UInt16) indxRasterResolution;
+                rasterRes = (UInt16)indxRasterResolution;
             }
 
             seq = "\x1b" + "*t" +
                            rasterRes +
                            "R";                 // Raster Resolution
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1461,9 +1461,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterTransferPlane (BinaryWriter prnWriter,
-                                                Int32        rowLength,
-                                                Byte[]       buffer)
+        public static void rasterTransferPlane(BinaryWriter prnWriter,
+                                                Int32 rowLength,
+                                                Byte[] buffer)
         {
             String seq;
 
@@ -1486,7 +1486,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterTransferRow (BinaryWriter prnWriter,
+        public static void rasterTransferRow(BinaryWriter prnWriter,
                                              Int32 rowLength,
                                              Byte[] buffer)
         {
@@ -1496,10 +1496,10 @@ namespace PCLParaphernalia
                            rowLength +
                            "W";                 // Transfer Raster Data: Row
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             if (rowLength > 0)
-                prnWriter.Write (buffer, 0, rowLength);
+                prnWriter.Write(buffer, 0, rowLength);
         }
 
         //--------------------------------------------------------------------//
@@ -1515,13 +1515,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rectangleOutline(BinaryWriter prnWriter,
-                                            Int16        coordX,
-                                            Int16        coordY,
-                                            Int16        height,
-                                            Int16        width,
-                                            Int16        stroke,
-                                            Boolean      floating,
-                                            Boolean      relative) 
+                                            Int16 coordX,
+                                            Int16 coordY,
+                                            Int16 height,
+                                            Int16 width,
+                                            Int16 stroke,
+                                            Boolean floating,
+                                            Boolean relative)
         {
             String seq;
 
@@ -1582,13 +1582,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rectangleShaded(BinaryWriter prnWriter,
-                                           Int16        coordX,
-                                           Int16        coordY,
-                                           Int16        height,
-                                           Int16        width,
-                                           Int16        shade,
-                                           Boolean      floating,
-                                           Boolean      relative)
+                                           Int16 coordX,
+                                           Int16 coordY,
+                                           Int16 height,
+                                           Int16 width,
+                                           Int16 shade,
+                                           Boolean floating,
+                                           Boolean relative)
         {
             String seq;
 
@@ -1631,13 +1631,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rectangleSolid(BinaryWriter prnWriter,
-                                          Int16        coordX,
-                                          Int16        coordY,
-                                          Int16        height,
-                                          Int16        width,
-                                          Boolean      white,
-                                          Boolean      floating,
-                                          Boolean      relative)
+                                          Int16 coordX,
+                                          Int16 coordY,
+                                          Int16 height,
+                                          Int16 width,
+                                          Boolean white,
+                                          Boolean floating,
+                                          Boolean relative)
         {
             String seq;
 
@@ -1662,7 +1662,7 @@ namespace PCLParaphernalia
             {
                 seq = posSeq +                  // Position or null
                       "\x1b" + "*c" +
-                               width  + "a" +   // Rectangle Size: Horizontal
+                               width + "a" +   // Rectangle Size: Horizontal
                                height + "b" +   // Rectangle Size: Vertical
                                "1P";            // Fill Rectangle: Solid white
             }
@@ -1670,7 +1670,7 @@ namespace PCLParaphernalia
             {
                 seq = posSeq +                  // Position or null
                       "\x1b" + "*c" +
-                               width  + "a" +   // Rectangle Size: Horizontal
+                               width + "a" +   // Rectangle Size: Horizontal
                                height + "b" +   // Rectangle Size: Vertical
                                "0P";            // Fill Rectangle: Solid
             }
@@ -1691,13 +1691,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void rectangleUserFill(BinaryWriter prnWriter,
-                                             Int16        coordX,
-                                             Int16        coordY,
-                                             Int16        height,
-                                             Int16        width,
-                                             Int16        patternID,
-                                             Boolean      floating,
-                                             Boolean      relative)
+                                             Int16 coordX,
+                                             Int16 coordY,
+                                             Int16 height,
+                                             Int16 width,
+                                             Int16 patternID,
+                                             Boolean floating,
+                                             Boolean relative)
         {
             String seq;
 
@@ -1772,14 +1772,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setForegroundColour (BinaryWriter prnWriter,
-                                                Byte         colourIndex)
+        public static void setForegroundColour(BinaryWriter prnWriter,
+                                                Byte colourIndex)
         {
             String seq;
 
             seq = "\x1b" + "*v" + colourIndex + "S";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1791,14 +1791,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setROP (BinaryWriter prnWriter,
-                                   Int32        operation)
+        public static void setROP(BinaryWriter prnWriter,
+                                   Int32 operation)
         {
             String seq;
 
             seq = "\x1b" + "*l" + operation + "O";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1812,11 +1812,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void setTextLength(BinaryWriter prnWriter,
-                                         Int16        lines)
+                                         Int16 lines)
         {
             String seq;
 
-            seq = "\x1b" + "&l"  +              // tray identifier
+            seq = "\x1b" + "&l" +              // tray identifier
                            lines +              // number of lines
                            "F";
 
@@ -1833,11 +1833,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void setVMI(BinaryWriter prnWriter,
-                                  Single       increment)
+                                  Single increment)
         {
             String seq;
 
-            seq = "\x1b" + "&l"   +             // set VMI
+            seq = "\x1b" + "&l" +             // set VMI
                            increment +          // 1/48 inch increments 
                            "C";
 
@@ -1853,8 +1853,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sourceTransparency (BinaryWriter prnWriter,
-                                               Boolean      opaque)
+        public static void sourceTransparency(BinaryWriter prnWriter,
+                                               Boolean opaque)
         {
             String seq = "";
 
@@ -1867,7 +1867,7 @@ namespace PCLParaphernalia
                 seq = "\x1b" + "*v0N";
             }
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1880,12 +1880,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void stdJobHeader(BinaryWriter prnWriter,
-                                        String       pjlCommand)
+                                        String pjlCommand)
         {
             String seq;
 
             seq = "\x1b" + "%-12345X";          // Universal Exit Language
-            
+
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
             if (pjlCommand != "")
@@ -1894,9 +1894,9 @@ namespace PCLParaphernalia
 
                 prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
             }
-             
+
             seq = "@PJL Enter Language = PCL" +
-                  "\x0d" + "\x0a"   +
+                  "\x0d" + "\x0a" +
                   "\x1b" + "E" +                // Printer Reset
                   "\x1b" + "&u600D";            // Unit-of-Measure
 
@@ -1913,8 +1913,8 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void stdJobTrailer(BinaryWriter prnWriter,
-                                         Boolean      formAsMacro,
-                                         Int16        macroId)
+                                         Boolean formAsMacro,
+                                         Int16 macroId)
         {
             String seq;
 
@@ -1922,7 +1922,7 @@ namespace PCLParaphernalia
             {
                 macroControl(prnWriter, macroId, eMacroControl.Delete);
             }
-            
+
             seq = "\x1b" + "E" +                // Printer Reset
                   "\x1b" + "%-12345X";          // Universal Exit Language
 
@@ -1938,14 +1938,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadCode (BinaryWriter prnWriter,
-                                               UInt16       symSetNo)
+        public static void symSetDownloadCode(BinaryWriter prnWriter,
+                                               UInt16 symSetNo)
         {
             String seq;
 
             seq = "\x1b" + "*c" + symSetNo + "R";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1957,14 +1957,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadDesc (BinaryWriter prnWriter,
-                                               UInt32       descLen)
+        public static void symSetDownloadDesc(BinaryWriter prnWriter,
+                                               UInt32 descLen)
         {
             String seq;
 
             seq = "\x1b" + "(f" + descLen + "W";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1976,14 +1976,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadRemove (BinaryWriter prnWriter,
-                                                 UInt16       symSetNo)
+        public static void symSetDownloadRemove(BinaryWriter prnWriter,
+                                                 UInt16 symSetNo)
         {
             String seq;
 
             seq = "\x1b" + "*c" + symSetNo + "r2S";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -1995,8 +1995,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadSave (BinaryWriter prnWriter,
-                                               Boolean      permanent)
+        public static void symSetDownloadSave(BinaryWriter prnWriter,
+                                               Boolean permanent)
         {
             String seq;
 
@@ -2005,7 +2005,7 @@ namespace PCLParaphernalia
             else
                 seq = "\x1b" + "*c4S";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -2019,10 +2019,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void text(BinaryWriter prnWriter,
-                                Int16        coordX,
-                                Int16        coordY,
-                                Int16        spacing,
-                                String       text)
+                                Int16 coordX,
+                                Int16 coordY,
+                                Int16 spacing,
+                                String text)
         {
             String seq;
 
@@ -2066,13 +2066,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textRotated (BinaryWriter prnWriter,
-                                        Int16        coordX,
-                                        Int16        coordY,
-                                        Int16        spacing,
-                                        Int16        ccwAngle,
-                                        Boolean      resetRotation, 
-                                        String       text)
+        public static void textRotated(BinaryWriter prnWriter,
+                                        Int16 coordX,
+                                        Int16 coordY,
+                                        Int16 spacing,
+                                        Int16 ccwAngle,
+                                        Boolean resetRotation,
+                                        String text)
         {
             String seq;
 
@@ -2120,19 +2120,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textParsingMethod (
-            BinaryWriter                 prnWriter,
+        public static void textParsingMethod(
+            BinaryWriter prnWriter,
             PCLTextParsingMethods.eIndex eMethod)
         {
             String seq;
 
-            Byte indx = (Byte) eMethod;
+            Byte indx = (Byte)eMethod;
 
             seq = "\x1b" + "&t" +
-                  PCLTextParsingMethods.getValue (indx).ToString () +
+                  PCLTextParsingMethods.getValue(indx).ToString() +
                   "P";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -2145,13 +2145,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void textParsingMethod(BinaryWriter prnWriter,
-                                             Int32        parseMethod)
+                                             Int32 parseMethod)
         {
             String seq;
 
-            seq = "\x1b" + "&t" + parseMethod.ToString () + "P";
+            seq = "\x1b" + "&t" + parseMethod.ToString() + "P";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
 
         //--------------------------------------------------------------------//
@@ -2164,7 +2164,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void transparentPrint(BinaryWriter prnWriter,
-                                            Int16        byteCount)
+                                            Int16 byteCount)
         {
             String seq;
 
@@ -2172,7 +2172,7 @@ namespace PCLParaphernalia
                            byteCount +
                            "X";
 
-            prnWriter.Write (seq.ToCharArray (), 0, seq.Length);
+            prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
     }
 }

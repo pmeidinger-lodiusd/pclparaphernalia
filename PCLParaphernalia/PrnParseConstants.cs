@@ -9,7 +9,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
 
     public static class PrnParseConstants
@@ -375,7 +375,7 @@ namespace PCLParaphernalia
             WhiteSmoke,
             Yellow,
             YellowGreen
-    	}
+        }
 
         public const Int32 bufSize = 2048;        // multiple of 16         
         public const Int32 viewBytesPerLine = 16; // divisor of 1024
@@ -429,53 +429,53 @@ namespace PCLParaphernalia
         public const Byte pclComplexTCharLow = 0x40;
         public const Byte pclComplexTCharHigh = 0x5e;
 
-        public const Byte pclxlAttrUbyte      = 0xf8;
-        public const Byte pclxlAttrUint16     = 0xf9;
-        public const Byte pclxlEmbedData      = 0xfa;
-        public const Byte pclxlEmbedDataByte  = 0xfb;
-        public const Byte pclxlDataTypeLow    = 0xc0;
-        public const Byte pclxlDataTypeHigh   = 0xef;
-        public const Byte pclxlDataTypeUbyte  = 0xc0;
+        public const Byte pclxlAttrUbyte = 0xf8;
+        public const Byte pclxlAttrUint16 = 0xf9;
+        public const Byte pclxlEmbedData = 0xfa;
+        public const Byte pclxlEmbedDataByte = 0xfb;
+        public const Byte pclxlDataTypeLow = 0xc0;
+        public const Byte pclxlDataTypeHigh = 0xef;
+        public const Byte pclxlDataTypeUbyte = 0xc0;
         public const Byte pclxlDataTypeUint16 = 0xc1;
-        public const Byte pclxlOperatorLow    = 0x41;
-        public const Byte pclxlOperatorHigh   = 0xbf;
+        public const Byte pclxlOperatorLow = 0x41;
+        public const Byte pclxlOperatorHigh = 0xbf;
 
-        public const Byte prescribeSCRCDefault   = 0x52;  // R //
+        public const Byte prescribeSCRCDefault = 0x52;  // R //
         public const Byte prescribeSCRCDelimiter = 0x21;  // ! //
 
         public const String cRptA_colName_RowType = "RowType";  // not displayed
-        public const String cRptA_colName_Action  = "Action";   // MakeOverlay only
-        public const String cRptA_colName_Offset  = "Offset";
-        public const String cRptA_colName_Type    = "Type";
-        public const String cRptA_colName_Seq     = "Sequence";
-        public const String cRptA_colName_Desc    = "Description";
+        public const String cRptA_colName_Action = "Action";   // MakeOverlay only
+        public const String cRptA_colName_Offset = "Offset";
+        public const String cRptA_colName_Type = "Type";
+        public const String cRptA_colName_Seq = "Sequence";
+        public const String cRptA_colName_Desc = "Description";
 
-        public const String cRptC_colName_Offset  = "Offset";
-        public const String cRptC_colName_Hex     = "Hexadecimal";
-        public const String cRptC_colName_Text    = "Text";
+        public const String cRptC_colName_Offset = "Offset";
+        public const String cRptC_colName_Hex = "Hexadecimal";
+        public const String cRptC_colName_Text = "Text";
 
-        public const String cRptS_colName_Seq     = "Sequence";
-        public const String cRptS_colName_Desc    = "Description";
-        public const String cRptS_colName_CtP     = "Parent";
-        public const String cRptS_colName_CtE     = "Embedded";
-        public const String cRptS_colName_CtT     = "Total";
+        public const String cRptS_colName_Seq = "Sequence";
+        public const String cRptS_colName_Desc = "Description";
+        public const String cRptS_colName_CtP = "Parent";
+        public const String cRptS_colName_CtE = "Embedded";
+        public const String cRptS_colName_CtT = "Total";
 
         public const Int32 cRptA_colMax_RowType = -1;   // not displayed
-        public const Int32 cRptA_colMax_Action  = 10;   // MakeOverlay only
-        public const Int32 cRptA_colMax_Offset  = 13;
-        public const Int32 cRptA_colMax_Type    = 21;
-        public const Int32 cRptA_colMax_Seq     = 16;
-        public const Int32 cRptA_colMax_Desc    = 52;
+        public const Int32 cRptA_colMax_Action = 10;   // MakeOverlay only
+        public const Int32 cRptA_colMax_Offset = 13;
+        public const Int32 cRptA_colMax_Type = 21;
+        public const Int32 cRptA_colMax_Seq = 16;
+        public const Int32 cRptA_colMax_Desc = 52;
 
-        public const Int32 cRptC_colMax_Offset  = 13;
-        public const Int32 cRptC_colMax_Hex     = 48;
-        public const Int32 cRptC_colMax_Text    = 16;
+        public const Int32 cRptC_colMax_Offset = 13;
+        public const Int32 cRptC_colMax_Hex = 48;
+        public const Int32 cRptC_colMax_Text = 16;
 
-        public const Int32 cRptS_colMax_Seq     = 19;
-        public const Int32 cRptS_colMax_Desc    = 52;
-        public const Int32 cRptS_colMax_CtP     = 8;
-        public const Int32 cRptS_colMax_CtE     = 8;
-        public const Int32 cRptS_colMax_CtT     = 8;
+        public const Int32 cRptS_colMax_Seq = 19;
+        public const Int32 cRptS_colMax_Desc = 52;
+        public const Int32 cRptS_colMax_CtP = 8;
+        public const Int32 cRptS_colMax_CtE = 8;
+        public const Int32 cRptS_colMax_CtT = 8;
 
         public const Int32 cColSeparatorLen = 2;
 
@@ -489,6 +489,6 @@ namespace PCLParaphernalia
         public static Char[] cHexChars = {'0', '1', '2', '3',
                                           '4', '5', '6', '7',
                                           '8', '9', 'a', 'b',
-                                          'c', 'd', 'e', 'f'}; 
+                                          'c', 'd', 'e', 'f'};
     }
 }

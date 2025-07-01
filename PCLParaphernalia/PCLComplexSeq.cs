@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -23,11 +23,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte    _keyPChar;
-        private Byte    _keyGChar;
-        private Byte    _keyTChar;
+        private Byte _keyPChar;
+        private Byte _keyGChar;
+        private Byte _keyTChar;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagDiscrete;
         private Boolean _flagNilGChar;
@@ -41,16 +41,16 @@ namespace PCLParaphernalia
         private Boolean _flagValGeneric;
         private Boolean _flagValVarious;
 
-        private Int32   _value;
-        private Int32   _statsCtParent;
-        private Int32   _statsCtChild;
+        private Int32 _value;
+        private Int32 _statsCtParent;
+        private Int32 _statsCtChild;
 
         private PrnParseConstants.eActPCL _actionType;
 
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
         private PrnParseConstants.eSeqGrp _seqGrp;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o m p l e x S e q                                          //
@@ -58,10 +58,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLComplexSeq(
-            Byte    keyPChar,
-            Byte    keyGChar,
-            Byte    keyTChar,
-            Int32   value,
+            Byte keyPChar,
+            Byte keyGChar,
+            Byte keyTChar,
+            Int32 value,
             Boolean flagDiscrete,
             Boolean flagNilGChar,
             Boolean flagNilValue,
@@ -74,14 +74,14 @@ namespace PCLParaphernalia
             PrnParseConstants.eSeqGrp seqGrp,
             String description)
         {
-            _keyPChar          = keyPChar;
-            _keyGChar          = keyGChar;
-            _keyTChar          = keyTChar;
+            _keyPChar = keyPChar;
+            _keyGChar = keyGChar;
+            _keyTChar = keyTChar;
 
-            _value             = value;
-            _actionType        = actionType;
- 
-            _description       = description;
+            _value = value;
+            _actionType = actionType;
+
+            _description = description;
 
             _flagDiscrete = flagDiscrete;
             _flagNilGChar = flagNilGChar;
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
             _flagDisplayHexVal = flagDisplayHexVal;
 
             _makeOvlAct = makeOvlAct;
-            _seqGrp     = seqGrp;
+            _seqGrp = seqGrp;
 
             if (value == PCLComplexSeqs._valueGeneric)
                 _flagValGeneric = true;
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
                 _flagValVarious = false;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
         public void resetStatistics()
         {
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -289,31 +289,31 @@ namespace PCLParaphernalia
                 if ((_flagDiscrete) && (!_flagValGeneric) && (!_flagValVarious))
                     value = " (#=" + _value.ToString() + ")";
                 else
-                    value = "";                
+                    value = "";
                 if (_flagNilValue)
                 {
                     if (_flagNilGChar)
-                        seq = "<Esc>" + (Char) _keyPChar +
-                                        (Char) _keyTChar;
+                        seq = "<Esc>" + (Char)_keyPChar +
+                                        (Char)_keyTChar;
                     else
-                        seq = "<Esc>" + (Char) _keyPChar +
-                                        (Char) _keyGChar +
-                                        (Char) _keyTChar;
+                        seq = "<Esc>" + (Char)_keyPChar +
+                                        (Char)_keyGChar +
+                                        (Char)_keyTChar;
                 }
                 else if (_flagNilGChar)
                 {
-                    seq = "<Esc>" + (Char) _keyPChar + "#" +
-                                    (Char) _keyTChar +
+                    seq = "<Esc>" + (Char)_keyPChar + "#" +
+                                    (Char)_keyTChar +
                                     value;
                 }
                 else
                 {
-                    seq = "<Esc>" + (Char) _keyPChar +
-                                    (Char) _keyGChar + "#" +
-                                    (Char) _keyTChar +
+                    seq = "<Esc>" + (Char)_keyPChar +
+                                    (Char)_keyGChar + "#" +
+                                    (Char)_keyTChar +
                                     value;
                 }
-                
+
                 return seq;
             }
         }

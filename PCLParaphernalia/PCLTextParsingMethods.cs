@@ -36,15 +36,15 @@ namespace PCLParaphernalia
 
         public enum ePCLVal
         {
-            not_specified              = -1,
-            m0_1_byte_default          = 0,
-            m1_1_byte_alt              = 1,
-            m2_2_byte                  = 2,
-            m21_1_or_2_byte_Asian7bit  = 21,
-            m31_1_or_2_byte_ShiftJIS   = 31,
-            m38_1_or_2_byte_Asian8bit  = 38,
-            m83_UTF8                   = 83,
-            m1008_UTF8_alt             = 1008
+            not_specified = -1,
+            m0_1_byte_default = 0,
+            m1_1_byte_alt = 1,
+            m2_2_byte = 2,
+            m21_1_or_2_byte_Asian7bit = 21,
+            m31_1_or_2_byte_ShiftJIS = 31,
+            m38_1_or_2_byte_Asian8bit = 38,
+            m83_UTF8 = 83,
+            m1008_UTF8_alt = 1008
         }
 
         //--------------------------------------------------------------------//
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLTextParsingMethod[] _methods = 
+        private static PCLTextParsingMethod[] _methods =
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -66,47 +66,47 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             new PCLTextParsingMethod (eIndex.not_specified,
-                                      (Int16) ePCLVal.not_specified, 
+                                      (Int16) ePCLVal.not_specified,
                                       "<not specified>",
                                       new UInt16 [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m0_1_byte_default,
-                                      (Int16) ePCLVal.m0_1_byte_default, 
+                                      (Int16) ePCLVal.m0_1_byte_default,
                                       "1-byte (default)",
                                       new UInt16 [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m1_1_byte_alt,
-                                      (Int16) ePCLVal.m1_1_byte_alt, 
+                                      (Int16) ePCLVal.m1_1_byte_alt,
                                       "1-byte",
                                       new UInt16 [] {0x00, 0xff},
                                       null),
             new PCLTextParsingMethod (eIndex.m2_2_byte,
-                                      (Int16) ePCLVal.m2_2_byte, 
+                                      (Int16) ePCLVal.m2_2_byte,
                                       "2-byte",
                                       null,
                                       new UInt16 [] {0x00, 0xff, 0x0100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m21_1_or_2_byte_Asian7bit,
-                                      (Int16) ePCLVal.m21_1_or_2_byte_Asian7bit, 
+                                      (Int16) ePCLVal.m21_1_or_2_byte_Asian7bit,
                                       "1- or 2-byte Asian 7-bit",
                                       new UInt16 [] {0x00, 0x20},
                                       new UInt16 [] {0x2100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m31_1_or_2_byte_ShiftJIS,
-                                      (Int16) ePCLVal.m31_1_or_2_byte_ShiftJIS, 
+                                      (Int16) ePCLVal.m31_1_or_2_byte_ShiftJIS,
                                       "1- or 2-byte Shift-JIS",
                                       new UInt16 [] {0x00, 0x80, 0xa0, 0xdf, 0xfd, 0xff},
                                       new UInt16 [] {0x8100, 0x9fff, 0xe000, 0xfcff}),
             new PCLTextParsingMethod (eIndex.m38_1_or_2_byte_Asian8bit,
-                                      (Int16) ePCLVal.m38_1_or_2_byte_Asian8bit, 
+                                      (Int16) ePCLVal.m38_1_or_2_byte_Asian8bit,
                                       "1- or 2-byte Asian 8-bit",
                                       new UInt16 [] {0x00, 0x7f},
                                       new UInt16 [] {0x8000, 0xffff}),
             new PCLTextParsingMethod (eIndex.m83_UTF8,
-                                      (Int16) ePCLVal.m83_UTF8, 
+                                      (Int16) ePCLVal.m83_UTF8,
                                       "UTF-8",
                                       new UInt16 [] {0x00, 0xff},
                                       new UInt16 [] {0x0100, 0xffff}),
             new PCLTextParsingMethod (eIndex.m1008_UTF8_alt,
-                                      (Int16) ePCLVal.m1008_UTF8_alt, 
+                                      (Int16) ePCLVal.m1008_UTF8_alt,
                                       "UTF-8 (alternative)",
                                       new UInt16 [] {0x00, 0xff},
                                       new UInt16 [] {0x0100, 0xffff})
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc (Int32 index)
+        public static String getDesc(Int32 index)
         {
             return _methods[index].getDesc();
         }
@@ -154,7 +154,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDescLong (Int32 index)
+        public static String getDescLong(Int32 index)
         {
             return _methods[index].getDescLong();
         }
@@ -184,9 +184,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 [] getRangeDataDouble (Int32 index)
+        public static UInt16[] getRangeDataDouble(Int32 index)
         {
-            return _methods[index].getRangeDataDouble ();
+            return _methods[index].getRangeDataDouble();
         }
 
         //--------------------------------------------------------------------//
@@ -199,9 +199,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getRangeDataDoubleCt (Int32 index)
+        public static Int32 getRangeDataDoubleCt(Int32 index)
         {
-            return _methods[index].getRangeDataDoubleCt ();
+            return _methods[index].getRangeDataDoubleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -214,9 +214,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 [] getRangeDataSingle (Int32 index)
+        public static UInt16[] getRangeDataSingle(Int32 index)
         {
-            return _methods[index].getRangeDataSingle ();
+            return _methods[index].getRangeDataSingle();
         }
 
         //--------------------------------------------------------------------//
@@ -229,9 +229,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getRangeDataSingleCt (Int32 index)
+        public static Int32 getRangeDataSingleCt(Int32 index)
         {
-            return _methods[index].getRangeDataSingleCt ();
+            return _methods[index].getRangeDataSingleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getValue (Int32 index)
+        public static Int32 getValue(Int32 index)
         {
             return _methods[index].getValue();
         }

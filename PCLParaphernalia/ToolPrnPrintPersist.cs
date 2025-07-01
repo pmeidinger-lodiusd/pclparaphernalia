@@ -19,16 +19,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey                 = MainForm._regMainKey;
+        const String _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools             = "Tools";
-        const String _subKeyToolsPrnPrint     = "PrnPrint";
+        const String _subKeyTools = "Tools";
+        const String _subKeyToolsPrnPrint = "PrnPrint";
 
-        const String _nameCaptureFile         = "CaptureFile";
-        const String _nameFilename            = "Filename";
+        const String _nameCaptureFile = "CaptureFile";
+        const String _nameFilename = "Filename";
 
-        const String _defaultCaptureFile      = "CaptureFile_PrnPrint.prn";  
-        const String _defaultFilename         = "DefaultPrintFile.prn";
+        const String _defaultCaptureFile = "CaptureFile_PrnPrint.prn";
+        const String _defaultFilename = "DefaultPrintFile.prn";
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -40,35 +40,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture (ToolCommonData.ePrintLang crntPDL,
+        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             ref String captureFile)
-        {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey (_mainKey);
-
-            String key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
-
-            String defWorkFolder = ToolCommonData.DefWorkFolder;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey (key))
-            {
-                captureFile = (String)subKey.GetValue (_nameCaptureFile,
-                                                       defWorkFolder + "\\" +
-                                                       _defaultCaptureFile);
-            }
-        }
-        
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l o a d D a t a G e n e r a l                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Retrieve stored print file data.                                   //
-        // Missing items are given default values.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void loadDataGeneral (ref String filename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -79,7 +52,34 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                filename      = (String)subKey.GetValue(_nameFilename,
+                captureFile = (String)subKey.GetValue(_nameCaptureFile,
+                                                       defWorkFolder + "\\" +
+                                                       _defaultCaptureFile);
+            }
+        }
+
+        //--------------------------------------------------------------------//
+        //                                                        M e t h o d //
+        // l o a d D a t a G e n e r a l                                      //
+        //--------------------------------------------------------------------//
+        //                                                                    //
+        // Retrieve stored print file data.                                   //
+        // Missing items are given default values.                            //
+        //                                                                    //
+        //--------------------------------------------------------------------//
+
+        public static void loadDataGeneral(ref String filename)
+        {
+            RegistryKey keyMain =
+                Registry.CurrentUser.CreateSubKey(_mainKey);
+
+            String key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
+
+            String defWorkFolder = ToolCommonData.DefWorkFolder;
+
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
+            {
+                filename = (String)subKey.GetValue(_nameFilename,
                                                         defWorkFolder + "\\" +
                                                         _defaultFilename);
             }
@@ -95,19 +95,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture (ToolCommonData.ePrintLang crntPDL,
+        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             String captureFile)
         {
             RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey (_mainKey);
+                Registry.CurrentUser.CreateSubKey(_mainKey);
 
             String key = _subKeyTools + "\\" + _subKeyToolsPrnPrint;
 
-            using (RegistryKey subKey = keyMain.CreateSubKey (key))
+            using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
                 if (captureFile != null)
                 {
-                    subKey.SetValue (_nameCaptureFile,
+                    subKey.SetValue(_nameCaptureFile,
                                      captureFile,
                                      RegistryValueKind.String);
                 }
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataGeneral (String filename)
+        public static void saveDataGeneral(String filename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
             {
                 if (filename != null)
                 {
-                    subKey.SetValue (_nameFilename,
+                    subKey.SetValue(_nameFilename,
                                     filename,
                                     RegistryValueKind.String);
                 }

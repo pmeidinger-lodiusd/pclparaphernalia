@@ -28,7 +28,7 @@ namespace PCLParaphernalia
             FontExtended
         }
 
-        private static PCLEntityType[] _entityTypes = 
+        private static PCLEntityType[] _entityTypes =
         {
             new PCLEntityType(eType.Memory,         "1",
                               "Memory"),
@@ -43,9 +43,9 @@ namespace PCLParaphernalia
             new PCLEntityType(eType.FontExtended,   "4",
                               "Font Extended")
         };
-        
+
         private static Int32 _entityTypeCount = _entityTypes.GetUpperBound(0) + 1;
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t C o u n t                                                    //

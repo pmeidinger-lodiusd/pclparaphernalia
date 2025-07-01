@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -23,8 +23,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte    _keySChar;
-        private String  _description;
+        private Byte _keySChar;
+        private String _description;
 
         private Boolean _flagObsolete;
         private Boolean _flagResetHPGL2;
@@ -43,24 +43,24 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLSimpleSeq(
-            Byte    keySChar,
+            Byte keySChar,
             Boolean flagObsolete,
             Boolean flagResetHPGL2,
             PrnParseConstants.eOvlAct makeOvlAct,
             PrnParseConstants.eSeqGrp seqGrp,
             String description)
         {
-            _keySChar        = keySChar;
-            _description     = description;
- 
-            _flagObsolete    = flagObsolete;
-            _flagResetHPGL2  = flagResetHPGL2;
+            _keySChar = keySChar;
+            _description = description;
 
-            _makeOvlAct      = makeOvlAct;
-            _seqGrp          = seqGrp;
+            _flagObsolete = flagObsolete;
+            _flagResetHPGL2 = flagResetHPGL2;
 
-            _statsCtParent   = 0;
-            _statsCtChild    = 0;
+            _makeOvlAct = makeOvlAct;
+            _seqGrp = seqGrp;
+
+            _statsCtParent = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
 
         public String Sequence
         {
-            get { return "<Esc>" + (Char) _keySChar; }
+            get { return "<Esc>" + (Char)_keySChar; }
         }
 
         //--------------------------------------------------------------------//

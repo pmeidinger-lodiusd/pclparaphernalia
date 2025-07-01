@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -23,9 +23,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte    _value;
+        private Byte _value;
         private String _mnemonic;
-        private String  _description;
+        private String _description;
 
         private Boolean _flagLineTerm;
 
@@ -35,7 +35,7 @@ namespace PCLParaphernalia
         private PrnParseConstants.eOvlAct _makeOvlAct;
 
         private PrnParseConstants.eSeqGrp _seqGrp;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L C o n t r o l C o d e                                        //
@@ -43,19 +43,19 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLControlCode(
-            Byte    value,
+            Byte value,
             Boolean flagLineTerm,
             String mnemonic,
             PrnParseConstants.eOvlAct makeOvlAct,
             PrnParseConstants.eSeqGrp seqGrp,
             String description)
         {
-            _value             = value;
-            _mnemonic          = mnemonic;
-            _description       = description;
-            _flagLineTerm      = flagLineTerm;
-            _makeOvlAct        = makeOvlAct;
-            _seqGrp            = seqGrp;
+            _value = value;
+            _mnemonic = mnemonic;
+            _description = description;
+            _flagLineTerm = flagLineTerm;
+            _makeOvlAct = makeOvlAct;
+            _seqGrp = seqGrp;
 
             _statsCtParent = 0;
             _statsCtChild = 0;

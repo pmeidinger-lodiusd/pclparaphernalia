@@ -20,8 +20,8 @@ namespace PCLParaphernalia
 
         private PCLOrientations.eAspect _orientationAspect;
         private String _orientationName;
-        private Byte   _orientationIdPCL;
-        private Byte   _orientationIdPCLXL;
+        private Byte _orientationIdPCL;
+        private Byte _orientationIdPCLXL;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -30,14 +30,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLOrientation(PCLOrientations.eAspect aspect,
-                              String                  name,
-                              Byte                    idPCL,
-                              Byte                    idPCLXL)
+                              String name,
+                              Byte idPCL,
+                              Byte idPCLXL)
         {
-            _orientationAspect  = aspect;
-            _orientationName    = name;
-            _orientationIdPCL  = idPCL;
-            _orientationIdPCLXL  = idPCLXL;
+            _orientationAspect = aspect;
+            _orientationName = name;
+            _orientationIdPCL = idPCL;
+            _orientationIdPCLXL = idPCLXL;
         }
 
         //--------------------------------------------------------------------//

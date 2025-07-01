@@ -29,9 +29,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLPaperType(PCLPaperTypes.eEntryType entryType,
-                            String                   name)
+                            String name)
         {
-            _entryType     = entryType;
+            _entryType = entryType;
             _paperTypeName = name;
         }
 

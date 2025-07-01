@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -32,22 +32,22 @@ namespace PCLParaphernalia
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o n t r o l C o d e                                    //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public HPGL2ControlCode( Byte   tag,
-                                 Boolean noOp, 
+        public HPGL2ControlCode(Byte tag,
+                                 Boolean noOp,
                                  String mnemonic,
                                  String description)
-	    {
-            _tag           = tag;
-            _noOp          = noOp;
-            _mnemonic      = mnemonic;
-            _description   = description;
+        {
+            _tag = tag;
+            _noOp = noOp;
+            _mnemonic = mnemonic;
+            _description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
 
         public String Sequence
         {
-            get { return "0x" + _tag.ToString ("x2"); }
+            get { return "0x" + _tag.ToString("x2"); }
         }
 
         //--------------------------------------------------------------------//

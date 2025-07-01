@@ -20,33 +20,33 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId            = 1;
-        const UInt16 _unitsPerInch      = PCLWriter.sessionUPI;
-        const UInt16 _plotUnitsPerInch  = PCLWriter.plotterUnitsPerInchHPGL2;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
+        const UInt16 _plotUnitsPerInch = PCLWriter.plotterUnitsPerInchHPGL2;
 
-        const Int16 _pageOriginX        = (_unitsPerInch * 1);
-        const Int16 _pageOriginY        = (_unitsPerInch * 1);
-        const Int16 _incInch            = (_unitsPerInch * 1);
-        const Int16 _lineInc            = (_unitsPerInch * 5) / 6;
+        const Int16 _pageOriginX = (_unitsPerInch * 1);
+        const Int16 _pageOriginY = (_unitsPerInch * 1);
+        const Int16 _incInch = (_unitsPerInch * 1);
+        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc           = _pageOriginX;
-        const Int16 _posXData1          = _pageOriginX + ((9 * _incInch) / 2);
-        const Int16 _posXData2          = _pageOriginX + ((9 * _incInch) / 2);
+        const Int16 _posXDesc = _pageOriginX;
+        const Int16 _posXData1 = _pageOriginX + ((9 * _incInch) / 2);
+        const Int16 _posXData2 = _pageOriginX + ((9 * _incInch) / 2);
 
-        const Int16 _posYHddr           = _pageOriginY;
-        const Int16 _posYDesc1          = _pageOriginY + (1 * _incInch);
-        const Int16 _posYDesc2          = _pageOriginY + (5 * _incInch);
-        const Int16 _posYData1          = _pageOriginY + (3 * _incInch);
-        const Int16 _posYData2          = _pageOriginY + (7 * _incInch);
+        const Int16 _posYHddr = _pageOriginY;
+        const Int16 _posYDesc1 = _pageOriginY + (1 * _incInch);
+        const Int16 _posYDesc2 = _pageOriginY + (5 * _incInch);
+        const Int16 _posYData1 = _pageOriginY + (3 * _incInch);
+        const Int16 _posYData2 = _pageOriginY + (7 * _incInch);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Static variables.                                                  //
         //                                                                    //
         //--------------------------------------------------------------------//
-            
-        static Int32 _indxFontArial     = PCLFonts.getIndexForName("Arial");
-        static Int32 _indxFontCourier   = PCLFonts.getIndexForName("Courier");
+
+        static Int32 _indxFontArial = PCLFonts.getIndexForName("Arial");
+        static Int32 _indxFontCourier = PCLFonts.getIndexForName("Courier");
 
         static Int32 _logPageWidth;
         static Int32 _logPageHeight;
@@ -68,10 +68,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        indxPaperSize,
-                                       Int32        indxPaperType,
-                                       Int32        indxOrientation,
-                                       Boolean      formAsMacro)
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxOrientation,
+                                       Boolean formAsMacro)
         {
             PCLOrientations.eAspect aspect;
 
@@ -84,19 +84,19 @@ namespace PCLParaphernalia
             logXOffset = PCLPaperSizes.getLogicalOffset(indxPaperSize,
                                                         _unitsPerInch, aspect);
 
-            _logPageWidth = PCLPaperSizes.getLogPageWidth (indxPaperSize,
+            _logPageWidth = PCLPaperSizes.getLogPageWidth(indxPaperSize,
                                                            _unitsPerInch,
                                                            aspect);
 
-            _logPageHeight = PCLPaperSizes.getLogPageLength (indxPaperSize,
+            _logPageHeight = PCLPaperSizes.getLogPageLength(indxPaperSize,
                                                           _unitsPerInch,
                                                           aspect);
 
-            _paperWidth = PCLPaperSizes.getPaperWidth (indxPaperSize,
+            _paperWidth = PCLPaperSizes.getPaperWidth(indxPaperSize,
                                                        _unitsPerInch,
                                                        aspect);
 
-            _paperHeight = PCLPaperSizes.getPaperLength (indxPaperSize,
+            _paperHeight = PCLPaperSizes.getPaperLength(indxPaperSize,
                                                          _unitsPerInch,
                                                          aspect);
 
@@ -129,11 +129,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32        indxPaperSize,
-                                              Int32        indxPaperType,
-                                              Int32        indxOrientation,
-                                              Boolean      formAsMacro,
-                                              UInt16       logXOffset)
+                                              Int32 indxPaperSize,
+                                              Int32 indxPaperType,
+                                              Int32 indxOrientation,
+                                              Boolean formAsMacro,
+                                              UInt16 logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean      formAsMacro)
+                                               Boolean formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -175,10 +175,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean      formAsMacro,
-                                            UInt16       logXOffset,
-                                            Int32        indxPaperSize,
-                                            Int32        indxOrientation)
+                                            Boolean formAsMacro,
+                                            UInt16 logXOffset,
+                                            Int32 indxPaperSize,
+                                            Int32 indxOrientation)
         {
             Int16 posX,
                   posY;
@@ -212,13 +212,13 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.Shading,
                                   60);
 
-            boxX = (Int16) ((_unitsPerInch / 2) - logXOffset);
-            boxY = (Int16) (_unitsPerInch / 2);
+            boxX = (Int16)((_unitsPerInch / 2) - logXOffset);
+            boxY = (Int16)(_unitsPerInch / 2);
 
-            boxWidth  = (Int16) (_paperWidth  - _unitsPerInch);
-            boxHeight = (Int16) (_paperHeight - _unitsPerInch);
+            boxWidth = (Int16)(_paperWidth - _unitsPerInch);
+            boxHeight = (Int16)(_paperHeight - _unitsPerInch);
 
-            PCLWriter.rectangleOutline (prnWriter, boxX, boxY,
+            PCLWriter.rectangleOutline(prnWriter, boxX, boxY,
                                         boxHeight, boxWidth, stroke,
                                         false, false);
 
@@ -232,7 +232,7 @@ namespace PCLParaphernalia
                                   PCLWriter.ePatternType.SolidBlack,
                                   0);
 
-            ptSize  = 15;
+            ptSize = 15;
 
             PCLWriter.font(prnWriter, true, "19U",
                            PCLFonts.getPCLFontSelect(_indxFontCourier,
@@ -242,10 +242,10 @@ namespace PCLParaphernalia
             posX = (Int16)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PCL & HP-GL/2 Text Rotation:");
 
-            ptSize  = 12;
+            ptSize = 12;
 
             PCLWriter.font(prnWriter, true, "19U",
                            PCLFonts.getPCLFontSelect(_indxFontCourier,
@@ -254,14 +254,13 @@ namespace PCLParaphernalia
 
             posY = _posYDesc1;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Orthogonal:");
 
             posY = _posYDesc2;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Non-orthogonal:");
-            
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -269,7 +268,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet (prnWriter,
+            PCLWriter.patternSet(prnWriter,
                                   PCLWriter.ePatternType.SolidBlack,
                                   0);
 
@@ -288,13 +287,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32        indxPaperSize,
-                                         Int32        indxPaperType,
-                                         Int32        indxOrientation,
-                                         Boolean      formAsMacro,
-                                         UInt16       logXOffset)
+                                         Int32 indxPaperSize,
+                                         Int32 indxPaperType,
+                                         Int32 indxOrientation,
+                                         Boolean formAsMacro,
+                                         UInt16 logXOffset)
         {
-            String lbCRTerm    = "\x0d" + "~";
+            String lbCRTerm = "\x0d" + "~";
 
             Int16 posX,
                   posY;
@@ -315,7 +314,7 @@ namespace PCLParaphernalia
                    cosAngle;
 
             //----------------------------------------------------------------//
-            
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);
@@ -355,20 +354,20 @@ namespace PCLParaphernalia
 
             boxX = 0;
             boxY = 0;
-            boxWidth  = (Int16)(_logPageWidth);
+            boxWidth = (Int16)(_logPageWidth);
             boxHeight = (Int16)(_logPageHeight);
 
-            PCLWriter.pictureFrame (prnWriter,
+            PCLWriter.pictureFrame(prnWriter,
                                     boxX,
                                     boxY,
                                     boxHeight,
                                     boxWidth);
 
-            PCLWriter.modeHPGL2 (prnWriter, false, false);
+            PCLWriter.modeHPGL2(prnWriter, false, false);
 
-            PCLWriter.cmdHPGL2 (prnWriter, "IN", "", false);
-            PCLWriter.cmdHPGL2 (prnWriter, "SP", "1", true);
-            PCLWriter.cmdHPGL2 (prnWriter, "DT", "~", false);
+            PCLWriter.cmdHPGL2(prnWriter, "IN", "", false);
+            PCLWriter.cmdHPGL2(prnWriter, "SP", "1", true);
+            PCLWriter.cmdHPGL2(prnWriter, "DT", "~", false);
 
             PCLWriter.cmdHPGL2(prnWriter, "SC",
                                 "0," + scaleX.ToString("F4") +
@@ -376,10 +375,10 @@ namespace PCLParaphernalia
                                 ",2",
                                 false);
 
-            PCLWriter.cmdHPGL2 (prnWriter, "IR", "0,100,100,0", false);
-            PCLWriter.cmdHPGL2 (prnWriter, "PU", "0,0", true);
+            PCLWriter.cmdHPGL2(prnWriter, "IR", "0,100,100,0", false);
+            PCLWriter.cmdHPGL2(prnWriter, "PU", "0,0", true);
 
-            PCLWriter.modePCL (prnWriter, true);
+            PCLWriter.modePCL(prnWriter, true);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -405,23 +404,23 @@ namespace PCLParaphernalia
 
             PCLWriter.printDirection(prnWriter, 0);
 
-            PCLWriter.textRotated (prnWriter, posX, posY, 0, 0, true,
+            PCLWriter.textRotated(prnWriter, posX, posY, 0, 0, true,
                                    "angle 0");
 
             posX -= _lineInc / 2;
 
-            PCLWriter.textRotated (prnWriter, posX, posY, 0, 180, true,
+            PCLWriter.textRotated(prnWriter, posX, posY, 0, 180, true,
                                    "ccw 180");
 
             posX += _lineInc / 4;
             posY -= _lineInc / 4;
 
-            PCLWriter.textRotated (prnWriter, posX, posY, 0, 90, true,
+            PCLWriter.textRotated(prnWriter, posX, posY, 0, 90, true,
                                    "ccw 90");
 
             posY += _lineInc / 2;
 
-            PCLWriter.textRotated (prnWriter, posX, posY, 0, 270, true,
+            PCLWriter.textRotated(prnWriter, posX, posY, 0, 270, true,
                                    "ccw 270");
 
             //----------------------------------------------------------------//
@@ -481,7 +480,7 @@ namespace PCLParaphernalia
                                 posY.ToString(), false);
 
             degrees = 45;
-            angle    = Math.PI * degrees / 180.0;
+            angle = Math.PI * degrees / 180.0;
             sinAngle = Math.Sin(angle);
             cosAngle = Math.Cos(angle);
 

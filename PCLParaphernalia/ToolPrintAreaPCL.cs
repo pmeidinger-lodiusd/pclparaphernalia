@@ -19,22 +19,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _hexChars          = "0123456789ABCDEF";
+        const String _hexChars = "0123456789ABCDEF";
 
-        const Int32 _macroId            = 1;
-        const UInt16 _sessionUPI        = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _sessionUPI = PCLWriter.sessionUPI;
 
-        const Int16 _boxOuterEdge       = (_sessionUPI * 1);
-        const Int16 _rulerOriginX       = (_sessionUPI * 1);
-        const Int16 _rulerOriginY       = (_sessionUPI * 1);
-        const Int16 _rulerCell          = (_sessionUPI * 1);
-        const Int16 _rulerDiv           = (_rulerCell / 5);
+        const Int16 _boxOuterEdge = (_sessionUPI * 1);
+        const Int16 _rulerOriginX = (_sessionUPI * 1);
+        const Int16 _rulerOriginY = (_sessionUPI * 1);
+        const Int16 _rulerCell = (_sessionUPI * 1);
+        const Int16 _rulerDiv = (_rulerCell / 5);
 
-        const Int16 _posXHddr           = _rulerOriginX + (2 * _rulerDiv);
-        const Int16 _posXDesc           = _rulerOriginX + (1 * _rulerDiv);
-        const Int16 _posYHddr           = _rulerOriginY - (2 * _rulerDiv);
-        const Int16 _posYText           = _rulerOriginY + (2 * _rulerDiv);
-        const Int16 _posYDesc           = _rulerOriginY + (6 * _rulerDiv);
+        const Int16 _posXHddr = _rulerOriginX + (2 * _rulerDiv);
+        const Int16 _posXDesc = _rulerOriginX + (1 * _rulerDiv);
+        const Int16 _posYHddr = _rulerOriginY - (2 * _rulerDiv);
+        const Int16 _posYText = _rulerOriginY + (2 * _rulerDiv);
+        const Int16 _posYDesc = _rulerOriginY + (6 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -51,12 +51,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        indxPaperSize,
-                                       Int32        indxPaperType,
-                                       Int32        indxOrientation,
-                                       Int32        indxPlexMode,
-                                       String       pjlCommand,
-                                       Boolean      formAsMacro)
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxOrientation,
+                                       Int32 indxPlexMode,
+                                       String pjlCommand,
+                                       Boolean formAsMacro)
         {
             PCLOrientations.eAspect aspect;
 
@@ -89,8 +89,8 @@ namespace PCLParaphernalia
 
             if (PCLPaperSizes.isCustomSize(indxPaperSize))
                 customPaperSize = true;
-    //      else if (PCLPaperSizes.getIdPCL(indxPaperSize) == 0xff)
-    //          customPaperSize = true;
+            //      else if (PCLPaperSizes.getIdPCL(indxPaperSize) == 0xff)
+            //          customPaperSize = true;
             else
                 customPaperSize = false;
 
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
                                                         _sessionUPI, aspect);
 
             scaleTextLength = (Single)paperLength / A4Length;
-            scaleTextWidth  = (Single)paperWidth  / A4Width;
+            scaleTextWidth = (Single)paperWidth / A4Width;
 
             if (scaleTextLength < scaleTextWidth)
                 scaleText = scaleTextLength;
@@ -171,17 +171,17 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32        indxPaperSize,
-                                              Int32        indxPaperType,
-                                              Int32        indxOrientation,
-                                              Int32        indxPlexMode,
-                                              String       pjlCommand,
-                                              Boolean      formAsMacro,
-                                              Boolean      customPaperSize,
-                                              UInt16       paperWidth,
-                                              UInt16       paperLength,
-                                              UInt16       logXOffset,
-                                              Single       scaleText)
+                                              Int32 indxPaperSize,
+                                              Int32 indxPaperType,
+                                              Int32 indxOrientation,
+                                              Int32 indxPlexMode,
+                                              String pjlCommand,
+                                              Boolean formAsMacro,
+                                              Boolean customPaperSize,
+                                              UInt16 paperWidth,
+                                              UInt16 paperLength,
+                                              UInt16 logXOffset,
+                                              Single scaleText)
         {
             PCLWriter.stdJobHeader(prnWriter, pjlCommand);
 
@@ -190,14 +190,14 @@ namespace PCLParaphernalia
                                 paperWidth, paperLength, logXOffset, scaleText);
 
             if (customPaperSize)
-                PCLWriter.pageHeaderCustom (prnWriter,
+                PCLWriter.pageHeaderCustom(prnWriter,
                                             indxPaperType,
                                             indxOrientation,
                                             indxPlexMode,
                                             paperWidth,
                                             paperLength);
             else
-                PCLWriter.pageHeader (prnWriter,
+                PCLWriter.pageHeader(prnWriter,
                                       indxPaperSize,
                                       indxPaperType,
                                       indxOrientation,
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean      formAsMacro)
+                                               Boolean formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -231,11 +231,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean      formAsMacro,
-                                            UInt16       paperWidth,
-                                            UInt16       paperLength,
-                                            UInt16       logXOffset,
-                                            Single       scaleText)
+                                            Boolean formAsMacro,
+                                            UInt16 paperWidth,
+                                            UInt16 paperLength,
+                                            UInt16 logXOffset,
+                                            Single scaleText)
         {
             Int16 rulerWidth;
             Int16 rulerHeight;
@@ -253,9 +253,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            rulerCellsX = (Int16)((paperWidth  / _sessionUPI) - 1);
+            rulerCellsX = (Int16)((paperWidth / _sessionUPI) - 1);
             rulerCellsY = (Int16)((paperLength / _sessionUPI) - 1);
-            rulerWidth  = (Int16)(rulerCellsX * _sessionUPI);
+            rulerWidth = (Int16)(rulerCellsX * _sessionUPI);
             rulerHeight = (Int16)(rulerCellsY * _sessionUPI);
 
             //----------------------------------------------------------------//
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
             for (Int32 i = 0; i < rulerCellsX; i++)
             {
                 PCLWriter.lineVertical(prnWriter, posX, posY, _rulerDiv, stroke);
-                
+
                 posX += _rulerCell;
             }
 
@@ -293,12 +293,12 @@ namespace PCLParaphernalia
             // Vertical ruler.                                                //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             posX = (Int16)(_rulerOriginX - logXOffset);
             posY = _rulerOriginY;
 
             PCLWriter.lineVertical(prnWriter, posX, posY, rulerHeight, stroke);
-                
+
             posY += _rulerCell;
 
             for (Int32 i = 0; i < rulerCellsY; i++)
@@ -345,7 +345,7 @@ namespace PCLParaphernalia
             posX = (Int16)(_posXHddr - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PCL print area sample");
 
             ptSize = (Int16)(10 * scaleText);
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Orientation:");
 
             posY += lineInc;
@@ -376,74 +376,74 @@ namespace PCLParaphernalia
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Paper width:");
-            
+
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Paper length:");
-            
+
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PJL option:");
 
             //----------------------------------------------------------------//
 
             posY = (Int16)(_posYDesc + (_rulerCell * scaleText));
-           
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "Black squares of side 3 units, each containing a" +
                       " central white square of side one");
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "unit, and some directional markers, as per the" +
                       " half-size sample above,");
 
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "demonstrate how objects are clipped by the" +
                       " boundaries of the printable area.");
 
             posY += lineInc;
             posY += lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "The four corner squares are (theoretically) positioned" +
                       " in the corners of the");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "physical sheet, except that the left edges of the top" +
                       " and bottom left-hand squares");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "are constrained to be positioned at the left margin" +
                       " of the PCL logical page,");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
-                      "which is inset from the sheet edge, and marked here" + 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
+                      "which is inset from the sheet edge, and marked here" +
                       " with a vertical line.");
 
             posY += lineInc;
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "The middle left-hand square is positioned relative" +
                       " to the bottom and right logical");
-            
+
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "page margins, and rotated 180 degrees.");
 
             posY += lineInc;
@@ -456,25 +456,25 @@ namespace PCLParaphernalia
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "printable area; one set is shown relative to the" + 
+                      "printable area; one set is shown relative to the" +
                       " left logical page margin, and");
-            
+
             posY += lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "another set (rotated 180 degrees) is shown" + 
+                      "another set (rotated 180 degrees) is shown" +
                       " relative to the right margin.");
 
             posY += lineInc;
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "PJL options may move the logical page and/or" +
                       " unprintable area margins relative");
 
             posY += lineInc;
-            
-            PCLWriter.text(prnWriter, posX, posY, 0, 
+
+            PCLWriter.text(prnWriter, posX, posY, 0,
                       "to the physical sheet.");
 
             //----------------------------------------------------------------//
@@ -497,18 +497,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32        indxPaperSize,
-                                         Int32        indxPaperType,
-                                         Int32        indxOrientation,
-                                         Int32        indxPlexMode,
-                                         String       pjlCommand,
-                                         Boolean      formAsMacro,
-                                         Boolean      customPaperSize,
-                                         Boolean      rearFace,
-                                         UInt16       paperWidth,
-                                         UInt16       paperLength,
-                                         UInt16       logXOffset,
-                                         Single       scaleText)
+                                         Int32 indxPaperSize,
+                                         Int32 indxPaperType,
+                                         Int32 indxOrientation,
+                                         Int32 indxPlexMode,
+                                         String pjlCommand,
+                                         Boolean formAsMacro,
+                                         Boolean customPaperSize,
+                                         Boolean rearFace,
+                                         UInt16 paperWidth,
+                                         UInt16 paperLength,
+                                         UInt16 logXOffset,
+                                         Single scaleText)
         {
             const String digitsTextA = "         1         2" +
                                        "         3         4" +
@@ -530,10 +530,10 @@ namespace PCLParaphernalia
                                        "12345678901234567890" +
                                        "12345678901234567890";
 
-            const Double unitsToInches      = (1.00 / _sessionUPI);
+            const Double unitsToInches = (1.00 / _sessionUPI);
             const Double unitsToMilliMetres = (25.4 / _sessionUPI);
 
-            const Int16 bottomMargin = (Int16)(0.5 * _sessionUPI); 
+            const Int16 bottomMargin = (Int16)(0.5 * _sessionUPI);
 
             Int16 squareRightX,
                   squareBottomY;
@@ -545,9 +545,9 @@ namespace PCLParaphernalia
                   ptSize;
 
             Int32 ctA;
-            
+
             //----------------------------------------------------------------//
-            
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
             else
@@ -560,7 +560,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            squareRightX  = (Int16)(paperWidth  - _boxOuterEdge - logXOffset);
+            squareRightX = (Int16)(paperWidth - _boxOuterEdge - logXOffset);
             squareBottomY = (Int16)(paperLength - _boxOuterEdge);
 
             // Top-left.                                                      //
@@ -568,28 +568,28 @@ namespace PCLParaphernalia
             posX = 0;
             posY = 0;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Top-right.                                                     //
 
             posX = squareRightX;
             posY = 0;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Bottom-left.                                                   //
 
             posX = 0;
             posY = squareBottomY;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             // Bottom-right.                                                  //
 
             posX = squareRightX;
             posY = squareBottomY;
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -671,11 +671,11 @@ namespace PCLParaphernalia
             posY = _posYText;
 
             ctA = (paperWidth * 10) / _sessionUPI;
-            
+
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextA.Substring(0, ctA));
-           
+
             posY += _rulerDiv;
-            
+
             PCLWriter.text(prnWriter, 0, posY, 0, digitsTextB.Substring(0, ctA));
 
             //----------------------------------------------------------------//
@@ -711,7 +711,7 @@ namespace PCLParaphernalia
             posX = squareRightX;
             posY = (Int16)(((paperLength - _boxOuterEdge) / 2) - bottomMargin);
 
-            generateSquare (prnWriter, posX, posY, false);
+            generateSquare(prnWriter, posX, posY, false);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -736,9 +736,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateSquare(BinaryWriter prnWriter,
-                                           Int16        startX,
-                                           Int16        startY,
-                                           Boolean      halfSize)
+                                           Int16 startX,
+                                           Int16 startY,
+                                           Boolean halfSize)
         {
             Int32 scaler;
 
@@ -759,10 +759,10 @@ namespace PCLParaphernalia
             else
                 scaler = 1;
 
-            boxOuterEdge    = (Int16)(_boxOuterEdge / scaler);
-            boxInnerEdge    = (Int16)((_boxOuterEdge / 3) / scaler);
-            boxInnerOffset  = (Int16)((_boxOuterEdge / 3) / scaler);
-            boxMarkerEdge   = (Int16)((_boxOuterEdge / 15) / scaler);
+            boxOuterEdge = (Int16)(_boxOuterEdge / scaler);
+            boxInnerEdge = (Int16)((_boxOuterEdge / 3) / scaler);
+            boxInnerOffset = (Int16)((_boxOuterEdge / 3) / scaler);
+            boxMarkerEdge = (Int16)((_boxOuterEdge / 15) / scaler);
             boxMarkerOffset = (Int16)(((_boxOuterEdge -
                                         boxMarkerEdge) / 2) / scaler);
 

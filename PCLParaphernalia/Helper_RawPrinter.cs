@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-        
+
         private class DOCINFOA
         {
             [MarshalAs(UnmanagedType.LPStr)] public String pDocName;
@@ -107,15 +107,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendBytesToPrinter (String szPrinterName,
+        public static bool sendBytesToPrinter(String szPrinterName,
                                                IntPtr pBytes,
-                                               Int32  dwCount)
+                                               Int32 dwCount)
         {
             Int32 dwError = 0, dwWritten = 0;
             IntPtr hPrinter = new IntPtr(0);
 
             DOCINFOA di = new DOCINFOA();
-            
+
             Boolean bSuccess = false;
 
             di.pDocName = "My C#.NET RAW Document";
@@ -180,6 +180,7 @@ namespace PCLParaphernalia
 
                 ClosePrinter(hPrinter);
             }
+
             if (bSuccess == false)
             {
                 //------------------------------------------------------------//
@@ -206,7 +207,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendFileToPrinter (String szPrinterName,
+        public static bool sendFileToPrinter(String szPrinterName,
                                               String szFileName)
         {
             //----------------------------------------------------------------//
@@ -232,7 +233,7 @@ namespace PCLParaphernalia
             Boolean bSuccess = false;
 
             IntPtr pUnmanagedBytes = new IntPtr(0);
-            
+
             Int32 nLength;
 
             nLength = Convert.ToInt32(fs.Length);
@@ -246,9 +247,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             bytes = br.ReadBytes(nLength);
-            
+
             pUnmanagedBytes = Marshal.AllocCoTaskMem(nLength);
-            
+
             Marshal.Copy(bytes, 0, pUnmanagedBytes, nLength);
 
             //----------------------------------------------------------------//
@@ -257,7 +258,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = sendBytesToPrinter (szPrinterName,
+            bSuccess = sendBytesToPrinter(szPrinterName,
                                            pUnmanagedBytes,
                                            nLength);
 
@@ -266,7 +267,7 @@ namespace PCLParaphernalia
             // Free the unmanaged memory and exit.                            //
             //                                                                //
             //----------------------------------------------------------------//
-            
+
             Marshal.FreeCoTaskMem(pUnmanagedBytes);
 
             return bSuccess;
@@ -283,7 +284,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendStringToPrinter (
+        public static bool sendStringToPrinter(
             String szPrinterName,
             String szString)
         {
@@ -291,7 +292,7 @@ namespace PCLParaphernalia
             Int32 dwCount;
 
             dwCount = szString.Length; // How many characters are in the string?
-            
+
             //----------------------------------------------------------------//
             //                                                                //
             // Assume that the printer is expecting ANSI text, and then       //

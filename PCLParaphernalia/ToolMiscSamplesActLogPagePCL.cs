@@ -20,21 +20,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _hexChars          = "0123456789ABCDEF";
+        const String _hexChars = "0123456789ABCDEF";
 
-        const Int32 _macroId            = 1;
-        const UInt16 _unitsPerInch      = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
         const Int16 _rulerDivPerCell = 10;
         const Int16 _rulerVOriginX = (_unitsPerInch * 6);
         const Int16 _rulerHOriginY = (_unitsPerInch * 5);
-        const Int16 _rulerCell     = (_unitsPerInch * 1);
-        const Int16 _rulerDiv      = (_rulerCell / _rulerDivPerCell);
+        const Int16 _rulerCell = (_unitsPerInch * 1);
+        const Int16 _rulerDiv = (_rulerCell / _rulerDivPerCell);
 
         const Int16 _posOrigin = _rulerCell;
-        const Int16 _posXDesc  = _posOrigin + (4 * _rulerDiv);
-        const Int16 _posYHddr  = _posOrigin - (4 * _rulerDiv);
-        const Int16 _posYDesc  = _posOrigin + (4 * _rulerDiv);
+        const Int16 _posXDesc = _posOrigin + (4 * _rulerDiv);
+        const Int16 _posYHddr = _posOrigin - (4 * _rulerDiv);
+        const Int16 _posYDesc = _posOrigin + (4 * _rulerDiv);
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -51,15 +51,15 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        indxPaperSize,
-                                       Int32        indxPaperType,
-                                       Int32        indxOrientation,
-                                       Int16        logLeftOffset,
-                                       Int16        logTopOffset,
-                                       UInt16       logPageWidth,
-                                       UInt16       logPageHeight,
-                                       Boolean      formAsMacro,
-                                       Boolean      incStdPage)
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxOrientation,
+                                       Int16 logLeftOffset,
+                                       Int16 logTopOffset,
+                                       UInt16 logPageWidth,
+                                       UInt16 logPageHeight,
+                                       Boolean formAsMacro,
+                                       Boolean incStdPage)
         {
             const PCLOrientations.eAspect aspectPort
                     = PCLOrientations.eAspect.Portrait;
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
                               paperLength,
                               logXOffset);
 
-            generatePageSet (prnWriter,
+            generatePageSet(prnWriter,
                              indxPaperSize,
                              indxPaperType,
                              indxOrientation,
@@ -133,13 +133,13 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32        indxPaperSize,
-                                              Int32        indxPaperType,
-                                              Int32        indxOrientation,
-                                              Boolean      formAsMacro,
-                                              UInt16       paperWidth,
-                                              UInt16       paperLength,
-                                              UInt16       logXOffset)
+                                              Int32 indxPaperSize,
+                                              Int32 indxPaperType,
+                                              Int32 indxOrientation,
+                                              Boolean formAsMacro,
+                                              UInt16 paperWidth,
+                                              UInt16 paperLength,
+                                              UInt16 logXOffset)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean      formAsMacro)
+                                               Boolean formAsMacro)
         {
             PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
@@ -181,10 +181,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean      formAsMacro,
-                                            UInt16       paperWidth,
-                                            UInt16       paperLength,
-                                            UInt16       logXOffset)
+                                            Boolean formAsMacro,
+                                            UInt16 paperWidth,
+                                            UInt16 paperLength,
+                                            UInt16 logXOffset)
         {
             Int16 rulerWidth;
             Int16 rulerHeight;
@@ -204,7 +204,7 @@ namespace PCLParaphernalia
 
             rulerCellsX = (Int16)((paperWidth / _unitsPerInch) + 1);
             rulerCellsY = (Int16)((paperLength / _unitsPerInch) + 1);
-            rulerWidth  = (Int16)(rulerCellsX * _unitsPerInch);
+            rulerWidth = (Int16)(rulerCellsX * _unitsPerInch);
             rulerHeight = (Int16)(rulerCellsY * _unitsPerInch);
 
             //----------------------------------------------------------------//
@@ -375,7 +375,7 @@ namespace PCLParaphernalia
             const Double unitsToInches = (1.00 / _unitsPerInch);
             const Double unitsToMilliMetres = (25.4 / _unitsPerInch);
 
-            const Double dcptsToInches      = (1.00 / dcptsPerInch);
+            const Double dcptsToInches = (1.00 / dcptsPerInch);
             const Double dcptsToMilliMetres = (25.4 / dcptsPerInch);
 
             Int16 posX,
@@ -387,7 +387,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
-                PCLWriter.macroControl(prnWriter, _macroId, 
+                PCLWriter.macroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);
             else
                 generateOverlay(prnWriter, false,
@@ -534,23 +534,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet (BinaryWriter prnWriter,
-                                             Int32        indxPaperSize,
-                                             Int32        indxPaperType,
-                                             Int32        indxOrientation,
-                                             Boolean      formAsMacro,
-                                             Boolean      incStdPage,
-                                             UInt16       paperWidth,
-                                             UInt16       paperLength,
-                                             UInt16       logXOffset,
-                                             Int16        logLeftOffset,
-                                             Int16        logTopOffset,
-                                             UInt16       logPageWidth,
-                                             UInt16       logPageHeight)
+        private static void generatePageSet(BinaryWriter prnWriter,
+                                             Int32 indxPaperSize,
+                                             Int32 indxPaperType,
+                                             Int32 indxOrientation,
+                                             Boolean formAsMacro,
+                                             Boolean incStdPage,
+                                             UInt16 paperWidth,
+                                             UInt16 paperLength,
+                                             UInt16 logXOffset,
+                                             Int16 logLeftOffset,
+                                             Int16 logTopOffset,
+                                             UInt16 logPageWidth,
+                                             UInt16 logPageHeight)
         {
             if (incStdPage)
             {
-                generatePage (prnWriter,
+                generatePage(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,

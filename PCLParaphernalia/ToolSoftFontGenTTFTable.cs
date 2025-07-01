@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         private UInt32 _checksum;
         private UInt32 _offset;
         private UInt32 _length;
-        private Int32  _padBytes;
+        private Int32 _padBytes;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -38,10 +38,10 @@ namespace PCLParaphernalia
 
         public ToolSoftFontGenTTFTable(UInt32 tag)
         {
-            _tag      = tag;
+            _tag = tag;
             _checksum = 0;
-            _offset   = 0;
-            _length   = 0;
+            _offset = 0;
+            _length = 0;
             _padBytes = 0;
         }
 
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
 
         public UInt32 TablePadLen
         {
-            get { return (UInt32) (_length + _padBytes); }
+            get { return (UInt32)(_length + _padBytes); }
         }
 
         //--------------------------------------------------------------------//
@@ -142,8 +142,8 @@ namespace PCLParaphernalia
         public void getByteRange(ref UInt32 offset,
                                  ref UInt32 length)
         {
-            offset   = _offset;
-            length   = _length;
+            offset = _offset;
+            length = _length;
         }
 
         //--------------------------------------------------------------------//
@@ -155,11 +155,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void initialise ()
+        public void initialise()
         {
             _checksum = 0;
-            _offset   = 0;
-            _length   = 0;
+            _offset = 0;
+            _length = 0;
             _padBytes = 0;
         }
 
@@ -178,8 +178,8 @@ namespace PCLParaphernalia
                                Int32 padBytes)
         {
             _checksum = checksum;
-            _offset   = offset;
-            _length   = length;
+            _offset = offset;
+            _length = length;
             _padBytes = padBytes;
         }
 

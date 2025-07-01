@@ -32,16 +32,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLogicalOperation (Int16  opId,
-                                    Int16  opCode,
+        public PCLLogicalOperation(Int16 opId,
+                                    Int16 opCode,
                                     String actPostfix,
                                     String actInfix)
         {
-            _opId   = opId;
+            _opId = opId;
             _opCode = opCode;       // not used at present //
 
-            _actPostfix  = actPostfix;
-            _actInfix    = actInfix;
+            _actPostfix = actPostfix;
+            _actInfix = actInfix;
         }
 
         //--------------------------------------------------------------------//
@@ -82,8 +82,8 @@ namespace PCLParaphernalia
             else
                 prefix = "";
 
-            return prefix + _opId.ToString () +
-                   ": " + _actPostfix.PadRight (_maxPFLen) +
+            return prefix + _opId.ToString() +
+                   ": " + _actPostfix.PadRight(_maxPFLen) +
                    " = " + _actInfix;
         }
 
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
             else
                 prefix = "";
 
-            return prefix + _opId.ToString () +
+            return prefix + _opId.ToString() +
                    ": " + _actPostfix;
         }
 
@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int16 getROPId ()
+        public Int16 getROPId()
         {
             return _opId;
         }

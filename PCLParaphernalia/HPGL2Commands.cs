@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         private static HPGL2Command _cmdUnknown;
 
         private static Int32 _cmdsCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o m m a n d s                                          //
@@ -52,8 +52,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkCmd(Int32       macroLevel,
-                                       String      mnemonic,
+        public static Boolean checkCmd(Int32 macroLevel,
+                                       String mnemonic,
                                        ref Boolean optResetHPGL2,
                                        ref Boolean optBinaryData,
                                        ref Boolean optFlipTransp,
@@ -62,13 +62,13 @@ namespace PCLParaphernalia
                                        ref Boolean optUseStdTerm,
                                        ref Boolean optQuotedData,
                                        ref Boolean optSymbolMode,
-                                       ref String  description)
+                                       ref String description)
         {
             Boolean cmdKnown;
 
             HPGL2Command cmd;
 
-            if (_cmds.IndexOfKey (mnemonic) != -1)
+            if (_cmds.IndexOfKey(mnemonic) != -1)
             {
                 cmdKnown = true;
                 cmd = _cmds[mnemonic];
@@ -151,11 +151,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _cmdUnknown.Mnemonic;
                 row[1] = _cmdUnknown.Description;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
                 row[3] = _cmdUnknown.StatsCtChild;
                 row[4] = _cmdUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -180,16 +180,15 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Mnemonic;
                     row[1] = kvp.Value.Description;
@@ -197,7 +196,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -217,7 +216,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "_________________";
@@ -225,9 +224,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "HP-GL/2 commands:";
@@ -235,9 +234,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -245,7 +244,7 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -273,7 +272,7 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone       = false;
+            const Boolean flagNone = false;
             const Boolean flagResetHPGL2 = true;
             const Boolean flagBinaryData = true;
             const Boolean flagFlipTransp = true;
@@ -924,7 +923,7 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  flagNone, flagNone,
                                  flagNone, flagNone,
-                                 flagNone, flagSymbolMode, 
+                                 flagNone, flagSymbolMode,
                                  "Symbol Mode"));
             command = "SP";                                             // SP //
             _cmds.Add(command,
@@ -1015,7 +1014,6 @@ namespace PCLParaphernalia
                                  flagNone, flagNone,
                                  "Pen Width Unit Selection"));
 
-
             _cmdsCount = _cmds.Count;
         }
 
@@ -1032,13 +1030,13 @@ namespace PCLParaphernalia
         {
             HPGL2Command cmd;
 
-            _cmdUnknown.resetStatistics ();
+            _cmdUnknown.resetStatistics();
 
             foreach (KeyValuePair<String, HPGL2Command> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics ();
+                cmd.resetStatistics();
             }
         }
     }

@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         const Int32 cSizeHddrFixed = 18;
 
         const Int32 cSizeCharSet_8bit = 256;
-        const Int32 cCodePointUnused  = 65535;
-        const Int32 cCodePointC0Min   = 0x00;
-        const Int32 cCodePointC0Max   = 0x1f;
-        const Int32 cCodePointC1Min   = 0x80;
-        const Int32 cCodePointC1Max   = 0x9f;
+        const Int32 cCodePointUnused = 65535;
+        const Int32 cCodePointC0Min = 0x00;
+        const Int32 cCodePointC0Max = 0x1f;
+        const Int32 cCodePointC1Min = 0x80;
+        const Int32 cCodePointC1Max = 0x9f;
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -45,7 +45,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolSymbolSetGenPCL ()
+        public ToolSymbolSetGenPCL()
         {
 
         }
@@ -59,14 +59,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean generateSymSet (ref String symSetFilename,
+        public Boolean generateSymSet(ref String symSetFilename,
                                        Boolean flagIgnoreC0,
                                        Boolean flagIgnoreC1,
                                        UInt16 symSetNo,
                                        UInt16 codeMin,
                                        UInt16 codeMax,
                                        UInt64 charCollReq,
-                                       UInt16 [] symSetMap,
+                                       UInt16[] symSetMap,
                                        PCLSymSetTypes.eIndex symSetType)
         {
             Boolean flagOK = true;
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
 
             try
             {
-                streamOpen (ref symSetFilename,
+                streamOpen(ref symSetFilename,
                             ref _binWriter,
                             ref _opStream);
             }
@@ -88,7 +88,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                MessageBox.Show (exc.ToString (),
+                MessageBox.Show(exc.ToString(),
                                 "Failure to open symbol set file",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -110,7 +110,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLWriter.symSetDownloadCode (_binWriter,
+                    PCLWriter.symSetDownloadCode(_binWriter,
                                                   (UInt16)symSetNo);
 
                     //--------------------------------------------------------//
@@ -119,8 +119,8 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    writeHddr (symSetNo, codeMin, codeMax, charCollReq,
-                               PCLSymSetTypes.getIdPCL((Int32) symSetType));
+                    writeHddr(symSetNo, codeMin, codeMax, charCollReq,
+                               PCLSymSetTypes.getIdPCL((Int32)symSetType));
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -128,7 +128,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    writeMapData (flagIgnoreC1, codeMin, codeMax, symSetMap);
+                    writeMapData(flagIgnoreC1, codeMin, codeMax, symSetMap);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -136,7 +136,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLWriter.symSetDownloadSave (_binWriter, true);
+                    PCLWriter.symSetDownloadSave(_binWriter, true);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -144,15 +144,15 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    _binWriter.Close ();
-                    _opStream.Close ();
+                    _binWriter.Close();
+                    _opStream.Close();
                 }
 
                 catch (Exception exc)
                 {
                     flagOK = false;
 
-                    MessageBox.Show (exc.ToString (),
+                    MessageBox.Show(exc.ToString(),
                                     "Failure to write symbol set file",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -172,7 +172,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte lsByte (UInt16 value)
+        private Byte lsByte(UInt16 value)
         {
             return (Byte)(value & 0x00ff);
         }
@@ -187,7 +187,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 lsUInt16 (UInt32 value)
+        private UInt16 lsUInt16(UInt32 value)
         {
             return (UInt16)(value & 0x0000ffff);
         }
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 lsUInt32 (UInt64 value)
+        private UInt32 lsUInt32(UInt64 value)
         {
             return (UInt32)(value & 0x0000ffffffff);
         }
@@ -217,7 +217,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte msByte (UInt16 value)
+        private Byte msByte(UInt16 value)
         {
             return (Byte)((value & 0xff00) >> 8);
         }
@@ -232,7 +232,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt16 msUInt16 (UInt32 value)
+        private UInt16 msUInt16(UInt32 value)
         {
             return (UInt16)((value & 0xffff0000) >> 16);
         }
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private UInt32 msUInt32 (UInt64 value)
+        private UInt32 msUInt32(UInt64 value)
         {
             return (UInt32)((value & 0xffffffff00000000) >> 32);
         }
@@ -262,7 +262,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void streamOpen (ref String symSetFilename,
+        public void streamOpen(ref String symSetFilename,
                                 ref BinaryWriter binWriter,
                                 ref Stream opStream)
         {
@@ -274,7 +274,7 @@ namespace PCLParaphernalia
             String saveDirectory;
             String tmpFilename;
 
-            ptr = symSetFilename.LastIndexOf ("\\");
+            ptr = symSetFilename.LastIndexOf("\\");
 
             if (ptr <= 0)
             {
@@ -285,12 +285,12 @@ namespace PCLParaphernalia
             {
                 len = symSetFilename.Length;
 
-                saveDirectory = symSetFilename.Substring (0, ptr);
-                tmpFilename = symSetFilename.Substring (ptr + 1,
+                saveDirectory = symSetFilename.Substring(0, ptr);
+                tmpFilename = symSetFilename.Substring(ptr + 1,
                                                           len - ptr - 1);
             }
 
-            saveDialog = new SaveFileDialog ();
+            saveDialog = new SaveFileDialog();
 
             saveDialog.Filter = "PCL Files | *.pcl";
             saveDialog.DefaultExt = "pcl";
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             saveDialog.OverwritePrompt = true;
             saveDialog.FileName = tmpFilename;
 
-            Nullable<Boolean> dialogResult = saveDialog.ShowDialog ();
+            Nullable<Boolean> dialogResult = saveDialog.ShowDialog();
 
             if (dialogResult == true)
             {
@@ -308,11 +308,11 @@ namespace PCLParaphernalia
                 tmpFilename = symSetFilename;
             }
 
-            opStream = File.Create (tmpFilename);
+            opStream = File.Create(tmpFilename);
 
             if (opStream != null)
             {
-                _binWriter = new BinaryWriter (opStream);
+                _binWriter = new BinaryWriter(opStream);
                 binWriter = _binWriter;
             }
         }
@@ -326,10 +326,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeBuffer (Int32 bufLen,
-                                 Byte [] buffer)
+        public void writeBuffer(Int32 bufLen,
+                                 Byte[] buffer)
         {
-            _binWriter.Write (buffer, 0, bufLen);
+            _binWriter.Write(buffer, 0, bufLen);
         }
 
         //--------------------------------------------------------------------//
@@ -342,20 +342,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeHddr (UInt16 symSetNo,
+        private void writeHddr(UInt16 symSetNo,
                                 UInt16 codeMin,
                                 UInt16 codeMax,
                                 UInt64 charCollReq,
-                                Byte   symSetType)
+                                Byte symSetType)
         {
             Int32 mapSize;
             Int32 descSize;
-       
+
             UInt16 valUInt16;
 
             UInt32 valUInt32;
 
-            Byte [] hddrDesc = new Byte [cSizeHddrFixed];
+            Byte[] hddrDesc = new Byte[cSizeHddrFixed];
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -367,7 +367,7 @@ namespace PCLParaphernalia
             mapSize = (codeMax - codeMin + 1) * 2;
             descSize = mapSize + cSizeHddrFixed;
 
-            PCLWriter.symSetDownloadDesc (_binWriter, (UInt32) descSize);
+            PCLWriter.symSetDownloadDesc(_binWriter, (UInt32)descSize);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -375,38 +375,38 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            hddrDesc [0] = msByte (cSizeHddrFixed);
-            hddrDesc [1] = lsByte (cSizeHddrFixed);
+            hddrDesc[0] = msByte(cSizeHddrFixed);
+            hddrDesc[1] = lsByte(cSizeHddrFixed);
 
-            hddrDesc [2] = msByte (symSetNo);   // Symbol set Kind1 Id MSB
-            hddrDesc [3] = lsByte (symSetNo);   // Symbol set Kind1 Id LSB
+            hddrDesc[2] = msByte(symSetNo);   // Symbol set Kind1 Id MSB
+            hddrDesc[3] = lsByte(symSetNo);   // Symbol set Kind1 Id LSB
 
-            hddrDesc [4] = 3;                   // Format = Unicode
-            hddrDesc [5] = symSetType;          // Type
-            hddrDesc [6] = msByte (codeMin);    // First code MSB
-            hddrDesc [7] = lsByte (codeMin);    // First code LSB
-            hddrDesc [8] = msByte (codeMax);    // Last code MSB
-            hddrDesc [9] = lsByte (codeMax);    // Last code LSB
+            hddrDesc[4] = 3;                   // Format = Unicode
+            hddrDesc[5] = symSetType;          // Type
+            hddrDesc[6] = msByte(codeMin);    // First code MSB
+            hddrDesc[7] = lsByte(codeMin);    // First code LSB
+            hddrDesc[8] = msByte(codeMax);    // Last code MSB
+            hddrDesc[9] = lsByte(codeMax);    // Last code LSB
 
-            valUInt32 = msUInt32 (charCollReq);
-            valUInt16 = msUInt16 (valUInt32);
-            hddrDesc [10] = msByte (valUInt16); // Char. Req. byte 0
-            hddrDesc [11] = lsByte (valUInt16); // Char. Req. byte 1
+            valUInt32 = msUInt32(charCollReq);
+            valUInt16 = msUInt16(valUInt32);
+            hddrDesc[10] = msByte(valUInt16); // Char. Req. byte 0
+            hddrDesc[11] = lsByte(valUInt16); // Char. Req. byte 1
 
-            valUInt16 = lsUInt16 (valUInt32);
-            hddrDesc [12] = msByte (valUInt16); // Char. Req. byte 2
-            hddrDesc [13] = lsByte (valUInt16); // Char. Req. byte 3
+            valUInt16 = lsUInt16(valUInt32);
+            hddrDesc[12] = msByte(valUInt16); // Char. Req. byte 2
+            hddrDesc[13] = lsByte(valUInt16); // Char. Req. byte 3
 
-            valUInt32 = lsUInt32 (charCollReq);
-            valUInt16 = msUInt16 (valUInt32);
-            hddrDesc [14] = msByte (valUInt16); // Char. Req. byte 4
-            hddrDesc [15] = lsByte (valUInt16); // Char. Req. byte 5
+            valUInt32 = lsUInt32(charCollReq);
+            valUInt16 = msUInt16(valUInt32);
+            hddrDesc[14] = msByte(valUInt16); // Char. Req. byte 4
+            hddrDesc[15] = lsByte(valUInt16); // Char. Req. byte 5
 
-            valUInt16 = lsUInt16 (valUInt32);
-            hddrDesc [16] = msByte (valUInt16); // Char. Req. byte 6
-            hddrDesc [17] = lsByte (valUInt16); // Char. Req. byte 7
+            valUInt16 = lsUInt16(valUInt32);
+            hddrDesc[16] = msByte(valUInt16); // Char. Req. byte 6
+            hddrDesc[17] = lsByte(valUInt16); // Char. Req. byte 7
 
-            writeBuffer (cSizeHddrFixed, hddrDesc);
+            writeBuffer(cSizeHddrFixed, hddrDesc);
         }
 
         //--------------------------------------------------------------------//
@@ -418,14 +418,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeMapData (Boolean   flagIgnoreC1,
-                                   UInt16    codeMin,
-                                   UInt16    codeMax,
-                                   UInt16 [] symSetMap)
+        private void writeMapData(Boolean flagIgnoreC1,
+                                   UInt16 codeMin,
+                                   UInt16 codeMax,
+                                   UInt16[] symSetMap)
         {
             Int32 mapSize = (codeMax - codeMin + 1) * 2;
 
-            Byte [] mapArray = new Byte [mapSize];
+            Byte[] mapArray = new Byte[mapSize];
 
             for (Int32 i = codeMin; i <= codeMax; i++)
             {
@@ -434,17 +434,17 @@ namespace PCLParaphernalia
                 if ((flagIgnoreC1) &&
                     ((i >= cCodePointC1Min) && (i <= cCodePointC1Max)))
                 {
-                    mapArray [j]     = 0xff;
-                    mapArray [j + 1] = 0xff;
+                    mapArray[j] = 0xff;
+                    mapArray[j + 1] = 0xff;
                 }
                 else
                 {
-                    mapArray [j]     = msByte (symSetMap [i]);
-                    mapArray [j + 1] = lsByte (symSetMap [i]);
+                    mapArray[j] = msByte(symSetMap[i]);
+                    mapArray[j + 1] = lsByte(symSetMap[i]);
                 }
             }
 
-            writeBuffer (mapSize, mapArray);
+            writeBuffer(mapSize, mapArray);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -30,34 +30,34 @@ namespace PCLParaphernalia
         private Int32 _value;
         private Int32 _attrTagLen;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagValIsTxt;
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r E n u m                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLAttrEnum(Byte                      operTag,
-                             Byte                      attrTagA,
-                             Byte                      attrTagB,
-                             Int32                     attrTagLen,
-                             Int32                     value,
-                             Boolean                   flagValIsTxt,
-	                         String                    description)
-	    {
-            _operTag       = operTag;
-            _attrTagA      = attrTagA;
-            _attrTagB      = attrTagB;
-            _attrTagLen    = attrTagLen;
-            _value         = value;
-            _flagValIsTxt  = flagValIsTxt;
-	        _description   = description;
+        public PCLXLAttrEnum(Byte operTag,
+                             Byte attrTagA,
+                             Byte attrTagB,
+                             Int32 attrTagLen,
+                             Int32 value,
+                             Boolean flagValIsTxt,
+                             String description)
+        {
+            _operTag = operTag;
+            _attrTagA = attrTagA;
+            _attrTagB = attrTagB;
+            _attrTagLen = attrTagLen;
+            _value = value;
+            _flagValIsTxt = flagValIsTxt;
+            _description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -107,11 +107,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (ref Boolean flagValIsTxt,
-                                ref String  description)
+        public void getDetails(ref Boolean flagValIsTxt,
+                                ref String description)
         {
             flagValIsTxt = _flagValIsTxt;
-            description  = _description;
+            description = _description;
         }
 
         //--------------------------------------------------------------------//
@@ -142,9 +142,9 @@ namespace PCLParaphernalia
             get
             {
                 if (_operTag == 0x00)
-                      return "--";
-                  else
-                      return PCLXLOperators.getDesc(_operTag);
+                    return "--";
+                else
+                    return PCLXLOperators.getDesc(_operTag);
             }
         }
 
@@ -218,9 +218,9 @@ namespace PCLParaphernalia
             get
             {
                 if (_flagValIsTxt)
-                      return ("0x" + _value.ToString("X"));
-                  else
-                      return _value.ToString();
+                    return ("0x" + _value.ToString("X"));
+                else
+                    return _value.ToString();
             }
         }
 
@@ -241,7 +241,7 @@ namespace PCLParaphernalia
                 if (_operTag == 0x00)
                     oper = "----";
                 else
-                    oper = "0x" + _operTag.ToString ("x2");
+                    oper = "0x" + _operTag.ToString("x2");
 
                 if ((_attrTagLen == 1) && (_attrTagA == 0x00))
                 {
@@ -250,16 +250,17 @@ namespace PCLParaphernalia
                 else
                 {
                     if (_attrTagLen == 1)
-                        attr = "0x" + _attrTagA.ToString ("x2") + "  ";
+                        attr = "0x" + _attrTagA.ToString("x2") + "  ";
                     else
-                        attr = "0x" + _attrTagA.ToString ("x2") +
-                                      _attrTagB.ToString ("x2");
+                        attr = "0x" + _attrTagA.ToString("x2") +
+                                      _attrTagB.ToString("x2");
 
                     if (_value < 0x00ffff)
                         text = oper + " " +
-                               attr + " " + _value.ToString ();
-                    else text = oper + " " +
-                                attr + " 0x" + _value.ToString ("x8");
+                               attr + " " + _value.ToString();
+                    else
+                        text = oper + " " +
+                                attr + " 0x" + _value.ToString("x8");
                 }
 
                 return text;

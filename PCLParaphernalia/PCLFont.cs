@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -25,19 +25,19 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private PCLFonts.eFontType _fontType;
-        
-        private String  _fontName;
 
-        private Int16   _fontIndex;
+        private String _fontName;
 
-        private UInt16  _symSetNumber;
-        private UInt16  _symSetDefault;
-        
-        private UInt16  _typeface;
+        private Int16 _fontIndex;
 
-        private Double  _pitch;
-        private Double  _pointSize;
-        private Byte    _contourRatio;
+        private UInt16 _symSetNumber;
+        private UInt16 _symSetDefault;
+
+        private UInt16 _typeface;
+
+        private Double _pitch;
+        private Double _pointSize;
+        private Byte _contourRatio;
 
         private Boolean _bound;
         private Boolean _proportional;
@@ -48,96 +48,96 @@ namespace PCLParaphernalia
         private Boolean _varBold;
         private Boolean _varBoldItalic;
 
-        private UInt16  _styleRegular;
-        private UInt16  _styleItalic;
-        private UInt16  _styleBold;
-        private UInt16  _styleBoldItalic;
+        private UInt16 _styleRegular;
+        private UInt16 _styleItalic;
+        private UInt16 _styleBold;
+        private UInt16 _styleBoldItalic;
 
-        private Int16   _weightRegular;
-        private Int16   _weightItalic;
-        private Int16   _weightBold;
-        private Int16   _weightBoldItalic;
+        private Int16 _weightRegular;
+        private Int16 _weightItalic;
+        private Int16 _weightBold;
+        private Int16 _weightBoldItalic;
 
-        private String  _nameRegular;
-        private String  _nameItalic;
-        private String  _nameBold;
-        private String  _nameBoldItalic;
+        private String _nameRegular;
+        private String _nameItalic;
+        private String _nameBold;
+        private String _nameBoldItalic;
 
         private UInt16[] _symSets;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L F o n t                                                      //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLFont (Int16              fontIndex,
+        public PCLFont(Int16 fontIndex,
                         PCLFonts.eFontType fontType,
-                        String             fontName,
-                        Boolean            bound,
-                        Boolean            proportional,
-                        Boolean            scalable,
-                        UInt16             symbolSet,
-                        UInt16             typeface,
-                        Byte               contourRatio,
-                        Double             pitch,
-                        Double             pointSize,
-                        Boolean            varRegular,
-                        UInt16             styleRegular,
-                        Int16              weightRegular,
-                        String             nameRegular,
-                        Boolean            varItalic,
-                        UInt16             styleItalic,
-                        Int16              weightItalic,
-                        String             nameItalic,
-                        Boolean            varBold,
-                        UInt16             styleBold,
-                        Int16              weightBold,
-                        String             nameBold,
-                        Boolean            varBoldItalic,
-                        UInt16             styleBoldItalic,
-                        Int16              weightBoldItalic,
-                        String             nameBoldItalic,
-                        UInt16 []          symSets)
+                        String fontName,
+                        Boolean bound,
+                        Boolean proportional,
+                        Boolean scalable,
+                        UInt16 symbolSet,
+                        UInt16 typeface,
+                        Byte contourRatio,
+                        Double pitch,
+                        Double pointSize,
+                        Boolean varRegular,
+                        UInt16 styleRegular,
+                        Int16 weightRegular,
+                        String nameRegular,
+                        Boolean varItalic,
+                        UInt16 styleItalic,
+                        Int16 weightItalic,
+                        String nameItalic,
+                        Boolean varBold,
+                        UInt16 styleBold,
+                        Int16 weightBold,
+                        String nameBold,
+                        Boolean varBoldItalic,
+                        UInt16 styleBoldItalic,
+                        Int16 weightBoldItalic,
+                        String nameBoldItalic,
+                        UInt16[] symSets)
         {
-            _fontIndex          = fontIndex;   
-            _fontType           = fontType;
-            _fontName           = fontName;
-        
-            _bound              = bound;
-            _proportional       = proportional;
-            _scalable           = scalable;
+            _fontIndex = fontIndex;
+            _fontType = fontType;
+            _fontName = fontName;
 
-            _symSetNumber       = symbolSet;
-            _typeface           = typeface;
-        
-            _contourRatio       = contourRatio;
-            _pitch              = pitch;
-            _pointSize          = pointSize;
+            _bound = bound;
+            _proportional = proportional;
+            _scalable = scalable;
 
-            _varRegular         = varRegular;
-            _varItalic          = varItalic;
-            _varBold            = varBold;
-            _varBoldItalic      = varBoldItalic;
+            _symSetNumber = symbolSet;
+            _typeface = typeface;
 
-            _styleRegular       = styleRegular;
-            _styleItalic        = styleItalic;
-            _styleBold          = styleBold;
-            _styleBoldItalic    = styleBoldItalic;
+            _contourRatio = contourRatio;
+            _pitch = pitch;
+            _pointSize = pointSize;
 
-            _weightRegular      = weightRegular;
-            _weightItalic       = weightItalic;
-            _weightBold         = weightBold;
-            _weightBoldItalic   = weightBoldItalic;
+            _varRegular = varRegular;
+            _varItalic = varItalic;
+            _varBold = varBold;
+            _varBoldItalic = varBoldItalic;
 
-            _nameRegular        = nameRegular;
-            _nameItalic         = nameItalic;
-            _nameBold           = nameBold;
-            _nameBoldItalic     = nameBoldItalic;
+            _styleRegular = styleRegular;
+            _styleItalic = styleItalic;
+            _styleBold = styleBold;
+            _styleBoldItalic = styleBoldItalic;
 
-            _symSets            = symSets;
+            _weightRegular = weightRegular;
+            _weightItalic = weightItalic;
+            _weightBold = weightBold;
+            _weightBoldItalic = weightBoldItalic;
 
-            _symSetDefault      = 14;       // = "0N"
+            _nameRegular = nameRegular;
+            _nameItalic = nameItalic;
+            _nameBold = nameBold;
+            _nameBoldItalic = nameBoldItalic;
+
+            _symSets = symSets;
+
+            _symSetDefault = 14;       // = "0N"
         }
 
         //--------------------------------------------------------------------//
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_bound)
-                    return PCLSymbolSets.translateKind1ToId (_symSetNumber);
+                    return PCLSymbolSets.translateKind1ToId(_symSetNumber);
                 else
                     return "";
             }
@@ -170,22 +170,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getHPGL2FontDef (PCLFonts.eVariant variant,
-                                       UInt16            symbolSet,
-                                       Double            height,
-                                       Double            pitch)
+        public String getHPGL2FontDef(PCLFonts.eVariant variant,
+                                       UInt16 symbolSet,
+                                       Double height,
+                                       Double pitch)
         {
-            StringBuilder cmd = new StringBuilder (255);
+            StringBuilder cmd = new StringBuilder(255);
 
             if (_symSetNumber != 0)
-                cmd.Append ("1,").Append (_symSetNumber);
+                cmd.Append("1,").Append(_symSetNumber);
             else
-                cmd.Append ("1,").Append (symbolSet);
+                cmd.Append("1,").Append(symbolSet);
 
             if (_proportional)
-                cmd.Append (",2,1");
+                cmd.Append(",2,1");
             else
-                cmd.Append (",2,0");
+                cmd.Append(",2,0");
 
             if (_scalable)
             {
@@ -194,12 +194,12 @@ namespace PCLParaphernalia
                 if (_proportional)
                 {
                     // Scalable; proportionally-spaced
-                    cmd.Append (",4,").Append (height);
+                    cmd.Append(",4,").Append(height);
                 }
                 else
                 {
                     // Scalable; fixed-pitch
-                    cmd.Append (",3,").Append (pitch);
+                    cmd.Append(",3,").Append(pitch);
                 }
             }
             else
@@ -208,37 +208,37 @@ namespace PCLParaphernalia
 
                 if (_proportional)
                     // Bitmap; proportionally-spaced
-                    cmd.Append (",4,").Append (_pointSize);
+                    cmd.Append(",4,").Append(_pointSize);
                 else
                     // Bitmap; fixed-pitch
-                    cmd.Append (",3,").Append (_pitch);
-                    cmd.Append (",4,").Append (_pointSize);
+                    cmd.Append(",3,").Append(_pitch);
+                cmd.Append(",4,").Append(_pointSize);
             }
 
             if (variant == PCLFonts.eVariant.Italic)
             {
-                cmd.Append (",5,").Append (_styleItalic);
-                cmd.Append (",6,").Append (_weightItalic);
+                cmd.Append(",5,").Append(_styleItalic);
+                cmd.Append(",6,").Append(_weightItalic);
             }
             else if (variant == PCLFonts.eVariant.Bold)
             {
-                cmd.Append (",5,").Append (_styleBold);
-                cmd.Append (",6,").Append (_weightBold);
+                cmd.Append(",5,").Append(_styleBold);
+                cmd.Append(",6,").Append(_weightBold);
             }
             else if (variant == PCLFonts.eVariant.BoldItalic)
             {
-                cmd.Append (",5,").Append (_styleBoldItalic);
-                cmd.Append (",6,").Append (_weightBoldItalic);
+                cmd.Append(",5,").Append(_styleBoldItalic);
+                cmd.Append(",6,").Append(_weightBoldItalic);
             }
             else
             {
-                cmd.Append (",5,").Append (_styleRegular);
-                cmd.Append (",6,").Append (_weightRegular);
+                cmd.Append(",5,").Append(_styleRegular);
+                cmd.Append(",6,").Append(_weightRegular);
             }
 
-            cmd.Append (",7,").Append (_typeface);
+            cmd.Append(",7,").Append(_typeface);
 
-            return cmd.ToString ();
+            return cmd.ToString();
         }
 
         //--------------------------------------------------------------------//
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean getPCLFontIdData (ref UInt16 typeface,
+        public Boolean getPCLFontIdData(ref UInt16 typeface,
                                          ref String fontName)
         {
             Boolean presetFont = false;
@@ -274,8 +274,8 @@ namespace PCLParaphernalia
                 (_fontType == PCLFonts.eFontType.PresetFamily))
             {
                 presetFont = true;
-                typeface   = _typeface;
-                fontName   = _fontName;
+                typeface = _typeface;
+                fontName = _fontName;
             }
             else
             {
@@ -295,9 +295,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getPCLFontSelect (PCLFonts.eVariant variant,
-                                        Double             height,
-                                        Double             pitch)
+        public String getPCLFontSelect(PCLFonts.eVariant variant,
+                                        Double height,
+                                        Double pitch)
         {
             String seq;
 
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
             if (_scalable)
             {
                 // Scalable; the size parameter defines the required size.
-                
+
                 if (_proportional)
                 {
                     // Scalable; proportionally-spaced
@@ -340,27 +340,27 @@ namespace PCLParaphernalia
                 else
                     // Bitmap; fixed-pitch
                     seq += _pointSize.ToString() + "v" +
-                           _pitch.ToString()     + "h";
+                           _pitch.ToString() + "h";
             }
 
             if (variant == PCLFonts.eVariant.Italic)
             {
-                seq += _styleItalic.ToString()  + "s" +
+                seq += _styleItalic.ToString() + "s" +
                        _weightItalic.ToString() + "b";
             }
             else if (variant == PCLFonts.eVariant.Bold)
             {
-                seq += _styleBold.ToString()  + "s" +
+                seq += _styleBold.ToString() + "s" +
                        _weightBold.ToString() + "b";
             }
             else if (variant == PCLFonts.eVariant.BoldItalic)
             {
-                seq += _styleBoldItalic.ToString()  + "s" +
+                seq += _styleBoldItalic.ToString() + "s" +
                        _weightBoldItalic.ToString() + "b";
             }
             else
             {
-                seq += _styleRegular.ToString()  + "s" +
+                seq += _styleRegular.ToString() + "s" +
                        _weightRegular.ToString() + "b";
             }
 
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
         // Return the symbol set (Kind1) value.                               //
         //                                                                    //
         //--------------------------------------------------------------------//
-        
+
         public UInt16 getSymbolSetNumber()
         {
             if (_bound)
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_pitch != 0)
-                    return _pointSize.ToString ();
+                    return _pointSize.ToString();
                 else
                     return "";
             }
@@ -590,7 +590,7 @@ namespace PCLParaphernalia
 
         public Boolean isPresetFont()
         {
-            if ((_fontType == PCLFonts.eFontType.Custom)   ||
+            if ((_fontType == PCLFonts.eFontType.Custom) ||
                 (_fontType == PCLFonts.eFontType.Download) ||
                 (_fontType == PCLFonts.eFontType.PrnDisk))
                 return false;
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Boolean isSymSetInList (UInt16 symSetNo)
+        public Boolean isSymSetInList(UInt16 symSetNo)
         {
             Int32 symSetCt = _symSets.Length;
 
@@ -657,7 +657,7 @@ namespace PCLParaphernalia
 
             if ((!symSetFound) && (!_bound))
             {
-                if (PCLSymbolSets.getKind1 (PCLSymbolSets.IndexUnicode) ==
+                if (PCLSymbolSets.getKind1(PCLSymbolSets.IndexUnicode) ==
                     symSetNo)
                 {
                     symSetFound = true;
@@ -696,7 +696,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_pitch != 0)
-                    return _pitch.ToString ();
+                    return _pitch.ToString();
                 else
                     return "";
             }
@@ -792,7 +792,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String [] SymbolSetRows
+        public String[] SymbolSetRows
         {
             get
             {
@@ -819,30 +819,29 @@ namespace PCLParaphernalia
 
                 mapRows = new String[rowCt];
 
-                crntRow = new StringBuilder (rowSize);
+                crntRow = new StringBuilder(rowSize);
 
                 for (Int32 i = 0; i < symSetCt; i++)
                 {
                     String symSetId =
-                        PCLSymbolSets.translateKind1ToId (_symSets[i]);
+                        PCLSymbolSets.translateKind1ToId(_symSets[i]);
 
-                    crntRow.Append (symSetId);
+                    crntRow.Append(symSetId);
 
                     if (i < (symSetCt - 1))
-                        crntRow.Append (", ");
-
+                        crntRow.Append(", ");
 
                     if ((i > 0) && ((i % maxPerRow) == 0))
                     {
-                        mapRows[rowIndx] = crntRow.ToString ();
+                        mapRows[rowIndx] = crntRow.ToString();
 
-                        crntRow.Clear ();
+                        crntRow.Clear();
                         rowIndx++;
                     }
                 }
 
                 if (crntRow.Length > 0)
-                    mapRows[rowIndx] = crntRow.ToString ();
+                    mapRows[rowIndx] = crntRow.ToString();
 
                 return mapRows;
             }
@@ -876,10 +875,10 @@ namespace PCLParaphernalia
                     symSetList.Append(symSetId);
 
                     if (i < (symSetCt - 1))
-                        symSetList.Append (", ");
+                        symSetList.Append(", ");
 
                     if ((i > 0) && ((i % maxPerRow) == 0))
-                        symSetList.Append ("\r\n");
+                        symSetList.Append("\r\n");
                 }
 
                 return symSetList.ToString();

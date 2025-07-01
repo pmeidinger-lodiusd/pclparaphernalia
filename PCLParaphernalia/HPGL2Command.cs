@@ -20,8 +20,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private String  _mnemonic;
-        private String  _description;
+        private String _mnemonic;
+        private String _description;
 
         private Boolean _flagResetHPGL2;
         private Boolean _flagBinaryData;
@@ -34,14 +34,14 @@ namespace PCLParaphernalia
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o m m a n d                                            //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public HPGL2Command(String  mnemonic,
+        public HPGL2Command(String mnemonic,
                             Boolean flagResetHPGL2,
                             Boolean flagBinaryData,
                             Boolean flagFlipTransp,
@@ -50,11 +50,11 @@ namespace PCLParaphernalia
                             Boolean flagUseStdTerm,
                             Boolean flagQuotedData,
                             Boolean flagSymbolMode,
-                            String  description)
+                            String description)
         {
-            _mnemonic       = mnemonic;
-            _description    = description;
-        
+            _mnemonic = mnemonic;
+            _description = description;
+
             _flagResetHPGL2 = flagResetHPGL2;
             _flagBinaryData = flagBinaryData;
             _flagFlipTransp = flagFlipTransp;
@@ -65,7 +65,7 @@ namespace PCLParaphernalia
             _flagSymbolMode = flagSymbolMode;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//

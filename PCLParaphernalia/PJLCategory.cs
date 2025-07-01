@@ -28,7 +28,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PJLCategory(PJLCategories.eCategoryType type,
-                           String                      name)
+                           String name)
         {
             _categoryType = type;
             _categoryName = name;

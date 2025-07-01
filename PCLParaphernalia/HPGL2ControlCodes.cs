@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         private static HPGL2ControlCode _tagUnknown;
 
         private static Int32 _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o n t r o l C o d e s                                  //
@@ -48,14 +48,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkTag (Byte tagToCheck,
+        public static Boolean checkTag(Byte tagToCheck,
                                         ref String description)
         {
             Boolean seqKnown;
 
             HPGL2ControlCode tag;
 
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
             {
                 seqKnown = true;
                 tag = _tags[tagToCheck];
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
             else
             {
                 seqKnown = false;
-                tag = _tagUnknown; 
+                tag = _tagUnknown;
             }
 
             description = tag.Description;
@@ -105,11 +105,11 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _tagUnknown.Tag;
                 row[1] = _tagUnknown.Description;
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
                 row[3] = _tagUnknown.StatsCtChild;
                 row[4] = _tagUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -134,16 +134,15 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Sequence;
                     row[1] = kvp.Value.Description;
@@ -151,7 +150,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -171,7 +170,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "______________________";
@@ -179,9 +178,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "HP-GL/2 control codes:";
@@ -189,17 +188,17 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
-            row [1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+            row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
             row[2] = "";
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -217,8 +216,8 @@ namespace PCLParaphernalia
 
             foreach (KeyValuePair<Byte, HPGL2ControlCode> kvp in _tags)
             {
-                    count++;
-                    grid.Items.Add(kvp.Value);
+                count++;
+                grid.Items.Add(kvp.Value);
             }
 
             return count;
@@ -233,17 +232,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount (Byte tagByte,
+        public static void incrementStatsCount(Byte tagByte,
                                                 Int32 level)
         {
             HPGL2ControlCode tag;
 
-            if (_tags.IndexOfKey (tagByte) != -1)
+            if (_tags.IndexOfKey(tagByte) != -1)
                 tag = _tags[tagByte];
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount (level);
+            tag.incrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -257,7 +256,7 @@ namespace PCLParaphernalia
 
         public static Boolean isKnownTag(Byte tagToCheck)
         {
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
                 return true;
             else
                 return false;
@@ -278,84 +277,84 @@ namespace PCLParaphernalia
 
             tag = 0x20;                                              // ?    //
             _tagUnknown =
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       true,
-                                      "", 
+                                      "",
                                       "*** Unknown tag ***");
 
             tag = 0x00;                                               // 0x00 //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<NUL>",
                                       "Null"));
 
             tag = 0x03;                                               // 0x03 //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       true,   // except when Label terminator //
                                       "<ETX>",
                                       "End of Text"));
 
             tag = 0x07;                                               // 0x07 //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<BEL>",
                                       "Bell"));
 
             tag = 0x08;                                               // 0x08 //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       false,
                                       "<BS>",
                                       "Backspace"));
 
             tag = 0x09;                                               // 0x09 //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       false,
                                       "<HT>",
                                       "Horizontal Tab"));
 
             tag = 0x0a;                                               // 0x0a //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       false,
                                       "<LF>",
                                       "Line Feed"));
 
             tag = 0x0b;                                               // 0x0b //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<VT>",
                                       "Vertical Tab"));
 
             tag = 0x0c;                                               // 0x0c //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<FF>",
                                       "Form Feed"));
 
             tag = 0x0d;                                               // 0x0d //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<CR>",
                                       "Carriage Return"));
 
             tag = 0x0e;                                               // 0x0e //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       false,
                                       "<SO>",
                                       "Shift Out"));
 
             tag = 0x0f;                                               // 0x0f //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
+            _tags.Add(tag,
+                new HPGL2ControlCode(tag,
                                       false,
                                       "<SI>",
                                       "Shift In"));
@@ -375,7 +374,7 @@ namespace PCLParaphernalia
             */
             tag = 0x20;                                               // 0x20 //
             _tags.Add(tag,
-                new HPGL2ControlCode (tag,
+                new HPGL2ControlCode(tag,
                                       true,
                                       "<SP>",
                                       "Space"));
@@ -396,13 +395,13 @@ namespace PCLParaphernalia
         {
             HPGL2ControlCode tag;
 
-            _tagUnknown.resetStatistics ();
+            _tagUnknown.resetStatistics();
 
             foreach (KeyValuePair<Byte, HPGL2ControlCode> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics ();
+                tag.resetStatistics();
             }
         }
     }

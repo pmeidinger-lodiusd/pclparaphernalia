@@ -19,13 +19,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey             = MainForm._regMainKey;
-  
-        const String _subKeyTools         = "Tools";
+        const String _mainKey = MainForm._regMainKey;
 
-        const String _nameIndxToolType    = "IndxToolType";
+        const String _subKeyTools = "Tools";
 
-        const Int32 _indexZero            = 0;
+        const String _nameIndxToolType = "IndxToolType";
+
+        const Int32 _indexZero = 0;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -37,7 +37,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadData(ref Int32  indxToolType)
+        public static void loadData(ref Int32 indxToolType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -60,7 +60,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveData(Int32  indxToolType)
+        public static void saveData(Int32 indxToolType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);

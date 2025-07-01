@@ -20,7 +20,7 @@ namespace PCLParaphernalia
 
         private UInt32 _rangeStart;
         private UInt32 _rangeEnd;
-        private String  _name;
+        private String _name;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -28,14 +28,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UnicodeBlock (
-            UInt32  rangeStart,
-            UInt32  rangeEnd,
+        public UnicodeBlock(
+            UInt32 rangeStart,
+            UInt32 rangeEnd,
             String name)
         {
             _rangeStart = rangeStart;
-            _rangeEnd   = rangeEnd;
-            _name       = name;
+            _rangeEnd = rangeEnd;
+            _name = name;
         }
 
         //--------------------------------------------------------------------//

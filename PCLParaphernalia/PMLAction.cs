@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -23,7 +23,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Byte   _tag;
+        private Byte _tag;
         private String _description;
 
         private Int32 _statsCtParent;
@@ -35,10 +35,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PMLAction(Byte   tag,
+        public PMLAction(Byte tag,
                              String description)
         {
-            _tag         = tag;
+            _tag = tag;
             _description = description;
         }
 
@@ -139,7 +139,7 @@ namespace PCLParaphernalia
 
         public String Tag
         {
-            get { return "0x" + _tag.ToString ("x2"); }
+            get { return "0x" + _tag.ToString("x2"); }
         }
 
         //--------------------------------------------------------------------//

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
-using Microsoft.Win32;
 
 namespace PCLParaphernalia
 {
@@ -30,7 +30,7 @@ namespace PCLParaphernalia
             ToolCommonFunctions.splitPathName(initialPath,
                                                ref folderName,
                                                ref fileName);
-            
+
             OpenFileDialog openDialog = new OpenFileDialog();
             openDialog.InitialDirectory = Directory.Exists(folderName) ? folderName : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             openDialog.FileName = fileName;
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void decomposePathName (String pathName,
+        private static void decomposePathName(String pathName,
                                                ref String volName,
                                                ref String folderName,
                                                ref String lastName,
@@ -94,10 +94,10 @@ namespace PCLParaphernalia
 
             if (pathName == null)
             {
-                volName    = "";
+                volName = "";
                 folderName = "";
-                lastName   = "";
-                extension  = "";
+                lastName = "";
+                extension = "";
             }
             else
             {
@@ -109,7 +109,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                indxA = pathName.IndexOf (":");
+                indxA = pathName.IndexOf(":");
 
                 if (indxA == -1)
                 {
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    volName = pathName.Substring (0, indxA + 1);
+                    volName = pathName.Substring(0, indxA + 1);
                 }
 
                 //------------------------------------------------------------//
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                indxA = pathName.LastIndexOf ("\\");
+                indxA = pathName.LastIndexOf("\\");
 
                 if (indxA == -1)
                 {
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    folderName = pathName.Substring (0, indxA);
+                    folderName = pathName.Substring(0, indxA);
                 }
 
                 //------------------------------------------------------------//
@@ -145,24 +145,24 @@ namespace PCLParaphernalia
 
                 lenB = lenA - indxA - 1;
 
-                indxB = pathName.LastIndexOf (".", (lenA - 1), lenB);
+                indxB = pathName.LastIndexOf(".", (lenA - 1), lenB);
 
                 lenC = lenA - indxB - 1;
 
                 if (indxB == -1)
                 {
-                    lastName  = pathName.Substring ((indxA + 1), lenB);
+                    lastName = pathName.Substring((indxA + 1), lenB);
                     extension = "";
                 }
                 else
                 {
-                    lastName  = pathName.Substring ((indxA + 1),
+                    lastName = pathName.Substring((indxA + 1),
                                                     (lenB - lenC - 1));
-                    extension = pathName.Substring ((indxB + 1), lenC);
+                    extension = pathName.Substring((indxB + 1), lenC);
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e t F o l d e r N a m e                                          //
@@ -172,14 +172,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getFolderName (String pathName,
+        public static void getFolderName(String pathName,
                                           ref String folderName)
         {
-            String tmpVol   = "", 
+            String tmpVol = "",
                    tmpTname = "",
-                   tmpExt   = "";
+                   tmpExt = "";
 
-            decomposePathName (pathName, ref tmpVol,
+            decomposePathName(pathName, ref tmpVol,
                                ref folderName, ref tmpTname, ref tmpExt);
         }
 
@@ -193,15 +193,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getTerminalName (String pathName,
+        public static void getTerminalName(String pathName,
                                             ref String fileName)
         {
-            String tmpVol    = null,
+            String tmpVol = null,
                    tmpFolder = null,
-                   tmpTname  = null,
-                   tmpExt    = null;
+                   tmpTname = null,
+                   tmpExt = null;
 
-            decomposePathName (pathName, ref tmpVol,
+            decomposePathName(pathName, ref tmpVol,
                                ref tmpFolder, ref tmpTname, ref tmpExt);
 
             fileName = tmpTname + "." + tmpExt;
@@ -216,15 +216,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void splitPathName (String    pathName,
+        private static void splitPathName(String pathName,
                                           ref String folderName,
                                           ref String fileName)
         {
-            String tmpVol   = null,
+            String tmpVol = null,
                    tmpTname = null,
-                   tmpExt   = null;
+                   tmpExt = null;
 
-            decomposePathName (pathName, ref tmpVol,
+            decomposePathName(pathName, ref tmpVol,
                                ref folderName, ref tmpTname, ref tmpExt);
 
             fileName = tmpTname + "." + tmpExt;
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void splitPathName (String     pathName,
+        public static void splitPathName(String pathName,
                                           ref String volName,
                                           ref String folderName,
                                           ref String fileName)

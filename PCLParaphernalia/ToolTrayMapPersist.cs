@@ -19,36 +19,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey             = MainForm._regMainKey;
+        const String _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools         = "Tools";
-        const String _subKeyToolsTrayMap  = "TrayMap";
-        const String _subKeyPCL5          = "PCL5";
-        const String _subKeyPCL6          = "PCL6";
-        const String _subKeyPCL           = "PCL";
-        const String _subKeyPCLXL         = "PCLXL";
-        const String _subKeySheetRoot     = "Sheet_";
+        const String _subKeyTools = "Tools";
+        const String _subKeyToolsTrayMap = "TrayMap";
+        const String _subKeyPCL5 = "PCL5";
+        const String _subKeyPCL6 = "PCL6";
+        const String _subKeyPCL = "PCL";
+        const String _subKeyPCLXL = "PCLXL";
+        const String _subKeySheetRoot = "Sheet_";
 
-        const String _nameCaptureFile     = "CaptureFile";
+        const String _nameCaptureFile = "CaptureFile";
         const String _nameFlagFormAsMacro = "FlagFormAsMacro";
         const String _nameIndxOrientation = "IndxOrientation"; // pre v2.8 //
         const String _nameIndxOrientFront = "IndxOrientFront";
-        const String _nameIndxOrientRear  = "IndxOrientRear";
-        const String _nameIndxPaperSize   = "IndxPaperSize";
-        const String _nameIndxPaperType   = "IndxPaperType";
-        const String _nameIndxPaperTray   = "IndxPaperTray";
-        const String _nameIndxPDL         = "IndxPDL";
-        const String _nameIndxPlexMode    = "IndxPlexMode";
-        const String _nameIndxTrayIdOpt   = "IndxTrayIdOpt"; // pre v2.8 //
-        const String _nameSheetCt         = "SheetCt";
-        const String _nameTrayIdList      = "TrayIdList"; // pre v2.8 //
+        const String _nameIndxOrientRear = "IndxOrientRear";
+        const String _nameIndxPaperSize = "IndxPaperSize";
+        const String _nameIndxPaperType = "IndxPaperType";
+        const String _nameIndxPaperTray = "IndxPaperTray";
+        const String _nameIndxPDL = "IndxPDL";
+        const String _nameIndxPlexMode = "IndxPlexMode";
+        const String _nameIndxTrayIdOpt = "IndxTrayIdOpt"; // pre v2.8 //
+        const String _nameSheetCt = "SheetCt";
+        const String _nameTrayIdList = "TrayIdList"; // pre v2.8 //
 
-        const Int32 _flagFalse            = 0;
-        const Int32 _flagTrue             = 1;
-        const Int32 _indexZero            = 0;
-        const Int32 _indexOne             = 1;
+        const Int32 _flagFalse = 0;
+        const Int32 _flagTrue = 1;
+        const Int32 _indexZero = 0;
+        const Int32 _indexOne = 1;
 
-        const String _defaultCaptureFilePCL   = "CaptureFile_TrayMapPCL.prn";
+        const String _defaultCaptureFilePCL = "CaptureFile_TrayMapPCL.prn";
         const String _defaultCaptureFilePCLXL = "CaptureFile_TrayMapPCLXL.prn";
 
         //--------------------------------------------------------------------//
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-      
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C o m m o n                                        //
@@ -176,9 +176,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLOpt (ref Boolean   flagFormAsMacro,
-                                           ref Int32     sheetCt)
-        { 
+        public static void loadDataPCLOpt(ref Boolean flagFormAsMacro,
+                                           ref Int32 sheetCt)
+        {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
 
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
 
             Int32 tmpInt;
 
-            Byte[] buffer = {0x00};
+            Byte[] buffer = { 0x00 };
 
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + _subKeyPCL;
@@ -200,7 +200,7 @@ namespace PCLParaphernalia
                       vBui = -1,
                       vRev = -1;
 
-                MainFormData.getVersionData (false,
+                MainFormData.getVersionData(false,
                                              ref vMaj, ref vMin,
                                              ref vBui, ref vRev);
 
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                tmpInt          = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
+                tmpInt = (Int32)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
                 if (tmpInt == _flagFalse)
@@ -244,8 +244,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLOpt (ref Boolean flagFormAsMacro,
-                                             ref Int32   sheetCt)
+        public static void loadDataPCLXLOpt(ref Boolean flagFormAsMacro,
+                                             ref Int32 sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataSheetOpt (String pdlName,
+        public static void loadDataSheetOpt(String pdlName,
                                              Int32 sheetNo,
                                              ref Int32 indxPaperSize,
                                              ref Int32 indxPaperType,
@@ -329,7 +329,7 @@ namespace PCLParaphernalia
             key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                                  "\\" + pdlName +
                                  "\\" + _subKeySheetRoot +
-                                 sheetNo.ToString ("D2");
+                                 sheetNo.ToString("D2");
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
@@ -432,8 +432,8 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL options.                                 //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLOpt (Boolean   flagFormAsMacro,
-                                           Int32     sheetCt)
+        public static void saveDataPCLOpt(Boolean flagFormAsMacro,
+                                           Int32 sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -468,8 +468,8 @@ namespace PCLParaphernalia
         // Store current TrayMap PCL XL options.                              //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLOpt (Boolean   flagFormAsMacro,
-                                             Int32     sheetCt)
+        public static void saveDataPCLXLOpt(Boolean flagFormAsMacro,
+                                             Int32 sheetCt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -505,7 +505,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataSheetOpt (String pdlName,
+        public static void saveDataSheetOpt(String pdlName,
                                              Int32 sheetNo,
                                              Int32 indxPaperSize,
                                              Int32 indxPaperType,

@@ -22,7 +22,7 @@ namespace PCLParaphernalia
 
         const Int32 _maxSizeNameTag = 15;
         const Int32 _colSpanNone = -1;
-        
+
         const Boolean _flagNone = false;
         const Boolean _flagBlankBefore = true;
 
@@ -42,12 +42,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generate(
-            ReportCore.eRptFileFmt   rptFileFmt,
-            DataTable                table,
-            String                   prnFilename,
-            String                   ovlFilename,
-            Boolean                  flagOffsetHex,
-            PrnParseOptions          options)
+            ReportCore.eRptFileFmt rptFileFmt,
+            DataTable table,
+            String prnFilename,
+            String ovlFilename,
+            Boolean flagOffsetHex,
+            PrnParseOptions options)
         {
             Object stream = null;
             Object writer = null;
@@ -66,14 +66,14 @@ namespace PCLParaphernalia
 
             saveFilename = ovlFilename + "_report." + fileExt;
 
-            OK = ReportCore.docOpen (rptFileFmt,
+            OK = ReportCore.docOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
 
             if (OK)
             {
-                Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount ();
+                Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount();
 
                 Boolean useClr = options.FlagClrMapUseClr;
 
@@ -83,31 +83,31 @@ namespace PCLParaphernalia
                     String[] rowClrBack = new String[ctClrMapRowTypes];
                     String[] rowClrFore = new String[ctClrMapRowTypes];
 
-                    getRowColourStyleData (options,
+                    getRowColourStyleData(options,
                                            ref rowClasses,
                                            ref rowClrBack,
                                            ref rowClrFore);
 
-                    ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                               ctClrMapRowTypes, rowClasses,
                                               rowClrBack, rowClrFore);
                 }
                 else
                 {
-                    ReportCore.docInitialise (rptFileFmt, writer, true, false,
+                    ReportCore.docInitialise(rptFileFmt, writer, true, false,
                                               0, null,
                                               null, null);
                 }
 
-                reportHeader (rptFileFmt, writer,
+                reportHeader(rptFileFmt, writer,
                               prnFilename, ovlFilename);
 
-                reportBody (rptFileFmt, writer,
+                reportBody(rptFileFmt, writer,
                             table, flagOffsetHex);
 
-                ReportCore.docFinalise (rptFileFmt, writer);
+                ReportCore.docFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose (rptFileFmt, stream, writer);
+                ReportCore.docClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -120,7 +120,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void getRowColourStyleData (
+        private static void getRowColourStyleData(
             PrnParseOptions options,
             ref String[] classes,
             ref String[] clrBack,
@@ -136,17 +136,17 @@ namespace PCLParaphernalia
             PropertyInfo pInfoBack,
                          pInfoFore;
 
-            Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount ();
+            Int32 ctClrMapRowTypes = PrnParseRowTypes.getCount();
             Int32 ctClrMapStdClrs = 0;
 
             Int32[] indxClrMapBack = new Int32[ctClrMapRowTypes];
             Int32[] indxClrMapFore = new Int32[ctClrMapRowTypes];
 
-            options.getOptClrMap (ref flagClrMapUseClr,
+            options.getOptClrMap(ref flagClrMapUseClr,
                                   ref indxClrMapBack,
                                   ref indxClrMapFore);
 
-            options.getOptClrMapStdClrs (ref ctClrMapStdClrs,
+            options.getOptClrMapStdClrs(ref ctClrMapStdClrs,
                                          ref stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
@@ -154,7 +154,7 @@ namespace PCLParaphernalia
             for (Int32 i = 0; i < ctClrMapRowTypes; i++)
             {
                 String rowType =
-                    Enum.GetName (typeof (PrnParseRowTypes.eType), i);
+                    Enum.GetName(typeof(PrnParseRowTypes.eType), i);
 
                 indxClrBack = indxClrMapBack[i];
                 indxClrFore = indxClrMapFore[i];
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportBody (ReportCore.eRptFileFmt rptFileFmt,
+        private static void reportBody(ReportCore.eRptFileFmt rptFileFmt,
                                         Object writer,
                                         DataTable table,
                                         Boolean flagOffsetHex)
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData (writer, rptFileFmt, false,
+            ReportCore.tableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -239,10 +239,10 @@ namespace PCLParaphernalia
                 Int32 indxRowType = (Int32)row[rtName];
 
                 String rowType = Enum.GetName
-                                    (typeof (PrnParseRowTypes.eType),
+                                    (typeof(PrnParseRowTypes.eType),
                                      indxRowType);
 
-                ReportCore.tableRowData (
+                ReportCore.tableRowData(
                     writer, rptFileFmt,
                     ReportCore.eRptChkMarks.text,   // not used by this tool //
                     colCt, rowType,
@@ -255,7 +255,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -267,11 +267,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void reportHeader (
+        private static void reportHeader(
             ReportCore.eRptFileFmt rptFileFmt,
-            Object                 writer,
-            String                 prnFilename,
-            String                 ovlFilename)
+            Object writer,
+            String prnFilename,
+            String ovlFilename)
         {
             Int32 maxLineLen = 0;
 
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.hddrTitle (writer, rptFileFmt, false, title);
+            ReportCore.hddrTitle(writer, rptFileFmt, false, title);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -301,27 +301,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrPair (writer, rptFileFmt);
+            ReportCore.tableHddrPair(writer, rptFileFmt);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
-                                 "Date_time", DateTime.Now.ToString (),
+            ReportCore.tableRowPair(writer, rptFileFmt,
+                                 "Date_time", DateTime.Now.ToString(),
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Print_file", prnFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableRowPair (writer, rptFileFmt,
+            ReportCore.tableRowPair(writer, rptFileFmt,
                                  "Overlay_file", ovlFilename,
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
-            ReportCore.tableClose (writer, rptFileFmt);
+            ReportCore.tableClose(writer, rptFileFmt);
         }
     }
 }

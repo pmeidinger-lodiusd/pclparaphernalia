@@ -20,7 +20,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-         //--------------------------------------------------------------------//
+        //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
         //                                                                    //
@@ -45,18 +45,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkSymSetFile (
-            String     filename,
+        public static Boolean checkSymSetFile(
+            String filename,
             ref UInt16 symSetNo,
-            ref UInt16 firstCode, 
+            ref UInt16 firstCode,
             ref UInt16 lastCode,
-            ref PCLSymSetTypes.eIndex symSetType) 
+            ref PCLSymSetTypes.eIndex symSetType)
         {
             Boolean flagOK = true;
 
             Boolean fileOpen = false;
 
-            Int64  fileSize = 0,
+            Int64 fileSize = 0,
                    offset = 0;
 
             //----------------------------------------------------------------//
@@ -65,13 +65,13 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = symSetFileOpen (filename, ref fileSize);
+            fileOpen = symSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
                 flagOK = false;
 
-                MessageBox.Show ("Unable to open symbol set definition" +
+                MessageBox.Show("Unable to open symbol set definition" +
                                  " file '" + filename + "'",
                                  "Symbol Set file invalid",
                                  MessageBoxButton.OK,
@@ -82,12 +82,12 @@ namespace PCLParaphernalia
                 firstCode = 0;
                 lastCode = 0;
 
-                flagOK = readSymSetId (fileSize,
+                flagOK = readSymSetId(fileSize,
                                        ref offset,
                                        ref symSetNo);
-                if (! flagOK)
+                if (!flagOK)
                 {
-                    MessageBox.Show ("Symbol set definition" +
+                    MessageBox.Show("Symbol set definition" +
                                      " file '" + filename + "':\r\n\r\n" +
                                      "File does not start with" +
                                      " 'symbol set Id' escape sequence",
@@ -100,7 +100,7 @@ namespace PCLParaphernalia
                     Byte symSetFormat = 0;
                     Byte symSetTypeId = 0;
 
-                    flagOK = readSymSetHddr (filename,
+                    flagOK = readSymSetHddr(filename,
                                              fileSize,
                                              symSetNo,
                                              ref symSetFormat,
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
 
                     if (!flagOK)
                     {
-                        MessageBox.Show ("Symbol set definition" +
+                        MessageBox.Show("Symbol set definition" +
                                          " file '" + filename + "':\r\n\r\n" +
                                          "Header is invalid",
                                          "Symbol Set file invalid",
@@ -120,14 +120,14 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = readAndStoreSymSetMap (offset,
+                        flagOK = readAndStoreSymSetMap(offset,
                                                         symSetNo,
                                                         firstCode,
                                                         lastCode);
 
                         if (!flagOK)
                         {
-                            MessageBox.Show ("Symbol set definition" +
+                            MessageBox.Show("Symbol set definition" +
                                              " file '" + filename + "':\r\n\r\n" +
                                              "Mapping data is invalid",
                                              "Symbol Set file invalid",
@@ -141,12 +141,11 @@ namespace PCLParaphernalia
                     }
                 }
 
-                symSetFileClose ();
+                symSetFileClose();
             }
 
             return flagOK;
         }
-
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -159,7 +158,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readSymSetId (Int64 fileSize,
+        private static Boolean readSymSetId(Int64 fileSize,
                                              ref Int64 fileOffset,
                                              ref UInt16 symSetId)
         {
@@ -167,17 +166,17 @@ namespace PCLParaphernalia
 
             Boolean flagOK = true;
 
-            Int32 offset = (Int32) fileOffset;
+            Int32 offset = (Int32)fileOffset;
 
             Int32 value = 0;
 
-            Byte [] buf = new Byte [prefixLen];
+            Byte[] buf = new Byte[prefixLen];
 
-            _binReader.Read (buf, 0, prefixLen);
+            _binReader.Read(buf, 0, prefixLen);
 
-            if ((buf [0] != '\x1b') ||
-                (buf [1] != '*') ||
-                (buf [2] != 'c'))
+            if ((buf[0] != '\x1b') ||
+                (buf[1] != '*') ||
+                (buf[2] != 'c'))
             {
                 flagOK = false;
             }
@@ -202,7 +201,7 @@ namespace PCLParaphernalia
                      (flagOK) && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
-                    x = _binReader.ReadByte ();
+                    x = _binReader.ReadByte();
 
                     if (x == 'R')
                         foundTerm = true;
@@ -234,12 +233,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readSymSetHddr (String fileName,
-                                               Int64  fileSize,
+        private static Boolean readSymSetHddr(String fileName,
+                                               Int64 fileSize,
                                                UInt16 symSetNo,
                                                ref Byte format,
                                                ref Byte type,
-                                               ref Int64  fileOffset,
+                                               ref Int64 fileOffset,
                                                ref UInt16 firstCode,
                                                ref UInt16 lastCode)
         {
@@ -250,21 +249,21 @@ namespace PCLParaphernalia
 
             String messHeader = "Download symbol set file '" + fileName + "':\n\n";
             String messTrailer = "\n\nYou will have to choose another file.";
-            
-            Int32 offset = (Int32) fileOffset;
+
+            Int32 offset = (Int32)fileOffset;
             Int32 value = 0;
 
             Int32 hddrSize = 0,
                   hddrLen = 0,
                   hddrOffset = 0;
 
-            Byte [] buf = new Byte [hddrDescLen];
+            Byte[] buf = new Byte[hddrDescLen];
 
-            _binReader.Read (buf, 0, prefixLen);
+            _binReader.Read(buf, 0, prefixLen);
 
-            if ((buf [0] != '\x1b') ||
-                (buf [1] != '(') ||
-                (buf [2] != 'f'))
+            if ((buf[0] != '\x1b') ||
+                (buf[1] != '(') ||
+                (buf[2] != 'f'))
             {
                 flagOK = false;
             }
@@ -279,7 +278,7 @@ namespace PCLParaphernalia
                 Byte x;
 
                 offset += prefixLen;
-                
+
                 maxPos = offset + maxRead;
 
                 if (fileSize <= maxPos)
@@ -289,7 +288,7 @@ namespace PCLParaphernalia
                      (flagOK) && (!foundTerm) && (pos < maxPos);
                      pos++)
                 {
-                    x = _binReader.ReadByte ();
+                    x = _binReader.ReadByte();
 
                     if (x == 'W')
                         foundTerm = true;
@@ -304,7 +303,7 @@ namespace PCLParaphernalia
                 if (foundTerm)
                 {
                     hddrOffset = pos;
-                    hddrLen    = value;
+                    hddrLen = value;
                 }
                 else
                 {
@@ -320,7 +319,7 @@ namespace PCLParaphernalia
 
             if (!flagOK)
             {
-                MessageBox.Show (messHeader +
+                MessageBox.Show(messHeader +
                                 "File does not start with a valid escape" +
                                 " sequence in the format <esc>(f#W" +
                                 " (where # is a numeric value)." +
@@ -332,8 +331,8 @@ namespace PCLParaphernalia
             else if ((hddrLen + hddrOffset) > fileSize)
             {
                 flagOK = false;
-                
-                MessageBox.Show (messHeader +
+
+                MessageBox.Show(messHeader +
                                 "Header (offset = '" + hddrOffset + "') of" +
                                 "length '" + hddrLen + "' is inconsistent" +
                                 " with a file size of '" + fileSize + "'." +
@@ -351,15 +350,15 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _binReader.Read (buf, 0, hddrDescLen);
+                _binReader.Read(buf, 0, hddrDescLen);
 
-                hddrSize = (UInt16)((buf [0] * 256) + buf [1]);
+                hddrSize = (UInt16)((buf[0] * 256) + buf[1]);
 
                 if (hddrSize > hddrLen)
                 {
                     flagOK = false;
-                    
-                    MessageBox.Show (messHeader +
+
+                    MessageBox.Show(messHeader +
                                     "Header size '" + hddrSize + "' is" +
                                     " inconsistent with sequence data size of '" +
                                     hddrLen + "'." +
@@ -371,8 +370,8 @@ namespace PCLParaphernalia
                 else if (hddrSize != hddrDescLen)
                 {
                     flagOK = false;
-                    
-                    MessageBox.Show (messHeader +
+
+                    MessageBox.Show(messHeader +
                                     "Header size '" + hddrSize +
                                     "' != expected size of '" +
                                     hddrDescLen + "'." +
@@ -395,13 +394,13 @@ namespace PCLParaphernalia
 
                 Int32 codeCt;
 
-                symSetDes = (UInt16)((buf [2] * 256) + buf [3]);
+                symSetDes = (UInt16)((buf[2] * 256) + buf[3]);
 
-                format = buf [4];
-                type   = buf [5];
+                format = buf[4];
+                type = buf[5];
 
-                firstCode = (UInt16)((buf [6] * 256) + buf [7]);
-                lastCode  = (UInt16)((buf [8] * 256) + buf [9]);
+                firstCode = (UInt16)((buf[6] * 256) + buf[7]);
+                lastCode = (UInt16)((buf[8] * 256) + buf[9]);
 
                 codeCt = lastCode - firstCode + 1;
 
@@ -411,7 +410,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    MessageBox.Show (messHeader +
+                    MessageBox.Show(messHeader +
                                      "Symbol set designator '" + symSetDes + "' is" +
                                      " != number '" + symSetNo + "' from Assign sequence" +
                                      messTrailer,
@@ -423,7 +422,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    MessageBox.Show (messHeader +
+                    MessageBox.Show(messHeader +
                                      "Format '" + format + "' is" +
                                      " != required value (3 = Unicode)" +
                                      messTrailer,
@@ -435,7 +434,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    MessageBox.Show (messHeader +
+                    MessageBox.Show(messHeader +
                                      "First code '" + firstCode +
                                      " > Last Code ' " + lastCode + "'" +
                                      messTrailer,
@@ -443,11 +442,11 @@ namespace PCLParaphernalia
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
                 }
-                else if (hddrLen != (hddrDescLen + (codeCt *2)))
+                else if (hddrLen != (hddrDescLen + (codeCt * 2)))
                 {
                     flagOK = false;
 
-                    MessageBox.Show (messHeader +
+                    MessageBox.Show(messHeader +
                                     "Data length '" + hddrLen + "' is" +
                                     " inconsistent with mapping for " +
                                     codeCt + " characters." +
@@ -473,7 +472,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean readAndStoreSymSetMap (Int64  mapOffset,
+        private static Boolean readAndStoreSymSetMap(Int64 mapOffset,
                                                       UInt16 symSetNo,
                                                       UInt16 firstCode,
                                                       UInt16 lastCode)
@@ -493,38 +492,37 @@ namespace PCLParaphernalia
                   mapBytes,
                   mapIndx,
                   mapPos;
- 
+
             codeCt = lastCode - firstCode + 1;
             mapBytes = codeCt * 2;
 
-            Byte [] buf = new Byte [mapBytes];
-            UInt16 [] map = new UInt16 [lastCode + 1];
+            Byte[] buf = new Byte[mapBytes];
+            UInt16[] map = new UInt16[lastCode + 1];
 
-            _ipStream.Seek (mapOffset, SeekOrigin.Begin);
+            _ipStream.Seek(mapOffset, SeekOrigin.Begin);
 
-            _binReader.Read (buf, 0, mapBytes);
-
+            _binReader.Read(buf, 0, mapBytes);
 
             //----------------------------------------------------------------//
 
             for (Int32 i = 0; i <= lastCode; i++)
             {
-                map [i] = 0xffff;
+                map[i] = 0xffff;
             }
 
             for (Int32 i = 0; i < codeCt; i++)
             {
                 mapPos = i * 2;
 
-                mapCode = (UInt16) ((buf [mapPos] * 256) + buf [mapPos + 1]);
+                mapCode = (UInt16)((buf[mapPos] * 256) + buf[mapPos + 1]);
 
                 mapIndx = firstCode + i;
-                
+
                 if (((mapIndx >= rangeC1Min) && (mapIndx <= rangeC1Max)) &&
                     (mapCode != 0xffff))
                     usesC1Range = true;
 
-                map [mapIndx] = mapCode;
+                map[mapIndx] = mapCode;
             }
 
             //----------------------------------------------------------------//
@@ -540,8 +538,8 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLSymbolSets.setDataUserSet (symSetNo, symSetType, map);
-        
+            PCLSymbolSets.setDataUserSet(symSetNo, symSetType, map);
+
             return OK;
         }
 
@@ -556,8 +554,8 @@ namespace PCLParaphernalia
 
         private static void symSetFileClose()
         {
-            _binReader.Close ();
-            _ipStream.Close ();
+            _binReader.Close();
+            _ipStream.Close();
         }
 
         //--------------------------------------------------------------------//
@@ -578,7 +576,7 @@ namespace PCLParaphernalia
 
             Int64 fileSize = 0;
 
-            fileOpen = symSetFileOpen (filename, ref fileSize);
+            fileOpen = symSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -597,15 +595,15 @@ namespace PCLParaphernalia
 
                 while (!endLoop)
                 {
-                    readSize = _binReader.Read (buf, 0, bufSize);
+                    readSize = _binReader.Read(buf, 0, bufSize);
 
                     if (readSize == 0)
                         endLoop = true;
                     else
-                        prnWriter.Write (buf, 0, readSize);
+                        prnWriter.Write(buf, 0, readSize);
                 }
 
-                symSetFileClose ();
+                symSetFileClose();
             }
 
             return OK;
@@ -627,16 +625,16 @@ namespace PCLParaphernalia
 
             if ((fileName == null) || (fileName == ""))
             {
-                MessageBox.Show ("Download symbol set file name is null.",
+                MessageBox.Show("Download symbol set file name is null.",
                                 "PCL symbol set file name invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download symbol set file '" + fileName +
+                MessageBox.Show("Download symbol set file '" + fileName +
                                 "' does not exist.",
                                 "PCL symbol set file name invalid",
                                 MessageBoxButton.OK,
@@ -646,7 +644,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open (fileName,
+                _ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
@@ -655,15 +653,15 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
             return open;
-        }         
+        }
     }
 }

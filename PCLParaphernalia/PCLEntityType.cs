@@ -29,12 +29,12 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLEntityType(PCLEntityTypes.eType type,
-                             String               id,
-                             String               name)
+                             String id,
+                             String name)
         {
-            _entityType   = type;
+            _entityType = type;
             _entityIdPCL = id;
-            _entityName   = name;
+            _entityName = name;
         }
 
         //--------------------------------------------------------------------//

@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {
@@ -14,7 +13,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -28,7 +27,7 @@ namespace PCLParaphernalia
 
         private String _prnFilename;
 
-   //   private Boolean _initialised;
+        //   private Boolean _initialised;
 
         private static Stream _ipStream = null;
         private static BinaryReader _binReader = null;
@@ -39,7 +38,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPrnPrint (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPrnPrint(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -63,7 +62,7 @@ namespace PCLParaphernalia
 
             String filename = _prnFilename;
 
-            selected = selectPrnFile (ref filename);
+            selected = selectPrnFile(ref filename);
 
             if (selected)
             {
@@ -85,15 +84,15 @@ namespace PCLParaphernalia
         {
             BinaryWriter binWriter = null;
 
-            TargetCore.requestStreamOpen (
+            TargetCore.requestStreamOpen(
                 ref binWriter,
                 ToolCommonData.eToolIds.PrnPrint,
                 ToolCommonData.eToolSubIds.None,
                 ToolCommonData.ePrintLang.Unknown);
 
-            copyPrnFile (_prnFilename, binWriter);
+            copyPrnFile(_prnFilename, binWriter);
 
-            TargetCore.requestStreamWrite (false);
+            TargetCore.requestStreamWrite(false);
         }
 
         //--------------------------------------------------------------------//
@@ -105,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean copyPrnFile(String       prnFilename,
+        public static Boolean copyPrnFile(String prnFilename,
                                           BinaryWriter prnWriter)
         {
             Boolean OK = true;
@@ -167,7 +166,7 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-        //  _initialised = false;
+            //  _initialised = false;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -175,7 +174,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -187,7 +186,7 @@ namespace PCLParaphernalia
 
             txtFilename.Text = _prnFilename;
 
-        //  _initialised = true;
+            //  _initialised = true;
         }
 
         //--------------------------------------------------------------------//
@@ -201,7 +200,7 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            ToolPrnPrintPersist.loadDataGeneral (ref _prnFilename);
+            ToolPrnPrintPersist.loadDataGeneral(ref _prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -215,7 +214,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrnPrintPersist.saveDataGeneral (_prnFilename);
+            ToolPrnPrintPersist.saveDataGeneral(_prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -294,7 +293,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType ();
+            TargetCore.eTarget targetType = TargetCore.getType();
 
             if (targetType == TargetCore.eTarget.File)
             {
@@ -303,7 +302,7 @@ namespace PCLParaphernalia
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
                 String netPrnAddress = "";
-                Int32  netPrnPort = 0;
+                Int32 netPrnPort = 0;
 
                 Int32 netTimeoutSend = 0;
                 Int32 netTimeoutReceive = 0;
@@ -316,13 +315,13 @@ namespace PCLParaphernalia
                 btnGenerate.Content = "Send PRN file contents to " +
                                       "\r\n" +
                                       netPrnAddress + " : " +
-                                      netPrnPort.ToString ();
+                                      netPrnPort.ToString();
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
                 String winPrintername = "";
 
-                TargetCore.metricsLoadWinPrinter (ref winPrintername);
+                TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Send PRN file contents to printer " +
                                       "\r\n" +
@@ -339,7 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean selectPrnFile (ref String prnFilename)
+        private Boolean selectPrnFile(ref String prnFilename)
         {
             OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
 

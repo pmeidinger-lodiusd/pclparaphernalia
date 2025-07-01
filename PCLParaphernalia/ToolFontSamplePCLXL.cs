@@ -19,24 +19,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _formName          = "FontSampleForm";
-        const String _hexChars          = "0123456789ABCDEF";
+        const String _formName = "FontSampleForm";
+        const String _hexChars = "0123456789ABCDEF";
 
-        const Int32 _symSet_19U         = 629;
-        const Int16 _gridDim            = 16;
-        const Int32 _gridDimHalf        = _gridDim / 2;
-        const Int16 _gridCols           = _gridDim;
-        const Int16 _gridRows           = _gridDim;
-        const UInt16 _unitsPerInch      = PCLXLWriter._sessionUPI;
+        const Int32 _symSet_19U = 629;
+        const Int16 _gridDim = 16;
+        const Int32 _gridDimHalf = _gridDim / 2;
+        const Int16 _gridCols = _gridDim;
+        const Int16 _gridRows = _gridDim;
+        const UInt16 _unitsPerInch = PCLXLWriter._sessionUPI;
 
-        const Int16 _lineSpacing        = _unitsPerInch / 4;
-        const Int16 _cellWidth          = (_unitsPerInch * 1) / 3;
-        const Int16 _cellHeight         = (_unitsPerInch * 25) / 60;
+        const Int16 _lineSpacing = _unitsPerInch / 4;
+        const Int16 _cellWidth = (_unitsPerInch * 1) / 3;
+        const Int16 _cellHeight = (_unitsPerInch * 25) / 60;
 
-        const Int16 _marginX            = (_unitsPerInch * 7) / 6;
-        const Int16 _posYDesc           = (_unitsPerInch * 3) / 4;
-        const Int16 _posYGrid           = _posYDesc + (_lineSpacing * 4);
-        const Int16 _posYSelData        = _posYGrid +
+        const Int16 _marginX = (_unitsPerInch * 7) / 6;
+        const Int16 _posYDesc = (_unitsPerInch * 3) / 4;
+        const Int16 _posYGrid = _posYDesc + (_lineSpacing * 4);
+        const Int16 _posYSelData = _posYGrid +
                                           (_cellHeight * (_gridRows + 2)) +
                                           (_lineSpacing * 2);
 
@@ -55,26 +55,26 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        indxPaperSize,
-                                       Int32        indxPaperType,
-                                       Int32        indxOrientation,
-                                       Boolean      formAsMacro,
-                                       Boolean      showC0Chars,
-                                       Boolean      optGridVertical,
-                                       String       fontId,
-                                       String       fontDesc,
-                                       UInt16       symbolSet,
-                                       String       fontName,
-                                       String       symbolSetName,
-                                       UInt16 []    sampleRangeOffsets,
-                                       Double       pointSize,
-                                       Boolean      downloadFont,
-                                       Boolean      downloadFontRemove,
-                                       String       fontFilename,
-                                       Boolean      symSetUserSet,
-                                       Boolean      showMapCodesUCS2,
-                                       Boolean      showMapCodesUTF8,
-                                       String       symSetUserFile)
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType,
+                                       Int32 indxOrientation,
+                                       Boolean formAsMacro,
+                                       Boolean showC0Chars,
+                                       Boolean optGridVertical,
+                                       String fontId,
+                                       String fontDesc,
+                                       UInt16 symbolSet,
+                                       String fontName,
+                                       String symbolSetName,
+                                       UInt16[] sampleRangeOffsets,
+                                       Double pointSize,
+                                       Boolean downloadFont,
+                                       Boolean downloadFontRemove,
+                                       String fontFilename,
+                                       Boolean symSetUserSet,
+                                       Boolean showMapCodesUCS2,
+                                       Boolean showMapCodesUTF8,
+                                       String symSetUserFile)
         {
             Int32 pageCt = sampleRangeOffsets.Length;
 
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
             if (downloadFont)
             {
-                PCLXLDownloadFont.fontFileCopy (prnWriter, fontFilename);
+                PCLXLDownloadFont.fontFileCopy(prnWriter, fontFilename);
             }
 
             //----------------------------------------------------------------//
@@ -164,14 +164,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean      formAsMacro,
-                                               Boolean      downloadFont,
-                                               Boolean      downloadFontRemove,
-                                               String       fontName)
+                                               Boolean formAsMacro,
+                                               Boolean downloadFont,
+                                               Boolean downloadFontRemove,
+                                               String fontName)
         {
             if ((downloadFont) && (downloadFontRemove))
             {
-                PCLXLWriter.fontRemove(prnWriter, false, fontName); 
+                PCLXLWriter.fontRemove(prnWriter, false, fontName);
             }
 
             PCLXLWriter.stdJobTrailer(prnWriter, formAsMacro, _formName);
@@ -189,20 +189,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateOverlay(BinaryWriter prnWriter,
-                                            Boolean      formAsMacro,
-                                            Boolean      optGridVertical)
+                                            Boolean formAsMacro,
+                                            Boolean optGridVertical)
         {
-            const Int16 twoCellWidth    = _cellWidth  * 2;
-            const Int16 twoCellHeight   = _cellHeight * 2;
+            const Int16 twoCellWidth = _cellWidth * 2;
+            const Int16 twoCellHeight = _cellHeight * 2;
 
-            const Int16 gridWidthInner  = _cellWidth  * _gridCols;
+            const Int16 gridWidthInner = _cellWidth * _gridCols;
             const Int16 gridHeightInner = _cellHeight * _gridRows;
-            const Int16 gridWidthOuter  = _cellWidth  * (_gridCols + 2);
+            const Int16 gridWidthOuter = _cellWidth * (_gridCols + 2);
             const Int16 gridHeightOuter = _cellHeight * (_gridRows + 2);
 
-            const Int32 lenBuf     = 1024;
-            const Int16 patternID  = 1;
-            const UInt16 patWidth  = 24;
+            const Int32 lenBuf = 1024;
+            const Int16 patternID = 1;
+            const UInt16 patWidth = 24;
             const UInt16 patHeight = 24;
 
             Byte[] buffer = new Byte[lenBuf];
@@ -261,7 +261,7 @@ namespace PCLParaphernalia
                                      ref indBuf,
                                      PCLXLAttributes.eTag.NullBrush,
                                      0);
-            
+
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetBrushSource);
@@ -453,15 +453,15 @@ namespace PCLParaphernalia
                                          PCLXLAttributes.eTag.BoundingBox,
                                          _marginX,
                                          _posYGrid,
-                                         _marginX  + twoCellWidth,
+                                         _marginX + twoCellWidth,
                                          _posYGrid + twoCellHeight);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.StartPoint,
                                         _marginX + _cellWidth,
                                         _posYGrid);
-            
+
             PCLXLWriter.addAttrSint16XY(ref buffer,
                                         ref indBuf,
                                         PCLXLAttributes.eTag.EndPoint,
@@ -502,7 +502,7 @@ namespace PCLParaphernalia
             PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
-            posX1 = _marginX  + gridWidthOuter  - twoCellWidth;
+            posX1 = _marginX + gridWidthOuter - twoCellWidth;
             posY1 = _posYGrid + gridHeightOuter - twoCellHeight;
 
             PCLXLWriter.addOperator(ref buffer,
@@ -628,7 +628,7 @@ namespace PCLParaphernalia
                                         PCLXLOperators.eTag.LineRelPath);
 
                 if (i == 1)
-                { 
+                {
                     posX1 = -gridWidthOuter;
                     posY1 = _cellHeight;
                 }
@@ -748,7 +748,7 @@ namespace PCLParaphernalia
             PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
-            PCLXLWriter.patternDefine (prnWriter,
+            PCLXLWriter.patternDefine(prnWriter,
                                        formAsMacro,
                                        patternID,
                                        patWidth,
@@ -775,9 +775,8 @@ namespace PCLParaphernalia
                                     ref indBuf,
                                     PCLXLOperators.eTag.SetBrushSource);
 
-            posX1 = _marginX  + _cellWidth;
+            posX1 = _marginX + _cellWidth;
             posY1 = _posYGrid + _cellHeight;
-
 
             if (optGridVertical)
             {
@@ -844,7 +843,6 @@ namespace PCLParaphernalia
                                         PCLXLOperators.eTag.Rectangle);
             }
 
-
             PCLXLWriter.writeStreamBlock(prnWriter, formAsMacro,
                                          buffer, ref indBuf);
 
@@ -855,7 +853,6 @@ namespace PCLParaphernalia
             // option was selected.                                           //
             //                                                                //
             //----------------------------------------------------------------//
-
 
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
@@ -870,20 +867,20 @@ namespace PCLParaphernalia
                                          buffer, ref indBuf);
 
             //----------------------------------------------------------------//
-            
+
             crntPtSize = 6;
 
             PCLXLWriter.font(prnWriter, formAsMacro, 6,
                              _symSet_19U, "Courier       Bd");
 
-            posX1 = _marginX  + (_cellWidth / 3);
+            posX1 = _marginX + (_cellWidth / 3);
             posY1 = _posYGrid + _lineSpacing;
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
                              PCLXLWriter.advances_Courier, crntPtSize,
                              posX1, posY1, "hex");
 
-            posX1 = _marginX  + gridWidthInner + _cellWidth  + (_cellWidth / 5);
+            posX1 = _marginX + gridWidthInner + _cellWidth + (_cellWidth / 5);
             posY1 = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
 
             PCLXLWriter.text(prnWriter, formAsMacro, false,
@@ -897,7 +894,7 @@ namespace PCLParaphernalia
             PCLXLWriter.font(prnWriter, formAsMacro, crntPtSize,
                              _symSet_19U, "Courier       Bd");
 
-            posX1 = _marginX  + ((_cellWidth * 17) / 20);
+            posX1 = _marginX + ((_cellWidth * 17) / 20);
             posY1 = _posYGrid + _lineSpacing;
 
             if (optGridVertical)
@@ -944,7 +941,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            posX1 = _marginX  + (_cellWidth / 4);
+            posX1 = _marginX + (_cellWidth / 4);
             posY1 = _posYGrid + _cellHeight + _lineSpacing;
 
             if (optGridVertical)
@@ -972,8 +969,7 @@ namespace PCLParaphernalia
                 }
             }
 
-
-            posX1 = _marginX  + gridWidthInner + _cellWidth + (_cellWidth / 8);
+            posX1 = _marginX + gridWidthInner + _cellWidth + (_cellWidth / 8);
             posY1 = _posYGrid + _cellHeight + _lineSpacing;
 
             if (optGridVertical)
@@ -1102,7 +1098,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                PCLXLWriter.addOperator (ref buffer,
+                PCLXLWriter.addOperator(ref buffer,
                                   ref indBuf,
                                   PCLXLOperators.eTag.EndStream);
 
@@ -1120,32 +1116,32 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32        indxPaperSize,
-                                         Int32        indxPaperType,
-                                         Int32        indxOrientation,
-                                         Boolean      formAsMacro,
-                                         Boolean      showC0Chars,
-                                         Boolean      optGridVertical,
-                                         String       fontId,
-                                         String       fontDesc,
-                                         UInt16       symSetKind1,
-                                         String       fontName,
-                                         String       symbolSetName,
-                                         Int32        sampleRangeOffset,
-                                         Double       pointSize,
-                                         Boolean      downloadFont,
-                                         String       fontFilename,
-                                         Boolean      symSetUserSet,
-                                         Boolean      showMapCodesUCS2,
-                                         Boolean      showMapCodesUTF8,
-                                         String       symSetUserFile,
-                                         UInt16       symSetUserMapMax,
-                                         UInt16[]     symSetUserMap)
+                                         Int32 indxPaperSize,
+                                         Int32 indxPaperType,
+                                         Int32 indxOrientation,
+                                         Boolean formAsMacro,
+                                         Boolean showC0Chars,
+                                         Boolean optGridVertical,
+                                         String fontId,
+                                         String fontDesc,
+                                         UInt16 symSetKind1,
+                                         String fontName,
+                                         String symbolSetName,
+                                         Int32 sampleRangeOffset,
+                                         Double pointSize,
+                                         Boolean downloadFont,
+                                         String fontFilename,
+                                         Boolean symSetUserSet,
+                                         Boolean showMapCodesUCS2,
+                                         Boolean showMapCodesUTF8,
+                                         String symSetUserFile,
+                                         UInt16 symSetUserMapMax,
+                                         UInt16[] symSetUserMap)
         {
             const Int32 indxMajorC0Start = 0;
-            const Int32 indxMajorC0End   = 2;
+            const Int32 indxMajorC0End = 2;
             const Int32 lenBuf = 1024;
-            
+
             Byte[] buffer = new Byte[lenBuf];
 
             Int32 indBuf;
@@ -1202,7 +1198,7 @@ namespace PCLParaphernalia
             PCLXLWriter.addAttrUbyte(ref buffer,
                                      ref indBuf,
                                      PCLXLAttributes.eTag.SimplexPageMode,
-                                     (Byte) PCLXLAttrEnums.eVal.eSimplexFrontSide);
+                                     (Byte)PCLXLAttrEnums.eVal.eSimplexFrontSide);
 
             PCLXLWriter.addOperator(ref buffer,
                                     ref indBuf,
@@ -1317,7 +1313,7 @@ namespace PCLParaphernalia
                 String offsetText;
 
                 offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString ("X4");
+                             sampleRangeOffset.ToString("X4");
 
                 PCLXLWriter.text(prnWriter, false, false,
                                  PCLXLWriter.advances_Courier, crntPtSize,
@@ -1409,10 +1405,10 @@ namespace PCLParaphernalia
 
             prnWriter.Write(buffer, 0, indBuf);
             indBuf = 0;
-            
+
             PCLXLWriter.font(prnWriter, false, crntPtSize,
                              symSetKind1, fontName);
-            
+
             //----------------------------------------------------------------//
 
             Int32 startIndxMajor;
@@ -1431,7 +1427,7 @@ namespace PCLParaphernalia
             {
                 startRow = 0;
                 startCol = startIndxMajor;
-    
+
                 rowSize = (Int16)(_gridDim - startIndxMajor);
 
                 posX = (Int16)(_marginX + (_cellWidth * (startIndxMajor + 1)) +
@@ -1478,7 +1474,7 @@ namespace PCLParaphernalia
 
                 indxMajor = startIndxMajor + (row - startRow);
 
-                if ((sampleRangeOffset == 0) && (! symSetUserSet))
+                if ((sampleRangeOffset == 0) && (!symSetUserSet))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -1500,7 +1496,7 @@ namespace PCLParaphernalia
                         }
                     }
                     else
-                    { 
+                    {
                         for (Int32 col = 0;
                                    col < rowSize;
                                    col++)
@@ -1540,7 +1536,7 @@ namespace PCLParaphernalia
                                    col++)
                         {
                             codes16Bit[col] =
-                                (UInt16) (sampleRangeOffset +
+                                (UInt16)(sampleRangeOffset +
                                           ((startIndxMajor + col) * _gridDim) +
                                            row);
                         }

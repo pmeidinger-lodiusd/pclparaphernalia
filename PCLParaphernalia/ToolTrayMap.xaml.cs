@@ -15,7 +15,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _maxSheetNo   = 6;
+        const Int32 _maxSheetNo = 6;
         const Int32 _maxPaperTray = 299;
 
         private enum eTrayOpt : byte
@@ -44,7 +44,7 @@ namespace PCLParaphernalia
             (Int32) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations = 
+        private static Int32[] _subsetOrientations =
         {
             (Int32) PCLOrientations.eIndex.Portrait,
             (Int32) PCLOrientations.eIndex.Landscape,
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
         private Int32[] _indxPaperTrayPCL;
         private Int32[] _indxPaperTrayPCLXL;
 
-   //   private Int32 _indxPaperTrayNotUsed;
+        //   private Int32 _indxPaperTrayNotUsed;
 
         private Int32 _sheetCtPCL;
         private Int32 _sheetCtPCLXL;
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolTrayMap (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolTrayMap(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             _indxPDL = cbPDL.SelectedIndex;
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             pdlOptionsStore();
 
@@ -187,12 +187,12 @@ namespace PCLParaphernalia
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 {
-                    Int32[] indxPaperSize   = new Int32[_sheetCtPCL];
-                    Int32[] indxPaperType   = new Int32[_sheetCtPCL];
-                    Int32[] indxPaperTray   = new Int32[_sheetCtPCL];
-                    Int32[] indxPlexMode    = new Int32[_sheetCtPCL];
+                    Int32[] indxPaperSize = new Int32[_sheetCtPCL];
+                    Int32[] indxPaperType = new Int32[_sheetCtPCL];
+                    Int32[] indxPaperTray = new Int32[_sheetCtPCL];
+                    Int32[] indxPlexMode = new Int32[_sheetCtPCL];
                     Int32[] indxOrientFront = new Int32[_sheetCtPCL];
-                    Int32[] indxOrientRear  = new Int32[_sheetCtPCL];
+                    Int32[] indxOrientRear = new Int32[_sheetCtPCL];
 
                     for (Int32 i = 0; i < _sheetCtPCL; i++)
                     {
@@ -222,12 +222,12 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    Int32[] indxPaperSize   = new Int32[_sheetCtPCLXL];
-                    Int32[] indxPaperType   = new Int32[_sheetCtPCLXL];
-                    Int32[] indxPaperTray   = new Int32[_sheetCtPCLXL];
-                    Int32[] indxPlexMode    = new Int32[_sheetCtPCLXL];
+                    Int32[] indxPaperSize = new Int32[_sheetCtPCLXL];
+                    Int32[] indxPaperType = new Int32[_sheetCtPCLXL];
+                    Int32[] indxPaperTray = new Int32[_sheetCtPCLXL];
+                    Int32[] indxPlexMode = new Int32[_sheetCtPCLXL];
                     Int32[] indxOrientFront = new Int32[_sheetCtPCLXL];
-                    Int32[] indxOrientRear  = new Int32[_sheetCtPCLXL];
+                    Int32[] indxOrientRear = new Int32[_sheetCtPCLXL];
 
                     for (Int32 i = 0; i < _sheetCtPCLXL; i++)
                     {
@@ -291,24 +291,24 @@ namespace PCLParaphernalia
             {
                 for (Int32 i = 1; i < _maxSheetNo; i++)
                 {
-                    _indxPaperSizePCL[i]    = _indxPaperSizePCL[0];
-                    _indxPaperTypePCL[i]    = _indxPaperTypePCL[0];
-                    _indxPaperTrayPCL[i]    = _indxPaperTrayPCL[0];
-                    _indxPlexModePCL[i]     = _indxPlexModePCL[0];
-                    _indxOrientFrontPCL[i]  = _indxOrientFrontPCL[0];
-                    _indxOrientRearPCL[i]   = _indxOrientRearPCL[0];
+                    _indxPaperSizePCL[i] = _indxPaperSizePCL[0];
+                    _indxPaperTypePCL[i] = _indxPaperTypePCL[0];
+                    _indxPaperTrayPCL[i] = _indxPaperTrayPCL[0];
+                    _indxPlexModePCL[i] = _indxPlexModePCL[0];
+                    _indxOrientFrontPCL[i] = _indxOrientFrontPCL[0];
+                    _indxOrientRearPCL[i] = _indxOrientRearPCL[0];
                 }
             }
             else
             {
                 for (Int32 i = 1; i < _maxSheetNo; i++)
                 {
-                    _indxPaperSizePCLXL[i]    = _indxPaperSizePCLXL[0];
-                    _indxPaperTypePCLXL[i]    = _indxPaperTypePCLXL[0];
-                    _indxPaperTrayPCLXL[i]    = _indxPaperTrayPCLXL[0];
-                    _indxPlexModePCLXL[i]     = _indxPlexModePCLXL[0];
-                    _indxOrientFrontPCLXL[i]  = _indxOrientFrontPCLXL[0];
-                    _indxOrientRearPCLXL[i]   = _indxOrientRearPCLXL[0];
+                    _indxPaperSizePCLXL[i] = _indxPaperSizePCLXL[0];
+                    _indxPaperTypePCLXL[i] = _indxPaperTypePCLXL[0];
+                    _indxPaperTrayPCLXL[i] = _indxPaperTrayPCLXL[0];
+                    _indxPlexModePCLXL[i] = _indxPlexModePCLXL[0];
+                    _indxOrientFrontPCLXL[i] = _indxOrientFrontPCLXL[0];
+                    _indxOrientRearPCLXL[i] = _indxOrientRearPCLXL[0];
                 }
             }
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbOrientFront_SelectionChanged (
+        private void cbOrientFront_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
@@ -449,7 +449,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperSize_SelectionChanged (
+        private void cbPaperSize_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
             object sender,
             SelectionChangedEventArgs e)
         {
-            if (! _inhibitTrayIdChange)
+            if (!_inhibitTrayIdChange)
             {
                 Boolean flagOK = false;
 
@@ -578,7 +578,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbPaperType_SelectionChanged (
+        private void cbPaperType_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
@@ -649,7 +649,7 @@ namespace PCLParaphernalia
                 pdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
                 pdlOptionsRestore();
             }
@@ -761,7 +761,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void cbSheetCt_SelectionChanged (
+        private void cbSheetCt_SelectionChanged(
             object sender,
             SelectionChangedEventArgs e)
         {
@@ -780,7 +780,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkOptFormAsMacro_Checked (object sender,
+        private void chkOptFormAsMacro_Checked(object sender,
                                                 RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -798,7 +798,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void chkOptFormAsMacro_Unchecked (object sender,
+        private void chkOptFormAsMacro_Unchecked(object sender,
                                                   RoutedEventArgs e)
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -817,7 +817,7 @@ namespace PCLParaphernalia
         {
             crntPDL = _crntPDL;
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // i n i t i a l i s e                                                //
@@ -833,7 +833,7 @@ namespace PCLParaphernalia
 
             _initialised = false;
 
-            _srcAutoSelectPCL   = ToolTrayMapPCL.TrayIdAutoSelect;
+            _srcAutoSelectPCL = ToolTrayMapPCL.TrayIdAutoSelect;
             _srcAutoSelectPCLXL = ToolTrayMapPCLXL.TrayIdAutoSelect;
 
             //----------------------------------------------------------------//
@@ -855,7 +855,7 @@ namespace PCLParaphernalia
             }
 
             //----------------------------------------------------------------//
-            
+
             cbSheetCt.Items.Clear();
 
             for (Int32 i = 1; i <= _maxSheetNo; i++)
@@ -931,7 +931,7 @@ namespace PCLParaphernalia
             cb05_PaperTray.Items.Add("<not specified>");
             cb06_PaperTray.Items.Add("<not specified>");
 
-    //      _indxPaperTrayNotUsed = 0;
+            //      _indxPaperTrayNotUsed = 0;
 
             for (Int32 i = 0; i <= _maxPaperTray; i++)
             {
@@ -1038,11 +1038,11 @@ namespace PCLParaphernalia
             metricsLoad();
 
             pdlOptionsRestore();
-            
+
             cbPDL.SelectedIndex = (Byte)_indxPDL;
-            
+
             _initialised = true;
-            
+
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                 cbSheetCt.SelectedIndex = _sheetCtPCL - 1;
             else
@@ -1062,12 +1062,12 @@ namespace PCLParaphernalia
 
         private void initialisePCL()
         {
-            _indxPaperSizePCL   = new Int32[_maxSheetNo];
-            _indxPaperTypePCL   = new Int32[_maxSheetNo];
-            _indxPaperTrayPCL   = new Int32[_maxSheetNo];
-            _indxPlexModePCL    = new Int32[_maxSheetNo];
+            _indxPaperSizePCL = new Int32[_maxSheetNo];
+            _indxPaperTypePCL = new Int32[_maxSheetNo];
+            _indxPaperTrayPCL = new Int32[_maxSheetNo];
+            _indxPlexModePCL = new Int32[_maxSheetNo];
             _indxOrientFrontPCL = new Int32[_maxSheetNo];
-            _indxOrientRearPCL  = new Int32[_maxSheetNo];
+            _indxOrientRearPCL = new Int32[_maxSheetNo];
         }
 
         //--------------------------------------------------------------------//
@@ -1081,12 +1081,12 @@ namespace PCLParaphernalia
 
         private void initialisePCLXL()
         {
-            _indxPaperSizePCLXL   = new Int32[_maxSheetNo];
-            _indxPaperTypePCLXL   = new Int32[_maxSheetNo];
-            _indxPaperTrayPCLXL   = new Int32[_maxSheetNo];
-            _indxPlexModePCLXL    = new Int32[_maxSheetNo];
+            _indxPaperSizePCLXL = new Int32[_maxSheetNo];
+            _indxPaperTypePCLXL = new Int32[_maxSheetNo];
+            _indxPaperTrayPCLXL = new Int32[_maxSheetNo];
+            _indxPlexModePCLXL = new Int32[_maxSheetNo];
             _indxOrientFrontPCLXL = new Int32[_maxSheetNo];
-            _indxOrientRearPCLXL  = new Int32[_maxSheetNo];
+            _indxOrientRearPCLXL = new Int32[_maxSheetNo];
         }
 
         //--------------------------------------------------------------------//
@@ -1102,18 +1102,18 @@ namespace PCLParaphernalia
         {
             ToolTrayMapPersist.loadDataCommon(ref _indxPDL);
 
-            ToolTrayMapPersist.loadDataPCLOpt (ref _formAsMacroPCL,
+            ToolTrayMapPersist.loadDataPCLOpt(ref _formAsMacroPCL,
                                                ref _sheetCtPCL);
 
-            ToolTrayMapPersist.loadDataPCLXLOpt (ref _formAsMacroPCLXL,
+            ToolTrayMapPersist.loadDataPCLXLOpt(ref _formAsMacroPCLXL,
                                                  ref _sheetCtPCLXL);
 
             //----------------------------------------------------------------//
 
             if ((_indxPDL < 0) || (_indxPDL >= _ctPDLs))
                 _indxPDL = 0;
-            
-            _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs [_indxPDL];
+
+            _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
             //----------------------------------------------------------------//
 
@@ -1121,7 +1121,7 @@ namespace PCLParaphernalia
             {
                 ToolTrayMapPersist.loadDataSheetOpt(
                     "PCL",
-                    i+1,
+                    i + 1,
                     ref _indxPaperSizePCL[i],
                     ref _indxPaperTypePCL[i],
                     ref _indxPaperTrayPCL[i],
@@ -1138,7 +1138,7 @@ namespace PCLParaphernalia
                     _indxPaperTypePCL[i] = 0;
 
                 if ((_indxPaperTrayPCL[i] < 0) ||
-                    (_indxPaperTrayPCL[i] >= (_maxPaperTray+1)))
+                    (_indxPaperTrayPCL[i] >= (_maxPaperTray + 1)))
                     _indxPaperTrayPCL[i] = 0;
 
                 if ((_indxPlexModePCL[i] < 0) ||
@@ -1159,7 +1159,7 @@ namespace PCLParaphernalia
             {
                 ToolTrayMapPersist.loadDataSheetOpt(
                     "PCLXL",
-                    i+1,
+                    i + 1,
                     ref _indxPaperSizePCLXL[i],
                     ref _indxPaperTypePCLXL[i],
                     ref _indxPaperTrayPCLXL[i],
@@ -1206,20 +1206,19 @@ namespace PCLParaphernalia
         {
             pdlOptionsStore();
 
-        //  trayIdSetStore();
+            //  trayIdSetStore();
 
             ToolTrayMapPersist.saveDataCommon((Int32)_indxPDL);
 
-            ToolTrayMapPersist.saveDataPCLOpt (_formAsMacroPCL,
+            ToolTrayMapPersist.saveDataPCLOpt(_formAsMacroPCL,
                                                _sheetCtPCL);
 
-            ToolTrayMapPersist.saveDataPCLXLOpt (_formAsMacroPCLXL,
+            ToolTrayMapPersist.saveDataPCLXLOpt(_formAsMacroPCLXL,
                                                  _sheetCtPCLXL);
-
 
             for (Int32 i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.saveDataSheetOpt (
+                ToolTrayMapPersist.saveDataSheetOpt(
                     "PCL",
                     i + 1,
                     _indxPaperSizePCL[i],
@@ -1232,7 +1231,7 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.saveDataSheetOpt (
+                ToolTrayMapPersist.saveDataSheetOpt(
                     "PCLXL",
                     i + 1,
                     _indxPaperSizePCLXL[i],
@@ -1259,7 +1258,7 @@ namespace PCLParaphernalia
             {
                 cbSheetCt.SelectedIndex = _sheetCtPCL - 1;
 
-                chkOptFormAsMacro.IsChecked  = _formAsMacroPCL;
+                chkOptFormAsMacro.IsChecked = _formAsMacroPCL;
             }
             else
             {
@@ -1268,7 +1267,7 @@ namespace PCLParaphernalia
                 chkOptFormAsMacro.IsChecked = _formAsMacroPCLXL;
             }
 
-            sheetDataRestore ();
+            sheetDataRestore();
         }
 
         //--------------------------------------------------------------------//
@@ -1301,7 +1300,7 @@ namespace PCLParaphernalia
                     _formAsMacroPCLXL = false;
             }
 
-            sheetDataStore ();
+            sheetDataStore();
         }
 
         //--------------------------------------------------------------------//
@@ -1315,7 +1314,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType ();
+            TargetCore.eTarget targetType = TargetCore.getType();
 
             if (targetType == TargetCore.eTarget.File)
             {
@@ -1324,7 +1323,7 @@ namespace PCLParaphernalia
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
                 String netPrnAddress = "";
-                Int32  netPrnPort = 0;
+                Int32 netPrnPort = 0;
 
                 Int32 netTimeoutSend = 0;
                 Int32 netTimeoutReceive = 0;
@@ -1337,13 +1336,13 @@ namespace PCLParaphernalia
                 btnGenerate.Content = "Generate & send test data to " +
                                       "\r\n" +
                                       netPrnAddress + " : " +
-                                      netPrnPort.ToString ();
+                                      netPrnPort.ToString();
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
                 String winPrintername = "";
 
-                TargetCore.metricsLoadWinPrinter (ref winPrintername);
+                TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -1363,7 +1362,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void sheetDataResetVisibility ()
+        private void sheetDataResetVisibility()
         {
             Int32 sheetCt;
 
@@ -1465,15 +1464,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void sheetDataRestore ()
+        private void sheetDataRestore()
         {
-            Int32 itemAutoPCL   = _srcAutoSelectPCL + 1;
+            Int32 itemAutoPCL = _srcAutoSelectPCL + 1;
             Int32 itemAutoPCLXL = _srcAutoSelectPCLXL + 1;
 
-            String valStdPCL    = _srcAutoSelectPCL.ToString();
-            String valStdPCLXL  = _srcAutoSelectPCLXL.ToString();
+            String valStdPCL = _srcAutoSelectPCL.ToString();
+            String valStdPCLXL = _srcAutoSelectPCLXL.ToString();
 
-            String valAutoPCL   = _srcAutoSelectPCL.ToString()   +
+            String valAutoPCL = _srcAutoSelectPCL.ToString() +
                                   ": auto-select";
             String valAutoPCLXL = _srcAutoSelectPCLXL.ToString() +
                                   ": auto-select";

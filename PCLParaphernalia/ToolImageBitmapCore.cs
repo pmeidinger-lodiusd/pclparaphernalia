@@ -144,7 +144,7 @@ namespace PCLParaphernalia
         private static BitmapFileHeader _fileHeader;
         private static BitmapInfoHeader _infoHeader;
 
-        private static Stream _ipStream        = null;
+        private static Stream _ipStream = null;
         private static BinaryReader _binReader = null;
 
         //--------------------------------------------------------------------//
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
 
             _ipStream.Close();
             _ipStream = null;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
             }
 
             return open;
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -227,24 +227,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpInfo(ref Int32   Width,
-                                      ref Int32   Height,
-                                      ref UInt16  BitsPerPixel,
-                                      ref UInt32  Compression,
-                                      ref Int32   ResX,
-                                      ref Int32   ResY,
-                                      ref UInt32  PaletteSize,
+        public static void getBmpInfo(ref Int32 Width,
+                                      ref Int32 Height,
+                                      ref UInt16 BitsPerPixel,
+                                      ref UInt32 Compression,
+                                      ref Int32 ResX,
+                                      ref Int32 ResY,
+                                      ref UInt32 PaletteSize,
                                       ref Boolean MonoBW)
         {
-            Width        = _infoHeader.width;
-            Height       = _infoHeader.height;
+            Width = _infoHeader.width;
+            Height = _infoHeader.height;
             BitsPerPixel = _infoHeader.bitsPerPixel;
-            Compression  = _infoHeader.compressionType;
-            ResX         = _infoHeader.xPelsPerMetre;
-            ResY         = _infoHeader.yPelsPerMetre;
-            PaletteSize  = _paletteSize;
-            MonoBW       = _monochromeBlackWhite; 
-            
+            Compression = _infoHeader.compressionType;
+            ResX = _infoHeader.xPelsPerMetre;
+            ResY = _infoHeader.yPelsPerMetre;
+            PaletteSize = _paletteSize;
+            MonoBW = _monochromeBlackWhite;
+
             return;
         }
 
@@ -257,14 +257,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpPaletteEntry(Int32    Index,
+        public static void getBmpPaletteEntry(Int32 Index,
                                               ref Byte Red,
                                               ref Byte Green,
                                               ref Byte Blue)
         {
-            Red   = _palette[Index].red;
+            Red = _palette[Index].red;
             Green = _palette[Index].green;
-            Blue  = _palette[Index].blue;
+            Blue = _palette[Index].blue;
         }
 
         //--------------------------------------------------------------------//
@@ -277,24 +277,24 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void getNextImageBlock(ref Byte[] bufSub,
-                                             Int32      bufSize,
-                                             Boolean    firstBlock)
+                                             Int32 bufSize,
+                                             Boolean firstBlock)
         {
 
             if (firstBlock)
             {
-                Int32 offset = (Int32) _fileHeader.dataOffset + 
+                Int32 offset = (Int32)_fileHeader.dataOffset +
                                (bufSize * _infoHeader.height);
 
                 _ipStream.Seek(offset, SeekOrigin.Begin);
             }
 
-            _ipStream.Seek((-1*bufSize), SeekOrigin.Current);
+            _ipStream.Seek((-1 * bufSize), SeekOrigin.Current);
 
             _binReader.Read(bufSub, 0, bufSize);
 
-            _ipStream.Seek((-1*bufSize), SeekOrigin.Current);
-       }
+            _ipStream.Seek((-1 * bufSize), SeekOrigin.Current);
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -323,9 +323,9 @@ namespace PCLParaphernalia
                 return -1;
             }
 
-            _fileHeader.fileSize   = readUInt32LE();
+            _fileHeader.fileSize = readUInt32LE();
 
-            temp                   = readUInt32LE();
+            temp = readUInt32LE();
 
             _fileHeader.dataOffset = readUInt32LE();
 
@@ -359,15 +359,15 @@ namespace PCLParaphernalia
                 return -1;
             }
 
-            _infoHeader.width            = readInt32LE();
-            _infoHeader.height           = readInt32LE();
-            _infoHeader.planes           = readUInt16LE();
-            _infoHeader.bitsPerPixel     = readUInt16LE();
-            _infoHeader.compressionType  = readUInt32LE();
-            _infoHeader.imageSize        = readUInt32LE();
-            _infoHeader.xPelsPerMetre    = readInt32LE();
-            _infoHeader.yPelsPerMetre    = readInt32LE();
-            _infoHeader.coloursUsed      = readUInt32LE();
+            _infoHeader.width = readInt32LE();
+            _infoHeader.height = readInt32LE();
+            _infoHeader.planes = readUInt16LE();
+            _infoHeader.bitsPerPixel = readUInt16LE();
+            _infoHeader.compressionType = readUInt32LE();
+            _infoHeader.imageSize = readUInt32LE();
+            _infoHeader.xPelsPerMetre = readInt32LE();
+            _infoHeader.yPelsPerMetre = readInt32LE();
+            _infoHeader.coloursUsed = readUInt32LE();
             _infoHeader.coloursImportant = readUInt32LE();
 
             return result;
@@ -386,20 +386,20 @@ namespace PCLParaphernalia
         {
             Int32 result = 0;
 
-            UInt16 bitsPerPixel; 
-            
+            UInt16 bitsPerPixel;
+
             UInt32 coloursUsed;
 
             UInt32 entryMax;
-            
+
             Byte[] colourData = new Byte[4];
 
             _monochromeBlackWhite = false;
 
             bitsPerPixel = _infoHeader.bitsPerPixel;
-            coloursUsed  = _infoHeader.coloursUsed;
+            coloursUsed = _infoHeader.coloursUsed;
 
-            entryMax     = (UInt32)0x00000001 << bitsPerPixel;
+            entryMax = (UInt32)0x00000001 << bitsPerPixel;
 
             if (bitsPerPixel < 16)
             {
@@ -426,20 +426,20 @@ namespace PCLParaphernalia
             {
                 _binReader.Read(colourData, 0, 4);
 
-                _palette[i].blue     = colourData[0];
-                _palette[i].green    = colourData[1];
-                _palette[i].red      = colourData[2];
+                _palette[i].blue = colourData[0];
+                _palette[i].green = colourData[1];
+                _palette[i].red = colourData[2];
                 _palette[i].reserved = colourData[3];
             }
 
             if (_paletteSize == 2)
             {
-                if ((_palette[0].red   == 0x00) &&
+                if ((_palette[0].red == 0x00) &&
                     (_palette[0].green == 0x00) &&
-                    (_palette[0].blue  == 0x00) &&
-                    (_palette[1].red   == 0xff) &&
+                    (_palette[0].blue == 0x00) &&
+                    (_palette[1].red == 0xff) &&
                     (_palette[1].green == 0xff) &&
-                    (_palette[1].blue  == 0xff))
+                    (_palette[1].blue == 0xff))
                 {
                     _monochromeBlackWhite = true;
                 }
@@ -487,10 +487,10 @@ namespace PCLParaphernalia
         private static UInt16 readUInt16LE()
         {
             Byte[] buf = new Byte[2];
-            
+
             _binReader.Read(buf, 0, 2);
-            
-            if (! BitConverter.IsLittleEndian)
+
+            if (!BitConverter.IsLittleEndian)
                 Array.Reverse(buf, 0, 2);
 
             return BitConverter.ToUInt16(buf, 0);
@@ -510,11 +510,11 @@ namespace PCLParaphernalia
 
         private static UInt32 readUInt32LE()
         {
-            Byte [] buf = new Byte [4];
+            Byte[] buf = new Byte[4];
 
             _binReader.Read(buf, 0, 4);
 
-            if (! BitConverter.IsLittleEndian)
+            if (!BitConverter.IsLittleEndian)
                 Array.Reverse(buf, 0, 4);
 
             return BitConverter.ToUInt32(buf, 0);

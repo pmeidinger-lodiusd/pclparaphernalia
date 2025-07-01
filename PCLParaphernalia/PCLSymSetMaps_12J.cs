@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {
@@ -29,22 +26,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_12J ()
+        private static void unicodeMap_12J()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_12J;
 
             const Int32 rangeCt = 3;
 
-            UInt16 [] [] rangeData = new UInt16 [rangeCt] []
+            UInt16[][] rangeData = new UInt16[rangeCt][]
             {
                 new UInt16 [2] {0x20, 0x7f},
                 new UInt16 [2] {0x80, 0x9f},
                 new UInt16 [2] {0xa0, 0xff}
             };
 
-            UInt16 [] rangeSizes = new UInt16 [rangeCt];
+            UInt16[] rangeSizes = new UInt16[rangeCt];
 
-            UInt16 [] [] mapDataPCL = new UInt16 [rangeCt] [];
+            UInt16[][] mapDataPCL = new UInt16[rangeCt][];
 
             UInt16 rangeMin,
                    rangeMax,
@@ -54,13 +51,13 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (UInt16) (rangeData [i] [1] -
-                                           rangeData [i] [0] + 1);
+                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                                           rangeData[i][0] + 1);
             }
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                mapDataPCL [i] = new UInt16 [rangeSizes [i]];
+                mapDataPCL[i] = new UInt16[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -69,16 +66,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [0] [0];
-            rangeMax = rangeData [0] [1];
-            rangeSize = rangeSizes [0];
+            rangeMin = rangeData[0][0];
+            rangeMax = rangeData[0][1];
+            rangeSize = rangeSizes[0];
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataPCL [0] [i - rangeMin] = i;
+                mapDataPCL[0][i - rangeMin] = i;
             }
 
-            mapDataPCL [0] [0x7f - rangeMin] = 0xffff;    //<not a character> //
+            mapDataPCL[0][0x7f - rangeMin] = 0xffff;    //<not a character> //
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -86,43 +83,43 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [1] [0];
-            rangeMax = rangeData [1] [1];
-            rangeSize = rangeSizes [1];
+            rangeMin = rangeData[1][0];
+            rangeMax = rangeData[1][1];
+            rangeSize = rangeSizes[1];
 
-            mapDataPCL [1] [0x80 - rangeMin] = 0x00c4;
-            mapDataPCL [1] [0x81 - rangeMin] = 0x00c5;
-            mapDataPCL [1] [0x82 - rangeMin] = 0x00c7;
-            mapDataPCL [1] [0x83 - rangeMin] = 0x00c9;
-            mapDataPCL [1] [0x84 - rangeMin] = 0x00d1;
-            mapDataPCL [1] [0x85 - rangeMin] = 0x00d6;
-            mapDataPCL [1] [0x86 - rangeMin] = 0x00dc;
-            mapDataPCL [1] [0x87 - rangeMin] = 0x00e1;
-            mapDataPCL [1] [0x88 - rangeMin] = 0x00e0;
-            mapDataPCL [1] [0x89 - rangeMin] = 0x00e2;
-            mapDataPCL [1] [0x8a - rangeMin] = 0x00e4;
-            mapDataPCL [1] [0x8b - rangeMin] = 0x00e3;
-            mapDataPCL [1] [0x8c - rangeMin] = 0x00e5;
-            mapDataPCL [1] [0x8d - rangeMin] = 0x00e7;
-            mapDataPCL [1] [0x8e - rangeMin] = 0x00e9;
-            mapDataPCL [1] [0x8f - rangeMin] = 0x00e8;
+            mapDataPCL[1][0x80 - rangeMin] = 0x00c4;
+            mapDataPCL[1][0x81 - rangeMin] = 0x00c5;
+            mapDataPCL[1][0x82 - rangeMin] = 0x00c7;
+            mapDataPCL[1][0x83 - rangeMin] = 0x00c9;
+            mapDataPCL[1][0x84 - rangeMin] = 0x00d1;
+            mapDataPCL[1][0x85 - rangeMin] = 0x00d6;
+            mapDataPCL[1][0x86 - rangeMin] = 0x00dc;
+            mapDataPCL[1][0x87 - rangeMin] = 0x00e1;
+            mapDataPCL[1][0x88 - rangeMin] = 0x00e0;
+            mapDataPCL[1][0x89 - rangeMin] = 0x00e2;
+            mapDataPCL[1][0x8a - rangeMin] = 0x00e4;
+            mapDataPCL[1][0x8b - rangeMin] = 0x00e3;
+            mapDataPCL[1][0x8c - rangeMin] = 0x00e5;
+            mapDataPCL[1][0x8d - rangeMin] = 0x00e7;
+            mapDataPCL[1][0x8e - rangeMin] = 0x00e9;
+            mapDataPCL[1][0x8f - rangeMin] = 0x00e8;
 
-            mapDataPCL [1] [0x90 - rangeMin] = 0x00ea;
-            mapDataPCL [1] [0x91 - rangeMin] = 0x00eb;
-            mapDataPCL [1] [0x92 - rangeMin] = 0x00ed;
-            mapDataPCL [1] [0x93 - rangeMin] = 0x00ec;
-            mapDataPCL [1] [0x94 - rangeMin] = 0x00ee;
-            mapDataPCL [1] [0x95 - rangeMin] = 0x00ef;
-            mapDataPCL [1] [0x96 - rangeMin] = 0x00f1;
-            mapDataPCL [1] [0x97 - rangeMin] = 0x00f3;
-            mapDataPCL [1] [0x98 - rangeMin] = 0x00f2;
-            mapDataPCL [1] [0x99 - rangeMin] = 0x00f4;
-            mapDataPCL [1] [0x9a - rangeMin] = 0x00f6;
-            mapDataPCL [1] [0x9b - rangeMin] = 0x00f5;
-            mapDataPCL [1] [0x9c - rangeMin] = 0x00fa;
-            mapDataPCL [1] [0x9d - rangeMin] = 0x00f9;
-            mapDataPCL [1] [0x9e - rangeMin] = 0x00fb;
-            mapDataPCL [1] [0x9f - rangeMin] = 0x00fc;
+            mapDataPCL[1][0x90 - rangeMin] = 0x00ea;
+            mapDataPCL[1][0x91 - rangeMin] = 0x00eb;
+            mapDataPCL[1][0x92 - rangeMin] = 0x00ed;
+            mapDataPCL[1][0x93 - rangeMin] = 0x00ec;
+            mapDataPCL[1][0x94 - rangeMin] = 0x00ee;
+            mapDataPCL[1][0x95 - rangeMin] = 0x00ef;
+            mapDataPCL[1][0x96 - rangeMin] = 0x00f1;
+            mapDataPCL[1][0x97 - rangeMin] = 0x00f3;
+            mapDataPCL[1][0x98 - rangeMin] = 0x00f2;
+            mapDataPCL[1][0x99 - rangeMin] = 0x00f4;
+            mapDataPCL[1][0x9a - rangeMin] = 0x00f6;
+            mapDataPCL[1][0x9b - rangeMin] = 0x00f5;
+            mapDataPCL[1][0x9c - rangeMin] = 0x00fa;
+            mapDataPCL[1][0x9d - rangeMin] = 0x00f9;
+            mapDataPCL[1][0x9e - rangeMin] = 0x00fb;
+            mapDataPCL[1][0x9f - rangeMin] = 0x00fc;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -130,9 +127,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [2] [0];
-            rangeMax = rangeData [2] [1];
-            rangeSize = rangeSizes [2];
+            rangeMin = rangeData[2][0];
+            rangeMax = rangeData[2][1];
+            rangeSize = rangeSizes[2];
 
             mapDataPCL[2][0xa0 - rangeMin] = 0x2020;
             mapDataPCL[2][0xa1 - rangeMin] = 0x00b0;
@@ -238,7 +235,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            _sets.Add (new PCLSymSetMap (mapId,
+            _sets.Add(new PCLSymSetMap(mapId,
                                          rangeCt,
                                          rangeData,
                                          null,

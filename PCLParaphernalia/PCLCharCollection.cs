@@ -21,8 +21,8 @@ namespace PCLParaphernalia
 
         private PCLCharCollections.eBitType _bitType;
         private Int32 _bitNo;
-        private String  _descMSL;
-        private String  _descUnicode;
+        private String _descMSL;
+        private String _descUnicode;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -30,16 +30,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollection (
+        public PCLCharCollection(
             PCLCharCollections.eBitType bitType,
-            Int32  bitNo,
+            Int32 bitNo,
             String descMSL,
             String descUnicode)
         {
-            _bitType         = bitType;
-            _bitNo           = bitNo;
-            _descMSL         = descMSL;
-            _descUnicode     = descUnicode;
+            _bitType = bitType;
+            _bitNo = bitNo;
+            _descMSL = descMSL;
+            _descUnicode = descUnicode;
         }
 
         //--------------------------------------------------------------------//
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 getBitNo ()
+        public Int32 getBitNo()
         {
             return _bitNo;
         }
@@ -65,7 +65,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType getBitType ()
+        public PCLCharCollections.eBitType getBitType()
         {
             return _bitType;
         }
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescMSL ()
+        public String getDescMSL()
         {
             return _descMSL;
         }
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescUnicode ()
+        public String getDescUnicode()
         {
             return _descUnicode;
         }

@@ -22,15 +22,15 @@ namespace PCLParaphernalia
 
         private Boolean _flagMonochrome;
 
-        private Int16  _paletteId;
-        private Byte   _ctClrItems;
-        private Byte   _crntClrItem;
+        private Int16 _paletteId;
+        private Byte _ctClrItems;
+        private Byte _crntClrItem;
 
-        private Byte   _clrItemWhite;
-        private Byte   _clrItemBlack;
+        private Byte _clrItemWhite;
+        private Byte _clrItemBlack;
 
-        private Byte [] _colourIds;
-        private String [] _colourNames;
+        private Byte[] _colourIds;
+        private String[] _colourNames;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -38,22 +38,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPalette (String    name,
-                           Boolean   flagMonochrome,
-                           Int16     paletteId,
-                           Byte      ctClrItems)
+        public PCLPalette(String name,
+                           Boolean flagMonochrome,
+                           Int16 paletteId,
+                           Byte ctClrItems)
         {
-            _name           = name;
+            _name = name;
             _flagMonochrome = flagMonochrome;
-            _paletteId      = paletteId;
-            _ctClrItems     = ctClrItems;
+            _paletteId = paletteId;
+            _ctClrItems = ctClrItems;
 
-            _colourIds   = new Byte[ctClrItems];
+            _colourIds = new Byte[ctClrItems];
             _colourNames = new String[ctClrItems];
 
             _crntClrItem = 0;
             _clrItemWhite = 0;
-            _clrItemBlack   = 0;
+            _clrItemBlack = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -65,11 +65,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void addColour (String name,
-                               Byte   id)
+        public void addColour(String name,
+                               Byte id)
         {
             _colourNames[_crntClrItem] = name;
-            _colourIds  [_crntClrItem] = id;
+            _colourIds[_crntClrItem] = id;
 
             _crntClrItem++;
         }
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Byte getColourId (Int32 item)
+        public Byte getColourId(Int32 item)
         {
             return _colourIds[item];
         }
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getColourName (Int32 item)
+        public String getColourName(Int32 item)
         {
             return _colourNames[item];
         }
@@ -186,9 +186,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemBlack ()
+        public void setClrItemBlack()
         {
-            _clrItemBlack = (Byte) (_crntClrItem - 1); 
+            _clrItemBlack = (Byte)(_crntClrItem - 1);
         }
 
         //--------------------------------------------------------------------//
@@ -200,9 +200,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemWhite ()
+        public void setClrItemWhite()
         {
-            _clrItemWhite = (Byte) (_crntClrItem - 1);
+            _clrItemWhite = (Byte)(_crntClrItem - 1);
         }
     }
 }

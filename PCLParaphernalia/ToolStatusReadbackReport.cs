@@ -1,6 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.IO;
+﻿using System;
 using System.Windows.Controls;
 
 namespace PCLParaphernalia
@@ -30,7 +28,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generate (ReportCore.eRptFileFmt rptFileFmt,
+        public static void generate(ReportCore.eRptFileFmt rptFileFmt,
                                      TextBox txtReply,
                                      ref String saveFilename)
         {
@@ -42,7 +40,7 @@ namespace PCLParaphernalia
             String saveFolder = null,
                    fileExt;
 
-            ToolCommonFunctions.getFolderName (saveFilename,
+            ToolCommonFunctions.getFolderName(saveFilename,
                                                ref saveFolder);
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
@@ -54,24 +52,24 @@ namespace PCLParaphernalia
 
             saveFilename = saveFolder + "\\SR_Resp." + fileExt;
 
-            OK = ReportCore.docOpen (rptFileFmt,
+            OK = ReportCore.docOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
             if (OK)
             {
-                ReportCore.docInitialise (rptFileFmt, writer, false, true,
+                ReportCore.docInitialise(rptFileFmt, writer, false, true,
                                           0, null,
                                           null, null);
 
-                ReportCore.hddrTitle (writer, rptFileFmt, false,
+                ReportCore.hddrTitle(writer, rptFileFmt, false,
                                       "*** Status Readback response data ***");
 
-                reportBody (rptFileFmt, writer, txtReply);
+                reportBody(rptFileFmt, writer, txtReply);
 
-                ReportCore.docFinalise (rptFileFmt, writer);
+                ReportCore.docFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose (rptFileFmt, stream, writer);
+                ReportCore.docClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -93,7 +91,7 @@ namespace PCLParaphernalia
 
             Int32 ct;
 
-            ReportCore.lineBlockOpen (writer, rptFileFmt);
+            ReportCore.lineBlockOpen(writer, rptFileFmt);
 
             ct = txtReply.LineCount;
 
@@ -101,17 +99,17 @@ namespace PCLParaphernalia
             {
                 String line = txtReply.GetLineText(i);
 
-                String removedCC = line.Replace ("\r\n", "")    // not "<CR><LF>")
-                                       .Replace ("\n",   "")    // not "<LF>")
-                                       .Replace ("\r",   "")    // not "<CR>")
-                                       .Replace ("\f", "<FF>")
-                                       .Replace ("\x1b", "<Esc>");
+                String removedCC = line.Replace("\r\n", "")    // not "<CR><LF>")
+                                       .Replace("\n", "")    // not "<LF>")
+                                       .Replace("\r", "")    // not "<CR>")
+                                       .Replace("\f", "<FF>")
+                                       .Replace("\x1b", "<Esc>");
 
-                ReportCore.lineItem (writer, rptFileFmt, removedCC, maxLineLen,
+                ReportCore.lineItem(writer, rptFileFmt, removedCC, maxLineLen,
                                      false);
             }
 
-            ReportCore.lineBlockClose (writer, rptFileFmt);
+            ReportCore.lineBlockClose(writer, rptFileFmt);
         }
     }
 }

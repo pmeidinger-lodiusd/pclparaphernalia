@@ -24,9 +24,8 @@ namespace PCLParaphernalia
 
         private String _desc;
 
-        private UInt16 [] _rangeDataSingle;
-        private UInt16 [] _rangeDataDouble;
-
+        private UInt16[] _rangeDataSingle;
+        private UInt16[] _rangeDataDouble;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -34,17 +33,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethod (
+        public PCLTextParsingMethod(
             PCLTextParsingMethods.eIndex indxMethod,
-            Int16                         value,
-            String                        desc,
-            UInt16 []                     rangeDataSingle,
-            UInt16 []                     rangeDataDouble)
+            Int16 value,
+            String desc,
+            UInt16[] rangeDataSingle,
+            UInt16[] rangeDataDouble)
         {
             _indxMethod = indxMethod;
-            _value      = value;
-            _desc       = desc;
-            
+            _value = value;
+            _desc = desc;
+
             _rangeDataSingle = rangeDataSingle;
             _rangeDataDouble = rangeDataDouble;
         }
@@ -58,7 +57,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDesc ()
+        public String getDesc()
         {
             return _desc;
         }
@@ -73,12 +72,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public String getDescLong ()
+        public String getDescLong()
         {
             if (_value < 0)
                 return _desc;
             else
-                return (_value.ToString () + ": " + _desc);
+                return (_value.ToString() + ": " + _desc);
         }
 
         //--------------------------------------------------------------------//
@@ -90,7 +89,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.eIndex getMethodType ()
+        public PCLTextParsingMethods.eIndex getMethodType()
         {
             return _indxMethod;
         }
@@ -104,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 [] getRangeDataDouble ()
+        public UInt16[] getRangeDataDouble()
         {
             return _rangeDataDouble;
         }
@@ -118,7 +117,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 getRangeDataDoubleCt ()
+        public Int32 getRangeDataDoubleCt()
         {
             if (_rangeDataDouble == null)
                 return 0;
@@ -135,7 +134,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 [] getRangeDataSingle ()
+        public UInt16[] getRangeDataSingle()
         {
             return _rangeDataSingle;
         }
@@ -149,7 +148,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 getRangeDataSingleCt ()
+        public Int32 getRangeDataSingleCt()
         {
             if (_rangeDataSingle == null)
                 return 0;
@@ -166,7 +165,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public Int32 getValue ()
+        public Int32 getValue()
         {
             return _value;
         }

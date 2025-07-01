@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -25,7 +25,7 @@ namespace PCLParaphernalia
 
         private Byte _tag;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagReserved;
         private Boolean _flagArray;
@@ -37,28 +37,28 @@ namespace PCLParaphernalia
         private Int32 _statsCtChild;
 
         private PCLXLDataTypes.eBaseType _baseType;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L D a t a T y p e                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLDataType(Byte                     tag,
-                             Boolean                  flagReserved,
-                             Boolean                  flagArray,
-                             Int32                    groupSize,
-                             Int32                    unitSize,  
+        public PCLXLDataType(Byte tag,
+                             Boolean flagReserved,
+                             Boolean flagArray,
+                             Int32 groupSize,
+                             Int32 unitSize,
                              PCLXLDataTypes.eBaseType baseType,
-	                         String                   description)
-	    {
-            _tag           = tag;
-            _flagReserved  = flagReserved;
-            _flagArray     = flagArray;
-            _groupSize     = groupSize;
-            _unitSize      = unitSize;
-            _baseType      = baseType;
-	        _description   = description;
+                             String description)
+        {
+            _tag = tag;
+            _flagReserved = flagReserved;
+            _flagArray = flagArray;
+            _groupSize = groupSize;
+            _unitSize = unitSize;
+            _baseType = baseType;
+            _description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -70,19 +70,19 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (ref Boolean flagReserved,
+        public void getDetails(ref Boolean flagReserved,
                                 ref Boolean flagArray,
                                 ref Int32 groupSize,
                                 ref Int32 unitSize,
                                 ref PCLXLDataTypes.eBaseType baseType,
                                 ref String description)
         {
-            flagReserved  = _flagReserved;
-            flagArray     = _flagArray;
-            groupSize     = _groupSize;
-            unitSize      = _unitSize;
-            baseType      = _baseType;
-	        description   = _description;
+            flagReserved = _flagReserved;
+            flagArray = _flagArray;
+            groupSize = _groupSize;
+            unitSize = _unitSize;
+            baseType = _baseType;
+            description = _description;
         }
 
         //--------------------------------------------------------------------//

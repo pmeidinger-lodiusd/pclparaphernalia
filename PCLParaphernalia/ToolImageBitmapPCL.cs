@@ -24,11 +24,11 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImage(BinaryWriter prnWriter,
-                                          Single       destPosX,
-                                          Single       destPosY,
-                                          Int32        destScalePercentX,
-                                          Int32        destScalePercentY,
-                                          Int32        rasterResolution)
+                                          Single destPosX,
+                                          Single destPosY,
+                                          Int32 destScalePercentX,
+                                          Int32 destScalePercentY,
+                                          Int32 rasterResolution)
         {
             Byte[] bufStd = new Byte[1024];
 
@@ -112,9 +112,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageData(BinaryWriter prnWriter,
-                                              UInt16       srcBitsPerPixel,
-                                              Int32        srcWidth,
-                                              Int32        srcHeight)
+                                              UInt16 srcBitsPerPixel,
+                                              Int32 srcWidth,
+                                              Int32 srcHeight)
         {
             Boolean firstBlock = true,
                     indexed = true;
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
             bytesPerRowPadded = bytesPerRow;
 
             padBytes = bytesPerRow % 4;
-            
+
             if (padBytes != 0)
             {
                 padBytes = 4 - padBytes;
@@ -162,8 +162,8 @@ namespace PCLParaphernalia
                 ToolImageBitmapCore.getNextImageBlock(ref bufSub,
                                                       bytesPerRowPadded,
                                                       firstBlock);
-                                
-                if (! indexed)      // if (srcBitsPerPixel == 24)
+
+                if (!indexed)      // if (srcBitsPerPixel == 24)
                 {
                     // change BGR components to RGB //
 
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
                 PCLWriter.rasterTransferRow(prnWriter, bytesPerRow, bufSub);
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // g e n e r a t e I m a g e H e a d e r                              //
@@ -197,18 +197,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateImageHeader(BinaryWriter prnWriter,
-                                                UInt16       srcBitsPerPixel,
-                                                Int32        srcWidth,
-                                                Int32        srcHeight,
-                                                Int32        srcResX,
-                                                Int32        srcResY,
-                                                Single       destPosX,
-                                                Single       destPosY,
-                                                Int32        destScalePercentX,
-                                                Int32        destScalePercentY,
-                                                Int32        rasterResolution,
-                                                UInt32       srcPaletteEntries,
-                                                Boolean      srcBlackWhite)
+                                                UInt16 srcBitsPerPixel,
+                                                Int32 srcWidth,
+                                                Int32 srcHeight,
+                                                Int32 srcResX,
+                                                Int32 srcResY,
+                                                Single destPosX,
+                                                Single destPosY,
+                                                Int32 destScalePercentX,
+                                                Int32 destScalePercentY,
+                                                Int32 rasterResolution,
+                                                UInt32 srcPaletteEntries,
+                                                Boolean srcBlackWhite)
         {
             Int16 coordX,
                   coordY;
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
 
             coordX = (Int16)(destPosX * 600);
             coordY = (Int16)(destPosY * 600);
-            
+
             PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Push);
 
             PCLWriter.cursorPosition(prnWriter, coordX, coordY);
@@ -281,27 +281,27 @@ namespace PCLParaphernalia
             if (srcBlackWhite)
             {
                 indexed = true;
-                bitsPerIndex   = 0x01;
+                bitsPerIndex = 0x01;
                 paletteEntries = 0;
             }
             else if (srcBitsPerPixel == 1)
             {
                 indexed = true;
-                bitsPerIndex   = 0x01;
-            //  paletteEntries = 0x00000001 << 1;
+                bitsPerIndex = 0x01;
+                //  paletteEntries = 0x00000001 << 1;
                 paletteEntries = srcPaletteEntries;
             }
             else if (srcBitsPerPixel == 4)
             {
                 indexed = true;
-                bitsPerIndex   = 0x04;
-            //  paletteEntries = 0x00000001 << 4;
+                bitsPerIndex = 0x04;
+                //  paletteEntries = 0x00000001 << 4;
                 paletteEntries = srcPaletteEntries;
             }
             else if (srcBitsPerPixel == 24)
             {
                 indexed = false;
-                bitsPerIndex   = 0x00;
+                bitsPerIndex = 0x00;
                 paletteEntries = 0;
             }
 
@@ -331,12 +331,12 @@ namespace PCLParaphernalia
                                             0x08,   // Bits per component
                                             0x08);  // Bits per component
                 }
-                
+
                 if (paletteEntries != 0)
                 {
-                    Byte red   = 0x00,
+                    Byte red = 0x00,
                          green = 0x00,
-                         blue  = 0x00;
+                         blue = 0x00;
 
                     for (Int16 i = 0; i < paletteEntries; i++)
                     {
@@ -344,12 +344,11 @@ namespace PCLParaphernalia
                                                                ref red,
                                                                ref green,
                                                                ref blue);
-                        
+
                         PCLWriter.paletteEntry(prnWriter, i, red, green, blue);
                     }
                 }
             }
-
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -357,7 +356,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.rasterResolution (prnWriter,
+            PCLWriter.rasterResolution(prnWriter,
                                         rasterResolution,
                                         true);
 
@@ -397,14 +396,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        paperSize,
-                                       Int32        paperType,
-                                       Int32        orientation,
-                                       Single       destPosX,
-                                       Single       destPosY,
-                                       Int32        destScalePercentX,
-                                       Int32        destScalePercentY,
-                                       Int32        rasterResolution)
+                                       Int32 paperSize,
+                                       Int32 paperType,
+                                       Int32 orientation,
+                                       Single destPosX,
+                                       Single destPosY,
+                                       Int32 destScalePercentX,
+                                       Int32 destScalePercentY,
+                                       Int32 rasterResolution)
         {
             generateJobHeader(prnWriter,
                               paperSize,
@@ -431,9 +430,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobHeader(BinaryWriter prnWriter,
-                                              Int32        paperSize,
-                                              Int32        paperType,
-                                              Int32        orientation)
+                                              Int32 paperSize,
+                                              Int32 paperType,
+                                              Int32 orientation)
         {
             PCLWriter.stdJobHeader(prnWriter, "");
 

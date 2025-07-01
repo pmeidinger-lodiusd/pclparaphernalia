@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -25,25 +25,25 @@ namespace PCLParaphernalia
 
         private Byte _tag;
 
-        private String  _mnemonic;
-        private String  _description;
+        private String _mnemonic;
+        private String _description;
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L W h i t e s p a c e                                      //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLWhitespace (Byte   tag,
-	                            String mnemonic,
-	                            String description)
-	    {
-            _tag           = tag;
-            _mnemonic      = mnemonic;
-	        _description   = description;
+        public PCLXLWhitespace(Byte tag,
+                                String mnemonic,
+                                String description)
+        {
+            _tag = tag;
+            _mnemonic = mnemonic;
+            _description = description;
 
             _statsCtParent = 0;
             _statsCtChild = 0;

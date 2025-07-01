@@ -13,7 +13,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
 
     class PrnView
@@ -24,7 +24,6 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-      
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
         // Class variables.                                                   //
@@ -41,7 +40,7 @@ namespace PCLParaphernalia
         PrnParseConstants.eOptCharSetSubActs _indxCharSetSubAct = 0;
         PrnParseConstants.eOptCharSets _indxCharSetName = 0;
         Int32 _valCharSetSubCode = 0;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P r n V i e w                                                      //
@@ -69,18 +68,18 @@ namespace PCLParaphernalia
             const Int32 colOffset = 0;
             const Int32 colHex = 1;
             const Int32 colText = 2;
-            
+
             DataRow row;
 
             //  Int32 rowNo = _fixedRows + _rowCt;
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[colOffset] = offset;
-            row[colHex]    = hexVal;
-            row[colText]   = textVal;
+            row[colHex] = hexVal;
+            row[colText] = textVal;
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -94,8 +93,8 @@ namespace PCLParaphernalia
 
         private void closeInputPrn()
         {
-            _binReader.Close ();
-            _ipStream.Close ();
+            _binReader.Close();
+            _ipStream.Close();
         }
 
         //--------------------------------------------------------------------//
@@ -107,23 +106,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Boolean openInputPrn(String    filename,
+        private Boolean openInputPrn(String filename,
                                      ref Int64 fileSize)
         {
             Boolean open = false;
 
             if ((filename == null) || (filename == ""))
             {
-                MessageBox.Show ("Print file name is null.",
+                MessageBox.Show("Print file name is null.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (filename))
+            else if (!File.Exists(filename))
             {
-                MessageBox.Show ("Print file '" + filename +
+                MessageBox.Show("Print file '" + filename +
                                 "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
@@ -135,7 +134,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open (filename,
+                    _ipStream = File.Open(filename,
                                            FileMode.Open,
                                            FileAccess.Read,
                                            FileShare.None);
@@ -143,7 +142,7 @@ namespace PCLParaphernalia
 
                 catch (IOException e)
                 {
-                    MessageBox.Show ("IO Exception:\r\n" +
+                    MessageBox.Show("IO Exception:\r\n" +
                                      e.Message + "\r\n" +
                                      "Opening file '" +
                                      filename + "'",
@@ -154,13 +153,13 @@ namespace PCLParaphernalia
 
                 if (_ipStream != null)
                 {
-                    FileInfo fi = new FileInfo (filename);
+                    FileInfo fi = new FileInfo(filename);
 
                     fileSize = fi.Length;
 
                     open = true;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
@@ -184,7 +183,7 @@ namespace PCLParaphernalia
 
             Boolean ipOpen = false;
 
-            ipOpen = openInputPrn (prnFilename, ref _fileSize);
+            ipOpen = openInputPrn(prnFilename, ref _fileSize);
 
             if (!ipOpen)
             {
@@ -192,9 +191,9 @@ namespace PCLParaphernalia
             }
             else
             {
-                viewFileAction (options, table);
+                viewFileAction(options, table);
 
-                closeInputPrn ();
+                closeInputPrn();
             }
 
             return OK;
@@ -236,7 +235,7 @@ namespace PCLParaphernalia
             else
                 offsetFormat = "{0:d10}";
 
-            options.getOptCharSet (ref _indxCharSetName,
+            options.getOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 
@@ -246,25 +245,25 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCurFOffsets (ref offsetStart,
+            options.getOptCurFOffsets(ref offsetStart,
                                        ref offsetEnd);
 
             blockStart = offsetStart;
-            _ipStream.Seek (offsetStart, SeekOrigin.Begin);
+            _ipStream.Seek(offsetStart, SeekOrigin.Begin);
 
             if (offsetStart != 0)
-                addRow (table,
+                addRow(table,
                         "Comment",
                         "Start Offset   = " + offsetStart +
-                        " (0x" + offsetStart.ToString ("X8") +
+                        " (0x" + offsetStart.ToString("X8") +
                         ") requested",
                         "");
 
             if (offsetEnd != -1)
-                addRow (table,
+                addRow(table,
                         "Comment",
                         "End   Offset   = " + offsetEnd +
-                        " (0x" + offsetEnd.ToString ("X8") +
+                        " (0x" + offsetEnd.ToString("X8") +
                         ") requested",
                         "");
 
@@ -279,7 +278,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                blockLen = _binReader.Read (buf, 0, PrnParseConstants.bufSize);
+                blockLen = _binReader.Read(buf, 0, PrnParseConstants.bufSize);
 
                 if (blockLen == 0)
                 {
@@ -324,12 +323,12 @@ namespace PCLParaphernalia
                         // Extract required details from current slice.       //
                         //                                                    //
                         //----------------------------------------------------//
-                        
+
                         offsetCrnt = blockStart + i;
 
-                        offsetStr  = String.Format (offsetFormat, offsetCrnt);
+                        offsetStr = String.Format(offsetFormat, offsetCrnt);
 
-                        sliceLen = viewFileSlice (buf,
+                        sliceLen = viewFileSlice(buf,
                                                   offsetStr,
                                                   i,
                                                   sliceLen,
@@ -370,11 +369,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private Int32 viewFileSlice(Byte []   buf,
-                                    String    crntOffset,
-                                    Int32     blockOffset,
-                                    Int32     sliceMax,
-            //                      Int32     rowNo,
+        private Int32 viewFileSlice(Byte[] buf,
+                                    String crntOffset,
+                                    Int32 blockOffset,
+                                    Int32 sliceMax,
+                                    //                      Int32     rowNo,
                                     DataTable table)
         {
             Int32 sliceLen;
@@ -387,8 +386,8 @@ namespace PCLParaphernalia
 
             Int32 sub;
 
-            StringBuilder hexBuf = new StringBuilder ();
-            StringBuilder strBuf = new StringBuilder ();
+            StringBuilder hexBuf = new StringBuilder();
+            StringBuilder strBuf = new StringBuilder();
 
             sliceLen = sliceMax;
 
@@ -420,23 +419,23 @@ namespace PCLParaphernalia
                     {
                         case PrnParseConstants.eOptCharSetSubActs.Spaces:
 
-                            strBuf.Append (' ');
+                            strBuf.Append(' ');
                             break;
 
                         case PrnParseConstants.eOptCharSetSubActs.Substitute:
 
-                            strBuf.Append ((Char) _valCharSetSubCode);
+                            strBuf.Append((Char)_valCharSetSubCode);
                             break;
 
                         default:
 
-                            strBuf.Append ('.');
+                            strBuf.Append('.');
                             break;
                     }
                 }
                 else
                 {
-                    strBuf.Append ((Char) crntByte);
+                    strBuf.Append((Char)crntByte);
                 }
 
                 sub = crntByte;
@@ -444,14 +443,14 @@ namespace PCLParaphernalia
 
                 cx = PrnParseConstants.cHexChars[sub];
 
-                hexBuf.Append (cx);
+                hexBuf.Append(cx);
 
                 sub = (crntByte & 0x0f);
 
                 cx = PrnParseConstants.cHexChars[sub];
 
-                hexBuf.Append (cx);
-                hexBuf.Append (' ');
+                hexBuf.Append(cx);
+                hexBuf.Append(' ');
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -474,7 +473,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            addRow (table, crntOffset, hexBuf.ToString (), strBuf.ToString ());
+            addRow(table, crntOffset, hexBuf.ToString(), strBuf.ToString());
 
             return sliceLen;
         }

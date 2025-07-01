@@ -54,8 +54,8 @@ namespace PCLParaphernalia
 
         private Int64 _fileSize;
 
-        private Int32 [] _indxClrMapBack;
-        private Int32 [] _indxClrMapFore;
+        private Int32[] _indxClrMapBack;
+        private Int32[] _indxClrMapFore;
 
         private Boolean _flagClrMapUseClr;
 
@@ -258,10 +258,10 @@ namespace PCLParaphernalia
 
                 resetStatistics();
 
-                _options.getOptClrMap (ref _flagClrMapUseClr,
+                _options.getOptClrMap(ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
                                        ref _indxClrMapFore);
-                
+
                 _options.metricsSave();
             }
         }
@@ -289,14 +289,14 @@ namespace PCLParaphernalia
             else
                 flagOffsetHex = true;
 
-            TargetCore.metricsReturnFileRpt (ToolCommonData.eToolIds.PrnAnalyse,
+            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
 
             if (tabCtrl.SelectedItem == tabStatistics)
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Statistics,
+                ToolPrnAnalyseReport.generate(eInfoType.Statistics,
                                                rptFileFmt,
                                                _tableStatistics,
                                                _prnFilename,
@@ -306,7 +306,7 @@ namespace PCLParaphernalia
             }
             else if (tabCtrl.SelectedItem == tabContent)
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Content,
+                ToolPrnAnalyseReport.generate(eInfoType.Content,
                                                rptFileFmt,
                                                _tableContent,
                                                _prnFilename,
@@ -316,7 +316,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                ToolPrnAnalyseReport.generate (eInfoType.Analysis,
+                ToolPrnAnalyseReport.generate(eInfoType.Analysis,
                                                rptFileFmt,
                                                _tableAnalysis,
                                                _prnFilename,
@@ -492,11 +492,11 @@ namespace PCLParaphernalia
 
                     Int32 rowType;
 
-                    Color clrBack = new Color (),
-                          clrFore = new Color ();
+                    Color clrBack = new Color(),
+                          clrFore = new Color();
 
-                    SolidColorBrush brushBack = new SolidColorBrush (),
-                                    brushFore = new SolidColorBrush ();
+                    SolidColorBrush brushBack = new SolidColorBrush(),
+                                    brushFore = new SolidColorBrush();
 
                     rowType = (Int32)row[PrnParseConstants.cRptA_colName_RowType];
 
@@ -504,9 +504,9 @@ namespace PCLParaphernalia
                     indxClrFore = _indxClrMapFore[rowType];
 
                     clrBack = (Color)(_stdClrsPropertyInfo[indxClrBack]
-                        as PropertyInfo).GetValue (null, null);
+                        as PropertyInfo).GetValue(null, null);
                     clrFore = (Color)(_stdClrsPropertyInfo[indxClrFore]
-                        as PropertyInfo).GetValue (null, null);
+                        as PropertyInfo).GetValue(null, null);
 
                     brushBack.Color = clrBack;
                     brushFore.Color = clrFore;
@@ -644,16 +644,16 @@ namespace PCLParaphernalia
 
             _fileSize = -1;
 
-            Int32 ctRowTypes = PrnParseRowTypes.getCount ();
+            Int32 ctRowTypes = PrnParseRowTypes.getCount();
 
             _indxClrMapBack = new Int32[ctRowTypes];
             _indxClrMapFore = new Int32[ctRowTypes];
 
-            _options.getOptClrMap (ref _flagClrMapUseClr,
+            _options.getOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
                                    ref _indxClrMapFore);
 
-            _options.getOptClrMapStdClrs (ref _ctClrMapStdClrs,
+            _options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                           ref _stdClrsPropertyInfo);
 
             /*

@@ -20,20 +20,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroId           = 1;
-        const UInt16 _unitsPerInch     = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _pageOriginX       = (_unitsPerInch * 1);
-        const Int16 _pageOriginY       = (_unitsPerInch * 1);
-        const Int16 _incInch           = (_unitsPerInch * 1);
-        const Int16 _lineInc           = (_unitsPerInch * 5) / 6;
+        const Int16 _pageOriginX = (_unitsPerInch * 1);
+        const Int16 _pageOriginY = (_unitsPerInch * 1);
+        const Int16 _incInch = (_unitsPerInch * 1);
+        const Int16 _lineInc = (_unitsPerInch * 5) / 6;
 
-        const Int16 _posXDesc  = _pageOriginX;
-        const Int16 _posXData  = _pageOriginX + (2 * _incInch);
+        const Int16 _posXDesc = _pageOriginX;
+        const Int16 _posXData = _pageOriginX + (2 * _incInch);
 
-        const Int16 _posYHddr  = _pageOriginY;
-        const Int16 _posYDesc  = _pageOriginY + (2 * _incInch);
-        const Int16 _posYData  = _pageOriginY + (2 * _incInch);
+        const Int16 _posYHddr = _pageOriginY;
+        const Int16 _posYDesc = _pageOriginY + (2 * _incInch);
+        const Int16 _posYData = _pageOriginY + (2 * _incInch);
 
         const Int16 _shade_1 = 40;
         const Int16 _shade_2 = 20;
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
             rectY = posY;
 
             rectHeight = (Int16)((_lineInc * 3) / 5);
-            rectWidth  = (Int16)((_unitsPerInch * 9) / 10);
+            rectWidth = (Int16)((_unitsPerInch * 9) / 10);
 
             PCLWriter.patternTransparency(prnWriter, false);
 
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
                                          Boolean formAsMacro,
                                          UInt16 logXOffset)
         {
-            String sampleText  = "000000000000000";
+            String sampleText = "000000000000000";
 
             Int16 posX,
                   posY;

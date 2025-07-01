@@ -19,36 +19,36 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _mainKey                 = MainForm._regMainKey;
+        const String _mainKey = MainForm._regMainKey;
 
-        const String _subKeyTools             = "Tools";
-        const String _subKeyToolsImageBitmap  = "ImageBitmap";
-        const String _subKeyPCL5              = "PCL5";
-        const String _subKeyPCL6              = "PCL6";
-        const String _subKeyPCL               = "PCL";
-        const String _subKeyPCLXL             = "PCLXL";
+        const String _subKeyTools = "Tools";
+        const String _subKeyToolsImageBitmap = "ImageBitmap";
+        const String _subKeyPCL5 = "PCL5";
+        const String _subKeyPCL6 = "PCL6";
+        const String _subKeyPCL = "PCL";
+        const String _subKeyPCLXL = "PCLXL";
 
-        const String _nameCaptureFile         = "CaptureFile";
-        const String _nameCoordX              = "CoordX";
-        const String _nameCoordY              = "CoordY";
-        const String _nameFilename            = "Filename";
-        const String _nameIndxOrientation     = "IndxOrientation";
-        const String _nameIndxPaperSize       = "IndxPaperSize";
-        const String _nameIndxPaperType       = "IndxPaperType";
-        const String _nameIndxPDL             = "IndxPDL";
-        const String _nameIndxRasterRes       = "IndxRasterRes";
-        const String _nameScaleX              = "ScaleX";
-        const String _nameScaleY              = "ScaleY";
+        const String _nameCaptureFile = "CaptureFile";
+        const String _nameCoordX = "CoordX";
+        const String _nameCoordY = "CoordY";
+        const String _nameFilename = "Filename";
+        const String _nameIndxOrientation = "IndxOrientation";
+        const String _nameIndxPaperSize = "IndxPaperSize";
+        const String _nameIndxPaperType = "IndxPaperType";
+        const String _nameIndxPDL = "IndxPDL";
+        const String _nameIndxRasterRes = "IndxRasterRes";
+        const String _nameScaleX = "ScaleX";
+        const String _nameScaleY = "ScaleY";
 
-        const Int32 _indexZero                = 0;
+        const Int32 _indexZero = 0;
 
-        const String _defaultCaptureFile      = "CaptureFile_ImageBitmap.prn";
-        const String _defaultCaptureFilePCL   = "CaptureFile_ImageBitmapPCL.prn";
+        const String _defaultCaptureFile = "CaptureFile_ImageBitmap.prn";
+        const String _defaultCaptureFilePCL = "CaptureFile_ImageBitmapPCL.prn";
         const String _defaultCaptureFilePCLXL = "CaptureFile_ImageBitmapPCLXL.prn";
-        const String _defaultFilename         = "DefaultImageFile.bmp";
+        const String _defaultFilename = "DefaultImageFile.bmp";
 
-        const Int32 _defaultCoord             = 300;
-        const Int32 _defaultScale             = 100;
+        const Int32 _defaultCoord = 300;
+        const Int32 _defaultScale = 100;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
                 }
             }
         }
-        
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // l o a d D a t a C o m m o n                                        //
@@ -145,13 +145,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref Int32  indxPDL,
+        public static void loadDataCommon(ref Int32 indxPDL,
                                           ref String filename,
-                                          ref Int32  destPosX,
-                                          ref Int32  destPosY,
-                                          ref Int32  destScaleX,
-                                          ref Int32  destScaleY,
-                                          ref Int32  indxRasterRes)
+                                          ref Int32 destPosX,
+                                          ref Int32 destPosY,
+                                          ref Int32 destScaleX,
+                                          ref Int32 destScaleY,
+                                          ref Int32 indxRasterRes)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -173,20 +173,20 @@ namespace PCLParaphernalia
                 indxPDL = (Int32)subKey.GetValue(_nameIndxPDL,
                                                        _indexZero);
 
-                filename      = (String)subKey.GetValue(_nameFilename,
+                filename = (String)subKey.GetValue(_nameFilename,
                                                         defWorkFolder + "\\" +
                                                         _defaultFilename);
 
-                destPosX      = (Int32)subKey.GetValue(_nameCoordX,
+                destPosX = (Int32)subKey.GetValue(_nameCoordX,
                                                        _defaultCoord);
 
-                destPosY      = (Int32)subKey.GetValue(_nameCoordY,
+                destPosY = (Int32)subKey.GetValue(_nameCoordY,
                                                        _defaultCoord);
 
-                destScaleX    = (Int32)subKey.GetValue(_nameScaleX,
+                destScaleX = (Int32)subKey.GetValue(_nameScaleX,
                                                        _defaultScale);
 
-                destScaleY    = (Int32)subKey.GetValue(_nameScaleY,
+                destScaleY = (Int32)subKey.GetValue(_nameScaleY,
                                                        _defaultScale);
 
                 indxRasterRes = (Int32)subKey.GetValue(_nameIndxRasterRes,
@@ -203,7 +203,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(String    pdlName,
+        public static void loadDataPCL(String pdlName,
                                        ref Int32 indxOrientation,
                                        ref Int32 indxPaperSize,
                                        ref Int32 indxPaperType)
@@ -220,9 +220,9 @@ namespace PCLParaphernalia
             {
                 indxOrientation = (Int32)subKey.GetValue(_nameIndxOrientation,
                                                          _indexZero);
-                indxPaperSize   = (Int32)subKey.GetValue(_nameIndxPaperSize,
+                indxPaperSize = (Int32)subKey.GetValue(_nameIndxPaperSize,
                                                          _indexZero);
-                indxPaperType   = (Int32)subKey.GetValue(_nameIndxPaperType,
+                indxPaperType = (Int32)subKey.GetValue(_nameIndxPaperType,
                                                          _indexZero);
             }
         }
@@ -283,13 +283,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(Int32  indxPDL,
+        public static void saveDataCommon(Int32 indxPDL,
                                           String filename,
-                                          Int32  destPosX,
-                                          Int32  destPosY,
-                                          Int32  destScaleX,
-                                          Int32  destScaleY,
-                                          Int32  indxRasterRes)
+                                          Int32 destPosX,
+                                          Int32 destPosY,
+                                          Int32 destScaleX,
+                                          Int32 destScaleY,
+                                          Int32 indxRasterRes)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
 
                 if (filename != null)
                 {
-                    subKey.SetValue (_nameFilename,
+                    subKey.SetValue(_nameFilename,
                                     filename,
                                     RegistryValueKind.String);
                 }
@@ -341,9 +341,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void saveDataPCL(String pdlName,
-                                       Int32  indxOrientation,
-                                       Int32  indxPaperSize,
-                                       Int32  indxPaperType)
+                                       Int32 indxOrientation,
+                                       Int32 indxPaperSize,
+                                       Int32 indxPaperType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);

@@ -19,7 +19,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         const Byte cPatternHeight = 16;
-        const Byte cPatternWidth  = 16;
+        const Byte cPatternWidth = 16;
 
         public enum eType : byte
         {
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
                                2,
                                cPatternHeight,
                                cPatternWidth,
-							   _shade_1),
+                               _shade_1),
 
             new PCLPatternDef ("3 - 10%",
                                eType.Shading,
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
                                10,
                                cPatternHeight,
                                cPatternWidth,
-							   _shade_2),
+                               _shade_2),
 
             new PCLPatternDef ("11 - 20%",
                                eType.Shading,
@@ -243,7 +243,7 @@ namespace PCLParaphernalia
                                0,   // not relevant
                                cPatternHeight,
                                cPatternWidth,
-							   _hatch_1),
+                               _hatch_1),
 
             new PCLPatternDef ("vertical lines",
                                eType.CrossHatch,
@@ -251,7 +251,7 @@ namespace PCLParaphernalia
                                0,   // not relevant
                                cPatternHeight,
                                cPatternWidth,
-							   _hatch_2),
+                               _hatch_2),
 
             new PCLPatternDef ("ascending diagonal lines",
                                eType.CrossHatch,
@@ -289,10 +289,10 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static Int32 _patternsCtShade =
-            _patternsShade.GetUpperBound (0) + 1;
+            _patternsShade.GetUpperBound(0) + 1;
 
         private static Int32 _patternsCtHatch =
-            _patternsHatch.GetUpperBound (0) + 1;
+            _patternsHatch.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -301,7 +301,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static PCLPatternDefs ()
+        static PCLPatternDefs()
         {
         }
 
@@ -314,7 +314,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Int32 getCount (eType type)
+        public static Int32 getCount(eType type)
         {
             if (type == eType.Shading)
                 return _patternsCtShade;
@@ -333,7 +333,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Byte[] getBytes (eType type,
+        public static Byte[] getBytes(eType type,
                                        Int32 patternDefIndex)
         {
             if (type == eType.Shading)
@@ -353,7 +353,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static String getDesc (eType type,
+        public static String getDesc(eType type,
                                       Int32 patternDefIndex)
         {
             if (type == eType.Shading)
@@ -373,7 +373,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getHeight (eType type,
+        public static UInt16 getHeight(eType type,
                                        Int32 patternDefIndex)
         {
             if (type == eType.Shading)
@@ -393,7 +393,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getId (eType type,
+        public static UInt16 getId(eType type,
                                    Int32 patternDefIndex)
         {
             if (type == eType.Shading)
@@ -413,7 +413,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getIdSec (eType type,
+        public static UInt16 getIdSec(eType type,
                                       Int32 patternDefIndex)
         {
             if (type == eType.Shading)
@@ -433,7 +433,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static UInt16 getWidth (eType type,
+        public static UInt16 getWidth(eType type,
                                       Int32 patternDefIndex)
         {
             if (type == eType.Shading)

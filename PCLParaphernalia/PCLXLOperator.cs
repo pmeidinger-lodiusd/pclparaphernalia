@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -25,7 +25,7 @@ namespace PCLParaphernalia
 
         private Byte _tag;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagReserved;
         private Boolean _flagEndSession;
@@ -36,29 +36,29 @@ namespace PCLParaphernalia
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L O p e r a t o r                                          //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-	    public PCLXLOperator(Byte                      tag,
-                             Boolean                   flagEndSession,
-                             Boolean                   flagReserved,
+        public PCLXLOperator(Byte tag,
+                             Boolean flagEndSession,
+                             Boolean flagReserved,
                              PCLXLOperators.eEmbedDataType embedDataType,
                              PrnParseConstants.eOvlAct makeOvlAct,
                              String description)
-	    {
-            _tag               = tag;
-            _flagEndSession    = flagEndSession;
-            _flagReserved      = flagReserved;
-	        _embedDataType     = embedDataType;
-	        _description       = description;
+        {
+            _tag = tag;
+            _flagEndSession = flagEndSession;
+            _flagReserved = flagReserved;
+            _embedDataType = embedDataType;
+            _description = description;
             _makeOvlAct = makeOvlAct;
 
-            _statsCtParent  = 0;
-            _statsCtChild   = 0;
+            _statsCtParent = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -67,18 +67,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (
+        public void getDetails(
             ref Boolean flagEndSession,
             ref Boolean flagReserved,
             ref PCLXLOperators.eEmbedDataType embedDataType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
             ref String description)
         {
-            flagEndSession    = _flagEndSession;
-            flagReserved      = _flagReserved;
-            embedDataType     = _embedDataType;
+            flagEndSession = _flagEndSession;
+            flagReserved = _flagReserved;
+            embedDataType = _embedDataType;
             makeOvlAct = _makeOvlAct;
-            description       = _description;
+            description = _description;
         }
 
         //--------------------------------------------------------------------//

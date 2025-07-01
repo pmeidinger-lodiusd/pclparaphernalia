@@ -19,22 +19,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const Int32 _macroIdBaseFront    = 1;
-        const Int32 _macroIdBaseRear     = 11;
-        const Int32 _noForm              = -1;
+        const Int32 _macroIdBaseFront = 1;
+        const Int32 _macroIdBaseRear = 11;
+        const Int32 _noForm = -1;
 
         const Int32 _trayIdAutoSelectPCL = 7;
 
         const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _posXName    = (_unitsPerInch * 1);
-        const Int16 _posXValue   = (_unitsPerInch * 7) / 2;
-        const Int16 _posXIncSub  = (_unitsPerInch / 3);
+        const Int16 _posXName = (_unitsPerInch * 1);
+        const Int16 _posXValue = (_unitsPerInch * 7) / 2;
+        const Int16 _posXIncSub = (_unitsPerInch / 3);
 
-        const Int16 _posYHddr    = (_unitsPerInch * 1);
-        const Int16 _posYDesc    = (_unitsPerInch * 21) / 10;
+        const Int16 _posYHddr = (_unitsPerInch * 1);
+        const Int16 _posYDesc = (_unitsPerInch * 21) / 10;
         const Int16 _posYIncMain = (_unitsPerInch * 3) / 4;
-        const Int16 _posYIncSub  = (_unitsPerInch / 3);
+        const Int16 _posYIncSub = (_unitsPerInch / 3);
 
         //--------------------------------------------------------------------//
         //                                                        F i e l d s //
@@ -59,20 +59,20 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static void generateJob(BinaryWriter prnWriter,
-                                       Int32        pageCount,
-                                       Int32[]      indxPaperSize,
-                                       Int32[]      indxPaperType,
-                                       Int32[]      indxPaperTray,
-                                       Int32[]      indxPlexMode,
-                                       Int32[]      indxOrientFront,
-                                       Int32[]      indxOrientRear,
-                                       Boolean      formAsMacro)
+                                       Int32 pageCount,
+                                       Int32[] indxPaperSize,
+                                       Int32[] indxPaperType,
+                                       Int32[] indxPaperTray,
+                                       Int32[] indxPlexMode,
+                                       Int32[] indxOrientFront,
+                                       Int32[] indxOrientRear,
+                                       Boolean formAsMacro)
         {
             Int32[] indxFormsFront = new Int32[pageCount];
-            Int32[] indxFormsRear  = new Int32[pageCount];
+            Int32[] indxFormsRear = new Int32[pageCount];
 
             Int16[] macroIdsFront = new Int16[pageCount];
-            Int16[] macroIdsRear  = new Int16[pageCount];
+            Int16[] macroIdsRear = new Int16[pageCount];
 
             Single[] scaleFactors = new Single[pageCount];
 
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _logPageOffset = PCLPaperSizes.getLogicalOffset (
+            _logPageOffset = PCLPaperSizes.getLogicalOffset(
                 indxPaperSize[0],
                 _unitsPerInch,
                 PCLOrientations.getAspect(indxOrientFront[0]));
@@ -125,7 +125,6 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             generateJobHeader(prnWriter);
-
 
             if (formAsMacro)
                 generateOverlaySet(prnWriter,
@@ -156,7 +155,7 @@ namespace PCLParaphernalia
                             formAsMacro);
 
             if (formAsMacro)
-                generateOverlayDeletes (prnWriter,
+                generateOverlayDeletes(prnWriter,
                                         formCountFront, formCountRear,
                                         macroIdsFront, macroIdsRear);
 
@@ -200,7 +199,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlayDeletes (BinaryWriter prnWriter,
+        private static void generateOverlayDeletes(BinaryWriter prnWriter,
                                                     Int32 formCountFront,
                                                     Int32 formCountRear,
                                                     Int16[] macroIdsFront,
@@ -208,13 +207,13 @@ namespace PCLParaphernalia
         {
             for (Int32 i = 0; i < formCountFront; i++)
             {
-                PCLWriter.macroControl (prnWriter, macroIdsFront[i],
+                PCLWriter.macroControl(prnWriter, macroIdsFront[i],
                                         PCLWriter.eMacroControl.Delete);
             }
 
             for (Int32 i = 0; i < formCountRear; i++)
             {
-                PCLWriter.macroControl (prnWriter, macroIdsRear[i],
+                PCLWriter.macroControl(prnWriter, macroIdsRear[i],
                                         PCLWriter.eMacroControl.Delete);
             }
         }
@@ -229,18 +228,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlayFront (BinaryWriter prnWriter,
-                                                  Boolean      formAsMacro,
-                                                  Int16        macroId,
-                                                  Single       scaleFactor)
+        private static void generateOverlayFront(BinaryWriter prnWriter,
+                                                  Boolean formAsMacro,
+                                                  Int16 macroId,
+                                                  Single scaleFactor)
         {
             Int16 rectHeight = (Int16)(scaleFactor * (_unitsPerInch / 2));
-            Int16 rectWidth  = (Int16)(scaleFactor * ((_unitsPerInch * 7) / 2));
+            Int16 rectWidth = (Int16)(scaleFactor * ((_unitsPerInch * 7) / 2));
             Int16 rectStroke = (Int16)(scaleFactor * (_unitsPerInch / 200));
 
             Int32 ptSizeHddr = (Int32)(scaleFactor * 24),
                   ptSizeMain = (Int32)(scaleFactor * 18),
-                  ptSizeSub  = (Int32)(scaleFactor * 8);
+                  ptSizeSub = (Int32)(scaleFactor * 8);
 
             Int16 posX,
                   posY,
@@ -252,18 +251,18 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            posYInc = (Int16) (scaleFactor * _posYIncMain);
-            posX = (Int16) ((scaleFactor * _posXName) - _logPageOffset);
-            posY = (Int16) (scaleFactor * _posYHddr);
+            posYInc = (Int16)(scaleFactor * _posYIncMain);
+            posX = (Int16)((scaleFactor * _posXName) - _logPageOffset);
+            posY = (Int16)(scaleFactor * _posYHddr);
 
-            PCLWriter.font (prnWriter, true,
+            PCLWriter.font(prnWriter, true,
                             "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Tray map test (PCL)");
 
             //----------------------------------------------------------------//
 
-            posY = (Int16) (scaleFactor * _posYDesc);
+            posY = (Int16)(scaleFactor * _posYDesc);
 
             PCLWriter.font(prnWriter, true, "", "s" + ptSizeMain + "V");
 
@@ -271,19 +270,19 @@ namespace PCLParaphernalia
 
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Paper Size:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Paper Type:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Plex Mode:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Orientation: ");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "PCL Tray ID:");
-        
+
             posY += posYInc;
             PCLWriter.text(prnWriter, posX, posY, 0, "Printer Tray:");
 
@@ -295,13 +294,13 @@ namespace PCLParaphernalia
 
             PCLWriter.font(prnWriter, true,
                            "19U", "s1p" + ptSizeSub + "v0s3b16602T");
-        
+
             PCLWriter.text(prnWriter, posX, posY, 0,
                       "record the tray name/number used in this box");
 
             //----------------------------------------------------------------//
 
-            posX  = (Int16)(((scaleFactor * _posXValue) - _logPageOffset));
+            posX = (Int16)(((scaleFactor * _posXValue) - _logPageOffset));
             posY -= (Int16)(scaleFactor * (_posXIncSub * 2));
 
             PCLWriter.rectangleOutline(prnWriter, posX, posY,
@@ -325,10 +324,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateOverlayRear (BinaryWriter prnWriter,
-                                                  Boolean     formAsMacro,
-                                                  Int16       macroId,
-                                                  Single      scaleFactor)
+        private static void generateOverlayRear(BinaryWriter prnWriter,
+                                                  Boolean formAsMacro,
+                                                  Int16 macroId,
+                                                  Single scaleFactor)
         {
             Int16 posX,
                   posY,
@@ -346,7 +345,7 @@ namespace PCLParaphernalia
             posYInc = (Int16)(scaleFactor * _posYIncMain);
 
             posX = (Int16)((scaleFactor * _posXName) - _logPageOffset);
-            posY = (Int16)(scaleFactor *_posYHddr);
+            posY = (Int16)(scaleFactor * _posYHddr);
 
             PCLWriter.font(prnWriter, true,
                             "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
@@ -383,17 +382,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateOverlaySet (BinaryWriter prnWriter,
-                                               Int32        pageCount,
-                                               Int32[]      indxPaperSize,
-                                               Int32[]      indxPlexMode,
-                                               Single[]     scaleFactors,
-                                               ref Int32    formCountFront,
-                                               ref Int32    formCountRear,
-                                               ref Int32[]  indxFormsFront,
-                                               ref Int32[]  indxFormsRear,
-                                               ref Int16[]  macroIdsFront,
-                                               ref Int16[]  macroIdsRear)
+        public static void generateOverlaySet(BinaryWriter prnWriter,
+                                               Int32 pageCount,
+                                               Int32[] indxPaperSize,
+                                               Int32[] indxPlexMode,
+                                               Single[] scaleFactors,
+                                               ref Int32 formCountFront,
+                                               ref Int32 formCountRear,
+                                               ref Int32[] indxFormsFront,
+                                               ref Int32[] indxFormsRear,
+                                               ref Int16[] macroIdsFront,
+                                               ref Int16[] macroIdsRear)
         {
             const Int32 noForm = -1;
 
@@ -429,7 +428,7 @@ namespace PCLParaphernalia
             crntFormFront = 0;
 
             macroIdsFront[crntFormFront] =
-                (Int16) (_macroIdBaseFront + crntFormFront);
+                (Int16)(_macroIdBaseFront + crntFormFront);
 
             generateOverlayFront(prnWriter, true,
                                  macroIdsFront[crntFormFront],
@@ -470,7 +469,7 @@ namespace PCLParaphernalia
                     macroIdsFront[crntFormFront] =
                         (Int16)(_macroIdBaseFront + crntFormFront);
 
-                    generateOverlayFront (prnWriter, true,
+                    generateOverlayFront(prnWriter, true,
                                           macroIdsFront[crntFormFront],
                                           scaleFactors[i]);
 
@@ -495,7 +494,7 @@ namespace PCLParaphernalia
                 macroIdsRear[crntFormRear] =
                     (Int16)(_macroIdBaseRear + crntFormRear);
 
-                generateOverlayRear (prnWriter, true,
+                generateOverlayRear(prnWriter, true,
                                      macroIdsRear[crntFormRear],
                                      scaleFactors[0]);
 
@@ -546,7 +545,7 @@ namespace PCLParaphernalia
                         macroIdsRear[crntFormRear] =
                             (Int16)(_macroIdBaseRear + crntFormRear);
 
-                        generateOverlayRear (prnWriter, true,
+                        generateOverlayRear(prnWriter, true,
                                              macroIdsRear[crntFormRear],
                                              scaleFactors[i]);
 
@@ -569,18 +568,18 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generatePage(BinaryWriter prnWriter,
-                                         Int32        pageNo,
-                                         Int32        pageCount,
-                                         Int32        indxPaperSize,
-                                         Int32        indxPaperType,
-                                         Int32        indxPaperTray,
-                                         Int32        indxPlexMode,
-                                         Int32        indxOrientFront,
-                                         Int32        indxOrientRear,
-                                         Int16        macroIdFront,
-                                         Int16        macroIdRear,
-                                         Single       scaleFactor,
-                                         Boolean      formAsMacro)
+                                         Int32 pageNo,
+                                         Int32 pageCount,
+                                         Int32 indxPaperSize,
+                                         Int32 indxPaperType,
+                                         Int32 indxPaperTray,
+                                         Int32 indxPlexMode,
+                                         Int32 indxOrientFront,
+                                         Int32 indxOrientRear,
+                                         Int16 macroIdFront,
+                                         Int16 macroIdRear,
+                                         Single scaleFactor,
+                                         Boolean formAsMacro)
         {
             Int16 posX,
                   posY,
@@ -597,28 +596,28 @@ namespace PCLParaphernalia
                                  indxPlexMode);
 
             if (indxPaperTray != -1)
-                PCLWriter.paperSource(prnWriter, (Int16) indxPaperTray);
+                PCLWriter.paperSource(prnWriter, (Int16)indxPaperTray);
 
-            if (! simplex)
+            if (!simplex)
             {
                 PCLWriter.pageFace(prnWriter, true);
             }
-               
+
             if (formAsMacro)
                 PCLWriter.macroControl(prnWriter, macroIdFront,
                                        PCLWriter.eMacroControl.Call);
             else
-                generateOverlayFront (prnWriter, false,
+                generateOverlayFront(prnWriter, false,
                                       _noForm, scaleFactor);
 
             //----------------------------------------------------------------//
 
             posYInc = (Int16)(scaleFactor * _posYIncMain);
 
-            posX = (Int16)((scaleFactor *_posXValue) - _logPageOffset);
-            posY = (Int16)((scaleFactor *_posYDesc));
+            posX = (Int16)((scaleFactor * _posXValue) - _logPageOffset);
+            posY = (Int16)((scaleFactor * _posYDesc));
 
-            PCLWriter.font (prnWriter, true,
+            PCLWriter.font(prnWriter, true,
                             "19U", "s0p" + pitchMain + "h0s3b4099T");
 
             if (simplex)
@@ -656,7 +655,7 @@ namespace PCLParaphernalia
             else
                 PCLWriter.text(prnWriter, posX, posY, 0,
                           PCLPaperTypes.getName(indxPaperType));
-            
+
             //----------------------------------------------------------------//
 
             posY += posYInc;
@@ -696,7 +695,7 @@ namespace PCLParaphernalia
             //                                                                // 
             //----------------------------------------------------------------//
 
-            if (! simplex)
+            if (!simplex)
             {
                 if (indxOrientRear != indxOrientFront)
                 {
@@ -704,22 +703,22 @@ namespace PCLParaphernalia
                         prnWriter,
                         PCLOrientations.getIdPCL(indxOrientRear).ToString());
                 }
-                                                         
+
                 PCLWriter.pageFace(prnWriter, false);
 
                 if (formAsMacro)
                     PCLWriter.macroControl(prnWriter, macroIdRear,
                                            PCLWriter.eMacroControl.Call);
                 else
-                    generateOverlayRear (prnWriter, false,
+                    generateOverlayRear(prnWriter, false,
                                          _noForm, scaleFactor);
 
                 //----------------------------------------------------------------//
 
                 posX = (Int16)((scaleFactor * _posXValue) - _logPageOffset);
-                posY = (Int16)(scaleFactor *_posYDesc);
+                posY = (Int16)(scaleFactor * _posYDesc);
 
-                PCLWriter.font (prnWriter, true,
+                PCLWriter.font(prnWriter, true,
                                 "19U", "s0p" + pitchMain + "h0s3b4099T");
 
                 PCLWriter.text(prnWriter, posX, posY, 0, pageNo.ToString() +
@@ -728,7 +727,7 @@ namespace PCLParaphernalia
 
                 //----------------------------------------------------------------//
 
-                posY += (Int16) (posYInc * 4);
+                posY += (Int16)(posYInc * 4);
 
                 if (indxOrientRear >= PCLOrientations.getCount())
                     PCLWriter.text(prnWriter, posX, posY, 0, "*** unknown ***");
@@ -749,20 +748,20 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePageSet (BinaryWriter prnWriter,
-                                             Int32        pageCount,
-                                             Int32[]      indxPaperSize,
-                                             Int32[]      indxPaperType,
-                                             Int32[]      indxPaperTray,
-                                             Int32[]      indxPlexMode,
-                                             Int32[]      indxOrientFront,
-                                             Int32[]      indxOrientRear,
-                                             Int32[]      indxFormsFront,
-                                             Int32[]      indxFormsRear,
-                                             Int16[]      macroIdsFront,
-                                             Int16[]      macroIdsRear,
-                                             Single[]     scaleFactors,
-                                             Boolean      formAsMacro)
+        private static void generatePageSet(BinaryWriter prnWriter,
+                                             Int32 pageCount,
+                                             Int32[] indxPaperSize,
+                                             Int32[] indxPaperType,
+                                             Int32[] indxPaperTray,
+                                             Int32[] indxPlexMode,
+                                             Int32[] indxOrientFront,
+                                             Int32[] indxOrientRear,
+                                             Int32[] indxFormsFront,
+                                             Int32[] indxFormsRear,
+                                             Int16[] macroIdsFront,
+                                             Int16[] macroIdsRear,
+                                             Single[] scaleFactors,
+                                             Boolean formAsMacro)
         {
             for (Int32 i = 0; i < pageCount; i++)
             {
@@ -787,7 +786,7 @@ namespace PCLParaphernalia
                 else
                 {
                     macroIdFront = _noForm;
-                    macroIdRear  = _noForm;
+                    macroIdRear = _noForm;
                 }
 
                 generatePage(prnWriter,

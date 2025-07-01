@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace PCLParaphernalia
 {
@@ -44,15 +43,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ObservableCollection<PCLCharCollItem> loadCompListUnicode ()
+        public ObservableCollection<PCLCharCollItem> loadCompListUnicode()
         {
             ObservableCollection<PCLCharCollItem> objColEmp =
-                new ObservableCollection<PCLCharCollItem> ();
+                new ObservableCollection<PCLCharCollItem>();
 
             PCLCharCollections.eBitType bitType;
             Int32 collsCt;
 
-            collsCt = PCLCharCollections.getCollsCount ();
+            collsCt = PCLCharCollections.getCollsCount();
 
             Int32 bitNo;
             String desc;
@@ -62,9 +61,9 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < collsCt; i++)
             {
-                bitNo = PCLCharCollections.getBitNo (i);
-                bitType = PCLCharCollections.getBitType (i);
-                desc = PCLCharCollections.getDescUnicode (i);
+                bitNo = PCLCharCollections.getBitNo(i);
+                bitType = PCLCharCollections.getBitType(i);
+                desc = PCLCharCollections.getDescUnicode(i);
 
                 if (bitType == PCLCharCollections.eBitType.Index_0)
                 {
@@ -87,7 +86,7 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add (new PCLCharCollItem (bitNo,
+                objColEmp.Add(new PCLCharCollItem(bitNo,
                                                     bitType,
                                                     desc,
                                                     itemEnabled,
@@ -113,7 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ObservableCollection<PCLCharCollItem> loadReqListMSL ()
+        public ObservableCollection<PCLCharCollItem> loadReqListMSL()
         {
             ObservableCollection<PCLCharCollItem> objColEmp =
                 new ObservableCollection<PCLCharCollItem>();
@@ -121,7 +120,7 @@ namespace PCLParaphernalia
             PCLCharCollections.eBitType bitType;
             Int32 collsCt;
 
-            collsCt = PCLCharCollections.getCollsCount ();
+            collsCt = PCLCharCollections.getCollsCount();
 
             Int32 bitNo;
             String desc;
@@ -131,9 +130,9 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < collsCt; i++)
             {
-                bitNo   = PCLCharCollections.getBitNo (i);
-                bitType = PCLCharCollections.getBitType (i);
-                desc    = PCLCharCollections.getDescMSL (i);
+                bitNo = PCLCharCollections.getBitNo(i);
+                bitType = PCLCharCollections.getBitType(i);
+                desc = PCLCharCollections.getDescMSL(i);
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
@@ -146,13 +145,13 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add (new PCLCharCollItem (bitNo,
+                objColEmp.Add(new PCLCharCollItem(bitNo,
                                                     bitType,
                                                     desc,
                                                     itemEnabled,
                                                     itemChecked));
             }
-            
+
             return objColEmp;
         }
 
@@ -180,7 +179,7 @@ namespace PCLParaphernalia
             PCLCharCollections.eBitType bitType;
             Int32 collsCt;
 
-            collsCt = PCLCharCollections.getCollsCount ();
+            collsCt = PCLCharCollections.getCollsCount();
 
             Int32 bitNo;
             String desc;
@@ -190,9 +189,9 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < collsCt; i++)
             {
-                bitNo   = PCLCharCollections.getBitNo (i);
-                bitType = PCLCharCollections.getBitType (i);
-                desc    = PCLCharCollections.getDescUnicode (i);
+                bitNo = PCLCharCollections.getBitNo(i);
+                bitType = PCLCharCollections.getBitType(i);
+                desc = PCLCharCollections.getDescUnicode(i);
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
@@ -210,13 +209,13 @@ namespace PCLParaphernalia
                     itemChecked = false;
                 }
 
-                objColEmp.Add (new PCLCharCollItem (bitNo,
+                objColEmp.Add(new PCLCharCollItem(bitNo,
                                                     bitType,
                                                     desc,
                                                     itemEnabled,
                                                     itemChecked));
             }
-            
+
             return objColEmp;
         }
     }

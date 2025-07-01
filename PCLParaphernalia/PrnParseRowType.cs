@@ -27,10 +27,10 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseRowType (PrnParseRowTypes.eType type,
-                                String                 desc)
+        public PrnParseRowType(PrnParseRowTypes.eType type,
+                                String desc)
         {
-            _rowType     = type;
+            _rowType = type;
             _rowTypeDesc = desc;
         }
 

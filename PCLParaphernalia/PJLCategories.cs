@@ -24,7 +24,7 @@ namespace PCLParaphernalia
             Std
         }
 
-        private static PJLCategory[] _categories = 
+        private static PJLCategory[] _categories =
         {
             new PJLCategory(eCategoryType.Custom,
                             "<specify value>"),
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
             new PJLCategory(eCategoryType.Std,
                             "USTATUS")
         };
-        
+
         private static Int32 _categoryCount = _categories.GetUpperBound(0) + 1;
 
         //--------------------------------------------------------------------//

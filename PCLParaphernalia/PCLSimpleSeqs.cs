@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         private static PCLSimpleSeq _seqUnknown;
 
         private static Int32 _seqsCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L S i m p l e S e q s                                          //
@@ -52,9 +52,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkSimpleSeq (
-            Int32       macroLevel,
-            Byte        iChar,
+        public static Boolean checkSimpleSeq(
+            Int32 macroLevel,
+            Byte iChar,
             ref Boolean optObsolete,
             ref Boolean optResetHPGL2,
             ref PrnParseConstants.eOvlAct makeOvlAct,
@@ -63,8 +63,8 @@ namespace PCLParaphernalia
             Boolean seqKnown;
 
             PCLSimpleSeq seq;
-            
-            if (_seqs.IndexOfKey (iChar) != -1)
+
+            if (_seqs.IndexOfKey(iChar) != -1)
             {
                 seqKnown = true;
                 seq = _seqs[iChar];
@@ -74,10 +74,10 @@ namespace PCLParaphernalia
                 seqKnown = false;
                 seq = _seqUnknown;
             }
-            
-            optObsolete     = seq.FlagObsolete;
-            optResetHPGL2   = seq.FlagResetHPGL2;
-            description     = seq.Description;
+
+            optObsolete = seq.FlagObsolete;
+            optResetHPGL2 = seq.FlagResetHPGL2;
+            description = seq.Description;
             makeOvlAct = seq.makeOvlAct;
 
             seq.incrementStatisticsCount(macroLevel);   // Statistical data
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Int32 displaySeqList(DataGrid grid,
-                                           Boolean  incObsSeqs)
+                                           Boolean incObsSeqs)
         {
             Int32 count = 0;
 
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts (DataTable table,
+        public static void displayStatsCounts(DataTable table,
                                                Boolean incUsedSeqsOnly,
                                                Boolean excUnusedObsSeqs)
         {
@@ -149,13 +149,13 @@ namespace PCLParaphernalia
 
             if (displaySeq)
             {
-                if (! hddrWritten)
+                if (!hddrWritten)
                 {
-                    displayStatsCountsHddr (table);
+                    displayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
-                row = table.NewRow ();
+                row = table.NewRow();
 
                 row[0] = _seqUnknown.Sequence;
                 row[1] = _seqUnknown.Description;
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
                 row[3] = _seqUnknown.StatsCtChild;
                 row[4] = _seqUnknown.StatsCtTotal;
 
-                table.Rows.Add (row);
+                table.Rows.Add(row);
             }
 
             //----------------------------------------------------------------//
@@ -183,16 +183,15 @@ namespace PCLParaphernalia
                         displaySeq = false;
                 }
 
-
                 if (displaySeq)
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Sequence;
                     row[1] = kvp.Value.Description;
@@ -200,7 +199,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -214,13 +213,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr (DataTable table)
+        public static void displayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "_____________________";
@@ -228,9 +227,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "PCL simple sequences:";
@@ -238,9 +237,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -248,7 +247,7 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -276,20 +275,20 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone     = false;
+            const Boolean flagNone = false;
             const Boolean flagObsolete = true;
             const Boolean flagResetGL2 = true;
 
             Byte sChar;
 
             sChar = 0x20;                                                // ? //
-             _seqUnknown =
-                new PCLSimpleSeq(sChar,
-                                 flagNone, flagNone,
-                                 PrnParseConstants.eOvlAct.None,
-                                 PrnParseConstants.eSeqGrp.Unknown,
-                                 "*** Unknown sequence ***");
-            
+            _seqUnknown =
+               new PCLSimpleSeq(sChar,
+                                flagNone, flagNone,
+                                PrnParseConstants.eOvlAct.None,
+                                PrnParseConstants.eSeqGrp.Unknown,
+                                "*** Unknown sequence ***");
+
             sChar = 0x31;                                                // 1 //
             _seqs.Add(sChar,
                  new PCLSimpleSeq(sChar,
@@ -434,13 +433,13 @@ namespace PCLParaphernalia
         {
             PCLSimpleSeq seq;
 
-            _seqUnknown.resetStatistics ();
+            _seqUnknown.resetStatistics();
 
             foreach (KeyValuePair<Byte, PCLSimpleSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 
-                seq.resetStatistics ();
+                seq.resetStatistics();
             }
         }
     }

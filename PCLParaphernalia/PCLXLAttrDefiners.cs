@@ -22,7 +22,7 @@ namespace PCLParaphernalia
 
         public enum eTag : byte
         {
-            Ubyte  = 0xf8,
+            Ubyte = 0xf8,
             Uint16 = 0xf9
         }
 
@@ -36,7 +36,7 @@ namespace PCLParaphernalia
             new SortedList<Byte, PCLXLAttrDefiner>();
 
         private static Int32 _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r D e f i n e r s                                  //
@@ -58,7 +58,7 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Int32 displayTags(DataGrid grid,
-                                        Boolean  incResTags)
+                                        Boolean incResTags)
         {
             Int32 count = 0;
 
@@ -90,18 +90,18 @@ namespace PCLParaphernalia
 
         private static void populateTable()
         {
-            const Boolean flagNone     = false;
+            const Boolean flagNone = false;
             const Boolean flagReserved = true;
 
             Byte tag;
 
-            tag = (Byte) eTag.Ubyte;                                 // 0xf8 //
+            tag = (Byte)eTag.Ubyte;                                 // 0xf8 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagNone,
                                      "ubyte"));
 
-            tag = (Byte) eTag.Uint16;                                // 0xf9 //
+            tag = (Byte)eTag.Uint16;                                // 0xf9 //
             _tags.Add(tag,
                 new PCLXLAttrDefiner(tag,
                                      flagReserved,

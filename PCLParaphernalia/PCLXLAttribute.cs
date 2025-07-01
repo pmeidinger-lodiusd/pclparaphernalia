@@ -11,7 +11,7 @@ namespace PCLParaphernalia
     /// </summary>
 
     // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.ObfuscationAttribute (
+    [System.Reflection.ObfuscationAttribute(
         Feature = "renaming",
         ApplyToMembers = true)]
 
@@ -27,7 +27,7 @@ namespace PCLParaphernalia
         private Byte _tagA;
         private Byte _tagB;
 
-        private String  _description;
+        private String _description;
 
         private Boolean _flagReserved;
         private Boolean _flagAttrEnum;
@@ -42,16 +42,16 @@ namespace PCLParaphernalia
 
         private Int32 _statsCtParent;
         private Int32 _statsCtChild;
-      
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P C L X L A t t r i b u t e                                        //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLXLAttribute(Int32   tagLen,
-                              Byte    tagA,
-                              Byte    tagB,
+        public PCLXLAttribute(Int32 tagLen,
+                              Byte tagA,
+                              Byte tagB,
                               Boolean flagReserved,
                               Boolean flagAttrEnum,
                               Boolean flagOperEnum,
@@ -62,23 +62,23 @@ namespace PCLParaphernalia
                               PrnParseConstants.eActPCLXL actionType,
                               PrnParseConstants.eOvlAct makeOvlAct,
                               String description)
-	    {
-            _tagLen            = tagLen;
-            _tagA              = tagA;
-            _tagB              = tagB;
-            _flagReserved      = flagReserved;
-            _flagAttrEnum      = flagAttrEnum;
-            _flagOperEnum      = flagOperEnum;
-            _flagUbyteTxt      = flagUbyteTxt;
-            _flagUintTxt       = flagUintTxt;
-            _flagValIsLen      = flagValIsLen;
-            _flagValIsPCL      = flagValIsPCL;
-            _actionType        = actionType;
-            _makeOvlAct        = makeOvlAct;
-            _description       = description;
+        {
+            _tagLen = tagLen;
+            _tagA = tagA;
+            _tagB = tagB;
+            _flagReserved = flagReserved;
+            _flagAttrEnum = flagAttrEnum;
+            _flagOperEnum = flagOperEnum;
+            _flagUbyteTxt = flagUbyteTxt;
+            _flagUintTxt = flagUintTxt;
+            _flagValIsLen = flagValIsLen;
+            _flagValIsPCL = flagValIsPCL;
+            _actionType = actionType;
+            _makeOvlAct = makeOvlAct;
+            _description = description;
 
             _statsCtParent = 0;
-            _statsCtChild  = 0;
+            _statsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails (
+        public void getDetails(
             ref Boolean flagReserved,
             ref Boolean flagAttrEnum,
             ref Boolean flagOperEnum,
@@ -97,17 +97,17 @@ namespace PCLParaphernalia
             ref Boolean flagValIsPCL,
             ref PrnParseConstants.eActPCLXL actionType,
             ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref String  description)
+            ref String description)
         {
-            flagReserved      = _flagReserved;
-            flagAttrEnum      = _flagAttrEnum;
-            flagOperEnum      = _flagOperEnum;
-            flagUbyteTxt      = _flagUbyteTxt;
-            flagUintTxt       = _flagUintTxt;
-            flagValIsLen      = _flagValIsLen;
-            flagValIsPCL      = _flagValIsPCL;
-            makeOvlAct = _makeOvlAct; 
-            description       = _description;
+            flagReserved = _flagReserved;
+            flagAttrEnum = _flagAttrEnum;
+            flagOperEnum = _flagOperEnum;
+            flagUbyteTxt = _flagUbyteTxt;
+            flagUintTxt = _flagUintTxt;
+            flagValIsLen = _flagValIsLen;
+            flagValIsPCL = _flagValIsPCL;
+            makeOvlAct = _makeOvlAct;
+            description = _description;
         }
 
         //--------------------------------------------------------------------//

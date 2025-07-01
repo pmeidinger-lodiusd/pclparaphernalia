@@ -33,7 +33,7 @@ namespace PCLParaphernalia
 
             MainForm mainForm = new MainForm(filename);
 
-            mainForm.Show ();
+            mainForm.Show();
         }
     }
 }

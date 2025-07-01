@@ -36,13 +36,13 @@ namespace PCLParaphernalia
 
         private String _paperSizeName;
         private String _paperSizeDesc;
-        private Byte   _paperSizeIdPCL;
-        private Byte   _paperSizeIdPCLXL;
+        private Byte _paperSizeIdPCL;
+        private Byte _paperSizeIdPCLXL;
         private String _paperSizeNamePCLXL;
 
         private Boolean _paperSizeIsMetric;
         private Boolean _paperSizeIsRare;
-        
+
         private UInt16 _sizeUnitsPerInch;
         private UInt32 _sizeShortEdge;
         private UInt32 _sizeLongEdge;
@@ -57,32 +57,32 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public PCLPaperSize(PCLPaperSizes.eIndex sizeIndex,
-                            String  name,
-                            String  desc,
-                            Byte    idPCL,
-                            Byte    idPCLXL,
-                            String  namePCLXL,
+                            String name,
+                            String desc,
+                            Byte idPCL,
+                            Byte idPCLXL,
+                            String namePCLXL,
                             Boolean isMetricSize,
                             Boolean isRareSize,
-                            UInt16  sizeUnitsPerInch,
-                            UInt32  sizeShortEdge,
-                            UInt32  sizeLongEdge,
-                            UInt16  marginsLogicalPort,
-                            UInt16  marginsLogicalLand,
-                            UInt16  marginsUnprintable)
+                            UInt16 sizeUnitsPerInch,
+                            UInt32 sizeShortEdge,
+                            UInt32 sizeLongEdge,
+                            UInt16 marginsLogicalPort,
+                            UInt16 marginsLogicalLand,
+                            UInt16 marginsUnprintable)
         {
-            _paperSizeIndex     = sizeIndex;
-            _paperSizeName      = name;
-            _paperSizeDesc      = desc;
-            _paperSizeIdPCL     = idPCL;
-            _paperSizeIdPCLXL   = idPCLXL;
+            _paperSizeIndex = sizeIndex;
+            _paperSizeName = name;
+            _paperSizeDesc = desc;
+            _paperSizeIdPCL = idPCL;
+            _paperSizeIdPCLXL = idPCLXL;
             _paperSizeNamePCLXL = namePCLXL;
-            _paperSizeIsMetric  = isMetricSize;
-            _paperSizeIsRare    = isRareSize;
+            _paperSizeIsMetric = isMetricSize;
+            _paperSizeIsRare = isRareSize;
 
-            _sizeUnitsPerInch   = sizeUnitsPerInch;
-            _sizeShortEdge      = sizeShortEdge;
-            _sizeLongEdge       = sizeLongEdge;
+            _sizeUnitsPerInch = sizeUnitsPerInch;
+            _sizeShortEdge = sizeShortEdge;
+            _sizeLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
             _marginsLogicalLand = marginsLogicalLand;
             _marginsUnprintable = marginsUnprintable;
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
 
         public void customDataCopy(PCLPaperSize customEntry)
         {
-            customEntry.customDataPaste (_paperSizeName,
+            customEntry.customDataPaste(_paperSizeName,
                                          _paperSizeIsMetric,
                                          _paperSizeIsRare,
                                          _sizeUnitsPerInch,
@@ -123,24 +123,24 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void customDataPaste (String  donorName,
+        private void customDataPaste(String donorName,
                                       Boolean isMetricSize,
                                       Boolean isRareSize,
-                                      UInt16  sizeUnitsPerInch,
-                                      UInt32  sizeShortEdge,
-                                      UInt32  sizeLongEdge,
-                                      UInt16  marginsLogicalPort,
-                                      UInt16  marginsLogicalLand,
-                                      UInt16  marginsUnprintable)
+                                      UInt16 sizeUnitsPerInch,
+                                      UInt32 sizeShortEdge,
+                                      UInt32 sizeLongEdge,
+                                      UInt16 marginsLogicalPort,
+                                      UInt16 marginsLogicalLand,
+                                      UInt16 marginsUnprintable)
         {
             _paperSizeDesc = donorName;
 
-            _paperSizeIsMetric  = isMetricSize;
-            _paperSizeIsRare    = isRareSize;
+            _paperSizeIsMetric = isMetricSize;
+            _paperSizeIsRare = isRareSize;
 
-            _sizeUnitsPerInch   = sizeUnitsPerInch;
-            _sizeShortEdge      = sizeShortEdge;
-            _sizeLongEdge       = sizeLongEdge;
+            _sizeUnitsPerInch = sizeUnitsPerInch;
+            _sizeShortEdge = sizeShortEdge;
+            _sizeLongEdge = sizeLongEdge;
             _marginsLogicalPort = marginsLogicalPort;
             _marginsLogicalLand = marginsLogicalLand;
             _marginsUnprintable = marginsUnprintable;
@@ -365,7 +365,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getLogicalOffset(UInt16                  sessionUPI,
+        public UInt16 getLogicalOffset(UInt16 sessionUPI,
                                        PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -385,7 +385,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getLogPageLength (UInt16 sessionUPI,
+        public UInt16 getLogPageLength(UInt16 sessionUPI,
                                         PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getLogPageWidth (UInt16 sessionUPI,
+        public UInt16 getLogPageWidth(UInt16 sessionUPI,
                                        PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -511,7 +511,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getPaperLength(UInt16                  sessionUPI,
+        public UInt16 getPaperLength(UInt16 sessionUPI,
                                      PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -531,7 +531,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public UInt16 getPaperWidth(UInt16                  sessionUPI,
+        public UInt16 getPaperWidth(UInt16 sessionUPI,
                                     PCLOrientations.eAspect aspect)
         {
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -626,7 +626,7 @@ namespace PCLParaphernalia
             {
                 String id,
                        name;
-                 
+
                 if (_paperSizeIdPCLXL == 0xff)
                     id = "?";
                 else

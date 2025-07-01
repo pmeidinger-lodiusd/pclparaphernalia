@@ -50,14 +50,14 @@ namespace PCLParaphernalia
         private static PMLDataType _unknownTag;
 
         private static Int32 _tagCount;
-        
+
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // P M L D a t a T y p e s                                            //
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static PMLDataTypes ()
+        static PMLDataTypes()
         {
             populateTable();
         }
@@ -72,14 +72,14 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Boolean checkTag(
-            Byte       tagToCheck,
+            Byte tagToCheck,
             ref String description)
         {
             Boolean seqKnown;
 
             PMLDataType tag;
 
-            if (_tags.IndexOfKey (tagToCheck) != -1)
+            if (_tags.IndexOfKey(tagToCheck) != -1)
             {
                 seqKnown = true;
                 tag = _tags[tagToCheck];
@@ -90,9 +90,9 @@ namespace PCLParaphernalia
                 tag = _unknownTag;
             }
 
-            description = tag.getDesc ();
+            description = tag.getDesc();
 
-            tag.incrementStatisticsCount (1);   // Statistical data
+            tag.incrementStatisticsCount(1);   // Statistical data
 
             return seqKnown;
         }
@@ -136,11 +136,11 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr (table);
+                        displayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
-                    row = table.NewRow ();
+                    row = table.NewRow();
 
                     row[0] = kvp.Value.Tag;
                     row[1] = kvp.Value.Description;
@@ -148,7 +148,7 @@ namespace PCLParaphernalia
                     row[3] = kvp.Value.StatsCtChild;
                     row[4] = kvp.Value.StatsCtTotal;
 
-                    table.Rows.Add (row);
+                    table.Rows.Add(row);
                 }
             }
         }
@@ -168,7 +168,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "______________";
@@ -176,9 +176,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "PML DataTypes:";
@@ -186,9 +186,9 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
 
-            row = table.NewRow ();
+            row = table.NewRow();
 
             row[0] = "";
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
@@ -196,7 +196,7 @@ namespace PCLParaphernalia
             row[3] = "";
             row[4] = "";
 
-            table.Rows.Add (row);
+            table.Rows.Add(row);
         }
 
         //--------------------------------------------------------------------//
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
             foreach (KeyValuePair<Byte, PMLDataType> kvp in _tags)
             {
                 count++;
-                grid.Items.Add (kvp.Value);
+                grid.Items.Add(kvp.Value);
             }
 
             return count;
@@ -264,52 +264,52 @@ namespace PCLParaphernalia
 
             tag = 0x20;                                              // ?    //
             _unknownTag =
-                new PMLDataType (tag, 
+                new PMLDataType(tag,
                                    "*** Unknown tag ***");
 
-            tag = (Byte) eTag.ObjectID;                              // 0x00 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.ObjectID;                              // 0x00 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Object Identifier"));
 
-            tag = (Byte) eTag.Enumeration;                           // 0x01 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.Enumeration;                           // 0x01 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Enumeration"));
 
-            tag = (Byte) eTag.Sint;                                  // 0x02 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.Sint;                                  // 0x02 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Signed Integer"));
 
-            tag = (Byte) eTag.Real;                                  // 0x03 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.Real;                                  // 0x03 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Real"));
 
-            tag = (Byte) eTag.String;                                // 0x04 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.String;                                // 0x04 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "String"));
 
-            tag = (Byte) eTag.Binary;                                // 0x05 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.Binary;                                // 0x05 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Binary"));
 
-            tag = (Byte) eTag.ErrorCode;                             // 0x06 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.ErrorCode;                             // 0x06 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Error Code"));
 
-            tag = (Byte) eTag.NullValue;                             // 0x07 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.NullValue;                             // 0x07 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Null Value"));
 
-            tag = (Byte) eTag.Collection;                            // 0x08 //
-            _tags.Add (tag,
-                new PMLDataType (tag,
+            tag = (Byte)eTag.Collection;                            // 0x08 //
+            _tags.Add(tag,
+                new PMLDataType(tag,
                                    "Collection"));
 
             _tagCount = _tags.Count;

@@ -44,8 +44,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static Boolean checkForStreamName(String     fileName,
-                                                  Int64      fileSize,
+        private static Boolean checkForStreamName(String fileName,
+                                                  Int64 fileSize,
                                                   ref String streamName)
         {
             const UInt16 minFileSize = 128; // enough to read initial operators
@@ -57,30 +57,30 @@ namespace PCLParaphernalia
 
             Int32 dataLen,
                   pos;
-            
+
             Byte[] buf = new Byte[minFileSize];
 
-            _ipStream.Seek (0, SeekOrigin.Begin);
+            _ipStream.Seek(0, SeekOrigin.Begin);
 
             if (fileSize < minFileSize)
                 OK = false;
             else
-                _binReader.Read (buf, 0, minFileSize);
+                _binReader.Read(buf, 0, minFileSize);
 
             pos = 0;
 
             while (OK && !beginFound)
             {
-                if (buf[pos] == (Byte) PCLXLDataTypes.eTag.UbyteArray)
+                if (buf[pos] == (Byte)PCLXLDataTypes.eTag.UbyteArray)
                 {
                     // start of ubyte array for StreamName attribute;
 
-                    if (buf[pos + 1] == (Byte) PCLXLDataTypes.eTag.Uint16)
+                    if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Uint16)
                     {
                         dataLen = (buf[pos + 3] * 256) + buf[pos + 2];
                         pos += 4;
                     }
-                    else if (buf[pos + 1] == (Byte) PCLXLDataTypes.eTag.Ubyte)
+                    else if (buf[pos + 1] == (Byte)PCLXLDataTypes.eTag.Ubyte)
                     {
                         dataLen = buf[pos + 2];
                         pos += 3;
@@ -98,16 +98,16 @@ namespace PCLParaphernalia
 
                         for (Int32 i = 0; i < dataLen; i++)
                         {
-                            streamNameArray[i] = (char) buf[pos + i];
+                            streamNameArray[i] = (char)buf[pos + i];
                         }
 
-                        streamName = new String (streamNameArray);
+                        streamName = new String(streamNameArray);
 
                         pos += dataLen;
                         pos += 2;
                     }
                 }
-                else if (buf[pos] == (Byte) PCLXLOperators.eTag.BeginStream)
+                else if (buf[pos] == (Byte)PCLXLOperators.eTag.BeginStream)
                 {
                     beginFound = true;
                     pos += 1;
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static Boolean checkStreamFile(String     filename,
+        public static Boolean checkStreamFile(String filename,
                                               ref String streamName)
         {
             Boolean fileOpen = false;
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = streamFileOpen (filename, ref fileSize);
+            fileOpen = streamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -159,10 +159,10 @@ namespace PCLParaphernalia
             }
             else
             {
-                streamNamePresent = checkForStreamName (filename, fileSize,
+                streamNamePresent = checkForStreamName(filename, fileSize,
                                                         ref streamName);
 
-                streamFileClose ();
+                streamFileClose();
             }
 
             return streamNamePresent;
@@ -188,15 +188,14 @@ namespace PCLParaphernalia
 
             catch (IOException e)
             {
-                MessageBox.Show ("IO Exception:\r\n" +
+                MessageBox.Show("IO Exception:\r\n" +
                                  e.Message + "\r\n" +
                                  "Closing stream/file",
                                  "PCL XL user stream analysis",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Error);
             }
-
-        }         
+        }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -208,9 +207,9 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         public static Boolean streamFileEmbed(BinaryWriter prnWriter,
-                                              String       filename,
-                                              String       streamName,
-                                              Boolean      encapsulated)
+                                              String filename,
+                                              String streamName,
+                                              Boolean encapsulated)
         {
             Boolean fileOpen = false;
 
@@ -218,7 +217,7 @@ namespace PCLParaphernalia
 
             Int64 fileSize = 0;
 
-            fileOpen = streamFileOpen (filename, ref fileSize);
+            fileOpen = streamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -230,13 +229,13 @@ namespace PCLParaphernalia
                 Int32 readSize;
 
                 Boolean endLoop;
-                                
+
                 Byte[] buffer = new Byte[bufSize];
-                
+
                 endLoop = false;
 
-                if (! encapsulated)
-                    PCLXLWriter.streamBegin (prnWriter, streamName);
+                if (!encapsulated)
+                    PCLXLWriter.streamBegin(prnWriter, streamName);
 
                 while (!endLoop)
                 {
@@ -245,15 +244,15 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                        PCLXLWriter.writeStreamBlock (prnWriter,
-                                                      ! encapsulated,
+                        PCLXLWriter.writeStreamBlock(prnWriter,
+                                                      !encapsulated,
                                                       buffer, ref readSize);
                 }
 
-                if (! encapsulated)
-                    PCLXLWriter.streamEnd (prnWriter);
+                if (!encapsulated)
+                    PCLXLWriter.streamEnd(prnWriter);
 
-                streamFileClose ();
+                streamFileClose();
             }
 
             return OK;
@@ -273,19 +272,18 @@ namespace PCLParaphernalia
         {
             Boolean open = false;
 
-
             if ((fileName == null) || (fileName == ""))
             {
-                MessageBox.Show ("Download stream file name is null.",
+                MessageBox.Show("Download stream file name is null.",
                                 "PCL XL stream invalid",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
 
                 return false;
             }
-            else if (!File.Exists (fileName))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show ("Download stream file '" + fileName +
+                MessageBox.Show("Download stream file '" + fileName +
                                 "' does not exist.",
                                 "PCL XL stream invalid",
                                 MessageBoxButton.OK,
@@ -297,7 +295,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open (fileName,
+                    _ipStream = File.Open(fileName,
                                            FileMode.Open,
                                            FileAccess.Read,
                                            FileShare.None);
@@ -305,7 +303,7 @@ namespace PCLParaphernalia
 
                 catch (IOException e)
                 {
-                    MessageBox.Show ("IO Exception:\r\n" +
+                    MessageBox.Show("IO Exception:\r\n" +
                                      e.Message + "\r\n" +
                                      "Opening file '" +
                                      fileName + "'",
@@ -318,15 +316,15 @@ namespace PCLParaphernalia
                 {
                     open = true;
 
-                    FileInfo fi = new FileInfo (fileName);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
-                    _binReader = new BinaryReader (_ipStream);
+                    _binReader = new BinaryReader(_ipStream);
                 }
             }
 
             return open;
-        }         
+        }
     }
 }

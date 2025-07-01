@@ -21,9 +21,9 @@ namespace PCLParaphernalia
         private PCLPlexModes.ePlexType _plexType;
 
         private String _plexModeName;
-        private Byte   _plexModeIdPCL;
-        private Byte   _plexModeIdPCLXLLand;
-        private Byte   _plexModeIdPCLXLPort;
+        private Byte _plexModeIdPCL;
+        private Byte _plexModeIdPCLXLLand;
+        private Byte _plexModeIdPCLXLPort;
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -31,15 +31,15 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexMode (PCLPlexModes.ePlexType plexType,
-                            String                 name,
-                            Byte                   idPCL,
-                            Byte                   idPCLXLLand,
-                            Byte                   idPCLXLPort)
+        public PCLPlexMode(PCLPlexModes.ePlexType plexType,
+                            String name,
+                            Byte idPCL,
+                            Byte idPCLXLLand,
+                            Byte idPCLXLPort)
         {
-            _plexType           = plexType;
-            _plexModeName       = name;
-            _plexModeIdPCL      = idPCL;
+            _plexType = plexType;
+            _plexModeName = name;
+            _plexModeIdPCL = idPCL;
             _plexModeIdPCLXLLand = idPCLXLLand;
             _plexModeIdPCLXLPort = idPCLXLPort;
         }

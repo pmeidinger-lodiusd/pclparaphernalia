@@ -19,23 +19,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        const String _hexChars          = "0123456789ABCDEF";
+        const String _hexChars = "0123456789ABCDEF";
 
-        const Int32 _macroId            = 1;
-        const Int16 _gridDim            = 16;
-        const Int32 _gridDimHalf        = _gridDim / 2;
-        const Int16 _gridCols           = _gridDim;
-        const Int16 _gridRows           = _gridDim;
-        const UInt16 _unitsPerInch      = PCLWriter.sessionUPI;
+        const Int32 _macroId = 1;
+        const Int16 _gridDim = 16;
+        const Int32 _gridDimHalf = _gridDim / 2;
+        const Int16 _gridCols = _gridDim;
+        const Int16 _gridRows = _gridDim;
+        const UInt16 _unitsPerInch = PCLWriter.sessionUPI;
 
-        const Int16 _lineSpacing        = _unitsPerInch / 4;
-        const Int16 _cellWidth          = (_unitsPerInch * 1) / 3;
-        const Int16 _cellHeight         = (_unitsPerInch * 25) / 60;
+        const Int16 _lineSpacing = _unitsPerInch / 4;
+        const Int16 _cellWidth = (_unitsPerInch * 1) / 3;
+        const Int16 _cellHeight = (_unitsPerInch * 25) / 60;
 
-        const Int16 _marginX            = (_unitsPerInch * 7) / 6;
-        const Int16 _posYDesc           = (_unitsPerInch * 3) / 4;
-        const Int16 _posYGrid           = _posYDesc + (_lineSpacing * 4);
-        const Int16 _posYSelData        = _posYGrid +
+        const Int16 _marginX = (_unitsPerInch * 7) / 6;
+        const Int16 _posYDesc = (_unitsPerInch * 3) / 4;
+        const Int16 _posYGrid = _posYDesc + (_lineSpacing * 4);
+        const Int16 _posYSelData = _posYGrid +
                                           (_cellHeight * (_gridRows + 2)) +
                                           (_lineSpacing * 2);
 
@@ -63,39 +63,39 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob (
-            BinaryWriter                 prnWriter,
-            PCLFonts.eFontType           fontType,
-            Int32                        indxPaperSize,
-            Int32                        indxPaperType,
-            Int32                        indxOrientation,
-            Boolean                      formAsMacro,
-            Boolean                      showC0Chars,
-            Boolean                      optGridVertical,
-            Boolean                      fontBound,
-            String                       fontId,
-            String                       fontDesc,
-            String                       symbolSet,
-            String                       fontLoadDesc,
-            String                       fontSelDesc,
-            String                       fontSelSeq,
-            String                       symbolSetName,
-            UInt16 []                    sampleRangeOffsets,
+        public static void generateJob(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
+            Int32 indxPaperSize,
+            Int32 indxPaperType,
+            Int32 indxOrientation,
+            Boolean formAsMacro,
+            Boolean showC0Chars,
+            Boolean optGridVertical,
+            Boolean fontBound,
+            String fontId,
+            String fontDesc,
+            String symbolSet,
+            String fontLoadDesc,
+            String fontSelDesc,
+            String fontSelSeq,
+            String symbolSetName,
+            UInt16[] sampleRangeOffsets,
             PCLTextParsingMethods.eIndex indxTextParseMethod,
-            Double                       pointSize,
-            Boolean                      sizeIsHeight,
-            Boolean                      downloadFontRemove,
-            Boolean                      fontSelectById,
-            Boolean                      prnDiskFontDataKnown,
-            Boolean                      prnDiskFontLoadViaMacro,
-            UInt16                       fontIdNo,
-            UInt16                       fontMacroIdNo,
-            String                       fontFilename,
-            Boolean                      symSetUserSet,
-            Boolean                      showMapCodesUCS2,
-            Boolean                      showMapCodesUTF8,
-            Boolean                      symSetUserActEmbed,
-            String                       symSetUserFile)
+            Double pointSize,
+            Boolean sizeIsHeight,
+            Boolean downloadFontRemove,
+            Boolean fontSelectById,
+            Boolean prnDiskFontDataKnown,
+            Boolean prnDiskFontLoadViaMacro,
+            UInt16 fontIdNo,
+            UInt16 fontMacroIdNo,
+            String fontFilename,
+            Boolean symSetUserSet,
+            Boolean showMapCodesUCS2,
+            Boolean showMapCodesUTF8,
+            Boolean symSetUserActEmbed,
+            String symSetUserFile)
         {
             PCLOrientations.eAspect aspect;
 
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
                 symSetKind1 = PCLSymbolSets.translateIdToKind1(symbolSet);
 
                 if ((!symSetUserActEmbed) ||
-                    (showMapCodesUCS2)    || (showMapCodesUTF8))
+                    (showMapCodesUCS2) || (showMapCodesUTF8))
                 {
                     //--------------------------------------------------------//
                     //                                                        //
@@ -172,7 +172,7 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < pageCt; i++)
             {
-                UInt16 rangeOffset = sampleRangeOffsets[i];  
+                UInt16 rangeOffset = sampleRangeOffsets[i];
 
                 generatePage(prnWriter,
                              fontType,
@@ -229,63 +229,63 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader (
-            BinaryWriter           prnWriter,
-            PCLFonts.eFontType     fontType,
-            Boolean                prnDiskFontLoadViaMacro,
-            Int32                  indxPaperSize,
-            Int32                  indxPaperType,
-            Int32                  indxOrientation,
-            Boolean                formAsMacro,
-            Boolean                optGridVertical,
-            UInt16                 logXOffset,
-            UInt16                 fontIdNo,
-            UInt16                 fontMacroIdNo,
-            String                 fontFilename,
-            Boolean                symSetUserSet,
-            Boolean                symSetUserActEmbed,
-            String                 symSetUserFile)
+        private static void generateJobHeader(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
+            Boolean prnDiskFontLoadViaMacro,
+            Int32 indxPaperSize,
+            Int32 indxPaperType,
+            Int32 indxOrientation,
+            Boolean formAsMacro,
+            Boolean optGridVertical,
+            UInt16 logXOffset,
+            UInt16 fontIdNo,
+            UInt16 fontMacroIdNo,
+            String fontFilename,
+            Boolean symSetUserSet,
+            Boolean symSetUserActEmbed,
+            String symSetUserFile)
         {
-            PCLWriter.stdJobHeader (prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, "");
 
             if ((symSetUserSet) && (symSetUserActEmbed))
             {
-                PCLDownloadSymSet.symSetFileCopy (prnWriter, symSetUserFile);
+                PCLDownloadSymSet.symSetFileCopy(prnWriter, symSetUserFile);
             }
 
             if (fontType == PCLFonts.eFontType.Download)
             {
-                PCLWriter.fontDownloadID (prnWriter, fontIdNo);
+                PCLWriter.fontDownloadID(prnWriter, fontIdNo);
 
-                PCLDownloadFont.fontFileCopy (prnWriter, fontFilename);
+                PCLDownloadFont.fontFileCopy(prnWriter, fontFilename);
 
-                PCLWriter.fontDownloadSave (prnWriter, true);
+                PCLWriter.fontDownloadSave(prnWriter, true);
             }
             else if (fontType == PCLFonts.eFontType.PrnDisk)
             {
                 if (prnDiskFontLoadViaMacro)
                 {
-                    PCLWriter.fontFileIdAssociate (prnWriter,
+                    PCLWriter.fontFileIdAssociate(prnWriter,
                                                    fontIdNo,
                                                    fontMacroIdNo,
                                                    fontFilename);
                 }
                 else
                 {
-                    PCLWriter.fontFileIdAssociate (prnWriter,
+                    PCLWriter.fontFileIdAssociate(prnWriter,
                                                    fontIdNo,
                                                    fontFilename);
                 }
 
-                PCLWriter.fontDownloadSave (prnWriter, true);
+                PCLWriter.fontDownloadSave(prnWriter, true);
             }
 
             if (formAsMacro)
             {
-                generateOverlay (prnWriter, true, optGridVertical, logXOffset);
+                generateOverlay(prnWriter, true, optGridVertical, logXOffset);
             }
 
-            PCLWriter.pageHeader (prnWriter,
+            PCLWriter.pageHeader(prnWriter,
                                   indxPaperSize,
                                   indxPaperType,
                                   indxOrientation,
@@ -302,25 +302,25 @@ namespace PCLParaphernalia
         //--------------------------------------------------------------------//
 
         private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               Boolean      formAsMacro,
-                                               Boolean      downloadFont,
-                                               Boolean      downloadFontRemove,
-                                               Boolean      fontMacroRemove,
-                                               UInt16       downloadID,
-                                               UInt16       fontMacroIdNo,
-                                               Boolean      symSetUserSet,
-                                               Boolean      symSetUserActEmbed,
-                                               UInt16       symSetUserNo)
+                                               Boolean formAsMacro,
+                                               Boolean downloadFont,
+                                               Boolean downloadFontRemove,
+                                               Boolean fontMacroRemove,
+                                               UInt16 downloadID,
+                                               UInt16 fontMacroIdNo,
+                                               Boolean symSetUserSet,
+                                               Boolean symSetUserActEmbed,
+                                               UInt16 symSetUserNo)
         {
             if ((downloadFont) && (downloadFontRemove))
             {
                 PCLWriter.fontDownloadRemove(prnWriter, downloadID);
             }
-            
+
             if (fontMacroRemove)
             {
-                PCLWriter.macroControl (prnWriter,
-                                        (Int16) fontMacroIdNo,
+                PCLWriter.macroControl(prnWriter,
+                                        (Int16)fontMacroIdNo,
                                         PCLWriter.eMacroControl.Delete);
             }
 
@@ -666,7 +666,7 @@ namespace PCLParaphernalia
             posY += _lineSpacing;
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Size:");
-            
+
             posY += _lineSpacing;
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Symbol set:");
@@ -674,7 +674,6 @@ namespace PCLParaphernalia
             posY += _lineSpacing;
 
             PCLWriter.text(prnWriter, posX, posY, 0, "Description:");
-
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -717,43 +716,43 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generatePage (
-            BinaryWriter                 prnWriter,
-            PCLFonts.eFontType           fontType,
-            Boolean                      prnDiskFontDataKnown,
-            Boolean                      formAsMacro,
-            Boolean                      showC0Chars,
-            Boolean                      optGridVertical,
-            Boolean                      fontBound,
-            String                       fontId,
-            String                       fontDesc,
-            String                       symSetId,
-            String                       fontLoadDesc,
-            String                       fontSelDesc,
-            String                       fontSelSeq,
-            String                       symbolSetName,
-            UInt16                       sampleRangeOffset,
+        private static void generatePage(
+            BinaryWriter prnWriter,
+            PCLFonts.eFontType fontType,
+            Boolean prnDiskFontDataKnown,
+            Boolean formAsMacro,
+            Boolean showC0Chars,
+            Boolean optGridVertical,
+            Boolean fontBound,
+            String fontId,
+            String fontDesc,
+            String symSetId,
+            String fontLoadDesc,
+            String fontSelDesc,
+            String fontSelSeq,
+            String symbolSetName,
+            UInt16 sampleRangeOffset,
             PCLTextParsingMethods.eIndex indxTextParseMethod,
-            Double                       fontSize,
-            Boolean                      sizeIsHeight,
-            UInt16                       logXOffset,
-            Boolean                      fontSelectById,
-            UInt16                       fontIdNo,
-            String                       fontFilename,
-            Boolean                      symSetUserSet,
-            Boolean                      showMapCodesUCS2,
-            Boolean                      showMapCodesUTF8,
-            Boolean                      symSetUserActEmbed,
-            String                       symSetUserFile)
+            Double fontSize,
+            Boolean sizeIsHeight,
+            UInt16 logXOffset,
+            Boolean fontSelectById,
+            UInt16 fontIdNo,
+            String fontFilename,
+            Boolean symSetUserSet,
+            Boolean showMapCodesUCS2,
+            Boolean showMapCodesUTF8,
+            Boolean symSetUserActEmbed,
+            String symSetUserFile)
         {
-            const Int32 rangeC0Max        = 0x1f;
-            const Int32 singleByteMax     = 0xff;
-            const Int32 indxMajorC0Start  = 0;
-            const Int32 indxMajorC0End    = 2;
+            const Int32 rangeC0Max = 0x1f;
+            const Int32 singleByteMax = 0xff;
+            const Int32 indxMajorC0Start = 0;
+            const Int32 indxMajorC0End = 2;
             const Int32 sizeSingleByteSet = 256;
 
             Int16 marginX = (Int16)(_marginX - logXOffset);
-            
+
             Int16 posX,
                   posY,
                   posXStart,
@@ -778,7 +777,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             PCLWriter.font(prnWriter, true, "19U", "s0p10h0s3b4099T");
-            
+
             posX = (Int16)(marginX + ((_cellWidth * 7) / 2));
             posY = _posYDesc;
 
@@ -789,14 +788,14 @@ namespace PCLParaphernalia
                 const Int32 halfLen = (maxLen - 5) / 2;
 
                 Int32 len = fontFilename.Length;
- 
+
                 if (len < maxLen)
                     PCLWriter.text(prnWriter, posX, posY, 0, fontFilename);
                 else
-                    PCLWriter.text(prnWriter, posX, posY, 0, 
+                    PCLWriter.text(prnWriter, posX, posY, 0,
                                    fontFilename.Substring(0, halfLen) +
                                    " ... " +
-                                   fontFilename.Substring(len-halfLen,
+                                   fontFilename.Substring(len - halfLen,
                                                           halfLen));
             }
             else
@@ -807,7 +806,7 @@ namespace PCLParaphernalia
             posY += _lineSpacing;
 
             if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-                (! prnDiskFontDataKnown))
+                (!prnDiskFontDataKnown))
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                "characteristics not known");
             else if (sizeIsHeight)
@@ -825,12 +824,12 @@ namespace PCLParaphernalia
             if ((fontType == PCLFonts.eFontType.PrnDisk) &&
                 (!prnDiskFontDataKnown))
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                "characteristics not known");
             }
             else if (sampleRangeOffset == 0)
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 symSetId + " (" + symbolSetName + ")");
             }
             else
@@ -838,9 +837,9 @@ namespace PCLParaphernalia
                 String offsetText;
 
                 offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString ("X4");
+                             sampleRangeOffset.ToString("X4");
 
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 symSetId + " (" + symbolSetName + ")" +
                                 offsetText);
             }
@@ -885,13 +884,13 @@ namespace PCLParaphernalia
 
             if (fontLoadDesc != "")
             {
-                PCLWriter.text (prnWriter, posX, posY, 0,
+                PCLWriter.text(prnWriter, posX, posY, 0,
                                 fontLoadDesc);
 
                 posY += _lineSpacing;
             }
 
-            PCLWriter.text (prnWriter, posX, posY, 0,
+            PCLWriter.text(prnWriter, posX, posY, 0,
                             fontSelDesc);
 
             //----------------------------------------------------------------//
@@ -901,7 +900,7 @@ namespace PCLParaphernalia
                 (fontSelectById))
             {
                 if (fontBound)
-                    PCLWriter.font(prnWriter, true, "", 
+                    PCLWriter.font(prnWriter, true, "",
                                    (fontIdNo + "X"));
                 else
                     PCLWriter.font(prnWriter, true, symSetId,
@@ -1068,7 +1067,6 @@ namespace PCLParaphernalia
             posXStart = posX;
             posYStart = posY;
 
-
             //----------------------------------------------------------------//
 
             for (Int32 indxMajor = startIndxMajor;
@@ -1090,7 +1088,7 @@ namespace PCLParaphernalia
 
                     PCLWriter.cursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-                    UInt16 codeVal = (UInt16) (sampleRangeOffset +
+                    UInt16 codeVal = (UInt16)(sampleRangeOffset +
                                                (indxMajor * _gridDim) +
                                                indxMinor);
 
@@ -1179,7 +1177,7 @@ namespace PCLParaphernalia
                             }
                         }
                         else if ((codeVal <= singleByteMax) &&
-                                 (! twoByteMethod))
+                                 (!twoByteMethod))
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -1245,7 +1243,7 @@ namespace PCLParaphernalia
             if (indxTextParseMethod !=
                 PCLTextParsingMethods.eIndex.not_specified)
             {
-                PCLWriter.textParsingMethod (
+                PCLWriter.textParsingMethod(
                     prnWriter,
                     PCLTextParsingMethods.eIndex.m0_1_byte_default);
             }
@@ -1403,14 +1401,14 @@ namespace PCLParaphernalia
                             String utf8Hex = null;
                             Int32 utf8HexLen = 0;
 
-                            PrnParseDataUTF8.convertUTF32ToUTF8HexString (
+                            PrnParseDataUTF8.convertUTF32ToUTF8HexString(
                                 mapVal,
                                 true,
                                 ref utf8Hex);
 
                             utf8HexLen = utf8Hex.Length;
 
-                            prnWriter.Write (utf8Hex.ToCharArray(),
+                            prnWriter.Write(utf8Hex.ToCharArray(),
                                              0, utf8HexLen);
                         }
                     }

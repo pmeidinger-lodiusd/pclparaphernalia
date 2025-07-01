@@ -41,21 +41,21 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static PCLOrientation[] _orientations = 
+        private static PCLOrientation[] _orientations =
         {
-            new PCLOrientation(eAspect.Portrait, 
+            new PCLOrientation(eAspect.Portrait,
                                "Portrait",
                                0x00,
                                (Byte)PCLXLAttrEnums.eVal.ePortraitOrientation),
-            new PCLOrientation(eAspect.Landscape, 
+            new PCLOrientation(eAspect.Landscape,
                                "Landscape",
                                0x01,
                                (Byte)PCLXLAttrEnums.eVal.eLandscapeOrientation),
-            new PCLOrientation(eAspect.Portrait, 
+            new PCLOrientation(eAspect.Portrait,
                                "Reverse Portrait",
                                0x02,
                                (Byte)PCLXLAttrEnums.eVal.eReversePortrait),
-            new PCLOrientation(eAspect.Landscape, 
+            new PCLOrientation(eAspect.Landscape,
                                "Reverse Landscape",
                                0x03,
                                (Byte)PCLXLAttrEnums.eVal.eReverseLandscape)
@@ -146,7 +146,7 @@ namespace PCLParaphernalia
 
         public static Boolean isLandscape(Int32 index)
         {
-            if (_orientations[index].getAspect () == eAspect.Landscape)
+            if (_orientations[index].getAspect() == eAspect.Landscape)
                 return true;
             else
                 return false;

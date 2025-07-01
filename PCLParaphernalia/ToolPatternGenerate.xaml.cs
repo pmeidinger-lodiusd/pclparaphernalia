@@ -1,11 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Media;
+﻿using System;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace PCLParaphernalia
 {
@@ -17,7 +15,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2017
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -35,7 +33,7 @@ namespace PCLParaphernalia
             (Int32) ToolCommonData.ePrintLang.PCLXL,
         };
 
-        private static Int32[] _subsetOrientations = 
+        private static Int32[] _subsetOrientations =
         {
             (Int32) PCLOrientations.eIndex.Portrait,
             (Int32) PCLOrientations.eIndex.Landscape,
@@ -67,7 +65,7 @@ namespace PCLParaphernalia
         private Int32 _ctOrientations;
         private Int32 _ctPaperSizes;
         private Int32 _ctPaperTypes;
-   //   private Int32 _ctRasterResolutions;
+        //   private Int32 _ctRasterResolutions;
 
         private Int32 _indxPDL;
         private Int32 _indxOrientationPCL;
@@ -76,23 +74,22 @@ namespace PCLParaphernalia
         private Int32 _indxPaperSizePCLXL;
         private Int32 _indxPaperTypePCL;
         private Int32 _indxPaperTypePCLXL;
-   //   private Int32 _indxRasterResolutionPCL;
+        //   private Int32 _indxRasterResolutionPCL;
 
-   //   private Int32 _destScalePercentX;
-   //   private Int32 _destScalePercentY;
+        //   private Int32 _destScalePercentX;
+        //   private Int32 _destScalePercentY;
 
-   //   private Single _destPosX;
-   //   private Single _destPosY;
+        //   private Single _destPosX;
+        //   private Single _destPosY;
 
         private String _bitmapFilename;
 
         private Boolean _initialised;
 
-   //   private static Boolean stateTglBtn_01f = false;
-   //   private static Boolean stateBtn_01f = false;
+        //   private static Boolean stateTglBtn_01f = false;
+        //   private static Boolean stateBtn_01f = false;
         private static Boolean[] _patternStateBtns;
         private static UniformGrid _uGridPattern;
-
 
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
@@ -100,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ToolPatternGenerate (ref ToolCommonData.ePrintLang crntPDL)
+        public ToolPatternGenerate(ref ToolCommonData.ePrintLang crntPDL)
         {
             InitializeComponent();
 
@@ -124,7 +121,7 @@ namespace PCLParaphernalia
 
             String filename = _bitmapFilename;
 
-            selected = selectImageFile (ref filename);
+            selected = selectImageFile(ref filename);
 
             if (selected)
             {
@@ -426,7 +423,7 @@ namespace PCLParaphernalia
                 pdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
-                _crntPDL = (ToolCommonData.ePrintLang) _subsetPDLs[_indxPDL];
+                _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
                 pdlOptionsRestore();
 
@@ -492,7 +489,7 @@ namespace PCLParaphernalia
         private void initialise()
         {
             Int32 index;
-            
+
             _initialised = false;
 
             //----------------------------------------------------------------//
@@ -567,7 +564,7 @@ namespace PCLParaphernalia
             */
             //----------------------------------------------------------------//
 
-            resetTarget ();
+            resetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -596,7 +593,7 @@ namespace PCLParaphernalia
 
             gridPattern.Children.Add(_uGridPattern);
 
-            _uGridPattern.Rows    = 16;
+            _uGridPattern.Rows = 16;
             _uGridPattern.Columns = 16;
 
             Int32 btnCt = _uGridPattern.Rows * _uGridPattern.Columns;
@@ -744,14 +741,14 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCL;
-                cbPaperSize.SelectedIndex   = _indxPaperSizePCL;
-                cbPaperType.SelectedIndex   = _indxPaperTypePCL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCL;
             }
             else
             {
                 cbOrientation.SelectedIndex = _indxOrientationPCLXL;
-                cbPaperSize.SelectedIndex   = _indxPaperSizePCLXL;
-                cbPaperType.SelectedIndex   = _indxPaperTypePCLXL;
+                cbPaperSize.SelectedIndex = _indxPaperSizePCLXL;
+                cbPaperType.SelectedIndex = _indxPaperTypePCLXL;
             }
         }
 
@@ -769,14 +766,14 @@ namespace PCLParaphernalia
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
                 _indxOrientationPCL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCL   = cbPaperType.SelectedIndex;
+                _indxPaperSizePCL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCL = cbPaperType.SelectedIndex;
             }
             else
             {
                 _indxOrientationPCLXL = cbOrientation.SelectedIndex;
-                _indxPaperSizePCLXL   = cbPaperSize.SelectedIndex;
-                _indxPaperTypePCLXL   = cbPaperType.SelectedIndex;
+                _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
+                _indxPaperTypePCLXL = cbPaperType.SelectedIndex;
             }
         }
 
@@ -791,7 +788,7 @@ namespace PCLParaphernalia
 
         public void resetTarget()
         {
-            TargetCore.eTarget targetType = TargetCore.getType ();
+            TargetCore.eTarget targetType = TargetCore.getType();
 
             if (targetType == TargetCore.eTarget.File)
             {
@@ -800,7 +797,7 @@ namespace PCLParaphernalia
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
                 String netPrnAddress = "";
-                Int32  netPrnPort = 0;
+                Int32 netPrnPort = 0;
 
                 Int32 netTimeoutSend = 0;
                 Int32 netTimeoutReceive = 0;
@@ -813,13 +810,13 @@ namespace PCLParaphernalia
                 btnGenerate.Content = "Generate & send test data to " +
                                       "\r\n" +
                                       netPrnAddress + " : " +
-                                      netPrnPort.ToString ();
+                                      netPrnPort.ToString();
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
                 String winPrintername = "";
 
-                TargetCore.metricsLoadWinPrinter (ref winPrintername);
+                TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -887,13 +884,9 @@ namespace PCLParaphernalia
             {
                 _bitmapFilename = txtFilename.Text;
 
-            //   grpProps.Visibility = Visibility.Hidden;
+                //   grpProps.Visibility = Visibility.Hidden;
             }
         }
-
-
-
-
 
         //--------------------------------------------------------------------//
 

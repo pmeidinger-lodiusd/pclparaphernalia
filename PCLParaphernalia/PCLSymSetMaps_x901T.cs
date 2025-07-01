@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Controls;
 
 namespace PCLParaphernalia
 {
@@ -30,22 +27,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_x901T ()
+        private static void unicodeMap_x901T()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_x901T;
 
             const Int32 rangeCt = 3;
 
-            UInt16 [] [] rangeData = new UInt16 [rangeCt] []
+            UInt16[][] rangeData = new UInt16[rangeCt][]
             {
                 new UInt16 [2] {0x20, 0x7f},
                 new UInt16 [2] {0x80, 0x9f},
                 new UInt16 [2] {0xa0, 0xff}
             };
 
-            UInt16 [] rangeSizes = new UInt16 [rangeCt];
+            UInt16[] rangeSizes = new UInt16[rangeCt];
 
-            UInt16 [] [] mapDataStd = new UInt16 [rangeCt] [];
+            UInt16[][] mapDataStd = new UInt16[rangeCt][];
 
             UInt16 rangeMin,
                    rangeMax,
@@ -55,13 +52,13 @@ namespace PCLParaphernalia
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                rangeSizes [i] = (UInt16) (rangeData [i] [1] -
-                                           rangeData [i] [0] + 1);
+                rangeSizes[i] = (UInt16)(rangeData[i][1] -
+                                           rangeData[i][0] + 1);
             }
 
             for (Int32 i = 0; i < rangeCt; i++)
             {
-                mapDataStd [i] = new UInt16 [rangeSizes [i]];
+                mapDataStd[i] = new UInt16[rangeSizes[i]];
             }
 
             //----------------------------------------------------------------//
@@ -70,15 +67,15 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [0] [0];
-            rangeMax = rangeData [0] [1];
+            rangeMin = rangeData[0][0];
+            rangeMax = rangeData[0][1];
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd [0] [i - rangeMin] = i;
+                mapDataStd[0][i - rangeMin] = i;
             }
 
-            mapDataStd [0] [0x7f - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[0][0x7f - rangeMin] = 0xffff;    //<not a character> //
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -86,24 +83,24 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [1] [0];
-            rangeMax = rangeData [1] [1];
+            rangeMin = rangeData[1][0];
+            rangeMax = rangeData[1][1];
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd [1] [i - rangeMin] = 0xffff;    //<not a character> //
+                mapDataStd[1][i - rangeMin] = 0xffff;    //<not a character> //
             }
 
-            mapDataStd [1] [0x80 - rangeMin] = 0x20ac;
-            mapDataStd [1] [0x85 - rangeMin] = 0x2026;
+            mapDataStd[1][0x80 - rangeMin] = 0x20ac;
+            mapDataStd[1][0x85 - rangeMin] = 0x2026;
 
-            mapDataStd [1] [0x91 - rangeMin] = 0x2018;
-            mapDataStd [1] [0x92 - rangeMin] = 0x2019;
-            mapDataStd [1] [0x93 - rangeMin] = 0x201c;
-            mapDataStd [1] [0x94 - rangeMin] = 0x201d;
-            mapDataStd [1] [0x95 - rangeMin] = 0x2022;
-            mapDataStd [1] [0x96 - rangeMin] = 0x2013;
-            mapDataStd [1] [0x97 - rangeMin] = 0x2014;
+            mapDataStd[1][0x91 - rangeMin] = 0x2018;
+            mapDataStd[1][0x92 - rangeMin] = 0x2019;
+            mapDataStd[1][0x93 - rangeMin] = 0x201c;
+            mapDataStd[1][0x94 - rangeMin] = 0x201d;
+            mapDataStd[1][0x95 - rangeMin] = 0x2022;
+            mapDataStd[1][0x96 - rangeMin] = 0x2013;
+            mapDataStd[1][0x97 - rangeMin] = 0x2014;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -111,30 +108,30 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            rangeMin = rangeData [2] [0];
-            rangeMax = rangeData [2] [1];
+            rangeMin = rangeData[2][0];
+            rangeMax = rangeData[2][1];
 
             offset = 0x0e00 - 0x00a0;     // 0x0e00 - 0x00a0 = 0x0d60
 
             for (UInt16 i = rangeMin; i <= rangeMax; i++)
             {
-                mapDataStd [2] [i - rangeMin] = (UInt16) (offset + i);
+                mapDataStd[2][i - rangeMin] = (UInt16)(offset + i);
             }
 
-            mapDataStd [2] [0xa0 - rangeMin] = 0x00a0;
-            mapDataStd [2] [0xdb - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xdc - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xdd - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xde - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xa0 - rangeMin] = 0x00a0;
+            mapDataStd[2][0xdb - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xdc - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xdd - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xde - rangeMin] = 0xffff;    //<not a character> //
 
-            mapDataStd [2] [0xfc - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xfd - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xfe - rangeMin] = 0xffff;    //<not a character> //
-            mapDataStd [2] [0xff - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xfc - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xfd - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xfe - rangeMin] = 0xffff;    //<not a character> //
+            mapDataStd[2][0xff - rangeMin] = 0xffff;    //<not a character> //
 
             //----------------------------------------------------------------//
 
-            _sets.Add (new PCLSymSetMap (mapId,
+            _sets.Add(new PCLSymSetMap(mapId,
                                          rangeCt,
                                          rangeData,
                                          mapDataStd,

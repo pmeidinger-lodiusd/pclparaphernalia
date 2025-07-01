@@ -12,7 +12,7 @@ namespace PCLParaphernalia
     /// © Chris Hutchinson 2010
     /// 
     /// </summary>
-    
+
     [System.Reflection.ObfuscationAttribute(Feature = "renaming",
                                             ApplyToMembers = true)]
 
@@ -68,7 +68,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave ();
+            metricsSave();
 
             this.DialogResult = true;
         }
@@ -84,15 +84,15 @@ namespace PCLParaphernalia
 
         private void initialise()
         {
-            TargetCore.metricsLoadNetPrinter (ref _printerAddress,
+            TargetCore.metricsLoadNetPrinter(ref _printerAddress,
                                               ref _printerPort,
                                               ref _timeoutSend,
                                               ref _timeoutReceive);
 
             txtPrinterAddress.Text = _printerAddress;
-            txtPrinterPort.Text    = _printerPort.ToString();
+            txtPrinterPort.Text = _printerPort.ToString();
 
-            txtTimeoutSend.Text    = _timeoutSend.ToString();
+            txtTimeoutSend.Text = _timeoutSend.ToString();
             txtTimeoutReceive.Text = _timeoutReceive.ToString();
 
             //----------------------------------------------------------------//
@@ -140,13 +140,12 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            TargetCore.metricsSaveNetPrinter (_printerAddress,
+            TargetCore.metricsSaveNetPrinter(_printerAddress,
                                               _printerPort,
                                               _timeoutSend,
                                               _timeoutReceive);
         }
 
-    
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // t x t P r i n t e r A d d r e s s _ T e x t C h a n g e d          //
@@ -161,7 +160,7 @@ namespace PCLParaphernalia
         {
             _printerAddress = txtPrinterAddress.Text;
         }
-    
+
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
         // t x t P r i n t e r P o r t _ T e x t C h a n g e d                //
@@ -186,7 +185,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutReceive_TextChanged (object sender,
+        private void txtTimeoutReceive_TextChanged(object sender,
                                                     TextChangedEventArgs e)
         {
             _timeoutReceive = Int32.Parse(txtTimeoutReceive.Text);
@@ -201,7 +200,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void txtTimeoutSend_TextChanged (object sender,
+        private void txtTimeoutSend_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
             _timeoutSend = Int32.Parse(txtTimeoutSend.Text);

@@ -25,7 +25,7 @@ namespace PCLParaphernalia
             PCLXL
         }
 
-        private static PCLTrayData[] _trayDatas = 
+        private static PCLTrayData[] _trayDatas =
         {
             // must be in same order as ePDL enumeration 
             new PCLTrayData(7, 0, 299, -1),
