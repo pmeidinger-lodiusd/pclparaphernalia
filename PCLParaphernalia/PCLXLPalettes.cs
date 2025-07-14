@@ -88,50 +88,50 @@
 
             crntIndex = (int)eIndex.PCLXLGray;
 
-            _palettes[crntIndex].addColour("Black", 0x00000000,
+            _palettes[crntIndex].AddColour("Black", 0x00000000,
                                              (byte)eMono_2.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("White", 0x00ffffff,
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("White", 0x00ffffff,
                                              (byte)eMono_2.White);
-            _palettes[crntIndex].setClrItemWhite();
+            _palettes[crntIndex].SetClrItemWhite();
 
             //----------------------------------------------------------------//
 
             crntIndex = (int)eIndex.PCLXLRGB;
 
-            _palettes[crntIndex].addColour("Black", 0x00000000,
+            _palettes[crntIndex].AddColour("Black", 0x00000000,
                                              (byte)eRGB_16.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("Blue", 0x000000ff,
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("Blue", 0x000000ff,
                                              (byte)eRGB_16.Blue);
-            _palettes[crntIndex].addColour("Cyan", 0x0000ffff,
+            _palettes[crntIndex].AddColour("Cyan", 0x0000ffff,
                                              (byte)eRGB_16.Cyan);
-            _palettes[crntIndex].addColour("Green", 0x0000ff00,
+            _palettes[crntIndex].AddColour("Green", 0x0000ff00,
                                              (byte)eRGB_16.Green);
-            _palettes[crntIndex].addColour("Magenta", 0x00ff00ff,
+            _palettes[crntIndex].AddColour("Magenta", 0x00ff00ff,
                                              (byte)eRGB_16.Magenta);
-            _palettes[crntIndex].addColour("Red", 0x00ff0000,
+            _palettes[crntIndex].AddColour("Red", 0x00ff0000,
                                              (byte)eRGB_16.Red);
-            _palettes[crntIndex].addColour("White", 0x00ffffff,
+            _palettes[crntIndex].AddColour("White", 0x00ffffff,
                                              (byte)eRGB_16.White);
-            _palettes[crntIndex].setClrItemWhite();
-            _palettes[crntIndex].addColour("Yellow", 0x00ffff00,
+            _palettes[crntIndex].SetClrItemWhite();
+            _palettes[crntIndex].AddColour("Yellow", 0x00ffff00,
                                              (byte)eRGB_16.Yellow);
-            _palettes[crntIndex].addColour("Gray1", 0x00f0f0f0,
+            _palettes[crntIndex].AddColour("Gray1", 0x00f0f0f0,
                                              (byte)eRGB_16.Gray1);
-            _palettes[crntIndex].addColour("Gray2", 0x00d0d0d0,
+            _palettes[crntIndex].AddColour("Gray2", 0x00d0d0d0,
                                              (byte)eRGB_16.Gray2);
-            _palettes[crntIndex].addColour("Gray3", 0x00b0b0b0,
+            _palettes[crntIndex].AddColour("Gray3", 0x00b0b0b0,
                                              (byte)eRGB_16.Gray3);
-            _palettes[crntIndex].addColour("Gray4", 0x00909090,
+            _palettes[crntIndex].AddColour("Gray4", 0x00909090,
                                              (byte)eRGB_16.Gray4);
-            _palettes[crntIndex].addColour("Gray5", 0x00707070,
+            _palettes[crntIndex].AddColour("Gray5", 0x00707070,
                                              (byte)eRGB_16.Gray5);
-            _palettes[crntIndex].addColour("Gray6", 0x00505050,
+            _palettes[crntIndex].AddColour("Gray6", 0x00505050,
                                              (byte)eRGB_16.Gray6);
-            _palettes[crntIndex].addColour("Gray7", 0x00303030,
+            _palettes[crntIndex].AddColour("Gray7", 0x00303030,
                                              (byte)eRGB_16.Gray7);
-            _palettes[crntIndex].addColour("Gray8", 0x00101010,
+            _palettes[crntIndex].AddColour("Gray8", 0x00101010,
                                              (byte)eRGB_16.Gray8);
         }
 
@@ -145,10 +145,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getColourId(int paletteIndex,
+        public static byte GetColourId(int paletteIndex,
                                         int colourIndex)
         {
-            return _palettes[paletteIndex].getColourId(colourIndex);
+            return _palettes[paletteIndex].GetColourId(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -160,10 +160,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getColourName(int paletteIndex,
+        public static string GetColourName(int paletteIndex,
                                             int colourIndex)
         {
-            return _palettes[paletteIndex].getColourName(colourIndex);
+            return _palettes[paletteIndex].GetColourName(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -175,10 +175,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getColourRGB(int paletteIndex,
+        public static int GetColourRGB(int paletteIndex,
                                           int colourIndex)
         {
-            return _palettes[paletteIndex].getColourRGB(colourIndex);
+            return _palettes[paletteIndex].GetColourRGB(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -190,7 +190,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getClrItemBlack(int paletteIndex)
+        public static byte GetClrItemBlack(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemBlack;
         }
@@ -204,7 +204,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getClrItemWhite(int paletteIndex)
+        public static byte GetClrItemWhite(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemWhite;
         }
@@ -218,7 +218,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getCtClrItems(int paletteIndex)
+        public static byte GetCtClrItems(int paletteIndex)
         {
             return _palettes[paletteIndex].CtClrItems;
         }
@@ -234,10 +234,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getGrayLevel(int paletteIndex,
+        public static string GetGrayLevel(int paletteIndex,
                                            byte level)
         {
-            return _palettes[paletteIndex].getGrayLevel(level);
+            return _palettes[paletteIndex].GetGrayLevel(level);
         }
 
         //--------------------------------------------------------------------//
@@ -249,7 +249,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getPaletteName(int paletteIndex)
+        public static string GetPaletteName(int paletteIndex)
         {
             return _palettes[paletteIndex].PaletteName;
         }
@@ -263,7 +263,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isMonochrome(int paletteIndex)
+        public static bool IsMonochrome(int paletteIndex)
         {
             return _palettes[paletteIndex].Monochrome;
         }

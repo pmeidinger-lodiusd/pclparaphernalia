@@ -47,7 +47,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLOrientations.eAspect getAspect()
+        public PCLOrientations.eAspect GetAspect()
         {
             return _orientationAspect;
         }
@@ -61,7 +61,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCL()
+        public byte GetIdPCL()
         {
             return _orientationIdPCL;
         }
@@ -75,7 +75,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCLXL()
+        public byte GetIdPCLXL()
         {
             return _orientationIdPCLXL;
         }
@@ -89,7 +89,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _orientationName;
         }

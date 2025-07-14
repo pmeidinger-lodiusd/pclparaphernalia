@@ -35,7 +35,7 @@ namespace PCLParaphernalia
 
         static HPGL2Commands()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkCmd(int macroLevel,
+        public static bool CheckCmd(int macroLevel,
                                        string mnemonic,
                                        ref bool optResetHPGL2,
                                        ref bool optBinaryData,
@@ -89,7 +89,7 @@ namespace PCLParaphernalia
 
             description = cmd.Description;
 
-            cmd.incrementStatisticsCount(macroLevel);
+            cmd.IncrementStatisticsCount(macroLevel);
 
             return cmdKnown;
         }
@@ -103,7 +103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displaySeqList(DataGrid grid)
+        public static int DisplaySeqList(DataGrid grid)
         {
             int count = 0;
 
@@ -125,7 +125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -252,7 +252,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getSeqCount()
+        public static int GetSeqCount()
         {
             return _cmdsCount;
         }
@@ -266,7 +266,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagResetHPGL2 = true;
@@ -1022,17 +1022,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             HPGL2Command cmd;
 
-            _cmdUnknown.resetStatistics();
+            _cmdUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, HPGL2Command> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics();
+                cmd.ResetStatistics();
             }
         }
     }

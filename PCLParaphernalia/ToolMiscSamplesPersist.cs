@@ -101,7 +101,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(
+        public static void LoadDataCapture(
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
             ref string captureFile)
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL,
+        public static void LoadDataCommon(ref int indxPDL,
                                           ref int indxSampleType)
         {
             RegistryKey keyMain =
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommonPDL(string pdlName,
+        public static void LoadDataCommonPDL(string pdlName,
                                               ref int indxOrientation,
                                               ref int indxPaperSize,
                                               ref int indxPaperType)
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeColour(string pdlName,
+        public static void LoadDataTypeColour(string pdlName,
                                                ref int indxColourMode,
                                                ref bool flagFormAsMacro,
                                                ref bool flagMapHex)
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeColourSample(string pdlName,
+        public static void LoadDataTypeColourSample(string pdlName,
                                                      string sampleName,
                                                      int sampleCt,
                                                      ref int[] values,
@@ -357,7 +357,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeLogOper(string pdlName,
+        public static void LoadDataTypeLogOper(string pdlName,
                                                 ref int indxMode,
                                                 ref int indxROPFrom,
                                                 ref int indxROPTo,
@@ -396,22 +396,22 @@ namespace PCLParaphernalia
                 byte indxPalCMY =
                     (byte)PCLPalettes.eIndex.PCLSimpleColourCMY;
 
-                indxClrBlack = PCLPalettes.getClrItemBlack(indxPalCMY);
-                indxClrWhite = PCLPalettes.getClrItemWhite(indxPalCMY);
+                indxClrBlack = PCLPalettes.GetClrItemBlack(indxPalCMY);
+                indxClrWhite = PCLPalettes.GetClrItemWhite(indxPalCMY);
 
                 byte indxPalMono =
                     (byte)PCLPalettes.eIndex.PCLMonochrome;
 
-                indxMonoBlack = PCLPalettes.getClrItemBlack(indxPalMono);
-                indxMonoWhite = PCLPalettes.getClrItemWhite(indxPalMono);
+                indxMonoBlack = PCLPalettes.GetClrItemBlack(indxPalMono);
+                indxMonoWhite = PCLPalettes.GetClrItemWhite(indxPalMono);
             }
             else // if (pdlName == _subKeyPCLXL)
             {
                 byte indxPalRGB =
                     (byte)PCLXLPalettes.eIndex.PCLXLRGB;
 
-                indxClrBlack = PCLXLPalettes.getClrItemBlack(indxPalRGB);
-                indxClrWhite = PCLXLPalettes.getClrItemWhite(indxPalRGB);
+                indxClrBlack = PCLXLPalettes.GetClrItemBlack(indxPalRGB);
+                indxClrWhite = PCLXLPalettes.GetClrItemWhite(indxPalRGB);
 
                 indxMonoBlack = 0;
                 indxMonoWhite = 255;
@@ -492,7 +492,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeLogPage(string pdlName,
+        public static void LoadDataTypeLogPage(string pdlName,
                                                 ref int offsetLeft,
                                                 ref int offsetTop,
                                                 ref int pageHeight,
@@ -546,7 +546,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypePattern(string pdlName,
+        public static void LoadDataTypePattern(string pdlName,
                                                ref int indxPatternType,
                                                ref bool flagFormAsMacro)
         {
@@ -582,7 +582,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeTxtMod(string pdlName,
+        public static void LoadDataTypeTxtMod(string pdlName,
                                                ref int indxTxtModType,
                                                ref bool flagFormAsMacro)
         {
@@ -618,7 +618,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTypeUnicode(string pdlName,
+        public static void LoadDataTypeUnicode(string pdlName,
                                                ref int indxFont,
                                                ref PCLFonts.eVariant variant,
                                                ref int codePoint,
@@ -663,7 +663,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(
+        public static void SaveDataCapture(
             ToolCommonData.eToolSubIds crntToolSubId,
             ToolCommonData.ePrintLang crntPDL,
             string captureFile)
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxPDL,
+        public static void SaveDataCommon(int indxPDL,
                                           int indxSampleType)
         {
             RegistryKey keyMain =
@@ -758,7 +758,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommonPDL(string pdlName,
+        public static void SaveDataCommonPDL(string pdlName,
                                              int indxOrientation,
                                              int indxPaperSize,
                                              int indxPaperType)
@@ -797,7 +797,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeColour(string pdlName,
+        public static void SaveDataTypeColour(string pdlName,
                                                int indxColourMode,
                                                bool flagFormAsMacro,
                                                bool flagMapHex)
@@ -846,7 +846,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeColourSample(string pdlName,
+        public static void SaveDataTypeColourSample(string pdlName,
                                                      string sampleName,
                                                      int sampleCt,
                                                      int[] values)
@@ -880,7 +880,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeLogOper(string pdlName,
+        public static void SaveDataTypeLogOper(string pdlName,
                                                 int indxMode,
                                                 int indxROPFrom,
                                                 int indxROPTo,
@@ -1002,7 +1002,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeLogPage(string pdlName,
+        public static void SaveDataTypeLogPage(string pdlName,
                                                int offsetLeft,
                                                int offsetTop,
                                                int pageHeight,
@@ -1066,7 +1066,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypePattern(string pdlName,
+        public static void SaveDataTypePattern(string pdlName,
                                                int indxPatternType,
                                                bool flagFormAsMacro)
         {
@@ -1105,7 +1105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeTxtMod(string pdlName,
+        public static void SaveDataTypeTxtMod(string pdlName,
                                               int indxTxtModType,
                                               bool flagFormAsMacro)
         {
@@ -1144,7 +1144,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTypeUnicode(string pdlName,
+
+        public static void SaveDataTypeUnicode(string pdlName,
                                                int indxFont,
                                                PCLFonts.eVariant variant,
                                                int codePoint,

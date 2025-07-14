@@ -58,7 +58,7 @@ namespace PCLParaphernalia
 
         static PMLDataTypes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -70,7 +70,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag(
+        public static bool CheckTag(
             byte tagToCheck,
             ref string description)
         {
@@ -89,9 +89,9 @@ namespace PCLParaphernalia
                 tag = _unknownTag;
             }
 
-            description = tag.getDesc();
+            description = tag.GetDesc();
 
-            tag.incrementStatisticsCount(1);   // Statistical data
+            tag.IncrementStatisticsCount(1);   // Statistical data
 
             return seqKnown;
         }
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -204,7 +204,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 
@@ -226,7 +226,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _tagCount;
         }
@@ -240,9 +240,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(byte selection)
+        public static string GetDesc(byte selection)
         {
-            return _tags[selection].getDesc();
+            return _tags[selection].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             byte tag;
 

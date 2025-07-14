@@ -42,7 +42,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _paperTypeName;
         }
@@ -56,7 +56,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPaperTypes.eEntryType getType()
+        public PCLPaperTypes.eEntryType GetType()
         {
             return _entryType;
         }

@@ -38,7 +38,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _rasterResolutionCount;
         }
@@ -52,9 +52,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getValue(int selection)
+        public static ushort GetValue(int selection)
         {
-            return _rasterResolutions[selection].getValue();
+            return _rasterResolutions[selection].GetValue();
         }
     }
 }

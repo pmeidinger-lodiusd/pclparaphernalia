@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void LoadDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL,
+        public static void LoadDataCommon(ref int indxPDL,
                                            ref bool flagOptGridVertical)
         {
             RegistryKey keyMain =
@@ -200,13 +200,13 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
 
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
 
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataGeneral(string pdlName,
+        public static void LoadDataGeneral(string pdlName,
                                             ref int indxOrientation,
                                             ref int indxPaperSize,
                                             ref int indxPaperType,
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLCustom(ref bool flagProportional,
+        public static void LoadDataPCLCustom(ref bool flagProportional,
                                                ref bool flagScalable,
                                                ref bool flagBound,
                                                ref ushort style,
@@ -407,7 +407,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLDownload(ref string downloadFile,
+        public static void LoadDataPCLDownload(ref string downloadFile,
                                                  ref ushort downloadId,
                                                  ref bool flagDownloadRemove,
                                                  ref bool flagSelectById,
@@ -480,7 +480,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLPreset(ref int indxFont,
+        public static void LoadDataPCLPreset(ref int indxFont,
                                                ref PCLFonts.eVariant variant,
                                                ref double height,
                                                ref double pitch,
@@ -543,7 +543,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLPrnDisk(ref string fontFilename,
+        public static void LoadDataPCLPrnDisk(ref string fontFilename,
                                                ref ushort fontId,
                                                ref ushort macroId,
                                                ref bool flagRamDataRemove,
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLCustom(ref string fontName,
+        public static void LoadDataPCLXLCustom(ref string fontName,
                                                 ref double height,
                                                 ref int indxSymSet,
                                                 ref ushort symSetCustom,
@@ -732,7 +732,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLDownload(ref string downloadFile,
+        public static void LoadDataPCLXLDownload(ref string downloadFile,
                                                   ref bool flagDownloadRemove,
                                                   ref double height,
                                                   ref int indxSymSet,
@@ -790,7 +790,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXLPreset(ref int indxFont,
+        public static void LoadDataPCLXLPreset(ref int indxFont,
                                                 ref PCLFonts.eVariant variant,
                                                 ref double height,
                                                 ref int indxSymSet,
@@ -845,7 +845,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void SaveDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =
@@ -892,7 +892,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxPDL,
+        public static void SaveDataCommon(int indxPDL,
                                            bool flagOptGridVertical)
         {
             RegistryKey keyMain =
@@ -926,7 +926,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataGeneral(string pdlName,
+        public static void SaveDataGeneral(string pdlName,
                                             int indxOrientation,
                                             int indxPaperSize,
                                             int indxPaperType,
@@ -1022,7 +1022,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLCustom(bool flagProportional,
+        public static void SaveDataPCLCustom(bool flagProportional,
                                               bool flagScalable,
                                               bool flagBound,
                                               ushort style,
@@ -1118,7 +1118,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLDownload(string downloadFile,
+        public static void SaveDataPCLDownload(string downloadFile,
                                                 ushort downloadId,
                                                 bool flagDownloadRemove,
                                                 bool flagSelectById,
@@ -1202,7 +1202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLPreset(int indxFont,
+        public static void SaveDataPCLPreset(int indxFont,
                                               PCLFonts.eVariant variant,
                                               double height,
                                               double pitch,
@@ -1263,7 +1263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLPrnDisk(string fontFilename,
+        public static void SaveDataPCLPrnDisk(string fontFilename,
                                                ushort fontId,
                                                ushort macroId,
                                                bool flagRamDataRemove,
@@ -1418,7 +1418,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLCustom(string fontName,
+        public static void SaveDataPCLXLCustom(string fontName,
                                                 double height,
                                                 int indxSymSet,
                                                 ushort symSetCustom,
@@ -1472,7 +1472,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLDownload(string downloadFile,
+        public static void SaveDataPCLXLDownload(string downloadFile,
                                                   bool flagDownloadRemove,
                                                   double height,
                                                   int indxSymSet,
@@ -1536,7 +1536,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXLPreset(int indxFont,
+        public static void SaveDataPCLXLPreset(int indxFont,
                                                 PCLFonts.eVariant variant,
                                                 double height,
                                                 int indxSymSet,

@@ -47,7 +47,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdAutoSelect()
+        public short GetIdAutoSelect()
         {
             return _idAutoSelect;
         }
@@ -61,7 +61,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdDefault()
+        public short GetIdDefault()
         {
             return _idDefault;
         }
@@ -75,7 +75,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdMaximum()
+        public short GetIdMaximum()
         {
             return _idMaximum;
         }
@@ -89,7 +89,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getIdNotSet()
+        public short GetIdNotSet()
         {
             return _idNotSet;
         }

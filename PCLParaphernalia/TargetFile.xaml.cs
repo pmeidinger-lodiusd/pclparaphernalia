@@ -45,7 +45,7 @@ namespace PCLParaphernalia
             _crntSubId = crntSubId;
             _crntPDL = crntPDL;
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -73,7 +73,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
 
             string filename = _saveFilename;
 
-            selected = selectTargetFile(ref filename);
+            selected = SelectTargetFile(ref filename);
 
             if (selected)
             {
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             btnOK.Visibility = Visibility.Hidden;
 
@@ -166,7 +166,7 @@ namespace PCLParaphernalia
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.metricsReturnFileCapt(_crntToolId,
+                TargetCore.MetricsReturnFileCapt(_crntToolId,
                                                   _crntSubId,
                                                   _crntPDL,
                                                   ref _saveFilename);
@@ -216,9 +216,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
-            TargetCore.metricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
+            TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
                                             _saveFilename);
         }
 
@@ -232,9 +232,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectTargetFile(ref string targetFile)
+        private bool SelectTargetFile(ref string targetFile)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(targetFile);
+            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(targetFile);
 
             bool? dialogResult = saveDialog.ShowDialog();
 

@@ -34,7 +34,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkIPAddress(string ipString,
+        public static bool CheckIPAddress(string ipString,
                                              ref IPAddress ipAddress)
         {
             bool OK;
@@ -53,7 +53,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void closeResponseConnection()
+        public static void CloseResponseConnection()
         {
             _socket.Close();
         }
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool readResponseBlock(int offset,
+        public static bool ReadResponseBlock(int offset,
                                                  int bufRem,
                                                  ref byte[] replyData,
                                                  ref int blockLen)
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int sendData(BinaryReader prnReader,
+        public static int SendData(BinaryReader prnReader,
                                      string ipString,
                                      int port,
                                      int timeoutSend,
@@ -134,7 +134,7 @@ namespace PCLParaphernalia
 
             IPAddress ipAddress = new IPAddress(0x00);
 
-            if (checkIPAddress(ipString, ref ipAddress))
+            if (CheckIPAddress(ipString, ref ipAddress))
             {
                 //------------------------------------------------------------//
                 //                                                            //

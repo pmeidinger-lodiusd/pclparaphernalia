@@ -121,7 +121,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.eType.HPGL2Command,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -151,7 +151,7 @@ namespace PCLParaphernalia
                 else
                     typeText = "HP-GL/2 Binary";
 
-                PrnParseData.processBinary(
+                PrnParseData.ProcessBinary(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _buf,
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
 
                     if (firstSlice)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -267,7 +267,7 @@ namespace PCLParaphernalia
                     }
                     else if (firstSliceAfterCC)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -280,7 +280,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -308,16 +308,16 @@ namespace PCLParaphernalia
 
                     if (nonGraphics)
                     {
-                        knownCC = HPGL2ControlCodes.checkTag(ccByte, ref ccDesc);
+                        knownCC = HPGL2ControlCodes.CheckTag(ccByte, ref ccDesc);
 
                         if (knownCC)
                         {
-                            HPGL2ControlCodes.incrementStatsCount(
+                            HPGL2ControlCodes.IncrementStatsCount(
                                 ccByte,
                                 _analysisLevel);
                         }
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2ControlCode,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -374,7 +374,7 @@ namespace PCLParaphernalia
 
                     if ((firstSlice) && (!continuation))
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -387,7 +387,7 @@ namespace PCLParaphernalia
                     }
                     else if (firstSliceAfterCC)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2Command,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -427,16 +427,16 @@ namespace PCLParaphernalia
 
                     if (nonGraphics)
                     {
-                        knownCC = HPGL2ControlCodes.checkTag(ccByte, ref ccDesc);
+                        knownCC = HPGL2ControlCodes.CheckTag(ccByte, ref ccDesc);
 
                         if (knownCC)
                         {
-                            HPGL2ControlCodes.incrementStatsCount(
+                            HPGL2ControlCodes.IncrementStatsCount(
                                 ccByte,
                                 _analysisLevel);
                         }
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.HPGL2ControlCode,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -499,17 +499,17 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
-            _options.getOptHPGL2(ref _flagMiscBinData);
+            _options.GetOptHPGL2(ref _flagMiscBinData);
 
             _endOffset = _options.ValCurFOffsetEnd;
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
+            if (linkData.IsContinuation())
                 seqInvalid = parseContinuation(ref bufRem,
                                                 ref bufOffset,
                                                 ref endReached);
@@ -555,7 +555,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -627,7 +627,7 @@ namespace PCLParaphernalia
                     bufRem -= seqLen;
                     bufOffset += seqLen;
 
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.HPGL2Label)
@@ -640,7 +640,7 @@ namespace PCLParaphernalia
 
                 bool termFound;
 
-                termFound = PrnParseData.processLines(
+                termFound = PrnParseData.ProcessLines(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _linkData,
@@ -664,7 +664,7 @@ namespace PCLParaphernalia
                     _analysisLevel);
 
                 if (termFound)
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
             }
             else if ((contType == PrnParseConstants.eContType.HPGL2Long) ||
                      (contType == PrnParseConstants.eContType.HPGL2LongQuote))
@@ -687,7 +687,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 if (!continuation)
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
             }
             else
             {
@@ -702,7 +702,7 @@ namespace PCLParaphernalia
                 //                                                                   //
                 //-------------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -764,7 +764,7 @@ namespace PCLParaphernalia
 
                     if (_finalByte != PrnParseConstants.asciiSemiColon)
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -827,11 +827,11 @@ namespace PCLParaphernalia
 
                         contType = PrnParseConstants.eContType.HPGL2;
 
-                        _linkData.setBacktrack(contType, -bufRem);
+                        _linkData.SetBacktrack(contType, -bufRem);
                     }
-                    else if ((PrnParseCommon.isAlphabetic(_buf[bufOffset]))
+                    else if ((PrnParseCommon.IsAlphabetic(_buf[bufOffset]))
                                        &&
-                             (PrnParseCommon.isAlphabetic(_buf[bufOffset + 1])))
+                             (PrnParseCommon.IsAlphabetic(_buf[bufOffset + 1])))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -889,17 +889,17 @@ namespace PCLParaphernalia
 
                         byte c1 = _buf[bufOffset];
 
-                        knownWS = HPGL2ControlCodes.checkTag(
+                        knownWS = HPGL2ControlCodes.CheckTag(
                                     c1,
                                     ref desc);
 
                         if (knownWS)
                         {
-                            HPGL2ControlCodes.incrementStatsCount(
+                            HPGL2ControlCodes.IncrementStatsCount(
                                 c1,
                                 _analysisLevel);
 
-                            PrnParseCommon.addDataRow(
+                            PrnParseCommon.AddDataRow(
                                 PrnParseRowTypes.eType.HPGL2ControlCode,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -924,7 +924,7 @@ namespace PCLParaphernalia
 
                             invalidSeqFound = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -933,7 +933,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 "Unexpected sequence found");
 
-                            PrnParseData.processLines(
+                            PrnParseData.ProcessLines(
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
                                 _linkData,
@@ -1030,11 +1030,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (_linkData.isContinuation())
+            if (_linkData.IsContinuation())
             {
                 contType = PrnParseConstants.eContType.None;
 
-                _linkData.getContData(ref contType,
+                _linkData.GetContData(ref contType,
                                        ref prefixLen,
                                        ref contDataLen,
                                        ref downloadRem,
@@ -1077,7 +1077,7 @@ namespace PCLParaphernalia
             command = ((char)cmdByteA).ToString() +           // need to convert these to UPPER for check
                       ((char)cmdByteB).ToString();
 
-            seqKnown = HPGL2Commands.checkCmd((_analysisLevel + _macroLevel),
+            seqKnown = HPGL2Commands.CheckCmd((_analysisLevel + _macroLevel),
                                                command,
                                                ref optReset,
                                                ref optBinarySeq,
@@ -1125,7 +1125,7 @@ namespace PCLParaphernalia
                 bufOffset += seqLen;
                 bufRem -= seqLen;
 
-                termFound = PrnParseData.processLines(
+                termFound = PrnParseData.ProcessLines(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _linkData,
@@ -1199,7 +1199,7 @@ namespace PCLParaphernalia
                         termFound = true;
                         inclusiveTerm = true;
                     }
-                    else if (PrnParseCommon.isAlphabetic(paraByte2))
+                    else if (PrnParseCommon.IsAlphabetic(paraByte2))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1288,7 +1288,7 @@ namespace PCLParaphernalia
                         {
                             invalidSeqFound = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -1322,7 +1322,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
                     }
-                    else if (PrnParseCommon.isAlphabetic(crntByte))
+                    else if (PrnParseCommon.IsAlphabetic(crntByte))
                     {
                         //----------------------------------------------------//
                         //                                                    //
@@ -1377,7 +1377,7 @@ namespace PCLParaphernalia
                     continuation = true;
                     contType = PrnParseConstants.eContType.HPGL2Binary;
 
-                    _linkData.setContinuation(contType);
+                    _linkData.SetContinuation(contType);
                 }
                 else if (seqKnown && optUseLabelTerm)
                 {
@@ -1393,7 +1393,7 @@ namespace PCLParaphernalia
                     continuation = true;
                     contType = PrnParseConstants.eContType.HPGL2Label;
 
-                    _linkData.setContinuation(contType);
+                    _linkData.SetContinuation(contType);
                 }
                 else if (seqLen == PrnParseConstants.bufSize)
                 {
@@ -1424,7 +1424,7 @@ namespace PCLParaphernalia
                     else
                         contType = PrnParseConstants.eContType.HPGL2Long;
 
-                    _linkData.setContData(contType,
+                    _linkData.SetContData(contType,
                                           HPGL2MnemonicLen,
                                           0,
                                           0,
@@ -1447,7 +1447,7 @@ namespace PCLParaphernalia
                         continuation = true;
                         contType = PrnParseConstants.eContType.HPGL2;
 
-                        _linkData.setBacktrack(contType, -bufRem);
+                        _linkData.SetBacktrack(contType, -bufRem);
                     }
                 }
             }
@@ -1535,7 +1535,7 @@ namespace PCLParaphernalia
                     {
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -1551,13 +1551,13 @@ namespace PCLParaphernalia
                         _labelTerm = paraByte1;
                     }
 
-                    showChar = PrnParseData.processByte(
+                    showChar = PrnParseData.ProcessByte(
                         _labelTerm,
                         _indxCharSetSubAct,
                         (byte)_valCharSetSubCode,
                         _indxCharSetName);
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -1598,7 +1598,7 @@ namespace PCLParaphernalia
                     {
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -1615,7 +1615,7 @@ namespace PCLParaphernalia
                     else
                         showChar = "Unset";
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,

@@ -71,9 +71,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eAspect getAspect(int index)
+        public static eAspect GetAspect(int index)
         {
-            return _orientations[index].getAspect();
+            return _orientations[index].GetAspect();
         }
 
         //--------------------------------------------------------------------//
@@ -85,7 +85,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _orientationCount;
         }
@@ -99,9 +99,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int index)
+        public static byte GetIdPCL(int index)
         {
-            return _orientations[index].getIdPCL();
+            return _orientations[index].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -113,9 +113,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCLXL(int index)
+        public static byte GetIdPCLXL(int index)
         {
-            return _orientations[index].getIdPCLXL();
+            return _orientations[index].GetIdPCLXL();
         }
 
         //--------------------------------------------------------------------//
@@ -127,9 +127,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
-            return _orientations[index].getName();
+            return _orientations[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -142,9 +142,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isLandscape(int index)
+        public static bool IsLandscape(int index)
         {
-            return _orientations[index].getAspect() == eAspect.Landscape;
+            return _orientations[index].GetAspect() == eAspect.Landscape;
         }
     }
 }

@@ -520,7 +520,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                cbOrientation.Items.Add(PCLOrientations.getName(index));
+                cbOrientation.Items.Add(PCLOrientations.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -533,7 +533,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                cbPaperSize.Items.Add(PCLPaperSizes.getName(index));
+                cbPaperSize.Items.Add(PCLPaperSizes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -546,7 +546,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                cbPaperType.Items.Add(PCLPaperTypes.getName(index));
+                cbPaperType.Items.Add(PCLPaperTypes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -802,7 +802,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -816,7 +816,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +

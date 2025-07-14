@@ -71,7 +71,7 @@
         {
             get
             {
-                return PCLXLAttributes.getDesc(_attrTagA,
+                return PCLXLAttributes.GetDesc(_attrTagA,
                                                _attrTagB,
                                                _attrTagLen);
             }
@@ -105,7 +105,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(ref bool flagValIsTxt,
+        public void GetDetails(ref bool flagValIsTxt,
                                 ref string description)
         {
             flagValIsTxt = _flagValIsTxt;
@@ -121,7 +121,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -142,7 +142,7 @@
                 if (_operTag == 0x00)
                     return "--";
                 else
-                    return PCLXLOperators.getDesc(_operTag);
+                    return PCLXLOperators.GetDesc(_operTag);
             }
         }
 
@@ -155,7 +155,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

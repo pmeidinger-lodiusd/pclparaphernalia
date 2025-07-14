@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataDonor(ref int indxSymSet,
+        public static void LoadDataDonor(ref int indxSymSet,
                                           ref bool flagSymSetUserSet,
                                           ref bool flagSymSetMapPCL,
                                           ref string symSetFile)
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -127,7 +127,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTarget(ref bool flagMapHex,
+        public static void LoadDataTarget(ref bool flagMapHex,
                                            ref bool flagIgnoreC0,
                                            ref bool flagIgnoreC1,
                                            ref bool flagIndexUnicode,
@@ -199,7 +199,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataDonor(int indxSymSet,
+        public static void SaveDataDonor(int indxSymSet,
                                           bool flagSymSetUserSet,
                                           bool flagSymSetMapPCL,
                                           string symSetFile)
@@ -254,7 +254,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt)
+        public static void SaveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTarget(bool flagMapHex,
+        public static void SaveDataTarget(bool flagMapHex,
                                            bool flagIgnoreC0,
                                            bool flagIgnoreC1,
                                            bool flagIndexUnicode,

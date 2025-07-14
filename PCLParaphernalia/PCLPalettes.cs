@@ -100,55 +100,55 @@
 
             crntIndex = (int)eIndex.PCLMonochrome;
 
-            _palettes[crntIndex].addColour("Black", (byte)eSimpleMono.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("White", (byte)eSimpleMono.White);
-            _palettes[crntIndex].setClrItemWhite();
+            _palettes[crntIndex].AddColour("Black", (byte)eSimpleMono.Black);
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("White", (byte)eSimpleMono.White);
+            _palettes[crntIndex].SetClrItemWhite();
 
             //----------------------------------------------------------------//
 
             crntIndex = (int)eIndex.PCLSimpleColourCMY;
 
-            _palettes[crntIndex].addColour("Black",
+            _palettes[crntIndex].AddColour("Black",
                                             (byte)eSimpleCMY.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("Blue",
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("Blue",
                                             (byte)eSimpleCMY.Blue);
-            _palettes[crntIndex].addColour("Cyan",
+            _palettes[crntIndex].AddColour("Cyan",
                                             (byte)eSimpleCMY.Cyan);
-            _palettes[crntIndex].addColour("Green",
+            _palettes[crntIndex].AddColour("Green",
                                             (byte)eSimpleCMY.Green);
-            _palettes[crntIndex].addColour("Magenta",
+            _palettes[crntIndex].AddColour("Magenta",
                                             (byte)eSimpleCMY.Magenta);
-            _palettes[crntIndex].addColour("Red",
+            _palettes[crntIndex].AddColour("Red",
                                             (byte)eSimpleCMY.Red);
-            _palettes[crntIndex].addColour("White",
+            _palettes[crntIndex].AddColour("White",
                                             (byte)eSimpleCMY.White);
-            _palettes[crntIndex].setClrItemWhite();
-            _palettes[crntIndex].addColour("Yellow",
+            _palettes[crntIndex].SetClrItemWhite();
+            _palettes[crntIndex].AddColour("Yellow",
                                             (byte)eSimpleCMY.Yellow);
 
             //----------------------------------------------------------------//
 
             crntIndex = (int)eIndex.PCLSimpleColourRGB;
 
-            _palettes[crntIndex].addColour("Black",
+            _palettes[crntIndex].AddColour("Black",
                                             (byte)eSimpleRGB.Black);
-            _palettes[crntIndex].setClrItemBlack();
-            _palettes[crntIndex].addColour("Blue",
+            _palettes[crntIndex].SetClrItemBlack();
+            _palettes[crntIndex].AddColour("Blue",
                                             (byte)eSimpleRGB.Blue);
-            _palettes[crntIndex].addColour("Cyan",
+            _palettes[crntIndex].AddColour("Cyan",
                                             (byte)eSimpleRGB.Cyan);
-            _palettes[crntIndex].addColour("Green",
+            _palettes[crntIndex].AddColour("Green",
                                             (byte)eSimpleRGB.Green);
-            _palettes[crntIndex].addColour("Magenta",
+            _palettes[crntIndex].AddColour("Magenta",
                                             (byte)eSimpleRGB.Magenta);
-            _palettes[crntIndex].addColour("Red",
+            _palettes[crntIndex].AddColour("Red",
                                             (byte)eSimpleRGB.Red);
-            _palettes[crntIndex].addColour("White",
+            _palettes[crntIndex].AddColour("White",
                                             (byte)eSimpleRGB.White);
-            _palettes[crntIndex].setClrItemWhite();
-            _palettes[crntIndex].addColour("Yellow",
+            _palettes[crntIndex].SetClrItemWhite();
+            _palettes[crntIndex].AddColour("Yellow",
                                             (byte)eSimpleRGB.Yellow);
         }
 
@@ -161,10 +161,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getColourId(int paletteIndex,
+        public static byte GetColourId(int paletteIndex,
                                         int colourIndex)
         {
-            return _palettes[paletteIndex].getColourId(colourIndex);
+            return _palettes[paletteIndex].GetColourId(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -176,10 +176,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getColourName(int paletteIndex,
+        public static string GetColourName(int paletteIndex,
                                             int colourIndex)
         {
-            return _palettes[paletteIndex].getColourName(colourIndex);
+            return _palettes[paletteIndex].GetColourName(colourIndex);
         }
 
         //--------------------------------------------------------------------//
@@ -191,7 +191,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getClrItemBlack(int paletteIndex)
+        public static byte GetClrItemBlack(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemBlack;
         }
@@ -205,7 +205,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getClrItemWhite(int paletteIndex)
+        public static byte GetClrItemWhite(int paletteIndex)
         {
             return _palettes[paletteIndex].ClrItemWhite;
         }
@@ -219,7 +219,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getCtClrItems(int paletteIndex)
+        public static byte GetCtClrItems(int paletteIndex)
         {
             return _palettes[paletteIndex].CtClrItems;
         }
@@ -233,7 +233,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getPaletteId(int paletteIndex)
+        public static short GetPaletteId(int paletteIndex)
         {
             return _palettes[paletteIndex].PaletteId;
         }
@@ -247,7 +247,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getPaletteName(int paletteIndex)
+        public static string GetPaletteName(int paletteIndex)
         {
             return _palettes[paletteIndex].PaletteName;
         }
@@ -261,7 +261,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isMonochrome(int paletteIndex)
+        public static bool IsMonochrome(int paletteIndex)
         {
             return _palettes[paletteIndex].Monochrome;
         }

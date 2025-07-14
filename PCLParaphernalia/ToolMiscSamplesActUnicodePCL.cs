@@ -44,8 +44,8 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        static readonly int _indxFontArial = PCLFonts.getIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.getIndexForName("Courier");
+        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
 
         static int _logPageWidth;
         static int _logPageHeight;
@@ -81,24 +81,24 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            aspect = PCLOrientations.getAspect(indxOrientation);
+            aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            logXOffset = PCLPaperSizes.getLogicalOffset(indxPaperSize,
+            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
                                                         _unitsPerInch, aspect);
 
-            _logPageWidth = PCLPaperSizes.getLogPageWidth(indxPaperSize,
+            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
                                                            _unitsPerInch,
                                                            aspect);
 
-            _logPageHeight = PCLPaperSizes.getLogPageLength(indxPaperSize,
+            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
                                                           _unitsPerInch,
                                                           aspect);
 
-            _paperWidth = PCLPaperSizes.getPaperWidth(indxPaperSize,
+            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
                                                        _unitsPerInch,
                                                        aspect);
 
-            _paperHeight = PCLPaperSizes.getPaperLength(indxPaperSize,
+            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
                                                          _unitsPerInch,
                                                          aspect);
 
@@ -140,13 +140,13 @@ namespace PCLParaphernalia
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
                 generateOverlay(prnWriter, true, logXOffset,
                                 indxPaperSize, indxOrientation);
 
-            PCLWriter.pageHeader(prnWriter,
+            PCLWriter.PageHeader(prnWriter,
                                  indxPaperSize,
                                  indxPaperType,
                                  indxOrientation,
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
         private static void generateJobTrailer(BinaryWriter prnWriter,
                                                bool formAsMacro)
         {
-            PCLWriter.stdJobTrailer(prnWriter, formAsMacro, _macroId);
+            PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
         }
 
         //--------------------------------------------------------------------//
@@ -204,7 +204,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
-                PCLWriter.macroControl(prnWriter, _macroId,
+                PCLWriter.MacroControl(prnWriter, _macroId,
                                   PCLWriter.eMacroControl.StartDef);
 
             //----------------------------------------------------------------//
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
+            PCLWriter.PatternSet(prnWriter,
                                   PCLWriter.ePatternType.Shading,
                                   60);
 
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
             boxWidth = (short)(_paperWidth - _unitsPerInch);
             boxHeight = (short)(_paperHeight - _unitsPerInch);
 
-            PCLWriter.rectangleOutline(prnWriter, boxX, boxY,
+            PCLWriter.RectangleOutline(prnWriter, boxX, boxY,
                                         boxHeight, boxWidth, stroke,
                                         false, false);
 
@@ -233,48 +233,48 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
+            PCLWriter.PatternSet(prnWriter,
                                   PCLWriter.ePatternType.SolidBlack,
                                   0);
 
             ptSize = 15;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontCourier,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
                                                       PCLFonts.eVariant.Bold,
                                                       ptSize, 0));
 
             posX = (short)(_posXDesc - logXOffset);
             posY = _posYHddr;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "PCL using Unicode characters:");
 
             ptSize = 12;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontCourier,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
                                                       PCLFonts.eVariant.Regular,
                                                       ptSize, 0));
 
             posY = _posYDesc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Unicode code-point:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "UTF-8 encoding:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Font:");
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
+            PCLWriter.Text(prnWriter, posX, posY, 0,
                       "Font glyph:");
 
             //----------------------------------------------------------------//
@@ -283,12 +283,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.patternSet(prnWriter,
+            PCLWriter.PatternSet(prnWriter,
                                   PCLWriter.ePatternType.SolidBlack,
                                   0);
 
             if (formAsMacro)
-                PCLWriter.macroControl(prnWriter, 0,
+                PCLWriter.MacroControl(prnWriter, 0,
                                        PCLWriter.eMacroControl.StopDef);
         }
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (formAsMacro)
-                PCLWriter.macroControl(prnWriter, _macroId,
+                PCLWriter.MacroControl(prnWriter, _macroId,
                                        PCLWriter.eMacroControl.Call);
             else
                 generateOverlay(prnWriter, false, logXOffset,
@@ -338,8 +338,8 @@ namespace PCLParaphernalia
 
             ptSize = 18;
 
-            PCLWriter.font(prnWriter, true, "19U",
-                           PCLFonts.getPCLFontSelect(_indxFontArial,
+            PCLWriter.Font(prnWriter, true, "19U",
+                           PCLFonts.GetPCLFontSelect(_indxFontArial,
                                                       PCLFonts.eVariant.Regular,
                                                       ptSize, 0));
 
@@ -347,23 +347,23 @@ namespace PCLParaphernalia
             posY = _posYData;
 
             if (codePoint < 0x010000)
-                PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
+                PCLWriter.Text(prnWriter, posX, posY, 0, "U+" +
                                codePoint.ToString("x4"));
             else
-                PCLWriter.text(prnWriter, posX, posY, 0, "U+" +
+                PCLWriter.Text(prnWriter, posX, posY, 0, "U+" +
                                codePoint.ToString("x6"));
 
-            PrnParseDataUTF8.convertUTF32ToUTF8Bytes(codePoint,
+            PrnParseDataUTF8.ConvertUTF32ToUTF8Bytes(codePoint,
                                                       ref utf8Len,
                                                       ref utf8Seq);
 
-            PrnParseDataUTF8.convertUTF32ToUTF8HexString(codePoint,
+            PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(codePoint,
                                                           true,
                                                           ref utf8HexVal);
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0, utf8HexVal);
+            PCLWriter.Text(prnWriter, posX, posY, 0, utf8HexVal);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -373,8 +373,8 @@ namespace PCLParaphernalia
 
             posY += _lineInc;
 
-            PCLWriter.text(prnWriter, posX, posY, 0,
-                           PCLFonts.getName(indxFont) +
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                           PCLFonts.GetName(indxFont) +
                            " " +
                            Enum.GetName(typeof(PCLFonts.eVariant), fontVar));
 
@@ -382,20 +382,20 @@ namespace PCLParaphernalia
 
             ptSize = 36;
 
-            PCLWriter.font(prnWriter, true, "18N",
-                           PCLFonts.getPCLFontSelect(indxFont,
+            PCLWriter.Font(prnWriter, true, "18N",
+                           PCLFonts.GetPCLFontSelect(indxFont,
                                                       fontVar,
                                                       ptSize, 0));
 
-            PCLWriter.textParsingMethod(
+            PCLWriter.TextParsingMethod(
                 prnWriter,
                 PCLTextParsingMethods.eIndex.m83_UTF8);
 
-            PCLWriter.cursorPosition(prnWriter, posX, posY);
+            PCLWriter.CursorPosition(prnWriter, posX, posY);
 
             prnWriter.Write(utf8Seq, 0, utf8Len);
 
-            PCLWriter.formFeed(prnWriter);
+            PCLWriter.FormFeed(prnWriter);
         }
     }
 }

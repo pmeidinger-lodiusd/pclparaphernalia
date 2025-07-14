@@ -35,7 +35,7 @@ namespace PCLParaphernalia
 
         static PCLXLWhitespaces()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag(byte tagToCheck,
+        public static bool CheckTag(byte tagToCheck,
                                         ref string mnemonic,
                                         ref string description)
         {
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedResTags)
         {
@@ -107,7 +107,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -163,7 +163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 
@@ -231,7 +231,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount(byte tagByte,
+        public static void IncrementStatsCount(byte tagByte,
                                                 int level)
         {
             PCLXLWhitespace tag;
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isKnownTag(byte tagToCheck)
+        public static bool IsKnownTag(byte tagToCheck)
         {
             return _tags.IndexOfKey(tagToCheck) != -1;
         }
@@ -267,7 +267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             byte tag;
 
@@ -331,17 +331,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLWhitespace tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLWhitespace> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

@@ -267,7 +267,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool getGlyphId(ref ushort glyphId)
+            public bool GetGlyphId(ref ushort glyphId)
             {
                 glyphId = _glyphId;
 
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getValues(ref ushort codepoint,
+            public void GetValues(ref ushort codepoint,
                                   ref ushort glyphId,
                                   ref bool glyphPresent)
             {
@@ -287,14 +287,14 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool glyphPresent()
+            public bool GlyphPresent()
             {
                 return _glyphPresent;
             }
 
             //----------------------------------------------------------------//
 
-            public void setValues(ushort codepoint,
+            public void SetValues(ushort codepoint,
                                   ushort glyphId,
                                   bool glyphPresent)
             {
@@ -346,35 +346,35 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public bool checkComposite()
+            public bool CheckComposite()
             {
                 return _composite;
             }
 
             //----------------------------------------------------------------//
 
-            public bool checkReferenced()
+            public bool CheckReferenced()
             {
                 return _referenced;
             }
 
             //----------------------------------------------------------------//
 
-            public void getAdvance(ref ushort advance)
+            public void GetAdvance(ref ushort advance)
             {
                 advance = _advanceWidth;
             }
 
             //----------------------------------------------------------------//
 
-            public void getFlags(ref bool composite)
+            public void GetFlags(ref bool composite)
             {
                 composite = _composite;
             }
 
             //----------------------------------------------------------------//
 
-            public void getLocation(ref uint offset,
+            public void GetLocation(ref uint offset,
                                      ref uint length)
             {
                 offset = _offset;
@@ -383,7 +383,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getMetricsH(ref ushort advanceWidth,
+            public void GetMetricsH(ref ushort advanceWidth,
                                      ref short leftSideBearing)
             {
                 advanceWidth = _advanceWidth;
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void getMetricsV(ref ushort advanceHeight,
+            public void GetMetricsV(ref ushort advanceHeight,
                                      ref short topSideBearing)
             {
                 advanceHeight = _advanceHeight;
@@ -401,21 +401,21 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void markReferenced()
+            public void MarkReferenced()
             {
                 _referenced = true;
             }
 
             //----------------------------------------------------------------//
 
-            public void setFlags(bool composite)
+            public void SetFlags(bool composite)
             {
                 _composite = composite;
             }
 
             //----------------------------------------------------------------//
 
-            public void setLocation(uint offset,
+            public void SetLocation(uint offset,
                                      uint length)
             {
                 _offset = offset;
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setMetricsH(ushort advanceWidth,
+            public void SetMetricsH(ushort advanceWidth,
                                      short leftSideBearing)
             {
                 _advanceWidth = advanceWidth;
@@ -433,7 +433,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void setMetricsV(ushort advanceHeight,
+            public void SetMetricsV(ushort advanceHeight,
                                      short topSideBearing)
             {
                 _advanceHeight = advanceHeight;
@@ -442,7 +442,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            public void unmarkReferenced()
+            public void UnmarkReferenced()
             {
                 _referenced = false;
             }
@@ -488,7 +488,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < sizeCharSet; i++)
             {
-                _charData[i].setValues(0, 0, false);
+                _charData[i].SetValues(0, 0, false);
             }
         }
 
@@ -503,7 +503,7 @@ namespace PCLParaphernalia
         //               [ BitConverter.IsLittleEndian ]                      //
         //--------------------------------------------------------------------//
 
-        private short byteArrayToInt16(byte[] Buf)
+        private short ByteArrayToInt16(byte[] Buf)
         {
             const int sliceSize = 2;
 
@@ -532,7 +532,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort byteArrayToUInt16(byte[] Buf)
+        private ushort ByteArrayToUInt16(byte[] Buf)
         {
             const int sliceSize = 2;
 
@@ -561,7 +561,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint byteArrayToUInt32(byte[] Buf)
+        private uint ByteArrayToUInt32(byte[] Buf)
         {
             const int sliceSize = 4;
 
@@ -590,7 +590,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ulong byteArrayToUInt64(byte[] Buf)
+        private ulong ByteArrayToUInt64(byte[] Buf)
         {
             const int sliceSize = 8;
 
@@ -618,9 +618,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool charReferencedCheck(ushort charCode)
+        public bool CharReferencedCheck(ushort charCode)
         {
-            return _charData[charCode].glyphPresent();
+            return _charData[charCode].GlyphPresent();
         }
 
         //--------------------------------------------------------------------//
@@ -633,7 +633,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool checkForTTC(string fileName,
+        public bool CheckForTTC(string fileName,
                                     ref bool typeTTC,
                                     ref uint numFonts)
         {
@@ -646,13 +646,13 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            fileOpen = fontFileOpen(fileName, ref _fontFileSize);
+            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
             if (!fileOpen)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Error opening TrueType Font file " + fileName);
             }
@@ -671,13 +671,13 @@ namespace PCLParaphernalia
 
                 typeTTC = false;
 
-                flagOK = readBytesAsUInt32(0, ref tabId);
+                flagOK = ReadBytesAsUInt32(0, ref tabId);
 
                 if (!flagOK)
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading first four bytes of font file");
                 }
@@ -685,11 +685,11 @@ namespace PCLParaphernalia
                 {
                     typeTTC = true;
 
-                    flagOK = readBytesAsUInt32(-1, ref tabVersion);
+                    flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt32(-1, ref numFonts);
+                        flagOK = ReadBytesAsUInt32(-1, ref numFonts);
                     }
 
                     if (!flagOK)
@@ -704,19 +704,19 @@ namespace PCLParaphernalia
 
                 if (_logVerbose && typeTTC)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "version  = 0x" + tabVersion.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "numfonts = " + numFonts.ToString());
                 }
 
                 if (fileOpen)
-                    fontFileClose();
+                    FontFileClose();
             }
 
             return flagOK;
@@ -732,7 +732,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public eLicenceType checkLicence(ref string licenceText)
+        public eLicenceType CheckLicence(ref string licenceText)
         {
             eLicenceType licenceType = eLicenceType.NotAllowed;
 
@@ -797,7 +797,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void fontFileClose()
+        public void FontFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -812,7 +812,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool fontFileOpen(string fileName,
+        public bool FontFileOpen(string fileName,
                                     ref long fileSize)
         {
             bool open = false;
@@ -857,7 +857,7 @@ namespace PCLParaphernalia
 
                 catch
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error opening font file " + fileName);
                 }
@@ -875,11 +875,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool fontFileReOpen()
+        public bool FontFileReOpen()
         {
             bool flagOK = true;
 
-            flagOK = fontFileOpen(_filenameTTF, ref _fontFileSize);
+            flagOK = FontFileOpen(_filenameTTF, ref _fontFileSize);
 
             return flagOK;
         }
@@ -893,7 +893,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool fontFileSeek(int offset)
+        private bool FontFileSeek(int offset)
         {
             bool flagOK = true;
 
@@ -935,7 +935,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getBasicMetrics(ref ushort numChars,
+        public void GetBasicMetrics(ref ushort numChars,
                                     ref ushort firstCode,
                                     ref ushort lastCode,
                                     ref ushort maxGlyphId,
@@ -965,13 +965,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getCharData(ushort charCode,
+        public bool GetCharData(ushort charCode,
                                     ref ushort codepoint,
                                     ref ushort glyphId)
         {
             bool glyphPresent = false;
 
-            _charData[charCode].getValues(ref codepoint,
+            _charData[charCode].GetValues(ref codepoint,
                                            ref glyphId,
                                            ref glyphPresent);
 
@@ -987,7 +987,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getGlyphData(ushort identifier,
+        public void GetGlyphData(ushort identifier,
                                  ref ushort width,
                                  ref ushort height,
                                  ref short leftSideBearing,
@@ -996,15 +996,15 @@ namespace PCLParaphernalia
                                  ref uint length,
                                  ref bool composite)
         {
-            _glyphData[identifier].getMetricsH(ref width,
+            _glyphData[identifier].GetMetricsH(ref width,
                                                 ref leftSideBearing);
 
-            _glyphData[identifier].getMetricsV(ref height,
+            _glyphData[identifier].GetMetricsV(ref height,
                                                 ref topSideBearing);
 
-            _glyphData[identifier].getLocation(ref offset, ref length);
+            _glyphData[identifier].GetLocation(ref offset, ref length);
 
-            _glyphData[identifier].getFlags(ref composite);
+            _glyphData[identifier].GetFlags(ref composite);
         }
 
         //--------------------------------------------------------------------//
@@ -1016,7 +1016,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getOS2sTypoDescender()
+        public short GetOS2sTypoDescender()
         {
             return _OS_2_sTypoDescender;
         }
@@ -1031,7 +1031,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getOutputNumTables(bool pdlIsPCLXL,
+        public short GetOutputNumTables(bool pdlIsPCLXL,
                                          bool symSetUnbound,
                                          bool flagVMetrics)
         {
@@ -1093,7 +1093,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLFontHeaderData(bool usePCLT,
+        public void GetPCLFontHeaderData(bool usePCLT,
                                           ref bool monoSpaced,
                                           ref ushort cellWidth,
                                           ref ushort cellHeight,
@@ -1144,11 +1144,11 @@ namespace PCLParaphernalia
             textWidth = (ushort)_OS_2_xAvgCharWidth;
             xHeight = (ushort)_OS_2_sxHeight;
 
-            glyphPresent = _charData[cSpaceCodePoint].getGlyphId(ref glyphId);
+            glyphPresent = _charData[cSpaceCodePoint].GetGlyphId(ref glyphId);
 
             if (glyphPresent)
             {
-                _glyphData[glyphId].getAdvance(ref advWidthThis);
+                _glyphData[glyphId].GetAdvance(ref advWidthThis);
                 if (advWidthThis > 0)
                     defPCLPitch = advWidthThis;
                 else
@@ -1368,11 +1368,11 @@ namespace PCLParaphernalia
 
             for (int i = _cmap_firstCode; i <= _cmap_lastCode; i++)
             {
-                glyphPresent = _charData[i].getGlyphId(ref glyphId);
+                glyphPresent = _charData[i].GetGlyphId(ref glyphId);
 
                 if (glyphPresent)
                 {
-                    _glyphData[glyphId].getAdvance(ref advWidthThis);
+                    _glyphData[glyphId].GetAdvance(ref advWidthThis);
 
                     if (glyphWidthSet)
                     {
@@ -1412,7 +1412,7 @@ namespace PCLParaphernalia
 
                 text_common = "Inconsistency between indicators:";
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "Monospacing check",
                     text_common);
@@ -1420,7 +1420,7 @@ namespace PCLParaphernalia
                 text_glyph = "Glyphs in chosen mapping all have advance" +
                              " width = " + advWidthCommon;
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     string.Empty,
                     text_glyph);
@@ -1428,7 +1428,7 @@ namespace PCLParaphernalia
                 text_OS_2_avgWidth = "OS/2 | xAvgCharWidth = " +
                                      _OS_2_xAvgCharWidth;
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     string.Empty,
                     text_OS_2_avgWidth);
@@ -1442,7 +1442,7 @@ namespace PCLParaphernalia
                                        " & Proportion = " + panoseProportion +
                                        " indicates font is not monospaced";
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     string.Empty,
                     text_OS_2_panose);
@@ -1456,7 +1456,7 @@ namespace PCLParaphernalia
                                 _post_isFixedPitch.ToString("x8") +
                                 " (= fixed-pitch)";
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     string.Empty,
                     text_post);
@@ -1476,7 +1476,7 @@ namespace PCLParaphernalia
                 {
                     monoSpaced = true;
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         string.Empty,
                         "User chooses to generate PCL font as" +
@@ -1486,7 +1486,7 @@ namespace PCLParaphernalia
                 {
                     monoSpaced = false;
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         string.Empty,
                         "User chooses to generate PCL font as" +
@@ -1504,7 +1504,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLFontSelectData(ref ushort styleNonPCLT,
+        public void GetPCLFontSelectData(ref ushort styleNonPCLT,
                                           ref sbyte strokeWeightNonPCLT,
                                           ref ushort symSetPCLT,
                                           ref ushort stylePCLT,
@@ -1684,7 +1684,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPCLTSymSet()
+        public ushort GetPCLTSymSet()
         {
             return _PCLT_symSet;
         }
@@ -1699,7 +1699,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPCLTTypeFamily()
+        public ushort GetPCLTTypeFamily()
         {
             return _PCLT_typeFamily;
         }
@@ -1714,7 +1714,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public uint getSegGTTablesSize(bool pdlIsPCLXL,
+        public uint GetSegGTTablesSize(bool pdlIsPCLXL,
                                           bool symSetUnbound,
                                           bool flagVMetrics)
         {
@@ -1753,7 +1753,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getTableMetrics(ref ToolSoftFontGenTTFTable data_cvt,
+        public void GetTableMetrics(ref ToolSoftFontGenTTFTable data_cvt,
                                     ref ToolSoftFontGenTTFTable data_gdir,
                                     ref ToolSoftFontGenTTFTable data_fpgm,
                                     ref ToolSoftFontGenTTFTable data_head,
@@ -1789,7 +1789,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getTTCData(string fileName,
+        public bool GetTTCData(string fileName,
                                    uint numFonts,
                                    ref uint[] fontOffsets,
                                    ref string[] fontNames)
@@ -1801,13 +1801,13 @@ namespace PCLParaphernalia
 
             int offset;
 
-            fileOpen = fontFileOpen(fileName, ref _fontFileSize);
+            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
             if (!fileOpen)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Error opening TrueType Font file " + fileName);
             }
@@ -1825,7 +1825,7 @@ namespace PCLParaphernalia
 
                 offset = 8;
 
-                flagOK = readBytesAsUInt32(offset, ref checkNumFonts);
+                flagOK = ReadBytesAsUInt32(offset, ref checkNumFonts);
 
                 if (checkNumFonts != numFonts)
                 {
@@ -1837,7 +1837,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < numFonts; i++)
                     {
-                        flagOK = readBytesAsUInt32(offset, ref fontOffsets[i]);
+                        flagOK = ReadBytesAsUInt32(offset, ref fontOffsets[i]);
 
                         if (!flagOK)
                         {
@@ -1855,26 +1855,26 @@ namespace PCLParaphernalia
 
                             if (_logVerbose)
                             {
-                                ToolSoftFontGenLog.logNameAndValue(
+                                ToolSoftFontGenLog.LogNameAndValue(
                                     _tableDonor, true, false,
                                     "DIAG: " + tabName + " subTab " + i + ":",
                                     "offset = " +
                                     fontOffsets[i].ToString());
                             }
 
-                            flagOK = readTableDirectory((int)fontOffsets[i],
+                            flagOK = ReadTableDirectory((int)fontOffsets[i],
                                                          true);
 
                             if (flagOK)
                             {
-                                flagOK = readData_name(true, ref fontNames[i]);
+                                flagOK = ReadData_name(true, ref fontNames[i]);
                             }
                         }
                     }
                 }
 
                 if (fileOpen)
-                    fontFileClose();
+                    FontFileClose();
             }
 
             return flagOK;
@@ -1889,9 +1889,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool glyphCompositeCheck(ushort glyphId)
+        public bool GlyphCompositeCheck(ushort glyphId)
         {
-            return _glyphData[glyphId].checkComposite();
+            return _glyphData[glyphId].CheckComposite();
         }
 
         //--------------------------------------------------------------------//
@@ -1904,9 +1904,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool glyphReferencedCheck(ushort glyphId)
+        public bool GlyphReferencedCheck(ushort glyphId)
         {
-            return _glyphData[glyphId].checkReferenced();
+            return _glyphData[glyphId].CheckReferenced();
         }
 
         //--------------------------------------------------------------------//
@@ -1919,9 +1919,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void glyphReferencedMark(ushort glyphId)
+        public void GlyphReferencedMark(ushort glyphId)
         {
-            _glyphData[glyphId].markReferenced();
+            _glyphData[glyphId].MarkReferenced();
         }
 
         //--------------------------------------------------------------------//
@@ -1934,11 +1934,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void glyphReferencedUnmarkAll()
+        public void GlyphReferencedUnmarkAll()
         {
             for (int i = 0; i < _maxp_numGlyphs; i++)
             {
-                _glyphData[i].unmarkReferenced();
+                _glyphData[i].UnmarkReferenced();
             }
         }
 
@@ -1951,7 +1951,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool initialiseFontData(string fileName,
+        public bool InitialiseFontData(string fileName,
                                           int sfntOffset,
                                           int symSetIndx,
                                           ref bool tabPCLTPresent,
@@ -1970,13 +1970,13 @@ namespace PCLParaphernalia
             _tabPCLTPresent = false;
             _tabvmtxPresent = false;
 
-            fileOpen = fontFileOpen(fileName, ref _fontFileSize);
+            fileOpen = FontFileOpen(fileName, ref _fontFileSize);
 
             if (!fileOpen)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Error opening TrueType Font file " + fileName);
             }
@@ -1990,11 +1990,11 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                flagOK = readBytesAsUInt32(sfntOffset, ref tabVer_sfnt);
+                flagOK = ReadBytesAsUInt32(sfntOffset, ref tabVer_sfnt);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading sfntVersion");
                 }
@@ -2002,7 +2002,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Wrong sfntVersion = 0x" +
                         tabVer_sfnt.ToString("x8") +
@@ -2022,7 +2022,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readTableDirectory(sfntOffset, false);
+                    flagOK = ReadTableDirectory(sfntOffset, false);
                 }
 
                 //------------------------------------------------------------//
@@ -2035,42 +2035,42 @@ namespace PCLParaphernalia
                 {
                     string dummyString = string.Empty;
 
-                    flagOK = readData_name(false, ref dummyString);
+                    flagOK = ReadData_name(false, ref dummyString);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_OS_2();
+                    flagOK = ReadData_OS_2();
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_head();
+                    flagOK = ReadData_head();
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_hhea();
+                    flagOK = ReadData_hhea();
                 }
 
                 if ((flagOK) && (_tab_vhea.TableLength != 0))
                 {
-                    flagOK = readData_vhea();
+                    flagOK = ReadData_vhea();
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_maxp();
+                    flagOK = ReadData_maxp();
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_PCLT();
+                    flagOK = ReadData_PCLT();
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readData_post();
+                    flagOK = ReadData_post();
                 }
 
                 //------------------------------------------------------------//
@@ -2083,7 +2083,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readData_cmap(symSetIndx,
+                    flagOK = ReadData_cmap(symSetIndx,
                                             ref symbolMapping,
                                             symSetUnbound,
                                             symSetUserSet,
@@ -2102,7 +2102,7 @@ namespace PCLParaphernalia
                 {
                     _glyphData = new GlyphDataEntry[_maxp_numGlyphs];
 
-                    flagOK = readData_hmtx();
+                    flagOK = ReadData_hmtx();
                 }
 
                 //------------------------------------------------------------//
@@ -2115,7 +2115,7 @@ namespace PCLParaphernalia
 
                 if ((flagOK) && (_tab_vmtx.TableLength != 0))
                 {
-                    flagOK = readData_vmtx();
+                    flagOK = ReadData_vmtx();
                 }
 
                 //------------------------------------------------------------//
@@ -2129,7 +2129,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readData_loca_glyf();
+                    flagOK = ReadData_loca_glyf();
                 }
 
                 //------------------------------------------------------------//
@@ -2144,14 +2144,14 @@ namespace PCLParaphernalia
                     uint glyphOffset = 0,
                            glyphLength = 0;
 
-                    _glyphData[0].getLocation(ref glyphOffset,
+                    _glyphData[0].GetLocation(ref glyphOffset,
                                                ref glyphLength);
 
                     _glyphZeroExists = glyphLength != 0;
                 }
 
                 if (fileOpen)
-                    fontFileClose();
+                    FontFileClose();
             }
 
             tabPCLTPresent = _tabPCLTPresent;
@@ -2188,7 +2188,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool readByteArray(int offset,
+        public bool ReadByteArray(int offset,
                                       int length,
                                       ref byte[] target)
         {
@@ -2199,7 +2199,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2230,7 +2230,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readByteAsSByte(int offset,
+        private bool ReadByteAsSByte(int offset,
                                         ref sbyte target)
         {
             const int sliceSize = 1;
@@ -2244,7 +2244,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2280,7 +2280,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readByteAsUByte(int offset,
+        private bool ReadByteAsUByte(int offset,
                                         ref byte target)
         {
             const int sliceSize = 1;
@@ -2294,7 +2294,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2331,7 +2331,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readBytesAsInt16(int offset,
+        private bool ReadBytesAsInt16(int offset,
                                          ref short target)
         {
             const int sliceSize = 2;
@@ -2345,7 +2345,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2364,7 +2364,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                target = byteArrayToInt16(slice);
+                target = ByteArrayToInt16(slice);
             }
 
             return flagOK;
@@ -2382,7 +2382,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readBytesAsUInt16(int offset,
+        private bool ReadBytesAsUInt16(int offset,
                                           ref ushort target)
         {
             const int sliceSize = 2;
@@ -2396,7 +2396,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2415,7 +2415,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                target = byteArrayToUInt16(slice);
+                target = ByteArrayToUInt16(slice);
             }
 
             return flagOK;
@@ -2433,7 +2433,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readBytesAsUInt32(int offset,
+        private bool ReadBytesAsUInt32(int offset,
                                           ref uint target)
         {
             const int sliceSize = 4;
@@ -2447,7 +2447,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2466,7 +2466,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                target = byteArrayToUInt32(slice);
+                target = ByteArrayToUInt32(slice);
             }
 
             return flagOK;
@@ -2484,7 +2484,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readBytesAsUInt64(int offset,
+        private bool ReadBytesAsUInt64(int offset,
                                            ref ulong target)
         {
             const int sliceSize = 8;
@@ -2498,7 +2498,7 @@ namespace PCLParaphernalia
             flagOK = true;
 
             if (offset != -1)
-                flagOK = fontFileSeek(offset);
+                flagOK = FontFileSeek(offset);
 
             if (flagOK)
             {
@@ -2517,7 +2517,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                target = byteArrayToUInt64(slice);
+                target = ByteArrayToUInt64(slice);
             }
 
             return flagOK;
@@ -2538,7 +2538,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_cmap(int symSetIndx,
+        private bool ReadData_cmap(int symSetIndx,
                                        ref bool symbolMapping,
                                        bool symSetUnbound,
                                        bool symSetUserSet,
@@ -2590,7 +2590,7 @@ namespace PCLParaphernalia
             encodingSymbol = false;
             encodingUnicode = false;
 
-            _tab_cmap.getByteRange(ref tabOffset, ref tabLength);
+            _tab_cmap.GetByteRange(ref tabOffset, ref tabLength);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2607,7 +2607,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -2615,17 +2615,17 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table version");
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 2),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 2),
                                                 ref tabNumTables);
                     if (flagOK)
                     {
@@ -2635,7 +2635,7 @@ namespace PCLParaphernalia
                         {
                             flagOK = false;
 
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "Length of '" + tabName +
                                 "' table too small for " +
@@ -2661,7 +2661,7 @@ namespace PCLParaphernalia
             {
                 if (_logVerbose)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "table has " +
@@ -2670,13 +2670,13 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < tabNumTables) && (flagOK); i++)
                 {
-                    flagOK = readBytesAsUInt16(-1, ref subTabPlatform);
+                    flagOK = ReadBytesAsUInt16(-1, ref subTabPlatform);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref subTabEncoding);
+                        flagOK = ReadBytesAsUInt16(-1, ref subTabEncoding);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt32(-1, ref subTabOffset);
+                        flagOK = ReadBytesAsUInt32(-1, ref subTabOffset);
 
                     if (flagOK)
                     {
@@ -2769,7 +2769,7 @@ namespace PCLParaphernalia
                                     break;
                             }
 
-                            ToolSoftFontGenLog.logNameAndValue(
+                            ToolSoftFontGenLog.LogNameAndValue(
                                 _tableDonor, false, false,
                                 "DIAG: " + tabName + " subTab " + i + ":",
                                 "offset = " + subTabOffset +
@@ -2783,7 +2783,7 @@ namespace PCLParaphernalia
                         {
                             flagOK = false;
 
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "'" + tabName + "' sub-table header at offset " +
                                 reqLength + " past end of table of length " +
@@ -2809,7 +2809,7 @@ namespace PCLParaphernalia
                             subTabNo = i;
 
                             _mappingTable =
-                                PCLSymbolSets.getMapArraySymbol();
+                                PCLSymbolSets.GetMapArraySymbol();
 
                             mapSymSet = "Symbol";
                             mapSymSetType = "Fixed";
@@ -2821,7 +2821,7 @@ namespace PCLParaphernalia
                             subTabNo = i;
 
                             _mappingTable =
-                                PCLSymbolSets.getMapArray(symSetIndx,
+                                PCLSymbolSets.GetMapArray(symSetIndx,
                                                            symSetMapPCL);
 
                             if (symSetUnbound)
@@ -2833,18 +2833,18 @@ namespace PCLParaphernalia
                             else
                                 mapSymSetType = "Strict (standard))";
 
-                            mapSymSet = PCLSymbolSets.getId(symSetIndx) +
+                            mapSymSet = PCLSymbolSets.GetId(symSetIndx) +
                                         " (Kind1 = " +
-                                        PCLSymbolSets.getKind1(symSetIndx) +
+                                        PCLSymbolSets.GetKind1(symSetIndx) +
                                         "): " +
-                                        PCLSymbolSets.getName(symSetIndx);
+                                        PCLSymbolSets.GetName(symSetIndx);
                         }
                     }
                     else
                     {
                         flagOK = false;
 
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
                             "Error reading '" + tabName + "' encoding records");
                     }
@@ -2886,27 +2886,27 @@ namespace PCLParaphernalia
             {
                 if (encodingUnicode)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Platform:", "Windows");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Encoding:", "Unicode BMP (UCS-2)");
 
                     if (symSetUnbound)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableMapping, false, false,
                             "Mapping:", "Unicode");
                     }
                     else
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableMapping, false, false,
                             "Symbol set:", mapSymSet);
 
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableMapping, false, false,
                             "Type:", mapSymSetType);
                     }
@@ -2915,19 +2915,19 @@ namespace PCLParaphernalia
                 }
                 else if (encodingSymbol)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Platform:", "Windows");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Encoding:", "Symbol");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Symbol set:", mapSymSet);
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Type:", mapSymSetType);
 
@@ -2937,7 +2937,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "No Unicode or Symbol encoding sub-table of " +
                         " format 4 found for Windows platform in '" +
@@ -3003,7 +3003,7 @@ namespace PCLParaphernalia
                                 }
                             }
 
-                            ToolSoftFontGenLog.logNameAndValue(
+                            ToolSoftFontGenLog.LogNameAndValue(
                                 _tableMapping, firstEntry, false,
                                 "Map 0x" + i.ToString("x2") + "-->",
                                 mData.ToString());
@@ -3015,7 +3015,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16((int)subTabOffset,
+                    flagOK = ReadBytesAsUInt16((int)subTabOffset,
                                                 ref subTabFormat);
                 }
 
@@ -3023,7 +3023,7 @@ namespace PCLParaphernalia
                 {
                     if (subTabFormat == 4)
                     {
-                        flagOK = readBytesAsUInt16(-1, ref fmt4Length);
+                        flagOK = ReadBytesAsUInt16(-1, ref fmt4Length);
 
                         if (flagOK)
                         {
@@ -3031,7 +3031,7 @@ namespace PCLParaphernalia
                             {
                                 flagOK = false;
 
-                                ToolSoftFontGenLog.logError(
+                                ToolSoftFontGenLog.LogError(
                                     _tableDonor, MessageBoxImage.Error,
                                     "'" + tabName +
                                     "' sub-table header not within table");
@@ -3041,7 +3041,7 @@ namespace PCLParaphernalia
                             {
                                 flagOK = false;
 
-                                ToolSoftFontGenLog.logError(
+                                ToolSoftFontGenLog.LogError(
                                     _tableDonor, MessageBoxImage.Error,
                                     "'" + tabName +
                                     "' sub-table not within table");
@@ -3049,21 +3049,21 @@ namespace PCLParaphernalia
                         }
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16(-1, ref fmt4Lang);
+                            flagOK = ReadBytesAsUInt16(-1, ref fmt4Lang);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16(-1, ref fmt4SegCountx2);
+                            flagOK = ReadBytesAsUInt16(-1, ref fmt4SegCountx2);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16(-1,
+                            flagOK = ReadBytesAsUInt16(-1,
                                                         ref fmt4SearchRange);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16(-1,
+                            flagOK = ReadBytesAsUInt16(-1,
                                                         ref fmt4EntrySelector);
 
                         if (flagOK)
-                            flagOK = readBytesAsUInt16(-1, ref fmt4RangeShift);
+                            flagOK = ReadBytesAsUInt16(-1, ref fmt4RangeShift);
 
                         if (flagOK)
                         {
@@ -3077,7 +3077,7 @@ namespace PCLParaphernalia
                             {
                                 flagOK = false;
 
-                                ToolSoftFontGenLog.logError(
+                                ToolSoftFontGenLog.LogError(
                                     _tableDonor, MessageBoxImage.Error,
                                     "'" + tabName +
                                     "' sub-table internally inconsistent");
@@ -3093,13 +3093,13 @@ namespace PCLParaphernalia
                                     else
                                         encDesc = "1 (Unicode BMP (UCS-2))";
 
-                                    ToolSoftFontGenLog.logNameAndValue(
+                                    ToolSoftFontGenLog.LogNameAndValue(
                                         _tableDonor, true, false,
                                         "DIAG: " + tabName + " subTab " + subTabNo + ":",
                                         "Format = 4 (Segment mapping to delta values)" +
                                         " sub-table found for");
 
-                                    ToolSoftFontGenLog.logNameAndValue(
+                                    ToolSoftFontGenLog.LogNameAndValue(
                                         _tableDonor, false, false,
                                         string.Empty,
                                         " Platform = 3 (Windows)" +
@@ -3126,12 +3126,12 @@ namespace PCLParaphernalia
                         flagOK = false;
 
                         if (encodingUnicode)
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "'" + tabName + "' sub-table " + subTabNo +
                                 " for Unicode is not format 4");
                         else
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "'" + tabName + "' sub-table " + subTabNo +
                                 " for Symbol is not format 4");
@@ -3167,7 +3167,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < _sizeCharSet; i++)
                     {
-                        _charData[i].setValues((ushort)i, 0, false);
+                        _charData[i].SetValues((ushort)i, 0, false);
                     }
                 }
                 else
@@ -3181,30 +3181,30 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < _sizeCharSet; i++)
                     {
-                        _charData[i].setValues(_mappingTable[i], 0, false);
+                        _charData[i].SetValues(_mappingTable[i], 0, false);
                     }
                 }
 
-                flagOK = readByteArray(baseEndCode,
+                flagOK = ReadByteArray(baseEndCode,
                                         fmt4SegCountx2,
                                         ref indexEndCode);
                 if (flagOK)
-                    flagOK = readByteArray(baseStartCode,
+                    flagOK = ReadByteArray(baseStartCode,
                                             fmt4SegCountx2,
                                             ref indexStartCode);
 
                 if (flagOK)
-                    flagOK = readByteArray(baseIdDelta,
+                    flagOK = ReadByteArray(baseIdDelta,
                                             fmt4SegCountx2,
                                             ref indexIdDelta);
 
                 if (flagOK)
-                    flagOK = readByteArray(baseIdRangeOffset,
+                    flagOK = ReadByteArray(baseIdRangeOffset,
                                             fmt4SegCountx2,
                                             ref indexIdRangeOffset);
 
                 if (flagOK)
-                    flagOK = readByteArray(baseGlyphIdArray,
+                    flagOK = ReadByteArray(baseGlyphIdArray,
                                             sizeGlyphIdArray,
                                             ref glyphIdArray);
 
@@ -3225,12 +3225,12 @@ namespace PCLParaphernalia
 
                     if (_logVerbose)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, true, false,
                             "DIAG: Segments",
                             "Count = " + fmt4SegCount.ToString());
 
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableMapping, false, false,
                             string.Empty,
                             string.Empty);
@@ -3243,26 +3243,26 @@ namespace PCLParaphernalia
                         ba2[0] = indexEndCode[segx2];
                         ba2[1] = indexEndCode[segx2 + 1];
 
-                        endCode = byteArrayToUInt16(ba2);
+                        endCode = ByteArrayToUInt16(ba2);
 
                         ba2[0] = indexStartCode[segx2];
                         ba2[1] = indexStartCode[segx2 + 1];
 
-                        startCode = byteArrayToUInt16(ba2);
+                        startCode = ByteArrayToUInt16(ba2);
 
                         ba2[0] = indexIdDelta[segx2];
                         ba2[1] = indexIdDelta[segx2 + 1];
 
-                        idDelta = byteArrayToInt16(ba2);
+                        idDelta = ByteArrayToInt16(ba2);
 
                         ba2[0] = indexIdRangeOffset[segx2];
                         ba2[1] = indexIdRangeOffset[segx2 + 1];
 
-                        idRangeOffset = byteArrayToUInt16(ba2);
+                        idRangeOffset = ByteArrayToUInt16(ba2);
 
                         if (_logVerbose)
                         {
-                            ToolSoftFontGenLog.logNameAndValue(
+                            ToolSoftFontGenLog.LogNameAndValue(
                                 _tableDonor, false, false,
                                 "DIAG: Segment",
                                 segx2 / 2 +
@@ -3332,7 +3332,7 @@ namespace PCLParaphernalia
 
                                     if (_logVerbose)
                                     {
-                                        ToolSoftFontGenLog.logNameAndValue(
+                                        ToolSoftFontGenLog.LogNameAndValue(
                                             _tableMapping, false, false,
                                             "DIAG: Codepoint",
                                             "U+" +
@@ -3375,7 +3375,7 @@ namespace PCLParaphernalia
                                     {
                                         flagOK = false;
 
-                                        ToolSoftFontGenLog.logError(
+                                        ToolSoftFontGenLog.LogError(
                                             _tableDonor, MessageBoxImage.Error,
                                             "GlyphId index " + j +
                                             " >= array size " +
@@ -3386,7 +3386,7 @@ namespace PCLParaphernalia
                                         ba2[0] = glyphIdArray[j];
                                         ba2[1] = glyphIdArray[j + 1];
 
-                                        glyphIndex = byteArrayToUInt16(ba2);
+                                        glyphIndex = ByteArrayToUInt16(ba2);
 
                                         if (glyphIndex != 0)
                                             glyphIndex =
@@ -3395,7 +3395,7 @@ namespace PCLParaphernalia
 
                                         if (_logVerbose)
                                         {
-                                            ToolSoftFontGenLog.logNameAndValue(
+                                            ToolSoftFontGenLog.LogNameAndValue(
                                                 _tableMapping, false, false,
                                                 "DIAG: Codepoint",
                                                 "U+" +
@@ -3424,7 +3424,7 @@ namespace PCLParaphernalia
                                 //                                            //
                                 //--------------------------------------------//
 
-                                _charData[mapCode].setValues(charCode,
+                                _charData[mapCode].SetValues(charCode,
                                                              glyphIndex,
                                                              true);
 
@@ -3436,7 +3436,7 @@ namespace PCLParaphernalia
                                     {
                                         if (charCode == _mappingTable[k])
                                         {
-                                            _charData[k].setValues(charCode,
+                                            _charData[k].SetValues(charCode,
                                                                     glyphIndex,
                                                                     true);
                                         }
@@ -3483,7 +3483,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < _sizeCharSet; i++)
                     {
-                        _charData[i].getValues(ref codepoint,
+                        _charData[i].GetValues(ref codepoint,
                                                ref glyphId,
                                                ref glyphPresent);
 
@@ -3504,7 +3504,7 @@ namespace PCLParaphernalia
 
                             if (!symSetUnbound)
                             {
-                                ToolSoftFontGenLog.logNameAndValue(
+                                ToolSoftFontGenLog.LogNameAndValue(
                                 _tableMapping, firstMissing, false,
                                 "Character code",
                                 "0x" + i.ToString(hexCt) +
@@ -3537,7 +3537,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableMapping, MessageBoxImage.Warning,
                             _cmap_missChars.ToString() +
                             " of the characters in the selected" +
@@ -3546,35 +3546,35 @@ namespace PCLParaphernalia
                             " mapped codepoint in the donor TrueType font");
                     }
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, true, false,
                         "Codepoints:",
                         "Total      = " +
                         totChars.ToString("D").PadLeft(5, ' ') +
                         " (0x" + totChars.ToString("x4") + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         string.Empty,
                         "Mapped     = " +
                         _cmap_numChars.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_numChars.ToString("x4") + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         string.Empty,
                         "Missing    = " +
                         _cmap_missChars.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_missChars.ToString("x4") + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         "Mapped Set:",
                         "First Code = " +
                         _cmap_firstCode.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_firstCode.ToString("x4") + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableMapping, false, false,
                         string.Empty,
                         "Last Code  = " +
@@ -3605,7 +3605,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_head()
+        private bool ReadData_head()
         {
             string tabName = "head";
 
@@ -3619,14 +3619,14 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_head.getByteRange(ref tabOffset, ref tabLength);
+            _tab_head.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 54;
 
             if (tabLength < reqLength)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -3634,11 +3634,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table version");
                 }
@@ -3646,7 +3646,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Wrong '" + tabName + "' table version = 0x" +
                         tabVersion.ToString("x8") + "\r\n\r\n" +
@@ -3655,36 +3655,36 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 18),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 18),
                                                 ref _head_unitsPerEm);
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16((int)(tabOffset + 36),
+                        flagOK = ReadBytesAsInt16((int)(tabOffset + 36),
                                                    ref _head_xMin);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16(-1,
+                        flagOK = ReadBytesAsInt16(-1,
                                                    ref _head_yMin);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16(-1,
+                        flagOK = ReadBytesAsInt16(-1,
                                                    ref _head_xMax);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16(-1,
+                        flagOK = ReadBytesAsInt16(-1,
                                                    ref _head_yMax);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16((int)(tabOffset + 50),
+                        flagOK = ReadBytesAsInt16((int)(tabOffset + 50),
                                                    ref _head_indxLocFmt);
                     }
                 }
@@ -3698,32 +3698,32 @@ namespace PCLParaphernalia
 
             if (_logVerbose)
             {
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "DIAG: table = " + tabName + ":",
                     "unitsPerEm = " + _head_unitsPerEm.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "xMin = " + _head_xMin.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "yMin = " + _head_yMin.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "xMax = " + _head_xMax.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "yMax = " + _head_yMax.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "indexToLocFormat = " + _head_indxLocFmt.ToString());
@@ -3746,7 +3746,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_hhea()
+        private bool ReadData_hhea()
         {
             string tabName = "hhea";
 
@@ -3760,14 +3760,14 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_hhea.getByteRange(ref tabOffset, ref tabLength);
+            _tab_hhea.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 36;
 
             if (tabLength < reqLength)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -3775,11 +3775,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table version");
                 }
@@ -3787,7 +3787,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Wrong '" + tabName + "' table version = 0x" +
                         tabVersion.ToString("x8") + "\r\n\r\n" +
@@ -3796,24 +3796,24 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsInt16((int)(tabOffset + 4),
+                    flagOK = ReadBytesAsInt16((int)(tabOffset + 4),
                                                ref _hhea_ascender);
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16(-1,
+                        flagOK = ReadBytesAsInt16(-1,
                                                    ref _hhea_descender);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsInt16(-1,
+                        flagOK = ReadBytesAsInt16(-1,
                                                    ref _hhea_lineGap);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((int)(tabOffset + 34),
+                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 34),
                                                     ref _hhea_numHMetrics);
                     }
                 }
@@ -3827,22 +3827,22 @@ namespace PCLParaphernalia
 
             if (_logVerbose)
             {
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "DIAG: table = " + tabName + ":",
                     "Ascender = " + _hhea_ascender.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "Descender = " + _hhea_descender.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "LineGap = " + _hhea_lineGap.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "numberOfHMetrics = " + _hhea_numHMetrics.ToString());
@@ -3863,7 +3863,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_hmtx()
+        private bool ReadData_hmtx()
         {
             string tabName = "hmtx";
 
@@ -3880,7 +3880,7 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_hmtx.getByteRange(ref tabOffset, ref tabLength);
+            _tab_hmtx.GetByteRange(ref tabOffset, ref tabLength);
 
             hMetricsArrayLen = _hhea_numHMetrics;
             lsbArrayLen = _maxp_numGlyphs - _hhea_numHMetrics;
@@ -3894,7 +3894,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Number of HMetrics " + _hhea_numHMetrics + " < 1");
             }
@@ -3902,7 +3902,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Number of glyphs " + _maxp_numGlyphs +
                     " < number of HMetrics " + _hhea_numHMetrics);
@@ -3911,7 +3911,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -3922,13 +3922,13 @@ namespace PCLParaphernalia
                 byte[] hMetricsArray = new byte[hMetricsArraySize];
                 byte[] lsbArray = new byte[lsbArraySize];
 
-                flagOK = readByteArray((int)tabOffset,
+                flagOK = ReadByteArray((int)tabOffset,
                                         hMetricsArraySize,
                                         ref hMetricsArray);
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray(-1,
+                    flagOK = ReadByteArray(-1,
                                             lsbArraySize,
                                             ref lsbArray);
                 }
@@ -3954,7 +3954,7 @@ namespace PCLParaphernalia
                         lsb = (short)((hMetricsArray[lsbOffset] << 8) +
                                         hMetricsArray[lsbOffset + 1]);
 
-                        _glyphData[indx].setMetricsH(advance, lsb);
+                        _glyphData[indx].SetMetricsH(advance, lsb);
                     }
 
                     for (int indx = 0; indx < lsbArrayLen; indx++)
@@ -3966,7 +3966,7 @@ namespace PCLParaphernalia
 
                         glyphId = (ushort)(hMetricsArrayLen + indx);
 
-                        _glyphData[glyphId].setMetricsH(advance, lsb);
+                        _glyphData[glyphId].SetMetricsH(advance, lsb);
                     }
                 }
             }
@@ -3987,7 +3987,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_loca_glyf()
+        private bool ReadData_loca_glyf()
         {
             bool flagOK = true;
             bool composite = false;
@@ -4015,12 +4015,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _tab_loca.getByteRange(ref locaOffset, ref locaLength);
-            _tab_glyf.getByteRange(ref glyfOffset, ref glyfLength);
+            _tab_loca.GetByteRange(ref locaOffset, ref locaLength);
+            _tab_glyf.GetByteRange(ref glyfOffset, ref glyfLength);
 
             if (_logVerbose)
             {
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "DIAG: Glyphs",
                     "Count = " +
@@ -4033,18 +4033,18 @@ namespace PCLParaphernalia
             {
                 if (_head_indxLocFmt != 0)
                 {
-                    flagOK = readBytesAsUInt32(
+                    flagOK = ReadBytesAsUInt32(
                         (int)(locaOffset + (4 * glyphId)),
                         ref offsetThis);
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt32(-1, ref offsetNext);
+                        flagOK = ReadBytesAsUInt32(-1, ref offsetNext);
                     }
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16(
+                    flagOK = ReadBytesAsUInt16(
                         (int)(locaOffset + (2 * glyphId)),
                         ref offsetTemp);
 
@@ -4052,7 +4052,7 @@ namespace PCLParaphernalia
                     {
                         offsetThis = (uint)(offsetTemp * 2);
 
-                        flagOK = readBytesAsUInt16(-1, ref offsetTemp);
+                        flagOK = ReadBytesAsUInt16(-1, ref offsetTemp);
 
                         if (flagOK)
                             offsetNext = (uint)(offsetTemp * 2);
@@ -4079,7 +4079,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = readBytesAsInt16((int)entryOffset,
+                        flagOK = ReadBytesAsInt16((int)entryOffset,
                                                    ref numContours);
 
                         composite = numContours < 0;
@@ -4092,8 +4092,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _glyphData[glyphId].setLocation(entryOffset, entryLen);
-                _glyphData[glyphId].setFlags(composite);
+                _glyphData[glyphId].SetLocation(entryOffset, entryLen);
+                _glyphData[glyphId].SetFlags(composite);
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -4108,15 +4108,15 @@ namespace PCLParaphernalia
                     ushort advanceWidth = 0,
                            advanceHeight = 0;
 
-                    _glyphData[glyphId].getMetricsH(ref advanceWidth,
+                    _glyphData[glyphId].GetMetricsH(ref advanceWidth,
                                                      ref leftSideBearing);
 
-                    _glyphData[glyphId].getMetricsV(ref advanceHeight,
+                    _glyphData[glyphId].GetMetricsV(ref advanceHeight,
                                                      ref topSideBearing);
 
                     if (composite)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             "DIAG: Glyph",
                             glyphId.ToString() +
@@ -4135,7 +4135,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             "DIAG: Glyph",
                             glyphId.ToString() +
@@ -4169,7 +4169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_maxp()
+        private bool ReadData_maxp()
         {
             string tabName = "maxp";
 
@@ -4183,14 +4183,14 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_maxp.getByteRange(ref tabOffset, ref tabLength);
+            _tab_maxp.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 32;
 
             if (tabLength < reqLength)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -4198,11 +4198,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table version");
                 }
@@ -4210,7 +4210,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Wrong '" + tabName + "' table version = 0x" +
                         tabVersion.ToString("x8") + "\r\n\r\n" +
@@ -4219,11 +4219,11 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 4),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 4),
                                                 ref _maxp_numGlyphs);
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((int)(tabOffset + 30),
+                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 30),
                                                     ref _maxp_maxCompDepth);
                     }
                 }
@@ -4237,12 +4237,12 @@ namespace PCLParaphernalia
 
             if (_logVerbose)
             {
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "DIAG: table = " + tabName + ":",
                     "numGlyphs = " + _maxp_numGlyphs.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "maxComponentDepth = " +
@@ -4267,7 +4267,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_name(bool getTTCData,
+        private bool ReadData_name(bool getTTCData,
                                       ref string fullFontName)
         {
             string tabName = "name";
@@ -4291,7 +4291,7 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_name.getByteRange(ref tabOffset, ref tabLength);
+            _tab_name.GetByteRange(ref tabOffset, ref tabLength);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -4317,7 +4317,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -4325,11 +4325,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt16((int)tabOffset, ref tabFormat);
+                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabFormat);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table format");
                 }
@@ -4337,18 +4337,18 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "'" + tabName + "' table format " +
                         tabFormat.ToString("x4") + " is not 0 or 1");
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 2),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 2),
                                                 ref nameRecCount);
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt16((int)(tabOffset + 4),
+                        flagOK = ReadBytesAsUInt16((int)(tabOffset + 4),
                                                     ref stringsOffset);
                     }
 
@@ -4360,7 +4360,7 @@ namespace PCLParaphernalia
                         {
                             flagOK = false;
 
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "'" + tabName + "' table length " + tabLength +
                                 " too short for " + nameRecCount +
@@ -4370,7 +4370,7 @@ namespace PCLParaphernalia
                         {
                             flagOK = false;
 
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "string storage offset " + stringsOffset +
                                 "incompatible with '" + tabName +
@@ -4388,18 +4388,18 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "format = " + tabFormat.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "count = " +
                     nameRecCount.ToString());
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "stringOffset = " +
@@ -4407,18 +4407,18 @@ namespace PCLParaphernalia
 
                 if (!getTTCData)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "Search nameRecord array for records associated with:");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         string.Empty,
                         "Platform = 3 (Windows)" +
                         "; Encoding = 0 (Symbol) or 1 (Unicode BMP (UCS-2))");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, true,
                         string.Empty,
                         "Language = 0x0409 (English (US))");
@@ -4459,24 +4459,24 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < nameRecCount) && (flagOK); i++)
                 {
-                    flagOK = readBytesAsUInt16(
+                    flagOK = ReadBytesAsUInt16(
                         (int)(tabOffset + 6 + (12 * i)),
                         ref nameRecPlatform);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref nameRecEncoding);
+                        flagOK = ReadBytesAsUInt16(-1, ref nameRecEncoding);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref nameRecLanguage);
+                        flagOK = ReadBytesAsUInt16(-1, ref nameRecLanguage);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref nameRecNameId);
+                        flagOK = ReadBytesAsUInt16(-1, ref nameRecNameId);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref nameRecLength);
+                        flagOK = ReadBytesAsUInt16(-1, ref nameRecLength);
 
                     if (flagOK)
-                        flagOK = readBytesAsUInt16(-1, ref nameRecOffset);
+                        flagOK = ReadBytesAsUInt16(-1, ref nameRecOffset);
 
                     if (flagOK)
                     {
@@ -4485,7 +4485,7 @@ namespace PCLParaphernalia
                         {
                             flagOK = false;
 
-                            ToolSoftFontGenLog.logError(
+                            ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "record of length " + nameRecLength +
                                 " at offset " + (stringsOffset + nameRecOffset) +
@@ -4495,7 +4495,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
                             "Error reading '" + tabName + "' record");
                     }
@@ -4639,7 +4639,7 @@ namespace PCLParaphernalia
 
                                 if (nameRecLength < maxNameRecStrLen)
                                 {
-                                    flagOK = readByteArray(textOffset,
+                                    flagOK = ReadByteArray(textOffset,
                                                             nameRecLength,
                                                             ref tempBuf);
 
@@ -4693,14 +4693,14 @@ namespace PCLParaphernalia
 
                                     if (!getTTCData)
                                     {
-                                        ToolSoftFontGenLog.logNameAndValue(
+                                        ToolSoftFontGenLog.LogNameAndValue(
                                             _tableDonor, false, false,
                                             nameText,
                                             recVal.ToString());
                                     }
                                     else if (nameIsFullFontName && _logVerbose)
                                     {
-                                        ToolSoftFontGenLog.logNameAndValue(
+                                        ToolSoftFontGenLog.LogNameAndValue(
                                             _tableDonor, false, false,
                                             "DIAG: font name",
                                             recVal.ToString());
@@ -4763,7 +4763,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_OS_2()
+        private bool ReadData_OS_2()
         {
             string tabName = "OS/2";
 
@@ -4777,7 +4777,7 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_OS_2.getByteRange(ref tabOffset, ref tabLength);
+            _tab_OS_2.GetByteRange(ref tabOffset, ref tabLength);
             minLength = 78;         // for version 0
 
             if (tabLength < minLength)
@@ -4791,49 +4791,49 @@ namespace PCLParaphernalia
 
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + minLength);
             }
             else
             {
-                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsInt16(-1,
+                    flagOK = ReadBytesAsInt16(-1,
                                                ref _OS_2_xAvgCharWidth);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _OS_2_usWeightClass);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _OS_2_usWidthClass);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _OS_2_fsType);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray((int)(tabOffset + 32),
+                    flagOK = ReadByteArray((int)(tabOffset + 32),
                                             cSizePanose,
                                             ref _OS_2_panose);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 62),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 62),
                                                 ref _OS_2_fsSelection);
                 }
 
@@ -4841,7 +4841,7 @@ namespace PCLParaphernalia
                 {
                     _OS_2_sTypoDescender = 0;
 
-                    flagOK = readBytesAsInt16((int)(tabOffset + 70),
+                    flagOK = ReadBytesAsInt16((int)(tabOffset + 70),
                                                ref _OS_2_sTypoDescender);
                 }
 
@@ -4850,13 +4850,13 @@ namespace PCLParaphernalia
                     _OS_2_sxHeight = 0;
 
                     if (tabLength >= 88)
-                        flagOK = readBytesAsInt16((int)(tabOffset + 86),
+                        flagOK = ReadBytesAsInt16((int)(tabOffset + 86),
                                                    ref _OS_2_sxHeight);
                 }
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table");
                 }
@@ -4976,51 +4976,51 @@ namespace PCLParaphernalia
 
                     //------------------------------------------------------------//
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "Version = 0x" + tabVersion.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "xAvgCharWidth = " +
                         _OS_2_xAvgCharWidth.ToString() +
                         " pels / em");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "usWeightClass = " +
                         _OS_2_usWeightClass.ToString() +
                         " (" + usWeightClassDesc + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "usWidthClass = " +
                         _OS_2_usWidthClass.ToString() +
                         " (" + usWidthClassDesc + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "sTypoDescender = " +
                         _OS_2_sTypoDescender.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "sxHeight = " +
                         _OS_2_sxHeight.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "fsSelection = " + _OS_2_fsSelection.ToString() +
                         " (" + fsSelDesc + ")");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "panose = '" +
@@ -5031,7 +5031,7 @@ namespace PCLParaphernalia
                         _OS_2_panose[8] + "-" + _OS_2_panose[9] +
                         "'");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "fsType = " + _OS_2_fsType.ToString() +
@@ -5048,27 +5048,27 @@ namespace PCLParaphernalia
                 {
                     string licenceText = string.Empty;
 
-                    eLicenceType licenceType = checkLicence(ref licenceText);
+                    eLicenceType licenceType = CheckLicence(ref licenceText);
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "Licensing:", licenceText);
 
                     if (licenceType == eLicenceType.NotAllowed)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             string.Empty,
                             "***** font conversion requires permission of legal owner *****");
                     }
                     else if (licenceType == eLicenceType.OwnerOnly)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             string.Empty,
                             "***** temporary use of converted font *****");
 
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             string.Empty,
                             "***** by TrueType font licensee only  *****");
@@ -5103,7 +5103,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_PCLT()
+        private bool ReadData_PCLT()
         {
             string tabName = "PCLT";
 
@@ -5115,7 +5115,7 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_PCLT.getByteRange(ref tabOffset, ref tabLength);
+            _tab_PCLT.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 54;
 
             _tabPCLTPresent = false;
@@ -5130,7 +5130,7 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "table not present");
@@ -5140,7 +5140,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -5154,54 +5154,54 @@ namespace PCLParaphernalia
 
                 _tabPCLTPresent = true;
 
-                flagOK = readBytesAsUInt32((int)tabOffset,
+                flagOK = ReadBytesAsUInt32((int)tabOffset,
                                             ref version);
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt32(-1,
+                    flagOK = ReadBytesAsUInt32(-1,
                                                 ref _PCLT_fontNo);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_pitch);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_xHeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_style);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_typeFamily);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_capHeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt16(-1,
+                    flagOK = ReadBytesAsUInt16(-1,
                                                 ref _PCLT_symSet);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray(-1, 16,
+                    flagOK = ReadByteArray(-1, 16,
                                             ref _PCLT_typeface);
                 }
                 /*
@@ -5220,37 +5220,37 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt64(-1,
+                    flagOK = ReadBytesAsUInt64(-1,
                                                 ref _PCLT_charComp);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray(-1, 6,
+                    flagOK = ReadByteArray(-1, 6,
                                             ref fileName);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteAsSByte(-1,
+                    flagOK = ReadByteAsSByte(-1,
                                               ref _PCLT_strokeWeight);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteAsSByte(-1,
+                    flagOK = ReadByteAsSByte(-1,
                                               ref _PCLT_widthType);
                 }
 
                 if (flagOK)
                 {
-                    flagOK = readByteAsUByte(-1,
+                    flagOK = ReadByteAsUByte(-1,
                                               ref _PCLT_serifStyle);
                 }
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table");
                 }
@@ -5266,79 +5266,79 @@ namespace PCLParaphernalia
                     ASCIIEncoding ascii =
                         new ASCIIEncoding();
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "Version = 0x" + version.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "fontNumber = 0x" + _PCLT_fontNo.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "pitch = " + _PCLT_pitch.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "xHeight = " + _PCLT_xHeight.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "style = " + _PCLT_style.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "typeFamily = " + _PCLT_typeFamily.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "capHeight = " + _PCLT_capHeight.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "symbol set = " + _PCLT_symSet.ToString() +
                         " (= " +
-                        PCLSymbolSets.translateKind1ToId(_PCLT_symSet) +
+                        PCLSymbolSets.TranslateKind1ToId(_PCLT_symSet) +
                         " )");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "typeface = '" +
                         ascii.GetString(_PCLT_typeface, 0, 16) + "'");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "character complement = 0x" +
                         _PCLT_charComp.ToString("x16"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "filename = '" +
                         ascii.GetString(fileName, 0, 6) + "'");
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "strokeWeight = " +
                         _PCLT_strokeWeight.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "widthType = " + _PCLT_widthType.ToString());
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "serifStyle = 0x" +
@@ -5362,7 +5362,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_post()
+        private bool ReadData_post()
         {
             string tabName = "post";
 
@@ -5376,7 +5376,7 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_post.getByteRange(ref tabOffset, ref tabLength);
+            _tab_post.GetByteRange(ref tabOffset, ref tabLength);
             minLength = 32;         // for versions 0 and 3
 
             if (tabLength < minLength)
@@ -5390,18 +5390,18 @@ namespace PCLParaphernalia
 
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + minLength);
             }
             else
             {
-                flagOK = readBytesAsUInt16((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt32((int)(tabOffset + 12),
+                    flagOK = ReadBytesAsUInt32((int)(tabOffset + 12),
                                                 ref _post_isFixedPitch);
                 }
 
@@ -5420,12 +5420,12 @@ namespace PCLParaphernalia
                     else
                         text = " (= fixed-pitch)";
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "Version = 0x" + tabVersion.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "isFixedPitch = 0x" +
@@ -5450,7 +5450,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_ttcf(ref bool typeTTC,
+        private bool ReadData_ttcf(ref bool typeTTC,
                                        ref uint numFonts)
         {
             string tabName = "ttcf";
@@ -5466,13 +5466,13 @@ namespace PCLParaphernalia
 
             typeTTC = false;
 
-            flagOK = readBytesAsUInt32(0, ref tabId);
+            flagOK = ReadBytesAsUInt32(0, ref tabId);
 
             if (!flagOK)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Error reading first four bytes of font file");
             }
@@ -5482,11 +5482,11 @@ namespace PCLParaphernalia
 
                 typeTTC = true;
 
-                flagOK = readBytesAsUInt32(-1, ref tabVersion);
+                flagOK = ReadBytesAsUInt32(-1, ref tabVersion);
 
                 if (flagOK)
                 {
-                    flagOK = readBytesAsUInt32(-1, ref numFonts);
+                    flagOK = ReadBytesAsUInt32(-1, ref numFonts);
                 }
 
                 if (flagOK)
@@ -5495,7 +5495,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < numFonts; i++)
                     {
-                        flagOK = readBytesAsUInt32(-1, ref offsets[i]);
+                        flagOK = ReadBytesAsUInt32(-1, ref offsets[i]);
                     }
                 }
                 else
@@ -5506,7 +5506,7 @@ namespace PCLParaphernalia
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table");
                 }
@@ -5519,12 +5519,12 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, true, false,
                         "DIAG: table = " + tabName + ":",
                         "version  = 0x" + tabVersion.ToString("x8"));
 
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: table = " + tabName + ":",
                         "numFonts = " +
@@ -5532,7 +5532,7 @@ namespace PCLParaphernalia
 
                     for (int i = 0; i < numFonts; i++)
                     {
-                        ToolSoftFontGenLog.logNameAndValue(
+                        ToolSoftFontGenLog.LogNameAndValue(
                             _tableDonor, false, false,
                             "DIAG: table = " + tabName + ":",
                             "offset " + i + " = " +
@@ -5555,7 +5555,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_vhea()
+        private bool ReadData_vhea()
         {
             string tabName = "vhea";
 
@@ -5569,14 +5569,14 @@ namespace PCLParaphernalia
 
             flagOK = true;
 
-            _tab_vhea.getByteRange(ref tabOffset, ref tabLength);
+            _tab_vhea.GetByteRange(ref tabOffset, ref tabLength);
             reqLength = 36;
 
             if (tabLength < reqLength)
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -5584,11 +5584,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt32((int)tabOffset, ref tabVersion);
+                flagOK = ReadBytesAsUInt32((int)tabOffset, ref tabVersion);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading '" + tabName + "' table version");
                 }
@@ -5596,7 +5596,7 @@ namespace PCLParaphernalia
                 {
                     flagOK = false;
 
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Wrong '" + tabName + "' table version = 0x" +
                         tabVersion.ToString("x8") + "\r\n\r\n" +
@@ -5606,7 +5606,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    flagOK = readBytesAsUInt16((int)(tabOffset + 34),
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 34),
                                                ref _vhea_numVMetrics);
                 }
             }
@@ -5619,7 +5619,7 @@ namespace PCLParaphernalia
 
             if (_logVerbose)
             {
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, true, false,
                     "DIAG: table = " + tabName + ":",
                     "numberOfVMetrics = " + _vhea_numVMetrics.ToString());
@@ -5640,7 +5640,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readData_vmtx()
+        private bool ReadData_vmtx()
         {
             string tabName = "vmtx";
 
@@ -5659,7 +5659,7 @@ namespace PCLParaphernalia
 
             _tabvmtxPresent = false;
 
-            _tab_vmtx.getByteRange(ref tabOffset, ref tabLength);
+            _tab_vmtx.GetByteRange(ref tabOffset, ref tabLength);
 
             vMetricsArrayLen = _vhea_numVMetrics;
             tsbArrayLen = _maxp_numGlyphs - _vhea_numVMetrics;
@@ -5673,7 +5673,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Number of VMetrics " + _vhea_numVMetrics + " < 1");
             }
@@ -5681,7 +5681,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Number of glyphs " + _maxp_numGlyphs +
                     " < number of VMetrics " + _vhea_numVMetrics);
@@ -5690,7 +5690,7 @@ namespace PCLParaphernalia
             {
                 flagOK = false;
 
-                ToolSoftFontGenLog.logError(
+                ToolSoftFontGenLog.LogError(
                     _tableDonor, MessageBoxImage.Error,
                     "Length of '" + tabName + "' table too small: " +
                     tabLength + " < " + reqLength);
@@ -5701,7 +5701,7 @@ namespace PCLParaphernalia
                 byte[] vMetricsArray = new byte[vMetricsArraySize];
                 byte[] tsbArray = new byte[tsbArraySize];
 
-                flagOK = readByteArray((int)tabOffset,
+                flagOK = ReadByteArray((int)tabOffset,
                                         vMetricsArraySize,
                                         ref vMetricsArray);
 
@@ -5709,7 +5709,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    flagOK = readByteArray(-1,
+                    flagOK = ReadByteArray(-1,
                                             tsbArraySize,
                                             ref tsbArray);
                 }
@@ -5735,7 +5735,7 @@ namespace PCLParaphernalia
                         tsb = (short)((vMetricsArray[tsbOffset] << 8) +
                                         vMetricsArray[tsbOffset + 1]);
 
-                        _glyphData[indx].setMetricsV(advance, tsb);
+                        _glyphData[indx].SetMetricsV(advance, tsb);
                     }
 
                     for (int indx = 0; indx < tsbArrayLen; indx++)
@@ -5747,7 +5747,7 @@ namespace PCLParaphernalia
 
                         glyphId = (ushort)(vMetricsArrayLen + indx);
 
-                        _glyphData[glyphId].setMetricsV(advance, tsb);
+                        _glyphData[glyphId].SetMetricsV(advance, tsb);
                     }
                 }
             }
@@ -5766,7 +5766,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool readTableDirectory(int dirOffset,
+        private bool ReadTableDirectory(int dirOffset,
                                            bool getTTCData)
         {
             bool flagOK = true;
@@ -5784,22 +5784,22 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _tab_OS_2.initialise();
-            _tab_PCLT.initialise();
-            _tab_cmap.initialise();
-            _tab_cvt.initialise();
-            _tab_fpgm.initialise();
-            _tab_gdir.initialise();        // empty (place-holder) table //
-            _tab_glyf.initialise();
-            _tab_head.initialise();
-            _tab_hhea.initialise();
-            _tab_hmtx.initialise();
-            _tab_loca.initialise();
-            _tab_maxp.initialise();
-            _tab_name.initialise();
-            _tab_prep.initialise();
-            _tab_vhea.initialise();
-            _tab_vmtx.initialise();
+            _tab_OS_2.Initialise();
+            _tab_PCLT.Initialise();
+            _tab_cmap.Initialise();
+            _tab_cvt.Initialise();
+            _tab_fpgm.Initialise();
+            _tab_gdir.Initialise();        // empty (place-holder) table //
+            _tab_glyf.Initialise();
+            _tab_head.Initialise();
+            _tab_hhea.Initialise();
+            _tab_hmtx.Initialise();
+            _tab_loca.Initialise();
+            _tab_maxp.Initialise();
+            _tab_name.Initialise();
+            _tab_prep.Initialise();
+            _tab_vhea.Initialise();
+            _tab_vmtx.Initialise();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5809,11 +5809,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = readBytesAsUInt16(dirOffset + 4, ref numTables);
+                flagOK = ReadBytesAsUInt16(dirOffset + 4, ref numTables);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error reading number of tables");
                 }
@@ -5828,11 +5828,11 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                flagOK = fontFileSeek(dirOffset + 12);
+                flagOK = FontFileSeek(dirOffset + 12);
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                         _tableDonor, MessageBoxImage.Error,
                         "Error repositioning to start of table directory");
                 }
@@ -5844,7 +5844,7 @@ namespace PCLParaphernalia
 
                 if (_logVerbose && !getTTCData)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         "DIAG: Tables",
                         "Count = " + numTables);
@@ -5852,23 +5852,23 @@ namespace PCLParaphernalia
 
                 for (int i = 0; (i < numTables) && (flagOK); i++)
                 {
-                    flagOK = readByteArray(-1, 4, ref tabName);
+                    flagOK = ReadByteArray(-1, 4, ref tabName);
 
                     if (flagOK)
                     {
-                        tabTag = byteArrayToUInt32(tabName);
+                        tabTag = ByteArrayToUInt32(tabName);
 
-                        flagOK = readBytesAsUInt32(-1, ref tabChecksum);
+                        flagOK = ReadBytesAsUInt32(-1, ref tabChecksum);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt32(-1, ref tabOffset);
+                        flagOK = ReadBytesAsUInt32(-1, ref tabOffset);
                     }
 
                     if (flagOK)
                     {
-                        flagOK = readBytesAsUInt32(-1, ref tabLength);
+                        flagOK = ReadBytesAsUInt32(-1, ref tabLength);
                     }
 
                     if (flagOK)
@@ -5888,112 +5888,112 @@ namespace PCLParaphernalia
                         switch (tabTag)
                         {
                             case cTabID_OS_2:
-                                _tab_OS_2.setMetrics(tabChecksum,
+                                _tab_OS_2.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_PCLT:
-                                _tab_PCLT.setMetrics(tabChecksum,
+                                _tab_PCLT.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_cmap:
-                                _tab_cmap.setMetrics(tabChecksum,
+                                _tab_cmap.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_cvt:
-                                _tab_cvt.setMetrics(tabChecksum,
+                                _tab_cvt.SetMetrics(tabChecksum,
                                                      tabOffset,
                                                      tabLength,
                                                      padBytes);
                                 break;
 
                             case cTabID_fpgm:
-                                _tab_fpgm.setMetrics(tabChecksum,
+                                _tab_fpgm.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_glyf:
-                                _tab_glyf.setMetrics(tabChecksum,
+                                _tab_glyf.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_head:
-                                _tab_head.setMetrics(tabChecksum,
+                                _tab_head.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_hhea:
-                                _tab_hhea.setMetrics(tabChecksum,
+                                _tab_hhea.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_hmtx:
-                                _tab_hmtx.setMetrics(tabChecksum,
+                                _tab_hmtx.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_loca:
-                                _tab_loca.setMetrics(tabChecksum,
+                                _tab_loca.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_maxp:
-                                _tab_maxp.setMetrics(tabChecksum,
+                                _tab_maxp.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_name:
-                                _tab_name.setMetrics(tabChecksum,
+                                _tab_name.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_post:
-                                _tab_post.setMetrics(tabChecksum,
+                                _tab_post.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_prep:
-                                _tab_prep.setMetrics(tabChecksum,
+                                _tab_prep.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_vhea:
-                                _tab_vhea.setMetrics(tabChecksum,
+                                _tab_vhea.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
                                 break;
 
                             case cTabID_vmtx:
-                                _tab_vmtx.setMetrics(tabChecksum,
+                                _tab_vmtx.SetMetrics(tabChecksum,
                                                       tabOffset,
                                                       tabLength,
                                                       padBytes);
@@ -6005,7 +6005,7 @@ namespace PCLParaphernalia
 
                         if (_logVerbose && !getTTCData)
                         {
-                            ToolSoftFontGenLog.logNameAndValue(
+                            ToolSoftFontGenLog.LogNameAndValue(
                                 _tableDonor, false, false,
                                 "DIAG: table = " +
                                 ((char)tabName[0]).ToString() +
@@ -6019,7 +6019,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
                             "Error reading TTF table directory entries)");
                     }
@@ -6027,7 +6027,7 @@ namespace PCLParaphernalia
 
                 if (_logVerbose && !getTTCData)
                 {
-                    ToolSoftFontGenLog.logNameAndValue(
+                    ToolSoftFontGenLog.LogNameAndValue(
                         _tableDonor, false, false,
                         string.Empty,
                         string.Empty);
@@ -6045,21 +6045,21 @@ namespace PCLParaphernalia
             {
                 if (getTTCData)
                 {
-                    if (_tab_name.zeroLength())
+                    if (_tab_name.ZeroLength())
                     {
                         flagOK = false;
                     }
                 }
                 else
                 {
-                    if ((_tab_cmap.zeroLength()) ||
-                        (_tab_glyf.zeroLength()) ||
-                        (_tab_head.zeroLength()) ||
-                        (_tab_hhea.zeroLength()) ||
-                        (_tab_hmtx.zeroLength()) ||
-                        (_tab_loca.zeroLength()) ||
-                        (_tab_maxp.zeroLength()) ||
-                        (_tab_name.zeroLength()))
+                    if ((_tab_cmap.ZeroLength()) ||
+                        (_tab_glyf.ZeroLength()) ||
+                        (_tab_head.ZeroLength()) ||
+                        (_tab_hhea.ZeroLength()) ||
+                        (_tab_hmtx.ZeroLength()) ||
+                        (_tab_loca.ZeroLength()) ||
+                        (_tab_maxp.ZeroLength()) ||
+                        (_tab_name.ZeroLength()))
                     {
                         flagOK = false;
                     }
@@ -6067,7 +6067,7 @@ namespace PCLParaphernalia
 
                 if (!flagOK)
                 {
-                    ToolSoftFontGenLog.logError(
+                    ToolSoftFontGenLog.LogError(
                                 _tableDonor, MessageBoxImage.Error,
                                 "Mandatory TTF table not present");
 

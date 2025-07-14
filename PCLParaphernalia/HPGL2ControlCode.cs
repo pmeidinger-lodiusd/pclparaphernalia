@@ -1,4 +1,6 @@
-﻿namespace PCLParaphernalia
+﻿using System;
+
+namespace PCLParaphernalia
 {
     /// <summary>
     /// 
@@ -23,14 +25,6 @@
 
         private readonly byte _tag;
 
-        private readonly string _description;
-        private readonly string _mnemonic;
-
-        private readonly bool _noOp;
-
-        private int _statsCtParent;
-        private int _statsCtChild;
-
         //--------------------------------------------------------------------//
         //                                              C o n s t r u c t o r //
         // H P G L 2 C o n t r o l C o d e                                    //
@@ -43,12 +37,12 @@
                                  string description)
         {
             _tag = tag;
-            _noOp = noOp;
-            _mnemonic = mnemonic;
-            _description = description;
+            NoOp = noOp;
+            Mnemonic = mnemonic;
+            DescExcMnemonic = description;
 
-            _statsCtParent = 0;
-            _statsCtChild = 0;
+            StatsCtParent = 0;
+            StatsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -57,10 +51,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string DescExcMnemonic
-        {
-            get { return _description; }
-        }
+        public string DescExcMnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -68,10 +59,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _mnemonic + ": " + _description; }
-        }
+        public string Description => Mnemonic + ": " + DescExcMnemonic;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -79,10 +67,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Mnemonic
-        {
-            get { return _mnemonic; }
-        }
+        public string Mnemonic { get; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -90,10 +75,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool NoOp
-        {
-            get { return _noOp; }
-        }
+        public bool NoOp { get; }
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -104,12 +86,12 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
-                _statsCtParent++;
+                StatsCtParent++;
             else
-                _statsCtChild++;
+                StatsCtChild++;
         }
 
         //--------------------------------------------------------------------//
@@ -121,10 +103,10 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
-            _statsCtParent = 0;
-            _statsCtChild = 0;
+            StatsCtParent = 0;
+            StatsCtChild = 0;
         }
 
         //--------------------------------------------------------------------//
@@ -133,10 +115,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Sequence
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
+        public string Sequence => "0x" + _tag.ToString("x2");
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -144,10 +123,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild { get; private set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -155,10 +131,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent { get; private set; }
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -166,10 +139,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return (_statsCtParent + _statsCtChild); }
-        }
+        public int StatsCtTotal => StatsCtParent + StatsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -177,10 +147,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Tag
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
+        public string Tag => "0x" + _tag.ToString("x2");
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -188,9 +155,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Type
-        {
-            get { return "Control Code"; }
-        }
+        public string Type => "Control Code";
     }
 }

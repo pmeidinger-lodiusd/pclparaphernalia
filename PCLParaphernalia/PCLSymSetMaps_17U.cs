@@ -23,7 +23,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_17U()
+        private static void UnicodeMap_17U()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_17U;
 

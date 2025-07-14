@@ -152,7 +152,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.PJL;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
 
                 commandLen = 0;
             }
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
@@ -217,7 +217,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
+            if (linkData.IsContinuation())
                 seqInvalid = parseContinuation(ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
@@ -261,7 +261,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -399,7 +399,7 @@ namespace PCLParaphernalia
 
                         contType = PrnParseConstants.eContType.PJL;
 
-                        _linkData.setBacktrack(contType, -bufRem);
+                        _linkData.SetBacktrack(contType, -bufRem);
                     }
                     else if (_ascii.GetString(_buf, bufOffset, _lenPJLIntro)
                              != "@PJL")
@@ -414,7 +414,7 @@ namespace PCLParaphernalia
 
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -423,7 +423,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Unexpected sequence found");
 
-                        PrnParseData.processLines(
+                        PrnParseData.ProcessLines(
                             _table,
                             PrnParseConstants.eOvlShow.None,
                             _linkData,
@@ -642,7 +642,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.PJL;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
 
             }
             else
@@ -676,7 +676,7 @@ namespace PCLParaphernalia
                                          ||
                         (crntByte == PrnParseConstants.asciiHT))
                     {
-                        showChar = PrnParseData.processByte(
+                        showChar = PrnParseData.ProcessByte(
                                         crntByte,
                                         _indxCharSetSubAct,
                                         (byte)_valCharSetSubCode,
@@ -745,7 +745,7 @@ namespace PCLParaphernalia
                         normChar = char.ToUpper(crntChar);
                         cmd.Append(normChar);
 
-                        showChar = PrnParseData.processByte(
+                        showChar = PrnParseData.ProcessByte(
                                         crntByte,
                                         _indxCharSetSubAct,
                                         (byte)_valCharSetSubCode,
@@ -767,11 +767,11 @@ namespace PCLParaphernalia
                 commandName = cmd.ToString();
 
                 if (commandName == string.Empty)
-                    seqKnown = PJLCommands.checkCmd(PJLCommands.nullCmdKey,
+                    seqKnown = PJLCommands.CheckCmd(PJLCommands.nullCmdKey,
                                                      ref desc,
                                                      _analysisLevel);
                 else
-                    seqKnown = PJLCommands.checkCmd(cmd.ToString(),
+                    seqKnown = PJLCommands.CheckCmd(cmd.ToString(),
                                                      ref desc,
                                                      _analysisLevel);
 
@@ -804,7 +804,7 @@ namespace PCLParaphernalia
                     crntChar = (char)crntByte;
                     normChar = char.ToUpper(crntChar);
 
-                    showChar = PrnParseData.processByte(
+                    showChar = PrnParseData.ProcessByte(
                                     crntByte,
                                     _indxCharSetSubAct,
                                     (byte)_valCharSetSubCode,
@@ -865,7 +865,7 @@ namespace PCLParaphernalia
 
                         if (!seqKnown)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -877,7 +877,7 @@ namespace PCLParaphernalia
 
                         if (noWhitespace)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -888,7 +888,7 @@ namespace PCLParaphernalia
                                 " by space or tab character:");
                         }
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.PJLCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -901,7 +901,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.PJLCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,

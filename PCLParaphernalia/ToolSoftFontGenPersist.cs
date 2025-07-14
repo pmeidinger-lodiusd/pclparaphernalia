@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL,
+        public static void LoadDataCommon(ref int indxPDL,
                                            ref bool flagLogVerbose)
         {
             RegistryKey keyMain =
@@ -79,13 +79,13 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(key))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL5))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL5))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL5, _subKeyPCL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL5, _subKeyPCL);
 
-                if (Helper_RegKey.keyExists(subKey, _subKeyPCL6))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyPCL6))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
+                    Helper_RegKey.RenameKey(subKey, _subKeyPCL6, _subKeyPCLXL);
 
                 indxPDL = (int)subKey.GetValue(_nameIndxPDL,
                                                  _indexZero);
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataMapping(ref int indxSymSet,
+        public static void LoadDataMapping(ref int indxSymSet,
                                             ref bool flagSymSetMapPCL,
                                             ref bool flagSymSetUnbound,
                                             ref bool flagSymSetUserSet,
@@ -159,7 +159,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref string targetFolder,
+        public static void LoadDataPCL(ref string targetFolder,
                                         ref bool flagFormat16,
                                         ref bool flagCharCompSpecific,
                                         ref bool flagVMetrics,
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref string targetFolder,
+        public static void LoadDataPCLXL(ref string targetFolder,
                                           ref bool flagVMetrics)
         {
             RegistryKey keyMain =
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt,
+        public static void LoadDataRpt(ref int indxRptFileFmt,
                                         ref int indxRptChkMarks)
         {
             RegistryKey keyMain =
@@ -297,7 +297,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataTTF(ref int indxFont,
+        public static void LoadDataTTF(ref int indxFont,
                                         ref bool flagUsePCLT,
                                         ref string adhocFontFile)
         {
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxPDL,
+        public static void SaveDataCommon(int indxPDL,
                                           bool flagLogVerbose)
         {
             RegistryKey keyMain =
@@ -372,7 +372,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataMapping(int indxSymSet,
+        public static void SaveDataMapping(int indxSymSet,
                                             bool flagSymSetMapPCL,
                                             bool flagSymSetUnbound,
                                             bool flagSymSetUserSet,
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(string targetFolder,
+        public static void SaveDataPCL(string targetFolder,
                                         bool flagFormat16,
                                         bool flagCharCompSpecific,
                                         bool flagVMetrics,
@@ -516,7 +516,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(string targetFolder,
+        public static void SaveDataPCLXL(string targetFolder,
                                          bool flagVMetrics)
         {
             RegistryKey keyMain =
@@ -556,7 +556,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt,
+        public static void SaveDataRpt(int indxRptFileFmt,
                                         int indxRptChkMarks)
         {
             RegistryKey keyMain =
@@ -585,7 +585,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataTTF(int indxFont,
+        public static void SaveDataTTF(int indxFont,
                                         bool flagUsePCLT,
                                         string adhocFontFile)
         {

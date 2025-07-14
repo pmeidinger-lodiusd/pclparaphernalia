@@ -156,7 +156,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void bitmapClose()
+        public static void BitmapClose()
         {
             _binReader.Close();
             _binReader = null;
@@ -174,7 +174,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool bitmapOpen(string fileName)
+        public static bool BitmapOpen(string fileName)
         {
             bool open = false;
 
@@ -227,7 +227,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpInfo(ref int Width,
+        public static void GetBmpInfo(ref int Width,
                                       ref int Height,
                                       ref ushort BitsPerPixel,
                                       ref uint Compression,
@@ -257,7 +257,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getBmpPaletteEntry(int Index,
+        public static void GetBmpPaletteEntry(int Index,
                                               ref byte Red,
                                               ref byte Green,
                                               ref byte Blue)
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getNextImageBlock(ref byte[] bufSub,
+        public static void GetNextImageBlock(ref byte[] bufSub,
                                              int bufSize,
                                              bool firstBlock)
         {
@@ -305,7 +305,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int readBmpFileHeader()
+        public static int ReadBmpFileHeader()
         {
             int result = 0;
 
@@ -323,11 +323,11 @@ namespace PCLParaphernalia
                 return -1;
             }
 
-            _fileHeader.fileSize = readUInt32LE();
+            _fileHeader.fileSize = ReadUInt32LE();
 
-            temp = readUInt32LE();
+            temp = ReadUInt32LE();
 
-            _fileHeader.dataOffset = readUInt32LE();
+            _fileHeader.dataOffset = ReadUInt32LE();
 
             return result;
         }
@@ -344,11 +344,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int readBmpInfoHeader()
+        public static int ReadBmpInfoHeader()
         {
             int result = 0;
 
-            _infoHeader.infoSize = readUInt32LE();
+            _infoHeader.infoSize = ReadUInt32LE();
 
             if (_infoHeader.infoSize != 40)
             {
@@ -359,16 +359,16 @@ namespace PCLParaphernalia
                 return -1;
             }
 
-            _infoHeader.width = readInt32LE();
-            _infoHeader.height = readInt32LE();
-            _infoHeader.planes = readUInt16LE();
-            _infoHeader.bitsPerPixel = readUInt16LE();
-            _infoHeader.compressionType = readUInt32LE();
-            _infoHeader.imageSize = readUInt32LE();
-            _infoHeader.xPelsPerMetre = readInt32LE();
-            _infoHeader.yPelsPerMetre = readInt32LE();
-            _infoHeader.coloursUsed = readUInt32LE();
-            _infoHeader.coloursImportant = readUInt32LE();
+            _infoHeader.width = ReadInt32LE();
+            _infoHeader.height = ReadInt32LE();
+            _infoHeader.planes = ReadUInt16LE();
+            _infoHeader.bitsPerPixel = ReadUInt16LE();
+            _infoHeader.compressionType = ReadUInt32LE();
+            _infoHeader.imageSize = ReadUInt32LE();
+            _infoHeader.xPelsPerMetre = ReadInt32LE();
+            _infoHeader.yPelsPerMetre = ReadInt32LE();
+            _infoHeader.coloursUsed = ReadUInt32LE();
+            _infoHeader.coloursImportant = ReadUInt32LE();
 
             return result;
         }
@@ -382,7 +382,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int readBmpPalette()
+        public static int ReadBmpPalette()
         {
             int result = 0;
 
@@ -460,7 +460,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static int readInt32LE()
+        private static int ReadInt32LE()
         {
             byte[] buf = new byte[4];
 
@@ -484,7 +484,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static ushort readUInt16LE()
+        private static ushort ReadUInt16LE()
         {
             byte[] buf = new byte[2];
 
@@ -508,7 +508,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static uint readUInt32LE()
+        private static uint ReadUInt32LE()
         {
             byte[] buf = new byte[4];
 

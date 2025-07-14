@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void fontFileClose()
+        private static void FontFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -62,7 +62,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool fontFileCopy(BinaryWriter prnWriter,
+        public static bool FontFileCopy(BinaryWriter prnWriter,
                                            string fontFilename)
         {
             bool fileOpen = false;
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool fontFileOpen(string fileName,
+        private static bool FontFileOpen(string fileName,
                                             ref long fileSize)
         {
             bool open = false;
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getFontCharacteristics(string fontFilename,
+        public static bool GetFontCharacteristics(string fontFilename,
                                                      ref string fontName,
                                                      ref bool scalable,
                                                      ref bool bound,
@@ -201,7 +201,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -209,20 +209,20 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = readHddrIntro(fontFilename,
+                OK = ReadHddrIntro(fontFilename,
                                     fileSize,
                                     ref fontName,
                                     ref hddrOffset);
 
                 if (OK)
                 {
-                    OK = readHddrDescriptor(hddrOffset,
+                    OK = ReadHddrDescriptor(hddrOffset,
                                              ref scalable,
                                              ref bound,
                                              ref symSetNo);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -238,7 +238,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrDescriptor(ushort hddrOffset,
+        private static bool ReadHddrDescriptor(ushort hddrOffset,
                                                   ref bool scalable,
                                                   ref bool bound,
                                                   ref ushort symSetNo)
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrIntro(string fileName,
+        private static bool ReadHddrIntro(string fileName,
                                              long fileSize,
                                              ref string fontName,
                                              ref ushort hddrOffset)

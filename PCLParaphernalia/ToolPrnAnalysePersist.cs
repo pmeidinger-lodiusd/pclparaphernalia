@@ -100,7 +100,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadData(ref string filename)
+        public static void LoadData(ref string filename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -150,7 +150,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptCharSet(ref int indxName,
+        public static void LoadOptCharSet(ref int indxName,
                                           ref int indxSubAct,
                                           ref int indxSubCode)
         {
@@ -181,7 +181,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptClrMap(ref bool flagClrMapUseClr)
+        public static void LoadOptClrMap(ref bool flagClrMapUseClr)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptClrMapCrnt(ref int[] indxClrMapBack,
+        public static void LoadOptClrMapCrnt(ref int[] indxClrMapBack,
                                               ref int[] indxClrMapFore)
         {
             RegistryKey keyMain =
@@ -224,7 +224,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            int ctIndx = PrnParseRowTypes.getCount();
+            int ctIndx = PrnParseRowTypes.GetCount();
 
             //----------------------------------------------------------------//
 
@@ -260,7 +260,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptClrMapTheme(int number,
+        public static void LoadOptClrMapTheme(int number,
                                                ref int[] indxClrMapBack,
                                                ref int[] indxClrMapFore)
         {
@@ -275,7 +275,7 @@ namespace PCLParaphernalia
 
             int tmpInt;
 
-            int ctIndx = PrnParseRowTypes.getCount();
+            int ctIndx = PrnParseRowTypes.GetCount();
 
             //----------------------------------------------------------------//
 
@@ -311,7 +311,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptClrMapThemeName(int number,
+        public static void LoadOptClrMapThemeName(int number,
                                                    ref string name)
         {
             RegistryKey keyMain =
@@ -342,7 +342,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptGeneral(ref int indxOffsetType,
+        public static void LoadOptGeneral(ref int indxOffsetType,
                                           ref bool flagMiscAutoAnalyse,
                                           ref bool flagDiagFileAccess)
         {
@@ -381,7 +381,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptHPGL2(ref bool flagMiscBinData)
+        public static void LoadOptHPGL2(ref bool flagMiscBinData)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -410,7 +410,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptPCL(ref bool flagFontHddr,
+        public static void LoadOptPCL(ref bool flagFontHddr,
                                       ref bool flagFontChar,
                                       ref bool flagFontDraw,
                                       ref int valFontDrawHeight,
@@ -593,7 +593,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptPCLXL(ref bool flagFontHddr,
+        public static void LoadOptPCLXL(ref bool flagFontHddr,
                                         ref bool flagFontChar,
                                         ref bool flagFontDraw,
                                         ref int valFontDrawHeight,
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptPML(ref bool flagWithinPCL,
+        public static void LoadOptPML(ref bool flagWithinPCL,
                                       ref bool flagWithinPJL,
                                       ref bool flagVerbose)
         {
@@ -745,7 +745,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadOptStats(
+        public static void LoadOptStats(
             ref int indxLevel,
             ref bool flagExcUnusedPCLObs,
             ref bool flagExcUnusedPCLXLRes)
@@ -784,7 +784,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveData(string filename)
+        public static void SaveData(string filename)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -811,7 +811,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt)
+        public static void SaveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptCharSet(int indxName,
+        public static void SaveOptCharSet(int indxName,
                                           int indxSubAct,
                                           int indxSubCode)
         {
@@ -872,7 +872,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptClrMap(bool flagClrMapUseClr)
+        public static void SaveOptClrMap(bool flagClrMapUseClr)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -904,7 +904,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptClrMapCrnt(int[] indxClrMapBack,
+        public static void SaveOptClrMapCrnt(int[] indxClrMapBack,
                                               int[] indxClrMapFore)
         {
             RegistryKey keyMain =
@@ -950,7 +950,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptClrMapTheme(int number,
+        public static void SaveOptClrMapTheme(int number,
                                                int[] indxClrMapBack,
                                                int[] indxClrMapFore,
                                                string name)
@@ -1006,7 +1006,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptGeneral(int indxOffsetType,
+        public static void SaveOptGeneral(int indxOffsetType,
                                           bool flagMiscAutoAnalyse,
                                           bool flagDiagFileAccess)
         {
@@ -1053,7 +1053,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptHPGL2(bool flagMiscBinData)
+        public static void SaveOptHPGL2(bool flagMiscBinData)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -1085,7 +1085,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptPCL(bool flagFontHddr,
+        public static void SaveOptPCL(bool flagFontHddr,
                                       bool flagFontChar,
                                       bool flagFontDraw,
                                       int valFontDrawHeight,
@@ -1307,7 +1307,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptPCLXL(bool flagFontHddr,
+        public static void SaveOptPCLXL(bool flagFontHddr,
                                         bool flagFontChar,
                                         bool flagFontDraw,
                                         int valFontDrawHeight,
@@ -1429,7 +1429,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptPML(bool flagWithinPCL,
+        public static void SaveOptPML(bool flagWithinPCL,
                                       bool flagWithinPJL,
                                       bool flagVerbose)
         {
@@ -1481,7 +1481,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveOptStats(int indxLevel,
+        public static void SaveOptStats(int indxLevel,
                                          bool flagExcUnusedPCLObs,
                                          bool flagExcUnusedPCLXLRes)
         {

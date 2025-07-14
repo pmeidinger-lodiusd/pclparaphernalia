@@ -107,7 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendBytesToPrinter(string szPrinterName,
+        public static bool SendBytesToPrinter(string szPrinterName,
                                                IntPtr pBytes,
                                                int dwCount)
         {
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendFileToPrinter(string szPrinterName,
+        public static bool SendFileToPrinter(string szPrinterName,
                                               string szFileName)
         {
             //----------------------------------------------------------------//
@@ -258,7 +258,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bSuccess = sendBytesToPrinter(szPrinterName,
+            bSuccess = SendBytesToPrinter(szPrinterName,
                                            pUnmanagedBytes,
                                            nLength);
 
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool sendStringToPrinter(
+        public static bool SendStringToPrinter(
             string szPrinterName,
             string szString)
         {
@@ -303,7 +303,7 @@ namespace PCLParaphernalia
 
             pBytes = Marshal.StringToCoTaskMemAnsi(szString);
 
-            sendBytesToPrinter(szPrinterName, pBytes, dwCount);
+            SendBytesToPrinter(szPrinterName, pBytes, dwCount);
 
             Marshal.FreeCoTaskMem(pBytes);
 

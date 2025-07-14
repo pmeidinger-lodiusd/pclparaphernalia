@@ -154,7 +154,7 @@ namespace PCLParaphernalia
             get
             {
                 if (_bound)
-                    return PCLSymbolSets.translateKind1ToId(_symSetNumber);
+                    return PCLSymbolSets.TranslateKind1ToId(_symSetNumber);
                 else
                     return string.Empty;
             }
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getHPGL2FontDef(PCLFonts.eVariant variant,
+        public string GetHPGL2FontDef(PCLFonts.eVariant variant,
                                        ushort symbolSet,
                                        double height,
                                        double pitch)
@@ -249,7 +249,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getPCLContourRatio()
+        public byte GetPCLContourRatio()
         {
             return _contourRatio;
         }
@@ -264,7 +264,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool getPCLFontIdData(ref ushort typeface,
+        public bool GetPCLFontIdData(ref ushort typeface,
                                          ref string fontName)
         {
             bool presetFont = false;
@@ -294,7 +294,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLFontSelect(PCLFonts.eVariant variant,
+        public string GetPCLFontSelect(PCLFonts.eVariant variant,
                                         double height,
                                         double pitch)
         {
@@ -377,7 +377,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLHeight()
+        public double GetPCLHeight()
         {
             return _pointSize;
         }
@@ -391,7 +391,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLPitch()
+        public double GetPCLPitch()
         {
             return _pitch;
         }
@@ -406,7 +406,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLPitch(double ptSize)
+        public double GetPCLPitch(double ptSize)
         {
             return (double)((7200 / (ptSize * _contourRatio)));
         }
@@ -420,7 +420,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getPCLSpacing()
+        public byte GetPCLSpacing()
         {
             if (_proportional)
                 return 1;
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getPCLStyle(PCLFonts.eVariant variant)
+        public ushort GetPCLStyle(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _styleItalic;
@@ -458,7 +458,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getPCLWeight(PCLFonts.eVariant variant)
+        public short GetPCLWeight(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _weightItalic;
@@ -478,7 +478,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public double getPCLXLHeight()
+        public double GetPCLXLHeight()
         {
             return _pointSize;
         }
@@ -492,7 +492,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getPCLXLName(PCLFonts.eVariant variant)
+        public string GetPCLXLName(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _nameItalic;
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public ushort getSymbolSetNumber()
+        public ushort GetSymbolSetNumber()
         {
             if (_bound)
                 return _symSetNumber;
@@ -569,7 +569,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isBoundFont()
+        public bool IsBoundFont()
         {
             return _bound;
         }
@@ -584,7 +584,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isPresetFont()
+        public bool IsPresetFont()
         {
             if ((_fontType == PCLFonts.eFontType.Custom) ||
                 (_fontType == PCLFonts.eFontType.Download) ||
@@ -604,7 +604,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isProportionalFont()
+        public bool IsProportionalFont()
         {
             return _proportional;
         }
@@ -620,7 +620,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isSymSetInList(ushort symSetNo)
+        public bool IsSymSetInList(ushort symSetNo)
         {
             int symSetCt = _symSets.Length;
 
@@ -650,7 +650,7 @@ namespace PCLParaphernalia
 
             if ((!symSetFound) && (!_bound))
             {
-                if (PCLSymbolSets.getKind1(PCLSymbolSets.IndexUnicode) ==
+                if (PCLSymbolSets.GetKind1(PCLSymbolSets.IndexUnicode) ==
                     symSetNo)
                 {
                     symSetFound = true;
@@ -814,7 +814,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < symSetCt; i++)
                 {
                     string symSetId =
-                        PCLSymbolSets.translateKind1ToId(_symSets[i]);
+                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
                     crntRow.Append(symSetId);
 
@@ -860,7 +860,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < symSetCt; i++)
                 {
                     string symSetId =
-                        PCLSymbolSets.translateKind1ToId(_symSets[i]);
+                        PCLSymbolSets.TranslateKind1ToId(_symSets[i]);
 
                     symSetList.Append(symSetId);
 
@@ -968,7 +968,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool variantAvailable(PCLFonts.eVariant variant)
+        public bool VariantAvailable(PCLFonts.eVariant variant)
         {
             if (variant == PCLFonts.eVariant.Italic)
                 return _varItalic;

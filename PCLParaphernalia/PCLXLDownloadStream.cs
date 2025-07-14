@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool checkForStreamName(string fileName,
+        private static bool CheckForStreamName(string fileName,
                                                   long fileSize,
                                                   ref string streamName)
         {
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkStreamFile(string filename,
+        public static bool CheckStreamFile(string filename,
                                               ref string streamName)
         {
             bool fileOpen = false;
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = streamFileOpen(filename, ref fileSize);
+            fileOpen = StreamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -155,10 +155,10 @@ namespace PCLParaphernalia
             }
             else
             {
-                streamNamePresent = checkForStreamName(filename, fileSize,
+                streamNamePresent = CheckForStreamName(filename, fileSize,
                                                         ref streamName);
 
-                streamFileClose();
+                StreamFileClose();
             }
 
             return streamNamePresent;
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void streamFileClose()
+        private static void StreamFileClose()
         {
             _binReader.Close();
 
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool streamFileEmbed(BinaryWriter prnWriter,
+        public static bool StreamFileEmbed(BinaryWriter prnWriter,
                                               string filename,
                                               string streamName,
                                               bool encapsulated)
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = streamFileOpen(filename, ref fileSize);
+            fileOpen = StreamFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -231,7 +231,7 @@ namespace PCLParaphernalia
                 endLoop = false;
 
                 if (!encapsulated)
-                    PCLXLWriter.streamBegin(prnWriter, streamName);
+                    PCLXLWriter.StreamBegin(prnWriter, streamName);
 
                 while (!endLoop)
                 {
@@ -240,15 +240,15 @@ namespace PCLParaphernalia
                     if (readSize == 0)
                         endLoop = true;
                     else
-                        PCLXLWriter.writeStreamBlock(prnWriter,
+                        PCLXLWriter.WriteStreamBlock(prnWriter,
                                                       !encapsulated,
                                                       buffer, ref readSize);
                 }
 
                 if (!encapsulated)
-                    PCLXLWriter.streamEnd(prnWriter);
+                    PCLXLWriter.StreamEnd(prnWriter);
 
-                streamFileClose();
+                StreamFileClose();
             }
 
             return OK;
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool streamFileOpen(string fileName,
+        private static bool StreamFileOpen(string fileName,
                                               ref long fileSize)
         {
             bool open = false;

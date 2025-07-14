@@ -550,7 +550,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string actInfix(int index)
+        public static string ActInfix(int index)
         {
             return _rops[index].ActInfix;
         }
@@ -564,7 +564,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _ropCount;
         }
@@ -582,9 +582,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescLong(int index)
+        public static string GetDescLong(int index)
         {
-            return _rops[index].getDescLong();
+            return _rops[index].GetDescLong();
         }
 
         //--------------------------------------------------------------------//
@@ -599,9 +599,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescShort(int index)
+        public static string GetDescShort(int index)
         {
-            return _rops[index].getDescShort();
+            return _rops[index].GetDescShort();
         }
 
         //--------------------------------------------------------------------//
@@ -614,9 +614,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static short getROPId(int index)
+        public static short GetROPId(int index)
         {
-            return _rops[index].getROPId();
+            return _rops[index].GetROPId();
         }
     }
 }

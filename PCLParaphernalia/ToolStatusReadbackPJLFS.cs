@@ -233,8 +233,8 @@ namespace PCLParaphernalia
 
                 string cmdName;
 
-                reqType = PJLCommands.getType(cmdIndx);
-                cmdName = PJLCommands.getName(cmdIndx);
+                reqType = PJLCommands.GetType(cmdIndx);
+                cmdName = PJLCommands.GetName(cmdIndx);
 
                 if (secJob)
                 {
@@ -341,7 +341,7 @@ namespace PCLParaphernalia
             PJLCommands.eCmdIndex cmdIndx,
             string binTgtFilenamePJLFS)
         {
-            PJLCommands.eRequestType reqType = PJLCommands.getType(cmdIndx);
+            PJLCommands.eRequestType reqType = PJLCommands.GetType(cmdIndx);
 
             if ((reqType == PJLCommands.eRequestType.FSDirList) ||
                 (reqType == PJLCommands.eRequestType.FSQuery))
@@ -383,7 +383,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 return "No response is expected from the " +
-                        PJLCommands.getName(cmdIndx) +
+                        PJLCommands.GetName(cmdIndx) +
                         " action command";
             }
         }
@@ -418,7 +418,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.responseReadBlock(offset,
+                OK = TargetCore.ResponseReadBlock(offset,
                                                    bufRem,
                                                    ref replyData,
                                                    ref blockLen);
@@ -485,7 +485,7 @@ namespace PCLParaphernalia
 
             replyLen = endOffset;
 
-            TargetCore.responseCloseConnection();
+            TargetCore.ResponseCloseConnection();
 
             return System.Text.Encoding.ASCII.GetString(replyData,
                                                          0,
@@ -552,7 +552,7 @@ namespace PCLParaphernalia
 
                 while (OK && !replyComplete)
                 {
-                    OK = TargetCore.responseReadBlock(offset,
+                    OK = TargetCore.ResponseReadBlock(offset,
                                                        bufRem,
                                                        ref replyBlock,
                                                        ref blockLen);
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                TargetCore.responseCloseConnection();
+                TargetCore.ResponseCloseConnection();
 
                 binTgtFileClose();
 
@@ -961,7 +961,7 @@ namespace PCLParaphernalia
         public static void sendRequest(PJLCommands.eCmdIndex cmdIndx)
         {
             PJLCommands.eRequestType reqType =
-                PJLCommands.getType(cmdIndx);
+                PJLCommands.GetType(cmdIndx);
 
             if ((reqType == PJLCommands.eRequestType.FSDirList) ||
                 (reqType == PJLCommands.eRequestType.FSQuery))
@@ -975,7 +975,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(true);
+                TargetCore.RequestStreamWrite(true);
             }
             else if (reqType == PJLCommands.eRequestType.FSUpload)
             {
@@ -989,7 +989,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(true);
+                TargetCore.RequestStreamWrite(true);
             }
             else
             {
@@ -1005,7 +1005,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                TargetCore.requestStreamWrite(false);
+                TargetCore.RequestStreamWrite(false);
             }
         }
     }

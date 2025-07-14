@@ -86,7 +86,7 @@ namespace PCLParaphernalia
 
         static PCLXLDataTypes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkTag(byte tagToCheck,
+        public static bool CheckTag(byte tagToCheck,
                                         ref bool flagReserved,
                                         ref bool flagArray,
                                         ref int groupSize,
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails(ref flagReserved,
+            tag.GetDetails(ref flagReserved,
                             ref flagArray,
                             ref groupSize,
                             ref unitSize,
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedResTags)
         {
@@ -166,7 +166,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -228,7 +228,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -274,7 +274,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid,
+        public static int DisplayTags(DataGrid grid,
                                         bool incResTags)
         {
             int count = 0;
@@ -305,7 +305,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void incrementStatsCount(byte tagByte,
+        public static void IncrementStatsCount(byte tagByte,
                                                 int level)
         {
             PCLXLDataType tag;
@@ -315,7 +315,7 @@ namespace PCLParaphernalia
             else
                 tag = _tagUnknown;
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
         }
 
         //--------------------------------------------------------------------//
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagReserved = true;
@@ -743,17 +743,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLDataType tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<byte, PCLXLDataType> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

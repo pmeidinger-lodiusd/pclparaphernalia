@@ -43,7 +43,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logCharDetails(DataTable table,
+        public static void LogCharDetails(DataTable table,
                                            bool glyphAlreadyPresent,
                                            bool composite,
                                            ushort charCode,
@@ -133,18 +133,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logError(DataTable table,
+        public static void LogError(DataTable table,
                                     MessageBoxImage type,
                                     string message)
         {
             if (type == MessageBoxImage.Information)
-                logNameAndValue(
+                LogNameAndValue(
                     table, true, true, "*** COMMENT ***", message);
             else if (type == MessageBoxImage.Warning)
-                logNameAndValue(
+                LogNameAndValue(
                     table, true, true, "*** WARNING ***", message);
             else
-                logNameAndValue(
+                LogNameAndValue(
                     table, true, true, "*** ERROR ***", message);
 
             MessageBox.Show(message,
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logMissingChar(DataTable table,
+        public static void LogMissingChar(DataTable table,
                                            ushort charCode,
                                            ushort codepoint)
         {
@@ -196,7 +196,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void logNameAndValue(DataTable table,
+        public static void LogNameAndValue(DataTable table,
                                            bool blankBefore,
                                            bool blankAfter,
                                            string name,

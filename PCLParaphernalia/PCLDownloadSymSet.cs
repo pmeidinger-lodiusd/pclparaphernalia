@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkSymSetFile(
+        public static bool CheckSymSetFile(
             string filename,
             ref ushort symSetNo,
             ref ushort firstCode,
@@ -64,7 +64,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = symSetFileOpen(filename, ref fileSize);
+            fileOpen = SymSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
                 firstCode = 0;
                 lastCode = 0;
 
-                flagOK = readSymSetId(fileSize,
+                flagOK = ReadSymSetId(fileSize,
                                        ref offset,
                                        ref symSetNo);
                 if (!flagOK)
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
                     byte symSetFormat = 0;
                     byte symSetTypeId = 0;
 
-                    flagOK = readSymSetHddr(filename,
+                    flagOK = ReadSymSetHddr(filename,
                                              fileSize,
                                              symSetNo,
                                              ref symSetFormat,
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        flagOK = readAndStoreSymSetMap(offset,
+                        flagOK = ReadAndStoreSymSetMap(offset,
                                                         symSetNo,
                                                         firstCode,
                                                         lastCode);
@@ -135,12 +135,12 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            symSetType = PCLSymSetTypes.getIndexForIdPCL(symSetTypeId);
+                            symSetType = PCLSymSetTypes.GetIndexForIdPCL(symSetTypeId);
                         }
                     }
                 }
 
-                symSetFileClose();
+                SymSetFileClose();
             }
 
             return flagOK;
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readSymSetId(long fileSize,
+        private static bool ReadSymSetId(long fileSize,
                                              ref long fileOffset,
                                              ref ushort symSetId)
         {
@@ -232,7 +232,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readSymSetHddr(string fileName,
+        private static bool ReadSymSetHddr(string fileName,
                                                long fileSize,
                                                ushort symSetNo,
                                                ref byte format,
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readAndStoreSymSetMap(long mapOffset,
+        private static bool ReadAndStoreSymSetMap(long mapOffset,
                                                       ushort symSetNo,
                                                       ushort firstCode,
                                                       ushort lastCode)
@@ -537,7 +537,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            PCLSymbolSets.setDataUserSet(symSetNo, symSetType, map);
+            PCLSymbolSets.SetDataUserSet(symSetNo, symSetType, map);
 
             return OK;
         }
@@ -551,7 +551,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void symSetFileClose()
+        private static void SymSetFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -566,7 +566,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool symSetFileCopy(BinaryWriter prnWriter,
+        public static bool SymSetFileCopy(BinaryWriter prnWriter,
                                              string filename)
         {
             bool OK = true;
@@ -575,7 +575,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = symSetFileOpen(filename, ref fileSize);
+            fileOpen = SymSetFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -602,7 +602,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                symSetFileClose();
+                SymSetFileClose();
             }
 
             return OK;
@@ -617,7 +617,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool symSetFileOpen(string fileName,
+        private static bool SymSetFileOpen(string fileName,
                                               ref long fileSize)
         {
             bool open = false;

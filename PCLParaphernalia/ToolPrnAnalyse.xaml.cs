@@ -116,7 +116,7 @@ namespace PCLParaphernalia
 
                 initialiseGridAnalysis();
 
-                parseFile.analyse(_prnFilename,
+                parseFile.Analyse(_prnFilename,
                                    _options,
                                    _tableAnalysis);
 
@@ -255,13 +255,13 @@ namespace PCLParaphernalia
 
                 btnSaveReport.IsEnabled = false;
 
-                resetStatistics();
+                ResetStatistics();
 
-                _options.getOptClrMap(ref _flagClrMapUseClr,
+                _options.GetOptClrMap(ref _flagClrMapUseClr,
                                        ref _indxClrMapBack,
                                        ref _indxClrMapFore);
 
-                _options.metricsSave();
+                _options.MetricsSave();
             }
         }
 
@@ -288,7 +288,7 @@ namespace PCLParaphernalia
             else
                 flagOffsetHex = true;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
@@ -345,7 +345,7 @@ namespace PCLParaphernalia
                 bool excUnusedObsPCLSeqs = false;
                 bool excUnusedResPCLXLTags = false;
 
-                _options.getOptStats(ref level,
+                _options.GetOptStats(ref level,
                                       ref excUnusedObsPCLSeqs,
                                       ref excUnusedResPCLXLTags);
 
@@ -357,56 +357,56 @@ namespace PCLParaphernalia
                 else
                     incUsedSeqsOnly = false;
 
-                PrescribeCommands.displayStatsCounts(_tableStatistics,
+                PrescribeCommands.DisplayStatsCounts(_tableStatistics,
                                                       incUsedSeqsOnly);
 
-                PJLCommands.displayStatsCounts(_tableStatistics,
+                PJLCommands.DisplayStatsCounts(_tableStatistics,
                                                 incUsedSeqsOnly);
 
-                PCLControlCodes.displayStatsCounts(_tableStatistics,
+                PCLControlCodes.DisplayStatsCounts(_tableStatistics,
                                                     incUsedSeqsOnly);
 
-                PCLSimpleSeqs.displayStatsCounts(_tableStatistics,
+                PCLSimpleSeqs.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly,
                                                   excUnusedObsPCLSeqs);
 
-                PCLComplexSeqs.displayStatsCounts(_tableStatistics,
+                PCLComplexSeqs.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly,
                                                   excUnusedObsPCLSeqs);
 
-                HPGL2Commands.displayStatsCounts(_tableStatistics,
+                HPGL2Commands.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly);
 
-                HPGL2ControlCodes.displayStatsCounts(_tableStatistics,
+                HPGL2ControlCodes.DisplayStatsCounts(_tableStatistics,
                                                      incUsedSeqsOnly);
 
-                PCLXLDataTypes.displayStatsCounts(_tableStatistics,
+                PCLXLDataTypes.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly,
                                                   excUnusedResPCLXLTags);
 
-                PCLXLAttrEnums.displayStatsCounts(_tableStatistics,
+                PCLXLAttrEnums.DisplayStatsCounts(_tableStatistics,
                                                    incUsedSeqsOnly,
                                                    excUnusedResPCLXLTags);
 
-                PCLXLAttributes.displayStatsCounts(_tableStatistics,
+                PCLXLAttributes.DisplayStatsCounts(_tableStatistics,
                                                     incUsedSeqsOnly,
                                                     excUnusedResPCLXLTags);
 
-                PCLXLOperators.displayStatsCounts(_tableStatistics,
+                PCLXLOperators.DisplayStatsCounts(_tableStatistics,
                                                    incUsedSeqsOnly,
                                                    excUnusedResPCLXLTags);
 
-                PCLXLWhitespaces.displayStatsCounts(_tableStatistics,
+                PCLXLWhitespaces.DisplayStatsCounts(_tableStatistics,
                                                      incUsedSeqsOnly,
                                                      excUnusedResPCLXLTags);
 
-                PMLDataTypes.displayStatsCounts(_tableStatistics,
+                PMLDataTypes.DisplayStatsCounts(_tableStatistics,
                                                  incUsedSeqsOnly);
 
-                PMLActions.displayStatsCounts(_tableStatistics,
+                PMLActions.DisplayStatsCounts(_tableStatistics,
                                                incUsedSeqsOnly);
 
-                PMLOutcomes.displayStatsCounts(_tableStatistics,
+                PMLOutcomes.DisplayStatsCounts(_tableStatistics,
                                                 incUsedSeqsOnly);
 
                 // TODO = remaining types
@@ -641,16 +641,16 @@ namespace PCLParaphernalia
 
             _fileSize = -1;
 
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            _options.getOptClrMap(ref _flagClrMapUseClr,
+            _options.GetOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
                                    ref _indxClrMapFore);
 
-            _options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
+            _options.GetOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                           ref _stdClrsPropertyInfo);
 
             /*
@@ -791,9 +791,9 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            ToolPrnAnalysePersist.loadData(ref _prnFilename);
+            ToolPrnAnalysePersist.LoadData(ref _prnFilename);
 
-            _options.metricsLoad();
+            _options.MetricsLoad();
         }
 
         //--------------------------------------------------------------------//
@@ -807,9 +807,9 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrnAnalysePersist.saveData(_prnFilename);
+            ToolPrnAnalysePersist.SaveData(_prnFilename);
 
-            _options.metricsSave();
+            _options.MetricsSave();
         }
 
         //--------------------------------------------------------------------//
@@ -905,9 +905,9 @@ namespace PCLParaphernalia
 
             _tableAnalysis.Clear();
 
-            resetStatistics();
+            ResetStatistics();
 
-            _options.resetOptCurF(_fileSize);
+            _options.ResetOptCurF(_fileSize);
 
             if (_options.FlagGenMiscAutoAnalyse)
                 btnAnalysis_Click(this, null);
@@ -924,7 +924,7 @@ namespace PCLParaphernalia
 
         private bool prnFileSelect(ref string prnFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
             openDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +
@@ -955,27 +955,27 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             btnStatistics.IsEnabled = false;
             txtRptSizeStatistics.Text = "0";
 
             _tableStatistics.Clear();
 
-            PrescribeCommands.resetStatsCounts();
-            PJLCommands.resetStatsCounts();
-            PCLComplexSeqs.resetStatsCounts();
-            PCLSimpleSeqs.resetStatsCounts();
-            PCLControlCodes.resetStatsCounts();
-            HPGL2Commands.resetStatsCounts();
-            HPGL2ControlCodes.resetStatsCounts();
-            PCLXLDataTypes.resetStatsCounts();
+            PrescribeCommands.ResetStatsCounts();
+            PJLCommands.ResetStatsCounts();
+            PCLComplexSeqs.ResetStatsCounts();
+            PCLSimpleSeqs.ResetStatsCounts();
+            PCLControlCodes.ResetStatsCounts();
+            HPGL2Commands.ResetStatsCounts();
+            HPGL2ControlCodes.ResetStatsCounts();
+            PCLXLDataTypes.ResetStatsCounts();
             //   PCLXLAttrDefiners.resetStatsCounts ();
-            PCLXLAttributes.resetStatsCounts();
-            PCLXLAttrEnums.resetStatsCounts();
+            PCLXLAttributes.ResetStatsCounts();
+            PCLXLAttrEnums.ResetStatsCounts();
             //   PCLXLEmbedDataDefs.resetStatsCounts ();
-            PCLXLOperators.resetStatsCounts();
-            PCLXLWhitespaces.resetStatsCounts();
+            PCLXLOperators.ResetStatsCounts();
+            PCLXLWhitespaces.ResetStatsCounts();
         }
 
         //--------------------------------------------------------------------//

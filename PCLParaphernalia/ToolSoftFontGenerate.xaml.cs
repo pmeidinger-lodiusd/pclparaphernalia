@@ -192,7 +192,7 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt(
+            TargetCore.MetricsReturnFileRpt(
                 ToolCommonData.eToolIds.SoftFontGenerate,
                 ref rptFileFmt,
                 ref rptChkMarks,
@@ -309,7 +309,7 @@ namespace PCLParaphernalia
 
             conversionText = _ascii.GetBytes(convTextStr);
 
-            licenceType = _ttfHandler.checkLicence(ref licenceText);
+            licenceType = _ttfHandler.CheckLicence(ref licenceText);
 
             if (licenceType == ToolSoftFontGenTTF.eLicenceType.NotAllowed)
             {
@@ -363,8 +363,8 @@ namespace PCLParaphernalia
                 _tableLogTarget.Clear();
                 _tableLogChars.Clear();
 
-                symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
-                symSetTypeID = PCLSymSetTypes.getIdPCL((int)symSetType);
+                symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
+                symSetTypeID = PCLSymSetTypes.GetIdPCL((int)symSetType);
 
                 if (tabDetails.SelectedItem.Equals(tabPCL))
                 {
@@ -372,7 +372,7 @@ namespace PCLParaphernalia
                         new ToolSoftFontGenPCL(_tableLogChars,
                                                 _ttfHandler);
 
-                    PCLHandler.generateFont(ref _fontFilenamePCL,
+                    PCLHandler.GenerateFont(ref _fontFilenamePCL,
                                              ref monoSpaced,
                                              _symbolMapping,
                                              _flagFormat16,
@@ -411,7 +411,7 @@ namespace PCLParaphernalia
 
                     fontName = _ascii.GetBytes(_fontNamePCLXL);
 
-                    PCLXLHandler.generateFont(ref _fontFilenamePCLXL,
+                    PCLXLHandler.GenerateFont(ref _fontFilenamePCLXL,
                                               _symbolMapping,
                                               _symSetUnbound,
                                               _tabvmtxPresent,
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
 
                 sfntOffset = (int)_fontTTCOffsets[indx];
 
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableLogDonor, true, true,
                     "Font",
                     "'" + _fontTTCNames[indx].ToString() +
@@ -580,17 +580,17 @@ namespace PCLParaphernalia
                     _sizeCharSet = cSizeCharSet_UCS_2;
                 else if (_symSetUserSet)
                     _sizeCharSet =
-                        PCLSymbolSets.getMapArrayMax(_indxSymSetTarget) + 1;
+                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
                 else
                     _sizeCharSet =
-                        PCLSymbolSets.getMapArrayMax(_indxSymSetTarget) + 1;
+                        PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
 
                 _ttfHandler = new ToolSoftFontGenTTF(_tableLogDonor,
                                                       _tableLogMapping,
                                                       _flagLogVerbose,
                                                       _sizeCharSet);
 
-                flagOK = _ttfHandler.checkForTTC(_fontFilenameTTF,
+                flagOK = _ttfHandler.CheckForTTC(_fontFilenameTTF,
                                                   ref typeTTC,
                                                   ref numFonts);
                 if (flagOK)
@@ -609,7 +609,7 @@ namespace PCLParaphernalia
                         _fontTTCOffsets = new uint[numFonts];
                         _fontTTCNames = new string[numFonts];
 
-                        flagOK = _ttfHandler.getTTCData(_fontFilenameTTF,
+                        flagOK = _ttfHandler.GetTTCData(_fontFilenameTTF,
                                                          numFonts,
                                                          ref _fontTTCOffsets,
                                                          ref _fontTTCNames);
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
                     cbTTCName.Visibility = Visibility.Hidden;
                 }
 
-                _ttfHandler.initialiseFontData(_fontFilenameTTF,
+                _ttfHandler.InitialiseFontData(_fontFilenameTTF,
                                                 sfntOffset,
                                                 _indxSymSetTarget,
                                                 ref _tabPCLTPresent,
@@ -707,9 +707,9 @@ namespace PCLParaphernalia
                 }
 
                 symSetIdTargetPCL =
-                    PCLSymbolSets.translateKind1ToId(symSetNoTargetPCL);
+                    PCLSymbolSets.TranslateKind1ToId(symSetNoTargetPCL);
                 symSetIdTargetPCLXL =
-                   PCLSymbolSets.translateKind1ToId(symSetNoTargetPCLXL);
+                   PCLSymbolSets.TranslateKind1ToId(symSetNoTargetPCLXL);
 
                 //--------------------------------------------------------//
                 //                                                        //
@@ -759,7 +759,7 @@ namespace PCLParaphernalia
                     usePCLT = false;
                 }
 
-                _ttfHandler.getPCLFontSelectData(ref _styleNoPCL,
+                _ttfHandler.GetPCLFontSelectData(ref _styleNoPCL,
                                                   ref _weightNoPCL,
                                                   ref symSetNoPCLT,
                                                   ref styleNoPCLT,
@@ -1053,7 +1053,7 @@ namespace PCLParaphernalia
                 PCLSymSetTypes.eIndex symSetType =
                     PCLSymSetTypes.eIndex.Unknown;
 
-                flagOK = PCLDownloadSymSet.checkSymSetFile(
+                flagOK = PCLDownloadSymSet.CheckSymSetFile(
                     _symSetUserFile,
                     ref _symSetNoUserSet,
                     ref firstCode,
@@ -1068,7 +1068,7 @@ namespace PCLParaphernalia
             else
             {
                 _symSetNoUserSet = _defaultSymSetNo;
-                PCLSymbolSets.setDataUserSetDefault(_defaultSymSetNo);
+                PCLSymbolSets.SetDataUserSetDefault(_defaultSymSetNo);
 
                 txtSymSetFile.Text = "***** Invalid symbol set file *****";
             }
@@ -1734,7 +1734,7 @@ namespace PCLParaphernalia
 
             PCLCharCollItems items = new PCLCharCollItems();
 
-            _charCollCompListUnicode = items.loadCompListUnicode();
+            _charCollCompListUnicode = items.LoadCompListUnicode();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1793,19 +1793,19 @@ bitVal;
 
             cbSymSet.Items.Clear();
 
-            _ctMappedSymSets = PCLSymbolSets.getCountMapped();
+            _ctMappedSymSets = PCLSymbolSets.GetCountMapped();
 
             _subsetSymSets = new int[_ctMappedSymSets];
 
-            PCLSymbolSets.getIndicesMapped(0, ref _subsetSymSets);
+            PCLSymbolSets.GetIndicesMapped(0, ref _subsetSymSets);
 
             for (int i = 0; i < _ctMappedSymSets; i++)
             {
                 index = _subsetSymSets[i];
-                cbSymSet.Items.Add(PCLSymbolSets.getName(index));
+                cbSymSet.Items.Add(PCLSymbolSets.GetName(index));
             }
 
-            _indxSymSetDefault = PCLSymbolSets.getIndexForId(_defaultSymSetNo);
+            _indxSymSetDefault = PCLSymbolSets.GetIndexForId(_defaultSymSetNo);
         }
 
         //--------------------------------------------------------------------//
@@ -1821,35 +1821,35 @@ bitVal;
         {
             string baseName = string.Empty;
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Font selection attributes:",
                 string.Empty);
 
             if (monoSpaced)
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableLogTarget, false, false,
                     "Spacing:",
                     "Value:   " + "0 (= fixed-pitch)");
             else
-                ToolSoftFontGenLog.logNameAndValue(
+                ToolSoftFontGenLog.LogNameAndValue(
                     _tableLogTarget, false, false,
                     "Spacing:",
                     "Value:   " + "1 (= proportionally-spaced)");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Symbol set:",
                 "Kind1:   " + _symSetNoPCL.ToString());
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
                 "Id:      " + txtPCLSymSetIdNum.Text +
                               txtPCLSymSetIdAlpha.Text +
                           " (= " + txtPCLSymSetName.Text + ")");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Style:",
                 "Number:  " + _styleNoPCL +
@@ -1859,7 +1859,7 @@ bitVal;
                                  txtPCLStyleStructure.Text +
                                ")");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Stroke Weight:",
                 "Value:   " + _weightNoPCL +
@@ -1867,7 +1867,7 @@ bitVal;
                                  txtPCLWeightDesc.Text +
                                ")");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Typeface:",
                 "Number:  " + _typefaceNoPCL +
@@ -1875,15 +1875,15 @@ bitVal;
                                  txtPCLTypefaceName.Text +
                                ")");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
                 "Vendor:  " + _typefaceVendorPCL);
 
-            PCLFonts.getNameForIdPCL(_typefaceBasecodePCL,
+            PCLFonts.GetNameForIdPCL(_typefaceBasecodePCL,
                                      ref baseName);
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
                 "Base:    " + _typefaceBasecodePCL +
@@ -1901,24 +1901,24 @@ bitVal;
 
         private void logFontSelectDataPCLXL()
         {
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Font selection attributes:",
                 string.Empty);
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Symbol set:",
                 "Kind1:   " + _symSetNoPCL.ToString());
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 string.Empty,
                 "Id:      " + txtPCLSymSetIdNum.Text +
                               txtPCLSymSetIdAlpha.Text +
                           " (= " + txtPCLSymSetName.Text + ")");
 
-            ToolSoftFontGenLog.logNameAndValue(
+            ToolSoftFontGenLog.LogNameAndValue(
                 _tableLogTarget, false, false,
                 "Font name:",
                 _fontNamePCLXL);
@@ -1937,7 +1937,7 @@ bitVal;
         {
             int indxTemp = 0;
 
-            ToolSoftFontGenPersist.loadDataCommon(ref indxTemp,
+            ToolSoftFontGenPersist.LoadDataCommon(ref indxTemp,
                                                   ref _flagLogVerbose);
 
             if (indxTemp == (int)ToolCommonData.ePrintLang.PCLXL)
@@ -1945,7 +1945,7 @@ bitVal;
             else
                 _crntPDL = ToolCommonData.ePrintLang.PCL;
 
-            ToolSoftFontGenPersist.loadDataTTF(ref _indxFont,
+            ToolSoftFontGenPersist.LoadDataTTF(ref _indxFont,
                                                ref _flagUsePCLT,
                                                ref _fontFileAdhocTTF);
             /*
@@ -1957,7 +1957,7 @@ bitVal;
             if ((_indxFont < 0) || (_indxFont >= _ctTTFFonts))
                 _indxFont = 0;
 
-            ToolSoftFontGenPersist.loadDataMapping(
+            ToolSoftFontGenPersist.LoadDataMapping(
                 ref _indxSymSetSubset,
                 ref _symSetMapPCL,
                 ref _symSetUnbound,
@@ -1968,7 +1968,7 @@ bitVal;
                 (_indxSymSetSubset >= _ctMappedSymSets))
                 _indxSymSetSubset = 0;
 
-            ToolSoftFontGenPersist.loadDataPCL(
+            ToolSoftFontGenPersist.LoadDataPCL(
                 ref _fontFolderPCL,
                 ref _flagFormat16,
                 ref _flagCharCollCompSpecificPCL,
@@ -1976,7 +1976,7 @@ bitVal;
                 ref _flagSegGTLastPCL,
                 ref _charCollCompPCLSpecific);
 
-            ToolSoftFontGenPersist.loadDataPCLXL(
+            ToolSoftFontGenPersist.LoadDataPCLXL(
                 ref _fontFolderPCLXL,
                 ref _flagVMetricsPCLXL);
         }
@@ -1992,27 +1992,27 @@ bitVal;
 
         public void metricsSave()
         {
-            ToolSoftFontGenPersist.saveDataCommon((int)_crntPDL,
+            ToolSoftFontGenPersist.SaveDataCommon((int)_crntPDL,
                                                    _flagLogVerbose);
 
-            ToolSoftFontGenPersist.saveDataTTF(_indxFont,
+            ToolSoftFontGenPersist.SaveDataTTF(_indxFont,
                                                  _flagUsePCLT,
                                                 _fontFileAdhocTTF);
 
-            ToolSoftFontGenPersist.saveDataMapping(_indxSymSetSubset,
+            ToolSoftFontGenPersist.SaveDataMapping(_indxSymSetSubset,
                                                     _symSetMapPCL,
                                                     _symSetUnbound,
                                                     _symSetUserSet,
                                                     _symSetUserFile);
 
-            ToolSoftFontGenPersist.saveDataPCL(_fontFolderPCL,
+            ToolSoftFontGenPersist.SaveDataPCL(_fontFolderPCL,
                                                  _flagFormat16,
                                                  _flagCharCollCompSpecificPCL,
                                                  _flagVMetricsPCL,
                                                  _flagSegGTLastPCL,
                                                  _charCollCompPCLSpecific);
 
-            ToolSoftFontGenPersist.saveDataPCLXL(_fontFolderPCLXL,
+            ToolSoftFontGenPersist.SaveDataPCLXL(_fontFolderPCLXL,
                                                  _flagVMetricsPCLXL);
         }
 
@@ -2384,7 +2384,7 @@ bitVal;
 
         private bool selectPCLFontFile(ref string fontFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLETTO font files|*.sft; *.SFT";
@@ -2408,7 +2408,7 @@ bitVal;
 
         private bool selectPCLXLFontFile(ref string fontFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilename);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "PCLXLETTO font files|*.sfx; *.SFX";
@@ -2432,7 +2432,7 @@ bitVal;
 
         private bool selectSymSetFile(ref string symSetFile)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(symSetFile);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFile);
 
             openDialog.Filter = "PCL files|*.pcl; *.PCL;" +
                                 "|All files|*.*";
@@ -2456,7 +2456,7 @@ bitVal;
 
         private bool selectTTFFontFile(ref string fontFilenameTTF)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(fontFilenameTTF);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(fontFilenameTTF);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "TrueType font files|" +
@@ -2604,7 +2604,7 @@ bitVal;
 
                 txtPCLSymSetNo.Text = _symSetNoUnbound.ToString();
 
-                PCLSymbolSets.translateKind1ToId(_symSetNoUnbound,
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnbound,
                                           ref idNum,
                                           ref idAlpha);
 
@@ -2613,7 +2613,7 @@ bitVal;
 
                 txtPCLXLSymSetNo.Text = _symSetNoUnicode.ToString();
 
-                PCLSymbolSets.translateKind1ToId(_symSetNoUnicode,
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUnicode,
                                           ref idNum,
                                           ref idAlpha);
 
@@ -2641,7 +2641,7 @@ bitVal;
                 _symSetNoTargetPCL = _symSetNoUserSet;
                 _symSetNoTargetPCLXL = _symSetNoUserSet;
 
-                PCLSymbolSets.translateKind1ToId(_symSetNoUserSet,
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoUserSet,
                                                   ref idNum,
                                                   ref idAlpha);
 
@@ -2650,10 +2650,10 @@ bitVal;
                 txtSymSetIdNum.Text = idNum;
                 txtSymSetIdAlpha.Text = idAlpha;
 
-                _symSetType = PCLSymbolSets.getType(_indxSymSetTarget);
+                _symSetType = PCLSymbolSets.GetType(_indxSymSetTarget);
 
                 txtSymSetType.Text =
-                    PCLSymSetTypes.getDescShort((int)_symSetType);
+                    PCLSymSetTypes.GetDescShort((int)_symSetType);
 
                 txtPCLSymSetNo.Text = _symSetNoUserSet.ToString();
 
@@ -2673,11 +2673,11 @@ bitVal;
 
                 indxSymSet = _subsetSymSets[_indxSymSetSubset];
 
-                _symSetGroup = PCLSymbolSets.getGroup(indxSymSet);
-                _symSetType = PCLSymbolSets.getType(indxSymSet);
+                _symSetGroup = PCLSymbolSets.GetGroup(indxSymSet);
+                _symSetType = PCLSymbolSets.GetType(indxSymSet);
 
-                _flagSymSetNullMapPCL = PCLSymbolSets.nullMapPCL(indxSymSet);
-                _flagSymSetNullMapStd = PCLSymbolSets.nullMapStd(indxSymSet);
+                _flagSymSetNullMapPCL = PCLSymbolSets.NullMapPCL(indxSymSet);
+                _flagSymSetNullMapStd = PCLSymbolSets.NullMapStd(indxSymSet);
 
                 if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.Preset) ||
                     (_symSetGroup == PCLSymbolSets.eSymSetGroup.NonStd))
@@ -2703,10 +2703,10 @@ bitVal;
                     //--------------------------------------------------------//
 
                     txtSymSetType.Text =
-                        PCLSymSetTypes.getDescShort((int)_symSetType);
+                        PCLSymSetTypes.GetDescShort((int)_symSetType);
 
                     _indxSymSetTarget = indxSymSet;
-                    _symSetNoTargetPCL = PCLSymbolSets.getKind1(indxSymSet);
+                    _symSetNoTargetPCL = PCLSymbolSets.GetKind1(indxSymSet);
                     _symSetNoTargetPCLXL = _symSetNoTargetPCL;
 
                     txtSymSetNo.Text = _symSetNoTargetPCL.ToString();
@@ -2716,7 +2716,7 @@ bitVal;
 
                     //--------------------------------------------------------//
 
-                    PCLSymbolSets.translateKind1ToId(_symSetNoTargetPCL,
+                    PCLSymbolSets.TranslateKind1ToId(_symSetNoTargetPCL,
                                               ref idNum,
                                               ref idAlpha);
 
@@ -3173,11 +3173,11 @@ bitVal;
             if (validatePCLSymSetNo(true, ref _symSetNoPCL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId(_symSetNoPCL,
+                    PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId(_symSetNoPCL,
+                    PCLSymbolSets.GetNameForId(_symSetNoPCL,
                                                 ref name);
                 }
             }
@@ -3206,11 +3206,11 @@ bitVal;
 
             if (validatePCLSymSetNo(false, ref _symSetNoPCL))
             {
-                PCLSymbolSets.translateKind1ToId(_symSetNoPCL,
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId(_symSetNoPCL,
+                PCLSymbolSets.GetNameForId(_symSetNoPCL,
                                             ref name);
             }
 
@@ -3238,11 +3238,11 @@ bitVal;
 
             if (validatePCLTypefaceNo(true, ref _typefaceNoPCL))
             {
-                PCLFonts.translateTypeface(_typefaceNoPCL,
+                PCLFonts.TranslateTypeface(_typefaceNoPCL,
                                             ref vendor,
                                             ref basecode);
 
-                PCLFonts.getNameForIdPCL(_typefaceNoPCL,
+                PCLFonts.GetNameForIdPCL(_typefaceNoPCL,
                                           ref name);
             }
 
@@ -3267,11 +3267,11 @@ bitVal;
 
             if (validatePCLTypefaceNo(false, ref _typefaceNoPCL))
             {
-                PCLFonts.translateTypeface(_typefaceNoPCL,
+                PCLFonts.TranslateTypeface(_typefaceNoPCL,
                                             ref _typefaceVendorPCL,
                                             ref _typefaceBasecodePCL);
 
-                PCLFonts.getNameForIdPCL(_typefaceNoPCL,
+                PCLFonts.GetNameForIdPCL(_typefaceNoPCL,
                                           ref name);
             }
 
@@ -3378,11 +3378,11 @@ bitVal;
             if (validatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
             {
                 {
-                    PCLSymbolSets.translateKind1ToId(_symSetNoPCLXL,
+                    PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
                                                      ref idNum,
                                                      ref idAlpha);
 
-                    PCLSymbolSets.getNameForId(_symSetNoPCLXL,
+                    PCLSymbolSets.GetNameForId(_symSetNoPCLXL,
                                                 ref name);
                 }
             }
@@ -3411,11 +3411,11 @@ bitVal;
 
             if (validatePCLXLSymSetNo(false, ref _symSetNoPCLXL))
             {
-                PCLSymbolSets.translateKind1ToId(_symSetNoPCLXL,
+                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
                                                  ref idNum,
                                                  ref idAlpha);
 
-                PCLSymbolSets.getNameForId(_symSetNoPCLXL,
+                PCLSymbolSets.GetNameForId(_symSetNoPCLXL,
                                             ref name);
             }
 

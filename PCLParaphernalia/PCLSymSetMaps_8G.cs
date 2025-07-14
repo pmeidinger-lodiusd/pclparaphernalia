@@ -29,7 +29,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_8G()
+        private static void UnicodeMap_8G()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_8G;
 

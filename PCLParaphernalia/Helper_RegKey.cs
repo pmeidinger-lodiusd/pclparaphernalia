@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void copyKey(
+        private static void CopyKey(
             RegistryKey parentKey,
             string sourceKeyName,
             string targetKeyName)
@@ -31,7 +31,7 @@ namespace PCLParaphernalia
 
             RegistryKey sourceKey = parentKey.OpenSubKey(sourceKeyName);
 
-            copyKeyContent(sourceKey, targetKey);
+            CopyKeyContent(sourceKey, targetKey);
         }
 
         //--------------------------------------------------------------------//
@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void copyKeyContent(
+        private static void CopyKeyContent(
                 RegistryKey sourceKey,
                 RegistryKey targetKey)
         {
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
                 RegistryKey targetSubKey =
                     targetKey.CreateSubKey(sourceSubKeyName);
 
-                copyKeyContent(sourceSubKey, targetSubKey);
+                CopyKeyContent(sourceSubKey, targetSubKey);
             }
         }
 
@@ -80,7 +80,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool keyExists(
+        public static bool KeyExists(
             RegistryKey parentKeyName,
             string subKeyName)
         {
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void renameKey(
+        public static void RenameKey(
             RegistryKey parentKey,
             string oldSubKeyName,
             string newSubKeyName)
@@ -113,7 +113,7 @@ namespace PCLParaphernalia
 
             if (subKey != null)
             {
-                copyKey(parentKey, oldSubKeyName, newSubKeyName);
+                CopyKey(parentKey, oldSubKeyName, newSubKeyName);
 
                 parentKey.DeleteSubKeyTree(oldSubKeyName);
             }

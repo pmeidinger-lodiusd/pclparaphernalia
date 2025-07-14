@@ -45,7 +45,7 @@ namespace PCLParaphernalia
 
         static PCLComplexSeqs()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //
@@ -63,7 +63,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkComplexSeq(
+        public static bool CheckComplexSeq(
             int macroLevel,
             byte iChar,
             byte gChar,
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
             flagValGeneric = seq.FlagValGeneric;
 
             actType = seq.ActionType;
-            makeOvlAct = seq.makeOvlAct;
+            makeOvlAct = seq.MakeOvlAct;
 
             description = seq.Description;
 
@@ -157,9 +157,9 @@ namespace PCLParaphernalia
             }
 
             if ((actType == PrnParseConstants.eActPCL.MacroStop) && (macroLevel > 0))
-                seq.incrementStatisticsCount(macroLevel - 1);
+                seq.IncrementStatisticsCount(macroLevel - 1);
             else
-                seq.incrementStatisticsCount(macroLevel);
+                seq.IncrementStatisticsCount(macroLevel);
 
             return seqKnown;
         }
@@ -173,7 +173,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displaySeqList(DataGrid grid,
+        public static int DisplaySeqList(DataGrid grid,
                                            bool incObsoleteSeqs,
                                            bool incDiscreteVal)
         {
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedObsSeqs)
         {
@@ -255,7 +255,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -291,7 +291,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -317,7 +317,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -363,7 +363,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getSeqCount()
+        public static int GetSeqCount()
         {
             return _seqsCount;
         }
@@ -394,7 +394,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagDiscrete = true;
@@ -1673,7 +1673,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.PageControl,
                                    "Page Size (# = discrete value)"));
 
-            populateTableAddPaperSizes(iChar, gChar, tChar, root);
+            PopulateTableAddPaperSizes(iChar, gChar, tChar, root);
 
             iChar = 0x26;   // & //
             gChar = 0x6c;   // l //
@@ -2062,13 +2062,13 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.PageControl,
                                    "Orientation (# = discrete value)"));
 
-            count = PCLOrientations.getCount();
+            count = PCLOrientations.GetCount();
 
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    value = PCLOrientations.getIdPCL(i);
+                    value = PCLOrientations.GetIdPCL(i);
 
                     _seqs.Add(root + ":" + value.ToString("X4"),
                          new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -2078,7 +2078,7 @@ namespace PCLParaphernalia
                                             PrnParseConstants.eOvlAct.PageChange,
                                             PrnParseConstants.eSeqGrp.PageControl,
                                             "Orientation: " +
-                                            PCLOrientations.getName(i)));
+                                            PCLOrientations.GetName(i)));
                 }
             }
 
@@ -2532,7 +2532,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Text Parsing Method (# = discrete value)"));
 
-            count = PCLTextParsingMethods.getCount();
+            count = PCLTextParsingMethods.GetCount();
 
             if (count > 0)
             {
@@ -2540,7 +2540,7 @@ namespace PCLParaphernalia
                 {
                     if (i != (byte)PCLTextParsingMethods.eIndex.not_specified)
                     {
-                        value = PCLTextParsingMethods.getValue(i);
+                        value = PCLTextParsingMethods.GetValue(i);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -2550,7 +2550,7 @@ namespace PCLParaphernalia
                                                 PrnParseConstants.eOvlAct.None,
                                                 PrnParseConstants.eSeqGrp.FontSelection,
                                                 "Text Parsing Method: " +
-                                                PCLTextParsingMethods.getDesc(i)));
+                                                PCLTextParsingMethods.GetDesc(i)));
                     }
                 }
             }
@@ -2954,7 +2954,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #A)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -2972,7 +2972,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #B)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -2990,7 +2990,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #C)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3008,7 +3008,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #D)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3026,7 +3026,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #E)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3044,7 +3044,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #F)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3062,7 +3062,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #G)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3080,7 +3080,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #H)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3098,7 +3098,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #I)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3116,7 +3116,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #J)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3134,7 +3134,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #K)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3152,7 +3152,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #L)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3170,7 +3170,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #M)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3188,7 +3188,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #N)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3206,7 +3206,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #O)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3224,7 +3224,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #P)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3242,7 +3242,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Q)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3260,7 +3260,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #R)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3278,7 +3278,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #S)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3296,7 +3296,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #T)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3314,7 +3314,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #U)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3332,7 +3332,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #V)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3350,7 +3350,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #W)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3384,7 +3384,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Y)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x20;   //   //
@@ -3402,7 +3402,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Symbol Set (identifier = #Z)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x66;   // f //
@@ -3786,7 +3786,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Primary Font: Typeface (identifier = #)"));
 
-            populateTableAddFonts(iChar, gChar, tChar, root);
+            PopulateTableAddFonts(iChar, gChar, tChar, root);
 
             iChar = 0x28;   // ( //
             gChar = 0x73;   // s //
@@ -3931,7 +3931,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #A)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -3949,7 +3949,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #B)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -3967,7 +3967,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #C)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -3985,7 +3985,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #D)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4003,7 +4003,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #E)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4021,7 +4021,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #F)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4039,7 +4039,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #G)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4057,7 +4057,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #H)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4075,7 +4075,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #I)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4093,7 +4093,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #J)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4111,7 +4111,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #K)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4129,7 +4129,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #L)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4147,7 +4147,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #M)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4165,7 +4165,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #N)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4183,7 +4183,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #O)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4201,7 +4201,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #P)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4219,7 +4219,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Q)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4237,7 +4237,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #R)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4255,7 +4255,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #S)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4273,7 +4273,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #T)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4291,7 +4291,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #U)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4309,7 +4309,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #V)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4327,7 +4327,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #W)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4361,7 +4361,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Y)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x20;   //   //
@@ -4379,7 +4379,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Symbol Set (identifier = #Z)"));
 
-            populateTableAddSymsets(iChar, gChar, tChar, root);
+            PopulateTableAddSymsets(iChar, gChar, tChar, root);
 
             iChar = 0x29;   // ) //
             gChar = 0x73;   // s //
@@ -4752,7 +4752,7 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.FontSelection,
                                    "Secondary Font: Typeface (identifier = #)"));
 
-            populateTableAddFonts(iChar, gChar, tChar, root);
+            PopulateTableAddFonts(iChar, gChar, tChar, root);
 
             root = ")sU";
             iChar = 0x29;   // ) //
@@ -5764,13 +5764,13 @@ namespace PCLParaphernalia
                                    PrnParseConstants.eSeqGrp.PrintModel,
                                    "Logical Operation (ROP3) (# = discrete value)"));
 
-            count = PCLLogicalOperations.getCount();
+            count = PCLLogicalOperations.GetCount();
 
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    value = PCLLogicalOperations.getROPId(i);
+                    value = PCLLogicalOperations.GetROPId(i);
 
                     _seqs.Add(root + ":" + i.ToString("X4"),
                          new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -5780,7 +5780,7 @@ namespace PCLParaphernalia
                                            PrnParseConstants.eOvlAct.None,
                                            PrnParseConstants.eSeqGrp.PrintModel,
                                            "Logical Op. " +
-                                           PCLLogicalOperations.getDescLong(i)));
+                                           PCLLogicalOperations.GetDescLong(i)));
                 }
             }
 
@@ -7894,7 +7894,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddFonts(byte iChar,
+        private static void PopulateTableAddFonts(byte iChar,
                                                    byte gChar,
                                                    byte tChar,
                                                    string root)
@@ -7904,7 +7904,7 @@ namespace PCLParaphernalia
 
             int ctFonts;
 
-            ctFonts = PCLFonts.getCount();
+            ctFonts = PCLFonts.GetCount();
 
             if (ctFonts > 0)
             {
@@ -7923,7 +7923,7 @@ namespace PCLParaphernalia
 
                 for (int i = 0; i < ctFonts; i++)
                 {
-                    presetFont = PCLFonts.getPresetFontData(i,
+                    presetFont = PCLFonts.GetPresetFontData(i,
                                                              ref typeface,
                                                              ref fontName);
 
@@ -7955,7 +7955,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddPaperSizes(byte iChar,
+        private static void PopulateTableAddPaperSizes(byte iChar,
                                                        byte gChar,
                                                        byte tChar,
                                                        string root)
@@ -7965,7 +7965,7 @@ namespace PCLParaphernalia
 
             int count;
 
-            count = PCLPaperSizes.getCount();
+            count = PCLPaperSizes.GetCount();
 
             if (count > 0)
             {
@@ -7975,7 +7975,7 @@ namespace PCLParaphernalia
                 {
                     if (!PCLPaperSizes.IsIdUnknownPCL(i))
                     {
-                        value = PCLPaperSizes.getIdPCL(i);
+                        value = PCLPaperSizes.GetIdPCL(i);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -7985,7 +7985,7 @@ namespace PCLParaphernalia
                                                 PrnParseConstants.eOvlAct.PageChange,
                                                 PrnParseConstants.eSeqGrp.PageControl,
                                                 "Page Size: " +
-                                                PCLPaperSizes.getNameAndDesc(i)));
+                                                PCLPaperSizes.GetNameAndDesc(i)));
                     }
                 }
             }
@@ -8001,7 +8001,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTableAddSymsets(byte iChar,
+        private static void PopulateTableAddSymsets(byte iChar,
                                                      byte gChar,
                                                      byte tChar,
                                                      string root)
@@ -8012,7 +8012,7 @@ namespace PCLParaphernalia
 
             int ctSymsets;
 
-            ctSymsets = PCLSymbolSets.getCount();
+            ctSymsets = PCLSymbolSets.GetCount();
 
             if (ctSymsets > 0)
             {
@@ -8028,7 +8028,7 @@ namespace PCLParaphernalia
                 for (int i = 0; i < ctSymsets; i++)
                 {
                     matchFound =
-                        PCLSymbolSets.getSymsetDataForIdAlpha(i,
+                        PCLSymbolSets.GetSymsetDataForIdAlpha(i,
                                                                tChar,
                                                                ref kind1,
                                                                ref idNum,
@@ -8045,7 +8045,7 @@ namespace PCLParaphernalia
                         else
                             type = "Secondary";
 
-                        id = PCLSymbolSets.translateKind1ToId(kind1);
+                        id = PCLSymbolSets.TranslateKind1ToId(kind1);
 
                         _seqs.Add(root + ":" + value.ToString("X4"),
                              new PCLComplexSeq(iChar, gChar, tChar, value, flagDiscrete,
@@ -8070,17 +8070,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLComplexSeq seq;
 
-            _seqUnknown.resetStatistics();
+            _seqUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, PCLComplexSeq> kvp in _seqs)
             {
                 seq = kvp.Value;
 
-                seq.resetStatistics();
+                seq.ResetStatistics();
             }
         }
     }

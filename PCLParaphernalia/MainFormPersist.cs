@@ -44,7 +44,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadVersionData(ref int major,
+        public static void LoadVersionData(ref int major,
                                             ref int minor,
                                             ref int build,
                                             ref int revision)
@@ -74,7 +74,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadWindowData(ref int left,
+        public static void LoadWindowData(ref int left,
                                            ref int top,
                                            ref int height,
                                            ref int width,
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveVersionData(int major,
+        public static void SaveVersionData(int major,
                                             int minor,
                                             int build,
                                             int revision)
@@ -136,7 +136,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveWindowData(int mwLeft,
+        public static void SaveWindowData(int mwLeft,
                                           int mwTop,
                                           int mwHeight,
                                           int mwWidth,

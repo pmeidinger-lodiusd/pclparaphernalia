@@ -67,7 +67,7 @@ namespace PCLParaphernalia
 
         static PCLSymSetTypes()
         {
-            populateSymbolSetTypeTable();
+            PopulateSymbolSetTypeTable();
         }
 
         //--------------------------------------------------------------------//
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _setsCountTotal;
         }
@@ -93,7 +93,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCountBound()
+        public static int GetCountBound()
         {
             return _setsCountBound;
         }
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescShort(int selection)
+        public static string GetDescShort(int selection)
         {
             return _sets[selection].DescShort;
         }
@@ -123,7 +123,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescStd(int selection)
+        public static string GetDescStd(int selection)
         {
             return _sets[selection].DescStd;
         }
@@ -138,7 +138,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int selection)
+        public static byte GetIdPCL(int selection)
         {
             return _sets[selection].IdPCL;
         }
@@ -160,7 +160,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eIndex getIndexForIdPCL(byte idPCL)
+        public static eIndex GetIndexForIdPCL(byte idPCL)
         {
             string entry;
 
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isBound(int selection)
+        public static bool IsBound(int selection)
         {
             return _sets[selection].IsBound;
         }
@@ -199,7 +199,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateSymbolSetTypeTable()
+        private static void PopulateSymbolSetTypeTable()
         {
             _sets.Add(new PCLSymSetType(
                             (byte)eIdPCL.Unknown,

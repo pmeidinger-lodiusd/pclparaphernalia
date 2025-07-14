@@ -39,7 +39,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool checkForMacroId(string fileName,
+        private static bool CheckForMacroId(string fileName,
                                                long fileSize,
                                                ref int macroId)
         {
@@ -121,7 +121,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkMacroFile(string filename,
+        public static bool CheckMacroFile(string filename,
                                              ref int macroId)
         {
             bool fileOpen = false;
@@ -135,7 +135,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            fileOpen = macroFileOpen(filename, ref fileSize);
+            fileOpen = MacroFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -143,11 +143,11 @@ namespace PCLParaphernalia
             }
             else
             {
-                macroIdPresent = checkForMacroId(filename,
+                macroIdPresent = CheckForMacroId(filename,
                                                   fileSize,
                                                   ref macroId);
 
-                macroFileClose();
+                MacroFileClose();
             }
 
             return macroIdPresent;
@@ -162,7 +162,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void macroFileClose()
+        private static void MacroFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool macroFileCopy(BinaryWriter prnWriter,
+        public static bool MacroFileCopy(BinaryWriter prnWriter,
                                             string filename)
         {
             bool OK = true;
@@ -186,7 +186,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = macroFileOpen(filename, ref fileSize);
+            fileOpen = MacroFileOpen(filename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                macroFileClose();
+                MacroFileClose();
             }
 
             return OK;
@@ -228,7 +228,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool macroFileOpen(string fileName,
+        private static bool MacroFileOpen(string fileName,
                                              ref long fileSize)
         {
             bool open = false;

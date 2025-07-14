@@ -137,7 +137,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getByteRange(ref uint offset,
+        public void GetByteRange(ref uint offset,
                                  ref uint length)
         {
             offset = _offset;
@@ -153,7 +153,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void initialise()
+        public void Initialise()
         {
             _checksum = 0;
             _offset = 0;
@@ -170,7 +170,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setMetrics(uint checksum,
+        public void SetMetrics(uint checksum,
                                uint offset,
                                uint length,
                                int padBytes)
@@ -191,7 +191,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool zeroLength()
+        public bool ZeroLength()
         {
             return _length == 0;
         }

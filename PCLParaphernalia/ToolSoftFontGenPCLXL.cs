@@ -71,7 +71,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool generateFont(ref string pclFilename,
+        public bool GenerateFont(ref string pclFilename,
                                      bool symbolMapping,
                                      bool symSetUnbound,
                                      bool tabvmtxPresent,
@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         {
             bool flagOK = true;
 
-            _baseHandler.initialise(_ttfHandler);
+            _baseHandler.Initialise(_ttfHandler);
 
             _symbolMapping = symbolMapping;
 
@@ -95,7 +95,7 @@ namespace PCLParaphernalia
 
             try
             {
-                flagOK = _baseHandler.streamOpen(ref pclFilename,
+                flagOK = _baseHandler.StreamOpen(ref pclFilename,
                                          true,
                                          ref _binWriter,
                                          ref _opStream);
@@ -132,9 +132,9 @@ namespace PCLParaphernalia
 
                 byte[] fontNameXL = new byte[cSizeFontname];
 
-                _ttfHandler.glyphReferencedUnmarkAll();
+                _ttfHandler.GlyphReferencedUnmarkAll();
 
-                _ttfHandler.getBasicMetrics(ref numChars,
+                _ttfHandler.GetBasicMetrics(ref numChars,
                                              ref firstCode,
                                              ref lastCode,
                                              ref maxGlyphId,
@@ -165,7 +165,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    writeHddr(glyphZeroExists,
+                    WriteHddr(glyphZeroExists,
                                symSetUnbound,
                                tabvmtxPresent,
                                flagVMetrics,
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLXLWriter.fontCharBegin(_binWriter,
+                    PCLXLWriter.FontCharBegin(_binWriter,
                                                false,
                                                cSizeFontname,
                                                fontNameXL);
@@ -199,9 +199,9 @@ namespace PCLParaphernalia
                         charClass = 1;
 
                     if (glyphZeroExists)
-                        writeChar(charClass, 0xffff, 0, 0, 0, maxGlyphId);
+                        WriteChar(charClass, 0xffff, 0, 0, 0, maxGlyphId);
 
-                    writeCharSet(maxGlyphId, sizeCharSet, charClass,
+                    WriteCharSet(maxGlyphId, sizeCharSet, charClass,
                                   symSetUnbound);
 
                     //--------------------------------------------------------//
@@ -210,7 +210,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PCLXLWriter.fontCharEnd(_binWriter, false);
+                    PCLXLWriter.FontCharEnd(_binWriter, false);
 
                     //--------------------------------------------------------//
                     //                                                        //
@@ -221,7 +221,7 @@ namespace PCLParaphernalia
                     _binWriter.Close();
                     _opStream.Close();
 
-                    _ttfHandler.fontFileClose();
+                    _ttfHandler.FontFileClose();
                 }
 
                 catch (Exception exc)
@@ -248,7 +248,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte lsByte(ushort value)
+        private byte LsByte(ushort value)
         {
             return (byte)(value & 0x00ff);
         }
@@ -263,7 +263,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort lsUInt16(uint value)
+        private ushort LsUInt16(uint value)
         {
             return (ushort)(value & 0x0000ffff);
         }
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte msByte(ushort value)
+        private byte MsByte(ushort value)
         {
             return (byte)((value & 0xff00) >> 8);
         }
@@ -293,7 +293,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort msUInt16(uint value)
+        private ushort MsUInt16(uint value)
         {
             return (ushort)((value & 0xffff0000) >> 16);
         }
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeChar(int charClass,
+        private void WriteChar(int charClass,
                                 ushort charCode,
                                 ushort codepoint,
                                 ushort glyphId,
@@ -365,7 +365,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _ttfHandler.glyphReferencedMark(glyphId);
+            _ttfHandler.GlyphReferencedMark(glyphId);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -376,7 +376,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _ttfHandler.getGlyphData(glyphId,
+            _ttfHandler.GetGlyphData(glyphId,
                                       ref glyphWidth,
                                       ref glyphHeight,  // not used
                                       ref glyphLSB,
@@ -391,7 +391,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ToolSoftFontGenLog.logCharDetails(_tableLog,
+            ToolSoftFontGenLog.LogCharDetails(_tableLog,
                                                false,
                                                glyphComposite,
                                                charCode,
@@ -417,10 +417,10 @@ namespace PCLParaphernalia
             charDataSize = (ushort)(hddrSize + glyphLength);
             charSize = (ushort)(charDataSize - 2);
 
-            PCLXLWriter.fontCharRead(_binWriter, false,
+            PCLXLWriter.FontCharRead(_binWriter, false,
                                       charCode, charDataSize);
 
-            PCLXLWriter.embedDataIntro(_binWriter,
+            PCLXLWriter.EmbedDataIntro(_binWriter,
                                         false,
                                         charDataSize);
             if (charClass == 0)
@@ -433,10 +433,10 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                   // Format
                 charHddr[1] = 0;                   // Class
-                charHddr[2] = msByte(charSize);   // CharSize MSB
-                charHddr[3] = lsByte(charSize);   // CharSize LSB
-                charHddr[4] = msByte(glyphId);    // Glyph Id MSB
-                charHddr[5] = lsByte(glyphId);    // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);   // CharSize MSB
+                charHddr[3] = LsByte(charSize);   // CharSize LSB
+                charHddr[4] = MsByte(glyphId);    // Glyph Id MSB
+                charHddr[5] = LsByte(glyphId);    // Glyph Id LSB
             }
             else if (charClass == 1)
             {
@@ -448,14 +448,14 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                   // Format
                 charHddr[1] = 1;                   // Class
-                charHddr[2] = msByte(charSize);   // CharSize MSB
-                charHddr[3] = lsByte(charSize);   // CharSize LSB
-                charHddr[4] = msByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[5] = lsByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[6] = msByte(glyphWidth); // Glyph Width MSB
-                charHddr[7] = lsByte(glyphWidth); // Glyph Width LSB
-                charHddr[8] = msByte(glyphId);    // Glyph Id MSB
-                charHddr[9] = lsByte(glyphId);    // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);   // CharSize MSB
+                charHddr[3] = LsByte(charSize);   // CharSize LSB
+                charHddr[4] = MsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[5] = LsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[6] = MsByte(glyphWidth); // Glyph Width MSB
+                charHddr[7] = LsByte(glyphWidth); // Glyph Width LSB
+                charHddr[8] = MsByte(glyphId);    // Glyph Id MSB
+                charHddr[9] = LsByte(glyphId);    // Glyph Id LSB
             }
             else // charClass == 2
             {
@@ -467,19 +467,19 @@ namespace PCLParaphernalia
 
                 charHddr[0] = 1;                   // Format
                 charHddr[1] = 2;                   // Class
-                charHddr[2] = msByte(charSize);   // CharSize MSB
-                charHddr[3] = lsByte(charSize);   // CharSize LSB
-                charHddr[4] = msByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[5] = lsByte((ushort)glyphLSB);// Glyph Left Side Bearing
-                charHddr[6] = msByte(glyphWidth); // Glyph Width MSB
-                charHddr[7] = lsByte(glyphWidth); // Glyph Width LSB
-                charHddr[8] = msByte((ushort)glyphTSB);// Glyph Top Side Bearing
-                charHddr[9] = lsByte((ushort)glyphTSB);// Glyph Top Side Bearing
-                charHddr[10] = msByte(glyphId);    // Glyph Id MSB
-                charHddr[11] = lsByte(glyphId);    // Glyph Id LSB
+                charHddr[2] = MsByte(charSize);   // CharSize MSB
+                charHddr[3] = LsByte(charSize);   // CharSize LSB
+                charHddr[4] = MsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[5] = LsByte((ushort)glyphLSB);// Glyph Left Side Bearing
+                charHddr[6] = MsByte(glyphWidth); // Glyph Width MSB
+                charHddr[7] = LsByte(glyphWidth); // Glyph Width LSB
+                charHddr[8] = MsByte((ushort)glyphTSB);// Glyph Top Side Bearing
+                charHddr[9] = LsByte((ushort)glyphTSB);// Glyph Top Side Bearing
+                charHddr[10] = MsByte(glyphId);    // Glyph Id MSB
+                charHddr[11] = LsByte(glyphId);    // Glyph Id LSB
             }
 
-            _baseHandler.writeBuffer(hddrSize, charHddr);
+            _baseHandler.WriteBuffer(hddrSize, charHddr);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -498,12 +498,12 @@ namespace PCLParaphernalia
 
                 glyphData = new byte[glyphLength];
 
-                flagOK = _ttfHandler.readByteArray((int)glyphOffset,
+                flagOK = _ttfHandler.ReadByteArray((int)glyphOffset,
                                                     (int)glyphLength,
                                                     ref glyphData);
                 // TODO: what if flagOK = true (i.e. read fails?
 
-                _baseHandler.writeCharFragment((int)glyphLength,
+                _baseHandler.WriteCharFragment((int)glyphLength,
                                                 glyphData,
                                                 ref checksumMod256);
             }
@@ -536,19 +536,19 @@ namespace PCLParaphernalia
                     {
                         // flagOK = false;
 
-                        ToolSoftFontGenLog.logError(
+                        ToolSoftFontGenLog.LogError(
                             _tableLog, MessageBoxImage.Error,
                             "Composite glyph identifier " + glyphCompId +
                             " > maximum of " + maxGlyphId);
                     }
                     else
                     {
-                        if (_ttfHandler.glyphReferencedCheck(glyphCompId))
+                        if (_ttfHandler.GlyphReferencedCheck(glyphCompId))
                         {
-                            ToolSoftFontGenLog.logCharDetails(
+                            ToolSoftFontGenLog.LogCharDetails(
                                 _tableLog,
                                 true,
-                                _ttfHandler.glyphCompositeCheck(glyphCompId),
+                                _ttfHandler.GlyphCompositeCheck(glyphCompId),
                                 0,
                                 0,
                                 glyphCompId,
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
                         else
                         {
                             // flagOK = 
-                            writeChar(charClass, 0xffff, 0, glyphCompId,
+                            WriteChar(charClass, 0xffff, 0, glyphCompId,
                                        (ushort)(depth + 1), maxGlyphId);
                         }
                     }
@@ -603,7 +603,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeCharSet(ushort maxGlyphId,
+        private void WriteCharSet(ushort maxGlyphId,
                                    int sizeCharSet,
                                    int charClass,
                                    bool symSetUnbound)
@@ -628,13 +628,13 @@ namespace PCLParaphernalia
             {
                 ushort charCode = (ushort)i;
 
-                glyphExists = _ttfHandler.getCharData(charCode,
+                glyphExists = _ttfHandler.GetCharData(charCode,
                                                        ref codepoint,
                                                        ref glyphId);
 
                 if (glyphExists)
                 {
-                    writeChar(charClass, charCode, codepoint,
+                    WriteChar(charClass, charCode, codepoint,
                                glyphId, 0, maxGlyphId);
                 }
                 else if (!symSetUnbound)
@@ -677,7 +677,7 @@ namespace PCLParaphernalia
                     */
                     else
                     {
-                        ToolSoftFontGenLog.logMissingChar(
+                        ToolSoftFontGenLog.LogMissingChar(
                             _tableLog,
                             charCode,
                             codepoint);
@@ -695,7 +695,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void writeHddr(bool glyphZeroExists,
+        private void WriteHddr(bool glyphZeroExists,
                                 bool symSetUnbound,
                                 bool tabvmtxPresent,
                                 bool flagVMetrics,
@@ -715,7 +715,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.fontHddrBegin(_binWriter,
+            PCLXLWriter.FontHddrBegin(_binWriter,
                                        false,
                                        cSizeFontname,
                                        fontNameXL,
@@ -729,14 +729,14 @@ namespace PCLParaphernalia
 
             hddrDesc[0] = 0;                    // Format
             hddrDesc[1] = (byte)PCLXLAttrEnums.eVal.ePortraitOrientation;
-            hddrDesc[2] = msByte(symSet);      // Symbol set MSB
-            hddrDesc[3] = lsByte(symSet);      // Symbol Set LSB
+            hddrDesc[2] = MsByte(symSet);      // Symbol set MSB
+            hddrDesc[3] = LsByte(symSet);      // Symbol Set LSB
             hddrDesc[4] = 1;                    // Scaling = TrueType
             hddrDesc[5] = 0;                    // Variety
-            hddrDesc[6] = msByte(numChars);    // NumChars MSB
-            hddrDesc[7] = lsByte(numChars);    // NumChars LSB
+            hddrDesc[6] = MsByte(numChars);    // NumChars MSB
+            hddrDesc[7] = LsByte(numChars);    // NumChars LSB
 
-            _baseHandler.writeHddrFragment(true,
+            _baseHandler.WriteHddrFragment(true,
                                            cSizeHddrDesc,
                                            hddrDesc,
                                            ref mod256);
@@ -751,7 +751,7 @@ namespace PCLParaphernalia
 
             panoseData = _ttfHandler.PanoseData;
 
-            _baseHandler.writeHddrSegments(true,
+            _baseHandler.WriteHddrSegments(true,
                                             true,
                                             false,
                                             glyphZeroExists,
@@ -769,7 +769,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLXLWriter.fontHddrEnd(_binWriter,
+            PCLXLWriter.FontHddrEnd(_binWriter,
                                      false);
         }
     }

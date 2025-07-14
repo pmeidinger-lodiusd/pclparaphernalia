@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -80,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getHddrSegmentsLen(bool pdlIsPCLXL,
+        public int GetHddrSegmentsLen(bool pdlIsPCLXL,
                                          bool fmt16,
                                          bool glyphZeroExists,
                                          bool symSetUnbound,
@@ -141,11 +142,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            numGTTables = _ttfHandler.getOutputNumTables(pdlIsPCLXL,
+            numGTTables = _ttfHandler.GetOutputNumTables(pdlIsPCLXL,
                                                           symSetUnbound,
                                                           flagVMetrics);
 
-            sizeGTTables = (int)_ttfHandler.getSegGTTablesSize(
+            sizeGTTables = (int)_ttfHandler.GetSegGTTablesSize(
                                         pdlIsPCLXL,
                                         symSetUnbound,
                                         flagVMetrics);
@@ -225,13 +226,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void initialise(ToolSoftFontGenTTF ttfHandler)
+        public void Initialise(ToolSoftFontGenTTF ttfHandler)
         {
             bool flagOK = true;
 
             _ttfHandler = ttfHandler;
 
-            _ttfHandler.getTableMetrics(ref _metrics_cvt,
+            _ttfHandler.GetTableMetrics(ref _metrics_cvt,
                                          ref _metrics_gdir,
                                          ref _metrics_fpgm,
                                          ref _metrics_head,
@@ -242,7 +243,7 @@ namespace PCLParaphernalia
                                          ref _metrics_vhea,
                                          ref _metrics_vmtx);
 
-            flagOK = _ttfHandler.fontFileReOpen();
+            flagOK = _ttfHandler.FontFileReOpen();
 
             // if (!flagOK) ... failed to re-open ...
         }
@@ -257,7 +258,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte lsByte(ushort value)
+        private byte LsByte(ushort value)
         {
             return (byte)(value & 0x00ff);
         }
@@ -272,7 +273,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort lsUInt16(uint value)
+        private ushort LsUInt16(uint value)
         {
             return (ushort)(value & 0x0000ffff);
         }
@@ -287,7 +288,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint lsUInt32(ulong value)
+        private uint LsUInt32(ulong value)
         {
             return (uint)(value & 0x0000ffffffff);
         }
@@ -302,7 +303,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private byte msByte(ushort value)
+        private byte MsByte(ushort value)
         {
             return (byte)((value & 0xff00) >> 8);
         }
@@ -317,7 +318,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private ushort msUInt16(uint value)
+        private ushort MsUInt16(uint value)
         {
             return (ushort)((value & 0xffff0000) >> 16);
         }
@@ -332,7 +333,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private uint msUInt32(ulong value)
+        private uint MsUInt32(ulong value)
         {
             return (uint)((value & 0xffffffff00000000) >> 32);
         }
@@ -347,12 +348,18 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool streamOpen(ref string fontFilename,
+        public bool StreamOpen(ref string fontFilename,
                                bool pdlIsPCLXL,
                                ref BinaryWriter binWriter,
                                ref Stream opStream)
         {
-            SaveFileDialog saveDialog = ToolCommonFunctions.createSaveFileDialog(fontFilename);
+            if (string.IsNullOrEmpty(fontFilename))
+                throw new ArgumentException($"'{nameof(fontFilename)}' cannot be null or empty.", nameof(fontFilename));
+            if (binWriter is null)
+                throw new ArgumentNullException(nameof(binWriter));
+            if (opStream is null)
+                throw new ArgumentNullException(nameof(opStream));
+            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(fontFilename);
 
             if (pdlIsPCLXL)
             {
@@ -407,7 +414,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeBuffer(int bufLen,
+        public void WriteBuffer(int bufLen,
                                  byte[] buffer)
         {
             _binWriter.Write(buffer, 0, bufLen);
@@ -424,7 +431,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeCharFragment(int fragLen,
+        public void WriteCharFragment(int fragLen,
                                        byte[] fragment,
                                        ref byte sumMod256)
         {
@@ -435,7 +442,7 @@ namespace PCLParaphernalia
                 sum += fragment[i];
             }
 
-            writeBuffer(fragLen, fragment);
+            WriteBuffer(fragLen, fragment);
 
             sumMod256 = (byte)(sum % 256);
         }
@@ -455,7 +462,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeHddrFragment(bool pdlIsPCLXL,
+        public void WriteHddrFragment(bool pdlIsPCLXL,
                                       int fragLen,
                                       byte[] fragment,
                                       ref byte sumMod256)
@@ -464,11 +471,11 @@ namespace PCLParaphernalia
 
             if (pdlIsPCLXL)
             {
-                PCLXLWriter.fontHddrRead(_binWriter,
+                PCLXLWriter.FontHddrRead(_binWriter,
                                           false,
                                           (ushort)fragLen);
 
-                PCLXLWriter.embedDataIntro(_binWriter,
+                PCLXLWriter.EmbedDataIntro(_binWriter,
                                             false,
                                             (ushort)fragLen);
             }
@@ -478,7 +485,7 @@ namespace PCLParaphernalia
                 sum += fragment[i];
             }
 
-            writeBuffer(fragLen, fragment);
+            WriteBuffer(fragLen, fragment);
 
             sumMod256 = (byte)(sum % 256);
         }
@@ -500,7 +507,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataCC(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataCC(bool pdlIsPCLXL,
                                            bool fmt16,
                                            ulong charCollComp,
                                            ref byte sumMod256)
@@ -514,25 +521,25 @@ namespace PCLParaphernalia
             ushort valUInt16;
             uint valUInt32;
 
-            valUInt32 = msUInt32(charCollComp);
-            valUInt16 = msUInt16(valUInt32);
-            segData[0] = msByte(valUInt16);
-            segData[1] = lsByte(valUInt16);
+            valUInt32 = MsUInt32(charCollComp);
+            valUInt16 = MsUInt16(valUInt32);
+            segData[0] = MsByte(valUInt16);
+            segData[1] = LsByte(valUInt16);
 
-            valUInt16 = lsUInt16(valUInt32);
-            segData[2] = msByte(valUInt16);
-            segData[3] = lsByte(valUInt16);
+            valUInt16 = LsUInt16(valUInt32);
+            segData[2] = MsByte(valUInt16);
+            segData[3] = LsByte(valUInt16);
 
-            valUInt32 = lsUInt32(charCollComp);
-            valUInt16 = msUInt16(valUInt32);
-            segData[4] = msByte(valUInt16);
-            segData[5] = lsByte(valUInt16);
+            valUInt32 = LsUInt32(charCollComp);
+            valUInt16 = MsUInt16(valUInt32);
+            segData[4] = MsByte(valUInt16);
+            segData[5] = LsByte(valUInt16);
 
-            valUInt16 = lsUInt16(valUInt32);
-            segData[6] = msByte(valUInt16);
-            segData[7] = lsByte(valUInt16);
+            valUInt16 = LsUInt16(valUInt32);
+            segData[6] = MsByte(valUInt16);
+            segData[7] = LsByte(valUInt16);
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        cSizeSegCC,
                                        segId,
@@ -540,7 +547,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegCC,
                                    segData,
                                    ref sumMod256);
@@ -558,7 +565,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataCP(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataCP(bool pdlIsPCLXL,
                                            bool fmt16,
                                            byte[] conversionText,
                                            ref byte sumMod256)
@@ -569,7 +576,7 @@ namespace PCLParaphernalia
 
             int convTextLen = conversionText.Length;
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        (uint)convTextLen,
                                        segId,
@@ -577,7 +584,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    convTextLen,
                                    conversionText,
                                    ref sumMod256);
@@ -600,7 +607,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataGC(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataGC(bool pdlIsPCLXL,
                                            bool fmt16,
                                            ref byte sumMod256)
         {
@@ -616,10 +623,10 @@ namespace PCLParaphernalia
             segData[1] = 0;
             segData[2] = 0xff;
             segData[3] = 0xff;
-            segData[4] = msByte(msUInt16(numRegions));
-            segData[5] = lsByte(msUInt16(numRegions));
+            segData[4] = MsByte(MsUInt16(numRegions));
+            segData[5] = LsByte(MsUInt16(numRegions));
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        cSizeSegGC,
                                        segId,
@@ -627,7 +634,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegGC,
                                    segData,
                                    ref sumMod256);
@@ -646,7 +653,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataGT(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataGT(bool pdlIsPCLXL,
                                            bool fmt16,
                                            bool symSetUnbound,
                                            bool tabvmtxPresent,
@@ -673,11 +680,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            numTables = _ttfHandler.getOutputNumTables(pdlIsPCLXL,
+            numTables = _ttfHandler.GetOutputNumTables(pdlIsPCLXL,
                                                         symSetUnbound,
                                                         flagVMetrics);
 
-            sizeTables = _ttfHandler.getSegGTTablesSize(pdlIsPCLXL,
+            sizeTables = _ttfHandler.GetSegGTTablesSize(pdlIsPCLXL,
                                                          symSetUnbound,
                                                          flagVMetrics);
 
@@ -685,7 +692,7 @@ namespace PCLParaphernalia
 
             segLenGT = cSizeSegGTDirHddr + sizeDirectory + sizeTables;
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        segLenGT,
                                        segId,
@@ -710,7 +717,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTDirHddr(pdlIsPCLXL,
+                WriteHddrSegDataGTDirHddr(pdlIsPCLXL,
                                           (ushort)numTables,
                                           ref sumMod256);
 
@@ -726,7 +733,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                                 _metrics_cvt.TableTag,
                                                 tabLen,
                                                 _metrics_cvt.TableChecksum,
@@ -746,7 +753,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                                 _metrics_fpgm.TableTag,
                                                 tabLen,
                                                 _metrics_fpgm.TableChecksum,
@@ -763,7 +770,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                             _metrics_gdir.TableTag,
                                             0,
                                             0,
@@ -776,7 +783,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                             _metrics_head.TableTag,
                                             _metrics_head.TableLength,
                                             _metrics_head.TableChecksum,
@@ -793,7 +800,7 @@ namespace PCLParaphernalia
 
                 if ((!pdlIsPCLXL) || (symSetUnbound))
                 {
-                    writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                                 _metrics_hhea.TableTag,
                                                 _metrics_hhea.TableLength,
                                                 _metrics_hhea.TableChecksum,
@@ -811,7 +818,7 @@ namespace PCLParaphernalia
 
                 if ((!pdlIsPCLXL) || (symSetUnbound))
                 {
-                    writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                                 _metrics_hmtx.TableTag,
                                                 _metrics_hmtx.TableLength,
                                                 _metrics_hmtx.TableChecksum,
@@ -827,7 +834,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                             _metrics_maxp.TableTag,
                                             _metrics_maxp.TableLength,
                                             _metrics_maxp.TableChecksum,
@@ -846,7 +853,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTDirEntry(pdlIsPCLXL,
+                    WriteHddrSegDataGTDirEntry(pdlIsPCLXL,
                                                 _metrics_prep.TableTag,
                                                 tabLen,
                                                 _metrics_prep.TableChecksum,
@@ -871,7 +878,7 @@ namespace PCLParaphernalia
                     {
                         if ((!pdlIsPCLXL) || (symSetUnbound))
                         {
-                            writeHddrSegDataGTDirEntry(
+                            WriteHddrSegDataGTDirEntry(
                                 pdlIsPCLXL,
                                 _metrics_vhea.TableTag,
                                 tabLen,
@@ -896,7 +903,7 @@ namespace PCLParaphernalia
                     {
                         if ((!pdlIsPCLXL) || (symSetUnbound))
                         {
-                            writeHddrSegDataGTDirEntry(
+                            WriteHddrSegDataGTDirEntry(
                                 pdlIsPCLXL,
                                 _metrics_vmtx.TableTag,
                                 tabLen,
@@ -926,7 +933,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTTableData(pdlIsPCLXL,
+                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                                 tabLen,
                                                 _metrics_cvt.TableOffset,
                                                 _metrics_cvt.TablePadBytes,
@@ -943,7 +950,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTTableData(pdlIsPCLXL,
+                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                                 tabLen,
                                                 _metrics_fpgm.TableOffset,
                                                 _metrics_fpgm.TablePadBytes,
@@ -956,7 +963,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTTableData(pdlIsPCLXL,
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                             _metrics_head.TableLength,
                                             _metrics_head.TableOffset,
                                             _metrics_head.TablePadBytes,
@@ -970,7 +977,7 @@ namespace PCLParaphernalia
 
                 if ((!pdlIsPCLXL) || (symSetUnbound))
                 {
-                    writeHddrSegDataGTTableData(pdlIsPCLXL,
+                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                                 _metrics_hhea.TableLength,
                                                 _metrics_hhea.TableOffset,
                                                 _metrics_hhea.TablePadBytes,
@@ -985,7 +992,7 @@ namespace PCLParaphernalia
 
                 if ((!pdlIsPCLXL) || (symSetUnbound))
                 {
-                    writeHddrSegDataGTTableData(pdlIsPCLXL,
+                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                                 _metrics_hmtx.TableLength,
                                                 _metrics_hmtx.TableOffset,
                                                 _metrics_hmtx.TablePadBytes,
@@ -998,7 +1005,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                writeHddrSegDataGTTableData(pdlIsPCLXL,
+                WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                             _metrics_maxp.TableLength,
                                             _metrics_maxp.TableOffset,
                                             _metrics_maxp.TablePadBytes,
@@ -1014,7 +1021,7 @@ namespace PCLParaphernalia
 
                 if (tabLen != 0)
                 {
-                    writeHddrSegDataGTTableData(pdlIsPCLXL,
+                    WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                                 tabLen,
                                                 _metrics_prep.TableOffset,
                                                 _metrics_prep.TablePadBytes,
@@ -1036,7 +1043,7 @@ namespace PCLParaphernalia
                     {
                         if ((!pdlIsPCLXL) || (symSetUnbound))
                         {
-                            writeHddrSegDataGTTableData(
+                            WriteHddrSegDataGTTableData(
                                 pdlIsPCLXL,
                                 tabLen,
                                 _metrics_vhea.TableOffset,
@@ -1058,7 +1065,7 @@ namespace PCLParaphernalia
                     {
                         if ((!pdlIsPCLXL) || (symSetUnbound))
                         {
-                            writeHddrSegDataGTTableData(
+                            WriteHddrSegDataGTTableData(
                                 pdlIsPCLXL,
                                 tabLen,
                                 _metrics_vmtx.TableOffset,
@@ -1081,7 +1088,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeHddrSegDataGTDirEntry(bool pdlIsPCLXL,
+        public void WriteHddrSegDataGTDirEntry(bool pdlIsPCLXL,
                                                uint tabTag,
                                                uint tabLen,
                                                uint tabChk,
@@ -1090,24 +1097,24 @@ namespace PCLParaphernalia
         {
             byte[] indxEntry = new byte[cSizeSegGTDirEntry];
 
-            indxEntry[0] = msByte(msUInt16(tabTag));
-            indxEntry[1] = lsByte(msUInt16(tabTag));
-            indxEntry[2] = msByte(lsUInt16(tabTag));
-            indxEntry[3] = lsByte(lsUInt16(tabTag));
-            indxEntry[4] = msByte(msUInt16(tabChk));
-            indxEntry[5] = lsByte(msUInt16(tabChk));
-            indxEntry[6] = msByte(lsUInt16(tabChk));
-            indxEntry[7] = lsByte(lsUInt16(tabChk));
-            indxEntry[8] = msByte(msUInt16(crntOffset));
-            indxEntry[9] = lsByte(msUInt16(crntOffset));
-            indxEntry[10] = msByte(lsUInt16(crntOffset));
-            indxEntry[11] = lsByte(lsUInt16(crntOffset));
-            indxEntry[12] = msByte(msUInt16(tabLen));
-            indxEntry[13] = lsByte(msUInt16(tabLen));
-            indxEntry[14] = msByte(lsUInt16(tabLen));
-            indxEntry[15] = lsByte(lsUInt16(tabLen));
+            indxEntry[0] = MsByte(MsUInt16(tabTag));
+            indxEntry[1] = LsByte(MsUInt16(tabTag));
+            indxEntry[2] = MsByte(LsUInt16(tabTag));
+            indxEntry[3] = LsByte(LsUInt16(tabTag));
+            indxEntry[4] = MsByte(MsUInt16(tabChk));
+            indxEntry[5] = LsByte(MsUInt16(tabChk));
+            indxEntry[6] = MsByte(LsUInt16(tabChk));
+            indxEntry[7] = LsByte(LsUInt16(tabChk));
+            indxEntry[8] = MsByte(MsUInt16(crntOffset));
+            indxEntry[9] = LsByte(MsUInt16(crntOffset));
+            indxEntry[10] = MsByte(LsUInt16(crntOffset));
+            indxEntry[11] = LsByte(LsUInt16(crntOffset));
+            indxEntry[12] = MsByte(MsUInt16(tabLen));
+            indxEntry[13] = LsByte(MsUInt16(tabLen));
+            indxEntry[14] = MsByte(LsUInt16(tabLen));
+            indxEntry[15] = LsByte(LsUInt16(tabLen));
 
-            writeHddrFragment(pdlIsPCLXL,
+            WriteHddrFragment(pdlIsPCLXL,
                                cSizeSegGTDirEntry,
                                indxEntry,
                                ref sumMod256);
@@ -1122,7 +1129,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeHddrSegDataGTDirHddr(bool pdlIsPCLXL,
+        public void WriteHddrSegDataGTDirHddr(bool pdlIsPCLXL,
                                               ushort numTables,
                                               ref byte sumMod256)
         {
@@ -1153,16 +1160,16 @@ namespace PCLParaphernalia
             indxHddr[1] = 1;
             indxHddr[2] = 0;
             indxHddr[3] = 0;
-            indxHddr[4] = msByte(numTables);
-            indxHddr[5] = lsByte(numTables);
-            indxHddr[6] = msByte(searchRange);
-            indxHddr[7] = lsByte(searchRange);
-            indxHddr[8] = msByte(entrySelector);
-            indxHddr[9] = lsByte(entrySelector);
-            indxHddr[10] = msByte(rangeShift);
-            indxHddr[11] = lsByte(rangeShift);
+            indxHddr[4] = MsByte(numTables);
+            indxHddr[5] = LsByte(numTables);
+            indxHddr[6] = MsByte(searchRange);
+            indxHddr[7] = LsByte(searchRange);
+            indxHddr[8] = MsByte(entrySelector);
+            indxHddr[9] = LsByte(entrySelector);
+            indxHddr[10] = MsByte(rangeShift);
+            indxHddr[11] = LsByte(rangeShift);
 
-            writeHddrFragment(pdlIsPCLXL,
+            WriteHddrFragment(pdlIsPCLXL,
                                cSizeSegGTDirHddr,
                                indxHddr,
                                ref sumMod256);
@@ -1177,7 +1184,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void writeHddrSegDataGTTableData(bool pdlIsPCLXL,
+        public void WriteHddrSegDataGTTableData(bool pdlIsPCLXL,
                                                 uint tabLength,
                                                 uint tabOffset,
                                                 int padBytes,
@@ -1203,11 +1210,11 @@ namespace PCLParaphernalia
                     readRem = 0;
                 }
 
-                _ttfHandler.readByteArray(readStart,
+                _ttfHandler.ReadByteArray(readStart,
                                            readLen,
                                            ref _dataBuf);
 
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    readLen,
                                    _dataBuf,
                                    ref sumMod256);
@@ -1222,7 +1229,7 @@ namespace PCLParaphernalia
                 _dataBuf[2] = 0x00;
                 _dataBuf[3] = 0x00;
 
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    padBytes,
                                    _dataBuf,
                                    ref sumMod256);
@@ -1238,7 +1245,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataNull(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataNull(bool pdlIsPCLXL,
                                              bool fmt16,
                                              ref byte sumMod256)
         {
@@ -1246,7 +1253,7 @@ namespace PCLParaphernalia
 
             byte[] segId = new byte[2] { 0xff, 0xff };
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        0,
                                        segId,
@@ -1264,7 +1271,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataPA(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataPA(bool pdlIsPCLXL,
                                            bool fmt16,
                                            byte[] panoseData,
                                            ref byte sumMod256)
@@ -1286,7 +1293,7 @@ namespace PCLParaphernalia
             segData[8] = panoseData[8];
             segData[9] = panoseData[9];
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        cSizeSegPA,
                                        segId,
@@ -1294,7 +1301,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegPA,
                                    segData,
                                    ref sumMod256);
@@ -1312,7 +1319,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataVI(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataVI(bool pdlIsPCLXL,
                                            bool fmt16,
                                            byte[] conversionText,
                                            ref byte sumMod256)
@@ -1323,7 +1330,7 @@ namespace PCLParaphernalia
 
             int convTextLen = conversionText.Length;
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        (uint)convTextLen,
                                        segId,
@@ -1331,7 +1338,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    convTextLen,
                                    conversionText,
                                    ref sumMod256);
@@ -1349,7 +1356,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegDataVR(bool pdlIsPCLXL,
+        public bool WriteHddrSegDataVR(bool pdlIsPCLXL,
                                            bool fmt16,
                                            ref byte sumMod256)
         {
@@ -1361,14 +1368,14 @@ namespace PCLParaphernalia
 
             byte[] segData = new byte[cSizeSegVR];
 
-            vDescender = (ushort)_ttfHandler.getOS2sTypoDescender();
+            vDescender = (ushort)_ttfHandler.GetOS2sTypoDescender();
 
             segData[0] = 0;                    // format MSB
             segData[1] = 0;                    // format LSB
-            segData[2] = msByte(vDescender);  // sTypoDescender MSB
-            segData[3] = lsByte(vDescender);  // sTypoDescender LSB
+            segData[2] = MsByte(vDescender);  // sTypoDescender MSB
+            segData[3] = LsByte(vDescender);  // sTypoDescender LSB
 
-            flagOK = writeHddrSegHddr(pdlIsPCLXL,
+            flagOK = WriteHddrSegHddr(pdlIsPCLXL,
                                        fmt16,
                                        cSizeSegVR,
                                        segId,
@@ -1376,7 +1383,7 @@ namespace PCLParaphernalia
 
             if (flagOK)
             {
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegVR,
                                    segData,
                                    ref sumMod256);
@@ -1397,7 +1404,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegHddr(bool pdlIsPCLXL,
+        public bool WriteHddrSegHddr(bool pdlIsPCLXL,
                                          bool fmt16,
                                          uint segDataLen,
                                          byte[] segId,
@@ -1411,12 +1418,12 @@ namespace PCLParaphernalia
 
                 segHddrFmt16[0] = segId[0];
                 segHddrFmt16[1] = segId[1];
-                segHddrFmt16[2] = msByte(msUInt16(segDataLen));
-                segHddrFmt16[3] = lsByte(msUInt16(segDataLen));
-                segHddrFmt16[4] = msByte(lsUInt16(segDataLen));
-                segHddrFmt16[5] = lsByte(lsUInt16(segDataLen));
+                segHddrFmt16[2] = MsByte(MsUInt16(segDataLen));
+                segHddrFmt16[3] = LsByte(MsUInt16(segDataLen));
+                segHddrFmt16[4] = MsByte(LsUInt16(segDataLen));
+                segHddrFmt16[5] = LsByte(LsUInt16(segDataLen));
 
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegHddrFmt16,
                                    segHddrFmt16,
                                    ref sumMod256);
@@ -1439,10 +1446,10 @@ namespace PCLParaphernalia
 
                 segHddrFmt15[0] = segId[0];
                 segHddrFmt15[1] = segId[1];
-                segHddrFmt15[2] = msByte(lsUInt16(segDataLen));
-                segHddrFmt15[3] = lsByte(lsUInt16(segDataLen));
+                segHddrFmt15[2] = MsByte(LsUInt16(segDataLen));
+                segHddrFmt15[3] = LsByte(LsUInt16(segDataLen));
 
-                writeHddrFragment(pdlIsPCLXL,
+                WriteHddrFragment(pdlIsPCLXL,
                                    cSizeSegHddrFmt15,
                                    segHddrFmt15,
                                    ref sumMod256);
@@ -1460,7 +1467,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool writeHddrSegments(bool pdlIsPCLXL,
+        public bool WriteHddrSegments(bool pdlIsPCLXL,
                                           bool fmt16,
                                           bool segGTLast,
                                           bool glyphZeroExists,
@@ -1478,7 +1485,7 @@ namespace PCLParaphernalia
             {
                 if (symSetUnbound)
                 {
-                    flagOK = writeHddrSegDataCC(pdlIsPCLXL,
+                    flagOK = WriteHddrSegDataCC(pdlIsPCLXL,
                                                  fmt16,
                                                  charCollComp,
                                                  ref sumMod256);
@@ -1486,13 +1493,13 @@ namespace PCLParaphernalia
 
                 if (flagOK)
 
-                    flagOK = writeHddrSegDataPA(pdlIsPCLXL, fmt16,
+                    flagOK = WriteHddrSegDataPA(pdlIsPCLXL, fmt16,
                                                  panoseData,
                                                  ref sumMod256);
             }
 
             if ((flagOK) && (!segGTLast))
-                flagOK = writeHddrSegDataGT(pdlIsPCLXL, fmt16,
+                flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,
                                              flagVMetrics,
@@ -1501,17 +1508,17 @@ namespace PCLParaphernalia
             if (flagOK)
             {
                 if (glyphZeroExists)
-                    flagOK = writeHddrSegDataGC(pdlIsPCLXL, fmt16,
+                    flagOK = WriteHddrSegDataGC(pdlIsPCLXL, fmt16,
                                                  ref sumMod256);
 
                 if (flagOK)
                 {
                     if (pdlIsPCLXL)
-                        flagOK = writeHddrSegDataVI(pdlIsPCLXL, fmt16,
+                        flagOK = WriteHddrSegDataVI(pdlIsPCLXL, fmt16,
                                                      conversionText,
                                                      ref sumMod256);
                     else
-                        flagOK = writeHddrSegDataCP(pdlIsPCLXL, fmt16,
+                        flagOK = WriteHddrSegDataCP(pdlIsPCLXL, fmt16,
                                                      conversionText,
                                                      ref sumMod256);
                 }
@@ -1521,20 +1528,20 @@ namespace PCLParaphernalia
             {
                 if ((tabvmtxPresent) && (flagVMetrics))
                 {
-                    flagOK = writeHddrSegDataVR(pdlIsPCLXL, fmt16,
+                    flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16,
                                                  ref sumMod256);
                 }
             }
 
             if ((flagOK) && (segGTLast))
-                flagOK = writeHddrSegDataGT(pdlIsPCLXL, fmt16,
+                flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16,
                                              symSetUnbound,
                                              tabvmtxPresent,
                                              flagVMetrics,
                                              ref sumMod256);
 
             if (flagOK)
-                flagOK = writeHddrSegDataNull(pdlIsPCLXL, fmt16,
+                flagOK = WriteHddrSegDataNull(pdlIsPCLXL, fmt16,
                                                ref sumMod256);
 
             return flagOK;

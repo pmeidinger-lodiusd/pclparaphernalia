@@ -234,7 +234,7 @@ namespace PCLParaphernalia
             else
                 offsetFormat = "{0:d10}";
 
-            options.getOptCharSet(ref _indxCharSetName,
+            options.GetOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCurFOffsets(ref offsetStart,
+            options.GetOptCurFOffsets(ref offsetStart,
                                        ref offsetEnd);
 
             blockStart = offsetStart;

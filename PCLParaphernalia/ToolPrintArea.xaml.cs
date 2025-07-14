@@ -149,7 +149,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -178,7 +178,7 @@ namespace PCLParaphernalia
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
 
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen(
+                TargetCore.RequestStreamOpen(
                     ref binWriter,
                     ToolCommonData.eToolIds.PrintArea,
                     ToolCommonData.eToolSubIds.None,
@@ -211,12 +211,12 @@ namespace PCLParaphernalia
 
                     if (_flagForceCustomPaperSize)
                     {
-                        PCLPaperSizes.customDataCopy(indxPaperSize);
+                        PCLPaperSizes.CustomDataCopy(indxPaperSize);
 
                         indxPaperSize = (int)PCLPaperSizes.eIndex.Custom;
                     }
 
-                    ToolPrintAreaPCL.generateJob(
+                    ToolPrintAreaPCL.GenerateJob(
                         binWriter,
                         indxPaperSize,
                         _subsetPaperTypes[_indxPaperTypePCL],
@@ -236,12 +236,12 @@ namespace PCLParaphernalia
 
                     if (_flagForceCustomPaperSize)
                     {
-                        PCLPaperSizes.customDataCopy(indxPaperSize);
+                        PCLPaperSizes.CustomDataCopy(indxPaperSize);
 
                         indxPaperSize = (int)PCLPaperSizes.eIndex.Custom;
                     }
 
-                    ToolPrintAreaPCLXL.generateJob(
+                    ToolPrintAreaPCLXL.GenerateJob(
                         binWriter,
                         indxPaperSize,
                         _subsetPaperTypes[_indxPaperTypePCLXL],
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
                         _flagCustomUseMetricPCLXL);
                 }
 
-                TargetCore.requestStreamWrite(false);
+                TargetCore.RequestStreamWrite(false);
             }
 
             catch (SocketException sockExc)
@@ -292,7 +292,7 @@ namespace PCLParaphernalia
                 else
                     _indxOrientationPCLXL = cbOrientation.SelectedIndex;
 
-                setPaperMetrics(true);
+                SetPaperMetrics(true);
             }
         }
 
@@ -315,9 +315,9 @@ namespace PCLParaphernalia
                 else
                     _indxPaperSizePCLXL = cbPaperSize.SelectedIndex;
 
-                setCustomPaperControls();
+                SetCustomPaperControls();
 
-                setPaperIdentifiers();
+                SetPaperIdentifiers();
             }
         }
 
@@ -356,12 +356,12 @@ namespace PCLParaphernalia
         {
             if (_initialised)
             {
-                pdlOptionsStore();
+                PdlOptionsStore();
 
                 _indxPDL = cbPDL.SelectedIndex;
                 _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-                pdlOptionsRestore();
+                PdlOptionsRestore();
             }
         }
 
@@ -451,7 +451,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -465,7 +465,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             int index;
 
@@ -499,7 +499,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                cbOrientation.Items.Add(PCLOrientations.getName(index));
+                cbOrientation.Items.Add(PCLOrientations.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -512,7 +512,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                cbPaperSize.Items.Add(PCLPaperSizes.getName(index));
+                cbPaperSize.Items.Add(PCLPaperSizes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -525,7 +525,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                cbPaperType.Items.Add(PCLPaperTypes.getName(index));
+                cbPaperType.Items.Add(PCLPaperTypes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPlexModes[i];
 
-                cbPlexMode.Items.Add(PCLPlexModes.getName(index));
+                cbPlexMode.Items.Add(PCLPlexModes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -555,7 +555,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -563,9 +563,9 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -586,11 +586,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
-            ToolPrintAreaPersist.loadDataCommon(ref _indxPDL);
+            ToolPrintAreaPersist.LoadDataCommon(ref _indxPDL);
 
-            ToolPrintAreaPersist.loadDataPCL("PCL",
+            ToolPrintAreaPersist.LoadDataPCL("PCL",
                                              ref _indxOrientationPCL,
                                              ref _indxPaperSizePCL,
                                              ref _indxPaperTypePCL,
@@ -601,7 +601,7 @@ namespace PCLParaphernalia
                                              ref _customShortEdgeDotsPCL,
                                              ref _customLongEdgeDotsPCL);
 
-            ToolPrintAreaPersist.loadDataPCL("PCLXL",
+            ToolPrintAreaPersist.LoadDataPCL("PCLXL",
                                              ref _indxOrientationPCLXL,
                                              ref _indxPaperSizePCLXL,
                                              ref _indxPaperTypePCLXL,
@@ -665,13 +665,13 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            pdlOptionsStore();
+            PdlOptionsStore();
 
-            ToolPrintAreaPersist.saveDataCommon(_indxPDL);
+            ToolPrintAreaPersist.SaveDataCommon(_indxPDL);
 
-            ToolPrintAreaPersist.saveDataPCL("PCL",
+            ToolPrintAreaPersist.SaveDataPCL("PCL",
                                              _indxOrientationPCL,
                                              _indxPaperSizePCL,
                                              _indxPaperTypePCL,
@@ -682,7 +682,7 @@ namespace PCLParaphernalia
                                              _customShortEdgeDotsPCL,
                                              _customLongEdgeDotsPCL);
 
-            ToolPrintAreaPersist.saveDataPCL("PCLXL",
+            ToolPrintAreaPersist.SaveDataPCL("PCLXL",
                                              _indxOrientationPCLXL,
                                              _indxPaperSizePCLXL,
                                              _indxPaperTypePCLXL,
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsRestore()
+        private void PdlOptionsRestore()
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -779,14 +779,14 @@ namespace PCLParaphernalia
             else
                 rbCustomUseImperial.IsChecked = true;
 
-            PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
+            PCLPaperSizes.SetCustomShortEdge(_customShortEdgeDots,
                                              _sessionUPI);
-            PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
+            PCLPaperSizes.SetCustomLongEdge(_customLongEdgeDots,
                                             _sessionUPI);
 
-            setCustomPaperControls();
+            SetCustomPaperControls();
 
-            setPaperIdentifiers();
+            SetPaperIdentifiers();
         }
 
         //--------------------------------------------------------------------//
@@ -798,7 +798,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void pdlOptionsStore()
+        private void PdlOptionsStore()
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -851,7 +851,7 @@ namespace PCLParaphernalia
         {
             _flagCustomUseMetric = false;
 
-            setCustomPaperControls();
+            SetCustomPaperControls();
         }
 
         //--------------------------------------------------------------------//
@@ -869,7 +869,7 @@ namespace PCLParaphernalia
         {
             _flagCustomUseMetric = true;
 
-            setCustomPaperControls();
+            SetCustomPaperControls();
         }
 
         //--------------------------------------------------------------------//
@@ -881,7 +881,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             TargetCore.eTarget targetType = TargetCore.getType();
 
@@ -897,7 +897,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -911,7 +911,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -928,7 +928,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setCustomPaperControls()
+        private void SetCustomPaperControls()
         {
             int indxPaperSize;
 
@@ -939,7 +939,7 @@ namespace PCLParaphernalia
 
             _flagForceCustomPaperSize = false;
 
-            if (PCLPaperSizes.isCustomSize(indxPaperSize))
+            if (PCLPaperSizes.IsCustomSize(indxPaperSize))
             {
                 _flagCustomPaperSize = true;
 
@@ -979,9 +979,9 @@ namespace PCLParaphernalia
             //----------------------------------------------------------------//
 
             if (_flagCustomPaperSize)
-                PCLPaperSizes.resetCustomDesc();
+                PCLPaperSizes.ResetCustomDesc();
 
-            setPaperMetrics(false);
+            SetPaperMetrics(false);
         }
 
         //--------------------------------------------------------------------//
@@ -993,7 +993,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPaperIdentifiers()
+        private void SetPaperIdentifiers()
         {
             int indxPaperSize;
 
@@ -1002,10 +1002,10 @@ namespace PCLParaphernalia
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCL];
 
                 txtIdPaperName.Text =
-                    PCLPaperSizes.getName(indxPaperSize);
+                    PCLPaperSizes.GetName(indxPaperSize);
 
                 txtIdPaperDesc.Text =
-                    PCLPaperSizes.getDesc(indxPaperSize);
+                    PCLPaperSizes.GetDesc(indxPaperSize);
 
                 grpIdData.Visibility = Visibility.Visible;
 
@@ -1017,7 +1017,7 @@ namespace PCLParaphernalia
                 else
                 {
                     txtIdEnum.Text =
-                        PCLPaperSizes.getIdPCL(indxPaperSize).ToString();
+                        PCLPaperSizes.GetIdPCL(indxPaperSize).ToString();
                     _flagTrayIdUnknown = false;
                 }
 
@@ -1044,12 +1044,12 @@ namespace PCLParaphernalia
                 indxPaperSize = _subsetPaperSizes[_indxPaperSizePCLXL];
 
                 txtIdPaperName.Text =
-                    PCLPaperSizes.getName(indxPaperSize);
+                    PCLPaperSizes.GetName(indxPaperSize);
 
                 txtIdPaperDesc.Text =
-                    PCLPaperSizes.getDesc(indxPaperSize);
+                    PCLPaperSizes.GetDesc(indxPaperSize);
 
-                if (PCLPaperSizes.isCustomSize(indxPaperSize))
+                if (PCLPaperSizes.IsCustomSize(indxPaperSize))
                 {
                     grpIdData.Visibility = Visibility.Hidden;
                 }
@@ -1065,11 +1065,11 @@ namespace PCLParaphernalia
                     else
                     {
                         txtIdEnum.Text =
-                            PCLPaperSizes.getIdPCLXL(indxPaperSize).ToString();
+                            PCLPaperSizes.GetIdPCLXL(indxPaperSize).ToString();
                         _flagTrayIdUnknown = false;
                     }
 
-                    idName = PCLPaperSizes.getNamePCLXL(indxPaperSize);
+                    idName = PCLPaperSizes.GetNamePCLXL(indxPaperSize);
 
                     txtIdName.Text = idName;
 
@@ -1102,7 +1102,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPaperMetrics(bool logicalOnly)
+        private void SetPaperMetrics(bool logicalOnly)
         {
             const int zero = 0;
 
@@ -1137,24 +1137,24 @@ namespace PCLParaphernalia
                 indxPaperType = _indxPaperTypePCLXL;
             }
 
-            aspect = PCLOrientations.getAspect(indxOrientation);
+            aspect = PCLOrientations.GetAspect(indxOrientation);
 
-            sizeLongEdge = PCLPaperSizes.getSizeLongEdge(indxPaperSize,
+            sizeLongEdge = PCLPaperSizes.GetSizeLongEdge(indxPaperSize,
                                                          _sessionUPI);
 
-            sizeShortEdge = PCLPaperSizes.getSizeShortEdge(indxPaperSize,
+            sizeShortEdge = PCLPaperSizes.GetSizeShortEdge(indxPaperSize,
                                                            _sessionUPI);
 
             marginsUnprintable =
-                PCLPaperSizes.getMarginsUnprintable(indxPaperSize,
+                PCLPaperSizes.GetMarginsUnprintable(indxPaperSize,
                                                     _sessionUPI);
 
             marginsLogicalLand =
-                PCLPaperSizes.getMarginsLogicalLand(indxPaperSize,
+                PCLPaperSizes.GetMarginsLogicalLand(indxPaperSize,
                                                     _sessionUPI);
 
             marginsLogicalPort =
-                PCLPaperSizes.getMarginsLogicalPort(indxPaperSize,
+                PCLPaperSizes.GetMarginsLogicalPort(indxPaperSize,
                                                     _sessionUPI);
 
             if (aspect == PCLOrientations.eAspect.Portrait)
@@ -1306,7 +1306,7 @@ namespace PCLParaphernalia
         {
             if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
             {
-                if (validateEdgeImperial(false, true))
+                if (ValidateEdgeImperial(false, true))
                 {
                     txtLongEdgeDots.Text = _customLongEdgeDots.ToString();
 
@@ -1314,10 +1314,10 @@ namespace PCLParaphernalia
                         Math.Round((_customLongEdgeDots *
                                      _unitsToMilliMetres), 2).ToString("F1");
 
-                    PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
+                    PCLPaperSizes.SetCustomLongEdge(_customLongEdgeDots,
                                                     _sessionUPI);
 
-                    setPaperMetrics(true);
+                    SetPaperMetrics(true);
                 }
             }
         }
@@ -1339,7 +1339,7 @@ namespace PCLParaphernalia
         {
             if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
             {
-                if (validateEdgeMetric(false, true))
+                if (ValidateEdgeMetric(false, true))
                 {
                     txtLongEdgeDots.Text = _customLongEdgeDots.ToString();
 
@@ -1347,10 +1347,10 @@ namespace PCLParaphernalia
                         (Math.Round((_customLongEdgeDots *
                                      _unitsToInches), 3)).ToString("F3");
 
-                    PCLPaperSizes.setCustomLongEdge(_customLongEdgeDots,
+                    PCLPaperSizes.SetCustomLongEdge(_customLongEdgeDots,
                                                     _sessionUPI);
 
-                    setPaperMetrics(true);
+                    SetPaperMetrics(true);
                 }
             }
         }
@@ -1372,7 +1372,7 @@ namespace PCLParaphernalia
         {
             if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
             {
-                if (validateEdgeImperial(true, true))
+                if (ValidateEdgeImperial(true, true))
                 {
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
@@ -1380,10 +1380,10 @@ namespace PCLParaphernalia
                         (Math.Round((_customShortEdgeDots *
                                       _unitsToMilliMetres), 2)).ToString("F1");
 
-                    PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
+                    PCLPaperSizes.SetCustomShortEdge(_customShortEdgeDots,
                                                     _sessionUPI);
 
-                    setPaperMetrics(true);
+                    SetPaperMetrics(true);
                 }
             }
         }
@@ -1405,7 +1405,7 @@ namespace PCLParaphernalia
         {
             if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
             {
-                if (validateEdgeMetric(true, true))
+                if (ValidateEdgeMetric(true, true))
                 {
                     txtShortEdgeDots.Text = _customShortEdgeDots.ToString();
 
@@ -1413,10 +1413,10 @@ namespace PCLParaphernalia
                         (Math.Round((_customShortEdgeDots *
                                       _unitsToInches), 3)).ToString("F3");
 
-                    PCLPaperSizes.setCustomShortEdge(_customShortEdgeDots,
+                    PCLPaperSizes.SetCustomShortEdge(_customShortEdgeDots,
                                                     _sessionUPI);
 
-                    setPaperMetrics(true);
+                    SetPaperMetrics(true);
                 }
             }
         }
@@ -1432,7 +1432,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateEdgeImperial(bool shortEdge,
+        private bool ValidateEdgeImperial(bool shortEdge,
                                              bool lostFocusEvent)
         {
             const double scaleToDots = 1 / _unitsToInches;
@@ -1598,7 +1598,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateEdgeMetric(bool shortEdge,
+        private bool ValidateEdgeMetric(bool shortEdge,
                                            bool lostFocusEvent)
         {
             const double scaleToDots = 1 / _unitsToMilliMetres;

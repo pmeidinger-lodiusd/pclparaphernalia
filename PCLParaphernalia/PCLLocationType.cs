@@ -44,7 +44,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getIdPCL()
+        public string GetIdPCL()
         {
             return _locationIdPCL;
         }
@@ -58,7 +58,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _locationName;
         }
@@ -72,7 +72,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLLocationTypes.eType getType()
+        public PCLLocationTypes.eType GetType()
         {
             return _locationType;
         }

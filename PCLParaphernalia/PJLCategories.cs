@@ -61,7 +61,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _categoryCount;
         }
@@ -75,9 +75,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
-            return _categories[selection].getName();
+            return _categories[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -89,9 +89,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eCategoryType getType(int selection)
+        public static eCategoryType GetType(int selection)
         {
-            return _categories[selection].getType();
+            return _categories[selection].GetType();
         }
     }
 }

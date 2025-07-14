@@ -78,7 +78,7 @@ namespace PCLParaphernalia
             ToolCommonData.eToolSubIds infoType =
                 (ToolCommonData.eToolSubIds)indxInfoType;
 
-            ToolCommonFunctions.getFolderName(saveFilename,
+            ToolCommonFunctions.GetFolderName(saveFilename,
                                                ref saveFolder);
 
             if (rptFileFmt == ReportCore.eRptFileFmt.html)
@@ -92,14 +92,14 @@ namespace PCLParaphernalia
                            "\\PDLData_" + infoType.ToString() +
                            "." + fileExt;
 
-            OK = ReportCore.docOpen(rptFileFmt,
+            OK = ReportCore.DocOpen(rptFileFmt,
                                      ref saveFilename,
                                      ref stream,
                                      ref writer);
 
             if (OK)
             {
-                ReportCore.docInitialise(rptFileFmt, writer, true, false,
+                ReportCore.DocInitialise(rptFileFmt, writer, true, false,
                                           0, null,
                                           null, null);
                 reportHeader(infoType,
@@ -152,9 +152,9 @@ namespace PCLParaphernalia
                 else if (infoType == ToolCommonData.eToolSubIds.PrescribeCmds)
                     reportBodyPrescribeCommands(rptFileFmt, writer, dgSeq);
 
-                ReportCore.docFinalise(rptFileFmt, writer);
+                ReportCore.DocFinalise(rptFileFmt, writer);
 
-                ReportCore.docClose(rptFileFmt, stream, writer);
+                ReportCore.DocClose(rptFileFmt, stream, writer);
             }
         }
 
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                    ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
                 }
                 else if (!flagOptRptWrap)
@@ -375,7 +375,7 @@ namespace PCLParaphernalia
 
                         data[11] = pclFont.SymbolSets;
 
-                        ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                        ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                                  colNames, colSizes);
                     }
                     else
@@ -414,7 +414,7 @@ namespace PCLParaphernalia
 
                         arrData[11] = pclFont.SymbolSetRows;
 
-                        ReportCore.tableMultiRowText(writer, rptFileFmt, colCt,
+                        ReportCore.TableMultiRowText(writer, rptFileFmt, colCt,
                                                       arrData, colSizes,
                                                       false, false, false);
                     }
@@ -429,7 +429,7 @@ namespace PCLParaphernalia
 
                     int maxLineLen = 120;
 
-                    ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                    ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
 
                     if (pclFont.SymbolSetCt > 0)
@@ -448,7 +448,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            ReportCore.tableRowPair(
+                            ReportCore.TableRowPair(
                                 writer, rptFileFmt,
                                 c11Hddr, pclFont.SymbolSets,
                                 colSpanName, colSpanVal,
@@ -499,7 +499,7 @@ namespace PCLParaphernalia
                             arrData[0][0] = c11Hddr;
                             arrData[1] = pclFont.SymbolSetRows;
 
-                            ReportCore.tableMultiRowText(
+                            ReportCore.TableMultiRowText(
                                 writer, rptFileFmt, colCtPair,
                                 arrData, colSizesPair, true, true, true);
                         }
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -561,7 +561,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
                 data[0] = hpgl2Command.Mnemonic;
                 data[1] = hpgl2Command.Description;
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -589,7 +589,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -651,7 +651,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -673,7 +673,7 @@ namespace PCLParaphernalia
                 data[4] = paperSize.IdPCL;
                 data[5] = paperSize.IdNamePCLXL;
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -683,7 +683,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -774,7 +774,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -826,7 +826,7 @@ namespace PCLParaphernalia
                     data[4] = pclComplexSeq.Description;
                 }
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -836,7 +836,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -890,7 +890,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -910,7 +910,7 @@ namespace PCLParaphernalia
                 data[2] = xlAttrEnum.Value;
                 data[3] = xlAttrEnum.Description;
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -920,7 +920,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1008,7 +1008,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -1084,7 +1084,7 @@ namespace PCLParaphernalia
                     data[3] = xlWhitespace.Description;
                 }
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -1094,7 +1094,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1142,7 +1142,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -1160,7 +1160,7 @@ namespace PCLParaphernalia
                 data[0] = pjlCommand.Name;
                 data[1] = pjlCommand.Description;
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1224,7 +1224,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -1264,7 +1264,7 @@ namespace PCLParaphernalia
                     data[2] = pmlOutcome.Description;
                 }
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -1274,7 +1274,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1322,7 +1322,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -1340,7 +1340,7 @@ namespace PCLParaphernalia
                 data[0] = prescribeCommand.Name;
                 data[1] = prescribeCommand.Description;
 
-                ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                       colNames, colSizes);
             }
 
@@ -1350,7 +1350,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1536,7 +1536,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableHddrData(writer, rptFileFmt, false,
+            ReportCore.TableHddrData(writer, rptFileFmt, false,
                                   colCt, colHddrs, colSizes);
 
             //----------------------------------------------------------------//
@@ -1575,7 +1575,7 @@ namespace PCLParaphernalia
                     data[6] = (mapStd) ? chkTrue6a : chkFalse6a;
                     data[7] = (mapPCL) ? chkTrue7a : chkFalse7a;
 
-                    ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                    ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
                 }
                 else if (flagOptRptWrap)
@@ -1588,7 +1588,7 @@ namespace PCLParaphernalia
 
                     int maxLineLen = 120;
 
-                    ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                    ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                              colNames, colSizes);
 
                     if ((mapStd) || (mapPCL))
@@ -1610,14 +1610,14 @@ namespace PCLParaphernalia
                             if (symSetMapType == ToolPrintLang.eSymSetMapType.Std)
                             {
                                 if (mapStd)
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c6bHddr,
                                         symbolSet.MappingStd,
                                         colSpanName, colSpanVal,
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
                                 else
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c6bHddr,
                                         "Not defined - see LaserJet mapping definition",
                                         colSpanName, colSpanVal,
@@ -1627,14 +1627,14 @@ namespace PCLParaphernalia
                             else if (symSetMapType == ToolPrintLang.eSymSetMapType.PCL)
                             {
                                 if (mapPCL)
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c7bHddr,
                                         symbolSet.MappingPCL,
                                         colSpanName, colSpanVal,
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
                                 else
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c7bHddr,
                                         "Not defined - see Standard (Strict) mapping definition",
                                         colSpanName, colSpanVal,
@@ -1644,14 +1644,14 @@ namespace PCLParaphernalia
                             else // if (symSetMapType == ToolPrintLang.eSymSetMapType.Both)
                             {
                                 if (mapStd)
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c6bHddr,
                                         symbolSet.MappingStd,
                                         colSpanName, colSpanVal,
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagNone, _flagNameAsHddr);
                                 else
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c6bHddr,
                                         "Not defined - see LaserJet mapping definition",
                                         colSpanName, colSpanVal,
@@ -1659,14 +1659,14 @@ namespace PCLParaphernalia
                                         _flagBlankBefore, _flagNone, _flagNameAsHddr);
 
                                 if (mapPCL)
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c7bHddr,
                                         symbolSet.MappingPCL,
                                         colSpanName, colSpanVal,
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagNone, _flagNameAsHddr);
                                 else
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c7bHddr,
                                         "Not defined - see Standard (Strict) mapping definition",
                                         colSpanName, colSpanVal,
@@ -1674,14 +1674,14 @@ namespace PCLParaphernalia
                                         _flagBlankBefore, _flagNone, _flagNameAsHddr);
 
                                 if ((mapStd) && (mapPCL))
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c8Hddr,
                                         symbolSet.MappingPCL,
                                         colSpanName, colSpanVal,
                                         _maxSizeNameTag, maxLineLen,
                                         _flagBlankBefore, _flagBlankAfter, _flagNameAsHddr);
                                 else
-                                    ReportCore.tableRowPair(
+                                    ReportCore.TableRowPair(
                                         writer, rptFileFmt, c8Hddr,
                                         "Not applicable (only one set defined)",
                                         colSpanName, colSpanVal,
@@ -1712,7 +1712,7 @@ namespace PCLParaphernalia
                                 arrData[0][0] = c6bHddr;
                                 arrData[1] = symbolSet.MapRowsStd;
 
-                                ReportCore.tableMultiRowText(
+                                ReportCore.TableMultiRowText(
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, true, true);
                             }
@@ -1721,7 +1721,7 @@ namespace PCLParaphernalia
                                 arrData[0][0] = c7bHddr;
                                 arrData[1] = symbolSet.MapRowsPCL;
 
-                                ReportCore.tableMultiRowText(
+                                ReportCore.TableMultiRowText(
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, true, true);
                             }
@@ -1730,21 +1730,21 @@ namespace PCLParaphernalia
                                 arrData[0][0] = c6bHddr;
                                 arrData[1] = symbolSet.MapRowsStd;
 
-                                ReportCore.tableMultiRowText(
+                                ReportCore.TableMultiRowText(
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, false, false);
 
                                 arrData[0][0] = c7bHddr;
                                 arrData[1] = symbolSet.MapRowsPCLDiff;
 
-                                ReportCore.tableMultiRowText(
+                                ReportCore.TableMultiRowText(
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, false, false);
 
                                 arrData[0][0] = c8Hddr;
                                 arrData[1] = symbolSet.MapRowsDiff;
 
-                                ReportCore.tableMultiRowText(
+                                ReportCore.TableMultiRowText(
                                     writer, rptFileFmt, colCtPair,
                                     arrData, colSizesPair, true, true, true);
                             }
@@ -1782,7 +1782,7 @@ namespace PCLParaphernalia
                             data[8] = symbolSet.MappingDiff;
                         }
 
-                        ReportCore.tableRowText(writer, rptFileFmt, colCt, data,
+                        ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                                  colNames, colSizes);
                     }
                     else
@@ -1824,7 +1824,7 @@ namespace PCLParaphernalia
                             arrData[8] = symbolSet.MapRowsDiff;
                         }
 
-                        ReportCore.tableMultiRowText(writer, rptFileFmt, colCt,
+                        ReportCore.TableMultiRowText(writer, rptFileFmt, colCt,
                                                       arrData, colSizes,
                                                       //   false, false, true);
                                                       false, false, false);
@@ -1838,7 +1838,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ReportCore.tableClose(writer, rptFileFmt);
+            ReportCore.TableClose(writer, rptFileFmt);
         }
 
         //--------------------------------------------------------------------//
@@ -1909,12 +1909,12 @@ namespace PCLParaphernalia
             {
                 if (!selHddrStarted)
                 {
-                    ReportCore.tableHddrPair(writer, rptFileFmt);
+                    ReportCore.TableHddrPair(writer, rptFileFmt);
 
                     selHddrStarted = true;
                 }
 
-                ReportCore.tableRowPair(writer, rptFileFmt,
+                ReportCore.TableRowPair(writer, rptFileFmt,
                         "Sort", sort,
                        _colSpanNone, _colSpanNone,
                         _maxSizeNameTag, maxLineLen,
@@ -1923,19 +1923,19 @@ namespace PCLParaphernalia
 
             if (infoType == ToolCommonData.eToolSubIds.PCL)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "PCL sequence list:");
 
                 if (flagPCLSeqControl)
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                                          "Include", "Control Codes",
                                          _colSpanNone, _colSpanNone,
                                          _maxSizeNameTag, maxLineLen,
@@ -1946,12 +1946,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                                          "Include", "Simple escape sequences",
                                          _colSpanNone, _colSpanNone,
                                          _maxSizeNameTag, maxLineLen,
@@ -1962,12 +1962,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                                          "Include",
                                          "Complex (parameterised) escape sequences",
                                          _colSpanNone, _colSpanNone,
@@ -1977,12 +1977,12 @@ namespace PCLParaphernalia
 
                 if (!selHddrStarted)
                 {
-                    ReportCore.tableHddrPair(writer, rptFileFmt);
+                    ReportCore.TableHddrPair(writer, rptFileFmt);
 
                     selHddrStarted = true;
                 }
 
-                ReportCore.tableRowPair(writer, rptFileFmt,
+                ReportCore.TableRowPair(writer, rptFileFmt,
                                      "Select",
                                      ((flagPCLOptDiscrete == true) ?
                                         "Show" : "Do not show") +
@@ -1991,7 +1991,7 @@ namespace PCLParaphernalia
                                      _maxSizeNameTag, maxLineLen,
                                      _flagNone, _flagNone, _flagNone);
 
-                ReportCore.tableRowPair(writer, rptFileFmt,
+                ReportCore.TableRowPair(writer, rptFileFmt,
                                      "Select",
                                      ((flagPCLOptObsolete == true) ?
                                         "Show" : "Do not show") +
@@ -2002,24 +2002,24 @@ namespace PCLParaphernalia
             }
             else if (infoType == ToolCommonData.eToolSubIds.HPGL2)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "HP-GL/2 command list:");
             }
             else if (infoType == ToolCommonData.eToolSubIds.PCLXLTags)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "PCL XL tag list:");
 
                 if (flagPCLXLTagDataType)
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Data Type tags",
                        _colSpanNone, _colSpanNone,
@@ -2031,12 +2031,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Attribute tags",
                        _colSpanNone, _colSpanNone,
@@ -2048,12 +2048,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Operator tags",
                        _colSpanNone, _colSpanNone,
@@ -2065,12 +2065,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Attribute Definer tags",
                        _colSpanNone, _colSpanNone,
@@ -2082,12 +2082,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Embedded Data Length tags",
                        _colSpanNone, _colSpanNone,
@@ -2099,12 +2099,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Whitespace tags",
                        _colSpanNone, _colSpanNone,
@@ -2114,12 +2114,12 @@ namespace PCLParaphernalia
 
                 if (!selHddrStarted)
                 {
-                    ReportCore.tableHddrPair(writer, rptFileFmt);
+                    ReportCore.TableHddrPair(writer, rptFileFmt);
 
                     selHddrStarted = true;
                 }
 
-                ReportCore.tableRowPair(writer, rptFileFmt,
+                ReportCore.TableRowPair(writer, rptFileFmt,
                                      "Select",
                                      ((flagPCLXLOptReserved == true) ?
                                         "Show" : "Do not show") +
@@ -2130,29 +2130,29 @@ namespace PCLParaphernalia
             }
             else if (infoType == ToolCommonData.eToolSubIds.PCLXLEnums)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "PCL XL enumeration list:");
             }
             else if (infoType == ToolCommonData.eToolSubIds.PJLCmds)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "PJL command list:");
             }
             else if (infoType == ToolCommonData.eToolSubIds.PMLTags)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "PML tag list:");
 
                 if (flagPMLTagDataType)
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Data Type tags",
                        _colSpanNone, _colSpanNone,
@@ -2164,12 +2164,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Action tags",
                        _colSpanNone, _colSpanNone,
@@ -2181,12 +2181,12 @@ namespace PCLParaphernalia
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Outcome tags",
                        _colSpanNone, _colSpanNone,
@@ -2196,19 +2196,19 @@ namespace PCLParaphernalia
             }
             else if (infoType == ToolCommonData.eToolSubIds.SymbolSets)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "Symbol Set list:");
 
                 if (flagSymSetMap)
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Character mapping",
                        _colSpanNone, _colSpanNone,
@@ -2218,19 +2218,19 @@ namespace PCLParaphernalia
             }
             else if (infoType == ToolCommonData.eToolSubIds.Fonts)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "Font list:");
 
                 if (flagSymSetList)
                 {
                     if (!selHddrStarted)
                     {
-                        ReportCore.tableHddrPair(writer, rptFileFmt);
+                        ReportCore.TableHddrPair(writer, rptFileFmt);
 
                         selHddrStarted = true;
                     }
 
-                    ReportCore.tableRowPair(writer, rptFileFmt,
+                    ReportCore.TableRowPair(writer, rptFileFmt,
                        "Include",
                        "Supported Symbol Sets",
                        _colSpanNone, _colSpanNone,
@@ -2240,19 +2240,19 @@ namespace PCLParaphernalia
             }
             else if (infoType == ToolCommonData.eToolSubIds.PaperSizes)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "Paper size list:");
 
             }
             else if (infoType == ToolCommonData.eToolSubIds.PrescribeCmds)
             {
-                ReportCore.hddrTitle(writer, rptFileFmt, false,
+                ReportCore.HddrTitle(writer, rptFileFmt, false,
                                       "Prescribe command list:");
             }
 
             if (selHddrStarted)
             {
-                ReportCore.tableClose(writer, rptFileFmt);
+                ReportCore.TableClose(writer, rptFileFmt);
             }
         }
     }

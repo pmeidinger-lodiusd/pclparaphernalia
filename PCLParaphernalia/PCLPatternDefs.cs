@@ -312,7 +312,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount(eType type)
+        public static int GetCount(eType type)
         {
             if (type == eType.Shading)
                 return _patternsCtShade;
@@ -331,7 +331,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte[] getBytes(eType type,
+        public static byte[] GetBytes(eType type,
                                        int patternDefIndex)
         {
             if (type == eType.Shading)
@@ -351,7 +351,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(eType type,
+        public static string GetDesc(eType type,
                                       int patternDefIndex)
         {
             if (type == eType.Shading)
@@ -371,7 +371,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getHeight(eType type,
+        public static ushort GetHeight(eType type,
                                        int patternDefIndex)
         {
             if (type == eType.Shading)
@@ -391,7 +391,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getId(eType type,
+        public static ushort GetId(eType type,
                                    int patternDefIndex)
         {
             if (type == eType.Shading)
@@ -411,7 +411,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getIdSec(eType type,
+        public static ushort GetIdSec(eType type,
                                       int patternDefIndex)
         {
             if (type == eType.Shading)
@@ -431,7 +431,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort getWidth(eType type,
+        public static ushort GetWidth(eType type,
                                       int patternDefIndex)
         {
             if (type == eType.Shading)

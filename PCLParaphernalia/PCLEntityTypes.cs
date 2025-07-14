@@ -1,6 +1,6 @@
 ﻿namespace PCLParaphernalia
 {
-    /// <summary>
+    /// <summary>e
     /// 
     /// Class defines a set of PCL 'status readback' Entity Type objects.
     /// 
@@ -53,7 +53,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _entityTypeCount;
         }
@@ -67,9 +67,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getIdPCL(int selection)
+        public static string GetIdPCL(int selection)
         {
-            return _entityTypes[selection].getIdPCL();
+            return _entityTypes[selection].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -81,9 +81,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
-            return _entityTypes[selection].getName();
+            return _entityTypes[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -95,9 +95,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(int selection)
+        public static eType GetType(int selection)
         {
-            return _entityTypes[selection].getType();
+            return _entityTypes[selection].GetType();
         }
     }
 }

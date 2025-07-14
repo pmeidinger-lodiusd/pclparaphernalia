@@ -50,7 +50,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataTxtMod()
+        private void InitialiseDataTxtMod()
         {
             lbOrientation.Visibility = Visibility.Hidden;
             cbOrientation.Visibility = Visibility.Hidden;
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
                     chkOptFormAsMacro.IsChecked = false;
             }
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -108,7 +108,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescTxtMod()
+        private void InitialiseDescTxtMod()
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -191,11 +191,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataTxtMod()
+        public void MetricsLoadDataTxtMod()
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod(
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod(
                 "PCL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCL);
@@ -207,7 +207,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCL = eTxtModType.Chr;
 
-            ToolMiscSamplesPersist.loadDataTypeTxtMod(
+            ToolMiscSamplesPersist.LoadDataTypeTxtMod(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagTxtModFormAsMacroPCLXL);
@@ -229,14 +229,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataTxtMod()
+        public void MetricsSaveDataTxtMod()
         {
-            ToolMiscSamplesPersist.saveDataTypeTxtMod(
+            ToolMiscSamplesPersist.SaveDataTypeTxtMod(
                 "PCL",
                 (int)_indxTxtModTypePCL,
                 _flagTxtModFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeTxtMod(
+            ToolMiscSamplesPersist.SaveDataTypeTxtMod(
                 "PCLXL",
                 (int)_indxPatternTypePCLXL,
                 _flagTxtModFormAsMacroPCLXL);
@@ -259,7 +259,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCLXL = eTxtModType.Chr;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -279,7 +279,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCLXL = eTxtModType.Pat;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
             else
                 _indxTxtModTypePCLXL = eTxtModType.Rot;
 
-            initialiseDescTxtMod();
+            InitialiseDescTxtMod();
         }
 
         //--------------------------------------------------------------------//
@@ -311,7 +311,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagTxtModFormAsMacro(
+        private void SetFlagTxtModFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {

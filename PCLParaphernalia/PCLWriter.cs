@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charDownloadCode(BinaryWriter prnWriter,
+        public static void CharDownloadCode(BinaryWriter prnWriter,
                                             ushort codepoint)
         {
             string seq;
@@ -107,7 +107,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void charDownloadDesc(BinaryWriter prnWriter,
+        public static void CharDownloadDesc(BinaryWriter prnWriter,
                                             ushort hddrLen)
         {
             string seq;
@@ -126,7 +126,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void cmdHPGL2(BinaryWriter prnWriter,
+        public static void CmdHPGL2(BinaryWriter prnWriter,
                                      string mnemonic,
                                      string parameters,
                                      bool terminate)
@@ -154,7 +154,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void configureImageData(BinaryWriter prnWriter,
+        public static void ConfigureImageData(BinaryWriter prnWriter,
                                               byte colourSpace,
                                               byte pixelEncodingMode,
                                               byte bitsPerIndex,
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void cursorPosition(BinaryWriter prnWriter,
+        public static void CursorPosition(BinaryWriter prnWriter,
                                           short coordX,
                                           short coordY)
         {
@@ -214,7 +214,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void cursorPushPop(BinaryWriter prnWriter,
+        public static void CursorPushPop(BinaryWriter prnWriter,
                                          ePushPop pushPop)
         {
             string seq;
@@ -236,7 +236,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void cursorRelative(BinaryWriter prnWriter,
+        public static void CursorRelative(BinaryWriter prnWriter,
                                           short coordX,
                                           short coordY)
         {
@@ -294,7 +294,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void defLogPage(BinaryWriter prnWriter,
+        public static void DefLogPage(BinaryWriter prnWriter,
                                        int indxOrientation,
                                        short leftOffset,
                                        short topOffset,
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
             buffer[2] = tempArray[1];
             buffer[3] = tempArray[0];
 
-            buffer[4] = PCLOrientations.getIdPCL(indxOrientation);
+            buffer[4] = PCLOrientations.GetIdPCL(indxOrientation);
             buffer[5] = 0x00;
 
             tempArray = BitConverter.GetBytes(pageWidth);
@@ -352,7 +352,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void font(BinaryWriter prnWriter,
+        public static void Font(BinaryWriter prnWriter,
                                 bool primary,
                                 string symSet,
                                 string fontSel)
@@ -384,7 +384,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontDownloadHddr(BinaryWriter prnWriter,
+        public static void FontDownloadHddr(BinaryWriter prnWriter,
                                              uint hddrLen)
         {
             string seq;
@@ -403,7 +403,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontDownloadID(BinaryWriter prnWriter,
+        public static void FontDownloadID(BinaryWriter prnWriter,
                                           ushort downloadID)
         {
             string seq;
@@ -422,7 +422,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontDownloadRemove(BinaryWriter prnWriter,
+        public static void FontDownloadRemove(BinaryWriter prnWriter,
                                               ushort downloadID)
         {
             string seq;
@@ -441,7 +441,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontDownloadSave(BinaryWriter prnWriter,
+        public static void FontDownloadSave(BinaryWriter prnWriter,
                                             bool permanent)
         {
             string seq;
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontFileIdAssociate(BinaryWriter prnWriter,
+        public static void FontFileIdAssociate(BinaryWriter prnWriter,
                                                 ushort fontID,
                                                 string filename)
         {
@@ -487,7 +487,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void fontFileIdAssociate(BinaryWriter prnWriter,
+        public static void FontFileIdAssociate(BinaryWriter prnWriter,
                                                 ushort fontID,
                                                 ushort fontMacroId,
                                                 string filename)
@@ -513,7 +513,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void formFeed(BinaryWriter prnWriter)
+        public static void FormFeed(BinaryWriter prnWriter)
         {
             byte[] x = new byte[1];
 
@@ -533,7 +533,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineHorizontal(BinaryWriter prnWriter,
+        public static void LineHorizontal(BinaryWriter prnWriter,
                                           short coordX,
                                           short coordY,
                                           short length,
@@ -563,7 +563,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void lineVertical(BinaryWriter prnWriter,
+        public static void LineVertical(BinaryWriter prnWriter,
                                         short coordX,
                                         short coordY,
                                         short length,
@@ -591,7 +591,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroControl(BinaryWriter prnWriter,
+        public static void MacroControl(BinaryWriter prnWriter,
                                         short macroId,
                                         eMacroControl control)
         {
@@ -640,7 +640,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroDownloadId(BinaryWriter prnWriter,
+        public static void MacroDownloadId(BinaryWriter prnWriter,
                                             ushort downloadId)
         {
             string seq;
@@ -660,7 +660,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void macroFileIdAssociate(BinaryWriter prnWriter,
+        public static void MacroFileIdAssociate(BinaryWriter prnWriter,
                                                  ushort downloadID,
                                                  string filename)
         {
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void marginLeft(BinaryWriter prnWriter,
+        public static void MarginLeft(BinaryWriter prnWriter,
                                        short columns)
         {
             string seq;
@@ -708,7 +708,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void marginTop(BinaryWriter prnWriter,
+        public static void MarginTop(BinaryWriter prnWriter,
                                       short lines)
         {
             string seq;
@@ -729,7 +729,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void modeHPGL2(BinaryWriter prnWriter,
+        public static void ModeHPGL2(BinaryWriter prnWriter,
                                       bool cursorPCL,
                                       bool penPCL)
         {
@@ -761,7 +761,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void modePCL(BinaryWriter prnWriter,
+        public static void ModePCL(BinaryWriter prnWriter,
                                     bool cursorPCL)
         {
             string seq;
@@ -789,7 +789,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pageFace(BinaryWriter prnWriter,
+        public static void PageFace(BinaryWriter prnWriter,
                                     bool frontFace)
         {
             string seq;
@@ -816,7 +816,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pageHeader(BinaryWriter prnWriter,
+        public static void PageHeader(BinaryWriter prnWriter,
                                       int indxPaperSize,
                                       int indxPaperType,
                                       int indxOrientation,
@@ -824,10 +824,10 @@ namespace PCLParaphernalia
         {
             string seq;
 
-            if (PCLPaperTypes.getType(indxPaperType) !=
+            if (PCLPaperTypes.GetType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet)
             {
-                string tmpStr = PCLPaperTypes.getName(indxPaperType);
+                string tmpStr = PCLPaperTypes.GetName(indxPaperType);
                 int len = tmpStr.Length + 1;
 
                 seq = "\x1b" + "&n" +           // Alphanumeric ID
@@ -839,11 +839,11 @@ namespace PCLParaphernalia
             }
 
             seq = "\x1b" + "&l" +
-                           PCLPaperSizes.getIdPCL(indxPaperSize) +
+                           PCLPaperSizes.GetIdPCL(indxPaperSize) +
                            "a" +             // Paper Size
-                           PCLOrientations.getIdPCL(indxOrientation) +
+                           PCLOrientations.GetIdPCL(indxOrientation) +
                            "o" +             // Orientation
-                           PCLPlexModes.getIdPCL(indxPlexMode) +
+                           PCLPlexModes.GetIdPCL(indxPlexMode) +
                            "s" +             // plex mode 
                            "1l" +             // perforation skip enable
                            "0E" +             // Top Margin (lines)
@@ -863,7 +863,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pageHeaderCustom(BinaryWriter prnWriter,
+        public static void PageHeaderCustom(BinaryWriter prnWriter,
                                              int indxPaperType,
                                              int indxOrientation,
                                              int indxPlexMode,
@@ -882,10 +882,10 @@ namespace PCLParaphernalia
             dptWidth = (int)Math.Round((scale * paperWidth));
             dptLength = (int)Math.Round((scale * paperLength));
 
-            if (PCLPaperTypes.getType(indxPaperType) !=
+            if (PCLPaperTypes.GetType(indxPaperType) !=
                     PCLPaperTypes.eEntryType.NotSet)
             {
-                string tmpStr = PCLPaperTypes.getName(indxPaperType);
+                string tmpStr = PCLPaperTypes.GetName(indxPaperType);
                 int len = tmpStr.Length + 1;
 
                 seq = "\x1b" + "&n" +           // Alphanumeric ID
@@ -907,9 +907,9 @@ namespace PCLParaphernalia
             seq = "\x1b" + "&l" +
                            "101" +           // custom paper ID   
                            "a" +             // Paper Size
-                           PCLOrientations.getIdPCL(indxOrientation) +
+                           PCLOrientations.GetIdPCL(indxOrientation) +
                            "o" +             // Orientation
-                           PCLPlexModes.getIdPCL(indxPlexMode) +
+                           PCLPlexModes.GetIdPCL(indxPlexMode) +
                            "s" +             // plex mode 
                            "1l" +            // perforation skip enable
                            "0E" +            // Top Margin (lines)
@@ -931,7 +931,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pageOrientation(BinaryWriter prnWriter,
+        public static void PageOrientation(BinaryWriter prnWriter,
                                            string orientId)
         {
             string seq;
@@ -956,7 +956,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paletteEntry(BinaryWriter prnWriter,
+        public static void PaletteEntry(BinaryWriter prnWriter,
                                         short index,
                                         short colour1,
                                         short colour2,
@@ -983,7 +983,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void palettePushPop(BinaryWriter prnWriter,
+        public static void PalettePushPop(BinaryWriter prnWriter,
                                           ePushPop pushPop)
         {
             string seq;
@@ -1005,7 +1005,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paletteSimple(BinaryWriter prnWriter,
+        public static void PaletteSimple(BinaryWriter prnWriter,
                                          eSimplePalette palette)
         {
             string seq;
@@ -1029,7 +1029,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paletteSimple(BinaryWriter prnWriter,
+        public static void PaletteSimple(BinaryWriter prnWriter,
                                           short palette)
         {
             string seq;
@@ -1048,7 +1048,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void paperSource(BinaryWriter prnWriter,
+        public static void PaperSource(BinaryWriter prnWriter,
                                        short trayId)
         {
             string seq;
@@ -1069,7 +1069,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternDefine(BinaryWriter prnWriter,
+        public static void PatternDefine(BinaryWriter prnWriter,
                                          short patternID,
                                          byte[] header,
                                          byte[] pattern)
@@ -1104,7 +1104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternDelete(BinaryWriter prnWriter,
+        public static void PatternDelete(BinaryWriter prnWriter,
                                          short patternID)
         {
             string seq = string.Empty;
@@ -1125,7 +1125,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternSet(BinaryWriter prnWriter,
+        public static void PatternSet(BinaryWriter prnWriter,
                                        ePatternType patternType,
                                        short patternID)
         {
@@ -1170,7 +1170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void patternTransparency(BinaryWriter prnWriter,
+        public static void PatternTransparency(BinaryWriter prnWriter,
                                                 bool opaque)
         {
             string seq = string.Empty;
@@ -1196,7 +1196,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void perforationSkip(BinaryWriter prnWriter,
+        public static void PerforationSkip(BinaryWriter prnWriter,
                                            bool enable)
         {
             string seq;
@@ -1221,7 +1221,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void pictureFrame(BinaryWriter prnWriter,
+        public static void PictureFrame(BinaryWriter prnWriter,
                                          short coordX,
                                          short coordY,
                                          short height,
@@ -1257,7 +1257,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void printDirection(BinaryWriter prnWriter,
+        public static void PrintDirection(BinaryWriter prnWriter,
                                           short ccwAngle)
         {
             string seq;
@@ -1279,7 +1279,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterBegin(BinaryWriter prnWriter,
+        public static void RasterBegin(BinaryWriter prnWriter,
                                        int srcWidth,
                                        int srcHeight,
                                        int compressMode)
@@ -1318,7 +1318,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterBegin(BinaryWriter prnWriter,
+        public static void RasterBegin(BinaryWriter prnWriter,
                                        int srcWidth,
                                        int srcHeight,
                                        int srcResX,
@@ -1389,7 +1389,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterCompressionMode(BinaryWriter prnWriter,
+        public static void RasterCompressionMode(BinaryWriter prnWriter,
                                                  int compressMode)
         {
             string seq;
@@ -1409,7 +1409,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterEnd(BinaryWriter prnWriter)
+        public static void RasterEnd(BinaryWriter prnWriter)
         {
             string seq;
 
@@ -1427,7 +1427,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterResolution(BinaryWriter prnWriter,
+        public static void RasterResolution(BinaryWriter prnWriter,
                                              int indxRasterResolution,
                                              bool valueIsIndex)
         {
@@ -1438,7 +1438,7 @@ namespace PCLParaphernalia
             if (valueIsIndex)
             {
                 rasterRes =
-                    PCLRasterResolutions.getValue(indxRasterResolution);
+                    PCLRasterResolutions.GetValue(indxRasterResolution);
             }
             else
             {
@@ -1461,7 +1461,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterTransferPlane(BinaryWriter prnWriter,
+        public static void RasterTransferPlane(BinaryWriter prnWriter,
                                                 int rowLength,
                                                 byte[] buffer)
         {
@@ -1486,7 +1486,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rasterTransferRow(BinaryWriter prnWriter,
+        public static void RasterTransferRow(BinaryWriter prnWriter,
                                              int rowLength,
                                              byte[] buffer)
         {
@@ -1514,7 +1514,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangleOutline(BinaryWriter prnWriter,
+        public static void RectangleOutline(BinaryWriter prnWriter,
                                             short coordX,
                                             short coordY,
                                             short height,
@@ -1581,7 +1581,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangleShaded(BinaryWriter prnWriter,
+        public static void RectangleShaded(BinaryWriter prnWriter,
                                            short coordX,
                                            short coordY,
                                            short height,
@@ -1630,7 +1630,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangleSolid(BinaryWriter prnWriter,
+        public static void RectangleSolid(BinaryWriter prnWriter,
                                           short coordX,
                                           short coordY,
                                           short height,
@@ -1690,7 +1690,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangleUserFill(BinaryWriter prnWriter,
+        public static void RectangleUserFill(BinaryWriter prnWriter,
                                              short coordX,
                                              short coordY,
                                              short height,
@@ -1740,7 +1740,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void rectangleXHatch(BinaryWriter prnWriter,
+        public static void RectangleXHatch(BinaryWriter prnWriter,
                                            short coordX,
                                            short coordY,
                                            short height,
@@ -1772,7 +1772,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setForegroundColour(BinaryWriter prnWriter,
+        public static void SetForegroundColour(BinaryWriter prnWriter,
                                                 byte colourIndex)
         {
             string seq;
@@ -1791,7 +1791,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setROP(BinaryWriter prnWriter,
+        public static void SetROP(BinaryWriter prnWriter,
                                    int operation)
         {
             string seq;
@@ -1811,7 +1811,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setTextLength(BinaryWriter prnWriter,
+        public static void SetTextLength(BinaryWriter prnWriter,
                                          short lines)
         {
             string seq;
@@ -1832,7 +1832,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setVMI(BinaryWriter prnWriter,
+        public static void SetVMI(BinaryWriter prnWriter,
                                   float increment)
         {
             string seq;
@@ -1853,7 +1853,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void sourceTransparency(BinaryWriter prnWriter,
+        public static void SourceTransparency(BinaryWriter prnWriter,
                                                bool opaque)
         {
             string seq = string.Empty;
@@ -1879,7 +1879,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void stdJobHeader(BinaryWriter prnWriter,
+        public static void StdJobHeader(BinaryWriter prnWriter,
                                         string pjlCommand)
         {
             string seq;
@@ -1912,7 +1912,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void stdJobTrailer(BinaryWriter prnWriter,
+        public static void StdJobTrailer(BinaryWriter prnWriter,
                                          bool formAsMacro,
                                          short macroId)
         {
@@ -1920,7 +1920,7 @@ namespace PCLParaphernalia
 
             if (formAsMacro)
             {
-                macroControl(prnWriter, macroId, eMacroControl.Delete);
+                MacroControl(prnWriter, macroId, eMacroControl.Delete);
             }
 
             seq = "\x1b" + "E" +                // Printer Reset
@@ -1938,7 +1938,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadCode(BinaryWriter prnWriter,
+        public static void SymSetDownloadCode(BinaryWriter prnWriter,
                                                ushort symSetNo)
         {
             string seq;
@@ -1957,7 +1957,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadDesc(BinaryWriter prnWriter,
+        public static void SymSetDownloadDesc(BinaryWriter prnWriter,
                                                uint descLen)
         {
             string seq;
@@ -1976,7 +1976,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadRemove(BinaryWriter prnWriter,
+        public static void SymSetDownloadRemove(BinaryWriter prnWriter,
                                                  ushort symSetNo)
         {
             string seq;
@@ -1995,7 +1995,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void symSetDownloadSave(BinaryWriter prnWriter,
+        public static void SymSetDownloadSave(BinaryWriter prnWriter,
                                                bool permanent)
         {
             string seq;
@@ -2018,7 +2018,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void text(BinaryWriter prnWriter,
+        public static void Text(BinaryWriter prnWriter,
                                 short coordX,
                                 short coordY,
                                 short spacing,
@@ -2066,7 +2066,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textRotated(BinaryWriter prnWriter,
+        public static void TextRotated(BinaryWriter prnWriter,
                                         short coordX,
                                         short coordY,
                                         short spacing,
@@ -2082,7 +2082,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
-            printDirection(prnWriter, ccwAngle);
+            PrintDirection(prnWriter, ccwAngle);
 
             if (spacing == 0)
             {
@@ -2108,7 +2108,7 @@ namespace PCLParaphernalia
             }
 
             if (resetRotation)
-                printDirection(prnWriter, 0);
+                PrintDirection(prnWriter, 0);
         }
 
         //--------------------------------------------------------------------//
@@ -2120,7 +2120,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textParsingMethod(
+        public static void TextParsingMethod(
             BinaryWriter prnWriter,
             PCLTextParsingMethods.eIndex eMethod)
         {
@@ -2129,7 +2129,7 @@ namespace PCLParaphernalia
             byte indx = (byte)eMethod;
 
             seq = "\x1b" + "&t" +
-                  PCLTextParsingMethods.getValue(indx).ToString() +
+                  PCLTextParsingMethods.GetValue(indx).ToString() +
                   "P";
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -2144,7 +2144,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void textParsingMethod(BinaryWriter prnWriter,
+        public static void TextParsingMethod(BinaryWriter prnWriter,
                                              int parseMethod)
         {
             string seq;
@@ -2163,7 +2163,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void transparentPrint(BinaryWriter prnWriter,
+        public static void TransparentPrint(BinaryWriter prnWriter,
                                             short byteCount)
         {
             string seq;

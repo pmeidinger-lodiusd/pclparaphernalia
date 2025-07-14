@@ -67,7 +67,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxInfoType,
+        public static void LoadDataCommon(ref int indxInfoType,
                                           ref string reportFile)
         {
             RegistryKey keyMain =
@@ -79,9 +79,9 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTools))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyToolsPDLData))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyToolsPDLData))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey,
+                    Helper_RegKey.RenameKey(subKey,
                                            _subKeyToolsPDLData,
                                            _subKeyToolsPrintLang);
             }
@@ -106,7 +106,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataFonts(ref bool flagOptMap)
+        public static void LoadDataFonts(ref bool flagOptMap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -136,7 +136,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref bool flagSeqControl,
+        public static void LoadDataPCL(ref bool flagSeqControl,
                                        ref bool flagSeqSimple,
                                        ref bool flagSeqComplex,
                                        ref bool flagOptObsolete,
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCLXL(ref bool flagTagDataType,
+        public static void LoadDataPCLXL(ref bool flagTagDataType,
                                          ref bool flagTagAttribute,
                                          ref bool flagTagOperator,
                                          ref bool flagTagAttrDefiner,
@@ -257,7 +257,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPML(ref bool flagTagDataType,
+        public static void LoadDataPML(ref bool flagTagDataType,
                                         ref bool flagTagAction,
                                         ref bool flagTagOutcome)
         {
@@ -299,7 +299,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt,
+        public static void LoadDataRpt(ref int indxRptFileFmt,
                                         ref int indxRptChkMarks,
                                         ref bool flagOptRptWrap)
         {
@@ -334,7 +334,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataSymSets(ref bool flagOptMap,
+        public static void LoadDataSymSets(ref bool flagOptMap,
                                            ref int mapType)
         {
             RegistryKey keyMain =
@@ -368,7 +368,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxInfoType,
+        public static void SaveDataCommon(int indxInfoType,
                                           string reportFile)
         {
             RegistryKey keyMain =
@@ -400,7 +400,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataFonts(bool flagOptMap)
+        public static void SaveDataFonts(bool flagOptMap)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -432,7 +432,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(bool flagSeqControl,
+        public static void SaveDataPCL(bool flagSeqControl,
                                        bool flagSeqSimple,
                                        bool flagSeqComplex,
                                        bool flagOptObsolete,
@@ -504,7 +504,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCLXL(bool flagTagDataType,
+        public static void SaveDataPCLXL(bool flagTagDataType,
                                          bool flagTagAttribute,
                                          bool flagTagOperator,
                                          bool flagTagAttrDefiner,
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPML(bool flagTagDataType,
+        public static void SaveDataPML(bool flagTagDataType,
                                         bool flagTagAction,
                                         bool flagTagOutcome)
         {
@@ -648,7 +648,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt,
+        public static void SaveDataRpt(int indxRptFileFmt,
                                         int indxRptChkMarks,
                                         bool flagOptRptWrap)
         {
@@ -687,7 +687,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataSymSets(bool flagOptMap,
+        public static void SaveDataSymSets(bool flagOptMap,
                                            int mapType)
         {
             RegistryKey keyMain =

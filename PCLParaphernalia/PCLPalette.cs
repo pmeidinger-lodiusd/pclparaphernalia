@@ -63,7 +63,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void addColour(string name,
+        public void AddColour(string name,
                                byte id)
         {
             _colourNames[_crntClrItem] = name;
@@ -117,7 +117,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getColourId(int item)
+        public byte GetColourId(int item)
         {
             return _colourIds[item];
         }
@@ -131,7 +131,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getColourName(int item)
+        public string GetColourName(int item)
         {
             return _colourNames[item];
         }
@@ -184,7 +184,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemBlack()
+        public void SetClrItemBlack()
         {
             _clrItemBlack = (byte)(_crntClrItem - 1);
         }
@@ -198,7 +198,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemWhite()
+        public void SetClrItemWhite()
         {
             _clrItemWhite = (byte)(_crntClrItem - 1);
         }

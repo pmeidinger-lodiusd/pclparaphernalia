@@ -150,7 +150,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.Prescribe;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
 
                 commandLen = 0;
             }
@@ -205,7 +205,7 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = _options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
+            if (linkData.IsContinuation())
                 seqInvalid = parseContinuation(ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
@@ -262,7 +262,7 @@ namespace PCLParaphernalia
             byte prefixA = 0x00,
                  prefixB = 0x00;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -284,7 +284,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -332,10 +332,10 @@ namespace PCLParaphernalia
                     //  String desc = PrescribeCommands.getDescCmdIntro();
                     string desc = string.Empty;
 
-                    PrescribeCommands.checkCmdIntro(ref desc,
+                    PrescribeCommands.CheckCmdIntro(ref desc,
                                                      _analysisLevel);
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.eType.PrescribeCommand,
                         _table,
                         PrnParseConstants.eOvlShow.Remove,
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.Prescribe;
 
-                _linkData.setBacktrack(contType, -bufRem);
+                _linkData.SetBacktrack(contType, -bufRem);
 
             }
             else
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
 
                 commandName = cmd.ToString();
 
-                cmdKnown = PrescribeCommands.checkCmd(cmd.ToString(),
+                cmdKnown = PrescribeCommands.CheckCmd(cmd.ToString(),
                                                        ref commandDesc,
                                                        ref flagCmdExit,
                                                        ref flagCmdSetCRC,
@@ -771,7 +771,7 @@ namespace PCLParaphernalia
                     {
                         seq = command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.PrescribeCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -787,7 +787,7 @@ namespace PCLParaphernalia
                         seq = "  " + // indent number of spaces
                               command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.PrescribeCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -822,7 +822,7 @@ namespace PCLParaphernalia
                     {
                         seq = command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.PrescribeCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -838,7 +838,7 @@ namespace PCLParaphernalia
                         seq = "  " + // indent number of spaces
                               command.Substring(sliceOffset, sliceLen);
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.PrescribeCommand,
                             _table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -884,7 +884,7 @@ namespace PCLParaphernalia
 
                     _linkData.PrescribeSCRC = cmdParaByte1;
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,

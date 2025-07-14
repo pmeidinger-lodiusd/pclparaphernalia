@@ -49,7 +49,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataPattern()
+        private void InitialiseDataPattern()
         {
             lbOrientation.Visibility = Visibility.Hidden;
             cbOrientation.Visibility = Visibility.Hidden;
@@ -85,7 +85,7 @@ namespace PCLParaphernalia
                 chkOptFormAsMacro.IsChecked = _flagPatternFormAsMacroPCLXL;
             }
 
-            initialiseDescPattern();
+            InitialiseDescPattern();
         }
 
         //--------------------------------------------------------------------//
@@ -97,7 +97,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDescPattern()
+        private void InitialiseDescPattern()
         {
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -138,11 +138,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataPattern()
+        public void MetricsLoadDataPattern()
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypePattern(
+            ToolMiscSamplesPersist.LoadDataTypePattern(
                 "PCL",
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCL);
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
             else
                 _indxPatternTypePCL = ePatternType.Shading;
 
-            ToolMiscSamplesPersist.loadDataTypePattern(
+            ToolMiscSamplesPersist.LoadDataTypePattern(
                 "PCLXL",
                 ref tmpInt,
                 ref _flagPatternFormAsMacroPCLXL);
@@ -172,14 +172,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataPattern()
+        public void MetricsSaveDataPattern()
         {
-            ToolMiscSamplesPersist.saveDataTypePattern(
+            ToolMiscSamplesPersist.SaveDataTypePattern(
                 "PCL",
                 (int)_indxPatternTypePCL,
                 _flagPatternFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypePattern(
+            ToolMiscSamplesPersist.SaveDataTypePattern(
                 "PCLXL",
                 (int)_indxPatternTypePCLXL,
                 _flagPatternFormAsMacroPCLXL);
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
             else
                 _indxPatternTypePCLXL = ePatternType.Shading;
 
-            initialiseDescPattern();
+            InitialiseDescPattern();
         }
 
         //--------------------------------------------------------------------//
@@ -222,7 +222,7 @@ namespace PCLParaphernalia
             else
                 _indxPatternTypePCLXL = ePatternType.XHatch;
 
-            initialiseDescPattern();
+            InitialiseDescPattern();
         }
 
         //--------------------------------------------------------------------//
@@ -234,7 +234,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagPatternFormAsMacro(
+        private void SetFlagPatternFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {

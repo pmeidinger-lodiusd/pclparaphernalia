@@ -83,7 +83,7 @@ namespace PCLParaphernalia
         {
             BinaryWriter binWriter = null;
 
-            TargetCore.requestStreamOpen(
+            TargetCore.RequestStreamOpen(
                 ref binWriter,
                 ToolCommonData.eToolIds.PrnPrint,
                 ToolCommonData.eToolSubIds.None,
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
             copyPrnFile(_prnFilename, binWriter);
 
-            TargetCore.requestStreamWrite(false);
+            TargetCore.RequestStreamWrite(false);
         }
 
         //--------------------------------------------------------------------//
@@ -199,7 +199,7 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            ToolPrnPrintPersist.loadDataGeneral(ref _prnFilename);
+            ToolPrnPrintPersist.LoadDataGeneral(ref _prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -213,7 +213,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrnPrintPersist.saveDataGeneral(_prnFilename);
+            ToolPrnPrintPersist.SaveDataGeneral(_prnFilename);
         }
 
         //--------------------------------------------------------------------//
@@ -306,7 +306,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -320,7 +320,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Send PRN file contents to printer " +
                                       "\r\n" +
@@ -339,7 +339,7 @@ namespace PCLParaphernalia
 
         private bool selectPrnFile(ref string prnFilename)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(prnFilename);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
             openDialog.Filter = "Print Files|" +
                                 "*.prn; *.pcl; *.dia;" +

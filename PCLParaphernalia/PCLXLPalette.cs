@@ -62,7 +62,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void addColour(string name,
+        public void AddColour(string name,
                                int RGB,
                                byte id)
         {
@@ -118,7 +118,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getColourName(int item)
+        public string GetColourName(int item)
         {
             return _colourNames[item];
         }
@@ -132,7 +132,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getColourId(int item)
+        public byte GetColourId(int item)
         {
             return _colourIds[item];
         }
@@ -146,7 +146,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getColourRGB(int item)
+        public int GetColourRGB(int item)
         {
             return _colourRGBs[item];
         }
@@ -161,7 +161,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getGrayLevel(byte item)
+        public string GetGrayLevel(byte item)
         {
             if (item == 0)
             {
@@ -213,7 +213,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemBlack()
+        public void SetClrItemBlack()
         {
             _clrItemBlack = (byte)(_crntClrItem - 1);
         }
@@ -227,7 +227,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setClrItemWhite()
+        public void SetClrItemWhite()
         {
             _clrItemWhite = (byte)(_crntClrItem - 1);
         }

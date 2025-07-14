@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImage(BinaryWriter prnWriter,
+        private static void GenerateImage(BinaryWriter prnWriter,
                                           float destPosX,
                                           float destPosY,
                                           int destScalePercentX,
@@ -43,7 +43,7 @@ namespace PCLParaphernalia
 
             bool srcBlackWhite = false;
 
-            ToolImageBitmapCore.getBmpInfo(ref srcWidth,
+            ToolImageBitmapCore.GetBmpInfo(ref srcWidth,
                                            ref srcHeight,
                                            ref srcBitsPerPixel,
                                            ref srcCompression,
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
                 return;
             }
 
-            generateImageHeader(prnWriter,
+            GenerateImageHeader(prnWriter,
                                 srcBitsPerPixel,
                                 srcWidth,
                                 srcHeight,
@@ -93,12 +93,12 @@ namespace PCLParaphernalia
                                 srcPaletteEntries,
                                 srcBlackWhite);
 
-            generateImageData(prnWriter,
+            GenerateImageData(prnWriter,
                               srcBitsPerPixel,
                               srcWidth,
                               srcHeight);
 
-            generateImageTrailer(prnWriter);
+            GenerateImageTrailer(prnWriter);
         }
 
         //--------------------------------------------------------------------//
@@ -110,7 +110,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageData(BinaryWriter prnWriter,
+        private static void GenerateImageData(BinaryWriter prnWriter,
                                               ushort srcBitsPerPixel,
                                               int srcWidth,
                                               int srcHeight)
@@ -158,7 +158,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < srcHeight; i++)
             {
-                ToolImageBitmapCore.getNextImageBlock(ref bufSub,
+                ToolImageBitmapCore.GetNextImageBlock(ref bufSub,
                                                       bytesPerRowPadded,
                                                       firstBlock);
 
@@ -182,7 +182,7 @@ namespace PCLParaphernalia
 
                 firstBlock = false;
 
-                PCLWriter.rasterTransferRow(prnWriter, bytesPerRow, bufSub);
+                PCLWriter.RasterTransferRow(prnWriter, bytesPerRow, bufSub);
             }
         }
 
@@ -195,7 +195,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageHeader(BinaryWriter prnWriter,
+        private static void GenerateImageHeader(BinaryWriter prnWriter,
                                                 ushort srcBitsPerPixel,
                                                 int srcWidth,
                                                 int srcHeight,
@@ -227,9 +227,9 @@ namespace PCLParaphernalia
             coordX = (short)(destPosX * 600);
             coordY = (short)(destPosY * 600);
 
-            PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Push);
+            PCLWriter.PalettePushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-            PCLWriter.cursorPosition(prnWriter, coordX, coordY);
+            PCLWriter.CursorPosition(prnWriter, coordX, coordY);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -306,13 +306,13 @@ namespace PCLParaphernalia
 
             if (srcBlackWhite)
             {
-                PCLWriter.paletteSimple(prnWriter, PCLWriter.eSimplePalette.K);
+                PCLWriter.PaletteSimple(prnWriter, PCLWriter.eSimplePalette.K);
             }
             else
             {
                 if (indexed)
                 {
-                    PCLWriter.configureImageData(prnWriter,
+                    PCLWriter.ConfigureImageData(prnWriter,
                                             0x02,   // ColourSpace = sRGB
                                             0x01,   // PEM = Indexed by Pixel
                                             bitsPerIndex,
@@ -322,7 +322,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PCLWriter.configureImageData(prnWriter,
+                    PCLWriter.ConfigureImageData(prnWriter,
                                             0x02,   // ColourSpace = sRGB
                                             0x03,   // PEM = Direct by Pixel
                                             0x00,   // Not used
@@ -339,12 +339,12 @@ namespace PCLParaphernalia
 
                     for (short i = 0; i < paletteEntries; i++)
                     {
-                        ToolImageBitmapCore.getBmpPaletteEntry(i,
+                        ToolImageBitmapCore.GetBmpPaletteEntry(i,
                                                                ref red,
                                                                ref green,
                                                                ref blue);
 
-                        PCLWriter.paletteEntry(prnWriter, i, red, green, blue);
+                        PCLWriter.PaletteEntry(prnWriter, i, red, green, blue);
                     }
                 }
             }
@@ -355,11 +355,11 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PCLWriter.rasterResolution(prnWriter,
+            PCLWriter.RasterResolution(prnWriter,
                                         rasterResolution,
                                         true);
 
-            PCLWriter.rasterBegin(prnWriter,
+            PCLWriter.RasterBegin(prnWriter,
                                   srcWidth,
                                   srcHeight,
                                   srcResX,
@@ -378,11 +378,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateImageTrailer(BinaryWriter prnWriter)
+        private static void GenerateImageTrailer(BinaryWriter prnWriter)
         {
-            PCLWriter.rasterEnd(prnWriter);
+            PCLWriter.RasterEnd(prnWriter);
 
-            PCLWriter.palettePushPop(prnWriter, PCLWriter.ePushPop.Pop);
+            PCLWriter.PalettePushPop(prnWriter, PCLWriter.ePushPop.Pop);
         }
 
         //--------------------------------------------------------------------//
@@ -394,7 +394,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void generateJob(BinaryWriter prnWriter,
+        public static void GenerateJob(BinaryWriter prnWriter,
                                        int paperSize,
                                        int paperType,
                                        int orientation,
@@ -404,19 +404,19 @@ namespace PCLParaphernalia
                                        int destScalePercentY,
                                        int rasterResolution)
         {
-            generateJobHeader(prnWriter,
+            GenerateJobHeader(prnWriter,
                               paperSize,
                               paperType,
                               orientation);
 
-            generateImage(prnWriter,
+            GenerateImage(prnWriter,
                           destPosX,
                           destPosY,
                           destScalePercentX,
                           destScalePercentY,
                           rasterResolution);
 
-            generateJobTrailer(prnWriter);
+            GenerateJobTrailer(prnWriter);
         }
 
         //--------------------------------------------------------------------//
@@ -428,14 +428,14 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobHeader(BinaryWriter prnWriter,
+        private static void GenerateJobHeader(BinaryWriter prnWriter,
                                               int paperSize,
                                               int paperType,
                                               int orientation)
         {
-            PCLWriter.stdJobHeader(prnWriter, string.Empty);
+            PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
-            PCLWriter.pageHeader(prnWriter,
+            PCLWriter.PageHeader(prnWriter,
                                  paperSize,
                                  paperType,
                                  orientation,
@@ -451,9 +451,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void generateJobTrailer(BinaryWriter prnWriter)
+        private static void GenerateJobTrailer(BinaryWriter prnWriter)
         {
-            PCLWriter.stdJobTrailer(prnWriter, false, 0);
+            PCLWriter.StdJobTrailer(prnWriter, false, 0);
         }
     }
 }

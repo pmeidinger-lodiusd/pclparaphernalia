@@ -43,7 +43,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkOldVersion(int major,
+        public static bool CheckOldVersion(int major,
                                                int minor,
                                                int build,
                                                int revision)
@@ -73,7 +73,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void getVersionData(bool crnt,
+        public static void GetVersionData(bool crnt,
                                            ref int major,
                                            ref int minor,
                                            ref int build,
@@ -104,7 +104,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setVersionData(bool crnt,
+        public static void SetVersionData(bool crnt,
                                            int major,
                                            int minor,
                                            int build,

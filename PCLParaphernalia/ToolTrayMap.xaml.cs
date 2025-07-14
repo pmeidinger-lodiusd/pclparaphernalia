@@ -179,7 +179,7 @@ namespace PCLParaphernalia
             {
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen(
+                TargetCore.RequestStreamOpen(
                     ref binWriter,
                     ToolCommonData.eToolIds.TrayMap,
                     ToolCommonData.eToolSubIds.None,
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
                             _subsetOrientations[_indxOrientRearPCL[i]];
                     }
 
-                    ToolTrayMapPCL.generateJob(
+                    ToolTrayMapPCL.GenerateJob(
                         binWriter,
                         _sheetCtPCL,
                         indxPaperSize,
@@ -244,7 +244,7 @@ namespace PCLParaphernalia
                             _subsetOrientations[_indxOrientRearPCLXL[i]];
                     }
 
-                    ToolTrayMapPCLXL.generateJob(
+                    ToolTrayMapPCLXL.GenerateJob(
                         binWriter,
                         _sheetCtPCLXL,
                         indxPaperSize,
@@ -256,7 +256,7 @@ namespace PCLParaphernalia
                         _formAsMacroPCLXL);
                 }
 
-                TargetCore.requestStreamWrite(false);
+                TargetCore.RequestStreamWrite(false);
             }
 
             catch (SocketException sockExc)
@@ -697,7 +697,7 @@ namespace PCLParaphernalia
                 int arrayIndex = sheetIndx - 1;
 
                 bool simplex =
-                    PCLPlexModes.isSimplex(_subsetPlexModes[srcIndex]);
+                    PCLPlexModes.IsSimplex(_subsetPlexModes[srcIndex]);
 
                 if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     _indxPlexModePCL[arrayIndex] = srcIndex;
@@ -865,7 +865,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                string name = PCLPaperSizes.getName(index);
+                string name = PCLPaperSizes.GetName(index);
 
                 cb01_PaperSize.Items.Add(name);
                 cb02_PaperSize.Items.Add(name);
@@ -890,7 +890,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                string name = PCLPaperTypes.getName(index);
+                string name = PCLPaperTypes.GetName(index);
 
                 cb01_PaperType.Items.Add(name);
                 cb02_PaperType.Items.Add(name);
@@ -952,7 +952,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPlexModes[i];
 
-                string name = PCLPlexModes.getName(index);
+                string name = PCLPlexModes.GetName(index);
 
                 cb01_PlexMode.Items.Add(name);
                 cb02_PlexMode.Items.Add(name);
@@ -984,7 +984,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                string name = PCLOrientations.getName(index);
+                string name = PCLOrientations.GetName(index);
 
                 cb01_OrientFront.Items.Add(name);
                 cb02_OrientFront.Items.Add(name);
@@ -1085,12 +1085,12 @@ namespace PCLParaphernalia
 
         private void metricsLoad()
         {
-            ToolTrayMapPersist.loadDataCommon(ref _indxPDL);
+            ToolTrayMapPersist.LoadDataCommon(ref _indxPDL);
 
-            ToolTrayMapPersist.loadDataPCLOpt(ref _formAsMacroPCL,
+            ToolTrayMapPersist.LoadDataPCLOpt(ref _formAsMacroPCL,
                                                ref _sheetCtPCL);
 
-            ToolTrayMapPersist.loadDataPCLXLOpt(ref _formAsMacroPCLXL,
+            ToolTrayMapPersist.LoadDataPCLXLOpt(ref _formAsMacroPCLXL,
                                                  ref _sheetCtPCLXL);
 
             //----------------------------------------------------------------//
@@ -1104,7 +1104,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.loadDataSheetOpt(
+                ToolTrayMapPersist.LoadDataSheetOpt(
                     "PCL",
                     i + 1,
                     ref _indxPaperSizePCL[i],
@@ -1142,7 +1142,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.loadDataSheetOpt(
+                ToolTrayMapPersist.LoadDataSheetOpt(
                     "PCLXL",
                     i + 1,
                     ref _indxPaperSizePCLXL[i],
@@ -1193,17 +1193,17 @@ namespace PCLParaphernalia
 
             //  trayIdSetStore();
 
-            ToolTrayMapPersist.saveDataCommon(_indxPDL);
+            ToolTrayMapPersist.SaveDataCommon(_indxPDL);
 
-            ToolTrayMapPersist.saveDataPCLOpt(_formAsMacroPCL,
+            ToolTrayMapPersist.SaveDataPCLOpt(_formAsMacroPCL,
                                                _sheetCtPCL);
 
-            ToolTrayMapPersist.saveDataPCLXLOpt(_formAsMacroPCLXL,
+            ToolTrayMapPersist.SaveDataPCLXLOpt(_formAsMacroPCLXL,
                                                  _sheetCtPCLXL);
 
             for (int i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.saveDataSheetOpt(
+                ToolTrayMapPersist.SaveDataSheetOpt(
                     "PCL",
                     i + 1,
                     _indxPaperSizePCL[i],
@@ -1216,7 +1216,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _maxSheetNo; i++)
             {
-                ToolTrayMapPersist.saveDataSheetOpt(
+                ToolTrayMapPersist.SaveDataSheetOpt(
                     "PCLXL",
                     i + 1,
                     _indxPaperSizePCLXL[i],
@@ -1307,7 +1307,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -1321,7 +1321,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +

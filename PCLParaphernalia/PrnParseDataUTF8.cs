@@ -252,7 +252,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result checkUTF8Seq(byte[] seq,
+        public static eUTF8Result CheckUTF8Seq(byte[] seq,
                                                 int seqLen,
                                                 ref int codepointUCS)
         {
@@ -463,7 +463,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result convertUTF32ToUTF8Bytes(
+        public static eUTF8Result ConvertUTF32ToUTF8Bytes(
             uint utf32Value,
             ref int utf8SeqLen,
             ref byte[] utf8Seq)
@@ -565,7 +565,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eUTF8Result convertUTF32ToUTF8HexString(
+        public static eUTF8Result ConvertUTF32ToUTF8HexString(
             uint utf32Value,
             bool flag_0x_Prefix,
             ref string utf8Hex)
@@ -686,7 +686,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void convertUTF8ToUTF32(
+        public static void ConvertUTF8ToUTF32(
             byte[] utf8Seq,
             int utf8SeqLen,
             ref uint utf32Value)

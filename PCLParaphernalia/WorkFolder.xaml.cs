@@ -38,7 +38,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -71,7 +71,7 @@ namespace PCLParaphernalia
 
             string filename = _workFoldername;
 
-            selected = selectDefWorkFolder(ref filename);
+            selected = SelectDefWorkFolder(ref filename);
 
             if (selected)
             {
@@ -91,7 +91,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -105,7 +105,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             _workFoldername = _tmpFolder;
 
@@ -148,9 +148,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
-            TargetPersist.saveDataWorkFolder(_workFoldername);
+            TargetPersist.SaveDataWorkFolder(_workFoldername);
         }
 
         //--------------------------------------------------------------------//
@@ -164,7 +164,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectDefWorkFolder(ref string targetFolder)
+        private bool SelectDefWorkFolder(ref string targetFolder)
         {
             bool selected = false;
 

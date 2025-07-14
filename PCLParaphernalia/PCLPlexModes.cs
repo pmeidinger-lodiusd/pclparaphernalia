@@ -71,7 +71,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _plexModeCount;
         }
@@ -85,9 +85,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCL(int index)
+        public static byte GetIdPCL(int index)
         {
-            return _plexModes[index].getIdPCL();
+            return _plexModes[index].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -99,9 +99,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static byte getIdPCLXL(int index, bool flagLandscape)
+        public static byte GetIdPCLXL(int index, bool flagLandscape)
         {
-            return _plexModes[index].getIdPCLXL(flagLandscape);
+            return _plexModes[index].GetIdPCLXL(flagLandscape);
         }
 
         //--------------------------------------------------------------------//
@@ -113,9 +113,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int index)
+        public static string GetName(int index)
         {
-            return _plexModes[index].getName();
+            return _plexModes[index].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -127,9 +127,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ePlexType getPlexType(int index)
+        public static ePlexType GetPlexType(int index)
         {
-            return _plexModes[index].getPlexType();
+            return _plexModes[index].GetPlexType();
         }
 
         //--------------------------------------------------------------------//
@@ -141,9 +141,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool isSimplex(int index)
+        public static bool IsSimplex(int index)
         {
-            return (_plexModes[index].getPlexType() == ePlexType.Simplex);
+            return _plexModes[index].GetPlexType() == ePlexType.Simplex;
         }
     }
 }

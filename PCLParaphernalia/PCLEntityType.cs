@@ -44,7 +44,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getIdPCL()
+        public string GetIdPCL()
         {
             return _entityIdPCL;
         }
@@ -58,7 +58,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _entityName;
         }
@@ -72,7 +72,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLEntityTypes.eType getType()
+        public PCLEntityTypes.eType GetType()
         {
             return _entityType;
         }

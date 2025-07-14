@@ -160,7 +160,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {
@@ -169,24 +169,24 @@ namespace PCLParaphernalia
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpFileHeader();
+                result = ToolImageBitmapCore.ReadBmpFileHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpInfoHeader();
+                result = ToolImageBitmapCore.ReadBmpInfoHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpPalette();
+                result = ToolImageBitmapCore.ReadBmpPalette();
             }
 
             if (result == 0)
             {
                 BinaryWriter binWriter = null;
 
-                TargetCore.requestStreamOpen(
+                TargetCore.RequestStreamOpen(
                     ref binWriter,
                     ToolCommonData.eToolIds.ImageBitmap,
                     ToolCommonData.eToolSubIds.None,
@@ -202,7 +202,7 @@ namespace PCLParaphernalia
 
                     if (_crntPDL == ToolCommonData.ePrintLang.PCL)
                     {
-                        ToolImageBitmapPCL.generateJob(
+                        ToolImageBitmapPCL.GenerateJob(
                             binWriter,
                             _subsetPaperSizes[_indxPaperSizePCL],
                             _subsetPaperTypes[_indxPaperTypePCL],
@@ -229,13 +229,13 @@ namespace PCLParaphernalia
 
                 if (result == 0)
                 {
-                    TargetCore.requestStreamWrite(false);
+                    TargetCore.RequestStreamWrite(false);
                 }
             }
 
             if (bitmapOpen)
             {
-                ToolImageBitmapCore.bitmapClose();
+                ToolImageBitmapCore.BitmapClose();
             }
         }
 
@@ -266,7 +266,7 @@ namespace PCLParaphernalia
 
             bool bitmapOpen = false;
 
-            bitmapOpen = ToolImageBitmapCore.bitmapOpen(_bitmapFilename);
+            bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
             if (!bitmapOpen)
             {
@@ -275,20 +275,20 @@ namespace PCLParaphernalia
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpFileHeader();
+                result = ToolImageBitmapCore.ReadBmpFileHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpInfoHeader();
+                result = ToolImageBitmapCore.ReadBmpInfoHeader();
             }
 
             if (result == 0)
             {
-                result = ToolImageBitmapCore.readBmpPalette();
+                result = ToolImageBitmapCore.ReadBmpPalette();
             }
 
-            ToolImageBitmapCore.getBmpInfo(ref srcWidth,
+            ToolImageBitmapCore.GetBmpInfo(ref srcWidth,
                                            ref srcHeight,
                                            ref srcBitsPerPixel,
                                            ref srcCompression,
@@ -311,7 +311,7 @@ namespace PCLParaphernalia
 
             if (bitmapOpen)
             {
-                ToolImageBitmapCore.bitmapClose();
+                ToolImageBitmapCore.BitmapClose();
             }
         }
 
@@ -488,7 +488,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetOrientations[i];
 
-                cbOrientation.Items.Add(PCLOrientations.getName(index));
+                cbOrientation.Items.Add(PCLOrientations.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -501,7 +501,7 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperSizes[i];
 
-                cbPaperSize.Items.Add(PCLPaperSizes.getName(index));
+                cbPaperSize.Items.Add(PCLPaperSizes.GetName(index));
             }
 
             //----------------------------------------------------------------//
@@ -514,19 +514,19 @@ namespace PCLParaphernalia
             {
                 index = _subsetPaperTypes[i];
 
-                cbPaperType.Items.Add(PCLPaperTypes.getName(index));
+                cbPaperType.Items.Add(PCLPaperTypes.GetName(index));
             }
 
             //----------------------------------------------------------------//
 
             cbResolution.Items.Clear();
 
-            _ctRasterResolutions = PCLRasterResolutions.getCount();
+            _ctRasterResolutions = PCLRasterResolutions.GetCount();
 
             for (int i = 0; i < _ctRasterResolutions; i++)
             {
                 cbResolution.Items.Add(
-                    PCLRasterResolutions.getValue(i).ToString());
+                    PCLRasterResolutions.GetValue(i).ToString());
             }
 
             //----------------------------------------------------------------//
@@ -574,7 +574,7 @@ namespace PCLParaphernalia
 
             int tempRasterRes = 0;
 
-            ToolImageBitmapPersist.loadDataCommon(ref _indxPDL,
+            ToolImageBitmapPersist.LoadDataCommon(ref _indxPDL,
                                                   ref _bitmapFilename,
                                                   ref tempPosX,
                                                   ref tempPosY,
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
             else
                 _indxRasterResolutionPCL = tempRasterRes;
 
-            ToolImageBitmapPersist.loadDataPCL("PCL",
+            ToolImageBitmapPersist.LoadDataPCL("PCL",
                                                ref _indxOrientationPCL,
                                                ref _indxPaperSizePCL,
                                                ref _indxPaperTypePCL);
@@ -613,7 +613,7 @@ namespace PCLParaphernalia
                 (_indxPaperTypePCL >= _ctPaperTypes))
                 _indxPaperTypePCL = 0;
 
-            ToolImageBitmapPersist.loadDataPCL("PCLXL",
+            ToolImageBitmapPersist.LoadDataPCL("PCLXL",
                                                ref _indxOrientationPCLXL,
                                                ref _indxPaperSizePCLXL,
                                                ref _indxPaperTypePCLXL);
@@ -642,7 +642,7 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolImageBitmapPersist.saveDataCommon(_indxPDL,
+            ToolImageBitmapPersist.SaveDataCommon(_indxPDL,
                                                   _bitmapFilename,
                                                   (int)(_destPosX * 100),
                                                   (int)(_destPosY * 100),
@@ -650,12 +650,12 @@ namespace PCLParaphernalia
                                                   _destScalePercentY,
                                                   _indxRasterResolutionPCL);
 
-            ToolImageBitmapPersist.saveDataPCL("PCL",
+            ToolImageBitmapPersist.SaveDataPCL("PCL",
                                                _indxOrientationPCL,
                                                _indxPaperSizePCL,
                                                _indxPaperTypePCL);
 
-            ToolImageBitmapPersist.saveDataPCL("PCLXL",
+            ToolImageBitmapPersist.SaveDataPCL("PCLXL",
                                                _indxOrientationPCLXL,
                                                _indxPaperSizePCLXL,
                                                _indxPaperTypePCLXL);
@@ -742,7 +742,7 @@ namespace PCLParaphernalia
                 int netTimeoutSend = 0;
                 int netTimeoutReceive = 0;
 
-                TargetCore.metricsLoadNetPrinter(ref netPrnAddress,
+                TargetCore.MetricsLoadNetPrinter(ref netPrnAddress,
                                                   ref netPrnPort,
                                                   ref netTimeoutSend,
                                                   ref netTimeoutReceive);
@@ -756,7 +756,7 @@ namespace PCLParaphernalia
             {
                 string winPrintername = string.Empty;
 
-                TargetCore.metricsLoadWinPrinter(ref winPrintername);
+                TargetCore.MetricsLoadWinPrinter(ref winPrintername);
 
                 btnGenerate.Content = "Generate & send test data to printer " +
                                       "\r\n" +
@@ -775,7 +775,7 @@ namespace PCLParaphernalia
 
         private bool selectImageFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "Bitmap Files|*.bmp; *.BMP";
 

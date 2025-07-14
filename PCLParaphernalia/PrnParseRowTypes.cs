@@ -116,7 +116,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _rowTypeCount;
         }
@@ -130,9 +130,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(int selection)
+        public static string GetDesc(int selection)
         {
-            return _rowTypes[selection].getDesc();
+            return _rowTypes[selection].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -144,9 +144,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(int selection)
+        public static eType GetType(int selection)
         {
-            return _rowTypes[selection].getType();
+            return _rowTypes[selection].GetType();
         }
 
         //--------------------------------------------------------------------//
@@ -165,7 +165,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDefaultClrs(
+        public static void SetDefaultClrs(
             ref int[] indxClrMapBack,
             ref int[] indxClrMapFore)
         {

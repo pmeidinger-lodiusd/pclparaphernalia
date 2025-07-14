@@ -72,10 +72,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+        public string Description => _description;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -83,10 +80,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagBinaryData
-        {
-            get { return _flagBinaryData; }
-        }
+        public bool FlagBinaryData => _flagBinaryData;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -94,10 +88,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagFlipTransp
-        {
-            get { return _flagFlipTransp; }
-        }
+        public bool FlagFlipTransp => _flagFlipTransp;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -105,10 +96,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagQuotedData
-        {
-            get { return _flagQuotedData; }
-        }
+        public bool FlagQuotedData => _flagQuotedData;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -116,10 +104,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagResetHPGL2
-        {
-            get { return _flagResetHPGL2; }
-        }
+        public bool FlagResetHPGL2 => _flagResetHPGL2;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -127,10 +112,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagSetLblTerm
-        {
-            get { return _flagSetLblTerm; }
-        }
+        public bool FlagSetLblTerm => _flagSetLblTerm;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -138,10 +120,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagSymbolMode
-        {
-            get { return _flagSymbolMode; }
-        }
+        public bool FlagSymbolMode => _flagSymbolMode;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -149,10 +128,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagUseLblTerm
-        {
-            get { return _flagUseLblTerm; }
-        }
+        public bool FlagUseLblTerm => _flagUseLblTerm;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -160,10 +136,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool FlagUseStdTerm
-        {
-            get { return _flagUseStdTerm; }
-        }
+        public bool FlagUseStdTerm => _flagUseStdTerm;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -174,7 +147,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;
@@ -188,10 +161,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string Mnemonic
-        {
-            get { return _mnemonic; }
-        }
+        public string Mnemonic => _mnemonic;
 
         //--------------------------------------------------------------------//
         //                                                        M e t h o d //
@@ -202,7 +172,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;
@@ -214,10 +184,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+        public int StatsCtChild => _statsCtChild;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -225,10 +192,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+        public int StatsCtParent => _statsCtParent;
 
         //--------------------------------------------------------------------//
         //                                                    P r o p e r t y //
@@ -236,9 +200,6 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return (_statsCtParent + _statsCtChild); }
-        }
+        public int StatsCtTotal => _statsCtParent + _statsCtChild;
     }
 }

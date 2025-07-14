@@ -85,7 +85,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getDetails(
+        public void GetDetails(
             ref bool flagReserved,
             ref bool flagAttrEnum,
             ref bool flagOperEnum,
@@ -189,7 +189,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetStatistics()
+        public void ResetStatistics()
         {
             _statsCtParent = 0;
             _statsCtChild = 0;

@@ -54,7 +54,7 @@ namespace PCLParaphernalia
 
         private void btnLogPageReset_Click(object sender, EventArgs e)
         {
-            setPaperMetricsLogPage();
+            SetPaperMetricsLogPage();
         }
 
         //--------------------------------------------------------------------//
@@ -96,7 +96,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseDataLogPage()
+        private void InitialiseDataLogPage()
         {
             lbOrientation.Visibility = Visibility.Visible;
             cbOrientation.Visibility = Visibility.Visible;
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
                     " mean that marks can be made within the unprintable" +
                     " regions of the physical page).";
 
-                setPaperMetricsLogPage();
+                SetPaperMetricsLogPage();
 
                 grpLogPagePhysical.Visibility = Visibility.Visible;
                 grpLogPageLogical.Visibility = Visibility.Visible;
@@ -148,9 +148,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsLoadDataLogPage()
+        public void MetricsLoadDataLogPage()
         {
-            ToolMiscSamplesPersist.loadDataTypeLogPage(
+            ToolMiscSamplesPersist.LoadDataTypeLogPage(
                 "PCL",
                 ref _logPageOffLeftDPt,
                 ref _logPageOffTopDPt,
@@ -170,9 +170,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSaveDataLogPage()
+        public void MetricsSaveDataLogPage()
         {
-            ToolMiscSamplesPersist.saveDataTypeLogPage("PCL",
+            ToolMiscSamplesPersist.SaveDataTypeLogPage("PCL",
                                              _logPageOffLeftDPt,
                                              _logPageOffTopDPt,
                                              _logPageHeightDPt,
@@ -190,7 +190,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setFlagLogPageFormAsMacro(
+        private void SetFlagLogPageFormAsMacro(
             bool setFlag,
             ToolCommonData.ePrintLang crntPDL)
         {
@@ -209,7 +209,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void setPaperMetricsLogPage()
+        private void SetPaperMetricsLogPage()
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -302,7 +302,7 @@ namespace PCLParaphernalia
         private void txtLogPageOffLeftDPt_LostFocus(object sender,
                                              RoutedEventArgs e)
         {
-            if (validateLogPageOffLeftDPt(true))
+            if (ValidateLogPageOffLeftDPt(true))
             {
                 txtLogPageOffLeftMet.Text =
                     (_logPageOffLeftDPt * _dPtsToMilliMetres).ToString("F1");
@@ -329,7 +329,7 @@ namespace PCLParaphernalia
         private void txtLogPageOffLeftDPt_TextChanged(object sender,
                                                TextChangedEventArgs e)
         {
-            if (validateLogPageOffLeftDPt(false))
+            if (ValidateLogPageOffLeftDPt(false))
             {
                 txtLogPageOffLeftMet.Text =
                     (_logPageOffLeftDPt * _dPtsToMilliMetres).ToString("F1");
@@ -356,7 +356,7 @@ namespace PCLParaphernalia
         private void txtLogPageOffTopDPt_LostFocus(object sender,
                                              RoutedEventArgs e)
         {
-            if (validateLogPageOffTopDPt(true))
+            if (ValidateLogPageOffTopDPt(true))
             {
                 txtLogPageOffTopMet.Text =
                     (_logPageOffTopDPt * _dPtsToMilliMetres).ToString("F1");
@@ -383,7 +383,7 @@ namespace PCLParaphernalia
         private void txtLogPageOffTopDPt_TextChanged(object sender,
                                                TextChangedEventArgs e)
         {
-            if (validateLogPageOffTopDPt(false))
+            if (ValidateLogPageOffTopDPt(false))
             {
                 txtLogPageOffTopMet.Text =
                     (_logPageOffTopDPt * _dPtsToMilliMetres).ToString("F1");
@@ -410,7 +410,7 @@ namespace PCLParaphernalia
         private void txtLogPageHeightDPt_LostFocus(object sender,
                                              RoutedEventArgs e)
         {
-            if (validateLogPageHeightDPt(true))
+            if (ValidateLogPageHeightDPt(true))
             {
                 txtLogPageHeightMet.Text =
                     (_logPageHeightDPt * _dPtsToMilliMetres).ToString("F1");
@@ -437,7 +437,7 @@ namespace PCLParaphernalia
         private void txtLogPageHeightDPt_TextChanged(object sender,
                                                TextChangedEventArgs e)
         {
-            if (validateLogPageHeightDPt(false))
+            if (ValidateLogPageHeightDPt(false))
             {
                 txtLogPageHeightMet.Text =
                     (_logPageHeightDPt * _dPtsToMilliMetres).ToString("F1");
@@ -464,7 +464,7 @@ namespace PCLParaphernalia
         private void txtLogPageWidthDPt_LostFocus(object sender,
                                              RoutedEventArgs e)
         {
-            if (validateLogPageWidthDPt(true))
+            if (ValidateLogPageWidthDPt(true))
             {
                 txtLogPageWidthMet.Text =
                     (_logPageWidthDPt * _dPtsToMilliMetres).ToString("F1");
@@ -491,7 +491,7 @@ namespace PCLParaphernalia
         private void txtLogPageWidthDPt_TextChanged(object sender,
                                                TextChangedEventArgs e)
         {
-            if (validateLogPageWidthDPt(false))
+            if (ValidateLogPageWidthDPt(false))
             {
                 txtLogPageWidthMet.Text =
                     (_logPageWidthDPt * _dPtsToMilliMetres).ToString("F1");
@@ -515,7 +515,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateLogPageOffLeftDPt(bool lostFocusEvent)
+        private bool ValidateLogPageOffLeftDPt(bool lostFocusEvent)
         {
             const int minVal = -32767;
             const int maxVal = 32767;
@@ -588,7 +588,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateLogPageOffTopDPt(bool lostFocusEvent)
+        private bool ValidateLogPageOffTopDPt(bool lostFocusEvent)
         {
             const int minVal = -32767;
             const int maxVal = 32767;
@@ -661,7 +661,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateLogPageHeightDPt(bool lostFocusEvent)
+        private bool ValidateLogPageHeightDPt(bool lostFocusEvent)
         {
             const int minVal = 1;
             const int maxVal = 65535;
@@ -734,7 +734,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateLogPageWidthDPt(bool lostFocusEvent)
+        private bool ValidateLogPageWidthDPt(bool lostFocusEvent)
         {
             const int minVal = 1;
             const int maxVal = 65535;

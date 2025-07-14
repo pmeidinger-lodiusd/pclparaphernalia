@@ -73,7 +73,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getData(
+        public void GetData(
             ref bool flagUbyteAsAscii,
             ref bool flagUint16AsUnicode,
             ref bool flagArrayType,
@@ -97,7 +97,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setData(
+        public void SetData(
             bool flagUbyteAsAscii,
             bool flagUint16AsUnicode,
             bool flagArrayType,

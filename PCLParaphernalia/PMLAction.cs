@@ -60,7 +60,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDesc()
+        public string GetDesc()
         {
             return _description;
         }
@@ -74,7 +74,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getTag()
+        public byte GetTag()
         {
             return _tag;
         }
@@ -88,7 +88,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void incrementStatisticsCount(int level)
+        public void IncrementStatisticsCount(int level)
         {
             if (level == 0)
                 _statsCtParent++;

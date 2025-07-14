@@ -57,7 +57,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxTargetType)
+        public static void LoadDataCommon(ref int indxTargetType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataNetPrinter(ref string ipAddress,
+        public static void LoadDataNetPrinter(ref string ipAddress,
                                                ref int port,
                                                ref int timeoutSend,
                                                ref int timeoutReceive)
@@ -95,9 +95,9 @@ namespace PCLParaphernalia
 
             using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTarget))
             {
-                if (Helper_RegKey.keyExists(subKey, _subKeyTargetPrinter))
+                if (Helper_RegKey.KeyExists(subKey, _subKeyTargetPrinter))
                     // update from v2_5_0_0
-                    Helper_RegKey.renameKey(subKey,
+                    Helper_RegKey.RenameKey(subKey,
                                            _subKeyTargetPrinter,
                                            _subKeyTargetNetPrinter);
             }
@@ -130,7 +130,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataWinPrinter(ref string printerName)
+        public static void LoadDataWinPrinter(ref string printerName)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -155,7 +155,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataWorkFolder(ref string foldername)
+        public static void LoadDataWorkFolder(ref string foldername)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -180,7 +180,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxTargetType)
+        public static void SaveDataCommon(int indxTargetType)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -204,7 +204,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataNetPrinter(int indxTargetType,
+        public static void SaveDataNetPrinter(int indxTargetType,
                                                string ipAddress,
                                                int port,
                                                int timeoutSend,
@@ -253,7 +253,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataWinPrinter(int indxTargetType,
+        public static void SaveDataWinPrinter(int indxTargetType,
                                                string printerName)
         {
             RegistryKey keyMain =
@@ -287,7 +287,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataWorkFolder(string saveFoldername)
+        public static void SaveDataWorkFolder(string saveFoldername)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);

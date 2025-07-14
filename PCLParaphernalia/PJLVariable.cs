@@ -41,7 +41,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _varName;
         }
@@ -55,7 +55,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLVariables.eVarType getType()
+        public PJLVariables.eVarType GetType()
         {
             return _varType;
         }

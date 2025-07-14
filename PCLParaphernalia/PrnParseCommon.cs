@@ -47,7 +47,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void addDataRow(
+        public static void AddDataRow(
             PrnParseRowTypes.eType rowType,
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
@@ -152,7 +152,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void addTextRow(
+        public static void AddTextRow(
             PrnParseRowTypes.eType rowType,
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
@@ -219,7 +219,7 @@ namespace PCLParaphernalia
         // b y t e A r r a y T o H e x S t r i n g                            //
         //--------------------------------------------------------------------//
 
-        public static string byteArrayToHexString(byte[] byteArray,
+        public static string ByteArrayToHexString(byte[] byteArray,
                                                   int startByte,
                                                   int byteCt)
         {
@@ -247,7 +247,7 @@ namespace PCLParaphernalia
         // b y t e A r r a y P a i r T o H e x S t r i n g                    //
         //--------------------------------------------------------------------//
 
-        public static bool byteArrayPairToHexString(byte[] byteArray,
+        public static bool ByteArrayPairToHexString(byte[] byteArray,
                                                         int startByte,
                                                         int byteCt,
                                                         ref string hexData)
@@ -296,7 +296,7 @@ namespace PCLParaphernalia
         // b y t e T o H e x S t r i n g                                      //
         //--------------------------------------------------------------------//
 
-        public static string byteToHexString(byte byteVal)
+        public static string ByteToHexString(byte byteVal)
         {
             char[] chars = new char[2];
 
@@ -313,7 +313,7 @@ namespace PCLParaphernalia
         // b y t e T o S t r i n g                                            //
         //--------------------------------------------------------------------//
 
-        public static string byteToString(byte byteVal)
+        public static string ByteToString(byte byteVal)
         {
             return ((char)byteVal).ToString();
         }
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void initialiseRunType(PrnParse.eParseType parseType)
+        public static void InitialiseRunType(PrnParse.eParseType parseType)
         {
             _parseType = parseType;
         }
@@ -337,7 +337,7 @@ namespace PCLParaphernalia
         // i s A l p h a b e t i c                                            //
         //--------------------------------------------------------------------//
 
-        public static bool isAlphabetic(byte byteVal)
+        public static bool IsAlphabetic(byte byteVal)
         {
             if (((byteVal >= PrnParseConstants.asciiAlphaLCMin)
                                    &&
@@ -374,7 +374,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void setDisplayCriteria(bool showMacroData,
+        public static void SetDisplayCriteria(bool showMacroData,
                                               int macroLevel)
         {
             _showMacroData = showMacroData;

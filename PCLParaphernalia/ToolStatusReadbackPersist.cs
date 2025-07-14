@@ -69,7 +69,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void LoadDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             ref string captureFile)
         {
             RegistryKey keyMain =
@@ -154,7 +154,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataCommon(ref int indxPDL)
+        public static void LoadDataCommon(ref int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPCL(ref int indxEntityType,
+        public static void LoadDataPCL(ref int indxEntityType,
                                        ref int indxLocationType,
                                        ref string reportFile)
         {
@@ -256,7 +256,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPJL(ref int indxCategory,
+        public static void LoadDataPJL(ref int indxCategory,
                                        ref int indxCommand,
                                        ref int indxVariable,
                                        ref string customCat,
@@ -347,7 +347,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataPJLFS(ref int indxCommand,
+        public static void LoadDataPJLFS(ref int indxCommand,
                                           ref string objectPath,
                                           ref string binSrcFile,
                                           ref string binTgtFile,
@@ -401,7 +401,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void loadDataRpt(ref int indxRptFileFmt)
+        public static void LoadDataRpt(ref int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -424,7 +424,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCapture(ToolCommonData.ePrintLang crntPDL,
+        public static void SaveDataCapture(ToolCommonData.ePrintLang crntPDL,
                                             string captureFile)
         {
             RegistryKey keyMain =
@@ -471,7 +471,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataCommon(int indxPDL)
+        public static void SaveDataCommon(int indxPDL)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);
@@ -495,7 +495,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPCL(int indxEntityType,
+        public static void SaveDataPCL(int indxEntityType,
                                        int indxLocType,
                                        string reportFile)
         {
@@ -535,7 +535,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPJL(int indxCategory,
+        public static void SaveDataPJL(int indxCategory,
                                        int indxCommand,
                                        int indxVariable,
                                        string customCat,
@@ -596,7 +596,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataPJLFS(int indxCommand,
+        public static void SaveDataPJLFS(int indxCommand,
                                           string objectPath,
                                           string binSrcFile,
                                           string binTgtFile,
@@ -667,7 +667,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void saveDataRpt(int indxRptFileFmt)
+        public static void SaveDataRpt(int indxRptFileFmt)
         {
             RegistryKey keyMain =
                 Registry.CurrentUser.CreateSubKey(_mainKey);

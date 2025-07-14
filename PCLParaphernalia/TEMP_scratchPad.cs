@@ -12,7 +12,7 @@ namespace PCLParaphernalia
 
     static class TEMP_scratchPad
     {
-        private static void bits_01()
+        private static void Bits_01()
         {
             //----------------------------------------------------------------//
             // Unicode encoding                                               //
@@ -41,7 +41,7 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static void bits_02()
+        private static void Bits_02()
         {
             //----------------------------------------------------------------//
             // UTF8 encoding                                                  //
@@ -79,7 +79,7 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static void bits_03(int coordX,
+        private static void Bits_03(int coordX,
                                     int coordY,
                                     string text)
         {
@@ -140,7 +140,7 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static void bits_04()
+        private static void Bits_04()
         {
             //----------------------------------------------------------------//
             // Enumerate the current set of system fonts,
@@ -160,7 +160,7 @@ namespace PCLParaphernalia
 
         //--------------------------------------------------------------------//
 
-        private static void bits_05()
+        private static void Bits_05()
         {
             /*
             //----------------------------------------------------------------//

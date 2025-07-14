@@ -267,7 +267,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _varCount;
         }
@@ -281,9 +281,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
-            return _vars[selection].getName();
+            return _vars[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -295,9 +295,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eVarType getType(int selection)
+        public static eVarType GetType(int selection)
         {
-            return _vars[selection].getType();
+            return _vars[selection].GetType();
         }
     }
 }

@@ -49,7 +49,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public int getBitNo()
+        public int GetBitNo()
         {
             return _bitNo;
         }
@@ -63,7 +63,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLCharCollections.eBitType getBitType()
+        public PCLCharCollections.eBitType GetBitType()
         {
             return _bitType;
         }
@@ -77,7 +77,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescMSL()
+        public string GetDescMSL()
         {
             return _descMSL;
         }
@@ -92,7 +92,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescUnicode()
+        public string GetDescUnicode()
         {
             return _descUnicode;
         }

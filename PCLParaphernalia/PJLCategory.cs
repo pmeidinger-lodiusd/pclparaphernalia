@@ -41,7 +41,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _categoryName;
         }
@@ -55,7 +55,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PJLCategories.eCategoryType getType()
+        public PJLCategories.eCategoryType GetType()
         {
             return _categoryType;
         }

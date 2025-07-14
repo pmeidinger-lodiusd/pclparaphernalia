@@ -41,7 +41,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDesc()
+        public string GetDesc()
         {
             return _rowTypeDesc;
         }
@@ -55,7 +55,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseRowTypes.eType getType()
+        public PrnParseRowTypes.eType GetType()
         {
             return _rowType;
         }

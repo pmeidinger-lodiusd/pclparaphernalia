@@ -69,7 +69,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescLong()
+        public string GetDescLong()
         {
             string prefix;
 
@@ -96,7 +96,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getDescShort()
+        public string GetDescShort()
         {
             string prefix;
 
@@ -120,7 +120,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public short getROPId()
+        public short GetROPId()
         {
             return _opId;
         }

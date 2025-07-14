@@ -76,7 +76,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = _crntPDL;
         }
@@ -99,7 +99,7 @@ namespace PCLParaphernalia
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                parseFile.makeOverlayPCL(_prnFilename,
+                parseFile.MakeOverlayPCL(_prnFilename,
                                            ref _ovlFilenamePCL,
                                            _options,
                                            _tableProgress,
@@ -111,7 +111,7 @@ namespace PCLParaphernalia
             }
             else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
             {
-                parseFile.makeOverlayPCLXL(_prnFilename,
+                parseFile.MakeOverlayPCLXL(_prnFilename,
                                            ref _ovlFilenamePCLXL,
                                            _options,
                                            _tableProgress,
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
 
             string filename = _ovlFilenamePCL;
 
-            selected = selectOvlFilePCL(ref filename);
+            selected = SelectOvlFilePCL(ref filename);
 
             if (selected)
             {
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
 
             string filename = _ovlFilenamePCLXL;
 
-            selected = selectOvlFilePCLXL(ref filename);
+            selected = SelectOvlFilePCLXL(ref filename);
 
             if (selected)
             {
@@ -194,7 +194,7 @@ namespace PCLParaphernalia
 
             string filename = _prnFilename;
 
-            selected = selectPrnFile(ref filename);
+            selected = SelectPrnFile(ref filename);
 
             if (selected)
             {
@@ -232,7 +232,7 @@ namespace PCLParaphernalia
             else
                 flagOffsetHex = true;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.MakeOverlay,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.eToolIds.MakeOverlay,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
@@ -279,7 +279,7 @@ namespace PCLParaphernalia
 
             scanPDL = ToolCommonData.ePrintLang.Unknown;
 
-            parseFile.makeOverlayScan(_prnFilename,
+            parseFile.MakeOverlayScan(_prnFilename,
                                        _options,
                                        ref scanPDL);
 
@@ -491,7 +491,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
         {
             crntPDL = _crntPDL;
         }
@@ -505,7 +505,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -529,7 +529,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             txtPrnFilename.Text = _prnFilename;
 
@@ -571,21 +571,21 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            int ctRowTypes = PrnParseRowTypes.getCount();
+            int ctRowTypes = PrnParseRowTypes.GetCount();
 
             _indxClrMapBack = new int[ctRowTypes];
             _indxClrMapFore = new int[ctRowTypes];
 
-            _options.getOptClrMap(ref _flagClrMapUseClr,
+            _options.GetOptClrMap(ref _flagClrMapUseClr,
                                    ref _indxClrMapBack,
                                    ref _indxClrMapFore);
 
-            _options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
+            _options.GetOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                           ref _stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
 
-            initialiseGridProgress();
+            InitialiseGridProgress();
         }
 
         //--------------------------------------------------------------------//
@@ -597,7 +597,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseGridProgress()
+        private void InitialiseGridProgress()
         {
             _tableProgress = new DataTable("Progress");
 
@@ -626,16 +626,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
-            ToolMakeOverlayPersist.loadDataCommon(ref _prnFilename);
+            ToolMakeOverlayPersist.LoadDataCommon(ref _prnFilename);
 
-            ToolMakeOverlayPersist.loadDataPCL(ref _ovlFilenamePCL,
+            ToolMakeOverlayPersist.LoadDataPCL(ref _ovlFilenamePCL,
                                                  ref _flagRestoreCursorPCL,
                                                  ref _flagOvlEncPCL,
                                                  ref _macroIdPCL);
 
-            ToolMakeOverlayPersist.loadDataPCLXL(ref _ovlFilenamePCLXL,
+            ToolMakeOverlayPersist.LoadDataPCLXL(ref _ovlFilenamePCLXL,
                                                  ref _flagRestoreGSPCLXL,
                                                  ref _flagOvlEncPCLXL,
                                                  ref _streamNamePCLXL);
@@ -650,16 +650,16 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            ToolMakeOverlayPersist.saveDataCommon(_prnFilename);
+            ToolMakeOverlayPersist.SaveDataCommon(_prnFilename);
 
-            ToolMakeOverlayPersist.saveDataPCL(_ovlFilenamePCL,
+            ToolMakeOverlayPersist.SaveDataPCL(_ovlFilenamePCL,
                                                  _flagRestoreCursorPCL,
                                                  _flagOvlEncPCL,
                                                  _macroIdPCL);
 
-            ToolMakeOverlayPersist.saveDataPCLXL(_ovlFilenamePCLXL,
+            ToolMakeOverlayPersist.SaveDataPCLXL(_ovlFilenamePCLXL,
                                                  _flagRestoreGSPCLXL,
                                                  _flagOvlEncPCLXL,
                                                  _streamNamePCLXL);
@@ -744,7 +744,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
             // Dummy method
         }
@@ -758,9 +758,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectOvlFilePCL(ref string selectedName)
+        private bool SelectOvlFilePCL(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "Overlay Files|*.ovl; *.OVL" +
@@ -783,9 +783,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectOvlFilePCLXL(ref string selectedName)
+        private bool SelectOvlFilePCLXL(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.CheckFileExists = false;
             openDialog.Filter = "Overlay Files|*.ovx; *.OVX" +
@@ -808,9 +808,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool selectPrnFile(ref string selectedName)
+        private bool SelectPrnFile(ref string selectedName)
         {
-            OpenFileDialog openDialog = ToolCommonFunctions.createOpenFileDialog(selectedName);
+            OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 
             openDialog.Filter = "Print Files|*.prn; *.PRN" +
                                 "|All files|*.*";
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
         private void txtPCLMacroId_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
-            validatePCLMacroId(true, ref _macroIdPCL);
+            ValidatePCLMacroId(true, ref _macroIdPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -850,7 +850,7 @@ namespace PCLParaphernalia
         private void txtPCLMacroId_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
-            validatePCLMacroId(false, ref _macroIdPCL);
+            ValidatePCLMacroId(false, ref _macroIdPCL);
         }
 
         //--------------------------------------------------------------------//
@@ -943,7 +943,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validatePCLMacroId(bool lostFocusEvent,
+        private bool ValidatePCLMacroId(bool lostFocusEvent,
                                             ref int macroId)
         {
             const ushort minVal = 0;

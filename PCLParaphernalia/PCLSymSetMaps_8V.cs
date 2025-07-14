@@ -23,7 +23,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_8V()
+        private static void UnicodeMap_8V()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_8V;
 

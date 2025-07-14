@@ -51,7 +51,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCL()
+        public byte GetIdPCL()
         {
             return _plexModeIdPCL;
         }
@@ -66,7 +66,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public byte getIdPCLXL(bool landscape)
+        public byte GetIdPCLXL(bool landscape)
         {
             if (landscape)
                 return _plexModeIdPCLXLLand;
@@ -83,7 +83,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public string getName()
+        public string GetName()
         {
             return _plexModeName;
         }
@@ -97,7 +97,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PCLPlexModes.ePlexType getPlexType()
+        public PCLPlexModes.ePlexType GetPlexType()
         {
             return _plexType;
         }

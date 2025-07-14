@@ -168,7 +168,7 @@ namespace PCLParaphernalia
 
         static PCLXLAttrEnums()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -181,7 +181,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkValue(int level,
+        public static bool CheckValue(int level,
                                           byte crntOperTag,
                                           int attrTagLen,
                                           byte attrTagA,
@@ -222,10 +222,10 @@ namespace PCLParaphernalia
                 tag = _tagUnknown;
             }
 
-            tag.getDetails(ref flagValIsTxt,
+            tag.GetDetails(ref flagValIsTxt,
                             ref desc);
 
-            tag.incrementStatisticsCount(level);
+            tag.IncrementStatisticsCount(level);
 
             return seqKnown;
         }
@@ -239,7 +239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly,
                                                bool excUnusedResTags)
         {
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -370,7 +370,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayTags(DataGrid grid)
+        public static int DisplayTags(DataGrid grid)
         {
             int count = 0;
 
@@ -392,7 +392,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             const bool flagNone = false;
             const bool flagValIsTxt = true;
@@ -3147,7 +3147,7 @@ namespace PCLParaphernalia
                    attrTagA.ToString("X2") +
                    attrTagB.ToString("X2");
 
-            populateTableAddSymsets(operTag, attrTagA, attrTagB,
+            PopulateTableAddSymsets(operTag, attrTagA, attrTagB,
                                      attrLen, root);
 
             attrTagA = (byte)PCLXLAttributes.eTag.CharSubModeArray;  // 0xac // 
@@ -3670,7 +3670,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTableAddSymsets(byte operTag,
+        public static void PopulateTableAddSymsets(byte operTag,
                                                    byte attrTagA,
                                                    byte attrTagB,
                                                    int attrLen,
@@ -3680,7 +3680,7 @@ namespace PCLParaphernalia
 
             int ctSymsets;
 
-            ctSymsets = PCLSymbolSets.getCount();
+            ctSymsets = PCLSymbolSets.GetCount();
 
             if (ctSymsets > 0)
             {
@@ -3697,14 +3697,14 @@ namespace PCLParaphernalia
                 for (int i = 0; i < ctSymsets; i++)
                 {
                     presetType =
-                        PCLSymbolSets.getSymsetData(i,
+                        PCLSymbolSets.GetSymsetData(i,
                                                      ref kind1,
                                                      ref idNum,
                                                      ref name);
 
                     if (presetType)
                     {
-                        id = PCLSymbolSets.translateKind1ToId(kind1);
+                        id = PCLSymbolSets.TranslateKind1ToId(kind1);
 
                         enumVal = kind1;           // ---- 0xaa     n //
                         _tags.Add(root + ":" + enumVal.ToString("X8"),
@@ -3728,17 +3728,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLXLAttrEnum tag;
 
-            _tagUnknown.resetStatistics();
+            _tagUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, PCLXLAttrEnum> kvp in _tags)
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

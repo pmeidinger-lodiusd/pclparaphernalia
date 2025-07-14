@@ -122,7 +122,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _methodCount;
         }
@@ -137,9 +137,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(int index)
+        public static string GetDesc(int index)
         {
-            return _methods[index].getDesc();
+            return _methods[index].GetDesc();
         }
 
         //--------------------------------------------------------------------//
@@ -152,9 +152,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDescLong(int index)
+        public static string GetDescLong(int index)
         {
-            return _methods[index].getDescLong();
+            return _methods[index].GetDescLong();
         }
 
         //--------------------------------------------------------------------//
@@ -167,9 +167,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eIndex getMethodType(int index)
+        public static eIndex GetMethodType(int index)
         {
-            return _methods[index].getMethodType();
+            return _methods[index].GetMethodType();
         }
 
         //--------------------------------------------------------------------//
@@ -182,9 +182,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] getRangeDataDouble(int index)
+        public static ushort[] GetRangeDataDouble(int index)
         {
-            return _methods[index].getRangeDataDouble();
+            return _methods[index].GetRangeDataDouble();
         }
 
         //--------------------------------------------------------------------//
@@ -197,9 +197,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getRangeDataDoubleCt(int index)
+        public static int GetRangeDataDoubleCt(int index)
         {
-            return _methods[index].getRangeDataDoubleCt();
+            return _methods[index].GetRangeDataDoubleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -212,9 +212,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static ushort[] getRangeDataSingle(int index)
+        public static ushort[] GetRangeDataSingle(int index)
         {
-            return _methods[index].getRangeDataSingle();
+            return _methods[index].GetRangeDataSingle();
         }
 
         //--------------------------------------------------------------------//
@@ -227,9 +227,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getRangeDataSingleCt(int index)
+        public static int GetRangeDataSingleCt(int index)
         {
-            return _methods[index].getRangeDataSingleCt();
+            return _methods[index].GetRangeDataSingleCt();
         }
 
         //--------------------------------------------------------------------//
@@ -242,9 +242,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getValue(int index)
+        public static int GetValue(int index)
         {
-            return _methods[index].getValue();
+            return _methods[index].GetValue();
         }
     }
 }

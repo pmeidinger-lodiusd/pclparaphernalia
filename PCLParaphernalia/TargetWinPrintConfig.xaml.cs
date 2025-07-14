@@ -39,7 +39,7 @@ namespace PCLParaphernalia
 
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             _initialised = true;
         }
@@ -69,7 +69,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             int indxPrinter = 0;
             int ctPrinters = 0;
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            TargetCore.metricsLoadWinPrinter(ref _printerName);
+            TargetCore.MetricsLoadWinPrinter(ref _printerName);
 
             cbPrinters.Items.Clear();
 
@@ -184,9 +184,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
-            TargetCore.metricsSaveWinPrinter(_printerName);
+            TargetCore.MetricsSaveWinPrinter(_printerName);
         }
     }
 }

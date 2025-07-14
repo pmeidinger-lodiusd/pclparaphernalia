@@ -132,7 +132,7 @@ namespace PCLParaphernalia
         {
             InitializeComponent();
 
-            initialise();
+            Initialise();
 
             crntPDL = ToolCommonData.ePrintLang.Unknown;
         }
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+        public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
         {
             crntPDL = ToolCommonData.ePrintLang.Unknown;
         }
@@ -157,7 +157,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             _initialised = false;
 
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            resetTarget();
+            ResetTarget();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -177,7 +177,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            metricsLoad();
+            MetricsLoad();
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -190,9 +190,9 @@ namespace PCLParaphernalia
             if (_initialised)
                 txtDiags.Clear();
 
-            prtdata_01();
+            Prtdata_01();
 
-            prtdata_02();
+            Prtdata_02();
 
         }
         /*
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
         }
         */
 
-        public static void rawPrinterTest_01()
+        public static void RawPrinterTest_01()
         {
             // Specify that the list will contain only the print queues that are installed as local and are shared
             EnumeratedPrintQueueTypes[] enumerationFlags = { EnumeratedPrintQueueTypes.Local };
@@ -268,7 +268,7 @@ namespace PCLParaphernalia
         }
         */
 
-        private void prtdata_01()
+        private void Prtdata_01()
         {
             // Specify that the list will contain only the print queues that are installed as local and are shared
             EnumeratedPrintQueueTypes[] enumerationFlags = {EnumeratedPrintQueueTypes.Local,
@@ -289,7 +289,7 @@ namespace PCLParaphernalia
             txtDiags.Text += "\n\n\n";
         }
 
-        private void prtdata_02()
+        private void Prtdata_02()
         {
             // Enumerate the properties, and their types, of a queue without using Reflection
             LocalPrintServer localPrintServer = new LocalPrintServer();
@@ -325,7 +325,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsLoad()
+        private void MetricsLoad()
         {
         }
 
@@ -338,7 +338,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void metricsSave()
+        public void MetricsSave()
         {
         }
 
@@ -351,7 +351,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetTarget()
+        public void ResetTarget()
         {
         }
     }

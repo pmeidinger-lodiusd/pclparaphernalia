@@ -35,7 +35,7 @@ namespace PCLParaphernalia
 
         static PCLControlCodes()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkControlCode(
+        public static bool CheckControlCode(
             int macroLevel,
             byte tagVal,
             ref bool flagLineTerm,
@@ -78,9 +78,9 @@ namespace PCLParaphernalia
             mnemonic = tag.Mnemonic;
             description = tag.DescExcMnemonic;
 
-            makeOvlAct = tag.makeOvlAct;
+            makeOvlAct = tag.MakeOvlAct;
 
-            tag.incrementStatisticsCount(macroLevel);   // Statistical data
+            tag.IncrementStatisticsCount(macroLevel);   // Statistical data
 
             return tagKnown;
         }
@@ -94,7 +94,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displaySeqList(DataGrid grid)
+        public static int DisplaySeqList(DataGrid grid)
         {
             int count = 0;
 
@@ -116,7 +116,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -143,7 +143,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -215,7 +215,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getTagCount()
+        public static int GetTagCount()
         {
             return _tagsCount;
         }
@@ -229,7 +229,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void populateTable()
+        private static void PopulateTable()
         {
             byte codeVal;
 
@@ -324,7 +324,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PCLControlCode tag;
 
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
             {
                 tag = kvp.Value;
 
-                tag.resetStatistics();
+                tag.ResetStatistics();
             }
         }
     }

@@ -51,7 +51,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void fontFileClose()
+        private static void FontFileClose()
         {
             _binReader.Close();
             _ipStream.Close();
@@ -66,7 +66,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool fontFileCopy(BinaryWriter prnWriter,
+        public static bool FontFileCopy(BinaryWriter prnWriter,
                                            string fontFilename)
         {
             bool OK = true;
@@ -75,7 +75,7 @@ namespace PCLParaphernalia
 
             long fileSize = 0;
 
-            fileOpen = fontFileOpen(fontFilename, ref fileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
             if (!fileOpen)
             {
@@ -102,7 +102,7 @@ namespace PCLParaphernalia
                         prnWriter.Write(buf, 0, readSize);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -117,7 +117,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool fontFileOpen(string fileName,
+        private static bool FontFileOpen(string fileName,
                                             ref long fileSize)
         {
             bool open = false;
@@ -246,7 +246,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool getFontCharacteristics(
+        public static bool GetFontCharacteristics(
             string fontFilename,
             ref bool proportional,
             ref bool scalable,
@@ -277,7 +277,7 @@ namespace PCLParaphernalia
 
             //      _fontFileName = fontFilename;
 
-            fileOpen = fontFileOpen(fontFilename, ref fontFileSize);
+            fileOpen = FontFileOpen(fontFilename, ref fontFileSize);
 
             if (!fileOpen)
             {
@@ -285,14 +285,14 @@ namespace PCLParaphernalia
             }
             else
             {
-                OK = readHddrIntro(fontFilename,
+                OK = ReadHddrIntro(fontFilename,
                                     fontFileSize,
                                     ref fileOffset,
                                     ref hddrLen);
 
                 if (OK)
                 {
-                    OK = getFontSelectionData(fileOffset,
+                    OK = GetFontSelectionData(fileOffset,
                                                hddrLen,
                                                ref proportional,
                                                ref scalable,
@@ -306,7 +306,7 @@ namespace PCLParaphernalia
                                                ref symSetType);
                 }
 
-                fontFileClose();
+                FontFileClose();
             }
 
             return OK;
@@ -321,7 +321,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool getFontSelectionData(
+        private static bool GetFontSelectionData(
             int hddrOffset,
             int hddrLen,
             ref bool proportional,
@@ -483,9 +483,9 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            symSetType = PCLSymSetTypes.getIndexForIdPCL(hddr[3]);
+            symSetType = PCLSymSetTypes.GetIndexForIdPCL(hddr[3]);
 
-            bound = PCLSymSetTypes.isBound((int)symSetType);
+            bound = PCLSymSetTypes.IsBound((int)symSetType);
 
             //----------------------------------------------------------------//
 
@@ -557,7 +557,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool readHddrIntro(
+        private static bool ReadHddrIntro(
             string fileName,
             long fontFileSize,
             ref int fileOffset,

@@ -138,7 +138,7 @@ namespace PCLParaphernalia
 
             InitializeComponent();
 
-            initialise(options, fileSize);
+            Initialise(options, fileSize);
 
             _inhibitChecks = false;
         }
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PrnParseRowTypes.setDefaultClrs(ref _indxClrMapBack,
+            PrnParseRowTypes.SetDefaultClrs(ref _indxClrMapBack,
                                              ref _indxClrMapFore);
 
             //----------------------------------------------------------------//
@@ -332,7 +332,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            ToolPrnAnalysePersist.loadOptClrMapTheme(_crntClrMapTheme,
+            ToolPrnAnalysePersist.LoadOptClrMapTheme(_crntClrMapTheme,
                                                       ref _indxClrMapBack,
                                                       ref _indxClrMapFore);
 
@@ -408,7 +408,7 @@ namespace PCLParaphernalia
 
             string name = _clrMapThemeNames[_crntClrMapTheme];
 
-            ToolPrnAnalysePersist.saveOptClrMapTheme(
+            ToolPrnAnalysePersist.SaveOptClrMapTheme(
                 _crntClrMapTheme,
                 _indxClrMapBack,
                 _indxClrMapFore,
@@ -434,27 +434,27 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            _options.setOptCharSet(_indxCharSetName,
+            _options.SetOptCharSet(_indxCharSetName,
                                     _indxCharSetSubAct,
                                     _valCharSetSubCode);
 
-            _options.setOptClrMap(_flagClrMapUseClr,
+            _options.SetOptClrMap(_flagClrMapUseClr,
                                    _indxClrMapBack,
                                    _indxClrMapFore);
 
-            _options.setOptCurF(_indxCurFInitLang,
+            _options.SetOptCurF(_indxCurFInitLang,
                                  _indxCurFXLBinding,
                                  _indxCurFOffsetFormat,
                                  _valCurFOffsetStart,
                                  _valCurFOffsetEnd);
 
-            _options.setOptGeneral(_indxGenOffsetFormat,
+            _options.SetOptGeneral(_indxGenOffsetFormat,
                                     _flagGenMiscAutoAnalyse,
                                     _flagGenDiagFileAccess);
 
-            _options.setOptHPGL2(_flagHPGL2MiscBinData);
+            _options.SetOptHPGL2(_flagHPGL2MiscBinData);
 
-            _options.setOptPCL(_flagPCLFontHddr,
+            _options.SetOptPCL(_flagPCLFontHddr,
                                 _flagPCLFontChar,
                                 _flagPCLFontDraw,
                                 _valPCLFontDrawHeight,
@@ -476,7 +476,7 @@ namespace PCLParaphernalia
                                 _flagPCLTransUserPattern,
                                 _flagPCLTransViewIlluminant);
 
-            _options.setOptPCLXL(_flagPCLXLFontHddr,
+            _options.SetOptPCLXL(_flagPCLXLFontHddr,
                                   _flagPCLXLFontChar,
                                   _flagPCLXLFontDraw,
                                   _valPCLXLFontDrawHeight,
@@ -488,11 +488,11 @@ namespace PCLParaphernalia
                                   _flagPCLXLMiscBinData,
                                   _flagPCLXLMiscVerbose);
 
-            _options.setOptPML(_flagPMLWithinPCL,
+            _options.SetOptPML(_flagPMLWithinPCL,
                                 _flagPMLWithinPJL,
                                 _flagPMLMiscVerbose);
 
-            _options.setOptStats(_indxStatsLevel,
+            _options.SetOptStats(_indxStatsLevel,
                                   _flagStatsExcUnusedPCLObs,
                                   _flagStatsExcUnusedPCLXLRes);
 
@@ -654,7 +654,7 @@ namespace PCLParaphernalia
                 {
                     _crntClrMapTheme = tempInt;
 
-                    ToolPrnAnalysePersist.loadOptClrMapThemeName(
+                    ToolPrnAnalysePersist.LoadOptClrMapThemeName(
                         _crntClrMapTheme, ref name);
 
                     txtClrMapThemeName.Text = name;
@@ -1446,7 +1446,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise(PrnParseOptions options,
+        private void Initialise(PrnParseOptions options,
                                 long fileSize)
         {
             _initialised = false;
@@ -1488,16 +1488,16 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            prepareTabCharSet(options);
-            prepareTabGen(options);
-            prepareTabClrMap(options);
-            prepareTabHPGL2(options);
-            prepareTabPCL(options);
-            prepareTabPCLXL(options);
-            prepareTabPML(options);
-            prepareTabStats(options);
+            PrepareTabCharSet(options);
+            PrepareTabGen(options);
+            PrepareTabClrMap(options);
+            PrepareTabHPGL2(options);
+            PrepareTabPCL(options);
+            PrepareTabPCLXL(options);
+            PrepareTabPML(options);
+            PrepareTabStats(options);
 
-            prepareTabCurF(options, fileSize);
+            PrepareTabCurF(options, fileSize);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -1530,7 +1530,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialiseClrMapPickerGrid(object sender,
+        private void InitialiseClrMapPickerGrid(object sender,
                                                  RoutedEventArgs e)
         {
             const int reqCols = 10;
@@ -1605,7 +1605,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabCharSet(PrnParseOptions options)
+        private void PrepareTabCharSet(PrnParseOptions options)
         {
             char subChar;
 
@@ -1615,7 +1615,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCharSet(ref _indxCharSetName,
+            options.GetOptCharSet(ref _indxCharSetName,
                                    ref _indxCharSetSubAct,
                                    ref _valCharSetSubCode);
 
@@ -1678,7 +1678,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabClrMap(PrnParseOptions options)
+        private void PrepareTabClrMap(PrnParseOptions options)
         {
             const int indxRowTypeDefault = 0;
             const int indxThemeDefault = 0;
@@ -1697,11 +1697,11 @@ namespace PCLParaphernalia
 
             cbClrMapRowType.Items.Clear();
 
-            _ctClrMapRowTypes = PrnParseRowTypes.getCount();
+            _ctClrMapRowTypes = PrnParseRowTypes.GetCount();
 
             for (int i = 0; i < _ctClrMapRowTypes; i++)
             {
-                cbClrMapRowType.Items.Add(PrnParseRowTypes.getDesc(i));
+                cbClrMapRowType.Items.Add(PrnParseRowTypes.GetDesc(i));
             }
 
             cbClrMapRowType.SelectedIndex = indxRowTypeDefault;
@@ -1715,11 +1715,11 @@ namespace PCLParaphernalia
             _indxClrMapBack = new int[_ctClrMapRowTypes];
             _indxClrMapFore = new int[_ctClrMapRowTypes];
 
-            options.getOptClrMap(ref _flagClrMapUseClr,
+            options.GetOptClrMap(ref _flagClrMapUseClr,
                                   ref _indxClrMapBack,
                                   ref _indxClrMapFore);
 
-            options.getOptClrMapStdClrs(ref _ctClrMapStdClrs,
+            options.GetOptClrMapStdClrs(ref _ctClrMapStdClrs,
                                          ref _stdClrsPropertyInfo);
 
             //----------------------------------------------------------------//
@@ -1794,7 +1794,7 @@ namespace PCLParaphernalia
 
                 _txtClrMapSamples[i] = new TextBox();
                 _txtClrMapSamples[i].Margin = thk1;
-                _txtClrMapSamples[i].Text = PrnParseRowTypes.getDesc(i);
+                _txtClrMapSamples[i].Text = PrnParseRowTypes.GetDesc(i);
 
                 indxClrBack = _indxClrMapBack[i];
                 indxClrFore = _indxClrMapFore[i];
@@ -1836,7 +1836,7 @@ namespace PCLParaphernalia
             {
                 string name = string.Empty;
 
-                ToolPrnAnalysePersist.loadOptClrMapThemeName(i, ref name);
+                ToolPrnAnalysePersist.LoadOptClrMapThemeName(i, ref name);
 
                 _clrMapThemeNames[i] = name;
 
@@ -1896,7 +1896,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabCurF(PrnParseOptions options,
+        private void PrepareTabCurF(PrnParseOptions options,
                                      long fileSize)
         {
             //----------------------------------------------------------------//
@@ -1905,7 +1905,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptCurF(ref _indxCurFInitLang,
+            options.GetOptCurF(ref _indxCurFInitLang,
                                 ref _indxCurFXLBinding,
                                 ref _indxCurFOffsetFormat,
                                 ref _valCurFOffsetStart,
@@ -2002,7 +2002,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabGen(PrnParseOptions options)
+        private void PrepareTabGen(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2010,7 +2010,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptGeneral(ref _indxGenOffsetFormat,
+            options.GetOptGeneral(ref _indxGenOffsetFormat,
                                    ref _flagGenMiscAutoAnalyse,
                                    ref _flagGenDiagFileAccess);
 
@@ -2044,7 +2044,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabHPGL2(PrnParseOptions options)
+        private void PrepareTabHPGL2(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2052,7 +2052,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptHPGL2(ref _flagHPGL2MiscBinData);
+            options.GetOptHPGL2(ref _flagHPGL2MiscBinData);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -2072,7 +2072,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabPCL(PrnParseOptions options)
+        private void PrepareTabPCL(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2080,7 +2080,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPCL(ref _flagPCLFontHddr,
+            options.GetOptPCL(ref _flagPCLFontHddr,
                                ref _flagPCLFontChar,
                                ref _flagPCLFontDraw,
                                ref _valPCLFontDrawHeight,
@@ -2167,7 +2167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabPCLXL(PrnParseOptions options)
+        private void PrepareTabPCLXL(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2175,7 +2175,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPCLXL(ref _flagPCLXLFontHddr,
+            options.GetOptPCLXL(ref _flagPCLXLFontHddr,
                                  ref _flagPCLXLFontChar,
                                  ref _flagPCLXLFontDraw,
                                  ref _valPCLXLFontDrawHeight,
@@ -2239,7 +2239,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabPML(PrnParseOptions options)
+        private void PrepareTabPML(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2247,7 +2247,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptPML(ref _flagPMLWithinPCL,
+            options.GetOptPML(ref _flagPMLWithinPCL,
                                ref _flagPMLWithinPJL,
                                ref _flagPMLMiscVerbose);
 
@@ -2271,7 +2271,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void prepareTabStats(PrnParseOptions options)
+        private void PrepareTabStats(PrnParseOptions options)
         {
             //----------------------------------------------------------------//
             //                                                                //
@@ -2279,7 +2279,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            options.getOptStats(ref _indxStatsLevel,
+            options.GetOptStats(ref _indxStatsLevel,
                                  ref _flagStatsExcUnusedPCLObs,
                                  ref _flagStatsExcUnusedPCLXLRes);
 
@@ -2690,11 +2690,11 @@ namespace PCLParaphernalia
 
                 if (_crntTab == tabGeneral)
                 {
-                    OK = validateGeneral();
+                    OK = ValidateGeneral();
                 }
                 else if (_crntTab == tabCharSet)
                 {
-                    OK = validateCharSet();
+                    OK = ValidateCharSet();
                 }
 
                 if (OK)
@@ -2734,7 +2734,7 @@ namespace PCLParaphernalia
         private void txtCurFOffsetEnd_LostFocus(object sender,
                                                 RoutedEventArgs e)
         {
-            validateCurFOffsetEnd();
+            ValidateCurFOffsetEnd();
         }
 
         //--------------------------------------------------------------------//
@@ -2750,7 +2750,7 @@ namespace PCLParaphernalia
         private void txtCurFOffsetStart_LostFocus(object sender,
                                                   RoutedEventArgs e)
         {
-            validateCurFOffsetStart();
+            ValidateCurFOffsetStart();
         }
 
         //--------------------------------------------------------------------//
@@ -2762,7 +2762,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateCharSet()
+        private bool ValidateCharSet()
         {
             bool OK;
 
@@ -2837,7 +2837,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateCurFOffsetEnd()
+        private bool ValidateCurFOffsetEnd()
         {
             int value;
 
@@ -2888,7 +2888,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateCurFOffsetStart()
+        private bool ValidateCurFOffsetStart()
         {
             int value;
 
@@ -2937,7 +2937,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool validateGeneral()
+        private bool ValidateGeneral()
         {
             bool OK;
 

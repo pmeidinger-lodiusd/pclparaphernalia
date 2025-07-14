@@ -135,7 +135,7 @@ namespace PCLParaphernalia
                         comboLast = false,
                         comboModified = false;
 
-                linkData.getPCLComboData(ref comboSeq,
+                linkData.GetPCLComboData(ref comboSeq,
                                           ref comboFirst,
                                           ref comboLast,
                                           ref comboModified,
@@ -240,7 +240,7 @@ namespace PCLParaphernalia
 
                                 if (ovlXL)
                                 {
-                                    PCLXLWriter.writeStreamBlock(binWriter,
+                                    PCLXLWriter.WriteStreamBlock(binWriter,
                                                                   encapsulate,
                                                                   buf,
                                                                   ref readLen);
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
 
                                 byte[] rootBuf = new byte[3];
 
-                                linkData.getPrefixData(ref prefixLen,
+                                linkData.GetPrefixData(ref prefixLen,
                                                         ref prefixA,
                                                         ref prefixB);
 
@@ -369,13 +369,13 @@ namespace PCLParaphernalia
 
                 if (action == PrnParseConstants.eOvlAct.Replace_0x77)
                 {
-                    PCLXLWriter.writeOperator(binWriter,
+                    PCLXLWriter.WriteOperator(binWriter,
                                                PCLXLOperators.eTag.SetPageScale,
                                                encapsulate);
                 }
                 else if (action == PrnParseConstants.eOvlAct.PushGS)
                 {
-                    PCLXLWriter.writeOperator(binWriter,
+                    PCLXLWriter.WriteOperator(binWriter,
                                                PCLXLOperators.eTag.PushGS,
                                                encapsulate);
                 }
@@ -555,7 +555,7 @@ namespace PCLParaphernalia
                         long pageStart = linkData.MakeOvlSkipBegin;
                         long pageLen = seqBegin - pageStart;
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -579,7 +579,7 @@ namespace PCLParaphernalia
                         long pageStart = linkData.MakeOvlSkipBegin;
                         long pageLen = seqBegin - pageStart;
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Remove,
@@ -632,7 +632,7 @@ namespace PCLParaphernalia
 
                 int prefixLen = 0;
 
-                linkData.getPrefixData(ref prefixLen,
+                linkData.GetPrefixData(ref prefixLen,
                                          ref iChar,
                                          ref gChar);
 
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
 
                 linkData.PclComboModified = comboModified;
 
-                linkData.setContData(contType,
+                linkData.SetContData(contType,
                                       prefixLen,
                                       (int)seqEnd,
                                       0,
@@ -708,7 +708,7 @@ namespace PCLParaphernalia
             int vInt,
             DataTable table)
         {
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
@@ -718,7 +718,7 @@ namespace PCLParaphernalia
                 "Macro identifier " + vInt +
                 " is the specified overlay identifier");
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.eType.MsgError,
                 table,
                 PrnParseConstants.eOvlShow.Terminate,
@@ -822,7 +822,7 @@ namespace PCLParaphernalia
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
@@ -1117,7 +1117,7 @@ namespace PCLParaphernalia
                     linkData.MakeOvlAct = PrnParseConstants.eOvlAct.Remove;
                     linkData.MakeOvlSkipEnd = seqEnd;
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.eType.MsgComment,
                         table,
                         PrnParseConstants.eOvlShow.Remove,
@@ -1209,7 +1209,7 @@ namespace PCLParaphernalia
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
@@ -1273,7 +1273,7 @@ namespace PCLParaphernalia
 
                     if (copyLen > 0)
                     {
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgComment,
                             table,
                             PrnParseConstants.eOvlShow.Modify,
@@ -1296,7 +1296,7 @@ namespace PCLParaphernalia
                 else
                     descText = "PushGS";
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.eType.PCLXLOperator,
                     table,
                     PrnParseConstants.eOvlShow.Insert,
@@ -1429,7 +1429,7 @@ namespace PCLParaphernalia
             else
                 vCheck = false;
 
-            seqKnown = PCLComplexSeqs.checkComplexSeq(
+            seqKnown = PCLComplexSeqs.CheckComplexSeq(
                             0,
                             iChar,
                             gChar,

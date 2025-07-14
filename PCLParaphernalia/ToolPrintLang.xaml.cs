@@ -175,7 +175,7 @@ namespace PCLParaphernalia
             ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
             ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-            TargetCore.metricsReturnFileRpt(ToolCommonData.eToolIds.PrintLang,
+            TargetCore.MetricsReturnFileRpt(ToolCommonData.eToolIds.PrintLang,
                                              ref rptFileFmt,
                                              ref rptChkMarks,
                                              ref flagOptRptWrap);
@@ -838,7 +838,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLFonts.displayFontList(dgSeq);
+            _ctItems = PCLFonts.DisplayFontList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -858,7 +858,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = HPGL2Commands.displaySeqList(dgSeq);
+            _ctItems = HPGL2Commands.DisplaySeqList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -878,7 +878,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLPaperSizes.displayPaperSizeList(dgSeq);
+            _ctItems = PCLPaperSizes.DisplayPaperSizeList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -912,16 +912,16 @@ namespace PCLParaphernalia
                 _ctItems = 0;
 
                 if (chkPCLSeqControl.IsChecked == true)
-                    _ctItems += PCLControlCodes.displaySeqList(dgSeq);
+                    _ctItems += PCLControlCodes.DisplaySeqList(dgSeq);
 
                 if (chkPCLSeqSimple.IsChecked == true)
                     _ctItems +=
-                        PCLSimpleSeqs.displaySeqList(dgSeq,
+                        PCLSimpleSeqs.DisplaySeqList(dgSeq,
                                                      _flagPCLOptObsolete);
 
                 if (chkPCLSeqComplex.IsChecked == true)
                     _ctItems +=
-                        PCLComplexSeqs.displaySeqList(dgSeq,
+                        PCLComplexSeqs.DisplaySeqList(dgSeq,
                                                       _flagPCLOptObsolete,
                                                       _flagPCLOptDiscrete);
 
@@ -944,7 +944,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLXLAttrEnums.displayTags(dgSeq);
+            _ctItems = PCLXLAttrEnums.DisplayTags(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -982,31 +982,31 @@ namespace PCLParaphernalia
 
                 if (_flagPCLXLTagAttrDef)
                     _ctItems +=
-                        PCLXLAttrDefiners.displayTags(dgSeq,
+                        PCLXLAttrDefiners.DisplayTags(dgSeq,
                                                       _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagEmbedDataLen)
                     _ctItems +=
-                        PCLXLEmbedDataDefs.displayTags(dgSeq,
+                        PCLXLEmbedDataDefs.DisplayTags(dgSeq,
                                                        _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagAttribute)
                     _ctItems +=
-                        PCLXLAttributes.displayTags(dgSeq,
+                        PCLXLAttributes.DisplayTags(dgSeq,
                                                     _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagDataType)
                     _ctItems +=
-                        PCLXLDataTypes.displayTags(dgSeq,
+                        PCLXLDataTypes.DisplayTags(dgSeq,
                                                    _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagOperator)
                     _ctItems +=
-                        PCLXLOperators.displayTags(dgSeq,
+                        PCLXLOperators.DisplayTags(dgSeq,
                                                    _flagPCLXLOptReserved);
 
                 if (_flagPCLXLTagWhitespace)
-                    _ctItems += PCLXLWhitespaces.displayTags(dgSeq);
+                    _ctItems += PCLXLWhitespaces.DisplayTags(dgSeq);
 
                 txtCount.Text = _ctItems.ToString();
             }
@@ -1027,7 +1027,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PJLCommands.displayCmds(dgSeq);
+            _ctItems = PJLCommands.DisplayCmds(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1061,13 +1061,13 @@ namespace PCLParaphernalia
                 _ctItems = 0;
 
                 if (_flagPMLTagDataType)
-                    _ctItems += PMLDataTypes.displayTags(dgSeq);
+                    _ctItems += PMLDataTypes.DisplayTags(dgSeq);
 
                 if (_flagPMLTagAction)
-                    _ctItems += PMLActions.displayTags(dgSeq);
+                    _ctItems += PMLActions.DisplayTags(dgSeq);
 
                 if (_flagPMLTagOutcome)
-                    _ctItems += PMLOutcomes.displayTags(dgSeq);
+                    _ctItems += PMLOutcomes.DisplayTags(dgSeq);
 
                 txtCount.Text = _ctItems.ToString();
             }
@@ -1088,7 +1088,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PrescribeCommands.displayCmds(dgSeq);
+            _ctItems = PrescribeCommands.DisplayCmds(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1108,7 +1108,7 @@ namespace PCLParaphernalia
 
             dgSeq.Items.Clear();
 
-            _ctItems = PCLSymbolSets.displaySeqList(dgSeq);
+            _ctItems = PCLSymbolSets.DisplaySeqList(dgSeq);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -1244,16 +1244,16 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolPrintLangPersist.loadDataCommon(ref _indxType,
+            ToolPrintLangPersist.LoadDataCommon(ref _indxType,
                                                  ref _saveFilename);
 
-            ToolPrintLangPersist.loadDataPCL(ref _flagPCLSeqControl,
+            ToolPrintLangPersist.LoadDataPCL(ref _flagPCLSeqControl,
                                               ref _flagPCLSeqSimple,
                                               ref _flagPCLSeqComplex,
                                               ref _flagPCLOptObsolete,
                                               ref _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.loadDataPCLXL(ref _flagPCLXLTagDataType,
+            ToolPrintLangPersist.LoadDataPCLXL(ref _flagPCLXLTagDataType,
                                                 ref _flagPCLXLTagAttribute,
                                                 ref _flagPCLXLTagOperator,
                                                 ref _flagPCLXLTagAttrDef,
@@ -1261,13 +1261,13 @@ namespace PCLParaphernalia
                                                 ref _flagPCLXLTagWhitespace,
                                                 ref _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.loadDataPML(ref _flagPMLTagDataType,
+            ToolPrintLangPersist.LoadDataPML(ref _flagPMLTagDataType,
                                               ref _flagPMLTagAction,
                                               ref _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.loadDataFonts(ref _flagSymSetList);
+            ToolPrintLangPersist.LoadDataFonts(ref _flagSymSetList);
 
-            ToolPrintLangPersist.loadDataSymSets(ref _flagSymSetMap,
+            ToolPrintLangPersist.LoadDataSymSets(ref _flagSymSetMap,
                                                   ref tmpInt);
 
             //----------------------------------------------------------------//
@@ -1355,16 +1355,16 @@ namespace PCLParaphernalia
 
         public void metricsSave()
         {
-            ToolPrintLangPersist.saveDataCommon(_indxType,
+            ToolPrintLangPersist.SaveDataCommon(_indxType,
                                                  _saveFilename);
 
-            ToolPrintLangPersist.saveDataPCL(_flagPCLSeqControl,
+            ToolPrintLangPersist.SaveDataPCL(_flagPCLSeqControl,
                                               _flagPCLSeqSimple,
                                               _flagPCLSeqComplex,
                                               _flagPCLOptObsolete,
                                               _flagPCLOptDiscrete);
 
-            ToolPrintLangPersist.saveDataPCLXL(_flagPCLXLTagDataType,
+            ToolPrintLangPersist.SaveDataPCLXL(_flagPCLXLTagDataType,
                                                 _flagPCLXLTagAttribute,
                                                 _flagPCLXLTagOperator,
                                                 _flagPCLXLTagAttrDef,
@@ -1372,13 +1372,13 @@ namespace PCLParaphernalia
                                                 _flagPCLXLTagWhitespace,
                                                 _flagPCLXLOptReserved);
 
-            ToolPrintLangPersist.saveDataPML(_flagPMLTagDataType,
+            ToolPrintLangPersist.SaveDataPML(_flagPMLTagDataType,
                                               _flagPMLTagAction,
                                               _flagPMLTagOutcome);
 
-            ToolPrintLangPersist.saveDataFonts(_flagSymSetList);
+            ToolPrintLangPersist.SaveDataFonts(_flagSymSetList);
 
-            ToolPrintLangPersist.saveDataSymSets(_flagSymSetMap,
+            ToolPrintLangPersist.SaveDataSymSets(_flagSymSetMap,
                                                   (int)_symSetMapType);
         }
 

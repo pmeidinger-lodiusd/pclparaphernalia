@@ -176,7 +176,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool isDriverXPS(IntPtr hPrinter)
+        private static bool IsDriverXPS(IntPtr hPrinter)
         {
             uint PRINTER_DRIVER_XPS_FLAG = 0x00000002;
             uint ERROR_INSUFFICIENT_BUFFER = 0x0000007a;
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static bool sendBytesToPrinter(string szPrinterName,
+        private static bool SendBytesToPrinter(string szPrinterName,
                                                    IntPtr pBytes,
                                                    int dwCount)
         {
@@ -276,7 +276,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (isDriverXPS(hPrinter))
+                if (IsDriverXPS(hPrinter))
                     di.pDataType = "XPS_PASS";
                 else
                     di.pDataType = "RAW";
@@ -357,7 +357,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int sendData(BinaryReader prnReader,
+        public static int SendData(BinaryReader prnReader,
                                       string printerName)
         {
             int result = 0;
@@ -388,7 +388,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                if (isDriverXPS(hPrinter))
+                if (IsDriverXPS(hPrinter))
                     di.pDataType = "XPS_PASS";
                 else
                     di.pDataType = "RAW";

@@ -24,7 +24,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMap_4N()
+        private static void UnicodeMap_4N()
         {
             const eSymSetMapId mapId = eSymSetMapId.map_4N;
 

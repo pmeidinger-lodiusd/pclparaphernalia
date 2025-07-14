@@ -81,7 +81,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void initialiseRunType(PrnParse.eParseType parseType)
+        public static void InitialiseRunType(PrnParse.eParseType parseType)
         {
             _parseType = parseType;
         }
@@ -98,7 +98,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //---------------------------------------------- ---------------------//
 
-        public static void processBinary(
+        public static void ProcessBinary(
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
             byte[] buf,
@@ -124,7 +124,7 @@ namespace PCLParaphernalia
 
                 if (showOffset)
                 {
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.eType.DataBinary,
                         table,
                         makeOvlShow,
@@ -137,7 +137,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.DataBinary,
                         table,
                         makeOvlShow,
@@ -185,7 +185,7 @@ namespace PCLParaphernalia
                     {
                         if (showOffset)
                         {
-                            PrnParseCommon.addDataRow(
+                            PrnParseCommon.AddDataRow(
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
@@ -195,14 +195,14 @@ namespace PCLParaphernalia
                                 typeText,
                                 "[ " + seqLen + " bytes ]",
                                 preamble +
-                                PrnParseCommon.byteArrayToHexString(buf,
+                                PrnParseCommon.ByteArrayToHexString(buf,
                                                                      crntOffset,
                                                                      sliceLen) +
                                 "]");
                         }
                         else
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
@@ -210,7 +210,7 @@ namespace PCLParaphernalia
                                 typeText,
                                 "[ " + seqLen + " bytes ]",
                                 preamble +
-                                PrnParseCommon.byteArrayToHexString(buf,
+                                PrnParseCommon.ByteArrayToHexString(buf,
                                                                      crntOffset,
                                                                      sliceLen) +
                                 "]");
@@ -220,7 +220,7 @@ namespace PCLParaphernalia
                     {
                         if (showOffset)
                         {
-                            PrnParseCommon.addDataRow(
+                            PrnParseCommon.AddDataRow(
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
@@ -230,14 +230,14 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 string.Empty,
                                 preamble +
-                                PrnParseCommon.byteArrayToHexString(buf,
+                                PrnParseCommon.ByteArrayToHexString(buf,
                                                                      crntOffset,
                                                                      sliceLen) +
                                 "]");
                         }
                         else
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
@@ -245,7 +245,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 string.Empty,
                                 preamble +
-                                PrnParseCommon.byteArrayToHexString(buf,
+                                PrnParseCommon.ByteArrayToHexString(buf,
                                                                      crntOffset,
                                                                      sliceLen) +
                                 "]");
@@ -270,7 +270,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string processByte(
+        public static string ProcessByte(
             byte dataByte,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
             byte showSubCode,
@@ -278,7 +278,7 @@ namespace PCLParaphernalia
         {
             int charVal = dataByte;
 
-            return processValue(charVal,
+            return ProcessValue(charVal,
                                  showCCAction,
                                  showSubCode,
                                  showCharSet);
@@ -305,7 +305,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string processBytePair(
+        public static string ProcessBytePair(
             byte byteA,
             byte byteB,
             bool highByteFirst,
@@ -331,7 +331,7 @@ namespace PCLParaphernalia
 
             charVal = (highByte * 256) + lowByte;
 
-            return processValue(charVal,
+            return ProcessValue(charVal,
                                  showCCAction,
                                  showSubCode,
                                  showCharSet);
@@ -349,7 +349,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool processLines(
+        public static bool ProcessLines(
             DataTable table,
             PrnParseConstants.eOvlShow makeOvlShow,
             PrnParseLinkData linkData,
@@ -550,7 +550,7 @@ namespace PCLParaphernalia
 
                         c2 = buf[offset];
 
-                        showChar = processBytePair(c1, c2, true,
+                        showChar = ProcessBytePair(c1, c2, true,
                                                     showCCAction,
                                                     showSubCode,
                                                     showCharSet);
@@ -587,7 +587,7 @@ namespace PCLParaphernalia
                             seq[i] = buf[offset + i];
                         }
 
-                        result = PrnParseDataUTF8.checkUTF8Seq(seq,
+                        result = PrnParseDataUTF8.CheckUTF8Seq(seq,
                                                                seqLen,
                                                                ref codepoint);
 
@@ -625,7 +625,7 @@ namespace PCLParaphernalia
                         }
                         else if (crntPDL == ToolCommonData.ePrintLang.PCL)
                         {
-                            knownCC = PCLControlCodes.checkControlCode(
+                            knownCC = PCLControlCodes.CheckControlCode(
                                 level,
                                 c1,
                                 ref optCCLineTerm,
@@ -638,7 +638,7 @@ namespace PCLParaphernalia
                         }
                         else if (crntPDL == ToolCommonData.ePrintLang.HPGL2)
                         {
-                            knownCC = PCLControlCodes.checkControlCode(
+                            knownCC = PCLControlCodes.CheckControlCode(
                                 level,
                                 c1,
                                 ref optCCLineTerm,
@@ -669,7 +669,7 @@ namespace PCLParaphernalia
                     {
                         pageMarked = true;
 
-                        showChar = processByte(c1,
+                        showChar = ProcessByte(c1,
                                                 showCCAction,
                                                 showSubCode,
                                                 showCharSet);
@@ -687,7 +687,7 @@ namespace PCLParaphernalia
 
                 if (continuation)
                 {
-                    linkData.setContinuation(
+                    linkData.SetContinuation(
                         PrnParseConstants.eContType.PCLMultiByteData);
                 }
                 else
@@ -716,7 +716,7 @@ namespace PCLParaphernalia
 
                                 if (multiByteData)
                                 {
-                                    seqBytes = showElementSeqData(buf,
+                                    seqBytes = ShowElementSeqData(buf,
                                                                   lineStart,
                                                                   lineLen);
                                 }
@@ -726,7 +726,7 @@ namespace PCLParaphernalia
                                 }
 
                                 if (showOffset)
-                                    PrnParseCommon.addDataRow(
+                                    PrnParseCommon.AddDataRow(
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
@@ -737,7 +737,7 @@ namespace PCLParaphernalia
                                         seqBytes,
                                         line);
                                 else
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
@@ -749,7 +749,7 @@ namespace PCLParaphernalia
                             else
                             {
                                 if (showOffset)
-                                    PrnParseCommon.addDataRow(
+                                    PrnParseCommon.AddDataRow(
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
@@ -760,7 +760,7 @@ namespace PCLParaphernalia
                                         string.Empty,
                                         line);
                                 else
-                                    PrnParseCommon.addTextRow(
+                                    PrnParseCommon.AddTextRow(
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
@@ -812,7 +812,7 @@ namespace PCLParaphernalia
                             foundLF = false;
 
                             if (showOffset)
-                                PrnParseCommon.addDataRow(
+                                PrnParseCommon.AddDataRow(
                                     PrnParseRowTypes.eType.PCLControlCode,
                                     table,
                                     makeOvlShow,
@@ -823,7 +823,7 @@ namespace PCLParaphernalia
                                     "0x" + c1.ToString("x2"),
                                     mnemonicCC + ": " + descCC);
                             else
-                                PrnParseCommon.addTextRow(
+                                PrnParseCommon.AddTextRow(
                                     PrnParseRowTypes.eType.PCLControlCode,
                                     table,
                                     makeOvlShow,
@@ -853,7 +853,7 @@ namespace PCLParaphernalia
 
                             if (multiByteData)
                             {
-                                seqBytes = showElementSeqData(buf,
+                                seqBytes = ShowElementSeqData(buf,
                                                               lineStart,
                                                               lineLen);
                             }
@@ -863,7 +863,7 @@ namespace PCLParaphernalia
                             }
 
                             if (showOffset)
-                                PrnParseCommon.addDataRow(
+                                PrnParseCommon.AddDataRow(
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     makeOvlShow,
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
                                     seqBytes,
                                     line);
                             else
-                                PrnParseCommon.addTextRow(
+                                PrnParseCommon.AddTextRow(
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     PrnParseConstants.eOvlShow.None,
@@ -888,7 +888,7 @@ namespace PCLParaphernalia
                         else
                         {
                             if (showOffset)
-                                PrnParseCommon.addDataRow(
+                                PrnParseCommon.AddDataRow(
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     makeOvlShow,
@@ -899,7 +899,7 @@ namespace PCLParaphernalia
                                     string.Empty,
                                     line);
                             else
-                                PrnParseCommon.addTextRow(
+                                PrnParseCommon.AddTextRow(
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     makeOvlShow,
@@ -935,7 +935,7 @@ namespace PCLParaphernalia
                 if (!contLine)
                 {
                     if (showOffset)
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
@@ -946,7 +946,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             line);
                     else
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
@@ -958,7 +958,7 @@ namespace PCLParaphernalia
                 else
                 {
                     if (showOffset)
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
@@ -969,7 +969,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             line);
                     else
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
@@ -1004,7 +1004,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string processValue(
+        private static string ProcessValue(
             int charVal,
             PrnParseConstants.eOptCharSetSubActs showCCAction,
             byte showSubCode,
@@ -1107,7 +1107,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     }
 
                     break;
@@ -1161,7 +1161,7 @@ namespace PCLParaphernalia
                     }
                     else
                     {
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     }
 
                     break;
@@ -1176,16 +1176,16 @@ namespace PCLParaphernalia
 
                     if (charType == eCharType.TwoByte)
                         outStr = "[" +
-                                 PrnParseCommon.byteToHexString(highByte) +
-                                 PrnParseCommon.byteToHexString(lowByte) +
+                                 PrnParseCommon.ByteToHexString(highByte) +
+                                 PrnParseCommon.ByteToHexString(lowByte) +
                                  "]";
                     else if ((charType == eCharType.Space)
                                         ||
                             (charType == eCharType.Graphic))
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     else
                         outStr = "[" +
-                                 PrnParseCommon.byteToHexString(lowByte) +
+                                 PrnParseCommon.ByteToHexString(lowByte) +
                                  "]";
 
                     break;
@@ -1200,7 +1200,7 @@ namespace PCLParaphernalia
 
                     if ((charType == eCharType.Space) ||
                         (charType == eCharType.Graphic))
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     else
                         outStr = ".";
 
@@ -1216,7 +1216,7 @@ namespace PCLParaphernalia
 
                     if ((charType == eCharType.Space) ||
                         (charType == eCharType.Graphic))
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     else
                         outStr = " ";
 
@@ -1233,9 +1233,9 @@ namespace PCLParaphernalia
 
                     if ((charType == eCharType.Space) ||
                         (charType == eCharType.Graphic))
-                        outStr = PrnParseCommon.byteToString(lowByte);
+                        outStr = PrnParseCommon.ByteToString(lowByte);
                     else
-                        outStr = PrnParseCommon.byteToString(showSubCode);
+                        outStr = PrnParseCommon.ByteToString(showSubCode);
 
                     break;
             }
@@ -1255,7 +1255,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static string showElementSeqData(byte[] buf,
+        private static string ShowElementSeqData(byte[] buf,
                                            int sliceOffset,
                                            int sliceLen)
         {

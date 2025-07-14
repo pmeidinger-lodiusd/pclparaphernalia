@@ -32,11 +32,11 @@ namespace PCLParaphernalia
             string entityIdPCL;
             string locTypeIdPCL;
 
-            if (indexEntity < PCLEntityTypes.getCount())
+            if (indexEntity < PCLEntityTypes.GetCount())
             {
-                entityType = PCLEntityTypes.getType(indexEntity);
-                entityIdPCL = PCLEntityTypes.getIdPCL(indexEntity);
-                locTypeIdPCL = PCLLocationTypes.getIdPCL(indexLocType);
+                entityType = PCLEntityTypes.GetType(indexEntity);
+                entityIdPCL = PCLEntityTypes.GetIdPCL(indexEntity);
+                locTypeIdPCL = PCLLocationTypes.GetIdPCL(indexLocType);
 
                 if (entityType == PCLEntityTypes.eType.Memory)
                 {
@@ -86,7 +86,7 @@ namespace PCLParaphernalia
 
             while (!replyComplete)
             {
-                OK = TargetCore.responseReadBlock(offset,
+                OK = TargetCore.ResponseReadBlock(offset,
                                                    bufRem,
                                                    ref replyData,
                                                    ref blockLen);
@@ -153,7 +153,7 @@ namespace PCLParaphernalia
 
             replyLen = endOffset;
 
-            TargetCore.responseCloseConnection();
+            TargetCore.ResponseCloseConnection();
 
             return System.Text.Encoding.ASCII.GetString(replyData,
                                                          0,
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
         public static void sendRequest()
         {
-            TargetCore.requestStreamWrite(true);
+            TargetCore.RequestStreamWrite(true);
         }
     }
 }

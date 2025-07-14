@@ -142,11 +142,11 @@ namespace PCLParaphernalia
 
             _indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            _options.getOptCharSet(ref _indxCharSetName,
+            _options.GetOptCharSet(ref _indxCharSetName,
                                     ref _indxCharSetSubAct,
                                     ref _valCharSetSubCode);
 
-            _options.getOptPCLBasic(ref _analyseFontHddr,
+            _options.GetOptPCLBasic(ref _analyseFontHddr,
                                      ref _analyseFontChar,
                                      ref _showMacroData,
                                      ref _interpretStyle,
@@ -171,7 +171,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (linkData.isContinuation())
+            if (linkData.IsContinuation())
                 seqInvalid = parseContinuation(ref bufRem,
                                                 ref bufOffset,
                                                 ref crntPDL,
@@ -223,7 +223,7 @@ namespace PCLParaphernalia
 
             contType = PrnParseConstants.eContType.None;
 
-            _linkData.getContData(ref contType,
+            _linkData.GetContData(ref contType,
                                    ref prefixLen,
                                    ref contDataLen,
                                    ref downloadRem,
@@ -242,8 +242,8 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
-                _linkData.resetPCLComboData();
+                _linkData.ResetContData();
+                _linkData.ResetPCLComboData();
             }
             else if ((contType == PrnParseConstants.eContType.PCLDownload)
                                ||
@@ -280,7 +280,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseData.processBinary(
+                PrnParseData.ProcessBinary(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _buf,
@@ -304,7 +304,7 @@ namespace PCLParaphernalia
                 {
                     if (contType == PrnParseConstants.eContType.PCLDownloadCombo)
                     {
-                        _linkData.setContData(
+                        _linkData.SetContData(
                             PrnParseConstants.eContType.PCLComplex,
                             prefixLen,
                             0,
@@ -316,12 +316,12 @@ namespace PCLParaphernalia
                     else
                     {
                         continuation = false;
-                        _linkData.resetContData();
+                        _linkData.ResetContData();
                     }
                 }
                 else
                 {
-                    _linkData.setContData(contType,
+                    _linkData.SetContData(contType,
                                            prefixLen,
                                            contDataLen,
                                            downloadRem, // this is the value to update
@@ -342,7 +342,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                hddrOK = _parseFontHddrPCL.analyseFontHddr(-1,
+                hddrOK = _parseFontHddrPCL.AnalyseFontHddr(-1,
                                                             _fileOffset,
                                                             _buf,
                                                             ref bufRem,
@@ -363,7 +363,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                charOK = _parseFontCharPCL.analyseFontChar(-1,
+                charOK = _parseFontCharPCL.AnalyseFontChar(-1,
                                                             _fileOffset,
                                                             _buf,
                                                             ref bufRem,
@@ -398,7 +398,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLColourLookup)
             {
@@ -423,7 +423,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLConfigurationIO)
             {
@@ -448,7 +448,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLConfigureImageData)
             {
@@ -473,7 +473,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLConfigureRasterData)
             {
@@ -498,7 +498,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLLogicalPageData)
             {
@@ -523,7 +523,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLDefineSymbolSet)
             {
@@ -548,7 +548,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLDefineSymbolSetMap)
             {
@@ -601,10 +601,10 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.eContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.eContType.None)
                 {
                     continuation = false;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.PCLDitherMatrixPlane)
@@ -629,10 +629,10 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.eContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.eContType.None)
                 {
                     continuation = false;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.PCLDitherMatrixPlaneData)
@@ -657,10 +657,10 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.eContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.eContType.None)
                 {
                     continuation = false;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.PCLDriverConfiguration)
@@ -686,7 +686,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLEscEncText)
             {
@@ -711,7 +711,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLEscEncTextData)
             {
@@ -736,7 +736,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLPaletteConfiguration)
             {
@@ -761,7 +761,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType ==
                 PrnParseConstants.eContType.PCLUserDefPatternHddr)
@@ -787,7 +787,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType ==
                 PrnParseConstants.eContType.PCLUserDefPatternData)
@@ -812,10 +812,10 @@ namespace PCLParaphernalia
                 if (!dataOK)
                     invalidSeqFound = true;
 
-                if (_linkData.getContType() == PrnParseConstants.eContType.None)
+                if (_linkData.GetContType() == PrnParseConstants.eContType.None)
                 {
                     continuation = false;
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.PCLViewIlluminant)
@@ -841,7 +841,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLEmbeddedPML)
             {
@@ -865,7 +865,7 @@ namespace PCLParaphernalia
                     invalidSeqFound = true;
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLMultiByteData)
             {
@@ -886,7 +886,7 @@ namespace PCLParaphernalia
                 else
                     typeText = "Data";
 
-                PrnParseData.processLines(
+                PrnParseData.ProcessLines(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _linkData,
@@ -913,13 +913,13 @@ namespace PCLParaphernalia
                 {
                     contType = PrnParseConstants.eContType.PCLMultiByteData;
 
-                    _linkData.setBacktrack(contType, -bufRem);
+                    _linkData.SetBacktrack(contType, -bufRem);
                 }
                 else
                 {
                     contType = PrnParseConstants.eContType.None;
 
-                    _linkData.resetContData();
+                    _linkData.ResetContData();
                 }
             }
             else if (contType == PrnParseConstants.eContType.PCLEmbeddedData)
@@ -932,7 +932,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                PrnParseData.processLines(
+                PrnParseData.ProcessLines(
                     _table,
                     PrnParseConstants.eOvlShow.None,
                     _linkData,
@@ -956,7 +956,7 @@ namespace PCLParaphernalia
                     _analysisLevel);
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else if (contType == PrnParseConstants.eContType.PCLComplex)
             {
@@ -1012,7 +1012,7 @@ namespace PCLParaphernalia
                 //------------------------------------------------------------//
 
                 continuation = false;
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
 
             if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
@@ -1083,7 +1083,7 @@ namespace PCLParaphernalia
 
                             continuation = true;
 
-                            _linkData.setBacktrack(
+                            _linkData.SetBacktrack(
                                 PrnParseConstants.eContType.Unknown,
                                 -bufRem);
                         }
@@ -1125,7 +1125,7 @@ namespace PCLParaphernalia
                         else
                             typeText = "Data";
 
-                        PrnParseData.processLines(
+                        PrnParseData.ProcessLines(
                             _table,
                             PrnParseConstants.eOvlShow.None,
                             _linkData,
@@ -1174,13 +1174,13 @@ namespace PCLParaphernalia
                         }
                         else if (continuation)
                         {
-                            _linkData.setBacktrack(
+                            _linkData.SetBacktrack(
                                 PrnParseConstants.eContType.PCLMultiByteData,
                                 -bufRem);
                         }
                         else
                         {
-                            _linkData.resetContData();
+                            _linkData.ResetContData();
                         }
                     }
                 }
@@ -1192,7 +1192,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    _linkData.resetPCLComboData();
+                    _linkData.ResetPCLComboData();
 
                     if ((bufRem >= 2) &&
                              (_buf[bufOffset + 1] >=
@@ -1261,7 +1261,7 @@ namespace PCLParaphernalia
                                 //                                            //
                                 //--------------------------------------------//
 
-                                PrnParseData.processLines(
+                                PrnParseData.ProcessLines(
                                     _table,
                                     PrnParseConstants.eOvlShow.None,
                                     _linkData,
@@ -1326,7 +1326,7 @@ namespace PCLParaphernalia
 
                         continuation = true;
 
-                        _linkData.setBacktrack(
+                        _linkData.SetBacktrack(
                             PrnParseConstants.eContType.Unknown,
                             -bufRem);
                     }
@@ -1342,7 +1342,7 @@ namespace PCLParaphernalia
 
                         invalidSeqFound = true;
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -1351,7 +1351,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             "Unexpected sequence found:");
 
-                        PrnParseData.processLines(
+                        PrnParseData.ProcessLines(
                             _table,
                             PrnParseConstants.eOvlShow.None,
                             _linkData,
@@ -1525,7 +1525,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (_linkData.isContinuation())
+            if (_linkData.IsContinuation())
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -1538,7 +1538,7 @@ namespace PCLParaphernalia
 
                 contType = PrnParseConstants.eContType.None;
 
-                _linkData.getContData(ref contType,
+                _linkData.GetContData(ref contType,
                                        ref prefixLen,
                                        ref contDataLen,
                                        ref downloadRem,
@@ -1546,7 +1546,7 @@ namespace PCLParaphernalia
                                        ref iChar,
                                        ref gChar);
 
-                _linkData.getPCLComboData(ref comboSeq,
+                _linkData.GetPCLComboData(ref comboSeq,
                                            ref comboFirst,
                                            ref comboLast,
                                            ref comboModified,
@@ -1660,7 +1660,7 @@ namespace PCLParaphernalia
                             text = "next sequence";
                     }
 
-                    PrnParseCommon.addDataRow(
+                    PrnParseCommon.AddDataRow(
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -1903,7 +1903,7 @@ namespace PCLParaphernalia
                         vInvalid = true;
                         invalidSeq = true;
 
-                        PrnParseCommon.addDataRow(
+                        PrnParseCommon.AddDataRow(
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -1997,7 +1997,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        seqKnown = PCLComplexSeqs.checkComplexSeq(
+                        seqKnown = PCLComplexSeqs.CheckComplexSeq(
                             (_analysisLevel +
                              _macroLevel),
                             iChar,
@@ -2028,7 +2028,7 @@ namespace PCLParaphernalia
                         {
                             invalidSeq = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2051,7 +2051,7 @@ namespace PCLParaphernalia
 
                             invalidSeq = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgError,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2074,7 +2074,7 @@ namespace PCLParaphernalia
 
                             invalidSeq = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgError,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2145,7 +2145,7 @@ namespace PCLParaphernalia
                             //                                                //
                             //------------------------------------------------//
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2168,7 +2168,7 @@ namespace PCLParaphernalia
                         if (_macroLevel > 0)
                             _macroLevel--;
 
-                        PrnParseCommon.setDisplayCriteria(_showMacroData,
+                        PrnParseCommon.SetDisplayCriteria(_showMacroData,
                                                           _macroLevel);
                     }
 
@@ -2218,7 +2218,7 @@ namespace PCLParaphernalia
                         _linkData.MakeOvlAct = makeOvlAct;
                         _linkData.PclComboModified = comboModified;
 
-                        _linkData.setPrefixData(prefixLen, iChar, gChar);
+                        _linkData.SetPrefixData(prefixLen, iChar, gChar);
 
                         breakpoint = PrnParseMakeOvl.checkActionPCL(
                                         comboSeq,
@@ -2239,11 +2239,11 @@ namespace PCLParaphernalia
 
                         if (breakpoint)
                         {
-                            contType = _linkData.getContType();
+                            contType = _linkData.GetContType();
 
                             comboModified = _linkData.PclComboModified;
 
-                            _linkData.setPCLComboData(comboSeq,
+                            _linkData.SetPCLComboData(comboSeq,
                                                        comboFirst,
                                                        comboLast,
                                                        comboModified,
@@ -2277,7 +2277,7 @@ namespace PCLParaphernalia
                         */
                         vendorName = "Unknown"; // TEMPORARY //
 
-                        PrnParseCommon.addTextRow(
+                        PrnParseCommon.AddTextRow(
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
@@ -2398,7 +2398,7 @@ namespace PCLParaphernalia
                     {
                         if (!_showMacroData)
                         {
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2411,7 +2411,7 @@ namespace PCLParaphernalia
 
                         _macroLevel++;
 
-                        PrnParseCommon.setDisplayCriteria(_showMacroData,
+                        PrnParseCommon.SetDisplayCriteria(_showMacroData,
                                                           _macroLevel);
                     }
 
@@ -2444,7 +2444,7 @@ namespace PCLParaphernalia
 
                             invalidSeq = true;
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2453,7 +2453,7 @@ namespace PCLParaphernalia
                                 string.Empty,
                                 "Invalid bytecount in previous sequence");
 
-                            PrnParseCommon.addTextRow(
+                            PrnParseCommon.AddTextRow(
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
@@ -2592,7 +2592,7 @@ namespace PCLParaphernalia
                 //                                                            //
                 //------------------------------------------------------------//
 
-                _linkData.resetContData();
+                _linkData.ResetContData();
             }
             else
             {
@@ -2648,7 +2648,7 @@ namespace PCLParaphernalia
                     }
                 }
 
-                _linkData.setContData(contType,
+                _linkData.SetContData(contType,
                                        prefixLen,
                                        -dataLen,
                                        0,
@@ -2782,7 +2782,7 @@ namespace PCLParaphernalia
                     typeText = string.Empty;
                 }
 
-                PrnParseCommon.addDataRow(
+                PrnParseCommon.AddDataRow(
                     PrnParseRowTypes.eType.PCLSeqComplex,
                     _table,
                     makeOvlShow,
@@ -2881,7 +2881,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    hddrOK = _parseFontHddrPCL.analyseFontHddr(
+                    hddrOK = _parseFontHddrPCL.AnalyseFontHddr(
                                 binDataLen,
                                  _fileOffset,
                                 _buf,
@@ -2896,7 +2896,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.FontChar) &&
@@ -2909,7 +2909,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    charOK = _parseFontCharPCL.analyseFontChar(binDataLen,
+                    charOK = _parseFontCharPCL.AnalyseFontChar(binDataLen,
                                                                _fileOffset,
                                                                _buf,
                                                                ref bufRem,
@@ -2923,7 +2923,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.AlphaNumericID) &&
@@ -2953,7 +2953,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ColourLookup) &&
@@ -2981,7 +2981,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ConfigurationIO) &&
@@ -3009,7 +3009,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ConfigureImageData) &&
@@ -3039,7 +3039,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ConfigureRasterData) &&
@@ -3071,7 +3071,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.LogicalPageData) &&
@@ -3100,7 +3100,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.DefineSymbolSet) &&
@@ -3128,7 +3128,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.DitherMatrix) &&
@@ -3156,7 +3156,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.DriverConfiguration) &&
@@ -3184,7 +3184,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.EscEncText) &&
@@ -3212,7 +3212,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.PaletteConfiguration) &&
@@ -3241,7 +3241,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.UserDefinedPattern) &&
@@ -3269,7 +3269,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ViewIlluminant) &&
@@ -3297,7 +3297,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.ConfigurationIO) &&
@@ -3325,7 +3325,7 @@ namespace PCLParaphernalia
 
                     binDataLen = 0;
 
-                    continuation = _linkData.isContinuation();
+                    continuation = _linkData.IsContinuation();
                 }
                 else if ((analyseRun) &&
                          (actType == PrnParseConstants.eActPCL.EmbeddedData))
@@ -3355,7 +3355,7 @@ namespace PCLParaphernalia
 
                         continuation = true;
 
-                        _linkData.setContData(
+                        _linkData.SetContData(
                             PrnParseConstants.eContType.PCLEmbeddedData,
                             0,
                             -bufRem,
@@ -3373,7 +3373,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        PrnParseData.processLines(
+                        PrnParseData.ProcessLines(
                             _table,
                             ovlShow,
                             _linkData,
@@ -3426,7 +3426,7 @@ namespace PCLParaphernalia
 
                         if (!seqComplete)
                         {
-                            _linkData.setContData(
+                            _linkData.SetContData(
                                 PrnParseConstants.eContType.PCLDownloadCombo,
                                 prefixLen,
                                 0,
@@ -3439,7 +3439,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            _linkData.setContData(
+                            _linkData.SetContData(
                                 PrnParseConstants.eContType.PCLDownload,
                                 0,
                                 0,
@@ -3472,7 +3472,7 @@ namespace PCLParaphernalia
                         //                                                    //
                         //----------------------------------------------------//
 
-                        PrnParseData.processBinary(
+                        PrnParseData.ProcessBinary(
                             _table,
                             ovlShow,
                             _buf,
@@ -3530,7 +3530,7 @@ namespace PCLParaphernalia
 
             iChar = _buf[bufOffset + 1];
 
-            seqKnown = PCLSimpleSeqs.checkSimpleSeq(
+            seqKnown = PCLSimpleSeqs.CheckSimpleSeq(
                 (_analysisLevel + _macroLevel),
                 iChar,
                 ref optObsolete,
@@ -3559,7 +3559,7 @@ namespace PCLParaphernalia
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    PrnParseCommon.addTextRow(
+                    PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
@@ -3601,7 +3601,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            PrnParseCommon.addDataRow(
+            PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.eType.PCLSeqSimple,
                 _table,
                 makeOvlShow,
@@ -3721,7 +3721,7 @@ namespace PCLParaphernalia
                     break;
             }
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,
@@ -3771,7 +3771,7 @@ namespace PCLParaphernalia
                     break;
             }
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,
@@ -3805,7 +3805,7 @@ namespace PCLParaphernalia
                     break;
             }
 
-            PrnParseCommon.addTextRow(
+            PrnParseCommon.AddTextRow(
                 PrnParseRowTypes.eType.PCLDecode,
                 _table,
                 PrnParseConstants.eOvlShow.None,

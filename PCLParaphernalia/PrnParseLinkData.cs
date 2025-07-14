@@ -263,7 +263,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getContData(ref PrnParseConstants.eContType contType,
+        public void GetContData(ref PrnParseConstants.eContType contType,
                                 ref int prefixLen,
                                 ref int dataLen,
                                 ref int downloadRem,
@@ -289,7 +289,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eContType getContType()
+        public PrnParseConstants.eContType GetContType()
         {
             return _contType;
         }
@@ -303,7 +303,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPCLComboData(ref bool pclComboSeq,
+        public void GetPCLComboData(ref bool pclComboSeq,
                                     ref bool pclComboFirst,
                                     ref bool pclComboLast,
                                     ref bool pclComboModified,
@@ -325,7 +325,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void getPrefixData(ref int prefixLen,
+        public void GetPrefixData(ref int prefixLen,
                                   ref byte prefixA,
                                   ref byte prefixB)
         {
@@ -343,7 +343,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool isContinuation()
+        public bool IsContinuation()
         {
             return _contType != PrnParseConstants.eContType.None;
         }
@@ -380,7 +380,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void macroLevelAdjust(bool increment)
+        public void MacroLevelAdjust(bool increment)
         {
             if (increment)
                 _macroLevel++;
@@ -637,7 +637,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetContData()
+        public void ResetContData()
         {
             _contType = PrnParseConstants.eContType.None;
             _prefixLen = 0;
@@ -657,7 +657,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void resetPCLComboData()
+        public void ResetPCLComboData()
         {
             _pclComboSeq = false;
             _pclComboFirst = false;
@@ -675,7 +675,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setBacktrack(PrnParseConstants.eContType contType,
+        public void SetBacktrack(PrnParseConstants.eContType contType,
                                   int dataLen)
         {
             _contType = contType;
@@ -696,7 +696,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContData(PrnParseConstants.eContType contType,
+        public void SetContData(PrnParseConstants.eContType contType,
                                 int prefixLen,
                                 int dataLen,
                                 int downloadRem,
@@ -722,7 +722,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setContinuation(PrnParseConstants.eContType contType)
+        public void SetContinuation(PrnParseConstants.eContType contType)
         {
             _contType = contType;
             _prefixLen = 0;
@@ -742,7 +742,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setEof(bool eofSet)
+        public void SetEof(bool eofSet)
         {
             _eof = eofSet;
         }
@@ -756,7 +756,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setPCLComboData(bool pclComboSeq,
+        public void SetPCLComboData(bool pclComboSeq,
                                     bool pclComboFirst,
                                     bool pclComboLast,
                                     bool pclComboModified,
@@ -778,7 +778,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public void setPrefixData(int prefixLen,
+        public void SetPrefixData(int prefixLen,
                                   byte prefixA,
                                   byte prefixB)
         {

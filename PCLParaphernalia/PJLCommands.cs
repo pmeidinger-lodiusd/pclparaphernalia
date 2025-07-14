@@ -100,7 +100,7 @@ namespace PCLParaphernalia
 
         static PJLCommands()
         {
-            populateTable();
+            PopulateTable();
         }
 
         //--------------------------------------------------------------------//
@@ -112,7 +112,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool checkCmd(string name,
+        public static bool CheckCmd(string name,
                                         ref string description,
                                         int level)
         {
@@ -133,7 +133,7 @@ namespace PCLParaphernalia
 
             description = cmd.Description;
 
-            cmd.incrementStatisticsCount(level);
+            cmd.IncrementStatisticsCount(level);
 
             return seqKnown;
         }
@@ -147,7 +147,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int displayCmds(DataGrid grid)
+        public static int DisplayCmds(DataGrid grid)
         {
             int count = 0;
 
@@ -170,7 +170,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCounts(DataTable table,
+        public static void DisplayStatsCounts(DataTable table,
                                                bool incUsedSeqsOnly)
         {
             int count = 0;
@@ -195,7 +195,7 @@ namespace PCLParaphernalia
             {
                 if (!hddrWritten)
                 {
-                    displayStatsCountsHddr(table);
+                    DisplayStatsCountsHddr(table);
                     hddrWritten = true;
                 }
 
@@ -226,7 +226,7 @@ namespace PCLParaphernalia
                 {
                     if (!hddrWritten)
                     {
-                        displayStatsCountsHddr(table);
+                        DisplayStatsCountsHddr(table);
                         hddrWritten = true;
                     }
 
@@ -252,7 +252,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void displayStatsCountsHddr(DataTable table)
+        public static void DisplayStatsCountsHddr(DataTable table)
         {
             DataRow row;
 
@@ -298,7 +298,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _cmdCount;
         }
@@ -312,7 +312,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getDesc(eCmdIndex key)
+        public static string GetDesc(eCmdIndex key)
         {
             return _cmds[key.ToString()].Description;
         }
@@ -326,7 +326,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eCmdFormat getFormat(eCmdIndex key)
+        public static eCmdFormat GetFormat(eCmdIndex key)
         {
             return _cmds[key.ToString()].Format;
         }
@@ -340,7 +340,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(eCmdIndex key)
+        public static string GetName(eCmdIndex key)
         {
             return _cmds[key.ToString()].Name;
         }
@@ -354,7 +354,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eRequestType getType(eCmdIndex key)
+        public static eRequestType GetType(eCmdIndex key)
         {
             return _cmds[key.ToString()].Type;
         }
@@ -368,7 +368,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void populateTable()
+        public static void PopulateTable()
         {
             eCmdIndex indx;
 
@@ -594,17 +594,17 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static void resetStatsCounts()
+        public static void ResetStatsCounts()
         {
             PJLCommand cmd;
 
-            _cmdUnknown.resetStatistics();
+            _cmdUnknown.ResetStatistics();
 
             foreach (KeyValuePair<string, PJLCommand> kvp in _cmds)
             {
                 cmd = kvp.Value;
 
-                cmd.resetStatistics();
+                cmd.ResetStatistics();
             }
         }
     }

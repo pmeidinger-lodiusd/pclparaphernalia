@@ -47,7 +47,7 @@ namespace PCLParaphernalia
             _crntSubId = crntSubId;
             _crntPDL = crntPDL;
 
-            initialise();
+            Initialise();
         }
 
         //--------------------------------------------------------------------//
@@ -75,7 +75,7 @@ namespace PCLParaphernalia
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
-            metricsSave();
+            MetricsSave();
 
             DialogResult = true;
         }
@@ -119,7 +119,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void initialise()
+        private void Initialise()
         {
             btnOK.Visibility = Visibility.Hidden;
 
@@ -169,7 +169,7 @@ namespace PCLParaphernalia
                 lbFileNA.Visibility = Visibility.Hidden;
                 btnOK.Visibility = Visibility.Visible;
 
-                TargetCore.metricsReturnFileRpt(_crntToolId,
+                TargetCore.MetricsReturnFileRpt(_crntToolId,
                                                  ref _rptFileFmt,
                                                  ref _rptChkMarks,
                                                  ref _flagOptRptWrap);
@@ -262,9 +262,9 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private void metricsSave()
+        private void MetricsSave()
         {
-            TargetCore.metricsSaveFileRpt(_crntToolId, _rptFileFmt,
+            TargetCore.MetricsSaveFileRpt(_crntToolId, _rptFileFmt,
                                            _rptChkMarks, _flagOptRptWrap);
         }
 

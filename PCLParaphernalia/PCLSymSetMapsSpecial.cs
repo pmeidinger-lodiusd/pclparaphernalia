@@ -22,7 +22,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMapNull()
+        private static void UnicodeMapNull()
         {
             const eSymSetMapId mapId = eSymSetMapId.mapNull;
 
@@ -87,7 +87,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMapMissing()
+        private static void UnicodeMapMissing()
         {
             MessageBox.Show("missing map array",
                              "internal error",
@@ -104,7 +104,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMapSymbol()
+        private static void UnicodeMapSymbol()
         {
             const eSymSetMapId mapId = eSymSetMapId.mapSymbol;
 
@@ -167,7 +167,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static void unicodeMapUserSet()
+        private static void UnicodeMapUserSet()
         {
             const eSymSetMapId mapId = eSymSetMapId.mapUserSet;
 

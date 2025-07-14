@@ -54,7 +54,7 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static int getCount()
+        public static int GetCount()
         {
             return _locationTypeCount;
         }
@@ -68,9 +68,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getIdPCL(int selection)
+        public static string GetIdPCL(int selection)
         {
-            return _locationTypes[selection].getIdPCL();
+            return _locationTypes[selection].GetIdPCL();
         }
 
         //--------------------------------------------------------------------//
@@ -82,9 +82,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static string getName(int selection)
+        public static string GetName(int selection)
         {
-            return _locationTypes[selection].getName();
+            return _locationTypes[selection].GetName();
         }
 
         //--------------------------------------------------------------------//
@@ -96,9 +96,9 @@
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static eType getType(int selection)
+        public static eType GetType(int selection)
         {
-            return _locationTypes[selection].getType();
+            return _locationTypes[selection].GetType();
         }
     }
 }

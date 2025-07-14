@@ -30,7 +30,7 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private static readonly int _ctUnicodeFonts = PCLFonts.getCountUnique();
+        private static readonly int _ctUnicodeFonts = PCLFonts.GetCountUnique();
 
         private static readonly int[] _subsetUnicodeFonts = new int[_ctUnicodeFonts];
 
@@ -67,7 +67,7 @@ namespace PCLParaphernalia
                                          cbUnicodeCp02.SelectedIndex);
 
                 string unicodeBlock =
-                    UnicodeBlocks.getBlocknameForCodepoint(unicodeUCS2);
+                    UnicodeBlocks.GetBlocknameForCodepoint(unicodeUCS2);
 
                 UnicodeCategory unicodeCat =
                     CharUnicodeInfo.GetUnicodeCategory((char)unicodeUCS2);
@@ -77,7 +77,7 @@ namespace PCLParaphernalia
                 else
                     _unicodeUCS2PCLXL = unicodeUCS2;
 
-                PrnParseDataUTF8.convertUTF32ToUTF8HexString(unicodeUCS2,
+                PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(unicodeUCS2,
                                                               true,
                                                               ref utf8HexVal);
 
@@ -153,19 +153,19 @@ namespace PCLParaphernalia
 
             cbUnicodeFont.Items.Clear();
 
-            ctr = PCLFonts.getCount();
+            ctr = PCLFonts.GetCount();
             index = 0;
 
             for (int i = 0; i < ctr; i++)
             {
-                if ((PCLFonts.isBoundFont(i) == false) &&
-                    ((PCLFonts.getType(i) ==
+                if ((PCLFonts.IsBoundFont(i) == false) &&
+                    ((PCLFonts.GetType(i) ==
                      PCLFonts.eFontType.PresetTypeface) ||
-                    (PCLFonts.getType(i) ==
+                    (PCLFonts.GetType(i) ==
                      PCLFonts.eFontType.PresetFamilyMember)))
                 {
                     _subsetUnicodeFonts[index++] = i;
-                    cbUnicodeFont.Items.Add(PCLFonts.getName(i));
+                    cbUnicodeFont.Items.Add(PCLFonts.GetName(i));
                 }
             }
 
@@ -318,7 +318,7 @@ namespace PCLParaphernalia
         {
             int tmpInt = 0;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode(
+            ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCL",
                 ref _indxUnicodeFontPCL,
                 ref _unicodeFontVarPCL,
@@ -327,7 +327,7 @@ namespace PCLParaphernalia
 
             _unicodeUCS2PCL = (uint)tmpInt;
 
-            ToolMiscSamplesPersist.loadDataTypeUnicode(
+            ToolMiscSamplesPersist.LoadDataTypeUnicode(
                 "PCLXL",
                 ref _indxUnicodeFontPCLXL,
                 ref _unicodeFontVarPCLXL,
@@ -349,14 +349,14 @@ namespace PCLParaphernalia
 
         public void metricsSaveDataUnicode()
         {
-            ToolMiscSamplesPersist.saveDataTypeUnicode(
+            ToolMiscSamplesPersist.SaveDataTypeUnicode(
                 "PCL",
                 _indxUnicodeFontPCL,
                 _unicodeFontVarPCL,
                 (int)_unicodeUCS2PCL,
                 _flagUnicodeFormAsMacroPCL);
 
-            ToolMiscSamplesPersist.saveDataTypeUnicode(
+            ToolMiscSamplesPersist.SaveDataTypeUnicode(
                 "PCLXL",
                 _indxUnicodeFontPCLXL,
                 _unicodeFontVarPCLXL,
@@ -503,16 +503,16 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            varR = PCLFonts.variantExists(fontIndx,
+            varR = PCLFonts.VariantExists(fontIndx,
                                            PCLFonts.eVariant.Regular);
 
-            varI = PCLFonts.variantExists(fontIndx,
+            varI = PCLFonts.VariantExists(fontIndx,
                                            PCLFonts.eVariant.Italic);
 
-            varB = PCLFonts.variantExists(fontIndx,
+            varB = PCLFonts.VariantExists(fontIndx,
                                            PCLFonts.eVariant.Bold);
 
-            varBI = PCLFonts.variantExists(fontIndx,
+            varBI = PCLFonts.VariantExists(fontIndx,
                                             PCLFonts.eVariant.BoldItalic);
 
             //----------------------------------------------------------------//
