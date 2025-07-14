@@ -205,9 +205,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Descriptor (size " + _hddrDescLen +
                             ") larger than header (size " + _hddrLen + ")");
                     }
@@ -220,9 +220,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Descriptor (size " + _hddrDescLen +
                             ") less than minimum (" + minHddrDescLen + ")");
                     }
@@ -379,9 +379,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     "Processing of header abandoned!");
             }
 
@@ -491,9 +491,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Header is  internally inconsistent");
                 }
             }
@@ -508,9 +508,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Header is  internally inconsistent");
                 }
                 else
@@ -589,9 +589,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Calculated checksum is 0x" +
                                 PrnParseCommon.byteToHexString(crntByte));
 
@@ -707,7 +707,7 @@ namespace PCLParaphernalia
                 if (firstLine)
                     typeText = "Font Copyright";
                 else
-                    typeText = "";
+                    typeText = string.Empty;
 
                 PrnParseCommon.addDataRow(
                     PrnParseRowTypes.eType.PCLFontHddr,
@@ -717,7 +717,7 @@ namespace PCLParaphernalia
                     _fileOffset + offset,
                     _analysisLevel,
                     typeText,
-                    "",
+                    string.Empty,
                     ascii.GetString(_buf, offset, sliceLen));
 
                 remLen -= sliceLen;
@@ -785,7 +785,7 @@ namespace PCLParaphernalia
                     _fileOffset,
                     bufOffset,
                     _hddrDescLen,
-                    "",
+                    string.Empty,
                     _showBinData,
                     false,
                     true,
@@ -872,9 +872,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Intellifont Global Data length (" + _hddrDataLen +
                         ") is negative or is longer than the header!");
                 }
@@ -900,9 +900,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Header is internally inconsistent");
                     }
                 }
@@ -942,9 +942,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Header format (" + _hddrFormat + ") is not recognised");
             }
 
@@ -954,9 +954,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Processing of Font Header abandoned");
             }
             else
@@ -978,9 +978,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Descriptor Size:",
-                    "",
+                    string.Empty,
                     _hddrDescLen.ToString());
 
                 //------------------------------------------------------------//
@@ -1029,9 +1029,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Header Format:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -1061,9 +1061,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "X-resolution:",
-                        "",
+                        string.Empty,
                         ix1 + " design units per inch");
                 }
                 else if ((_hddrFormat == ePCLFontFormat.BitmapResSpec)
@@ -1078,9 +1078,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "X-resolution:",
-                        "",
+                        string.Empty,
                         ix1 + " dots per inch");
                 }
 
@@ -1111,9 +1111,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Y-resolution:",
-                        "",
+                        string.Empty,
                         ix1 + " design units per inch");
                 }
                 else if ((_hddrFormat == ePCLFontFormat.BitmapResSpec)
@@ -1128,9 +1128,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Y-resolution:",
-                        "",
+                        string.Empty,
                         ix1 + " dots per inch");
                 }
 
@@ -1186,9 +1186,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Font Type:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -1212,9 +1212,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "First Code:",
-                            "",
+                            string.Empty,
                             ix1.ToString() +
                             " (0x" + ix1.ToString("x") + ")");
 
@@ -1222,9 +1222,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Last Code:",
-                            "",
+                            string.Empty,
                             ix2.ToString() +
                             " (0x" + ix2.ToString("x") + ")");
                     }
@@ -1236,9 +1236,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgComment,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "Comment",
-                                "",
+                                string.Empty,
                                 "First Code (" + ix1.ToString() +
                                 ") should be zero!");
                         }
@@ -1247,9 +1247,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Character Count:",
-                            "",
+                            string.Empty,
                             ix2 + " (maximum)");
                     }
                 }
@@ -1285,7 +1285,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Symbol Set:",
                     "Kind1 value:",
                     ix1.ToString() + " (0x" + ix1.ToString("x2") + ")");
@@ -1296,7 +1296,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "     ---->",
                         "Identifier:",
                         ix2.ToString() + c);
@@ -1307,7 +1307,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "     ---->",
                         "Identifier:",
                         ix2.ToString() + c +
@@ -1341,9 +1341,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Spacing:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -1389,7 +1389,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Scaling:",
                         "Technology:",
                         itemDesc);
@@ -1398,8 +1398,8 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
                         "Variety:",
                         ix2.ToString());
                 }
@@ -1425,9 +1425,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Scale Factor:",
-                        "",
+                        string.Empty,
                         _fontScaleFactor + " design units per Em");
                 }
 
@@ -1461,9 +1461,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Pitch:",
-                        "",
+                        string.Empty,
                         fx1.ToString("F3") + " characters per inch");
 
                     if (!pitchSet)
@@ -1472,9 +1472,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Pitch value is zero");
                     }
                 }
@@ -1484,7 +1484,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Master Design:",
                         "Space Width:",
                         ix1 + " design units");
@@ -1495,9 +1495,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Pitch (space width) value is zero");
                     }
 
@@ -1507,9 +1507,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgComment,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Comment",
-                            "",
+                            string.Empty,
                             "Scalable font: Pitch Extended value is non-zero");
                     }
                 }
@@ -1543,9 +1543,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Height:",
-                        "",
+                        string.Empty,
                         fx1.ToString("F2") + " PCL (1/72 inch) points");
                 }
                 else if (_intelliFont)
@@ -1558,9 +1558,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Height:",
-                            "",
+                            string.Empty,
                             fx1.ToString("F2") + " true (typesetter) points");
                     }
                     else
@@ -1571,7 +1571,7 @@ namespace PCLParaphernalia
                             PrnParseConstants.eOvlShow.None,
                             "Master Design:",
                             "Height:",
-                            "",
+                            string.Empty,
                             fx1.ToString("F2") + " true (typesetter) points");
                     }
                 }
@@ -1596,7 +1596,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Style:",
                     "Value:",
                     ix1.ToString());
@@ -1686,8 +1686,8 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
                     "Structure:",
                     itemDesc);
 
@@ -1736,8 +1736,8 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
                     "Width:",
                     itemDesc);
 
@@ -1770,8 +1770,8 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
                     "Posture:",
                     itemDesc);
 
@@ -1863,9 +1863,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Stroke Weight:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -1888,7 +1888,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Typeface:",
                     "Family Code:",
                     ix2.ToString());
@@ -1936,8 +1936,8 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
                         "Vendor Code:",
                         itemDesc);
 
@@ -1945,8 +1945,8 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
                         "Identifier:",
                         ix1.ToString());
                 }
@@ -1997,7 +1997,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Font Number:",
                         "Format:",
                         itemDesc);
@@ -2037,8 +2037,8 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
                         "Vendor Code:",
                         itemDesc);
 
@@ -2046,8 +2046,8 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
                         "Vendor Font No.:",
                         ix1.ToString());
                 }
@@ -2066,9 +2066,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Font Name:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -2111,9 +2111,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Orientation:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -2161,9 +2161,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Serif Type:",
-                        "",
+                        string.Empty,
                         itemDesc);
                 }
 
@@ -2232,9 +2232,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Serif Style:",
-                        "",
+                        string.Empty,
                         itemDesc);
                 }
                 else
@@ -2243,9 +2243,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "      Style:",
-                        "",
+                        string.Empty,
                         itemDesc);
                 }
 
@@ -2320,9 +2320,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Width Type:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -2356,9 +2356,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Quality:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -2392,9 +2392,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Placement:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -2415,9 +2415,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Cell Width:",
-                        "",
+                        string.Empty,
                         ix1 + " dots");
                 }
                 else
@@ -2426,9 +2426,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Cell Width:",
-                        "",
+                        string.Empty,
                         ix1 + " design units");
                 }
 
@@ -2451,9 +2451,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Text Width:",
-                            "",
+                            string.Empty,
                             ix1 + " quarter dots");
 
                         fx1 = ((float)(4 * _pclDotResX)) / ix1;
@@ -2462,7 +2462,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "     ---->",
                             "Average Spacing:",
                             fx1.ToString("F1") + " characters per inch");
@@ -2473,9 +2473,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Text Width:",
-                            "",
+                            string.Empty,
                             ix1 + " design units");
                     }
                 }
@@ -2498,9 +2498,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Cell Height:",
-                        "",
+                        string.Empty,
                         ix1 + " dots");
                 }
                 else
@@ -2509,9 +2509,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Cell Height:",
-                        "",
+                        string.Empty,
                         ix1 + " design units");
                 }
 
@@ -2533,9 +2533,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Text Height:",
-                            "",
+                            string.Empty,
                             ix1 + " quarter dots");
 
                         fx1 = ((float)(4 * _pclDotResY)) / ix1;
@@ -2544,7 +2544,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "     ---->",
                             "Optimum Spacing:",
                             fx1.ToString("F1") + " lines per inch");
@@ -2555,9 +2555,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Text Height:",
-                            "",
+                            string.Empty,
                             ix1 + " design units");
                     }
                 }
@@ -2585,9 +2585,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "x-Height:",
-                            "",
+                            string.Empty,
                             ix1 + " quarter dots");
                     }
                     else
@@ -2596,9 +2596,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "x-Height:",
-                            "",
+                            string.Empty,
                             ix1 + " design units");
                     }
                 }
@@ -2633,9 +2633,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Cap Height:",
-                            "",
+                            string.Empty,
                             "Default (70.87% of Em)");
                     }
                     else
@@ -2646,9 +2646,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Cap Height:",
-                            "",
+                            string.Empty,
                             fx1.ToString("F2") + "% of Em");
                     }
                 }
@@ -2658,9 +2658,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Cap Height:",
-                        "",
+                        string.Empty,
                         ix1 + " design units");
                 }
 
@@ -2687,9 +2687,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Baseline:",
-                        "",
+                        string.Empty,
                         ix1 + " rows below top of cell");
                 }
                 else if (_intelliFont)
@@ -2698,9 +2698,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Baseline:",
-                        "",
+                        string.Empty,
                         ix1 + " design units (Y co-ord)");
                 }
                 else if ((_truetypeFont) && (ix1 != 0))
@@ -2709,9 +2709,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Baseline:",
-                        "",
+                        string.Empty,
                         ix1 + ": should be zero!");
                 }
 
@@ -2750,7 +2750,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Underline:",
                             "Thickness:",
                             ix1 + " dots");
@@ -2761,7 +2761,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Underline:",
                             "Thickness:",
                             ix1 + ": should be zero!");
@@ -2783,7 +2783,7 @@ namespace PCLParaphernalia
                         if (ix1 == 0)
                             text1 = "Underline:";
                         else
-                            text1 = "";
+                            text1 = string.Empty;
 
                         if (ix1 == 0)
                             text3 = "On baseline";
@@ -2801,7 +2801,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             text1,
                             "Position:",
                             text3);
@@ -2814,7 +2814,7 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.PCLFontHddr,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "Underline:",
                                 "Position:",
                                 ix2 + ": should be zero!");
@@ -2825,8 +2825,8 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.PCLFontHddr,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
-                                "",
+                                string.Empty,
+                                string.Empty,
                                 "Position:",
                                 ix2 + ": should be zero!");
                         }
@@ -2878,7 +2878,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Underline:",
                         "Thickness:",
                         ix1 + " design units");
@@ -2892,8 +2892,8 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
                             "Position:",
                             "On baseline");
                     }
@@ -2905,8 +2905,8 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
                             "Position:",
                             ix2 + " design units below baseline");
                     }
@@ -2916,8 +2916,8 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontHddr,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
                             "Position:",
                             ix2 + " design units above baseline");
                     }
@@ -2943,9 +2943,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "OR Threshold:",
-                        "",
+                        string.Empty,
                         ix1 + " design units");
                 }
 
@@ -2970,7 +2970,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Italic Angle:",
                         "Tangent:",
                         fx1.ToString("F5"));
@@ -3081,7 +3081,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         _showBinData,
                         false,
                         true,

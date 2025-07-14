@@ -111,27 +111,27 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>",
-                "",
+                string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "Start analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "of size " + seqDataLen + " ASCIIHEX characters (" +
                              seqLen + " bytes)");
 
@@ -145,9 +145,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "ASCII HEX not multiple of 2 bytes");
             }
             else
@@ -202,9 +202,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Not ASCII HEX");
                 }
                 else
@@ -220,18 +220,18 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "End analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "of size " + seqDataLen + " ASCIIHEX characters (" +
                              seqLen + " bytes)");
 
@@ -239,9 +239,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<",
-                "",
+                string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
             return invalidSeqFound;
@@ -289,27 +289,27 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>",
-                "",
+                string.Empty,
                 ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "Start analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "of size " + dataLen + " bytes");
 
             //----------------------------------------------------------------//
@@ -322,27 +322,27 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "End analysis of embedded PML string");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Comment",
-                "",
+                string.Empty,
                 "of size " + dataLen + " bytes");
 
             PrnParseCommon.addTextRow(
                 PrnParseRowTypes.eType.MsgComment,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<",
-                "",
+                string.Empty,
                 "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 
             return seqOK;
@@ -374,7 +374,7 @@ namespace PCLParaphernalia
             byte crntByte,
                  dataType;
 
-            string tagDesc = "";
+            string tagDesc = string.Empty;
 
             invalidSeqFound = false;
             partOffset = 0;
@@ -394,7 +394,7 @@ namespace PCLParaphernalia
                              seqOffset + partOffset,
                              partLen,
                              "PML Intro",
-                             "");
+                             string.Empty);
 
                 partOffset += partLen;
             }
@@ -482,7 +482,7 @@ namespace PCLParaphernalia
                                              seqOffset + partOffset,
                                              partLen,
                                              "         Symbol Set",
-                                             "");
+                                             string.Empty);
 
                                 partOffset += partLen;
                                 dataLen -= partLen;
@@ -495,7 +495,7 @@ namespace PCLParaphernalia
                                          seqOffset + partOffset,
                                          partLen,
                                          "         Value",
-                                         "");
+                                         string.Empty);
 
                             partOffset += partLen;
                         }
@@ -509,9 +509,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Structure suspect");
                     }
                 }
@@ -616,7 +616,7 @@ namespace PCLParaphernalia
                                              seqOffset + partOffset,
                                              partLen,
                                              "         Symbol Set",
-                                             "");
+                                             string.Empty);
 
                                 partOffset += partLen;
                                 dataLen -= partLen;
@@ -629,7 +629,7 @@ namespace PCLParaphernalia
                                          seqOffset + partOffset,
                                          partLen,
                                          "         Value",
-                                         "");
+                                         string.Empty);
 
                             partOffset += partLen;
                         }
@@ -643,9 +643,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Structure suspect");
                     }
                 }
@@ -756,7 +756,7 @@ namespace PCLParaphernalia
 
             while (ipPtr < seqLen)
             {
-                decode = "";
+                decode = string.Empty;
 
                 //------------------------------------------------------------//
                 //                                                            //
@@ -870,7 +870,7 @@ namespace PCLParaphernalia
                             _indxOffsetFormat,
                             _fileOffset + chunkOffset,
                             _analysisLevel,
-                            "",
+                            string.Empty,
                             seq,
                             decode.ToString());
                     }
@@ -1260,7 +1260,7 @@ namespace PCLParaphernalia
                 //                                                        //
                 //--------------------------------------------------------//
 
-                string tempStr = "";
+                string tempStr = string.Empty;
 
                 if (sliceLen != 1)
                 {

@@ -112,7 +112,7 @@ namespace PCLParaphernalia
 
         private static void generateJobHeader(BinaryWriter prnWriter)
         {
-            PCLXLWriter.stdJobHeader(prnWriter, "");
+            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
         }
 
         //--------------------------------------------------------------------//
@@ -441,7 +441,7 @@ namespace PCLParaphernalia
             byte[] utf8Seq = new byte[4];
             int utf8Len = 0;
 
-            string utf8HexVal = "";
+            string utf8HexVal = string.Empty;
 
             //----------------------------------------------------------------//
 

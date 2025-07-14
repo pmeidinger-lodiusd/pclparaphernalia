@@ -244,7 +244,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename == string.Empty))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                string netPrnAddress = "";
+                string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
 
                 int netTimeoutSend = 0;
@@ -318,7 +318,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                string winPrintername = "";
+                string winPrintername = string.Empty;
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 

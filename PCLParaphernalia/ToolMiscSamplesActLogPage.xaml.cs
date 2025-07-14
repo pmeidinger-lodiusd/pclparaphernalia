@@ -312,8 +312,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageOffLeftMet.Text = "";
-                txtLogPageOffLeftImp.Text = "";
+                txtLogPageOffLeftMet.Text = string.Empty;
+                txtLogPageOffLeftImp.Text = string.Empty;
             }
         }
 
@@ -339,8 +339,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageOffLeftMet.Text = "";
-                txtLogPageOffLeftImp.Text = "";
+                txtLogPageOffLeftMet.Text = string.Empty;
+                txtLogPageOffLeftImp.Text = string.Empty;
             }
         }
 
@@ -366,8 +366,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageOffTopMet.Text = "";
-                txtLogPageOffTopImp.Text = "";
+                txtLogPageOffTopMet.Text = string.Empty;
+                txtLogPageOffTopImp.Text = string.Empty;
             }
         }
 
@@ -393,8 +393,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageOffTopMet.Text = "";
-                txtLogPageOffTopImp.Text = "";
+                txtLogPageOffTopMet.Text = string.Empty;
+                txtLogPageOffTopImp.Text = string.Empty;
             }
         }
 
@@ -420,8 +420,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageHeightMet.Text = "";
-                txtLogPageHeightImp.Text = "";
+                txtLogPageHeightMet.Text = string.Empty;
+                txtLogPageHeightImp.Text = string.Empty;
             }
         }
 
@@ -447,8 +447,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageHeightMet.Text = "";
-                txtLogPageHeightImp.Text = "";
+                txtLogPageHeightMet.Text = string.Empty;
+                txtLogPageHeightImp.Text = string.Empty;
             }
         }
 
@@ -474,8 +474,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageWidthMet.Text = "";
-                txtLogPageWidthImp.Text = "";
+                txtLogPageWidthMet.Text = string.Empty;
+                txtLogPageWidthImp.Text = string.Empty;
             }
         }
 
@@ -501,8 +501,8 @@ namespace PCLParaphernalia
             }
             else
             {
-                txtLogPageWidthMet.Text = "";
-                txtLogPageWidthImp.Text = "";
+                txtLogPageWidthMet.Text = string.Empty;
+                txtLogPageWidthImp.Text = string.Empty;
             }
         }
 
@@ -527,7 +527,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageOffLeftDPt.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 value = 0;
             }
@@ -600,7 +600,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageOffTopDPt.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 value = 0;
             }
@@ -673,7 +673,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageHeightDPt.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 value = 0;
             }
@@ -746,7 +746,7 @@ namespace PCLParaphernalia
 
             string crntText = txtLogPageWidthDPt.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 value = 0;
             }

@@ -207,7 +207,7 @@ namespace PCLParaphernalia
 
         private uint _post_isFixedPitch = 0;
 
-        private string _name_fullFontnameStr = "";
+        private string _name_fullFontnameStr = string.Empty;
 
         private readonly byte[] _name_fullFontname = new byte[cSizeFontname];
         private byte[] _PCLT_typeface = new byte[cSizeFontname];
@@ -819,7 +819,7 @@ namespace PCLParaphernalia
 
             _filenameTTF = filename;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename == string.Empty))
             {
                 MessageBox.Show("Font file name is null.",
                                 "Source (TrueType) font file selection",
@@ -1422,7 +1422,7 @@ namespace PCLParaphernalia
 
                 ToolSoftFontGenLog.logNameAndValue(
                     _tableDonor, false, false,
-                    "",
+                    string.Empty,
                     text_glyph);
 
                 text_OS_2_avgWidth = "OS/2 | xAvgCharWidth = " +
@@ -1430,7 +1430,7 @@ namespace PCLParaphernalia
 
                 ToolSoftFontGenLog.logNameAndValue(
                     _tableDonor, false, false,
-                    "",
+                    string.Empty,
                     text_OS_2_avgWidth);
 
                 if (monoSpaced_panose)
@@ -1444,7 +1444,7 @@ namespace PCLParaphernalia
 
                 ToolSoftFontGenLog.logNameAndValue(
                     _tableDonor, false, false,
-                    "",
+                    string.Empty,
                     text_OS_2_panose);
 
                 if (_post_isFixedPitch == 0)
@@ -1458,7 +1458,7 @@ namespace PCLParaphernalia
 
                 ToolSoftFontGenLog.logNameAndValue(
                     _tableDonor, false, false,
-                    "",
+                    string.Empty,
                     text_post);
 
                 mbResult = MessageBox.Show(
@@ -1478,7 +1478,7 @@ namespace PCLParaphernalia
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableDonor, false, false,
-                        "",
+                        string.Empty,
                         "User chooses to generate PCL font as" +
                         " fixed-pitch");
                 }
@@ -1488,7 +1488,7 @@ namespace PCLParaphernalia
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableDonor, false, false,
-                        "",
+                        string.Empty,
                         "User chooses to generate PCL font as" +
                         " proportionally-spaced");
                 }
@@ -2033,7 +2033,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    string dummyString = "";
+                    string dummyString = string.Empty;
 
                     flagOK = readData_name(false, ref dummyString);
                 }
@@ -2582,8 +2582,8 @@ namespace PCLParaphernalia
             bool encodingSymbol,
                     encodingUnicode;
 
-            string mapSymSet = "";
-            string mapSymSetType = "";
+            string mapSymSet = string.Empty;
+            string mapSymSetType = string.Empty;
 
             flagOK = true;
 
@@ -2689,17 +2689,17 @@ namespace PCLParaphernalia
                             {
                                 case 0:
                                     platformDesc = " (Unicode)";
-                                    encDesc = "";
+                                    encDesc = string.Empty;
                                     break;
 
                                 case 1:
                                     platformDesc = " (Macintosh)";
-                                    encDesc = "";
+                                    encDesc = string.Empty;
                                     break;
 
                                 case 2:
                                     platformDesc = " (ISO)";
-                                    encDesc = "";
+                                    encDesc = string.Empty;
                                     break;
 
                                 case 3:
@@ -2760,12 +2760,12 @@ namespace PCLParaphernalia
 
                                 case 4:
                                     platformDesc = " (Custom)";
-                                    encDesc = "";
+                                    encDesc = string.Empty;
                                     break;
 
                                 default:
                                     platformDesc = " (unknown)";
-                                    encDesc = "";
+                                    encDesc = string.Empty;
                                     break;
                             }
 
@@ -3101,7 +3101,7 @@ namespace PCLParaphernalia
 
                                     ToolSoftFontGenLog.logNameAndValue(
                                         _tableDonor, false, false,
-                                        "",
+                                        string.Empty,
                                         " Platform = 3 (Windows)" +
                                         "; Encoding = " + encDesc);
                                 }
@@ -3232,8 +3232,8 @@ namespace PCLParaphernalia
 
                         ToolSoftFontGenLog.logNameAndValue(
                             _tableMapping, false, false,
-                            "",
-                            "");
+                            string.Empty,
+                            string.Empty);
                     }
 
                     for (segx2 = 0; segx2 < fmt4SegCountx2; segx2 += 2)
@@ -3465,7 +3465,7 @@ namespace PCLParaphernalia
                     ushort codepoint = 0,
                            glyphId = 0;
 
-                    string hexCt = "";
+                    string hexCt = string.Empty;
 
                     bool glyphPresent = false,
                          firstFound = false,
@@ -3555,14 +3555,14 @@ namespace PCLParaphernalia
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableMapping, false, false,
-                        "",
+                        string.Empty,
                         "Mapped     = " +
                         _cmap_numChars.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_numChars.ToString("x4") + ")");
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableMapping, false, false,
-                        "",
+                        string.Empty,
                         "Missing    = " +
                         _cmap_missChars.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_missChars.ToString("x4") + ")");
@@ -3576,7 +3576,7 @@ namespace PCLParaphernalia
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableMapping, false, false,
-                        "",
+                        string.Empty,
                         "Last Code  = " +
                         _cmap_lastCode.ToString("D").PadLeft(5, ' ') +
                         " (0x" + _cmap_lastCode.ToString("x4") + ")");
@@ -4414,13 +4414,13 @@ namespace PCLParaphernalia
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableDonor, false, false,
-                        "",
+                        string.Empty,
                         "Platform = 3 (Windows)" +
                         "; Encoding = 0 (Symbol) or 1 (Unicode BMP (UCS-2))");
 
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableDonor, false, true,
-                        "",
+                        string.Empty,
                         "Language = 0x0409 (English (US))");
                 }
             }
@@ -4453,7 +4453,7 @@ namespace PCLParaphernalia
 
                 int textOffset;
 
-                string nameText = "";
+                string nameText = string.Empty;
 
                 bool logIdData;
 
@@ -4869,8 +4869,8 @@ namespace PCLParaphernalia
 
                 if (_logVerbose)
                 {
-                    string usWeightClassDesc = "";
-                    string usWidthClassDesc = "";
+                    string usWeightClassDesc = string.Empty;
+                    string usWidthClassDesc = string.Empty;
 
                     StringBuilder fsTypeDesc = new StringBuilder();
                     StringBuilder fsSelDesc = new StringBuilder();
@@ -5046,7 +5046,7 @@ namespace PCLParaphernalia
 
                 if (flagOK)
                 {
-                    string licenceText = "";
+                    string licenceText = string.Empty;
 
                     eLicenceType licenceType = checkLicence(ref licenceText);
 
@@ -5058,19 +5058,19 @@ namespace PCLParaphernalia
                     {
                         ToolSoftFontGenLog.logNameAndValue(
                             _tableDonor, false, false,
-                            "",
+                            string.Empty,
                             "***** font conversion requires permission of legal owner *****");
                     }
                     else if (licenceType == eLicenceType.OwnerOnly)
                     {
                         ToolSoftFontGenLog.logNameAndValue(
                             _tableDonor, false, false,
-                            "",
+                            string.Empty,
                             "***** temporary use of converted font *****");
 
                         ToolSoftFontGenLog.logNameAndValue(
                             _tableDonor, false, false,
-                            "",
+                            string.Empty,
                             "***** by TrueType font licensee only  *****");
                     }
                 }
@@ -6029,8 +6029,8 @@ namespace PCLParaphernalia
                 {
                     ToolSoftFontGenLog.logNameAndValue(
                         _tableDonor, false, false,
-                        "",
-                        "");
+                        string.Empty,
+                        string.Empty);
                 }
             }
 

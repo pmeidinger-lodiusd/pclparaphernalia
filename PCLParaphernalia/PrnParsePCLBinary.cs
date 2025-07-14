@@ -88,9 +88,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "AlphaNumeric Id Data length < " + lenMin +
                     " or > " + lenMax);
 
@@ -181,7 +181,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -255,9 +255,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Operation Code",
-                    "",
+                    string.Empty,
                     codeVal + codeDesc);
 
                 //------------------------------------------------------------//
@@ -345,9 +345,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Colour Lookup Tables length != " + lenStd);
 
                 dataOK = false;
@@ -440,7 +440,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenStd,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -485,9 +485,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Colour Space",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -511,9 +511,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Reserved Byte",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Component " + i.ToString(),
                             textDesc,
                             "{ " + codeDesc + "]");
@@ -613,9 +613,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Configuration (I/O) length < " + lenMin +
                     " or > " + lenMax);
 
@@ -709,7 +709,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -864,9 +864,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Configure Image Data length < " + lenMin +
                     " or > " + lenMax);
 
@@ -953,7 +953,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -998,9 +998,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Color Space",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1036,9 +1036,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Pixel Encoding",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1055,9 +1055,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bits/Index",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1072,9 +1072,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bits/Primary 1",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1089,9 +1089,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bits/Primary 2",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1106,9 +1106,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bits/Primary 3",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -1147,7 +1147,7 @@ namespace PCLParaphernalia
                             fileOffset,
                             bufOffset,
                             binDataRem,
-                            "",
+                            string.Empty,
                             showBinData,
                             false,
                             true,
@@ -1261,7 +1261,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             textDesc,
                             "Primary " + (j + 1),
                             sint16Val.ToString());
@@ -1333,7 +1333,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "x Chromaticity",
                         codeDesc);
@@ -1346,7 +1346,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "y Chromaticity",
                         codeDesc);
@@ -1369,7 +1369,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Gamma",
                         codeDesc);
@@ -1382,7 +1382,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Gain",
                         codeDesc);
@@ -1405,7 +1405,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Minimum",
                         codeDesc);
@@ -1418,7 +1418,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Maximum",
                         codeDesc);
@@ -1485,7 +1485,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Minimum",
                         codeDesc);
@@ -1498,7 +1498,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Maximum",
                         codeDesc);
@@ -1560,7 +1560,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Red",
                         codeDesc);
@@ -1573,7 +1573,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Green",
                         codeDesc);
@@ -1586,7 +1586,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Blue",
                         codeDesc);
@@ -1604,7 +1604,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Minimum",
                         codeDesc);
@@ -1617,7 +1617,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Maximum",
                         codeDesc);
@@ -1642,7 +1642,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "x Chromaticity",
                         codeDesc);
@@ -1655,7 +1655,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "y Chromaticity",
                         codeDesc);
@@ -1678,7 +1678,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Gamma",
                         codeDesc);
@@ -1691,7 +1691,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         textDesc,
                         "Gain",
                         codeDesc);
@@ -1755,9 +1755,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Configure Raster Data length < " + lenMin +
                     " or > " + lenMax);
 
@@ -1894,9 +1894,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Configure Raster Data format " + format +
                             " not known");
 
@@ -1996,7 +1996,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -2014,9 +2014,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -2031,9 +2031,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -2077,7 +2077,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     itemName,
                     "Count",
                     codeDesc);
@@ -2100,7 +2100,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Horizontal",
                         codeDesc);
@@ -2117,7 +2117,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Vertical",
                         codeDesc);
@@ -2134,7 +2134,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Levels",
                         codeDesc);
@@ -2232,7 +2232,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -2250,9 +2250,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -2267,9 +2267,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -2313,7 +2313,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     itemName,
                     "Count",
                     codeDesc);
@@ -2336,7 +2336,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Horizontal",
                         codeDesc);
@@ -2353,7 +2353,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Vertical",
                         codeDesc);
@@ -2370,7 +2370,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Levels",
                         codeDesc);
@@ -2465,7 +2465,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -2483,9 +2483,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -2498,9 +2498,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -2528,7 +2528,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bit count:",
                     "Red",
                     byteVal.ToString());
@@ -2543,7 +2543,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bit count:",
                     "Green",
                     byteVal.ToString());
@@ -2558,7 +2558,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Bit count:",
                     "Blue",
                     byteVal.ToString());
@@ -2575,7 +2575,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Resolution",
                     "Horizontal",
                     codeDesc);
@@ -2592,7 +2592,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Resolution",
                     "Vertical",
                     codeDesc);
@@ -2682,7 +2682,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -2700,9 +2700,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -2715,9 +2715,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -2745,9 +2745,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Index bits",
-                    "",
+                    string.Empty,
                     byteVal.ToString());
 
                 //------------------------------------------------------------//
@@ -2762,7 +2762,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Resolution",
                     "Horizontal",
                     codeDesc);
@@ -2779,7 +2779,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Resolution",
                     "Vertical",
                     codeDesc);
@@ -2869,7 +2869,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -2887,9 +2887,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -2902,9 +2902,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -2932,9 +2932,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Index bits",
-                    "",
+                    string.Empty,
                     byteVal.ToString());
 
                 //------------------------------------------------------------//
@@ -2949,7 +2949,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Indexed Resolution",
                     "Horizontal",
                     codeDesc);
@@ -2966,7 +2966,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Indexed Resolution",
                     "Vertical",
                     codeDesc);
@@ -2983,7 +2983,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Monochrome Resolution",
                     "Horizontal",
                     codeDesc);
@@ -3000,7 +3000,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Monochrome Resolution",
                     "Vertical",
                     codeDesc);
@@ -3038,9 +3038,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Data Organisation",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -3131,7 +3131,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -3149,9 +3149,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -3166,9 +3166,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -3196,9 +3196,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Pen mode (?)",
-                    "",
+                    string.Empty,
                     byteVal.ToString());
 
                 //------------------------------------------------------------//
@@ -3209,7 +3209,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     itemName,
                     "Count",
                     itemCt.ToString());
@@ -3234,7 +3234,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Horizontal",
                         codeDesc);
@@ -3251,7 +3251,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Vertical",
                         codeDesc);
@@ -3266,7 +3266,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Compression Mode",
                         byteVal.ToString());
@@ -3304,7 +3304,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Orientation",
                         codeDesc);
@@ -3319,7 +3319,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Bits per Pixel",
                         byteVal.ToString());
@@ -3334,7 +3334,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Planes per Pixel",
                         byteVal.ToString());
@@ -3433,7 +3433,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     binDataLen,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -3451,9 +3451,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLDecode,
                 table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Format",
-                "",
+                string.Empty,
                 formatName);
 
             //----------------------------------------------------------------//
@@ -3468,9 +3468,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Error ***",
-                    "",
+                    string.Empty,
                     "actual length " + binDataLen +
                     " != calculated length " + calcLen);
 
@@ -3499,7 +3499,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     itemName,
                     "Count",
                     itemCt.ToString());
@@ -3529,9 +3529,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Pens Major",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -3556,9 +3556,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Reserved Byte",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -3579,7 +3579,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Horizontal",
                         codeDesc);
@@ -3596,7 +3596,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Res. Vertical",
                         codeDesc);
@@ -3615,7 +3615,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Intensity Levels",
                         codeDesc);
@@ -3645,7 +3645,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Planes Major",
                         codeDesc);
@@ -3715,7 +3715,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         itemName + " " + i,
                         "Channel ID",
                         codeDesc);
@@ -3777,9 +3777,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Define Logical Page data length not " + lenShort +
                     " or " + lenLong);
 
@@ -3863,7 +3863,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -3883,9 +3883,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Left Offset",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -3900,9 +3900,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Top Offset",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -3940,9 +3940,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Orientation",
-                        "",
+                        string.Empty,
                         codeDesc);
 
                     //--------------------------------------------------------//
@@ -3967,9 +3967,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Reserved Byte",
-                        "",
+                        string.Empty,
                         codeDesc);
 
                     //--------------------------------------------------------//
@@ -3985,9 +3985,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Page Width",
-                        "",
+                        string.Empty,
                         codeDesc);
 
                     //--------------------------------------------------------//
@@ -4003,9 +4003,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Page Height",
-                        "",
+                        string.Empty,
                         codeDesc);
                 }
 
@@ -4065,9 +4065,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Define Symbol Set length < " + lenMin +
                     " or > " + lenMax);
 
@@ -4160,7 +4160,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -4178,9 +4178,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Header size",
-                    "",
+                    string.Empty,
                     uint16Val.ToString() + " bytes");
 
                 mapLen = binDataLen - uint16Val;
@@ -4191,9 +4191,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Define Symbol Set header size != " + lenMin);
 
                     dataOK = false;
@@ -4214,9 +4214,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Symbol Set ID Code",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 if (uint16Val > kind1Max)
@@ -4225,9 +4225,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "ID Code > maximum value of " +
                         kind1Max + " (ID = " +
                         PCLSymbolSets.translateKind1ToId(kind1Max) + ")");
@@ -4260,9 +4260,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Format",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -4302,9 +4302,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Symbol Set Type",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -4317,9 +4317,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "First Code",
-                    "",
+                    string.Empty,
                     firstCode.ToString() +
                     " (0x" + firstCode.ToString("x") + ")");
 
@@ -4333,9 +4333,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Last Code",
-                    "",
+                    string.Empty,
                     lastCode.ToString() +
                     " (0x" + lastCode.ToString("x") + ")");
 
@@ -4379,9 +4379,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Symbol Map size of " + mapLen +
                             " inconsistent with");
 
@@ -4389,9 +4389,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "calculated size " + mapLenCalc +
                             " for " + codeCt + " code-points");
 
@@ -4466,7 +4466,7 @@ namespace PCLParaphernalia
 
             int binDataRem;
 
-            string codeDesc = "",
+            string codeDesc = string.Empty,
                    textDesc;
 
             int codeStart,
@@ -4519,7 +4519,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     mapSize,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -4554,7 +4554,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Mapping",
                         textDesc,
                         "[ " + codeDesc + "]");
@@ -4638,9 +4638,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Download Dither Matrix length < " + lenMin +
                     " or > " + lenMax);
 
@@ -4723,7 +4723,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -4752,9 +4752,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Format",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -4782,9 +4782,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Number of Planes",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 linkData.EntryCt = planeCt;
@@ -4932,7 +4932,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -4950,7 +4950,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Matrix Height",
                     "Plane " + planeNo,
                     height + " pixels");
@@ -4965,7 +4965,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Matrix Width",
                     "Plane " + planeNo,
                     width + " pixels");
@@ -4991,9 +4991,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Download Dither Matrix " + planeNo + " length " +
                         planeLen + " > remainder size " + binDataRem);
 
@@ -5128,7 +5128,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     dataSize,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -5249,9 +5249,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Driver Configuration length < " + lenMin +
                     " or > " + lenMax);
 
@@ -5336,7 +5336,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -5369,9 +5369,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Device Id",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -5395,9 +5395,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Function Index",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -5433,7 +5433,7 @@ namespace PCLParaphernalia
                             fileOffset,
                             bufOffset,
                             argLen,
-                            "",
+                            string.Empty,
                             showBinData,
                             false,
                             true,
@@ -5466,9 +5466,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "Colour Treatment",
-                            "",
+                            string.Empty,
                             codeDesc);
                     }
                 }
@@ -5524,9 +5524,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Embedded PML data length < " + lenMin +
                     " or > " + lenMax);
 
@@ -5665,9 +5665,9 @@ namespace PCLParaphernalia
                     (PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Escapement Encapsulated Text length < " + lenMin +
                     " or > " + lenMax);
 
@@ -5750,7 +5750,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -5779,9 +5779,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Format",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -5809,9 +5809,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Encapsulated data size " + binDataRem +
                             " is not a multiple of 3");
 
@@ -5939,7 +5939,7 @@ namespace PCLParaphernalia
                     fileOffset,
                     bufOffset,
                     dataSize,
-                    "",
+                    string.Empty,
                     showBinData,
                     false,
                     true,
@@ -5965,9 +5965,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Char. & advance",
-                    "",
+                    string.Empty,
                     codeDesc);
             }
 
@@ -6043,9 +6043,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Palette Configuration length < " + lenMin +
                     " or > " + lenMax);
 
@@ -6123,7 +6123,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -6152,9 +6152,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Colour Space",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6178,9 +6178,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Format",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6195,9 +6195,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Last Palette Entry",
-                    "",
+                    string.Empty,
                     byteVal.ToString());
 
                 //------------------------------------------------------------//
@@ -6210,7 +6210,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Minimum Range",
                     "Red",
                     byteVal.ToString());
@@ -6225,7 +6225,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Maximum Range",
                     "Red",
                     byteVal.ToString());
@@ -6240,7 +6240,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Minimum Range",
                     "Green",
                     byteVal.ToString());
@@ -6255,7 +6255,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Maximum Range",
                     "Green",
                     byteVal.ToString());
@@ -6270,7 +6270,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Minimum Range",
                     "Blue",
                     byteVal.ToString());
@@ -6285,7 +6285,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Maximum Range",
                     "Blue",
                     byteVal.ToString());
@@ -6300,9 +6300,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgError,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Error ***",
-                        "",
+                        string.Empty,
                         "actual length " + binDataLen +
                         " != calculated length " + calcLen);
 
@@ -6336,7 +6336,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             itemName + " " + i,
                             "Red",
                             byteVal.ToString());
@@ -6351,7 +6351,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             itemName + " " + i,
                             "Green",
                             byteVal.ToString());
@@ -6366,7 +6366,7 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLDecode,
                             table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             itemName + " " + i,
                             "Blue",
                             byteVal.ToString());
@@ -6437,9 +6437,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "User Defined Pattern length < " + lenMin +
                     " or > " + lenMax);
 
@@ -6531,7 +6531,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenMin,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -6568,9 +6568,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Format",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6594,9 +6594,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Continuation marker",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6624,9 +6624,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Pixel Encoding",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 if (((format == 0) || (format == 20)) &&
@@ -6636,9 +6636,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Pixel encoding value " + pixelEncoding +
                         " incompatible with format " + format);
                 }
@@ -6664,9 +6664,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Reserved byte",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6681,9 +6681,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Height",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6698,9 +6698,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Width",
-                    "",
+                    string.Empty,
                     codeDesc);
 
                 //------------------------------------------------------------//
@@ -6717,9 +6717,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "X resolution",
-                        "",
+                        string.Empty,
                         codeDesc);
 
                     //------------------------------------------------------------//
@@ -6734,9 +6734,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLDecode,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Y resolution",
-                        "",
+                        string.Empty,
                         codeDesc);
 
                 }
@@ -6785,9 +6785,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Pattern data size of " + binDataRem +
                         " bytes inconsistent with");
 
@@ -6795,9 +6795,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "height = " + patternHeight +
                         " and width = " + patternWidth +
                         " with pixel encoding = " + pixelEncoding);
@@ -6918,7 +6918,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         offset,
                         rowBytes,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -7004,9 +7004,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Viewing Illuminant length != " + lenStd);
 
                 dataOK = false;
@@ -7083,7 +7083,7 @@ namespace PCLParaphernalia
                         fileOffset,
                         bufOffset,
                         lenStd,
-                        "",
+                        string.Empty,
                         showBinData,
                         false,
                         true,
@@ -7099,7 +7099,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "X Chromaticity",
                     "White point",
                     processReal32(buf, offset));
@@ -7112,7 +7112,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLDecode,
                     table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Y Chromaticity",
                     "White point",
                     processReal32(buf, offset));

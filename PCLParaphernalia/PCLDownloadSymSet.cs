@@ -622,7 +622,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == ""))
+            if ((fileName == null) || (fileName == string.Empty))
             {
                 MessageBox.Show("Download symbol set file name is null.",
                                 "PCL symbol set file name invalid",

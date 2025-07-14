@@ -156,7 +156,7 @@ namespace PCLParaphernalia
                 if (_bound)
                     return PCLSymbolSets.translateKind1ToId(_symSetNumber);
                 else
-                    return "";
+                    return string.Empty;
             }
         }
 
@@ -538,7 +538,7 @@ namespace PCLParaphernalia
                 if (_pitch != 0)
                     return _pointSize.ToString();
                 else
-                    return "";
+                    return string.Empty;
             }
         }
 
@@ -691,7 +691,7 @@ namespace PCLParaphernalia
                 if (_pitch != 0)
                     return _pitch.ToString();
                 else
-                    return "";
+                    return string.Empty;
             }
         }
 

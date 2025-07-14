@@ -140,7 +140,7 @@ namespace PCLParaphernalia
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
                 generateOverlay(prnWriter, true, logXOffset,
@@ -319,7 +319,7 @@ namespace PCLParaphernalia
             byte[] utf8Seq = new byte[4];
             int utf8Len = 0;
 
-            string utf8HexVal = "";
+            string utf8HexVal = string.Empty;
 
             //----------------------------------------------------------------//
 

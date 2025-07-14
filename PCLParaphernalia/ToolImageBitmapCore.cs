@@ -178,7 +178,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename == string.Empty))
             {
                 MessageBox.Show("Bitmap file name is null.",
                                 "Bitmap file selection",

@@ -161,7 +161,7 @@ namespace PCLParaphernalia
             int macroIdMain,
             int macroIdRear)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (flagMainForm)
             {

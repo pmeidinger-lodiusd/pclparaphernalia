@@ -21,7 +21,7 @@ namespace PCLParaphernalia
 
         void App_Startup(object sender, StartupEventArgs e)
         {
-            string filename = "";
+            string filename = string.Empty;
 
             int argCt = e.Args.Count();
 

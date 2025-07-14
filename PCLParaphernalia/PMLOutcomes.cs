@@ -143,31 +143,31 @@ namespace PCLParaphernalia
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "_____________";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "PML Outcomes:";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
         }

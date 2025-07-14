@@ -275,7 +275,7 @@ namespace PCLParaphernalia
         {
             int maxLineLen = 0;
 
-            string title = "";
+            string title = string.Empty;
 
             title = "*** Make Overlay report ***:";
 

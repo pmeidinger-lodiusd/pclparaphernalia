@@ -1038,7 +1038,7 @@ namespace PCLParaphernalia
 
                         ushort fontIdNo;
 
-                        string parseMethodText = "",
+                        string parseMethodText = string.Empty,
                                fontFilename;
 
                         PCLTextParsingMethods.eIndex parseMethod;
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
                         }
                         else
                         {
-                            fontFilename = "";
+                            fontFilename = string.Empty;
                             fontIdNo = 0;
                             fontSelById = false;
                         }
@@ -3538,7 +3538,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.NetPrinter)
             {
-                string netPrnAddress = "";
+                string netPrnAddress = string.Empty;
                 int netPrnPort = 0;
 
                 int netTimeoutSend = 0;
@@ -3556,7 +3556,7 @@ namespace PCLParaphernalia
             }
             else if (targetType == TargetCore.eTarget.WinPrinter)
             {
-                string winPrintername = "";
+                string winPrintername = string.Empty;
 
                 TargetCore.metricsLoadWinPrinter(ref winPrintername);
 
@@ -3674,7 +3674,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    _fontDesc = "";
+                    _fontDesc = string.Empty;
                 }
 
                 if (showDetails)
@@ -3774,8 +3774,8 @@ namespace PCLParaphernalia
                 int index,
                       indxSymSet;
 
-                string idNum = "",
-                       idAlpha = "";
+                string idNum = string.Empty,
+                       idAlpha = string.Empty;
 
                 PCLSymbolSets.translateKind1ToId(_symSetNo,
                                                   ref idNum,
@@ -3889,7 +3889,7 @@ namespace PCLParaphernalia
                 txtPCLSoftFontFile.Text = _fontFilenamePCL;
                 txtPCLSoftFontId.Text = _fontDownloadIdPCL.ToString();
 
-                if ((_fontFilenamePCL == "") && (!_initialised))
+                if ((_fontFilenamePCL == string.Empty) && (!_initialised))
                 {
                     // wait till later to select file
                 }
@@ -4314,7 +4314,7 @@ namespace PCLParaphernalia
 
                 txtPCLXLFontName.IsEnabled = false;
 
-                if ((_fontFilenamePCLXL == "") && (!_initialised))
+                if ((_fontFilenamePCLXL == string.Empty) && (!_initialised))
                 {
                     // wait till later to select file
                 }
@@ -4576,7 +4576,7 @@ namespace PCLParaphernalia
         private void setFontSelectDataPCL(int indxFont)
         {
             string symSetId,
-                   selSeqAttr = "";
+                   selSeqAttr = string.Empty;
 
             bool selById = false;
 
@@ -4601,8 +4601,8 @@ namespace PCLParaphernalia
 
             //--------------------------------------------------------------------//
 
-            if (_fontSelSeqPCL == "")
-                selSeqAttr = "";
+            if (_fontSelSeqPCL == string.Empty)
+                selSeqAttr = string.Empty;
             else
                 selSeqAttr = "<Esc>(" + _fontSelSeqPCL;
 
@@ -4663,14 +4663,14 @@ namespace PCLParaphernalia
                     if (!_fontBound)
                         _fontSelDescPCL = "<Esc>(" + symSetId;
                     else
-                        _fontSelDescPCL = "";
+                        _fontSelDescPCL = string.Empty;
 
                     if (_prnDiskSelByIdPCL)
                     {
                         _fontSelDescPCL += "<Esc>(" + _fontPrnDiskIdPCL + "X";
                     }
 
-                    if (_fontSelSeqPCL != "")
+                    if (_fontSelSeqPCL != string.Empty)
                     {
                         _fontSelDescPCL += "<Esc>(" + _fontSelSeqPCL;
                     }
@@ -4682,13 +4682,13 @@ namespace PCLParaphernalia
             }
             else
             {
-                _fontLoadDescPCL = "";
+                _fontLoadDescPCL = string.Empty;
 
                 _fontSelDescPCL = "<Esc>(" + symSetId +
                                   selSeqAttr;
             }
 
-            if (_fontLoadDescPCL != "")
+            if (_fontLoadDescPCL != string.Empty)
                 txtPCLSelSeq.Text = _fontLoadDescPCL + " .-. " +
                                     _fontSelDescPCL;
             else
@@ -4736,11 +4736,11 @@ namespace PCLParaphernalia
 
             if (_fontType == PCLFonts.eFontType.Download)
             {
-                fontTitle = "";
+                fontTitle = string.Empty;
             }
             else if (_fontType == PCLFonts.eFontType.PrnDisk)
             {
-                fontTitle = "";
+                fontTitle = string.Empty;
             }
             else if (_fontType == PCLFonts.eFontType.Custom)
             {
@@ -4787,7 +4787,7 @@ namespace PCLParaphernalia
         {
             PCLFonts.eFontType fontType;
 
-            string seq = "";
+            string seq = string.Empty;
 
             bool sizeSelect = false,
                     fullSelect = false;
@@ -4824,7 +4824,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    seq = "";
+                    seq = string.Empty;
                 }
             }
             else if (fontType == PCLFonts.eFontType.Custom)
@@ -4910,7 +4910,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    seq = "";
+                    seq = string.Empty;
                 }
             }
 
@@ -6022,7 +6022,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLHeight.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
                     (_downloadSelByIdPCL) && (!_fontScalable))
@@ -6103,7 +6103,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLPitch.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 if ((_fontType == PCLFonts.eFontType.Download) &&
                      (_downloadSelByIdPCL) && (!_fontScalable))
@@ -6556,7 +6556,7 @@ namespace PCLParaphernalia
 
             string crntText = txtPCLXLHeight.Text;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 if (_fontScalable)
                     OK = false;
@@ -6634,7 +6634,7 @@ namespace PCLParaphernalia
 
             len = crntText.Length;
 
-            if (crntText == "")
+            if (crntText == string.Empty)
             {
                 OK = false;
             }

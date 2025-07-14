@@ -226,9 +226,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Descriptor size (" + _charDescLen + " bytes)" +
                         " inconsistent with");
 
@@ -236,9 +236,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         "download size = " + _charLen +
                         " and block header = " + _blockHddrLen + " bytes");
                 }
@@ -420,9 +420,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     "Processing of character abandoned");
             }
 
@@ -481,7 +481,7 @@ namespace PCLParaphernalia
                         _analysisLevel,
                         "PCL Binary",
                         "[ " + binDataLen + " bytes ]",
-                        "");
+                        string.Empty);
 
                     bufRem -= binDataLen;
                     bufOffset += binDataLen;
@@ -528,7 +528,7 @@ namespace PCLParaphernalia
                     _fileOffset,
                     bufOffset,
                     _blockHddrLen,
-                    "",
+                    string.Empty,
                     true,
                     false,
                     true,
@@ -567,9 +567,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLFontChar,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Header Format:",
-                "",
+                string.Empty,
                 itemDesc);
 
             //--------------------------------------------------------//
@@ -591,9 +591,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     "Continuation block");
             }
 
@@ -636,9 +636,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Header is  internally inconsistent");
                 }
             }
@@ -653,18 +653,18 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "*** Warning ***",
-                        "",
+                        string.Empty,
                         "Either Character Data Size is incorrect or");
 
                     PrnParseCommon.addTextRow(
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
-                        "",
-                        "",
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
                         "Reserved byte and/or Checksum byte are missing");
                 }
                 else
@@ -743,9 +743,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.MsgWarning,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
+                                string.Empty,
                                 "*** Warning ***",
-                                "",
+                                string.Empty,
                                 "Calculated checksum is 0x" +
                                 PrnParseCommon.byteToHexString(crntByte));
 
@@ -814,7 +814,7 @@ namespace PCLParaphernalia
                     _fileOffset,
                     bufOffset,
                     _charDescLen,
-                    "",
+                    string.Empty,
                     true,
                     false,
                     true,
@@ -836,9 +836,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLFontChar,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Descriptor Size:",
-                "",
+                string.Empty,
                 _charDescLen.ToString());
 
             //----------------------------------------------------------------//
@@ -886,9 +886,9 @@ namespace PCLParaphernalia
                 PrnParseRowTypes.eType.PCLFontChar,
                 _table,
                 PrnParseConstants.eOvlShow.None,
-                "",
+                string.Empty,
                 "Class:",
-                "",
+                string.Empty,
                 itemDesc);
 
             if (_charFormat == ePCLCharFormat.Raster)
@@ -941,9 +941,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Orientation:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -962,9 +962,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Left Offset:",
-                    "",
+                    string.Empty,
                     si16a + " dots");
 
                 //------------------------------------------------------------//
@@ -983,9 +983,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Top Offset:",
-                    "",
+                    string.Empty,
                     si16a + " dots");
 
                 //------------------------------------------------------------//
@@ -1006,9 +1006,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Character Width:",
-                    "",
+                    string.Empty,
                     _charWidth + " dots (requires " +
                     bytesPerRow + " padded bytes per row)");
 
@@ -1025,9 +1025,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Character Height:",
-                    "",
+                    string.Empty,
                     _charHeight + " dots");
 
                 //------------------------------------------------------------//
@@ -1047,9 +1047,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Delta-X:",
-                    "",
+                    string.Empty,
                     si16a + " quarter-dots");
 
                 //------------------------------------------------------------//
@@ -1067,9 +1067,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Raster data size:",
-                        "",
+                        string.Empty,
                         ui32a + " bytes (assuming " +
                         _charHeight + " rows of " +
                         bytesPerRow + " bytes)");
@@ -1084,9 +1084,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
+                            string.Empty,
                             "*** Warning ***",
-                            "",
+                            string.Empty,
                             "Estimated data size (" + ui32a + " bytes)" +
                             " inconsistent with");
 
@@ -1094,9 +1094,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             "download size = " + _charLen +
                             ", block header = " + _blockHddrLen + " and ");
 
@@ -1104,9 +1104,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.MsgWarning,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             "descriptor = " + _charDescLen + " bytes");
                     }
                 }
@@ -1132,9 +1132,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgWarning,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "***Warning***",
-                        "",
+                        string.Empty,
                         "Descriptor size (" + _charDescLen + " bytes)" +
                         " larger than expected (2 bytes)");
 
@@ -1253,7 +1253,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1343,7 +1343,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         hddrLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1372,9 +1372,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Contour Data Size:",
-                        "",
+                        string.Empty,
                         contourDataSize + " bytes" +
                         "(header = " + hddrLen +
                         "; glyph data = " + _charDataLen + ")");
@@ -1392,9 +1392,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Metric Data Offset:",
-                        "",
+                        string.Empty,
                         metricDataOffset + " bytes");
 
                     //--------------------------------------------------------//
@@ -1410,9 +1410,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Character Data Offset:",
-                        "",
+                        string.Empty,
                         charDataOffset + " bytes");
 
                     //--------------------------------------------------------//
@@ -1428,9 +1428,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Contour Tree Offset:",
-                        "",
+                        string.Empty,
                         contourTreeOffset + " bytes");
 
                     //--------------------------------------------------------//
@@ -1446,9 +1446,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "XY Data Offset:",
-                        "",
+                        string.Empty,
                         xyDataOffset + " bytes");
                 }
                 else
@@ -1466,9 +1466,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Compound Escapement:",
-                        "",
+                        string.Empty,
                         compEscapement + " design units");
 
                     //--------------------------------------------------------//
@@ -1483,9 +1483,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLFontChar,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Number of Components:",
-                        "",
+                        string.Empty,
                         compCount.ToString());
                 }
 
@@ -1518,9 +1518,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Continuation block expected");
                 }
 
@@ -1634,7 +1634,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1730,7 +1730,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1825,7 +1825,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         binDataLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1906,7 +1906,7 @@ namespace PCLParaphernalia
                         _fileOffset,
                         bufOffset,
                         hddrLen,
-                        "",
+                        string.Empty,
                         true,
                         false,
                         true,
@@ -1933,9 +1933,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Character Data Size:",
-                    "",
+                    string.Empty,
                     charDataSize + " bytes" +
                     " (header = " + hddrLen +
                     "; glyph data = " + _charDataLen + ")");
@@ -1953,9 +1953,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLFontChar,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Glyph ID:",
-                    "",
+                    string.Empty,
                     glyphID.ToString());
 
                 //------------------------------------------------------------//
@@ -1988,9 +1988,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Continuation block expected");
                 }
 
@@ -2023,7 +2023,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Comment",
                     "Shape",
                     "***** Too large to display *****");
@@ -2034,7 +2034,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
                         "Shape",
                         "Height (" + _charHeight +
@@ -2048,7 +2048,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
                         "Shape",
                         "Width (" + _charWidth +
@@ -2062,9 +2062,9 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.MsgComment,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "Comment",
-                        "",
+                        string.Empty,
                         "Data   (" + _charDataLen +
                         ") > " + PrnParseConstants.bufSize +
                         " bytes");
@@ -2118,7 +2118,7 @@ namespace PCLParaphernalia
                     //                                                //
                     //------------------------------------------------//
 
-                    rowImage = "";
+                    rowImage = string.Empty;
 
                     for (int j = crntOffset;
                          j < (crntOffset + sliceLen);
@@ -2149,8 +2149,8 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontChar,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
                             "Shape",
                             rowImage);
                     }
@@ -2160,9 +2160,9 @@ namespace PCLParaphernalia
                             PrnParseRowTypes.eType.PCLFontChar,
                             _table,
                             PrnParseConstants.eOvlShow.None,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             rowImage);
                     }
 
@@ -2196,7 +2196,7 @@ namespace PCLParaphernalia
                 while (pos < dataLen)
                 {
                     colCt = 0;
-                    rowImage = "";
+                    rowImage = string.Empty;
 
                     rptCt = _buf[crntOffset + pos];
                     pos++;
@@ -2228,8 +2228,8 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.PCLFontChar,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
-                                "",
+                                string.Empty,
+                                string.Empty,
                                 "Shape",
                                 rowImage);
                         }
@@ -2239,9 +2239,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.PCLFontChar,
                                 _table,
                                 PrnParseConstants.eOvlShow.None,
-                                "",
-                                "",
-                                "",
+                                string.Empty,
+                                string.Empty,
+                                string.Empty,
                                 rowImage);
                         }
 

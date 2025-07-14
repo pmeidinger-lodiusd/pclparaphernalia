@@ -275,7 +275,7 @@ namespace PCLParaphernalia
                                               int indxOrientation,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             PCLWriter.pageHeader(prnWriter,
                                  indxPaperSize,

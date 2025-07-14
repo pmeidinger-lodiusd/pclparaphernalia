@@ -98,9 +98,9 @@ namespace PCLParaphernalia
             {
                 string line = txtReply.GetLineText(i);
 
-                string removedCC = line.Replace("\r\n", "")    // not "<CR><LF>")
-                                       .Replace("\n", "")    // not "<LF>")
-                                       .Replace("\r", "")    // not "<CR>")
+                string removedCC = line.Replace("\r\n", string.Empty)    // not "<CR><LF>")
+                                       .Replace("\n", string.Empty)    // not "<LF>")
+                                       .Replace("\r", string.Empty)    // not "<CR>")
                                        .Replace("\f", "<FF>")
                                        .Replace("\x1b", "<Esc>");
 

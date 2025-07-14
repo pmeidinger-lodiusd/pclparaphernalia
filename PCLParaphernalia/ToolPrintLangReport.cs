@@ -1876,9 +1876,9 @@ namespace PCLParaphernalia
 
             int ctCols;
 
-            string sort = "";
-            string colHddr = "";
-            string colSort = "";
+            string sort = string.Empty;
+            string colHddr = string.Empty;
+            string colSort = string.Empty;
 
             bool selHddrStarted = false;
 
@@ -1888,11 +1888,11 @@ namespace PCLParaphernalia
             {
                 colSort = dgSeq.ColumnFromDisplayIndex(i).SortDirection.ToString();
 
-                if (colSort != "")
+                if (colSort != string.Empty)
                 {
                     colHddr = dgSeq.ColumnFromDisplayIndex(i).Header.ToString();
 
-                    if (sort != "")
+                    if (sort != string.Empty)
                         sort += "; ";
 
                     sort += colHddr + "(" + colSort + ")";
@@ -1905,7 +1905,7 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
 
-            if (sort != "")
+            if (sort != string.Empty)
             {
                 if (!selHddrStarted)
                 {

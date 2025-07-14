@@ -153,7 +153,7 @@ namespace PCLParaphernalia
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
                 generateOverlay(prnWriter, true, logXOffset,

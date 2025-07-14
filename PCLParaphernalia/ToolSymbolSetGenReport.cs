@@ -295,7 +295,7 @@ namespace PCLParaphernalia
 
                 colSizes[0] = lrHex;
                 colNames[0] = "row";
-                colHddrs[0] = "";
+                colHddrs[0] = string.Empty;
 
                 for (int i = 1; i < colCt; i++)
                 {
@@ -309,12 +309,12 @@ namespace PCLParaphernalia
                 lcCol = lcDec;
                 lrHddr = lrDec;
 
-                fmtHddr = "";
-                fmtVal = "";
+                fmtHddr = string.Empty;
+                fmtVal = string.Empty;
 
                 colSizes[0] = lrDec;
                 colNames[0] = "row";
-                colHddrs[0] = "";
+                colHddrs[0] = string.Empty;
 
                 for (int i = 1; i < colCt; i++)
                 {

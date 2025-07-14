@@ -102,7 +102,7 @@ namespace PCLParaphernalia
                             else if (varType == PJLVariables.eVarType.PS)
                                 personality = "LPARM : POSTSCRIPT ";
                             else
-                                personality = "";
+                                personality = string.Empty;
 
                             seq = "\x1b" + "%-12345X" +
                                            "@PJL ECHO PCLParaphernalia" + "\x0d\x0a" +

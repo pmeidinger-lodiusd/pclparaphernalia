@@ -208,7 +208,7 @@ namespace PCLParaphernalia
 
             cbClrMapTheme.SelectedIndex = -1;
 
-            txtClrMapThemeName.Text = "";
+            txtClrMapThemeName.Text = string.Empty;
 
             btnClrMapThemeRestore.IsEnabled = false;
             btnClrMapThemeSave.IsEnabled = false;
@@ -300,7 +300,7 @@ namespace PCLParaphernalia
 
             cbClrMapTheme.SelectedIndex = -1;
 
-            txtClrMapThemeName.Text = "";
+            txtClrMapThemeName.Text = string.Empty;
 
             btnClrMapThemeRestore.IsEnabled = false;
             btnClrMapThemeSave.IsEnabled = false;
@@ -547,7 +547,7 @@ namespace PCLParaphernalia
 
                 cbClrMapTheme.SelectedIndex = -1;
 
-                txtClrMapThemeName.Text = "";
+                txtClrMapThemeName.Text = string.Empty;
 
                 btnClrMapThemeRestore.IsEnabled = false;
                 btnClrMapThemeSave.IsEnabled = false;
@@ -597,7 +597,7 @@ namespace PCLParaphernalia
 
                 cbClrMapTheme.SelectedIndex = -1;
 
-                txtClrMapThemeName.Text = "";
+                txtClrMapThemeName.Text = string.Empty;
 
                 btnClrMapThemeRestore.IsEnabled = false;
                 btnClrMapThemeSave.IsEnabled = false;
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
         {
             if (_initialised && cbClrMapTheme.HasItems & !_inhibitChecks)
             {
-                string name = "";
+                string name = string.Empty;
 
                 int tempInt = cbClrMapTheme.SelectedIndex;
 
@@ -1834,7 +1834,7 @@ namespace PCLParaphernalia
 
             for (int i = 0; i < _ctClrMapThemes; i++)
             {
-                string name = "";
+                string name = string.Empty;
 
                 ToolPrnAnalysePersist.loadOptClrMapThemeName(i, ref name);
 
@@ -1847,7 +1847,7 @@ namespace PCLParaphernalia
 
             cbClrMapTheme.SelectedIndex = -1;
 
-            txtClrMapThemeName.Text = "";
+            txtClrMapThemeName.Text = string.Empty;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -1857,7 +1857,7 @@ namespace PCLParaphernalia
 
             cbClrMapTheme.SelectedIndex = -1;
 
-            txtClrMapThemeName.Text = "";
+            txtClrMapThemeName.Text = string.Empty;
 
             btnClrMapThemeRestore.IsEnabled = false;
             btnClrMapThemeSave.IsEnabled = false;
@@ -1984,7 +1984,7 @@ namespace PCLParaphernalia
                 {
                     rbCurFOffsetDec.IsChecked = true;
 
-                    fmt = "";
+                    fmt = string.Empty;
                 }
 
                 txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString(fmt);
@@ -2449,7 +2449,7 @@ namespace PCLParaphernalia
                 {
                     _indxCurFOffsetFormat =
                         PrnParseConstants.eOptOffsetFormats.Decimal;
-                    fmt = "";
+                    fmt = string.Empty;
                 }
 
                 txtCurFOffsetStart.Text = _valCurFOffsetStart.ToString(fmt);

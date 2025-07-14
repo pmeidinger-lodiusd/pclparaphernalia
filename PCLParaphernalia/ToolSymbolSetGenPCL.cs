@@ -278,7 +278,7 @@ namespace PCLParaphernalia
 
             if (ptr <= 0)
             {
-                saveDirectory = "";
+                saveDirectory = string.Empty;
                 tmpFilename = symSetFilename;
             }
             else

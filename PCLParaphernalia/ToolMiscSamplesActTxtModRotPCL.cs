@@ -135,7 +135,7 @@ namespace PCLParaphernalia
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
                 generateOverlay(prnWriter, true, logXOffset,
@@ -365,7 +365,7 @@ namespace PCLParaphernalia
 
             PCLWriter.modeHPGL2(prnWriter, false, false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "IN", "", false);
+            PCLWriter.cmdHPGL2(prnWriter, "IN", string.Empty, false);
             PCLWriter.cmdHPGL2(prnWriter, "SP", "1", true);
             PCLWriter.cmdHPGL2(prnWriter, "DT", "~", false);
 

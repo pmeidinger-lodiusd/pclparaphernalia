@@ -132,7 +132,7 @@ namespace PCLParaphernalia
                                               bool formAsMacro,
                                               ushort logXOffset)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (formAsMacro)
                 generateOverlay(prnWriter, true, logXOffset,
@@ -378,7 +378,7 @@ namespace PCLParaphernalia
 
             PCLWriter.modeHPGL2(prnWriter, false, false);
 
-            PCLWriter.cmdHPGL2(prnWriter, "IN", "", false);
+            PCLWriter.cmdHPGL2(prnWriter, "IN", string.Empty, false);
             PCLWriter.cmdHPGL2(prnWriter, "SP", "1", true);
             PCLWriter.cmdHPGL2(prnWriter, "DT", "~", false);
 
@@ -417,12 +417,12 @@ namespace PCLParaphernalia
             posY += _lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "");
+                      string.Empty);
 
             posY += _lineInc;
 
             PCLWriter.text(prnWriter, posX, posY, 0,
-                      "");
+                      string.Empty);
 
             posY += _lineInc;
 
@@ -495,7 +495,7 @@ namespace PCLParaphernalia
 
             PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SR", "", true);
+            PCLWriter.cmdHPGL2(prnWriter, "SR", string.Empty, true);
 
             //----------------------------------------------------------------//
             // size Y                                                         //
@@ -517,7 +517,7 @@ namespace PCLParaphernalia
 
             PCLWriter.cmdHPGL2(prnWriter, "LB", sampleText + lbTerm, true);
 
-            PCLWriter.cmdHPGL2(prnWriter, "SI", "", true);
+            PCLWriter.cmdHPGL2(prnWriter, "SI", string.Empty, true);
 
             //----------------------------------------------------------------//
             // slant X positive                                               //

@@ -149,7 +149,7 @@ namespace PCLParaphernalia
             string formNameMain,
             string formNameRear)
         {
-            PCLXLWriter.stdJobHeader(prnWriter, "");
+            PCLXLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if (flagMainForm)
             {
@@ -212,7 +212,7 @@ namespace PCLParaphernalia
                                              formNameRear);
             }
 
-            PCLXLWriter.stdJobTrailer(prnWriter, false, "");
+            PCLXLWriter.stdJobTrailer(prnWriter, false, string.Empty);
         }
 
         //--------------------------------------------------------------------//

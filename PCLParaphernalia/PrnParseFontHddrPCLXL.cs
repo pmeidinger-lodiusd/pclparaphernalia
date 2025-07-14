@@ -253,9 +253,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgError,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
                     "Processing of header abandoned!");
             }
 
@@ -376,7 +376,7 @@ namespace PCLParaphernalia
                     _fileOffset,
                     bufOffset,
                     _cHddrDescLen,
-                    "",
+                    string.Empty,
                     _showBinData,
                     false,
                     true,
@@ -419,9 +419,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Header format (" + _hddrFormat + ") is not recognised");
             }
 
@@ -431,9 +431,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.MsgWarning,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "*** Warning ***",
-                    "",
+                    string.Empty,
                     "Processing of Font Header abandoned");
             }
             else
@@ -459,9 +459,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Header Format:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -504,9 +504,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Orientation:",
-                    "",
+                    string.Empty,
                     itemDesc);
 
                 //------------------------------------------------------------//
@@ -540,7 +540,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Mapping:",
                     "Kind1 value:",
                     ix1.ToString() + " (0x" + ix1.ToString("x2") + ")");
@@ -551,7 +551,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLXLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "     ---->",
                         "Identifier:",
                         ix2.ToString() + c);
@@ -562,7 +562,7 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.PCLXLFontHddr,
                         _table,
                         PrnParseConstants.eOvlShow.None,
-                        "",
+                        string.Empty,
                         "     ---->",
                         "Identifier:",
                         ix2.ToString() + c +
@@ -599,7 +599,7 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Scaling:",
                     "Technology:",
                     itemDesc);
@@ -608,8 +608,8 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
-                    "",
+                    string.Empty,
+                    string.Empty,
                     "Variety:",
                     ix2.ToString());
 
@@ -625,9 +625,9 @@ namespace PCLParaphernalia
                     PrnParseRowTypes.eType.PCLXLFontHddr,
                     _table,
                     PrnParseConstants.eOvlShow.None,
-                    "",
+                    string.Empty,
                     "Character Count:",
-                    "",
+                    string.Empty,
                     ix1.ToString());
             }
         }

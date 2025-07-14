@@ -78,7 +78,7 @@
             else if (_opId < 100)
                 prefix = " ";
             else
-                prefix = "";
+                prefix = string.Empty;
 
             return prefix + _opId.ToString() +
                    ": " + _actPostfix.PadRight(_maxPFLen) +
@@ -105,7 +105,7 @@
             else if (_opId < 100)
                 prefix = " ";
             else
-                prefix = "";
+                prefix = string.Empty;
 
             return prefix + _opId.ToString() +
                    ": " + _actPostfix;

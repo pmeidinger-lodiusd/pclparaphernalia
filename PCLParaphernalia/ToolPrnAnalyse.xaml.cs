@@ -661,12 +661,12 @@ namespace PCLParaphernalia
             //                                                                //
             //----------------------------------------------------------------//
             
-            statusBar.Items[0] = "";
-            statusBar.Items[1] = "";
+            statusBar.Items[0] = string.Empty;
+            statusBar.Items[1] = string.Empty;
             */
 
-            txtFileName.Text = "";
-            txtFileSize.Text = "";
+            txtFileName.Text = string.Empty;
+            txtFileSize.Text = string.Empty;
 
             //----------------------------------------------------------------//
 
@@ -827,7 +827,7 @@ namespace PCLParaphernalia
 
             long fileSize = -1;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename == string.Empty))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",

@@ -133,7 +133,7 @@ namespace PCLParaphernalia
         {
             StringBuilder cmd = new StringBuilder();
 
-            if (parameters == "")
+            if (parameters == string.Empty)
                 cmd.Append(mnemonic);
             else
                 cmd.Append(mnemonic).Append(parameters);
@@ -366,7 +366,7 @@ namespace PCLParaphernalia
             else
                 priSec = ')';
 
-            if (symSet != "")
+            if (symSet != string.Empty)
                 seq = "\x1b" + priSec + symSet +
                       "\x1b" + priSec + fontSel;
             else
@@ -626,7 +626,7 @@ namespace PCLParaphernalia
                                macroId + "y" +  // Macro: ID
                                "10X";           // Macro: make permanent
             else
-                seq = "";
+                seq = string.Empty;
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
         }
@@ -1078,7 +1078,7 @@ namespace PCLParaphernalia
                   patternLen,
                   dataLen;
 
-            string seq = "";
+            string seq = string.Empty;
 
             headerLen = header.Length;
             patternLen = pattern.Length;
@@ -1107,7 +1107,7 @@ namespace PCLParaphernalia
         public static void patternDelete(BinaryWriter prnWriter,
                                          short patternID)
         {
-            string seq = "";
+            string seq = string.Empty;
 
             seq = "\x1b" + "*c" +
                   patternID + "g" +    // Pattern ID
@@ -1129,7 +1129,7 @@ namespace PCLParaphernalia
                                        ePatternType patternType,
                                        short patternID)
         {
-            string seq = "";
+            string seq = string.Empty;
 
             if (patternType == ePatternType.SolidBlack)
             {
@@ -1173,7 +1173,7 @@ namespace PCLParaphernalia
         public static void patternTransparency(BinaryWriter prnWriter,
                                                 bool opaque)
         {
-            string seq = "";
+            string seq = string.Empty;
 
             if (opaque)
             {
@@ -1528,12 +1528,12 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
-                posSeq = "";
+                posSeq = string.Empty;
             else if (relative)
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : "") +
+                           (coordX > 0 ? "+" : string.Empty) +
                            coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : "") +
+                           (coordY > 0 ? "+" : string.Empty) +
                            coordY + "Y";        // Position: Vertical
             else
                 posSeq = "\x1b" + "*p" +
@@ -1595,12 +1595,12 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
-                posSeq = "";
+                posSeq = string.Empty;
             else if (relative)
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : "") +
+                           (coordX > 0 ? "+" : string.Empty) +
                            coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : "") +
+                           (coordY > 0 ? "+" : string.Empty) +
                            coordY + "Y";        // Position: Vertical
             else
                 posSeq = "\x1b" + "*p" +
@@ -1644,12 +1644,12 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
-                posSeq = "";
+                posSeq = string.Empty;
             else if (relative)
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : "") +
+                           (coordX > 0 ? "+" : string.Empty) +
                            coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : "") +
+                           (coordY > 0 ? "+" : string.Empty) +
                            coordY + "Y";        // Position: Vertical
             else
                 posSeq = "\x1b" + "*p" +
@@ -1704,12 +1704,12 @@ namespace PCLParaphernalia
             string posSeq;
 
             if (floating)
-                posSeq = "";
+                posSeq = string.Empty;
             else if (relative)
                 posSeq = "\x1b" + "*p" +
-                           (coordX > 0 ? "+" : "") +
+                           (coordX > 0 ? "+" : string.Empty) +
                            coordX + "x" +       // Position: Horizontal
-                           (coordY > 0 ? "+" : "") +
+                           (coordY > 0 ? "+" : string.Empty) +
                            coordY + "Y";        // Position: Vertical
             else
                 posSeq = "\x1b" + "*p" +
@@ -1856,7 +1856,7 @@ namespace PCLParaphernalia
         public static void sourceTransparency(BinaryWriter prnWriter,
                                                bool opaque)
         {
-            string seq = "";
+            string seq = string.Empty;
 
             if (opaque)
             {
@@ -1888,7 +1888,7 @@ namespace PCLParaphernalia
 
             prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
-            if (pjlCommand != "")
+            if (pjlCommand != string.Empty)
             {
                 seq = pjlCommand + "\x0d" + "\x0a";
 

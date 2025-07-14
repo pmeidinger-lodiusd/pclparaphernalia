@@ -110,7 +110,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((filename == null) || (filename == ""))
+            if ((filename == null) || (filename == string.Empty))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -256,7 +256,7 @@ namespace PCLParaphernalia
                         "Start Offset   = " + offsetStart +
                         " (0x" + offsetStart.ToString("X8") +
                         ") requested",
-                        "");
+                        string.Empty);
 
             if (offsetEnd != -1)
                 addRow(table,
@@ -264,7 +264,7 @@ namespace PCLParaphernalia
                         "End   Offset   = " + offsetEnd +
                         " (0x" + offsetEnd.ToString("X8") +
                         ") requested",
-                        "");
+                        string.Empty);
 
             //----------------------------------------------------------------//
 

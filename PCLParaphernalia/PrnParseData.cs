@@ -133,7 +133,7 @@ namespace PCLParaphernalia
                         level,
                         typeText,
                         "[ " + seqLen + " bytes ]",
-                        "");
+                        string.Empty);
                 }
                 else
                 {
@@ -141,10 +141,10 @@ namespace PCLParaphernalia
                         PrnParseRowTypes.eType.DataBinary,
                         table,
                         makeOvlShow,
-                        "",
+                        string.Empty,
                         typeText,
                         "[ " + seqLen + " bytes ]",
-                        "");
+                        string.Empty);
                 }
             }
             else
@@ -206,7 +206,7 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
-                                "",
+                                string.Empty,
                                 typeText,
                                 "[ " + seqLen + " bytes ]",
                                 preamble +
@@ -227,8 +227,8 @@ namespace PCLParaphernalia
                                 indxOffsetFormat,
                                 fileOffset + crntOffset,
                                 level,
-                                "",
-                                "",
+                                string.Empty,
+                                string.Empty,
                                 preamble +
                                 PrnParseCommon.byteArrayToHexString(buf,
                                                                      crntOffset,
@@ -241,9 +241,9 @@ namespace PCLParaphernalia
                                 PrnParseRowTypes.eType.DataBinary,
                                 table,
                                 makeOvlShow,
-                                "",
-                                "",
-                                "",
+                                string.Empty,
+                                string.Empty,
+                                string.Empty,
                                 preamble +
                                 PrnParseCommon.byteArrayToHexString(buf,
                                                                      crntOffset,
@@ -377,7 +377,7 @@ namespace PCLParaphernalia
             byte c1,
                  c2;
 
-            string showChar = "";
+            string showChar = string.Empty;
             string line;
 
             int len,
@@ -402,8 +402,8 @@ namespace PCLParaphernalia
             PrnParseConstants.eOvlAct makeOvlAct;
             PrnParseConstants.eOvlShow crntOvlShow;
 
-            string descCC = "";
-            string mnemonicCC = "";
+            string descCC = string.Empty;
+            string mnemonicCC = string.Empty;
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -422,7 +422,7 @@ namespace PCLParaphernalia
             contLine = false;
             multiByteData = false;
 
-            line = "";
+            line = string.Empty;
 
             offset = bufOffset;
             lineStart = offset;
@@ -700,7 +700,7 @@ namespace PCLParaphernalia
 
                     if (foundLF || knownCC || foundEsc)
                     {
-                        if (line != "")
+                        if (line != string.Empty)
                         {
                             //------------------------------------------------//
                             //                                                //
@@ -722,7 +722,7 @@ namespace PCLParaphernalia
                                 }
                                 else
                                 {
-                                    seqBytes = "";
+                                    seqBytes = string.Empty;
                                 }
 
                                 if (showOffset)
@@ -741,9 +741,9 @@ namespace PCLParaphernalia
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
-                                        "",
+                                        string.Empty,
                                         typeText,
-                                        "",
+                                        string.Empty,
                                         line);
                             }
                             else
@@ -756,17 +756,17 @@ namespace PCLParaphernalia
                                         indxOffsetFormat,
                                         fileOffset + lineStart,
                                         level,
-                                        "",
-                                        "",
+                                        string.Empty,
+                                        string.Empty,
                                         line);
                                 else
                                     PrnParseCommon.addTextRow(
                                         PrnParseRowTypes.eType.DataText,
                                         table,
                                         PrnParseConstants.eOvlShow.None,
-                                        "",
-                                        "",
-                                        "",
+                                        string.Empty,
+                                        string.Empty,
+                                        string.Empty,
                                         line);
                             }
 
@@ -827,7 +827,7 @@ namespace PCLParaphernalia
                                     PrnParseRowTypes.eType.PCLControlCode,
                                     table,
                                     makeOvlShow,
-                                    "",
+                                    string.Empty,
                                     "PCL Control Code",
                                     "0x" + c1.ToString("x2"),
                                     mnemonicCC + ": " + descCC);
@@ -835,7 +835,7 @@ namespace PCLParaphernalia
                             contLine = false;
                         }
 
-                        line = "";
+                        line = string.Empty;
                         lineStart = offset + 1;
                     }
                     else if (line.Length >= PrnParseConstants.cRptA_colMax_Desc)
@@ -859,7 +859,7 @@ namespace PCLParaphernalia
                             }
                             else
                             {
-                                seqBytes = "";
+                                seqBytes = string.Empty;
                             }
 
                             if (showOffset)
@@ -878,9 +878,9 @@ namespace PCLParaphernalia
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     PrnParseConstants.eOvlShow.None,
-                                    "",
+                                    string.Empty,
                                     typeText,
-                                    "",
+                                    string.Empty,
                                     line);
 
                             contLine = true;
@@ -895,21 +895,21 @@ namespace PCLParaphernalia
                                     indxOffsetFormat,
                                     fileOffset + lineStart,
                                     level,
-                                    "",
-                                    "",
+                                    string.Empty,
+                                    string.Empty,
                                     line);
                             else
                                 PrnParseCommon.addTextRow(
                                     PrnParseRowTypes.eType.DataText,
                                     table,
                                     makeOvlShow,
-                                    "",
-                                    "",
-                                    "",
+                                    string.Empty,
+                                    string.Empty,
+                                    string.Empty,
                                     line);
                         }
 
-                        line = "";
+                        line = string.Empty;
                         lineStart = offset + 1;
                         lineLen = 0;
                     }
@@ -924,7 +924,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (line != "")
+            if (line != string.Empty)
             {
                 //------------------------------------------------------------//
                 //                                                            //
@@ -943,16 +943,16 @@ namespace PCLParaphernalia
                             fileOffset + lineStart,
                             level,
                             typeText,
-                            "",
+                            string.Empty,
                             line);
                     else
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
-                            "",
+                            string.Empty,
                             typeText,
-                            "",
+                            string.Empty,
                             line);
                 }
                 else
@@ -965,17 +965,17 @@ namespace PCLParaphernalia
                             indxOffsetFormat,
                             fileOffset + lineStart,
                             level,
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
                             line);
                     else
                         PrnParseCommon.addTextRow(
                             PrnParseRowTypes.eType.DataText,
                             table,
                             makeOvlShow,
-                            "",
-                            "",
-                            "",
+                            string.Empty,
+                            string.Empty,
+                            string.Empty,
                             line);
                 }
             }
@@ -1010,7 +1010,7 @@ namespace PCLParaphernalia
             byte showSubCode,
             PrnParseConstants.eOptCharSets showCharSet)
         {
-            string outStr = "";
+            string outStr = string.Empty;
 
             byte highByte,
                  lowByte;

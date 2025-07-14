@@ -125,7 +125,7 @@ namespace PCLParaphernalia
             if (hexDisplay)
                 format = "x2";
             else
-                format = "";
+                format = string.Empty;
 
             //----------------------------------------------------------------//
 
@@ -176,7 +176,7 @@ namespace PCLParaphernalia
             if (hexDisplay)
                 format = "x2";
             else
-                format = "";
+                format = string.Empty;
 
             //----------------------------------------------------------------//
 
@@ -211,7 +211,7 @@ namespace PCLParaphernalia
             if (hexDisplay)
                 format = "x2";
             else
-                format = "";
+                format = string.Empty;
 
             //----------------------------------------------------------------//
 
@@ -1014,7 +1014,7 @@ namespace PCLParaphernalia
                 }
                 else
                 {
-                    format = "";
+                    format = string.Empty;
                     formatDesc = "decimal";
                 }
 

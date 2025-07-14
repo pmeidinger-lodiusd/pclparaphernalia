@@ -573,7 +573,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Unbound_Unicode,
                                          PCLTextParsingMethods.eIndex.m83_UTF8,
                                          56,                         //    1X //
-                                         "",
+                                         string.Empty,
                                          "<unbound>",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -584,7 +584,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          0,                          //    ?? // 
-                                         "",
+                                         string.Empty,
                                          "<symbol>",
                                          false,                // special map //
                                          PCLSymSetMaps.eSymSetMapId.mapSymbol));
@@ -595,7 +595,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Unknown,
                                          PCLTextParsingMethods.eIndex.not_specified,
                                          0,                          //    ?? //
-                                         "",
+                                         string.Empty,
                                          "<specify identifier>",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -613,7 +613,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          57,                         //    1Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: 2 of 5 Industrial",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -622,7 +622,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          153,                        //    4Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: 2 of 5 Interleaved",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -631,7 +631,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          89,                         //    2Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: 2 of 5 Matrix",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -640,7 +640,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          25,                         //    0Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: 3 of 9",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -649,7 +649,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          185,                        //    5Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: CODABAR",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -658,7 +658,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          249,                        //    7Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: Code 11",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -667,7 +667,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          217,                        //    6Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: MSI/Plessey",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -676,7 +676,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          281,                        //    8Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: UPC/EAN",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -685,7 +685,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          505,                        //   15Y //
-                                         "",
+                                         string.Empty,
                                          "Barcode: USPS ZIP",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -694,7 +694,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          596,                        //   18T //
-                                         "",
+                                         string.Empty,
                                          "Big5 Traditional Chinese",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -703,7 +703,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          32596,                      // 1018T //
-                                         "",
+                                         string.Empty,
                                          "Big5 Traditional Chinese",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1018T));
@@ -712,7 +712,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          564,                        //   17T //
-                                         "",
+                                         string.Empty,
                                          "Chinese CNS 11643-86",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -721,7 +721,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          660,                        //   20T //
-                                         "",
+                                         string.Empty,
                                          "Chinese TCA encoding",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -730,7 +730,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          50,                         //    1R //
-                                         "",
+                                         string.Empty,
                                          "Cyrillic",
                                          false,
                                         PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -865,7 +865,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          110,                        //    3N //
-                                         "",
+                                         string.Empty,
                                          "ISO 8859-3 Latin 3",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_3N));
@@ -874,7 +874,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          142,                        //    4N //
-                                         "",
+                                         string.Empty,
                                          "ISO 8859-4 Latin 4",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_4N));
@@ -892,7 +892,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          366,                        //   11N //
-                                         "",
+                                         string.Empty,
                                          "ISO 8859-6 Latin/Arabic",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_11N));
@@ -937,7 +937,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          32052,                      // 1001T //
-                                         "",
+                                         string.Empty,
                                          "ISO 8859-11 Latin/Thai",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1001T));
@@ -955,7 +955,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m21_1_or_2_byte_Asian7bit,
                                          555,                        //   17K //
-                                         "",
+                                         string.Empty,
                                          "Japanese JIS",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -973,7 +973,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m31_1_or_2_byte_ShiftJIS,
                                          32619,                      // 1019K //
-                                         "",
+                                         string.Empty,
                                          "Japanese Shift-JIS",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1019K));
@@ -982,7 +982,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          616,                        //   19H //
-                                         "",
+                                         string.Empty,
                                          "Korean KSC5601-87",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -991,7 +991,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          584,                        //   18H //
-                                         "",
+                                         string.Empty,
                                          "Korean KSC5601-93",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1000,7 +1000,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          712,                        //   22H //
-                                         "",
+                                         string.Empty,
                                          "Korean KSX1001",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1009,7 +1009,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          680,                        //   21H //
-                                         "",
+                                         string.Empty,
                                          "Korean Unified Hangeul",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1027,7 +1027,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          269,                        //    8M //
-                                         "",
+                                         string.Empty,
                                          "Math-8",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_8M));
@@ -1045,7 +1045,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          473,                        //   14Y //
-                                         "",
+                                         string.Empty,
                                          "MICR (CMC-7)",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1054,7 +1054,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          335,                        //   10O //
-                                         "",
+                                         string.Empty,
                                          "MICR (E13B)",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1063,7 +1063,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          202,                        //    6J //
-                                         "",
+                                         string.Empty,
                                          "Microsoft Publishing",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_6J));
@@ -1072,7 +1072,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          15,                         //    0O //
-                                         "",
+                                         string.Empty,
                                          "OCR-A",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1081,7 +1081,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          47,                         //    1O //
-                                         "",
+                                         string.Empty,
                                          "OCR-B",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1216,7 +1216,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_7bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          501,                        //   15U //
-                                         "",
+                                         string.Empty,
                                          "Pi Font",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_15U));
@@ -1225,7 +1225,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          173,                        //    5M //
-                                         "",
+                                         string.Empty,
                                          "PS Math",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_5M));
@@ -1261,7 +1261,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          579,                        //   18C //
-                                         "",
+                                         string.Empty,
                                          "Simplified Chinese GB2312-80",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1270,7 +1270,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          32579,                      // 1018C //
-                                         "",
+                                         string.Empty,
                                          "Simplified Chinese GB2312-80",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1018C));
@@ -1279,7 +1279,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          643,                        //   20C //
-                                         "",
+                                         string.Empty,
                                          "Simplified Chinese GBK",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1288,7 +1288,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,    // 1 or 2-byte //
                                          PCLTextParsingMethods.eIndex.m38_1_or_2_byte_Asian8bit,
                                          32643,                      // 1020C //
-                                         "",
+                                         string.Empty,
                                          "Simplified Chinese GBK (CP 936)",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x1020C));
@@ -1297,7 +1297,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          621,                        //   19M //
-                                         "",
+                                         string.Empty,
                                          "Symbol",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1306,7 +1306,7 @@ namespace PCLParaphernalia
                                           PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          52,                         //    1T //
-                                         "",
+                                         string.Empty,
                                          "TIS 620-2533 (Thai)",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_1T));
@@ -1315,7 +1315,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          276,                        //    8T //
-                                         "",
+                                         string.Empty,
                                          "Turkish-8",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1324,7 +1324,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_16bit,
                                          PCLTextParsingMethods.eIndex.m83_UTF8,
                                          590,                        //   18N //
-                                         "",
+                                         string.Empty,
                                          "Unicode",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1335,7 +1335,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          426,                        //   13J //
-                                         "",
+                                         string.Empty,
                                          "Ventura International",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1344,7 +1344,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          205,                        //    6M //
-                                         "",
+                                         string.Empty,
                                          "Ventura Math",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1353,7 +1353,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_8bit,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          458,                        //   14J //
-                                         "",
+                                         string.Empty,
                                          "Ventura US",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1434,7 +1434,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          28852,                      //  901T //
-                                         "",
+                                         string.Empty,
                                          "Windows Latin/Thai (CP 874)",
                                          true,
                                          PCLSymSetMaps.eSymSetMapId.map_x901T));
@@ -1443,7 +1443,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          18540,                      //  579L //
-                                         "",
+                                         string.Empty,
                                          "Wingdings",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1452,7 +1452,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,        // no C0 //
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          460,                        //   14L //
-                                         "",
+                                         string.Empty,
                                          "ZapfDingBats",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapNull));
@@ -1461,7 +1461,7 @@ namespace PCLParaphernalia
                                          PCLSymSetTypes.eIndex.Bound_PC8,
                                          PCLTextParsingMethods.eIndex.m0_1_byte_default,
                                          65530,                      //    ?? //
-                                         "",
+                                         string.Empty,
                                          "<user-defined via file>",
                                          false,
                                          PCLSymSetMaps.eSymSetMapId.mapUserSet));
@@ -1717,7 +1717,7 @@ namespace PCLParaphernalia
 
             if ((kind1 < 1) || (kind1 > 65530))
             {
-                return "";
+                return string.Empty;
             }
             else
             {
@@ -1763,8 +1763,8 @@ namespace PCLParaphernalia
 
             if ((kind1 < 1) || (kind1 > 65530))
             {
-                idNum = "";
-                idAlpha = "";
+                idNum = string.Empty;
+                idAlpha = string.Empty;
 
                 return;
             }

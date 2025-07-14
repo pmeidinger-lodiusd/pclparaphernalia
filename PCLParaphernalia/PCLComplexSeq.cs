@@ -281,7 +281,7 @@
                 if ((_flagDiscrete) && (!_flagValGeneric) && (!_flagValVarious))
                     value = " (#=" + _value.ToString() + ")";
                 else
-                    value = "";
+                    value = string.Empty;
                 if (_flagNilValue)
                 {
                     if (_flagNilGChar)

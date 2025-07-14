@@ -242,7 +242,7 @@ namespace PCLParaphernalia
             bool symSetUserActEmbed,
             string symSetUserFile)
         {
-            PCLWriter.stdJobHeader(prnWriter, "");
+            PCLWriter.stdJobHeader(prnWriter, string.Empty);
 
             if ((symSetUserSet) && (symSetUserActEmbed))
             {
@@ -878,7 +878,7 @@ namespace PCLParaphernalia
 
             PCLWriter.font(prnWriter, true, "19U", "s0p10h0s3b4099T");
 
-            if (fontLoadDesc != "")
+            if (fontLoadDesc != string.Empty)
             {
                 PCLWriter.text(prnWriter, posX, posY, 0,
                                 fontLoadDesc);
@@ -896,14 +896,14 @@ namespace PCLParaphernalia
                 (fontSelectById))
             {
                 if (fontBound)
-                    PCLWriter.font(prnWriter, true, "",
+                    PCLWriter.font(prnWriter, true, string.Empty,
                                    (fontIdNo + "X"));
                 else
                     PCLWriter.font(prnWriter, true, symSetId,
                                    (fontIdNo + "X"));
 
-                if (fontSelSeq != "")
-                    PCLWriter.font(prnWriter, true, "", fontSelSeq);
+                if (fontSelSeq != string.Empty)
+                    PCLWriter.font(prnWriter, true, string.Empty, fontSelSeq);
             }
             else
             {

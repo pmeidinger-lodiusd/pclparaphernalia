@@ -299,7 +299,7 @@ namespace PCLParaphernalia
                                  "') using system '" + Environment.MachineName +
                                  "' on " + dateTimeNow;
 
-            string licenceText = "";
+            string licenceText = string.Empty;
 
             byte[] conversionText;
 
@@ -646,7 +646,7 @@ namespace PCLParaphernalia
 
                 //   Byte [] typefacePCLT = new Byte [ToolSoftFontGenPCLXL.cSizeFontname];
 
-                string typefacePCLT = "";
+                string typefacePCLT = string.Empty;
 
                 if (!_fontWithinTTC)
                 {
@@ -1214,7 +1214,7 @@ namespace PCLParaphernalia
         {
             _initialised = false;
 
-            _fontFilenameTTF = "";
+            _fontFilenameTTF = string.Empty;
 
             _fontWithinTTC = false;
 
@@ -1819,12 +1819,12 @@ bitVal;
 
         private void logFontSelectDataPCL(bool monoSpaced)
         {
-            string baseName = "";
+            string baseName = string.Empty;
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
                 "Font selection attributes:",
-                "");
+                string.Empty);
 
             if (monoSpaced)
                 ToolSoftFontGenLog.logNameAndValue(
@@ -1844,7 +1844,7 @@ bitVal;
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
-                "",
+                string.Empty,
                 "Id:      " + txtPCLSymSetIdNum.Text +
                               txtPCLSymSetIdAlpha.Text +
                           " (= " + txtPCLSymSetName.Text + ")");
@@ -1877,7 +1877,7 @@ bitVal;
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
-                "",
+                string.Empty,
                 "Vendor:  " + _typefaceVendorPCL);
 
             PCLFonts.getNameForIdPCL(_typefaceBasecodePCL,
@@ -1885,7 +1885,7 @@ bitVal;
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
-                "",
+                string.Empty,
                 "Base:    " + _typefaceBasecodePCL +
                               " (= " + baseName + ")");
         }
@@ -1904,7 +1904,7 @@ bitVal;
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
                 "Font selection attributes:",
-                "");
+                string.Empty);
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
@@ -1913,7 +1913,7 @@ bitVal;
 
             ToolSoftFontGenLog.logNameAndValue(
                 _tableLogTarget, false, false,
-                "",
+                string.Empty,
                 "Id:      " + txtPCLSymSetIdNum.Text +
                               txtPCLSymSetIdAlpha.Text +
                           " (= " + txtPCLSymSetName.Text + ")");
@@ -2544,7 +2544,7 @@ bitVal;
             indx = _fontFilenamePCL.LastIndexOf("\\");
 
             if (indx == 0)
-                _fontFolderPCL = "";
+                _fontFolderPCL = string.Empty;
             else
                 _fontFolderPCL = _fontFilenamePCL.Substring(0, indx);
         }
@@ -2565,7 +2565,7 @@ bitVal;
             indx = _fontFilenamePCLXL.LastIndexOf("\\");
 
             if (indx == 0)
-                _fontFolderPCLXL = "";
+                _fontFolderPCLXL = string.Empty;
             else
                 _fontFolderPCLXL = _fontFilenamePCLXL.Substring(0, indx);
         }
@@ -2581,8 +2581,8 @@ bitVal;
 
         private void setSymSetAttributesTarget()
         {
-            string idNum = "",
-                   idAlpha = "";
+            string idNum = string.Empty,
+                   idAlpha = string.Empty;
 
             if (_symSetUnbound)
             {
@@ -2810,7 +2810,7 @@ bitVal;
             if (showSubIds)
                 subIdStructure = subId.ToString() + ": ";
             else
-                subIdStructure = "";
+                subIdStructure = string.Empty;
 
             switch (index)
             {
@@ -2903,7 +2903,7 @@ bitVal;
             if (showSubIds)
                 subIdWidth = subId.ToString() + ": ";
             else
-                subIdWidth = "";
+                subIdWidth = string.Empty;
 
             switch (index)
             {
@@ -2952,7 +2952,7 @@ bitVal;
             if (showSubIds)
                 subIdPosture = subId.ToString() + ": ";
             else
-                subIdPosture = "";
+                subIdPosture = string.Empty;
 
             switch (index)
             {
@@ -3004,7 +3004,7 @@ bitVal;
             if (showSubIds)
                 subIdWeight = subId.ToString() + ": ";
             else
-                subIdWeight = "";
+                subIdWeight = string.Empty;
 
             switch (weight)
             {
@@ -3105,9 +3105,9 @@ bitVal;
         private void txtPCLStyleNo_LostFocus(object sender,
                                               RoutedEventArgs e)
         {
-            string posture = "",
-                   width = "",
-                   structure = "";
+            string posture = string.Empty,
+                   width = string.Empty,
+                   structure = string.Empty;
 
             if (validatePCLStyleNo(true, ref _styleNoPCL))
             {
@@ -3135,9 +3135,9 @@ bitVal;
         private void txtPCLStyleNo_TextChanged(object sender,
                                                 TextChangedEventArgs e)
         {
-            string posture = "",
-                   width = "",
-                   structure = "";
+            string posture = string.Empty,
+                   width = string.Empty,
+                   structure = string.Empty;
 
             if (validatePCLStyleNo(false, ref _styleNoPCL))
             {
@@ -3165,10 +3165,10 @@ bitVal;
         private void txtPCLSymSetNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            string idAlpha = "",
-                   idNum = "";
+            string idAlpha = string.Empty,
+                   idNum = string.Empty;
 
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLSymSetNo(true, ref _symSetNoPCL))
             {
@@ -3199,10 +3199,10 @@ bitVal;
         private void txtPCLSymSetNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            string idAlpha = "",
-                   idNum = "";
+            string idAlpha = string.Empty,
+                   idNum = string.Empty;
 
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLSymSetNo(false, ref _symSetNoPCL))
             {
@@ -3234,7 +3234,7 @@ bitVal;
             ushort vendor = 0,
                    basecode = 0;
 
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLTypefaceNo(true, ref _typefaceNoPCL))
             {
@@ -3263,7 +3263,7 @@ bitVal;
         private void txtPCLTypefaceNo_TextChanged(object sender,
                                                    TextChangedEventArgs e)
         {
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLTypefaceNo(false, ref _typefaceNoPCL))
             {
@@ -3292,7 +3292,7 @@ bitVal;
         private void txtPCLWeightNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            string weight = "";
+            string weight = string.Empty;
 
             if (validatePCLWeightNo(true, ref _weightNoPCL))
             {
@@ -3315,7 +3315,7 @@ bitVal;
         private void txtPCLWeightNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            string weight = "";
+            string weight = string.Empty;
 
             if (validatePCLWeightNo(false, ref _weightNoPCL))
             {
@@ -3370,10 +3370,10 @@ bitVal;
         private void txtPCLXLSymSetNo_LostFocus(object sender,
                                                RoutedEventArgs e)
         {
-            string idAlpha = "",
-                   idNum = "";
+            string idAlpha = string.Empty,
+                   idNum = string.Empty;
 
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
             {
@@ -3404,10 +3404,10 @@ bitVal;
         private void txtPCLXLSymSetNo_TextChanged(object sender,
                                                  TextChangedEventArgs e)
         {
-            string idAlpha = "",
-                   idNum = "";
+            string idAlpha = string.Empty,
+                   idNum = string.Empty;
 
-            string name = "";
+            string name = string.Empty;
 
             if (validatePCLXLSymSetNo(false, ref _symSetNoPCLXL))
             {

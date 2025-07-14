@@ -118,7 +118,7 @@
             _makeOvlPos = PrnParseConstants.eOvlPos.BeforeFirstPage;
             _makeOvlShow = PrnParseConstants.eOvlShow.None;
             _makeOvlMacroId = -1;
-            _makeOvlStreamName = "";
+            _makeOvlStreamName = string.Empty;
             _makeOvlPageMark = false;
             _makeOvlXL = false;
             _makeOvlEncapsulate = false;

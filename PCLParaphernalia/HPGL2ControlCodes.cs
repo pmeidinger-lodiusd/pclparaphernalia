@@ -168,31 +168,31 @@ namespace PCLParaphernalia
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "______________________";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "HP-GL/2 control codes:";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
 
             row = table.NewRow();
 
-            row[0] = "";
+            row[0] = string.Empty;
             row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
-            row[2] = "";
-            row[3] = "";
-            row[4] = "";
+            row[2] = string.Empty;
+            row[3] = string.Empty;
+            row[4] = string.Empty;
 
             table.Rows.Add(row);
         }
@@ -272,7 +272,7 @@ namespace PCLParaphernalia
             _tagUnknown =
                 new HPGL2ControlCode(tag,
                                       true,
-                                      "",
+                                      string.Empty,
                                       "*** Unknown tag ***");
 
             tag = 0x00;                                               // 0x00 //
