@@ -93,10 +93,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagLogVerbose,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagLogVerbose = false;
-                else
-                    flagLogVerbose = true;
+                flagLogVerbose = tmpInt != _flagFalse;
             }
         }
 
@@ -135,26 +132,17 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagSymSetMapPCL,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSymSetMapPCL = false;
-                else
-                    flagSymSetMapPCL = true;
+                flagSymSetMapPCL = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSymSetUnbound,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSymSetUnbound = false;
-                else
-                    flagSymSetUnbound = true;
+                flagSymSetUnbound = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserSet,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSymSetUserSet = false;
-                else
-                    flagSymSetUserSet = true;
+                flagSymSetUserSet = tmpInt != _flagFalse;
 
                 symSetUserFile = (string)subKey.GetValue(_nameSymSetUserFile,
                                                           defWorkFolder + "\\" +
@@ -206,34 +194,22 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagLogVerbose,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormat16 = false;
-                else
-                    flagFormat16 = true;
+                flagFormat16 = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagCharCompSpecific,
                                                  _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagCharCompSpecific = false;
-                else
-                    flagCharCompSpecific = true;
+                flagCharCompSpecific = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagVMetrics,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagVMetrics = false;
-                else
-                    flagVMetrics = true;
+                flagVMetrics = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSegGTLast,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSegGTLast = false;
-                else
-                    flagSegGTLast = true;
+                flagSegGTLast = tmpInt != _flagFalse;
 
                 tmpInt64 = (long)subKey.GetValue(_nameCharCompUnicode,
                                                    _defaultCompUnicode);
@@ -281,10 +257,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagVMetrics,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagVMetrics = false;
-                else
-                    flagVMetrics = true;
+                flagVMetrics = tmpInt != _flagFalse;
             }
         }
 
@@ -348,10 +321,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagUsePCLT,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagUsePCLT = false;
-                else
-                    flagUsePCLT = true;
+                flagUsePCLT = tmpInt != _flagFalse;
 
                 adhocFontFile = (string)subKey.GetValue(_nameAdhocFontFile,
                                                          defWorkFolder + "\\" +

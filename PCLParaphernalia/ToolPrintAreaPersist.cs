@@ -217,18 +217,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagCustomUseMetric,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagCustomUseMetric = false;
-                else
-                    flagCustomUseMetric = true;
+                flagCustomUseMetric = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameCustomShortEdge,
                                                 _customShortEdgeDefault);

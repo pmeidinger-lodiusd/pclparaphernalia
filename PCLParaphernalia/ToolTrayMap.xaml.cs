@@ -414,11 +414,8 @@ namespace PCLParaphernalia
                                       CultureInfo.InvariantCulture,
                                       out sheetIndx);
 
-            if (flagOK)
-            {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
-            }
+            if (flagOK && sheetIndx > _maxSheetNo)
+                flagOK = false;
 
             if (!flagOK)
             {
@@ -477,11 +474,8 @@ namespace PCLParaphernalia
                                       CultureInfo.InvariantCulture,
                                       out sheetIndx);
 
-            if (flagOK)
-            {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
-            }
+            if (flagOK && sheetIndx > _maxSheetNo)
+                flagOK = false;
 
             if (!flagOK)
             {
@@ -542,11 +536,8 @@ namespace PCLParaphernalia
                                           CultureInfo.InvariantCulture,
                                           out sheetIndx);
 
-                if (flagOK)
-                {
-                    if (sheetIndx > _maxSheetNo)
-                        flagOK = false;
-                }
+                if (flagOK && sheetIndx > _maxSheetNo)
+                    flagOK = false;
 
                 if (!flagOK)
                 {
@@ -606,11 +597,8 @@ namespace PCLParaphernalia
                                       CultureInfo.InvariantCulture,
                                       out sheetIndx);
 
-            if (flagOK)
-            {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
-            }
+            if (flagOK && sheetIndx > _maxSheetNo)
+                flagOK = false;
 
             if (!flagOK)
             {
@@ -692,11 +680,8 @@ namespace PCLParaphernalia
                                       CultureInfo.InvariantCulture,
                                       out sheetIndx);
 
-            if (flagOK)
-            {
-                if (sheetIndx > _maxSheetNo)
-                    flagOK = false;
-            }
+            if (flagOK && sheetIndx > _maxSheetNo)
+                flagOK = false;
 
             if (!flagOK)
             {
@@ -1285,19 +1270,13 @@ namespace PCLParaphernalia
             {
                 _sheetCtPCL = (cbSheetCt.SelectedIndex) + 1;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCL = true;
-                else
-                    _formAsMacroPCL = false;
+                _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
             }
             else
             {
                 _sheetCtPCLXL = (cbSheetCt.SelectedIndex) + 1;
 
-                if (chkOptFormAsMacro.IsChecked == true)
-                    _formAsMacroPCLXL = true;
-                else
-                    _formAsMacroPCLXL = false;
+                _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
             }
 
             sheetDataStore();

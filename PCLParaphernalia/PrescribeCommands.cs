@@ -202,11 +202,8 @@ namespace PCLParaphernalia
 
                 count = kvp.Value.StatsCtTotal;
 
-                if (count == 0)
-                {
-                    if (incUsedSeqsOnly)
-                        displaySeq = false;
-                }
+                if (count == 0 && incUsedSeqsOnly)
+                    displaySeq = false;
 
                 if (displaySeq)
                 {

@@ -224,10 +224,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 sheetCt = (int)subKey.GetValue(_nameSheetCt,
                                                  _indexOne);
@@ -292,10 +289,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 sheetCt = (int)subKey.GetValue(_nameSheetCt,
                                                  _indexOne);

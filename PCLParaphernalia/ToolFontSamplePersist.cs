@@ -214,10 +214,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagOptGridVertical,
                                                            _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagOptGridVertical = false;
-                else
-                    flagOptGridVertical = true;
+                flagOptGridVertical = tmpInt != _flagFalse;
             }
         }
 
@@ -284,44 +281,29 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                           _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagShowC0Chars,
                                                            _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagShowC0Chars = false;
-                else
-                    flagShowC0Chars = true;
+                flagShowC0Chars = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUCS2,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagShowMapCodesUCS2 = false;
-                else
-                    flagShowMapCodesUCS2 = true;
+                flagShowMapCodesUCS2 = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagShowMapCodesUTF8,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagShowMapCodesUTF8 = false;
-                else
-                    flagShowMapCodesUTF8 = true;
+                flagShowMapCodesUTF8 = tmpInt != _flagFalse;
 
                 if (pdlName == _subKeyPCL)
                 {
                     tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserActEmbed,
                                                     _flagTrue);
 
-                    if (tmpInt == _flagFalse)
-                        flagSymSetUserActEmbed = false;
-                    else
-                        flagSymSetUserActEmbed = true;
+                    flagSymSetUserActEmbed = tmpInt != _flagFalse;
                 }
                 else
                 {
@@ -371,26 +353,17 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagProportional,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagProportional = false;
-                else
-                    flagProportional = true;
+                flagProportional = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagScalable,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagScalable = false;
-                else
-                    flagScalable = true;
+                flagScalable = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagBound,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagBound = false;
-                else
-                    flagBound = true;
+                flagBound = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameStyle,
                                                          0);
@@ -471,17 +444,11 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSelectById,
                                                       _flagTrue);
-                if (tmpInt == _flagFalse)
-                    flagSelectById = false;
-                else
-                    flagSelectById = true;
+                flagSelectById = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove,
                                                       _flagTrue);
-                if (tmpInt == _flagFalse)
-                    flagDownloadRemove = false;
-                else
-                    flagDownloadRemove = true;
+                flagDownloadRemove = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);
@@ -632,70 +599,49 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagRamDataRemove,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagRamDataRemove = false;
-                else
-                    flagRamDataRemove = true;
+                flagRamDataRemove = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSelectById,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSelById = false;
-                else
-                    flagSelById = true;
+                flagSelById = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagMassStoreViaMacro,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagLoadViaMacro = false;
-                else
-                    flagLoadViaMacro = true;
+                flagLoadViaMacro = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDetailsKnown,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagDetailsKnown = false;
-                else
-                    flagDetailsKnown = true;
+                flagDetailsKnown = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagProportional,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagProportional = false;
-                else
-                    flagProportional = true;
+                flagProportional = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagScalable,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagScalable = false;
-                else
-                    flagScalable = true;
+                flagScalable = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagBound,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagBound = false;
-                else
-                    flagBound = true;
+                flagBound = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
@@ -816,10 +762,7 @@ namespace PCLParaphernalia
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDownloadRemove,
                                                        _flagTrue);
-                if (tmpInt == _flagFalse)
-                    flagDownloadRemove = false;
-                else
-                    flagDownloadRemove = true;
+                flagDownloadRemove = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameHeight,
                                                       _defaultHeightPtsK);

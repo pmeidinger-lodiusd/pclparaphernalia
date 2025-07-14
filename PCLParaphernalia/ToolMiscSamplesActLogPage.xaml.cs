@@ -118,10 +118,7 @@ namespace PCLParaphernalia
                 grpLogPageLogical.Visibility = Visibility.Visible;
                 grpLogPageOptions.Visibility = Visibility.Visible;
 
-                if (_flagLogPageFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagLogPageFormAsMacroPCL;
             }
             else
             {
@@ -199,10 +196,7 @@ namespace PCLParaphernalia
         {
             if (crntPDL == ToolCommonData.ePrintLang.PCL)
             {
-                if (setFlag)
-                    _flagLogPageFormAsMacroPCL = true;
-                else
-                    _flagLogPageFormAsMacroPCL = false;
+                _flagLogPageFormAsMacroPCL = setFlag;
             }
         }
 

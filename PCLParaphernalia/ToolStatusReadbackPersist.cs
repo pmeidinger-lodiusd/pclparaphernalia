@@ -383,18 +383,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagPJLFS,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagPJLFS = false;
-                else
-                    flagPJLFS = true;
+                flagPJLFS = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPJLFSSecJob,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagPJLFSSecJob = false;
-                else
-                    flagPJLFSSecJob = true;
+                flagPJLFSSecJob = tmpInt != _flagFalse;
             }
         }
 

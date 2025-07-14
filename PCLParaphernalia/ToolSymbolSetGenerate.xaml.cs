@@ -533,10 +533,7 @@ namespace PCLParaphernalia
 
                     sizeDonorSet = lastCode + 1;
 
-                    if (sizeDonorSet > cSizeCharSet_8bit)
-                        _flagMultiByteSet = true;
-                    else
-                        _flagMultiByteSet = false;
+                    _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
                     setMultiByteData(_flagMultiByteSet);
 

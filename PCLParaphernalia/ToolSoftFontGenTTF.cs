@@ -1357,10 +1357,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (_post_isFixedPitch == 0)
-                monoSpaced_post = false;
-            else
-                monoSpaced_post = true;
+            monoSpaced_post = _post_isFixedPitch != 0;
 
             //----------------------------------------------------------------//
 
@@ -2150,10 +2147,7 @@ namespace PCLParaphernalia
                     _glyphData[0].getLocation(ref glyphOffset,
                                                ref glyphLength);
 
-                    if (glyphLength == 0)
-                        _glyphZeroExists = false;
-                    else
-                        _glyphZeroExists = true;
+                    _glyphZeroExists = glyphLength != 0;
                 }
 
                 if (fileOpen)
@@ -3589,10 +3583,7 @@ namespace PCLParaphernalia
                 }
             }
 
-            if (encodingSymbol)
-                symbolMapping = true;
-            else
-                symbolMapping = false;
+            symbolMapping = encodingSymbol;
 
             return flagOK;
         }
@@ -4091,10 +4082,7 @@ namespace PCLParaphernalia
                         flagOK = readBytesAsInt16((int)entryOffset,
                                                    ref numContours);
 
-                        if (numContours >= 0)
-                            composite = false;
-                        else
-                            composite = true;
+                        composite = numContours < 0;
                     }
                 }
 

@@ -397,10 +397,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (bitmapFont)
-                scalable = false;
-            else
-                scalable = true;
+            scalable = !bitmapFont;
 
             //----------------------------------------------------------------//
 
@@ -492,10 +489,7 @@ namespace PCLParaphernalia
 
             //----------------------------------------------------------------//
 
-            if (hddr[13] == 0)
-                proportional = false;
-            else
-                proportional = true;
+            proportional = hddr[13] != 0;
 
             //----------------------------------------------------------------//
 

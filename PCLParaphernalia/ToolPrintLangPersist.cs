@@ -123,10 +123,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagOptMapping,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptMap = false;
-                else
-                    flagOptMap = true;
+                flagOptMap = tmpInt != _flagFalse;
             }
         }
 
@@ -160,42 +157,27 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagSeqControl,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagSeqControl = false;
-                else
-                    flagSeqControl = true;
+                flagSeqControl = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSeqSimple,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagSeqSimple = false;
-                else
-                    flagSeqSimple = true;
+                flagSeqSimple = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSeqComplex,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagSeqComplex = false;
-                else
-                    flagSeqComplex = true;
+                flagSeqComplex = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagOptObsolete,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptObsolete = false;
-                else
-                    flagOptObsolete = true;
+                flagOptObsolete = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagOptDiscrete,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptDiscrete = false;
-                else
-                    flagOptDiscrete = true;
+                flagOptDiscrete = tmpInt != _flagFalse;
             }
         }
 
@@ -231,58 +213,37 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagTagDataType,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagDataType = false;
-                else
-                    flagTagDataType = true;
+                flagTagDataType = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagAttribute,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagAttribute = false;
-                else
-                    flagTagAttribute = true;
+                flagTagAttribute = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagOperator,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagOperator = false;
-                else
-                    flagTagOperator = true;
+                flagTagOperator = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagAttrDefiner,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagAttrDefiner = false;
-                else
-                    flagTagAttrDefiner = true;
+                flagTagAttrDefiner = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagEmbedDataDef,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagEmbedDataDef = false;
-                else
-                    flagTagEmbedDataDef = true;
+                flagTagEmbedDataDef = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagWhitespace,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagWhitespace = false;
-                else
-                    flagTagWhitespace = true;
+                flagTagWhitespace = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagOptReserved,
                                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptReserved = false;
-                else
-                    flagOptReserved = true;
+                flagOptReserved = tmpInt != _flagFalse;
 
             }
         }
@@ -315,26 +276,17 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagTagDataType,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagDataType = false;
-                else
-                    flagTagDataType = true;
+                flagTagDataType = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagAction,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagAction = false;
-                else
-                    flagTagAction = true;
+                flagTagAction = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagTagOutcome,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagTagOutcome = false;
-                else
-                    flagTagOutcome = true;
+                flagTagOutcome = tmpInt != _flagFalse;
             }
         }
 
@@ -369,10 +321,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagOptRptWrap,
                                 _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptRptWrap = false;
-                else
-                    flagOptRptWrap = true;
+                flagOptRptWrap = tmpInt != _flagFalse;
             }
         }
 
@@ -403,10 +352,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagOptMapping,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagOptMap = false;
-                else
-                    flagOptMap = true;
+                flagOptMap = tmpInt != _flagFalse;
 
                 mapType = (int)subKey.GetValue(_nameSymSetMapType,
                                                    _indexZero);

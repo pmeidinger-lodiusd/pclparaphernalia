@@ -245,42 +245,27 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagMacroRemove,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMacroRemove = false;
-                else
-                    flagMacroRemove = true;
+                flagMacroRemove = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagMainForm,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMainForm = false;
-                else
-                    flagMainForm = true;
+                flagMainForm = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagRearForm,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagRearForm = false;
-                else
-                    flagRearForm = true;
+                flagRearForm = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagRearBPlate,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagRearBPlate = false;
-                else
-                    flagRearBPlate = true;
+                flagRearBPlate = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPrintDescText,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagPrintDescText = false;
-                else
-                    flagPrintDescText = true;
+                flagPrintDescText = tmpInt != _flagFalse;
             }
         }
 
@@ -319,18 +304,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagMainOnPrnDisk,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMainOnPrnDisk = false;
-                else
-                    flagMainOnPrnDisk = true;
+                flagMainOnPrnDisk = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagRearOnPrnDisk,
                                                 _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagRearOnPrnDisk = false;
-                else
-                    flagRearOnPrnDisk = true;
+                flagRearOnPrnDisk = tmpInt != _flagFalse;
 
                 formFileMain = (string)subKey.GetValue(_nameFormFileMain,
                                                           defWorkFolder + "\\" +
@@ -394,10 +373,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagGSPushPop,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagGSPushPop = false;
-                else
-                    flagGSPushPop = true;
+                flagGSPushPop = tmpInt != _flagFalse;
             }
         }
 

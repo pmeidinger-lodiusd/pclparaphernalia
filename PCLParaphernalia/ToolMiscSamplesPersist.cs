@@ -269,18 +269,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagMapHex,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMapHex = false;
-                else
-                    flagMapHex = true;
+                flagMapHex = tmpInt != _flagFalse;
             }
         }
 
@@ -473,20 +467,14 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagUseMacros,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagUseMacros = false;
-                else
-                    flagUseMacros = true;
+                flagUseMacros = tmpInt != _flagFalse;
 
                 if (pdlName == _subKeyPCLXL)
                 {
                     tmpInt = (int)subKey.GetValue(_nameFlagSrcTextPat,
                                                       _flagTrue);
 
-                    if (tmpInt == _flagFalse)
-                        flagSrcTextPat = false;
-                    else
-                        flagSrcTextPat = true;
+                    flagSrcTextPat = tmpInt != _flagFalse;
                 }
                 else
                 {
@@ -540,18 +528,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagAddStdPage,
                                                          _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagAddStdPage = false;
-                else
-                    flagAddStdPage = true;
+                flagAddStdPage = tmpInt != _flagFalse;
             }
         }
 
@@ -587,10 +569,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
             }
         }
 
@@ -626,10 +605,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
             }
         }
 
@@ -674,10 +650,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFormAsMacro,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFormAsMacro = false;
-                else
-                    flagFormAsMacro = true;
+                flagFormAsMacro = tmpInt != _flagFalse;
             }
         }
 

@@ -93,15 +93,9 @@
             _makeOvlAct = makeOvlAct;
             _seqGrp = seqGrp;
 
-            if (value == PCLComplexSeqs._valueGeneric)
-                _flagValGeneric = true;
-            else
-                _flagValGeneric = false;
+            _flagValGeneric = value == PCLComplexSeqs._valueGeneric;
 
-            if (value == PCLComplexSeqs._valueVarious)
-                _flagValVarious = true;
-            else
-                _flagValVarious = false;
+            _flagValVarious = value == PCLComplexSeqs._valueVarious;
 
             _statsCtParent = 0;
             _statsCtChild = 0;

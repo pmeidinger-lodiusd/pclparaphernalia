@@ -82,18 +82,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagSymSetUserSet,
                                                        _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSymSetUserSet = false;
-                else
-                    flagSymSetUserSet = true;
+                flagSymSetUserSet = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagSymSetMapPCL,
                                                        _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagSymSetMapPCL = false;
-                else
-                    flagSymSetMapPCL = true;
+                flagSymSetMapPCL = tmpInt != _flagFalse;
 
                 symSetFile = (string)subKey.GetValue(_nameSymSetFile,
                                                       defWorkFolder + "\\" +
@@ -160,42 +154,27 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagMapHex,
                                                        _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMapHex = false;
-                else
-                    flagMapHex = true;
+                flagMapHex = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagIgnoreC0,
                                                        _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagIgnoreC0 = false;
-                else
-                    flagIgnoreC0 = true;
+                flagIgnoreC0 = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagIgnoreC1,
                                                        _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagIgnoreC1 = false;
-                else
-                    flagIgnoreC1 = true;
+                flagIgnoreC1 = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagIndexUnicode,
                                                        _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagIndexUnicode = false;
-                else
-                    flagIndexUnicode = true;
+                flagIndexUnicode = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagCharReqSpecific,
                                                        _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagCharReqSpecific = false;
-                else
-                    flagCharReqSpecific = true;
+                flagCharReqSpecific = tmpInt != _flagFalse;
 
                 tmpInt64 = (long)subKey.GetValue(_nameCharReqUnicode,
                                                         _defaultReqUnicode);

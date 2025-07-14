@@ -184,10 +184,7 @@ namespace PCLParaphernalia
 
         public static bool isBound(int selection)
         {
-            if (_sets[selection].IsBound)
-                return true;
-            else
-                return false;
+            return _sets[selection].IsBound;
         }
 
         //--------------------------------------------------------------------//

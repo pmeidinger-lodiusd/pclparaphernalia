@@ -118,18 +118,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagEncapsulated = false;
-                else
-                    flagEncapsulated = true;
+                flagEncapsulated = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagRestoreCursor,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagRestoreCursor = false;
-                else
-                    flagRestoreCursor = true;
+                flagRestoreCursor = tmpInt != _flagFalse;
             }
         }
 
@@ -170,18 +164,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagEncapsulated,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagEncapsulated = false;
-                else
-                    flagEncapsulated = true;
+                flagEncapsulated = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagRestoreGS,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagRestoreGS = false;
-                else
-                    flagRestoreGS = true;
+                flagRestoreGS = tmpInt != _flagFalse;
             }
         }
 

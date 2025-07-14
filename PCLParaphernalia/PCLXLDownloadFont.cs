@@ -262,19 +262,13 @@ namespace PCLParaphernalia
 
             symSetNo = (ushort)((hddr[2] * 256) + hddr[3]);
 
-            if (symSetNo == symSetUnicode)
-                bound = false;
-            else
-                bound = true;
+            bound = symSetNo != symSetUnicode;
 
             //----------------------------------------------------------------//
 
             technology = hddr[4];
 
-            if (technology == techTrueType)
-                scalable = true;
-            else
-                scalable = false;
+            scalable = technology == techTrueType;
 
             return OK;
         }

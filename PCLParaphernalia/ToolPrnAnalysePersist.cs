@@ -198,10 +198,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagClrMapUseClr,
                                                  _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagClrMapUseClr = false;
-                else
-                    flagClrMapUseClr = true;
+                flagClrMapUseClr = tmpInt != _flagFalse;
             }
         }
 
@@ -365,18 +362,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagAutoAnalyse,
                                                            _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscAutoAnalyse = false;
-                else
-                    flagMiscAutoAnalyse = true;
+                flagMiscAutoAnalyse = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDiagFileAccess,
                                                            _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagDiagFileAccess = false;
-                else
-                    flagDiagFileAccess = true;
+                flagDiagFileAccess = tmpInt != _flagFalse;
             }
         }
 
@@ -405,10 +396,7 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagBinData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscBinData = false;
-                else
-                    flagMiscBinData = true;
+                flagMiscBinData = tmpInt != _flagFalse;
             }
         }
 
@@ -457,30 +445,21 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFontHddr,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFontHddr = false;
-                else
-                    flagFontHddr = true;
+                flagFontHddr = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagFontChar,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagFontChar = false;
-                else
-                    flagFontChar = true;
+                flagFontChar = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagFontDraw,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagFontDraw = false;
-                else
-                    flagFontDraw = true;
+                flagFontDraw = tmpInt != _flagFalse;
 
                 valFontDrawHeight =
                     (int)subKey.GetValue(_nameFontDrawHeight,
@@ -495,160 +474,112 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagMacroDisplay,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMacroDisplay = false;
-                else
-                    flagMacroDisplay = true;
+                flagMacroDisplay = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagStyleData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscStyleData = false;
-                else
-                    flagMiscStyleData = true;
+                flagMiscStyleData = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagBinData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscBinData = false;
-                else
-                    flagMiscBinData = true;
+                flagMiscBinData = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagAlphaNumId,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransAlphaNumId = false;
-                else
-                    flagTransAlphaNumId = true;
+                flagTransAlphaNumId = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagColourLookup,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransColourLookup = false;
-                else
-                    flagTransColourLookup = true;
+                flagTransColourLookup = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagConfIO,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransConfIO = false;
-                else
-                    flagTransConfIO = true;
+                flagTransConfIO = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagConfImageData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransConfImageData = false;
-                else
-                    flagTransConfImageData = true;
+                flagTransConfImageData = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagConfRasterData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransConfRasterData = false;
-                else
-                    flagTransConfRasterData = true;
+                flagTransConfRasterData = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDefLogPage,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransDefLogPage = false;
-                else
-                    flagTransDefLogPage = true;
+                flagTransDefLogPage = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDefSymSet,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransDefSymSet = false;
-                else
-                    flagTransDefSymSet = true;
+                flagTransDefSymSet = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDitherMatrix,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransDitherMatrix = false;
-                else
-                    flagTransDitherMatrix = true;
+                flagTransDitherMatrix = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagDriverConf,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransDriverConf = false;
-                else
-                    flagTransDriverConf = true;
+                flagTransDriverConf = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagEscEncText,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransEscEncText = false;
-                else
-                    flagTransEscEncText = true;
+                flagTransEscEncText = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPaletteConf,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransPaletteConf = false;
-                else
-                    flagTransPaletteConf = true;
+                flagTransPaletteConf = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagUserPattern,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransUserPattern = false;
-                else
-                    flagTransUserPattern = true;
+                flagTransUserPattern = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagViewIlluminant,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagTransViewIlluminant = false;
-                else
-                    flagTransViewIlluminant = true;
+                flagTransViewIlluminant = tmpInt != _flagFalse;
             }
         }
 
@@ -687,30 +618,21 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagFontHddr,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagFontHddr = false;
-                else
-                    flagFontHddr = true;
+                flagFontHddr = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagFontChar,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagFontChar = false;
-                else
-                    flagFontChar = true;
+                flagFontChar = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagFontDraw,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagFontDraw = false;
-                else
-                    flagFontDraw = true;
+                flagFontDraw = tmpInt != _flagFalse;
 
                 valFontDrawHeight =
                     (int)subKey.GetValue(_nameFontDrawHeight,
@@ -725,70 +647,49 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagUserStream,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagEncUserStream = false;
-                else
-                    flagEncUserStream = true;
+                flagEncUserStream = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPCLPassThrough,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagEncPCLPassThrough = false;
-                else
-                    flagEncPCLPassThrough = true;
+                flagEncPCLPassThrough = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPCLFontSelect,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagEncPCLFontSelect = false;
-                else
-                    flagEncPCLFontSelect = true;
+                flagEncPCLFontSelect = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagPCLFontSelect,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagEncPCLFontSelect = false;
-                else
-                    flagEncPCLFontSelect = true;
+                flagEncPCLFontSelect = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagOperPos,
                                                   _flagTrue);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscOperPos = false;
-                else
-                    flagMiscOperPos = true;
+                flagMiscOperPos = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagBinData,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscBinData = false;
-                else
-                    flagMiscBinData = true;
+                flagMiscBinData = tmpInt != _flagFalse;
 
                 //------------------------------------------------------------//
 
                 tmpInt = (int)subKey.GetValue(_nameFlagVerbose,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagMiscVerbose = false;
-                else
-                    flagMiscVerbose = true;
+                flagMiscVerbose = tmpInt != _flagFalse;
             }
         }
 
@@ -819,26 +720,17 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagWithinPCL,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagWithinPCL = false;
-                else
-                    flagWithinPCL = true;
+                flagWithinPCL = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagWithinPJL,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagWithinPJL = false;
-                else
-                    flagWithinPJL = true;
+                flagWithinPJL = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagVerbose,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagVerbose = false;
-                else
-                    flagVerbose = true;
+                flagVerbose = tmpInt != _flagFalse;
 
             }
         }
@@ -874,18 +766,12 @@ namespace PCLParaphernalia
                 tmpInt = (int)subKey.GetValue(_nameFlagExcUnusedPCLObs,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagExcUnusedPCLObs = false;
-                else
-                    flagExcUnusedPCLObs = true;
+                flagExcUnusedPCLObs = tmpInt != _flagFalse;
 
                 tmpInt = (int)subKey.GetValue(_nameFlagExcUnusedPCLXLRes,
                                                   _flagFalse);
 
-                if (tmpInt == _flagFalse)
-                    flagExcUnusedPCLXLRes = false;
-                else
-                    flagExcUnusedPCLXLRes = true;
+                flagExcUnusedPCLXLRes = tmpInt != _flagFalse;
             }
         }
 

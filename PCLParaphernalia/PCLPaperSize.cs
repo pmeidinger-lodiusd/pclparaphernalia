@@ -307,10 +307,7 @@ namespace PCLParaphernalia
         {
             get
             {
-                if (_paperSizeIndex == PCLPaperSizes.eIndex.Custom)
-                    return true;
-                else
-                    return false;
+                return _paperSizeIndex == PCLPaperSizes.eIndex.Custom;
             }
         }
 

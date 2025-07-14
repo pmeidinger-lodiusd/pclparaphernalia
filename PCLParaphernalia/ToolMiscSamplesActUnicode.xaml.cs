@@ -202,10 +202,7 @@ namespace PCLParaphernalia
                 cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCL / 256);
                 cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCL % 256);
 
-                if (_flagUnicodeFormAsMacroPCL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCL;
             }
             else
             {
@@ -222,10 +219,7 @@ namespace PCLParaphernalia
                 cbUnicodeCp01.SelectedIndex = (int)(_unicodeUCS2PCLXL / 256);
                 cbUnicodeCp02.SelectedIndex = (int)(_unicodeUCS2PCLXL % 256);
 
-                if (_flagUnicodeFormAsMacroPCLXL)
-                    chkOptFormAsMacro.IsChecked = true;
-                else
-                    chkOptFormAsMacro.IsChecked = false;
+                chkOptFormAsMacro.IsChecked = _flagUnicodeFormAsMacroPCLXL;
             }
 
             _initialised = true;
