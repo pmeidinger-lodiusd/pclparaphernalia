@@ -122,7 +122,7 @@ namespace PCLParaphernalia
         {
             bool open = false;
 
-            if ((fileName == null) || (fileName == string.Empty))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Download font file name is null.",
                                 "PCL font selection attribute invalid",

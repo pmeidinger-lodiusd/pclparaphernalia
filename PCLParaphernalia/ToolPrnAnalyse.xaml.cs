@@ -821,22 +821,22 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private long prnFileGetSize(string filename)
+        private long prnFileGetSize(string fileName)
         {
             Stream ipStream = null;
 
             long fileSize = -1;
 
-            if ((filename == null) || (filename == string.Empty))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-            else if (!File.Exists(filename))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename +
+                MessageBox.Show("Print file '" + fileName +
                                 "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
@@ -846,7 +846,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    ipStream = File.Open(filename,
+                    ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
@@ -856,7 +856,7 @@ namespace PCLParaphernalia
                 {
                     MessageBox.Show("IO Exception:\r\n" +
                                     e.Message + "\r\n" +
-                                    "Opening print file '" + filename,
+                                    "Opening print file '" + fileName,
                                     "Print file selection",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Error);
@@ -864,7 +864,7 @@ namespace PCLParaphernalia
 
                 if (ipStream != null)
                 {
-                    FileInfo fi = new FileInfo(filename);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 

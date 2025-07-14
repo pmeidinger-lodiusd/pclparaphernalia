@@ -812,23 +812,23 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public bool fontFileOpen(string filename,
+        public bool fontFileOpen(string fileName,
                                     ref long fileSize)
         {
             bool open = false;
 
-            _filenameTTF = filename;
+            _filenameTTF = fileName;
 
-            if ((filename == null) || (filename == string.Empty))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Font file name is null.",
                                 "Source (TrueType) font file selection",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
             }
-            else if (!File.Exists(filename))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show("Font file '" + filename +
+                MessageBox.Show("Font file '" + fileName +
                                 "' does not exist.",
                                 "Source (TrueType) font file selection",
                                 MessageBoxButton.OK,
@@ -838,14 +838,14 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open(filename,
+                    _ipStream = File.Open(fileName,
                                            FileMode.Open,
                                            FileAccess.Read,
                                            FileShare.None);
 
                     if (_ipStream != null)
                     {
-                        FileInfo fi = new FileInfo(filename);
+                        FileInfo fi = new FileInfo(fileName);
 
                         fileSize = fi.Length;
 
@@ -859,7 +859,7 @@ namespace PCLParaphernalia
                 {
                     ToolSoftFontGenLog.logError(
                         _tableDonor, MessageBoxImage.Error,
-                        "Error opening font file " + filename);
+                        "Error opening font file " + fileName);
                 }
             }
 

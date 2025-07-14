@@ -1696,12 +1696,12 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        private bool prnFileOpen(string filename,
+        private bool prnFileOpen(string fileName,
                                     ref long fileSize)
         {
             bool open = false;
 
-            if ((filename == null) || (filename == string.Empty))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -1710,9 +1710,9 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(filename))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename +
+                MessageBox.Show("Print file '" + fileName +
                                 "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
@@ -1724,7 +1724,7 @@ namespace PCLParaphernalia
             {
                 try
                 {
-                    _ipStream = File.Open(filename,
+                    _ipStream = File.Open(fileName,
                                           FileMode.Open,
                                           FileAccess.Read,
                                           FileShare.None);
@@ -1735,7 +1735,7 @@ namespace PCLParaphernalia
                     MessageBox.Show("IO Exception:\r\n" +
                                      e.Message +
                                      "Opening print file '" +
-                                     filename + "'",
+                                     fileName + "'",
                                      "Print file selection",
                                      MessageBoxButton.OK,
                                      MessageBoxImage.Error);
@@ -1745,7 +1745,7 @@ namespace PCLParaphernalia
 
                 if (_ipStream != null)
                 {
-                    FileInfo fi = new FileInfo(filename);
+                    FileInfo fi = new FileInfo(fileName);
 
                     fileSize = fi.Length;
 
@@ -1771,7 +1771,7 @@ namespace PCLParaphernalia
                             string.Empty,
                             string.Empty,
                             string.Empty,
-                            filename);
+                            fileName);
                     }
                 }
             }

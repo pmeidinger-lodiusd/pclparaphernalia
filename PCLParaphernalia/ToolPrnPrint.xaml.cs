@@ -240,11 +240,11 @@ namespace PCLParaphernalia
         //                                                                    //
         //--------------------------------------------------------------------//
 
-        public static bool prnOpen(string filename)
+        public static bool prnOpen(string fileName)
         {
             bool open = false;
 
-            if ((filename == null) || (filename == string.Empty))
+            if (string.IsNullOrEmpty(fileName))
             {
                 MessageBox.Show("Print file name is null.",
                                 "Print file selection",
@@ -253,9 +253,9 @@ namespace PCLParaphernalia
 
                 return false;
             }
-            else if (!File.Exists(filename))
+            else if (!File.Exists(fileName))
             {
-                MessageBox.Show("Print file '" + filename +
+                MessageBox.Show("Print file '" + fileName +
                                 "' does not exist.",
                                 "Print file selection",
                                 MessageBoxButton.OK,
@@ -265,7 +265,7 @@ namespace PCLParaphernalia
             }
             else
             {
-                _ipStream = File.Open(filename,
+                _ipStream = File.Open(fileName,
                                       FileMode.Open,
                                       FileAccess.Read,
                                       FileShare.None);
