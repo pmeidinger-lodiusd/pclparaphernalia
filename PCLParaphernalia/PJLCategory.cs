@@ -1,63 +1,62 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PJL 'status readback' Category object.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+class PJLCategory
 {
-    /// <summary>
-    /// 
-    /// Class handles a PJL 'status readback' Category object.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class PJLCategory
+    private readonly PJLCategories.eCategoryType _categoryType;
+    private readonly string _categoryName;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P J L C a t e g o r y                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PJLCategory(PJLCategories.eCategoryType type,
+                       string name)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _categoryType = type;
+        _categoryName = name;
+    }
 
-        private readonly PJLCategories.eCategoryType _categoryType;
-        private readonly string _categoryName;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t N a m e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the category name.                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P J L C a t e g o r y                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string GetName()
+    {
+        return _categoryName;
+    }
 
-        public PJLCategory(PJLCategories.eCategoryType type,
-                           string name)
-        {
-            _categoryType = type;
-            _categoryName = name;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t T y p e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the category type.                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t N a m e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the category name.                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string GetName()
-        {
-            return _categoryName;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t T y p e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the category type.                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public PJLCategories.eCategoryType GetType()
-        {
-            return _categoryType;
-        }
+    public PJLCategories.eCategoryType GetType()
+    {
+        return _categoryType;
     }
 }

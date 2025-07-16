@@ -1,154 +1,153 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PML 'action type' object.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+// [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
+[System.Reflection.Obfuscation(
+    Feature = "renaming",
+    ApplyToMembers = true)]
+
+class PMLAction
 {
-    /// <summary>
-    /// 
-    /// Class handles a PML 'action type' object.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    private readonly byte _tag;
+    private readonly string _description;
 
-    class PMLAction
+    private int _statsCtParent;
+    private int _statsCtChild;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P M L A c t i o n T y p e                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PMLAction(byte tag,
+                         string description)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _tag = tag;
+        _description = description;
+    }
 
-        private readonly byte _tag;
-        private readonly string _description;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // D e s c r i p t i o n                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private int _statsCtParent;
-        private int _statsCtChild;
+    public string Description
+    {
+        get { return _description; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P M L A c t i o n T y p e                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t D e s c                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the description.                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public PMLAction(byte tag,
-                             string description)
-        {
-            _tag = tag;
-            _description = description;
-        }
+    public string GetDesc()
+    {
+        return _description;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // D e s c r i p t i o n                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t T a g                                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the tag.                                                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+    public byte GetTag()
+    {
+        return _tag;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t D e s c                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the description.                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n c r e m e n t S t a t i s t i c s C o u n t                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Increment 'statistics' count.                                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string GetDesc()
-        {
-            return _description;
-        }
+    public void IncrementStatisticsCount(int level)
+    {
+        if (level == 0)
+            _statsCtParent++;
+        else
+            _statsCtChild++;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t T a g                                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the tag.                                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t C h i l d                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public byte GetTag()
-        {
-            return _tag;
-        }
+    public int StatsCtChild
+    {
+        get { return _statsCtChild; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n c r e m e n t S t a t i s t i c s C o u n t                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Increment 'statistics' count.                                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t P a r e n t                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void IncrementStatisticsCount(int level)
-        {
-            if (level == 0)
-                _statsCtParent++;
-            else
-                _statsCtChild++;
-        }
+    public int StatsCtParent
+    {
+        get { return _statsCtParent; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t C h i l d                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t T o t a l                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
+    public int StatsCtTotal
+    {
+        get { return (_statsCtParent + _statsCtChild); }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t P a r e n t                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T a g                                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
+    public string Tag
+    {
+        get { return "0x" + _tag.ToString("x2"); }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t T o t a l                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T y p e                                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int StatsCtTotal
-        {
-            get { return (_statsCtParent + _statsCtChild); }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T a g                                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string Tag
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T y p e                                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string Type
-        {
-            get { return "Action"; }
-        }
+    public string Type
+    {
+        get { return "Action"; }
     }
 }

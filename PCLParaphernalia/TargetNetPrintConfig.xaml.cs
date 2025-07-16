@@ -1,208 +1,207 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// Interaction logic for TargetNetPrinter.xaml
+/// 
+/// Class handles the Target (printer) definition form.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+[System.Reflection.Obfuscation(Feature = "renaming",
+                                        ApplyToMembers = true)]
+
+public partial class TargetNetPrintConfig : Window
 {
-    /// <summary>
-    /// Interaction logic for TargetNetPrinter.xaml
-    /// 
-    /// Class handles the Target (printer) definition form.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Fields (class variables).                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    private int _printerPort;
+    private int _timeoutReceive;
+    private int _timeoutSend;
 
-    public partial class TargetNetPrintConfig : Window
+    private string _printerAddress;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // T a r g e t N e t P r i n t e r                                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public TargetNetPrintConfig()
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Fields (class variables).                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        InitializeComponent();
 
-        private int _printerPort;
-        private int _timeoutReceive;
-        private int _timeoutSend;
+        Initialise();
+    }
 
-        private string _printerAddress;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // b t n C a n c e l _ C l i c k                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the 'Cancel' button is clicked.                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // T a r g e t N e t P r i n t e r                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    private void btnCancel_Click(object sender, RoutedEventArgs e)
+    {
+        DialogResult = false;
+    }
 
-        public TargetNetPrintConfig()
-        {
-            InitializeComponent();
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // b t n O K _ C l i c k                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the 'OK' button is clicked.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            Initialise();
-        }
+    private void btnOK_Click(object sender, RoutedEventArgs e)
+    {
+        MetricsSave();
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // b t n C a n c e l _ C l i c k                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the 'Cancel' button is clicked.                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        DialogResult = true;
+    }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n i t i a l i s e                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Initialise 'target' data.                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // b t n O K _ C l i c k                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the 'OK' button is clicked.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    private void Initialise()
+    {
+        TargetCore.MetricsLoadNetPrinter(ref _printerAddress,
+                                          ref _printerPort,
+                                          ref _timeoutSend,
+                                          ref _timeoutReceive);
 
-        private void btnOK_Click(object sender, RoutedEventArgs e)
-        {
-            MetricsSave();
+        txtPrinterAddress.Text = _printerAddress;
+        txtPrinterPort.Text = _printerPort.ToString();
 
-            DialogResult = true;
-        }
+        txtTimeoutSend.Text = _timeoutSend.ToString();
+        txtTimeoutReceive.Text = _timeoutReceive.ToString();
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n i t i a l i s e                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Initialise 'target' data.                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Set the (hidden) slider object to the passed-in scale value.   //
+        // The slider is used as the source binding for a scale           //
+        // transform in the (child) Options dialogue window, so that all  //
+        // windows use the same scaling mechanism as the main window.     //
+        //                                                                //
+        // NOTE: it would be better to bind the transform directly to the //
+        //       scale value (set and stored in the Main window), but (so //
+        //       far) I've failed to find a way to bind directly to a     //
+        //       class object Property value.                             //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-        private void Initialise()
-        {
-            TargetCore.MetricsLoadNetPrinter(ref _printerAddress,
-                                              ref _printerPort,
-                                              ref _timeoutSend,
-                                              ref _timeoutReceive);
+        double windowScale = MainFormData.WindowScale;
 
-            txtPrinterAddress.Text = _printerAddress;
-            txtPrinterPort.Text = _printerPort.ToString();
+        zoomSlider.Value = windowScale;
 
-            txtTimeoutSend.Text = _timeoutSend.ToString();
-            txtTimeoutReceive.Text = _timeoutReceive.ToString();
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Setting sizes to the resizeable DockPanel element doesn't work!//
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Set the (hidden) slider object to the passed-in scale value.   //
-            // The slider is used as the source binding for a scale           //
-            // transform in the (child) Options dialogue window, so that all  //
-            // windows use the same scaling mechanism as the main window.     //
-            //                                                                //
-            // NOTE: it would be better to bind the transform directly to the //
-            //       scale value (set and stored in the Main window), but (so //
-            //       far) I've failed to find a way to bind directly to a     //
-            //       class object Property value.                             //
-            //                                                                //
-            //----------------------------------------------------------------//
+        Height = 280 * windowScale;
+        Width = 440 * windowScale;
 
-            double windowScale = MainFormData.WindowScale;
+        // Double h = resizeable.Height;
+        // Double w = resizeable.Width;
 
-            zoomSlider.Value = windowScale;
+        // this.Height = h;
+        // this.Width = w;
+    }
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Setting sizes to the resizeable DockPanel element doesn't work!//
-            //                                                                //
-            //----------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // m e t r i c s S a v e                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Save the current settings.                                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            Height = 280 * windowScale;
-            Width = 440 * windowScale;
+    public void MetricsSave()
+    {
+        TargetCore.MetricsSaveNetPrinter(_printerAddress,
+                                          _printerPort,
+                                          _timeoutSend,
+                                          _timeoutReceive);
+    }
 
-            // Double h = resizeable.Height;
-            // Double w = resizeable.Width;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // t x t P r i n t e r A d d r e s s _ T e x t C h a n g e d          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the target 'Printer Address' text is changed.          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            // this.Height = h;
-            // this.Width = w;
-        }
+    private void txtPrinterAddress_TextChanged(object sender,
+                                               TextChangedEventArgs e)
+    {
+        _printerAddress = txtPrinterAddress.Text;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // m e t r i c s S a v e                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Save the current settings.                                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // t x t P r i n t e r P o r t _ T e x t C h a n g e d                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the target 'Printer Port' text is changed.             //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void MetricsSave()
-        {
-            TargetCore.MetricsSaveNetPrinter(_printerAddress,
-                                              _printerPort,
-                                              _timeoutSend,
-                                              _timeoutReceive);
-        }
+    private void txtPrinterPort_TextChanged(object sender,
+                                            TextChangedEventArgs e)
+    {
+        _printerPort = int.Parse(txtPrinterPort.Text);
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // t x t P r i n t e r A d d r e s s _ T e x t C h a n g e d          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the target 'Printer Address' text is changed.          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // t x t T i m e o u t R e c e i v e _ T e x t C h a n g e d          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the timeout 'Receive' text is changed.                 //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private void txtPrinterAddress_TextChanged(object sender,
-                                                   TextChangedEventArgs e)
-        {
-            _printerAddress = txtPrinterAddress.Text;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // t x t P r i n t e r P o r t _ T e x t C h a n g e d                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the target 'Printer Port' text is changed.             //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private void txtPrinterPort_TextChanged(object sender,
+    private void txtTimeoutReceive_TextChanged(object sender,
                                                 TextChangedEventArgs e)
-        {
-            _printerPort = int.Parse(txtPrinterPort.Text);
-        }
+    {
+        _timeoutReceive = int.Parse(txtTimeoutReceive.Text);
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // t x t T i m e o u t R e c e i v e _ T e x t C h a n g e d          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the timeout 'Receive' text is changed.                 //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // t x t T i m e o u t S e n d _ T e x t C h a n g e d                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the timeout 'Send' text is changed.                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private void txtTimeoutReceive_TextChanged(object sender,
-                                                    TextChangedEventArgs e)
-        {
-            _timeoutReceive = int.Parse(txtTimeoutReceive.Text);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // t x t T i m e o u t S e n d _ T e x t C h a n g e d                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the timeout 'Send' text is changed.                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private void txtTimeoutSend_TextChanged(object sender,
-                                                 TextChangedEventArgs e)
-        {
-            _timeoutSend = int.Parse(txtTimeoutSend.Text);
-        }
+    private void txtTimeoutSend_TextChanged(object sender,
+                                             TextChangedEventArgs e)
+    {
+        _timeoutSend = int.Parse(txtTimeoutSend.Text);
     }
 }

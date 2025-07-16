@@ -2,102 +2,132 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows.Controls;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class provides details of HP-GL/2 control code characters.
+/// 
+/// © Chris Hutchinson 2013
+/// 
+/// </summary>
+
+static class HPGL2ControlCodes
 {
-    /// <summary>
-    /// 
-    /// Class provides details of HP-GL/2 control code characters.
-    /// 
-    /// © Chris Hutchinson 2013
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class HPGL2ControlCodes
+    private static readonly SortedList<byte, HPGL2ControlCode> _tags =
+        new SortedList<byte, HPGL2ControlCode>();
+
+    private static HPGL2ControlCode _tagUnknown;
+
+    private static int _tagCount;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // H P G L 2 C o n t r o l C o d e s                                  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    static HPGL2ControlCodes()
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        PopulateTable();
+    }
 
-        private static readonly SortedList<byte, HPGL2ControlCode> _tags =
-            new SortedList<byte, HPGL2ControlCode>();
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // c h e c k T a g                                                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Searches the HP-GL/2 Control Code tag table for a matching entry.  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private static HPGL2ControlCode _tagUnknown;
+    public static bool CheckTag(byte tagToCheck,
+                                    ref string description)
+    {
+        bool seqKnown;
 
-        private static int _tagCount;
+        HPGL2ControlCode tag;
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // H P G L 2 C o n t r o l C o d e s                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        static HPGL2ControlCodes()
+        if (_tags.IndexOfKey(tagToCheck) != -1)
         {
-            PopulateTable();
+            seqKnown = true;
+            tag = _tags[tagToCheck];
+        }
+        else
+        {
+            seqKnown = false;
+            tag = _tagUnknown;
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // c h e c k T a g                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Searches the HP-GL/2 Control Code tag table for a matching entry.  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        description = tag.Description;
 
-        public static bool CheckTag(byte tagToCheck,
-                                        ref string description)
+        return seqKnown;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // d i s p l a y S t a t s C o u n t s                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Add counts of referenced sequences to nominated data table.        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void DisplayStatsCounts(DataTable table,
+                                           bool incUsedSeqsOnly)
+    {
+        int count = 0;
+
+        bool displaySeq,
+                hddrWritten;
+
+        DataRow row;
+
+        hddrWritten = false;
+
+        //----------------------------------------------------------------//
+
+        displaySeq = true;
+
+        count = _tagUnknown.StatsCtTotal;
+
+        if (count == 0)
+            displaySeq = false;
+
+        if (displaySeq)
         {
-            bool seqKnown;
-
-            HPGL2ControlCode tag;
-
-            if (_tags.IndexOfKey(tagToCheck) != -1)
+            if (!hddrWritten)
             {
-                seqKnown = true;
-                tag = _tags[tagToCheck];
-            }
-            else
-            {
-                seqKnown = false;
-                tag = _tagUnknown;
+                DisplayStatsCountsHddr(table);
+                hddrWritten = true;
             }
 
-            description = tag.Description;
+            row = table.NewRow();
 
-            return seqKnown;
+            row[0] = _tagUnknown.Tag;
+            row[1] = _tagUnknown.Description;
+            row[2] = _tagUnknown.StatsCtParent;
+            row[3] = _tagUnknown.StatsCtChild;
+            row[4] = _tagUnknown.StatsCtTotal;
+
+            table.Rows.Add(row);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // d i s p l a y S t a t s C o u n t s                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Add counts of referenced sequences to nominated data table.        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-        public static void DisplayStatsCounts(DataTable table,
-                                               bool incUsedSeqsOnly)
+        foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
         {
-            int count = 0;
-
-            bool displaySeq,
-                    hddrWritten;
-
-            DataRow row;
-
-            hddrWritten = false;
-
-            //----------------------------------------------------------------//
-
             displaySeq = true;
 
-            count = _tagUnknown.StatsCtTotal;
+            count = kvp.Value.StatsCtTotal;
 
-            if (count == 0)
+            if (count == 0 && incUsedSeqsOnly)
                 displaySeq = false;
 
             if (displaySeq)
@@ -110,292 +140,261 @@ namespace PCLParaphernalia
 
                 row = table.NewRow();
 
-                row[0] = _tagUnknown.Tag;
-                row[1] = _tagUnknown.Description;
-                row[2] = _tagUnknown.StatsCtParent;
-                row[3] = _tagUnknown.StatsCtChild;
-                row[4] = _tagUnknown.StatsCtTotal;
+                row[0] = kvp.Value.Sequence;
+                row[1] = kvp.Value.Description;
+                row[2] = kvp.Value.StatsCtParent;
+                row[3] = kvp.Value.StatsCtChild;
+                row[4] = kvp.Value.StatsCtTotal;
 
                 table.Rows.Add(row);
             }
+        }
+    }
 
-            //----------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // d i s p l a y S t a t s C o u n t s H d d r                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Add statistics header lines to nominated data table.               //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
-            {
-                displaySeq = true;
+    public static void DisplayStatsCountsHddr(DataTable table)
+    {
+        DataRow row;
 
-                count = kvp.Value.StatsCtTotal;
+        //----------------------------------------------------------------//
 
-                if (count == 0 && incUsedSeqsOnly)
-                    displaySeq = false;
+        row = table.NewRow();
 
-                if (displaySeq)
-                {
-                    if (!hddrWritten)
-                    {
-                        DisplayStatsCountsHddr(table);
-                        hddrWritten = true;
-                    }
+        row[0] = string.Empty;
+        row[1] = "______________________";
+        row[2] = string.Empty;
+        row[3] = string.Empty;
+        row[4] = string.Empty;
 
-                    row = table.NewRow();
+        table.Rows.Add(row);
 
-                    row[0] = kvp.Value.Sequence;
-                    row[1] = kvp.Value.Description;
-                    row[2] = kvp.Value.StatsCtParent;
-                    row[3] = kvp.Value.StatsCtChild;
-                    row[4] = kvp.Value.StatsCtTotal;
+        row = table.NewRow();
 
-                    table.Rows.Add(row);
-                }
-            }
+        row[0] = string.Empty;
+        row[1] = "HP-GL/2 control codes:";
+        row[2] = string.Empty;
+        row[3] = string.Empty;
+        row[4] = string.Empty;
+
+        table.Rows.Add(row);
+
+        row = table.NewRow();
+
+        row[0] = string.Empty;
+        row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
+        row[2] = string.Empty;
+        row[3] = string.Empty;
+        row[4] = string.Empty;
+
+        table.Rows.Add(row);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // d i s p l a y T a g s                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Display list of Whitespace tags.                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static int DisplayTags(DataGrid grid)
+    {
+        int count = 0;
+
+        foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
+        {
+            count++;
+            grid.Items.Add(kvp.Value);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // d i s p l a y S t a t s C o u n t s H d d r                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Add statistics header lines to nominated data table.               //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        return count;
+    }
 
-        public static void DisplayStatsCountsHddr(DataTable table)
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n c r e m e n t S t a t s C o u n t                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Increment the relevant statistics count for the DataType tag.      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void IncrementStatsCount(byte tagByte,
+                                            int level)
+    {
+        HPGL2ControlCode tag;
+
+        if (_tags.IndexOfKey(tagByte) != -1)
+            tag = _tags[tagByte];
+        else
+            tag = _tagUnknown;
+
+        tag.IncrementStatisticsCount(level);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i s K n o w n T a g                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Searches the HP-GL/2 Control Code tag table for a matching entry.  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static bool IsKnownTag(byte tagToCheck)
+    {
+        return _tags.IndexOfKey(tagToCheck) != -1;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // p o p u l a t e T a b l e                                          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Populate the table of Control Code tags.                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void PopulateTable()
+    {
+        byte tag;
+
+        tag = 0x20;                                              // ?    //
+        _tagUnknown =
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  string.Empty,
+                                  "*** Unknown tag ***");
+
+        tag = 0x00;                                               // 0x00 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<NUL>",
+                                  "Null"));
+
+        tag = 0x03;                                               // 0x03 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,   // except when Label terminator //
+                                  "<ETX>",
+                                  "End of Text"));
+
+        tag = 0x07;                                               // 0x07 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<BEL>",
+                                  "Bell"));
+
+        tag = 0x08;                                               // 0x08 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  false,
+                                  "<BS>",
+                                  "Backspace"));
+
+        tag = 0x09;                                               // 0x09 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  false,
+                                  "<HT>",
+                                  "Horizontal Tab"));
+
+        tag = 0x0a;                                               // 0x0a //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  false,
+                                  "<LF>",
+                                  "Line Feed"));
+
+        tag = 0x0b;                                               // 0x0b //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<VT>",
+                                  "Vertical Tab"));
+
+        tag = 0x0c;                                               // 0x0c //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<FF>",
+                                  "Form Feed"));
+
+        tag = 0x0d;                                               // 0x0d //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<CR>",
+                                  "Carriage Return"));
+
+        tag = 0x0e;                                               // 0x0e //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  false,
+                                  "<SO>",
+                                  "Shift Out"));
+
+        tag = 0x0f;                                               // 0x0f //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  false,
+                                  "<SI>",
+                                  "Shift In"));
+
+        // Escape is a control code in the sense that it is the           //
+        // introductory character for simple and complex PCL escape       //
+        // sequences.                                                     //
+        // Don't include it here, as (with the current mechanism) it will //
+        // always register a zero hit count in the statistics.            //
+        /*
+        tag = 0x1b;                                               // 0x1b //
+        _tags.Add (tag,
+            new HPGL2ControlCode (tag,
+                                  false,
+                                  "<ESC>",
+                                  "Escape"));
+        */
+        tag = 0x20;                                               // 0x20 //
+        _tags.Add(tag,
+            new HPGL2ControlCode(tag,
+                                  true,
+                                  "<SP>",
+                                  "Space"));
+
+        _tagCount = _tags.Count;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    //  r e s e t S t a t s C o u n t s                                   //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Reset counts of referenced tags.                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void ResetStatsCounts()
+    {
+        HPGL2ControlCode tag;
+
+        _tagUnknown.ResetStatistics();
+
+        foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
         {
-            DataRow row;
+            tag = kvp.Value;
 
-            //----------------------------------------------------------------//
-
-            row = table.NewRow();
-
-            row[0] = string.Empty;
-            row[1] = "______________________";
-            row[2] = string.Empty;
-            row[3] = string.Empty;
-            row[4] = string.Empty;
-
-            table.Rows.Add(row);
-
-            row = table.NewRow();
-
-            row[0] = string.Empty;
-            row[1] = "HP-GL/2 control codes:";
-            row[2] = string.Empty;
-            row[3] = string.Empty;
-            row[4] = string.Empty;
-
-            table.Rows.Add(row);
-
-            row = table.NewRow();
-
-            row[0] = string.Empty;
-            row[1] = "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯";
-            row[2] = string.Empty;
-            row[3] = string.Empty;
-            row[4] = string.Empty;
-
-            table.Rows.Add(row);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // d i s p l a y T a g s                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Display list of Whitespace tags.                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static int DisplayTags(DataGrid grid)
-        {
-            int count = 0;
-
-            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
-            {
-                count++;
-                grid.Items.Add(kvp.Value);
-            }
-
-            return count;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n c r e m e n t S t a t s C o u n t                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Increment the relevant statistics count for the DataType tag.      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void IncrementStatsCount(byte tagByte,
-                                                int level)
-        {
-            HPGL2ControlCode tag;
-
-            if (_tags.IndexOfKey(tagByte) != -1)
-                tag = _tags[tagByte];
-            else
-                tag = _tagUnknown;
-
-            tag.IncrementStatisticsCount(level);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i s K n o w n T a g                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Searches the HP-GL/2 Control Code tag table for a matching entry.  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static bool IsKnownTag(byte tagToCheck)
-        {
-            return _tags.IndexOfKey(tagToCheck) != -1;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // p o p u l a t e T a b l e                                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Populate the table of Control Code tags.                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void PopulateTable()
-        {
-            byte tag;
-
-            tag = 0x20;                                              // ?    //
-            _tagUnknown =
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      string.Empty,
-                                      "*** Unknown tag ***");
-
-            tag = 0x00;                                               // 0x00 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<NUL>",
-                                      "Null"));
-
-            tag = 0x03;                                               // 0x03 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,   // except when Label terminator //
-                                      "<ETX>",
-                                      "End of Text"));
-
-            tag = 0x07;                                               // 0x07 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<BEL>",
-                                      "Bell"));
-
-            tag = 0x08;                                               // 0x08 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      false,
-                                      "<BS>",
-                                      "Backspace"));
-
-            tag = 0x09;                                               // 0x09 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      false,
-                                      "<HT>",
-                                      "Horizontal Tab"));
-
-            tag = 0x0a;                                               // 0x0a //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      false,
-                                      "<LF>",
-                                      "Line Feed"));
-
-            tag = 0x0b;                                               // 0x0b //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<VT>",
-                                      "Vertical Tab"));
-
-            tag = 0x0c;                                               // 0x0c //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<FF>",
-                                      "Form Feed"));
-
-            tag = 0x0d;                                               // 0x0d //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<CR>",
-                                      "Carriage Return"));
-
-            tag = 0x0e;                                               // 0x0e //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      false,
-                                      "<SO>",
-                                      "Shift Out"));
-
-            tag = 0x0f;                                               // 0x0f //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      false,
-                                      "<SI>",
-                                      "Shift In"));
-
-            // Escape is a control code in the sense that it is the           //
-            // introductory character for simple and complex PCL escape       //
-            // sequences.                                                     //
-            // Don't include it here, as (with the current mechanism) it will //
-            // always register a zero hit count in the statistics.            //
-            /*
-            tag = 0x1b;                                               // 0x1b //
-            _tags.Add (tag,
-                new HPGL2ControlCode (tag,
-                                      false,
-                                      "<ESC>",
-                                      "Escape"));
-            */
-            tag = 0x20;                                               // 0x20 //
-            _tags.Add(tag,
-                new HPGL2ControlCode(tag,
-                                      true,
-                                      "<SP>",
-                                      "Space"));
-
-            _tagCount = _tags.Count;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        //  r e s e t S t a t s C o u n t s                                   //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Reset counts of referenced tags.                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void ResetStatsCounts()
-        {
-            HPGL2ControlCode tag;
-
-            _tagUnknown.ResetStatistics();
-
-            foreach (KeyValuePair<byte, HPGL2ControlCode> kvp in _tags)
-            {
-                tag = kvp.Value;
-
-                tag.ResetStatistics();
-            }
+            tag.ResetStatistics();
         }
     }
 }

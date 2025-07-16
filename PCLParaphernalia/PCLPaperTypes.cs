@@ -1,108 +1,107 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a set of PCL Paper Type objects.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+static class PCLPaperTypes
 {
-    /// <summary>
-    /// 
-    /// Class defines a set of PCL Paper Type objects.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Constants and enumerations.                                        //
+    //                                                                    //
+    // Note that the length of the index array must be the same as that   //
+    // of the definition array; the entries must be in the same order.    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class PCLPaperTypes
+    public enum eEntryType
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        // Note that the length of the index array must be the same as that   //
-        // of the definition array; the entries must be in the same order.    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        Standard,
+        NotSet
+    }
 
-        public enum eEntryType
-        {
-            Standard,
-            NotSet
-        }
+    public enum eIndex
+    {
+        NotSet,
+        Plain,
+        Preprinted,
+        Letterhead,
+        Transparency,
+        Prepunched,
+        Labels,
+        Bond,
+        Recycled,
+        Color,
+        Rough
+    }
 
-        public enum eIndex
-        {
-            NotSet,
-            Plain,
-            Preprinted,
-            Letterhead,
-            Transparency,
-            Prepunched,
-            Labels,
-            Bond,
-            Recycled,
-            Color,
-            Rough
-        }
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    private static readonly PCLPaperType[] _paperTypes =
+    {
+        new PCLPaperType(eEntryType.NotSet,  "<not set>"),
+        new PCLPaperType(eEntryType.Standard,"Plain"),
+        new PCLPaperType(eEntryType.Standard,"Preprinted"),
+        new PCLPaperType(eEntryType.Standard,"Letterhead"),
+        new PCLPaperType(eEntryType.Standard,"Transparency"),
+        new PCLPaperType(eEntryType.Standard,"Prepunched"),
+        new PCLPaperType(eEntryType.Standard,"Labels"),
+        new PCLPaperType(eEntryType.Standard,"Bond"),
+        new PCLPaperType(eEntryType.Standard,"Recycled"),
+        new PCLPaperType(eEntryType.Standard,"Color"),
+        new PCLPaperType(eEntryType.Standard,"Rough")
+    };
 
-        private static readonly PCLPaperType[] _paperTypes =
-        {
-            new PCLPaperType(eEntryType.NotSet,  "<not set>"),
-            new PCLPaperType(eEntryType.Standard,"Plain"),
-            new PCLPaperType(eEntryType.Standard,"Preprinted"),
-            new PCLPaperType(eEntryType.Standard,"Letterhead"),
-            new PCLPaperType(eEntryType.Standard,"Transparency"),
-            new PCLPaperType(eEntryType.Standard,"Prepunched"),
-            new PCLPaperType(eEntryType.Standard,"Labels"),
-            new PCLPaperType(eEntryType.Standard,"Bond"),
-            new PCLPaperType(eEntryType.Standard,"Recycled"),
-            new PCLPaperType(eEntryType.Standard,"Color"),
-            new PCLPaperType(eEntryType.Standard,"Rough")
-        };
+    private static readonly int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
 
-        private static readonly int _paperTypeCount = _paperTypes.GetUpperBound(0) + 1;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t C o u n t                                                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return count of Paper Type definitions.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t C o u n t                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return count of Paper Type definitions.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public static int GetCount()
+    {
+        return _paperTypeCount;
+    }
 
-        public static int GetCount()
-        {
-            return _paperTypeCount;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t N a m e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return name associated with specified PaperType index.             //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t N a m e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return name associated with specified PaperType index.             //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public static string GetName(int index)
+    {
+        return _paperTypes[index].GetName();
+    }
 
-        public static string GetName(int index)
-        {
-            return _paperTypes[index].GetName();
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t T y p e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return type of entry.                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t T y p e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return type of entry.                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static eEntryType GetType(int index)
-        {
-            return _paperTypes[index].GetType();
-        }
+    public static eEntryType GetType(int index)
+    {
+        return _paperTypes[index].GetType();
     }
 }

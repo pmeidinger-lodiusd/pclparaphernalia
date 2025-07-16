@@ -1,598 +1,597 @@
 ﻿using System.IO;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class provides PCL support for the PCL Simple element of the
+/// Colours action of the MiscSamples tool.
+/// 
+/// © Chris Hutchinson 2014
+/// 
+/// </summary>
+
+static class ToolMiscSamplesActColourSimplePCL
 {
-    /// <summary>
-    /// 
-    /// Class provides PCL support for the PCL Simple element of the
-    /// Colours action of the MiscSamples tool.
-    /// 
-    /// © Chris Hutchinson 2014
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Constants and enumerations.                                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class ToolMiscSamplesActColourSimplePCL
+    const int _macroId = 1;
+    const ushort _unitsPerInch = PCLWriter.sessionUPI;
+
+    const short _pageOriginX = (_unitsPerInch * 1);
+    const short _pageOriginY = (_unitsPerInch * 1);
+    const short _incInch = (_unitsPerInch * 1);
+    const short _lineInc = (_unitsPerInch * 5) / 6;
+    const short _colInc = (_unitsPerInch * 3) / 2;
+
+    const short _posXDesc = _pageOriginX;
+    const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
+    const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
+    const short _posXDesc3 = _posXDesc;
+    const short _posXDesc4 = _posXDesc;
+
+    const short _posYHddr = _pageOriginY;
+    const short _posYDesc1 = _pageOriginY + (_incInch);
+    const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
+    const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
+    const short _posYDesc4 = _pageOriginY + (_incInch * 2);
+
+    const short _posXData = _posXDesc + ((_incInch * 5) / 2);
+    const short _posYData = _pageOriginY + ((_incInch * 7) / 4);
+
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Static variables.                                                  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
+    static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
+
+    static int _logPageWidth;
+    static int _logPageHeight;
+    static int _paperWidth;
+    static int _paperHeight;
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Generate test data.                                                //
+    //                                                                    //
+    // Some sequences are built up as (Unicode) strings, then converted   //
+    // to byte arrays before writing out - this works OK because all the  //
+    // characters we're using are within the ASCII range (0x00-0x7f) and  //
+    // are hence represented using a single byte in the UTF-8 encoding.   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void GenerateJob(BinaryWriter prnWriter,
+                                   int indxPaperSize,
+                                   int indxPaperType,
+                                   int indxOrientation,
+                                   bool formAsMacro)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        PCLOrientations.eAspect aspect;
 
-        const int _macroId = 1;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        ushort logXOffset;
 
-        const short _pageOriginX = (_unitsPerInch * 1);
-        const short _pageOriginY = (_unitsPerInch * 1);
-        const short _incInch = (_unitsPerInch * 1);
-        const short _lineInc = (_unitsPerInch * 5) / 6;
-        const short _colInc = (_unitsPerInch * 3) / 2;
+        //----------------------------------------------------------------//
 
-        const short _posXDesc = _pageOriginX;
-        const short _posXDesc1 = _posXDesc + ((_incInch * 15) / 4);
-        const short _posXDesc2 = _posXDesc + ((_incInch * 5) / 2);
-        const short _posXDesc3 = _posXDesc;
-        const short _posXDesc4 = _posXDesc;
+        aspect = PCLOrientations.GetAspect(indxOrientation);
 
-        const short _posYHddr = _pageOriginY;
-        const short _posYDesc1 = _pageOriginY + (_incInch);
-        const short _posYDesc2 = _pageOriginY + ((_incInch * 5) / 4);
-        const short _posYDesc3 = _pageOriginY + ((_incInch * 7) / 4);
-        const short _posYDesc4 = _pageOriginY + (_incInch * 2);
+        logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
+                                                    _unitsPerInch, aspect);
 
-        const short _posXData = _posXDesc + ((_incInch * 5) / 2);
-        const short _posYData = _pageOriginY + ((_incInch * 7) / 4);
-
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Static variables.                                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        static readonly int _indxFontArial = PCLFonts.GetIndexForName("Arial");
-        static readonly int _indxFontCourier = PCLFonts.GetIndexForName("Courier");
-
-        static int _logPageWidth;
-        static int _logPageHeight;
-        static int _paperWidth;
-        static int _paperHeight;
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Generate test data.                                                //
-        //                                                                    //
-        // Some sequences are built up as (Unicode) strings, then converted   //
-        // to byte arrays before writing out - this works OK because all the  //
-        // characters we're using are within the ASCII range (0x00-0x7f) and  //
-        // are hence represented using a single byte in the UTF-8 encoding.   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void GenerateJob(BinaryWriter prnWriter,
-                                       int indxPaperSize,
-                                       int indxPaperType,
-                                       int indxOrientation,
-                                       bool formAsMacro)
-        {
-            PCLOrientations.eAspect aspect;
-
-            ushort logXOffset;
-
-            //----------------------------------------------------------------//
-
-            aspect = PCLOrientations.GetAspect(indxOrientation);
-
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
-
-            _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
-                                                           _unitsPerInch,
-                                                           aspect);
-
-            _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
-                                                          _unitsPerInch,
-                                                          aspect);
-
-            _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
+        _logPageWidth = PCLPaperSizes.GetLogPageWidth(indxPaperSize,
                                                        _unitsPerInch,
                                                        aspect);
 
-            _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
-                                                         _unitsPerInch,
-                                                         aspect);
-
-            //----------------------------------------------------------------//
-
-            GenerateJobHeader(prnWriter,
-                              indxPaperSize,
-                              indxPaperType,
-                              indxOrientation,
-                              formAsMacro,
-                              logXOffset);
-
-            GeneratePage(prnWriter,
-                         indxPaperSize,
-                         indxPaperType,
-                         indxOrientation,
-                         formAsMacro,
-                         logXOffset);
-
-            GenerateJobTrailer(prnWriter, formAsMacro);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b H e a d e r                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write stream initialisation sequences to output file.              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void GenerateJobHeader(BinaryWriter prnWriter,
-                                              int indxPaperSize,
-                                              int indxPaperType,
-                                              int indxOrientation,
-                                              bool formAsMacro,
-                                              ushort logXOffset)
-        {
-            PCLWriter.StdJobHeader(prnWriter, string.Empty);
-
-            if (formAsMacro)
-                GenerateOverlay(prnWriter, true, logXOffset,
-                                indxPaperSize, indxOrientation);
-
-            PCLWriter.PageHeader(prnWriter,
-                                 indxPaperSize,
-                                 indxPaperType,
-                                 indxOrientation,
-                                 PCLPlexModes.eSimplex);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b T r a i l e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write tray map termination sequences to output file.               //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void GenerateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro)
-        {
-            PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e O v e r l a y                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write background data sequences to output file.                    //
-        // Optionally top and tail these with macro (user-defined stream)     //
-        // definition sequences.                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void GenerateOverlay(BinaryWriter prnWriter,
-                                            bool formAsMacro,
-                                            ushort logXOffset,
-                                            int indxPaperSize,
-                                            int indxOrientation)
-        {
-            short posX,
-                  posY;
-
-            short ptSize;
-
-            short boxX,
-                  boxY,
-                  boxHeight,
-                  boxWidth;
-
-            short rectX,
-                  rectY,
-                  rectHeight,
-                  rectWidth;
-
-            byte stroke = 1;
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Header                                                         //
-            //                                                                //
-            //----------------------------------------------------------------//
+        _logPageHeight = PCLPaperSizes.GetLogPageLength(indxPaperSize,
+                                                      _unitsPerInch,
+                                                      aspect);
+
+        _paperWidth = PCLPaperSizes.GetPaperWidth(indxPaperSize,
+                                                   _unitsPerInch,
+                                                   aspect);
+
+        _paperHeight = PCLPaperSizes.GetPaperLength(indxPaperSize,
+                                                     _unitsPerInch,
+                                                     aspect);
+
+        //----------------------------------------------------------------//
+
+        GenerateJobHeader(prnWriter,
+                          indxPaperSize,
+                          indxPaperType,
+                          indxOrientation,
+                          formAsMacro,
+                          logXOffset);
+
+        GeneratePage(prnWriter,
+                     indxPaperSize,
+                     indxPaperType,
+                     indxOrientation,
+                     formAsMacro,
+                     logXOffset);
+
+        GenerateJobTrailer(prnWriter, formAsMacro);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b H e a d e r                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write stream initialisation sequences to output file.              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void GenerateJobHeader(BinaryWriter prnWriter,
+                                          int indxPaperSize,
+                                          int indxPaperType,
+                                          int indxOrientation,
+                                          bool formAsMacro,
+                                          ushort logXOffset)
+    {
+        PCLWriter.StdJobHeader(prnWriter, string.Empty);
+
+        if (formAsMacro)
+            GenerateOverlay(prnWriter, true, logXOffset,
+                            indxPaperSize, indxOrientation);
+
+        PCLWriter.PageHeader(prnWriter,
+                             indxPaperSize,
+                             indxPaperType,
+                             indxOrientation,
+                             PCLPlexModes.eSimplex);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b T r a i l e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write tray map termination sequences to output file.               //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void GenerateJobTrailer(BinaryWriter prnWriter,
+                                           bool formAsMacro)
+    {
+        PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e O v e r l a y                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write background data sequences to output file.                    //
+    // Optionally top and tail these with macro (user-defined stream)     //
+    // definition sequences.                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void GenerateOverlay(BinaryWriter prnWriter,
+                                        bool formAsMacro,
+                                        ushort logXOffset,
+                                        int indxPaperSize,
+                                        int indxOrientation)
+    {
+        short posX,
+              posY;
+
+        short ptSize;
+
+        short boxX,
+              boxY,
+              boxHeight,
+              boxWidth;
 
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, _macroId,
-                                  PCLWriter.eMacroControl.StartDef);
+        short rectX,
+              rectY,
+              rectHeight,
+              rectWidth;
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Box.                                                           //
-            //                                                                //
-            //----------------------------------------------------------------//
+        byte stroke = 1;
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.ePatternType.Shading,
-                                  60);
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Header                                                         //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            boxX = (short)((_unitsPerInch / 2) - logXOffset);
-            boxY = _unitsPerInch / 2;
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, _macroId,
+                              PCLWriter.eMacroControl.StartDef);
 
-            boxWidth = (short)(_paperWidth - _unitsPerInch);
-            boxHeight = (short)(_paperHeight - _unitsPerInch);
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Box.                                                           //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.RectangleOutline(prnWriter, boxX, boxY,
-                                        boxHeight, boxWidth, stroke,
-                                        false, false);
+        PCLWriter.PatternSet(prnWriter,
+                              PCLWriter.ePatternType.Shading,
+                              60);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Text.                                                          //
-            //                                                                //
-            //----------------------------------------------------------------//
+        boxX = (short)((_unitsPerInch / 2) - logXOffset);
+        boxY = _unitsPerInch / 2;
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.ePatternType.SolidBlack,
-                                  0);
+        boxWidth = (short)(_paperWidth - _unitsPerInch);
+        boxHeight = (short)(_paperHeight - _unitsPerInch);
 
-            ptSize = 15;
+        PCLWriter.RectangleOutline(prnWriter, boxX, boxY,
+                                    boxHeight, boxWidth, stroke,
+                                    false, false);
 
-            PCLWriter.Font(prnWriter, true, "19U",
-                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
-                                                      PCLFonts.eVariant.Bold,
-                                                      ptSize, 0));
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Text.                                                          //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            posX = (short)(_posXDesc - logXOffset);
-            posY = _posYHddr;
+        PCLWriter.PatternSet(prnWriter,
+                              PCLWriter.ePatternType.SolidBlack,
+                              0);
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "PCL simple colour mode:");
+        ptSize = 15;
 
-            //----------------------------------------------------------------//
+        PCLWriter.Font(prnWriter, true, "19U",
+                       PCLFonts.GetPCLFontSelect(_indxFontCourier,
+                                                  PCLFonts.eVariant.Bold,
+                                                  ptSize, 0));
 
-            ptSize = 12;
+        posX = (short)(_posXDesc - logXOffset);
+        posY = _posYHddr;
 
-            PCLWriter.Font(prnWriter, true, "19U",
-                           PCLFonts.GetPCLFontSelect(_indxFontCourier,
-                                                      PCLFonts.eVariant.Regular,
-                                                      ptSize, 0));
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                  "PCL simple colour mode:");
 
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            posX = (short)(_posXDesc1 - logXOffset);
-            posY = _posYDesc1;
+        ptSize = 12;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "Palette");
+        PCLWriter.Font(prnWriter, true, "19U",
+                       PCLFonts.GetPCLFontSelect(_indxFontCourier,
+                                                  PCLFonts.eVariant.Regular,
+                                                  ptSize, 0));
 
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            posX = (short)(_posXDesc2 - logXOffset);
-            posY = _posYDesc2;
+        posX = (short)(_posXDesc1 - logXOffset);
+        posY = _posYDesc1;
 
-            posX = (short)(_posXDesc2 - logXOffset);
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "Palette");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "Mono");
+        //----------------------------------------------------------------//
 
-            posX += _colInc;
+        posX = (short)(_posXDesc2 - logXOffset);
+        posY = _posYDesc2;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "RGB");
+        posX = (short)(_posXDesc2 - logXOffset);
 
-            posX += _colInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "Mono");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "CMY");
+        posX += _colInc;
 
-            //----------------------------------------------------------------//
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "RGB");
 
-            posX = (short)(_posXDesc3 - logXOffset);
-            posY = _posYDesc3;
+        posX += _colInc;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "index");
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "CMY");
 
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            posX = (short)(_posXDesc4 - logXOffset);
-            posY = _posYDesc4;
+        posX = (short)(_posXDesc3 - logXOffset);
+        posY = _posYDesc3;
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "0");
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "index");
 
-            posY += _lineInc;
+        //----------------------------------------------------------------//
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "1");
+        posX = (short)(_posXDesc4 - logXOffset);
+        posY = _posYDesc4;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "0");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "2");
+        posY += _lineInc;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "1");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "3");
+        posY += _lineInc;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "2");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "4");
+        posY += _lineInc;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "3");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "5");
+        posY += _lineInc;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "4");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "6");
+        posY += _lineInc;
 
-            posY += _lineInc;
+        PCLWriter.Text(prnWriter, posX, posY, 0, "5");
 
-            PCLWriter.Text(prnWriter, posX, posY, 0, "7");
+        posY += _lineInc;
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Background shade.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
+        PCLWriter.Text(prnWriter, posX, posY, 0, "6");
 
-            rectX = (short)(_posXDesc2 - (_incInch / 4) - logXOffset);
-            rectY = _posYDesc2 + (_incInch / 4);
-            rectWidth = (_incInch * 17) / 4;
-            rectHeight = _incInch * 7;
+        posY += _lineInc;
 
-            PCLWriter.RectangleShaded(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, 5,
-                                      false, false);
+        PCLWriter.Text(prnWriter, posX, posY, 0, "7");
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Overlay end.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Background shade.                                              //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.PatternSet(prnWriter,
-                                  PCLWriter.ePatternType.SolidBlack,
-                                  0);
+        rectX = (short)(_posXDesc2 - (_incInch / 4) - logXOffset);
+        rectY = _posYDesc2 + (_incInch / 4);
+        rectWidth = (_incInch * 17) / 4;
+        rectHeight = _incInch * 7;
 
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, 0,
-                                       PCLWriter.eMacroControl.StopDef);
-        }
+        PCLWriter.RectangleShaded(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, 5,
+                                  false, false);
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e P a g e                                            //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write individual test data page sequences to output file.          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Overlay end.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-        private static void GeneratePage(BinaryWriter prnWriter,
-                                         int indxPaperSize,
-                                         int indxPaperType,
-                                         int indxOrientation,
-                                         bool formAsMacro,
-                                         ushort logXOffset)
-        {
-            short posX,
-                  posY,
-                  rectX,
-                  rectY,
-                  rectHeight,
-                  rectWidth;
+        PCLWriter.PatternSet(prnWriter,
+                              PCLWriter.ePatternType.SolidBlack,
+                              0);
 
-            //----------------------------------------------------------------//
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, 0,
+                                   PCLWriter.eMacroControl.StopDef);
+    }
 
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
-            else
-                GenerateOverlay(prnWriter, false, logXOffset,
-                                indxPaperSize, indxOrientation);
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e P a g e                                            //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write individual test data page sequences to output file.          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            rectHeight = _lineInc / 2;
-            rectWidth = _lineInc;
+    private static void GeneratePage(BinaryWriter prnWriter,
+                                     int indxPaperSize,
+                                     int indxPaperType,
+                                     int indxOrientation,
+                                     bool formAsMacro,
+                                     ushort logXOffset)
+    {
+        short posX,
+              posY,
+              rectX,
+              rectY,
+              rectHeight,
+              rectWidth;
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Set pattern transparency to Opaque so that white samples show  //
-            // on the shaded background.                                      //
-            //                                                                //
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            PCLWriter.PatternTransparency(prnWriter,
-                                           true);
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, _macroId,
+                                   PCLWriter.eMacroControl.Call);
+        else
+            GenerateOverlay(prnWriter, false, logXOffset,
+                            indxPaperSize, indxOrientation);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Monochrome palette.                                            //
-            //                                                                //
-            //----------------------------------------------------------------//
+        rectHeight = _lineInc / 2;
+        rectWidth = _lineInc;
 
-            PCLWriter.PaletteSimple(prnWriter,
-                                     PCLWriter.eSimplePalette.K);
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Set pattern transparency to Opaque so that white samples show  //
+        // on the shaded background.                                      //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            posX = (short)(_posXData - logXOffset);
-            posY = _posYData;
+        PCLWriter.PatternTransparency(prnWriter,
+                                       true);
 
-            rectX = posX;
-            rectY = posY;
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Monochrome palette.                                            //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.SetForegroundColour(prnWriter, 0);
+        PCLWriter.PaletteSimple(prnWriter,
+                                 PCLWriter.eSimplePalette.K);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        posX = (short)(_posXData - logXOffset);
+        posY = _posYData;
 
-            rectY += _lineInc;
+        rectX = posX;
+        rectY = posY;
 
-            PCLWriter.SetForegroundColour(prnWriter, 1);
+        PCLWriter.SetForegroundColour(prnWriter, 0);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // RGB palette.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
+        rectY += _lineInc;
 
-            PCLWriter.PaletteSimple(prnWriter,
-                                     PCLWriter.eSimplePalette.RGB);
+        PCLWriter.SetForegroundColour(prnWriter, 1);
 
-            posX += _colInc;
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectX = posX;
-            rectY = posY;
+        //----------------------------------------------------------------//
+        //                                                                //
+        // RGB palette.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.SetForegroundColour(prnWriter, 0);
+        PCLWriter.PaletteSimple(prnWriter,
+                                 PCLWriter.eSimplePalette.RGB);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        posX += _colInc;
 
-            rectY += _lineInc;
+        rectX = posX;
+        rectY = posY;
 
-            PCLWriter.SetForegroundColour(prnWriter, 1);
+        PCLWriter.SetForegroundColour(prnWriter, 0);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 2);
+        PCLWriter.SetForegroundColour(prnWriter, 1);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 3);
+        PCLWriter.SetForegroundColour(prnWriter, 2);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 4);
+        PCLWriter.SetForegroundColour(prnWriter, 3);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 5);
+        PCLWriter.SetForegroundColour(prnWriter, 4);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 6);
+        PCLWriter.SetForegroundColour(prnWriter, 5);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 7);
+        PCLWriter.SetForegroundColour(prnWriter, 6);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // CMY palette.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
+        rectY += _lineInc;
 
-            PCLWriter.PaletteSimple(prnWriter,
-                                     PCLWriter.eSimplePalette.CMY);
+        PCLWriter.SetForegroundColour(prnWriter, 7);
 
-            posX += _colInc;
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectX = posX;
-            rectY = posY;
+        //----------------------------------------------------------------//
+        //                                                                //
+        // CMY palette.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.SetForegroundColour(prnWriter, 0);
+        PCLWriter.PaletteSimple(prnWriter,
+                                 PCLWriter.eSimplePalette.CMY);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, true,
-                                      false, false);
+        posX += _colInc;
 
-            rectY += _lineInc;
+        rectX = posX;
+        rectY = posY;
 
-            PCLWriter.SetForegroundColour(prnWriter, 1);
+        PCLWriter.SetForegroundColour(prnWriter, 0);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, true,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 2);
+        PCLWriter.SetForegroundColour(prnWriter, 1);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 3);
+        PCLWriter.SetForegroundColour(prnWriter, 2);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 4);
+        PCLWriter.SetForegroundColour(prnWriter, 3);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 5);
+        PCLWriter.SetForegroundColour(prnWriter, 4);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 6);
+        PCLWriter.SetForegroundColour(prnWriter, 5);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            rectY += _lineInc;
+        rectY += _lineInc;
 
-            PCLWriter.SetForegroundColour(prnWriter, 7);
+        PCLWriter.SetForegroundColour(prnWriter, 6);
 
-            PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
-                                      rectHeight, rectWidth, false,
-                                      false, false);
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
 
-            //----------------------------------------------------------------//
+        rectY += _lineInc;
 
-            PCLWriter.FormFeed(prnWriter);
-        }
+        PCLWriter.SetForegroundColour(prnWriter, 7);
+
+        PCLWriter.RectangleSolid(prnWriter, rectX, rectY,
+                                  rectHeight, rectWidth, false,
+                                  false, false);
+
+        //----------------------------------------------------------------//
+
+        PCLWriter.FormFeed(prnWriter);
     }
 }

@@ -1,171 +1,170 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PCL Text Parsing Method object.
+/// 
+/// © Chris Hutchinson 2015
+/// 
+/// </summary>
+
+class PCLTextParsingMethod
 {
-    /// <summary>
-    /// 
-    /// Class handles a PCL Text Parsing Method object.
-    /// 
-    /// © Chris Hutchinson 2015
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class PCLTextParsingMethod
+    private readonly PCLTextParsingMethods.eIndex _indxMethod;
+
+    private readonly short _value;
+
+    private readonly string _desc;
+
+    private readonly ushort[] _rangeDataSingle;
+    private readonly ushort[] _rangeDataDouble;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L T e x t P a r s i n g M e t h o d                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLTextParsingMethod(
+        PCLTextParsingMethods.eIndex indxMethod,
+        short value,
+        string desc,
+        ushort[] rangeDataSingle,
+        ushort[] rangeDataDouble)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _indxMethod = indxMethod;
+        _value = value;
+        _desc = desc;
 
-        private readonly PCLTextParsingMethods.eIndex _indxMethod;
+        _rangeDataSingle = rangeDataSingle;
+        _rangeDataDouble = rangeDataDouble;
+    }
 
-        private readonly short _value;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t D e s c                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the description.                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private readonly string _desc;
+    public string GetDesc()
+    {
+        return _desc;
+    }
 
-        private readonly ushort[] _rangeDataSingle;
-        private readonly ushort[] _rangeDataDouble;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t D e s c L o n g                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the PCL identifier value and description, except for the    //
+    // "<not specified>" entry (which has a dummy negative value).        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L T e x t P a r s i n g M e t h o d                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public PCLTextParsingMethod(
-            PCLTextParsingMethods.eIndex indxMethod,
-            short value,
-            string desc,
-            ushort[] rangeDataSingle,
-            ushort[] rangeDataDouble)
-        {
-            _indxMethod = indxMethod;
-            _value = value;
-            _desc = desc;
-
-            _rangeDataSingle = rangeDataSingle;
-            _rangeDataDouble = rangeDataDouble;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t D e s c                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the description.                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string GetDesc()
-        {
+    public string GetDescLong()
+    {
+        if (_value < 0)
             return _desc;
-        }
+        else
+            return (_value.ToString() + ": " + _desc);
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t D e s c L o n g                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the PCL identifier value and description, except for the    //
-        // "<not specified>" entry (which has a dummy negative value).        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t M e t h o d T y p e                                          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the method index.                                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string GetDescLong()
-        {
-            if (_value < 0)
-                return _desc;
-            else
-                return (_value.ToString() + ": " + _desc);
-        }
+    public PCLTextParsingMethods.eIndex GetMethodType()
+    {
+        return _indxMethod;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t M e t h o d T y p e                                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the method index.                                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t R a n g e D a t a D o u b l e                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the double-byte range(s).                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public PCLTextParsingMethods.eIndex GetMethodType()
-        {
-            return _indxMethod;
-        }
+    public ushort[] GetRangeDataDouble()
+    {
+        return _rangeDataDouble;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t R a n g e D a t a D o u b l e                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the double-byte range(s).                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t R a n g e D a t a D o u b l e C t                            //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the count of double-byte range(s).                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public ushort[] GetRangeDataDouble()
-        {
-            return _rangeDataDouble;
-        }
+    public int GetRangeDataDoubleCt()
+    {
+        if (_rangeDataDouble == null)
+            return 0;
+        else
+            return (_rangeDataDouble.Length / 2);
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t R a n g e D a t a D o u b l e C t                            //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the count of double-byte range(s).                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t R a n g e D a t a S i n g l e                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the single-byte range(s).                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int GetRangeDataDoubleCt()
-        {
-            if (_rangeDataDouble == null)
-                return 0;
-            else
-                return (_rangeDataDouble.Length / 2);
-        }
+    public ushort[] GetRangeDataSingle()
+    {
+        return _rangeDataSingle;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t R a n g e D a t a S i n g l e                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the single-byte range(s).                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t R a n g e D a t a S i n g l e C t                            //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the count of single-byte range(s).                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public ushort[] GetRangeDataSingle()
-        {
-            return _rangeDataSingle;
-        }
+    public int GetRangeDataSingleCt()
+    {
+        if (_rangeDataSingle == null)
+            return 0;
+        else
+            return (_rangeDataSingle.Length / 2);
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t R a n g e D a t a S i n g l e C t                            //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the count of single-byte range(s).                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t V a l u e                                                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the PCL identifier value.                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int GetRangeDataSingleCt()
-        {
-            if (_rangeDataSingle == null)
-                return 0;
-            else
-                return (_rangeDataSingle.Length / 2);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t V a l u e                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the PCL identifier value.                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public int GetValue()
-        {
-            return _value;
-        }
+    public int GetValue()
+    {
+        return _value;
     }
 }

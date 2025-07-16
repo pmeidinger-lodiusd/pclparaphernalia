@@ -1,305 +1,304 @@
 ﻿using Microsoft.Win32;
 using System;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class manages persistent storage of Target options.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+static class TargetPersist
 {
-    /// <summary>
-    /// 
-    /// Class manages persistent storage of Target options.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Fields (class variables).                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class TargetPersist
+    const string _mainKey = MainForm._regMainKey;
+
+    const string _subKeyTarget = "Target";
+    const string _subKeyTargetFile = "File";
+    const string _subKeyTargetPrinter = "Printer";
+    const string _subKeyTargetNetPrinter = "NetPrinter";
+    const string _subKeyTargetWinPrinter = "WinPrinter";
+    const string _subKeyWorkFolder = "WorkFolder";
+
+    const string _nameIndxTargetType = "IndxTargetType";
+    const string _nameFilename = "Filename";
+    const string _nameFoldername = "Foldername";
+    const string _namePrintername = "Printername";
+    const string _nameIPAddress = "IPAddress";
+    const string _namePort = "Port";
+    const string _nameTimeoutSend = "TimeoutMsecsSend";
+    const string _nameTimeoutReceive = "TimeoutMsecsReceive";
+
+    const string _defaultFilename = "ItemNoLongerUsed";
+    const string _defaultPrintername = "<None>";
+    const string _defaultIPAddress = "192.168.0.98";
+
+    const int _indexZero = 0;
+    const int _defaultNetPort = 9100;
+
+    const int _defaultNetTimeoutSend = 15000;
+    const int _defaultNetTimeoutReceive = 10000;
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // l o a d D a t a C o m m o n                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Retrieve stored common Target data.                                //
+    // Missing items are given default values.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void LoadDataCommon(ref int indxTargetType)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Fields (class variables).                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        const string _mainKey = MainForm._regMainKey;
+        string key = _subKeyTarget;
 
-        const string _subKeyTarget = "Target";
-        const string _subKeyTargetFile = "File";
-        const string _subKeyTargetPrinter = "Printer";
-        const string _subKeyTargetNetPrinter = "NetPrinter";
-        const string _subKeyTargetWinPrinter = "WinPrinter";
-        const string _subKeyWorkFolder = "WorkFolder";
-
-        const string _nameIndxTargetType = "IndxTargetType";
-        const string _nameFilename = "Filename";
-        const string _nameFoldername = "Foldername";
-        const string _namePrintername = "Printername";
-        const string _nameIPAddress = "IPAddress";
-        const string _namePort = "Port";
-        const string _nameTimeoutSend = "TimeoutMsecsSend";
-        const string _nameTimeoutReceive = "TimeoutMsecsReceive";
-
-        const string _defaultFilename = "ItemNoLongerUsed";
-        const string _defaultPrintername = "<None>";
-        const string _defaultIPAddress = "192.168.0.98";
-
-        const int _indexZero = 0;
-        const int _defaultNetPort = 9100;
-
-        const int _defaultNetTimeoutSend = 15000;
-        const int _defaultNetTimeoutReceive = 10000;
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l o a d D a t a C o m m o n                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Retrieve stored common Target data.                                //
-        // Missing items are given default values.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void LoadDataCommon(ref int indxTargetType)
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            indxTargetType = (int)subKey.GetValue(_nameIndxTargetType,
+                                                    _indexZero);
+        }
+    }
 
-            string key = _subKeyTarget;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // l o a d D a t a N e t P r i n t e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Retrieve stored Target network printer data.                       //
+    // Missing items are given default values.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                indxTargetType = (int)subKey.GetValue(_nameIndxTargetType,
-                                                        _indexZero);
-            }
+    public static void LoadDataNetPrinter(ref string ipAddress,
+                                           ref int port,
+                                           ref int timeoutSend,
+                                           ref int timeoutReceive)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
+
+        //----------------------------------------------------------------//
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTarget))
+        {
+            if (Helper_RegKey.KeyExists(subKey, _subKeyTargetPrinter))
+                // update from v2_5_0_0
+                Helper_RegKey.RenameKey(subKey,
+                                       _subKeyTargetPrinter,
+                                       _subKeyTargetNetPrinter);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l o a d D a t a N e t P r i n t e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Retrieve stored Target network printer data.                       //
-        // Missing items are given default values.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-        public static void LoadDataNetPrinter(ref string ipAddress,
-                                               ref int port,
-                                               ref int timeoutSend,
-                                               ref int timeoutReceive)
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            ipAddress = (string)subKey.GetValue(_nameIPAddress,
+                                                 _defaultIPAddress);
 
-            string key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
+            port = (int)subKey.GetValue(_namePort,
+                                           _defaultNetPort);
 
-            //----------------------------------------------------------------//
+            timeoutSend = (int)subKey.GetValue(_nameTimeoutSend,
+                                           _defaultNetTimeoutSend);
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(_subKeyTarget))
-            {
-                if (Helper_RegKey.KeyExists(subKey, _subKeyTargetPrinter))
-                    // update from v2_5_0_0
-                    Helper_RegKey.RenameKey(subKey,
-                                           _subKeyTargetPrinter,
-                                           _subKeyTargetNetPrinter);
-            }
+            timeoutReceive = (int)subKey.GetValue(_nameTimeoutReceive,
+                                           _defaultNetTimeoutReceive);
+        }
+    }
 
-            //----------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // l o a d D a t a W i n P r i n t e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Retrieve stored Target windows printer data.                       //
+    // Missing items are given default values.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                ipAddress = (string)subKey.GetValue(_nameIPAddress,
-                                                     _defaultIPAddress);
+    public static void LoadDataWinPrinter(ref string printerName)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
 
-                port = (int)subKey.GetValue(_namePort,
-                                               _defaultNetPort);
+        string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
 
-                timeoutSend = (int)subKey.GetValue(_nameTimeoutSend,
-                                               _defaultNetTimeoutSend);
+        //----------------------------------------------------------------//
 
-                timeoutReceive = (int)subKey.GetValue(_nameTimeoutReceive,
-                                               _defaultNetTimeoutReceive);
-            }
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
+        {
+            printerName = (string)subKey.GetValue(_namePrintername,
+                                                    _defaultPrintername);
+        }
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // l o a d D a t a W o r k F ol d e r                                 //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Retrieve stored default working folder data.                       //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void LoadDataWorkFolder(ref string foldername)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+
+        string defWorkFolder = Environment.GetEnvironmentVariable("TMP");
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
+        {
+            foldername = (string)subKey.GetValue(_nameFoldername,
+                                                 defWorkFolder);
+        }
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s a v e D a t a C o m m o n                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Store current common Target data.                                  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void SaveDataCommon(int indxTargetType)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget;
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
+        {
+            subKey.SetValue(_nameIndxTargetType,
+                             indxTargetType,
+                             RegistryValueKind.DWord);
+        }
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s a v e D a t a N e t P r i n t e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Store current Target Network Printer data.                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void SaveDataNetPrinter(int indxTargetType,
+                                           string ipAddress,
+                                           int port,
+                                           int timeoutSend,
+                                           int timeoutReceive)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget;
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
+        {
+            subKey.SetValue(_nameIndxTargetType,
+                             indxTargetType,
+                             RegistryValueKind.DWord);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l o a d D a t a W i n P r i n t e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Retrieve stored Target windows printer data.                       //
-        // Missing items are given default values.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
 
-        public static void LoadDataWinPrinter(ref string printerName)
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
+            subKey.SetValue(_nameIPAddress,
+                             ipAddress,
+                             RegistryValueKind.String);
 
-            string key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
+            subKey.SetValue(_namePort,
+                             port,
+                             RegistryValueKind.DWord);
 
-            //----------------------------------------------------------------//
+            subKey.SetValue(_nameTimeoutSend,
+                             timeoutSend,
+                             RegistryValueKind.DWord);
 
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                printerName = (string)subKey.GetValue(_namePrintername,
-                                                        _defaultPrintername);
-            }
+            subKey.SetValue(_nameTimeoutReceive,
+                             timeoutReceive,
+                             RegistryValueKind.DWord);
+        }
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s a v e D a t a W i n P r i n t e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Store current Target Windows Printer data.                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void SaveDataWinPrinter(int indxTargetType,
+                                           string printerName)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget;
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
+        {
+            subKey.SetValue(_nameIndxTargetType,
+                             indxTargetType,
+                             RegistryValueKind.DWord);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // l o a d D a t a W o r k F ol d e r                                 //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Retrieve stored default working folder data.                       //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
 
-        public static void LoadDataWorkFolder(ref string foldername)
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
-
-            string defWorkFolder = Environment.GetEnvironmentVariable("TMP");
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                foldername = (string)subKey.GetValue(_nameFoldername,
-                                                     defWorkFolder);
-            }
+            subKey.SetValue(_namePrintername,
+                             printerName,
+                             RegistryValueKind.String);
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s a v e D a t a C o m m o n                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Store current common Target data.                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s a v e D a t a W o r k F o l d e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Store current default working folder data.                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public static void SaveDataCommon(int indxTargetType)
+    public static void SaveDataWorkFolder(string saveFoldername)
+    {
+        RegistryKey keyMain =
+            Registry.CurrentUser.CreateSubKey(_mainKey);
+
+        string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
+
+        using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTarget;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_nameIndxTargetType,
-                                 indxTargetType,
-                                 RegistryValueKind.DWord);
-            }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s a v e D a t a N e t P r i n t e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Store current Target Network Printer data.                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void SaveDataNetPrinter(int indxTargetType,
-                                               string ipAddress,
-                                               int port,
-                                               int timeoutSend,
-                                               int timeoutReceive)
-        {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTarget;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_nameIndxTargetType,
-                                 indxTargetType,
-                                 RegistryValueKind.DWord);
-            }
-
-            key = _subKeyTarget + "\\" + _subKeyTargetNetPrinter;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_nameIPAddress,
-                                 ipAddress,
-                                 RegistryValueKind.String);
-
-                subKey.SetValue(_namePort,
-                                 port,
-                                 RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameTimeoutSend,
-                                 timeoutSend,
-                                 RegistryValueKind.DWord);
-
-                subKey.SetValue(_nameTimeoutReceive,
-                                 timeoutReceive,
-                                 RegistryValueKind.DWord);
-            }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s a v e D a t a W i n P r i n t e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Store current Target Windows Printer data.                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void SaveDataWinPrinter(int indxTargetType,
-                                               string printerName)
-        {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTarget;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_nameIndxTargetType,
-                                 indxTargetType,
-                                 RegistryValueKind.DWord);
-            }
-
-            key = _subKeyTarget + "\\" + _subKeyTargetWinPrinter;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_namePrintername,
-                                 printerName,
-                                 RegistryValueKind.String);
-            }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s a v e D a t a W o r k F o l d e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Store current default working folder data.                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void SaveDataWorkFolder(string saveFoldername)
-        {
-            RegistryKey keyMain =
-                Registry.CurrentUser.CreateSubKey(_mainKey);
-
-            string key = _subKeyTarget + "\\" + _subKeyWorkFolder;
-
-            using (RegistryKey subKey = keyMain.CreateSubKey(key))
-            {
-                subKey.SetValue(_nameFoldername,
-                                saveFoldername,
-                                RegistryValueKind.String);
-            }
+            subKey.SetValue(_nameFoldername,
+                            saveFoldername,
+                            RegistryValueKind.String);
         }
     }
 }

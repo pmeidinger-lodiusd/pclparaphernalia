@@ -1,72 +1,71 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a Unicode block.
+/// 
+/// © Chris Hutchinson 2017
+/// 
+/// </summary>
+
+class UnicodeBlock
 {
-    /// <summary>
-    /// 
-    /// Class defines a Unicode block.
-    /// 
-    /// © Chris Hutchinson 2017
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class UnicodeBlock
+    private readonly uint _rangeStart;
+    private readonly uint _rangeEnd;
+    private readonly string _name;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // U n i c o d e B l o c k                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public UnicodeBlock(
+        uint rangeStart,
+        uint rangeEnd,
+        string name)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _rangeStart = rangeStart;
+        _rangeEnd = rangeEnd;
+        _name = name;
+    }
 
-        private readonly uint _rangeStart;
-        private readonly uint _rangeEnd;
-        private readonly string _name;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // N a m e                                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // U n i c o d e B l o c k                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string Name
+    {
+        get { return _name; }
+    }
 
-        public UnicodeBlock(
-            uint rangeStart,
-            uint rangeEnd,
-            string name)
-        {
-            _rangeStart = rangeStart;
-            _rangeEnd = rangeEnd;
-            _name = name;
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // R a n g e E n d                                                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // N a m e                                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public uint RangeEnd
+    {
+        get { return _rangeEnd; }
+    }
 
-        public string Name
-        {
-            get { return _name; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // R a n g e S t a r t                                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // R a n g e E n d                                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public uint RangeEnd
-        {
-            get { return _rangeEnd; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // R a n g e S t a r t                                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public uint RangeStart
-        {
-            get { return _rangeStart; }
-        }
+    public uint RangeStart
+    {
+        get { return _rangeStart; }
     }
 }

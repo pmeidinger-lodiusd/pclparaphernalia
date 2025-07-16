@@ -1,136 +1,135 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PCL Pattern Def object.
+/// 
+/// © Chris Hutchinson 2016
+/// 
+/// </summary>
+
+class PCLPatternDef
 {
-    /// <summary>
-    /// 
-    /// Class handles a PCL Pattern Def object.
-    /// 
-    /// © Chris Hutchinson 2016
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class PCLPatternDef
+    private readonly string _desc;
+    private readonly PCLPatternDefs.eType _type;
+
+    private readonly ushort _id;
+    private readonly ushort _idSec;
+    private readonly ushort _height;
+    private readonly ushort _width;
+
+    private readonly byte[] _pattern;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L P a t t e r n D e f                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLPatternDef(string desc,
+                          PCLPatternDefs.eType type,
+                          ushort id,
+                          ushort idSec,
+                          ushort height,
+                          ushort width,
+                          byte[] pattern)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _desc = desc;
+        _type = type;
+        _id = id;
+        _idSec = idSec;
+        _height = height;
+        _width = width;
+        _pattern = pattern;
+    }
 
-        private readonly string _desc;
-        private readonly PCLPatternDefs.eType _type;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // D e s c                                                            //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the pattern decription.                                     //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private readonly ushort _id;
-        private readonly ushort _idSec;
-        private readonly ushort _height;
-        private readonly ushort _width;
+    public string Desc
+    {
+        get { return _desc; }
+    }
 
-        private readonly byte[] _pattern;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // H e i g h t                                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the Height of the pattern definition.                       //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L P a t t e r n D e f                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public ushort Height
+    {
+        get { return _height; }
+    }
 
-        public PCLPatternDef(string desc,
-                              PCLPatternDefs.eType type,
-                              ushort id,
-                              ushort idSec,
-                              ushort height,
-                              ushort width,
-                              byte[] pattern)
-        {
-            _desc = desc;
-            _type = type;
-            _id = id;
-            _idSec = idSec;
-            _height = height;
-            _width = width;
-            _pattern = pattern;
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // I d                                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the PCL identifier value for the pattern.                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // D e s c                                                            //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the pattern decription.                                     //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public ushort Id
+    {
+        get { return _id; }
+    }
 
-        public string Desc
-        {
-            get { return _desc; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // I d S e c                                                          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the secondary 'identifier' value for the pattern.           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // H e i g h t                                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the Height of the pattern definition.                       //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public ushort IdSec
+    {
+        get { return _idSec; }
+    }
 
-        public ushort Height
-        {
-            get { return _height; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // P a t t e r n                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the bytes which define the pattern.                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // I d                                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the PCL identifier value for the pattern.                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public byte[] Pattern
+    {
+        get { return _pattern; }
+    }
 
-        public ushort Id
-        {
-            get { return _id; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // W i d t h                                                          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the Width of the pattern definition.                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // I d S e c                                                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the secondary 'identifier' value for the pattern.           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public ushort IdSec
-        {
-            get { return _idSec; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // P a t t e r n                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the bytes which define the pattern.                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public byte[] Pattern
-        {
-            get { return _pattern; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // W i d t h                                                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the Width of the pattern definition.                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public ushort Width
-        {
-            get { return _width; }
-        }
+    public ushort Width
+    {
+        get { return _width; }
     }
 }

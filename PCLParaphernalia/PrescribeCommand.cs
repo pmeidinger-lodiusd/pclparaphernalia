@@ -1,181 +1,180 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles Kyocera Prescribe command object.
+/// 
+/// © Chris Hutchinson 2017
+/// 
+/// </summary>
+
+[System.Reflection.Obfuscation(Feature = "properties renaming")]
+
+class PrescribeCommand
 {
-    /// <summary>
-    /// 
-    /// Class handles Kyocera Prescribe command object.
-    /// 
-    /// © Chris Hutchinson 2017
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    [System.Reflection.Obfuscation(Feature = "properties renaming")]
+    private readonly string _cmdName;
+    private readonly string _cmdDesc;
+    private readonly bool _flagCmdIntro;
+    private readonly bool _flagCmdExit;
+    private readonly bool _flagCmdSetCRC;
 
-    class PrescribeCommand
+    private int _statsCtParent;
+    private int _statsCtChild;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P r e s c r i b e C o m m a n d                                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PrescribeCommand(string name,
+                             string desc,
+                             bool flagCmdIntro,
+                             bool flagCmdExit,
+                             bool flagCmdSetCRC)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _cmdName = name;
+        _cmdDesc = desc;
+        _flagCmdIntro = flagCmdIntro;
+        _flagCmdExit = flagCmdExit;
+        _flagCmdSetCRC = flagCmdSetCRC;
 
-        private readonly string _cmdName;
-        private readonly string _cmdDesc;
-        private readonly bool _flagCmdIntro;
-        private readonly bool _flagCmdExit;
-        private readonly bool _flagCmdSetCRC;
+        _statsCtParent = 0;
+        _statsCtChild = 0;
+    }
 
-        private int _statsCtParent;
-        private int _statsCtChild;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // D e s c r i p t i o n                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P r e s c r i b e C o m m a n d                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string Description
+    {
+        get { return _cmdDesc; }
+    }
 
-        public PrescribeCommand(string name,
-                                 string desc,
-                                 bool flagCmdIntro,
-                                 bool flagCmdExit,
-                                 bool flagCmdSetCRC)
-        {
-            _cmdName = name;
-            _cmdDesc = desc;
-            _flagCmdIntro = flagCmdIntro;
-            _flagCmdExit = flagCmdExit;
-            _flagCmdSetCRC = flagCmdSetCRC;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n c r e m e n t S t a t i s t i c s C o u n t                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Increment 'statistics' count.                                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            _statsCtParent = 0;
-            _statsCtChild = 0;
-        }
+    public void IncrementStatisticsCount(int level)
+    {
+        if (level == 0)
+            _statsCtParent++;
+        else
+            _statsCtChild++;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // D e s c r i p t i o n                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // I s C m d E x i t                                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Returns the 'is exit command' flag.                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _cmdDesc; }
-        }
+    public bool IsCmdExit
+    {
+        get { return _flagCmdExit; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n c r e m e n t S t a t i s t i c s C o u n t                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Increment 'statistics' count.                                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // I s C m d I n t r o                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Returns the 'is introduction command' flag.                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void IncrementStatisticsCount(int level)
-        {
-            if (level == 0)
-                _statsCtParent++;
-            else
-                _statsCtChild++;
-        }
+    public bool IsCmdIntro
+    {
+        get { return _flagCmdIntro; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // I s C m d E x i t                                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Returns the 'is exit command' flag.                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // I s C m d S e t C R C                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Returns the 'is set CRC command' flag.                             //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool IsCmdExit
-        {
-            get { return _flagCmdExit; }
-        }
+    public bool IsCmdSetCRC
+    {
+        get { return _flagCmdSetCRC; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // I s C m d I n t r o                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Returns the 'is introduction command' flag.                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // N a m e                                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool IsCmdIntro
-        {
-            get { return _flagCmdIntro; }
-        }
+    public string Name
+    {
+        get { return _cmdName; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // I s C m d S e t C R C                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Returns the 'is set CRC command' flag.                             //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // r e s e t S t a t i s t i c s                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Reset 'statistics' counts.                                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool IsCmdSetCRC
-        {
-            get { return _flagCmdSetCRC; }
-        }
+    public void ResetStatistics()
+    {
+        _statsCtParent = 0;
+        _statsCtChild = 0;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // N a m e                                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t C h i l d                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Name
-        {
-            get { return _cmdName; }
-        }
+    public int StatsCtChild
+    {
+        get { return _statsCtChild; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // r e s e t S t a t i s t i c s                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Reset 'statistics' counts.                                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t P a r e n t                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void ResetStatistics()
-        {
-            _statsCtParent = 0;
-            _statsCtChild = 0;
-        }
+    public int StatsCtParent
+    {
+        get { return _statsCtParent; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t C h i l d                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t T o t a l                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t P a r e n t                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t T o t a l                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public int StatsCtTotal
-        {
-            get { return (_statsCtParent + _statsCtChild); }
-        }
+    public int StatsCtTotal
+    {
+        get { return (_statsCtParent + _statsCtChild); }
     }
 }

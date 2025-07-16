@@ -1,224 +1,223 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a PCL XL Operator tag.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+// [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
+[System.Reflection.Obfuscation(
+    Feature = "renaming",
+    ApplyToMembers = true)]
+
+class PCLXLOperator
 {
-    /// <summary>
-    /// 
-    /// Class defines a PCL XL Operator tag.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    private readonly byte _tag;
 
-    class PCLXLOperator
+    private readonly string _description;
+
+    private readonly bool _flagReserved;
+    private readonly bool _flagEndSession;
+
+    private readonly PCLXLOperators.eEmbedDataType _embedDataType;
+
+    private readonly PrnParseConstants.eOvlAct _makeOvlAct;
+
+    private int _statsCtParent;
+    private int _statsCtChild;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L X L O p e r a t o r                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLXLOperator(byte tag,
+                         bool flagEndSession,
+                         bool flagReserved,
+                         PCLXLOperators.eEmbedDataType embedDataType,
+                         PrnParseConstants.eOvlAct makeOvlAct,
+                         string description)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _tag = tag;
+        _flagEndSession = flagEndSession;
+        _flagReserved = flagReserved;
+        _embedDataType = embedDataType;
+        _description = description;
+        _makeOvlAct = makeOvlAct;
 
-        private readonly byte _tag;
+        _statsCtParent = 0;
+        _statsCtChild = 0;
+    }
 
-        private readonly string _description;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t D e t a i l s                                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private readonly bool _flagReserved;
-        private readonly bool _flagEndSession;
+    public void GetDetails(
+        ref bool flagEndSession,
+        ref bool flagReserved,
+        ref PCLXLOperators.eEmbedDataType embedDataType,
+        ref PrnParseConstants.eOvlAct makeOvlAct,
+        ref string description)
+    {
+        flagEndSession = _flagEndSession;
+        flagReserved = _flagReserved;
+        embedDataType = _embedDataType;
+        makeOvlAct = _makeOvlAct;
+        description = _description;
+    }
 
-        private readonly PCLXLOperators.eEmbedDataType _embedDataType;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // D e s c r i p t i o n                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private readonly PrnParseConstants.eOvlAct _makeOvlAct;
+    public string Description
+    {
+        get { return _description; }
+    }
 
-        private int _statsCtParent;
-        private int _statsCtChild;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // E m b e d D a t a T y p e                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L X L O p e r a t o r                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public PCLXLOperators.eEmbedDataType EmbedDataType
+    {
+        get { return _embedDataType; }
+    }
 
-        public PCLXLOperator(byte tag,
-                             bool flagEndSession,
-                             bool flagReserved,
-                             PCLXLOperators.eEmbedDataType embedDataType,
-                             PrnParseConstants.eOvlAct makeOvlAct,
-                             string description)
-        {
-            _tag = tag;
-            _flagEndSession = flagEndSession;
-            _flagReserved = flagReserved;
-            _embedDataType = embedDataType;
-            _description = description;
-            _makeOvlAct = makeOvlAct;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // F l a g R e s e r v e d                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            _statsCtParent = 0;
-            _statsCtChild = 0;
-        }
+    public bool FlagReserved
+    {
+        get { return _flagReserved; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t D e t a i l s                                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // F l a g E n d S e s s i o n                                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void GetDetails(
-            ref bool flagEndSession,
-            ref bool flagReserved,
-            ref PCLXLOperators.eEmbedDataType embedDataType,
-            ref PrnParseConstants.eOvlAct makeOvlAct,
-            ref string description)
-        {
-            flagEndSession = _flagEndSession;
-            flagReserved = _flagReserved;
-            embedDataType = _embedDataType;
-            makeOvlAct = _makeOvlAct;
-            description = _description;
-        }
+    public bool FlagEndSession
+    {
+        get { return _flagEndSession; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // D e s c r i p t i o n                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n c r e m e n t S t a t i s t i c s C o u n t                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Increment 'statistics' count.                                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Description
-        {
-            get { return _description; }
-        }
+    public void IncrementStatisticsCount(int level)
+    {
+        if (level == 0)
+            _statsCtParent++;
+        else
+            _statsCtChild++;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // E m b e d D a t a T y p e                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // M a k e O v e r l a y A c t i o n                                  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public PCLXLOperators.eEmbedDataType EmbedDataType
-        {
-            get { return _embedDataType; }
-        }
+    public PrnParseConstants.eOvlAct MakeOvlAct
+    {
+        get { return _makeOvlAct; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // F l a g R e s e r v e d                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // r e s e t S t a t i s t i c s                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Reset 'statistics' counts.                                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool FlagReserved
-        {
-            get { return _flagReserved; }
-        }
+    public void ResetStatistics()
+    {
+        _statsCtParent = 0;
+        _statsCtChild = 0;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // F l a g E n d S e s s i o n                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t C h i l d                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool FlagEndSession
-        {
-            get { return _flagEndSession; }
-        }
+    public int StatsCtChild
+    {
+        get { return _statsCtChild; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n c r e m e n t S t a t i s t i c s C o u n t                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Increment 'statistics' count.                                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t P a r e n t                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void IncrementStatisticsCount(int level)
-        {
-            if (level == 0)
-                _statsCtParent++;
-            else
-                _statsCtChild++;
-        }
+    public int StatsCtParent
+    {
+        get { return _statsCtParent; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // M a k e O v e r l a y A c t i o n                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // S t a t s C t T o t a l                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public PrnParseConstants.eOvlAct MakeOvlAct
-        {
-            get { return _makeOvlAct; }
-        }
+    public int StatsCtTotal
+    {
+        get { return (_statsCtParent + _statsCtChild); }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // r e s e t S t a t i s t i c s                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Reset 'statistics' counts.                                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T a g                                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void ResetStatistics()
-        {
-            _statsCtParent = 0;
-            _statsCtChild = 0;
-        }
+    public string Tag
+    {
+        get { return "0x" + _tag.ToString("x2"); }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t C h i l d                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T y p e                                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public int StatsCtChild
-        {
-            get { return _statsCtChild; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t P a r e n t                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public int StatsCtParent
-        {
-            get { return _statsCtParent; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // S t a t s C t T o t a l                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public int StatsCtTotal
-        {
-            get { return (_statsCtParent + _statsCtChild); }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T a g                                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string Tag
-        {
-            get { return "0x" + _tag.ToString("x2"); }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T y p e                                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string Type
-        {
-            get { return "Operator"; }
-        }
+    public string Type
+    {
+        get { return "Operator"; }
     }
 }

@@ -1,122 +1,121 @@
 using Microsoft.Win32;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a class which allows a registry key to be renamed (this
+/// function is not available within the .Net framework).
+/// 
+/// © Chris Hutchinson 2014
+/// 
+/// </summary>
+
+static class Helper_RegKey
 {
-    /// <summary>
-    /// 
-    /// Class defines a class which allows a registry key to be renamed (this
-    /// function is not available within the .Net framework).
-    /// 
-    /// © Chris Hutchinson 2014
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // c o p y K e y                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Copy specified (sub)key.                                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class Helper_RegKey
+    private static void CopyKey(
+        RegistryKey parentKey,
+        string sourceKeyName,
+        string targetKeyName)
     {
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // c o p y K e y                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Copy specified (sub)key.                                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        RegistryKey targetKey = parentKey.CreateSubKey(targetKeyName);
 
-        private static void CopyKey(
-            RegistryKey parentKey,
-            string sourceKeyName,
-            string targetKeyName)
+        RegistryKey sourceKey = parentKey.OpenSubKey(sourceKeyName);
+
+        CopyKeyContent(sourceKey, targetKey);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // c o p y K e y C o n t e n t                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Copy contents of specified (sub)key.                               //
+    // This is achieved by:                                               //
+    //   -  copying all the old top-level values;                         //
+    //   -  for each subkey, recursively copying the contents of the old  //
+    //      (sub)key to the new one.                                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void CopyKeyContent(
+            RegistryKey sourceKey,
+            RegistryKey targetKey)
+    {
+        foreach (string valueName in sourceKey.GetValueNames())
         {
-            RegistryKey targetKey = parentKey.CreateSubKey(targetKeyName);
+            object objValue = sourceKey.GetValue(valueName);
 
-            RegistryKey sourceKey = parentKey.OpenSubKey(sourceKeyName);
+            RegistryValueKind valKind = sourceKey.GetValueKind(valueName);
 
-            CopyKeyContent(sourceKey, targetKey);
+            targetKey.SetValue(valueName, objValue, valKind);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // c o p y K e y C o n t e n t                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Copy contents of specified (sub)key.                               //
-        // This is achieved by:                                               //
-        //   -  copying all the old top-level values;                         //
-        //   -  for each subkey, recursively copying the contents of the old  //
-        //      (sub)key to the new one.                                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void CopyKeyContent(
-                RegistryKey sourceKey,
-                RegistryKey targetKey)
+        foreach (string sourceSubKeyName in sourceKey.GetSubKeyNames())
         {
-            foreach (string valueName in sourceKey.GetValueNames())
-            {
-                object objValue = sourceKey.GetValue(valueName);
+            RegistryKey sourceSubKey =
+                sourceKey.OpenSubKey(sourceSubKeyName);
+            RegistryKey targetSubKey =
+                targetKey.CreateSubKey(sourceSubKeyName);
 
-                RegistryValueKind valKind = sourceKey.GetValueKind(valueName);
-
-                targetKey.SetValue(valueName, objValue, valKind);
-            }
-
-            foreach (string sourceSubKeyName in sourceKey.GetSubKeyNames())
-            {
-                RegistryKey sourceSubKey =
-                    sourceKey.OpenSubKey(sourceSubKeyName);
-                RegistryKey targetSubKey =
-                    targetKey.CreateSubKey(sourceSubKeyName);
-
-                CopyKeyContent(sourceSubKey, targetSubKey);
-            }
+            CopyKeyContent(sourceSubKey, targetSubKey);
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // k e y E x i s t s                                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Check whether or not specified (sub)key exists.                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // k e y E x i s t s                                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Check whether or not specified (sub)key exists.                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public static bool KeyExists(
-            RegistryKey parentKeyName,
-            string subKeyName)
+    public static bool KeyExists(
+        RegistryKey parentKeyName,
+        string subKeyName)
+    {
+        using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
         {
-            using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
-            {
-                return subKey != null;
-            }
+            return subKey != null;
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // r e n a m e K e y                                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Rename specified (sub)key.                                         //
-        // This is achieved by:                                               //
-        //   -  copying the old (sub)key to a new one;                        //
-        //   -  recursively copying the contents of the old (sub)key to the   //
-        //      new one;                                                      //
-        //   -  deleting the old (sub)key.                                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // r e n a m e K e y                                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Rename specified (sub)key.                                         //
+    // This is achieved by:                                               //
+    //   -  copying the old (sub)key to a new one;                        //
+    //   -  recursively copying the contents of the old (sub)key to the   //
+    //      new one;                                                      //
+    //   -  deleting the old (sub)key.                                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public static void RenameKey(
-            RegistryKey parentKey,
-            string oldSubKeyName,
-            string newSubKeyName)
+    public static void RenameKey(
+        RegistryKey parentKey,
+        string oldSubKeyName,
+        string newSubKeyName)
+    {
+        RegistryKey subKey = parentKey.OpenSubKey(oldSubKeyName);
+
+        if (subKey != null)
         {
-            RegistryKey subKey = parentKey.OpenSubKey(oldSubKeyName);
+            CopyKey(parentKey, oldSubKeyName, newSubKeyName);
 
-            if (subKey != null)
-            {
-                CopyKey(parentKey, oldSubKeyName, newSubKeyName);
-
-                parentKey.DeleteSubKeyTree(oldSubKeyName);
-            }
+            parentKey.DeleteSubKeyTree(oldSubKeyName);
         }
     }
 }

@@ -2,261 +2,260 @@
 using System;
 using System.Windows;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// Interaction logic for TargetFile.xaml
+/// 
+/// Class handles the Target (file) definition form.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+[System.Reflection.Obfuscation(Feature = "renaming",
+                                        ApplyToMembers = true)]
+
+public partial class TargetFile : Window
 {
-    /// <summary>
-    /// Interaction logic for TargetFile.xaml
-    /// 
-    /// Class handles the Target (file) definition form.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Fields (class variables).                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    [System.Reflection.Obfuscation(Feature = "renaming",
-                                            ApplyToMembers = true)]
+    private string _saveFilename;
+    private readonly ToolCommonData.eToolIds _crntToolId;
+    private readonly ToolCommonData.eToolSubIds _crntSubId;
+    private readonly ToolCommonData.ePrintLang _crntPDL;
 
-    public partial class TargetFile : Window
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // T a r g e t F i l e                                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public TargetFile(ToolCommonData.eToolIds crntToolId,
+                       ToolCommonData.eToolSubIds crntSubId,
+                       ToolCommonData.ePrintLang crntPDL)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Fields (class variables).                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        InitializeComponent();
 
-        private string _saveFilename;
-        private readonly ToolCommonData.eToolIds _crntToolId;
-        private readonly ToolCommonData.eToolSubIds _crntSubId;
-        private readonly ToolCommonData.ePrintLang _crntPDL;
+        _crntToolId = crntToolId;
+        _crntSubId = crntSubId;
+        _crntPDL = crntPDL;
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // T a r g e t F i l e                                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        Initialise();
+    }
 
-        public TargetFile(ToolCommonData.eToolIds crntToolId,
-                           ToolCommonData.eToolSubIds crntSubId,
-                           ToolCommonData.ePrintLang crntPDL)
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // b t n C a n c e l _ C l i c k                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the 'Cancel' button is clicked.                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private void btnCancel_Click(object sender, RoutedEventArgs e)
+    {
+        DialogResult = false;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // b t n O K _ C l i c k                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the 'OK' button is clicked.                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private void btnOK_Click(object sender, RoutedEventArgs e)
+    {
+        MetricsSave();
+
+        DialogResult = true;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // b t n O p F i l e n a m e B r o w s e _ C l i c k                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the output file 'Browse' button is clicked.            //
+    // Invoke 'Save As' dialogue to select target file.                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private void btnOpFilenameBrowse_Click(object sender, RoutedEventArgs e)
+    {
+        bool selected;
+
+        string filename = _saveFilename;
+
+        selected = SelectTargetFile(ref filename);
+
+        if (selected)
         {
-            InitializeComponent();
+            _saveFilename = filename;
+            txtOpFilename.Text = _saveFilename;
+        }
+    }
 
-            _crntToolId = crntToolId;
-            _crntSubId = crntSubId;
-            _crntPDL = crntPDL;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // i n i t i a l i s e                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Initialise 'target' data.                                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            Initialise();
+    private void Initialise()
+    {
+        btnOK.Visibility = Visibility.Hidden;
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Tool and PDL identifiers.                                      //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (_crntSubId == ToolCommonData.eToolSubIds.None)
+        {
+            txtCrntTool.Text =
+                Enum.GetName(typeof(ToolCommonData.eToolIds),
+                              _crntToolId);
+        }
+        else
+        {
+            txtCrntTool.Text =
+                Enum.GetName(typeof(ToolCommonData.eToolIds),
+                              _crntToolId) +
+                "|" +
+                Enum.GetName(typeof(ToolCommonData.eToolSubIds),
+                              _crntSubId);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // b t n C a n c e l _ C l i c k                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the 'Cancel' button is clicked.                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        txtCrntPDL.Text = _crntPDL.ToString();
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Output file data.                                              //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if ((_crntToolId == ToolCommonData.eToolIds.FontSample)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.FormSample)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.PrintArea)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
+                                      ||
+            (_crntToolId == ToolCommonData.eToolIds.TrayMap))
         {
-            DialogResult = false;
+            grpOpFile.Visibility = Visibility.Visible;
+            lbFileNA.Visibility = Visibility.Hidden;
+            btnOK.Visibility = Visibility.Visible;
+
+            TargetCore.MetricsReturnFileCapt(_crntToolId,
+                                              _crntSubId,
+                                              _crntPDL,
+                                              ref _saveFilename);
+
+            txtOpFilename.Text = _saveFilename;
+        }
+        else
+        {
+            grpOpFile.Visibility = Visibility.Hidden;
+            lbFileNA.Visibility = Visibility.Visible;
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // b t n O K _ C l i c k                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the 'OK' button is clicked.                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Set the (hidden) slider object to the passed-in scale value.   //
+        // The slider is used as the source binding for a scale           //
+        // transform in the (child) Options dialogue window, so that all  //
+        // windows use the same scaling mechanism as the main window.     //
+        //                                                                //
+        // NOTE: it would be better to bind the transform directly to the //
+        //       scale value (set and stored in the Main window), but (so //
+        //       far) I've failed to find a way to bind directly to a     //
+        //       class object Property value.                             //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-        private void btnOK_Click(object sender, RoutedEventArgs e)
-        {
-            MetricsSave();
+        double windowScale = MainFormData.WindowScale;
 
-            DialogResult = true;
-        }
+        zoomSlider.Value = windowScale;
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // b t n O p F i l e n a m e B r o w s e _ C l i c k                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the output file 'Browse' button is clicked.            //
-        // Invoke 'Save As' dialogue to select target file.                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Setting sizes to the resizeable DockPanel element doesn't work!//
+        //                                                                //
+        //----------------------------------------------------------------//
 
-        private void btnOpFilenameBrowse_Click(object sender, RoutedEventArgs e)
-        {
-            bool selected;
+        Height = 300 * windowScale;
+        Width = 730 * windowScale;
+    }
 
-            string filename = _saveFilename;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // m e t r i c s S a v e                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Save the current settings.                                         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            selected = SelectTargetFile(ref filename);
+    private void MetricsSave()
+    {
+        TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
+                                        _saveFilename);
+    }
 
-            if (selected)
-            {
-                _saveFilename = filename;
-                txtOpFilename.Text = _saveFilename;
-            }
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s e l e c t T a r g e t F i l e                                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the 'Browse' button is clicked.                        //
+    // Invoke 'Save As' dialogue to select target file.                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // i n i t i a l i s e                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Initialise 'target' data.                                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    private bool SelectTargetFile(ref string targetFile)
+    {
+        SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(targetFile);
 
-        private void Initialise()
-        {
-            btnOK.Visibility = Visibility.Hidden;
+        bool? dialogResult = saveDialog.ShowDialog();
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Tool and PDL identifiers.                                      //
-            //                                                                //
-            //----------------------------------------------------------------//
+        if (dialogResult == true)
+            targetFile = saveDialog.FileName;
 
-            if (_crntSubId == ToolCommonData.eToolSubIds.None)
-            {
-                txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.eToolIds),
-                                  _crntToolId);
-            }
-            else
-            {
-                txtCrntTool.Text =
-                    Enum.GetName(typeof(ToolCommonData.eToolIds),
-                                  _crntToolId) +
-                    "|" +
-                    Enum.GetName(typeof(ToolCommonData.eToolSubIds),
-                                  _crntSubId);
-            }
+        return dialogResult == true;
+    }
 
-            txtCrntPDL.Text = _crntPDL.ToString();
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // t x t O p F i l e n a m e _ Lo s t F o c u s                       //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Called when the target output 'Filename' text has lost focus.      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Output file data.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            if ((_crntToolId == ToolCommonData.eToolIds.FontSample)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.FormSample)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.PrintArea)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
-                                          ||
-                (_crntToolId == ToolCommonData.eToolIds.TrayMap))
-            {
-                grpOpFile.Visibility = Visibility.Visible;
-                lbFileNA.Visibility = Visibility.Hidden;
-                btnOK.Visibility = Visibility.Visible;
-
-                TargetCore.MetricsReturnFileCapt(_crntToolId,
-                                                  _crntSubId,
-                                                  _crntPDL,
-                                                  ref _saveFilename);
-
-                txtOpFilename.Text = _saveFilename;
-            }
-            else
-            {
-                grpOpFile.Visibility = Visibility.Hidden;
-                lbFileNA.Visibility = Visibility.Visible;
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Set the (hidden) slider object to the passed-in scale value.   //
-            // The slider is used as the source binding for a scale           //
-            // transform in the (child) Options dialogue window, so that all  //
-            // windows use the same scaling mechanism as the main window.     //
-            //                                                                //
-            // NOTE: it would be better to bind the transform directly to the //
-            //       scale value (set and stored in the Main window), but (so //
-            //       far) I've failed to find a way to bind directly to a     //
-            //       class object Property value.                             //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            double windowScale = MainFormData.WindowScale;
-
-            zoomSlider.Value = windowScale;
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Setting sizes to the resizeable DockPanel element doesn't work!//
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            Height = 300 * windowScale;
-            Width = 730 * windowScale;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // m e t r i c s S a v e                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Save the current settings.                                         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private void MetricsSave()
-        {
-            TargetCore.MetricsSaveFileCapt(_crntToolId, _crntSubId, _crntPDL,
-                                            _saveFilename);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s e l e c t T a r g e t F i l e                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the 'Browse' button is clicked.                        //
-        // Invoke 'Save As' dialogue to select target file.                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private bool SelectTargetFile(ref string targetFile)
-        {
-            SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(targetFile);
-
-            bool? dialogResult = saveDialog.ShowDialog();
-
-            if (dialogResult == true)
-                targetFile = saveDialog.FileName;
-
-            return dialogResult == true;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // t x t O p F i l e n a m e _ Lo s t F o c u s                       //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Called when the target output 'Filename' text has lost focus.      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private void txtOpFilename_LostFocus(object sender,
-                                              RoutedEventArgs e)
-        {
-            _saveFilename = txtOpFilename.Text;
-        }
+    private void txtOpFilename_LostFocus(object sender,
+                                          RoutedEventArgs e)
+    {
+        _saveFilename = txtOpFilename.Text;
     }
 }

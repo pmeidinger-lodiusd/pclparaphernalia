@@ -1,105 +1,104 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a PCL XL Embedded Data Length Definer tag.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+// [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
+[System.Reflection.Obfuscation(
+    Feature = "renaming",
+    ApplyToMembers = true)]
+
+class PCLXLEmbedDataDef
 {
-    /// <summary>
-    /// 
-    /// Class defines a PCL XL Embedded Data Length Definer tag.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    // [System.Reflection.ObfuscationAttribute(Feature = "properties renaming")]
-    [System.Reflection.Obfuscation(
-        Feature = "renaming",
-        ApplyToMembers = true)]
+    private readonly byte _tag;
 
-    class PCLXLEmbedDataDef
+    private readonly string _description;
+
+    private readonly bool _flagReserved;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L X L E m b e d D a t a D e f                                  //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLXLEmbedDataDef(byte tag,
+                                bool flagReserved,
+                                string description)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _tag = tag;
+        _flagReserved = flagReserved;
+        _description = description;
+    }
 
-        private readonly byte _tag;
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // D e s c r i p t i o n                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private readonly string _description;
-
-        private readonly bool _flagReserved;
-
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L X L E m b e d D a t a D e f                                  //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public PCLXLEmbedDataDef(byte tag,
-                                    bool flagReserved,
-                                    string description)
+    public string Description
+    {
+        get
         {
-            _tag = tag;
-            _flagReserved = flagReserved;
-            _description = description;
+            return _description;
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // D e s c r i p t i o n                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // F l a g R e s e r v e d                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Description
+    public bool FlagReserved
+    {
+        get
         {
-            get
-            {
-                return _description;
-            }
+            return _flagReserved;
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // F l a g R e s e r v e d                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T a g                                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public bool FlagReserved
+    public string Tag
+    {
+        get
         {
-            get
-            {
-                return _flagReserved;
-            }
+            string tag;
+
+            tag = "0x" + _tag.ToString("x2");
+
+            return tag;
         }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T a g                                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // T y p e                                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public string Tag
+    public string Type
+    {
+        get
         {
-            get
-            {
-                string tag;
-
-                tag = "0x" + _tag.ToString("x2");
-
-                return tag;
-            }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // T y p e                                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string Type
-        {
-            get
-            {
-                return "Embed Data Definer";
-            }
+            return "Embed Data Definer";
         }
     }
 }

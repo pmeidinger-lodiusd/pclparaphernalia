@@ -1,1074 +1,1283 @@
 ﻿using System.IO;
 
-namespace PCLParaphernalia
+namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class provides PCL support for the FontSample tool.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+static class ToolFontSamplePCL
 {
-    /// <summary>
-    /// 
-    /// Class provides PCL support for the FontSample tool.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Constants and enumerations.                                        //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class ToolFontSamplePCL
+    const string _hexChars = "0123456789ABCDEF";
+
+    const int _macroId = 1;
+    const short _gridDim = 16;
+    const int _gridDimHalf = _gridDim / 2;
+    const short _gridCols = _gridDim;
+    const short _gridRows = _gridDim;
+    const ushort _unitsPerInch = PCLWriter.sessionUPI;
+
+    const short _lineSpacing = _unitsPerInch / 4;
+    const short _cellWidth = (_unitsPerInch * 1) / 3;
+    const short _cellHeight = (_unitsPerInch * 25) / 60;
+
+    const short _marginX = (_unitsPerInch * 7) / 6;
+    const short _posYDesc = (_unitsPerInch * 3) / 4;
+    const short _posYGrid = _posYDesc + (_lineSpacing * 4);
+    const short _posYSelData = _posYGrid +
+                                      (_cellHeight * (_gridRows + 2)) +
+                                      (_lineSpacing * 2);
+
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static ushort _symSetUserMapMax = 0;
+
+    private static ushort[] _symSetUserMap = null;
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Generate test data.                                                //
+    //                                                                    //
+    // Some sequences are built up as (Unicode) strings, then converted   //
+    // to byte arrays before writing out - this works OK because all the  //
+    // characters we're using are within the ASCII range (0x00-0x7f) and  //
+    // are hence represented using a single byte in the UTF-8 encoding.   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void generateJob(
+        BinaryWriter prnWriter,
+        PCLFonts.eFontType fontType,
+        int indxPaperSize,
+        int indxPaperType,
+        int indxOrientation,
+        bool formAsMacro,
+        bool showC0Chars,
+        bool optGridVertical,
+        bool fontBound,
+        string fontId,
+        string fontDesc,
+        string symbolSet,
+        string fontLoadDesc,
+        string fontSelDesc,
+        string fontSelSeq,
+        string symbolSetName,
+        ushort[] sampleRangeOffsets,
+        PCLTextParsingMethods.eIndex indxTextParseMethod,
+        double pointSize,
+        bool sizeIsHeight,
+        bool downloadFontRemove,
+        bool fontSelectById,
+        bool prnDiskFontDataKnown,
+        bool prnDiskFontLoadViaMacro,
+        ushort fontIdNo,
+        ushort fontMacroIdNo,
+        string fontFilename,
+        bool symSetUserSet,
+        bool showMapCodesUCS2,
+        bool showMapCodesUTF8,
+        bool symSetUserActEmbed,
+        string symSetUserFile)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Constants and enumerations.                                        //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        PCLOrientations.eAspect aspect;
 
-        const string _hexChars = "0123456789ABCDEF";
+        ushort logXOffset;
+        ushort symSetKind1 = 0;
 
-        const int _macroId = 1;
-        const short _gridDim = 16;
-        const int _gridDimHalf = _gridDim / 2;
-        const short _gridCols = _gridDim;
-        const short _gridRows = _gridDim;
-        const ushort _unitsPerInch = PCLWriter.sessionUPI;
+        int pageCt = sampleRangeOffsets.Length;
 
-        const short _lineSpacing = _unitsPerInch / 4;
-        const short _cellWidth = (_unitsPerInch * 1) / 3;
-        const short _cellHeight = (_unitsPerInch * 25) / 60;
+        bool downloadFont,
+                fontMacroRemove;
 
-        const short _marginX = (_unitsPerInch * 7) / 6;
-        const short _posYDesc = (_unitsPerInch * 3) / 4;
-        const short _posYGrid = _posYDesc + (_lineSpacing * 4);
-        const short _posYSelData = _posYGrid +
-                                          (_cellHeight * (_gridRows + 2)) +
-                                          (_lineSpacing * 2);
+        //----------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        aspect = PCLOrientations.GetAspect(indxOrientation);
 
-        private static ushort _symSetUserMapMax = 0;
+        logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
+                                                    _unitsPerInch, aspect);
 
-        private static ushort[] _symSetUserMap = null;
+        //----------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Generate test data.                                                //
-        //                                                                    //
-        // Some sequences are built up as (Unicode) strings, then converted   //
-        // to byte arrays before writing out - this works OK because all the  //
-        // characters we're using are within the ASCII range (0x00-0x7f) and  //
-        // are hence represented using a single byte in the UTF-8 encoding.   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void generateJob(
-            BinaryWriter prnWriter,
-            PCLFonts.eFontType fontType,
-            int indxPaperSize,
-            int indxPaperType,
-            int indxOrientation,
-            bool formAsMacro,
-            bool showC0Chars,
-            bool optGridVertical,
-            bool fontBound,
-            string fontId,
-            string fontDesc,
-            string symbolSet,
-            string fontLoadDesc,
-            string fontSelDesc,
-            string fontSelSeq,
-            string symbolSetName,
-            ushort[] sampleRangeOffsets,
-            PCLTextParsingMethods.eIndex indxTextParseMethod,
-            double pointSize,
-            bool sizeIsHeight,
-            bool downloadFontRemove,
-            bool fontSelectById,
-            bool prnDiskFontDataKnown,
-            bool prnDiskFontLoadViaMacro,
-            ushort fontIdNo,
-            ushort fontMacroIdNo,
-            string fontFilename,
-            bool symSetUserSet,
-            bool showMapCodesUCS2,
-            bool showMapCodesUTF8,
-            bool symSetUserActEmbed,
-            string symSetUserFile)
+        if (symSetUserSet)
         {
-            PCLOrientations.eAspect aspect;
+            symSetKind1 = PCLSymbolSets.TranslateIdToKind1(symbolSet);
 
-            ushort logXOffset;
-            ushort symSetKind1 = 0;
-
-            int pageCt = sampleRangeOffsets.Length;
-
-            bool downloadFont,
-                    fontMacroRemove;
-
-            //----------------------------------------------------------------//
-
-            aspect = PCLOrientations.GetAspect(indxOrientation);
-
-            logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                        _unitsPerInch, aspect);
-
-            //----------------------------------------------------------------//
-
-            if (symSetUserSet)
+            if ((!symSetUserActEmbed) ||
+                (showMapCodesUCS2) || (showMapCodesUTF8))
             {
-                symSetKind1 = PCLSymbolSets.TranslateIdToKind1(symbolSet);
+                //--------------------------------------------------------//
+                //                                                        //
+                // Using a user-defined symbol set file.                  //
+                // Extract the mapping because either (or both):          //
+                //                                                        //
+                //  - Not embedding the symbol set file (e.g. because it  //
+                //    is a 16-bit one (not supported by printers?) but    //
+                //    just using the mapping to determine the target      //
+                //    Unicode code-points.                                //
+                //                                                        //
+                //  - Want to display the target code-point values in the //
+                //    grid.                                               //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                if ((!symSetUserActEmbed) ||
-                    (showMapCodesUCS2) || (showMapCodesUTF8))
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // Using a user-defined symbol set file.                  //
-                    // Extract the mapping because either (or both):          //
-                    //                                                        //
-                    //  - Not embedding the symbol set file (e.g. because it  //
-                    //    is a 16-bit one (not supported by printers?) but    //
-                    //    just using the mapping to determine the target      //
-                    //    Unicode code-points.                                //
-                    //                                                        //
-                    //  - Want to display the target code-point values in the //
-                    //    grid.                                               //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                _symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(
+                                      PCLSymbolSets.IndexUserSet);
 
-                    _symSetUserMapMax = PCLSymbolSets.GetMapArrayMax(
-                                          PCLSymbolSets.IndexUserSet);
+                _symSetUserMap = new ushort[_symSetUserMapMax + 1];
 
-                    _symSetUserMap = new ushort[_symSetUserMapMax + 1];
+                _symSetUserMap = PCLSymbolSets.GetMapArrayUserSet();
+            }
+        }
 
-                    _symSetUserMap = PCLSymbolSets.GetMapArrayUserSet();
-                }
+        downloadFont = fontType == PCLFonts.eFontType.Download;
+
+        //----------------------------------------------------------------//
+
+        generateJobHeader(prnWriter,
+                          fontType,
+                          prnDiskFontLoadViaMacro,
+                          indxPaperSize,
+                          indxPaperType,
+                          indxOrientation,
+                          formAsMacro,
+                          optGridVertical,
+                          logXOffset,
+                          fontIdNo,
+                          fontMacroIdNo,
+                          fontFilename,
+                          symSetUserSet,
+                          symSetUserActEmbed,
+                          symSetUserFile);
+
+        for (int i = 0; i < pageCt; i++)
+        {
+            ushort rangeOffset = sampleRangeOffsets[i];
+
+            generatePage(prnWriter,
+                         fontType,
+                         prnDiskFontDataKnown,
+                         formAsMacro,
+                         showC0Chars,
+                         optGridVertical,
+                         fontBound,
+                         fontId,
+                         fontDesc,
+                         symbolSet,
+                         fontLoadDesc,
+                         fontSelDesc,
+                         fontSelSeq,
+                         symbolSetName,
+                         rangeOffset,
+                         indxTextParseMethod,
+                         pointSize,
+                         sizeIsHeight,
+                         logXOffset,
+                         fontSelectById,
+                         fontIdNo,
+                         fontFilename,
+                         symSetUserSet,
+                         showMapCodesUCS2,
+                         showMapCodesUTF8,
+                         symSetUserActEmbed,
+                         symSetUserFile);
+        }
+
+        if (fontType == PCLFonts.eFontType.PrnDisk)
+            fontMacroRemove = prnDiskFontLoadViaMacro;
+        else
+            fontMacroRemove = false;
+
+        generateJobTrailer(prnWriter,
+                           formAsMacro,
+                           downloadFont,
+                           downloadFontRemove,
+                           fontMacroRemove,
+                           fontIdNo,
+                           fontMacroIdNo,
+                           symSetUserSet,
+                           symSetUserActEmbed,
+                           symSetKind1);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b H e a d e r                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write stream initialisation sequences to output file.              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void generateJobHeader(
+        BinaryWriter prnWriter,
+        PCLFonts.eFontType fontType,
+        bool prnDiskFontLoadViaMacro,
+        int indxPaperSize,
+        int indxPaperType,
+        int indxOrientation,
+        bool formAsMacro,
+        bool optGridVertical,
+        ushort logXOffset,
+        ushort fontIdNo,
+        ushort fontMacroIdNo,
+        string fontFilename,
+        bool symSetUserSet,
+        bool symSetUserActEmbed,
+        string symSetUserFile)
+    {
+        PCLWriter.StdJobHeader(prnWriter, string.Empty);
+
+        if ((symSetUserSet) && (symSetUserActEmbed))
+        {
+            PCLDownloadSymSet.SymSetFileCopy(prnWriter, symSetUserFile);
+        }
+
+        if (fontType == PCLFonts.eFontType.Download)
+        {
+            PCLWriter.FontDownloadID(prnWriter, fontIdNo);
+
+            PCLDownloadFont.FontFileCopy(prnWriter, fontFilename);
+
+            PCLWriter.FontDownloadSave(prnWriter, true);
+        }
+        else if (fontType == PCLFonts.eFontType.PrnDisk)
+        {
+            if (prnDiskFontLoadViaMacro)
+            {
+                PCLWriter.FontFileIdAssociate(prnWriter,
+                                               fontIdNo,
+                                               fontMacroIdNo,
+                                               fontFilename);
+            }
+            else
+            {
+                PCLWriter.FontFileIdAssociate(prnWriter,
+                                               fontIdNo,
+                                               fontFilename);
             }
 
-            downloadFont = fontType == PCLFonts.eFontType.Download;
+            PCLWriter.FontDownloadSave(prnWriter, true);
+        }
 
-            //----------------------------------------------------------------//
+        if (formAsMacro)
+        {
+            generateOverlay(prnWriter, true, optGridVertical, logXOffset);
+        }
 
-            generateJobHeader(prnWriter,
-                              fontType,
-                              prnDiskFontLoadViaMacro,
+        PCLWriter.PageHeader(prnWriter,
                               indxPaperSize,
                               indxPaperType,
                               indxOrientation,
-                              formAsMacro,
-                              optGridVertical,
-                              logXOffset,
-                              fontIdNo,
-                              fontMacroIdNo,
-                              fontFilename,
-                              symSetUserSet,
-                              symSetUserActEmbed,
-                              symSetUserFile);
+                              PCLPlexModes.eSimplex);
+    }
 
-            for (int i = 0; i < pageCt; i++)
-            {
-                ushort rangeOffset = sampleRangeOffsets[i];
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e J o b T r a i l e r                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write job termination sequences to output file.                    //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-                generatePage(prnWriter,
-                             fontType,
-                             prnDiskFontDataKnown,
-                             formAsMacro,
-                             showC0Chars,
-                             optGridVertical,
-                             fontBound,
-                             fontId,
-                             fontDesc,
-                             symbolSet,
-                             fontLoadDesc,
-                             fontSelDesc,
-                             fontSelSeq,
-                             symbolSetName,
-                             rangeOffset,
-                             indxTextParseMethod,
-                             pointSize,
-                             sizeIsHeight,
-                             logXOffset,
-                             fontSelectById,
-                             fontIdNo,
-                             fontFilename,
-                             symSetUserSet,
-                             showMapCodesUCS2,
-                             showMapCodesUTF8,
-                             symSetUserActEmbed,
-                             symSetUserFile);
-            }
-
-            if (fontType == PCLFonts.eFontType.PrnDisk)
-                fontMacroRemove = prnDiskFontLoadViaMacro;
-            else
-                fontMacroRemove = false;
-
-            generateJobTrailer(prnWriter,
-                               formAsMacro,
-                               downloadFont,
-                               downloadFontRemove,
-                               fontMacroRemove,
-                               fontIdNo,
-                               fontMacroIdNo,
-                               symSetUserSet,
-                               symSetUserActEmbed,
-                               symSetKind1);
+    private static void generateJobTrailer(BinaryWriter prnWriter,
+                                           bool formAsMacro,
+                                           bool downloadFont,
+                                           bool downloadFontRemove,
+                                           bool fontMacroRemove,
+                                           ushort downloadID,
+                                           ushort fontMacroIdNo,
+                                           bool symSetUserSet,
+                                           bool symSetUserActEmbed,
+                                           ushort symSetUserNo)
+    {
+        if ((downloadFont) && (downloadFontRemove))
+        {
+            PCLWriter.FontDownloadRemove(prnWriter, downloadID);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b H e a d e r                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write stream initialisation sequences to output file.              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void generateJobHeader(
-            BinaryWriter prnWriter,
-            PCLFonts.eFontType fontType,
-            bool prnDiskFontLoadViaMacro,
-            int indxPaperSize,
-            int indxPaperType,
-            int indxOrientation,
-            bool formAsMacro,
-            bool optGridVertical,
-            ushort logXOffset,
-            ushort fontIdNo,
-            ushort fontMacroIdNo,
-            string fontFilename,
-            bool symSetUserSet,
-            bool symSetUserActEmbed,
-            string symSetUserFile)
+        if (fontMacroRemove)
         {
-            PCLWriter.StdJobHeader(prnWriter, string.Empty);
-
-            if ((symSetUserSet) && (symSetUserActEmbed))
-            {
-                PCLDownloadSymSet.SymSetFileCopy(prnWriter, symSetUserFile);
-            }
-
-            if (fontType == PCLFonts.eFontType.Download)
-            {
-                PCLWriter.FontDownloadID(prnWriter, fontIdNo);
-
-                PCLDownloadFont.FontFileCopy(prnWriter, fontFilename);
-
-                PCLWriter.FontDownloadSave(prnWriter, true);
-            }
-            else if (fontType == PCLFonts.eFontType.PrnDisk)
-            {
-                if (prnDiskFontLoadViaMacro)
-                {
-                    PCLWriter.FontFileIdAssociate(prnWriter,
-                                                   fontIdNo,
-                                                   fontMacroIdNo,
-                                                   fontFilename);
-                }
-                else
-                {
-                    PCLWriter.FontFileIdAssociate(prnWriter,
-                                                   fontIdNo,
-                                                   fontFilename);
-                }
-
-                PCLWriter.FontDownloadSave(prnWriter, true);
-            }
-
-            if (formAsMacro)
-            {
-                generateOverlay(prnWriter, true, optGridVertical, logXOffset);
-            }
-
-            PCLWriter.PageHeader(prnWriter,
-                                  indxPaperSize,
-                                  indxPaperType,
-                                  indxOrientation,
-                                  PCLPlexModes.eSimplex);
+            PCLWriter.MacroControl(prnWriter,
+                                    (short)fontMacroIdNo,
+                                    PCLWriter.eMacroControl.Delete);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e J o b T r a i l e r                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write job termination sequences to output file.                    //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static void generateJobTrailer(BinaryWriter prnWriter,
-                                               bool formAsMacro,
-                                               bool downloadFont,
-                                               bool downloadFontRemove,
-                                               bool fontMacroRemove,
-                                               ushort downloadID,
-                                               ushort fontMacroIdNo,
-                                               bool symSetUserSet,
-                                               bool symSetUserActEmbed,
-                                               ushort symSetUserNo)
+        if ((symSetUserSet) && (symSetUserActEmbed))
         {
-            if ((downloadFont) && (downloadFontRemove))
-            {
-                PCLWriter.FontDownloadRemove(prnWriter, downloadID);
-            }
-
-            if (fontMacroRemove)
-            {
-                PCLWriter.MacroControl(prnWriter,
-                                        (short)fontMacroIdNo,
-                                        PCLWriter.eMacroControl.Delete);
-            }
-
-            if ((symSetUserSet) && (symSetUserActEmbed))
-            {
-                PCLWriter.SymSetDownloadRemove(prnWriter, symSetUserNo);
-            }
-
-            PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
+            PCLWriter.SymSetDownloadRemove(prnWriter, symSetUserNo);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e O v e r l a y                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write background data sequences to output file.                    //
-        // Optionally top and tail these with macro (user-defined stream)     //
-        // definition sequences.                                              //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        PCLWriter.StdJobTrailer(prnWriter, formAsMacro, _macroId);
+    }
 
-        private static void generateOverlay(BinaryWriter prnWriter,
-                                            bool formAsMacro,
-                                            bool optGridVertical,
-                                            ushort logXOffset)
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e O v e r l a y                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write background data sequences to output file.                    //
+    // Optionally top and tail these with macro (user-defined stream)     //
+    // definition sequences.                                              //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void generateOverlay(BinaryWriter prnWriter,
+                                        bool formAsMacro,
+                                        bool optGridVertical,
+                                        ushort logXOffset)
+    {
+        const short twoCellWidth = _cellWidth * 2;
+        const short twoCellHeight = _cellHeight * 2;
+
+        const short gridWidthInner = _cellWidth * _gridCols;
+        const short gridHeightInner = _cellHeight * _gridRows;
+        const short gridWidthOuter = _cellWidth * (_gridCols + 2);
+        const short gridHeightOuter = _cellHeight * (_gridRows + 2);
+
+        short marginX;
+
+        short posX,
+              posY;
+
+        short stroke,
+              shade;
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Header                                                         //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, _macroId,
+                                   PCLWriter.eMacroControl.StartDef);
+
+        PCLWriter.Font(prnWriter, true, "19U", "s1p24v0s3b16602T");
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Block rectangle 1 (includes row headers).                      //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        marginX = (short)(_marginX - logXOffset);
+        stroke = 8;
+
+        posX = marginX;
+        posY = _posYGrid + _cellHeight;
+
+        PCLWriter.RectangleOutline(prnWriter, posX, posY,
+                                   gridHeightInner, gridWidthOuter, stroke,
+                                   false, false);
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Block rectangle 2 (includes column headers).                   //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        posX = (short)(marginX + _cellWidth);
+        posY = _posYGrid;
+
+        PCLWriter.RectangleOutline(prnWriter, posX, posY,
+                                   gridHeightOuter, gridWidthInner, stroke,
+                                   false, false);
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Top-left and bottom-right corners.                             //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        shade = 10;
+
+        posX = marginX;
+        posY = _posYGrid;
+
+        PCLWriter.RectangleOutline(prnWriter, posX, posY,
+                                   _cellHeight, _cellWidth, stroke,
+                                   false, false);
+
+        PCLWriter.RectangleShaded(prnWriter, posX, posY,
+                                  _cellHeight, _cellWidth, shade,
+                                  false, false);
+
+        posX = (short)(marginX + gridWidthInner + _cellWidth);
+        posY = _posYGrid + gridHeightInner + _cellHeight;
+
+        PCLWriter.RectangleOutline(prnWriter, posX, posY,
+                                   _cellHeight, _cellWidth, stroke,
+                                   false, false);
+
+        PCLWriter.RectangleShaded(prnWriter, posX, posY,
+                                  _cellHeight, _cellWidth, shade,
+                                  false, false);
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Grid lines - Horizontal.                                       //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        stroke = 1;
+
+        posX = marginX;
+        posY = _posYGrid + twoCellHeight;
+
+        for (int i = 1; i < _gridRows; i++)
         {
-            const short twoCellWidth = _cellWidth * 2;
-            const short twoCellHeight = _cellHeight * 2;
+            PCLWriter.LineHorizontal(prnWriter, posX, posY, gridWidthOuter,
+                                     stroke);
 
-            const short gridWidthInner = _cellWidth * _gridCols;
-            const short gridHeightInner = _cellHeight * _gridRows;
-            const short gridWidthOuter = _cellWidth * (_gridCols + 2);
-            const short gridHeightOuter = _cellHeight * (_gridRows + 2);
+            posY += _cellHeight;
+        }
 
-            short marginX;
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Grid lines - Vertical.                                         //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            short posX,
-                  posY;
+        posX = (short)(marginX + twoCellWidth);
+        posY = _posYGrid;
 
-            short stroke,
-                  shade;
+        for (int i = 1; i < _gridCols; i++)
+        {
+            PCLWriter.LineVertical(prnWriter, posX, posY, gridHeightOuter,
+                                   stroke);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Header                                                         //
-            //                                                                //
-            //----------------------------------------------------------------//
+            posX += _cellWidth;
+        }
 
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.StartDef);
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Shade control code cells.                                      //
+        // Position depends on whether the Horizontal or Vertical grid    //
+        // option was selected.                                           //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            PCLWriter.Font(prnWriter, true, "19U", "s1p24v0s3b16602T");
+        shade = 1;
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Block rectangle 1 (includes row headers).                      //
-            //                                                                //
-            //----------------------------------------------------------------//
+        posX = (short)(marginX + _cellWidth);
+        posY = _posYGrid + _cellHeight;
 
-            marginX = (short)(_marginX - logXOffset);
-            stroke = 8;
-
-            posX = marginX;
-            posY = _posYGrid + _cellHeight;
-
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       gridHeightInner, gridWidthOuter, stroke,
-                                       false, false);
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Block rectangle 2 (includes column headers).                   //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            posX = (short)(marginX + _cellWidth);
-            posY = _posYGrid;
-
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       gridHeightOuter, gridWidthInner, stroke,
-                                       false, false);
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Top-left and bottom-right corners.                             //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            shade = 10;
-
-            posX = marginX;
-            posY = _posYGrid;
-
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       _cellHeight, _cellWidth, stroke,
-                                       false, false);
-
+        if (optGridVertical)
+        {
             PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                      _cellHeight, _cellWidth, shade,
+                                      gridHeightInner, twoCellWidth, shade,
                                       false, false);
 
-            posX = (short)(marginX + gridWidthInner + _cellWidth);
-            posY = _posYGrid + gridHeightInner + _cellHeight;
-
-            PCLWriter.RectangleOutline(prnWriter, posX, posY,
-                                       _cellHeight, _cellWidth, stroke,
-                                       false, false);
+            posX += (_gridDimHalf * _cellWidth);
 
             PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                      _cellHeight, _cellWidth, shade,
+                                      gridHeightInner, twoCellWidth, shade,
+                                      false, false);
+        }
+        else
+        {
+            PCLWriter.RectangleShaded(prnWriter, posX, posY,
+                                      twoCellHeight, gridWidthInner, shade,
                                       false, false);
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Grid lines - Horizontal.                                       //
-            //                                                                //
-            //----------------------------------------------------------------//
+            posY += (_gridDimHalf * _cellHeight);
 
-            stroke = 1;
+            PCLWriter.RectangleShaded(prnWriter, posX, posY,
+                                      twoCellHeight, gridWidthInner, shade,
+                                      false, false);
+        }
 
-            posX = marginX;
-            posY = _posYGrid + twoCellHeight;
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Cell column header and trailer labels.                         //
+        // Content depends on whether the Horizontal or Vertical grid     //
+        // option was selected.                                           //
+        //                                                                //
+        //----------------------------------------------------------------//
 
-            for (int i = 1; i < _gridRows; i++)
+        PCLWriter.Font(prnWriter, true, "19U", "s0p20h0s0b4099T");
+
+        posX = (short)(marginX + (_cellWidth / 3));
+        posY = _posYGrid + _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "hex");
+
+        posX = (short)(marginX + gridWidthInner +
+                       _cellWidth + (_cellWidth / 5));
+
+        posY = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "dec");
+
+        //----------------------------------------------------------------//
+
+        PCLWriter.Font(prnWriter, true, "19U", "s0p12h0s0b4099T");
+
+        posX = (short)(marginX + _cellWidth + (_cellWidth / 4));
+        posY = _posYGrid + _lineSpacing;
+
+        if (optGridVertical)
+        {
+            for (int i = 0; i < _gridCols; i++)
             {
-                PCLWriter.LineHorizontal(prnWriter, posX, posY, gridWidthOuter,
-                                         stroke);
-
-                posY += _cellHeight;
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Grid lines - Vertical.                                         //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            posX = (short)(marginX + twoCellWidth);
-            posY = _posYGrid;
-
-            for (int i = 1; i < _gridCols; i++)
-            {
-                PCLWriter.LineVertical(prnWriter, posX, posY, gridHeightOuter,
-                                       stroke);
+                PCLWriter.Text(prnWriter, posX, posY, 0, _hexChars[i] + "_");
 
                 posX += _cellWidth;
             }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Shade control code cells.                                      //
-            // Position depends on whether the Horizontal or Vertical grid    //
-            // option was selected.                                           //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            shade = 1;
-
-            posX = (short)(marginX + _cellWidth);
-            posY = _posYGrid + _cellHeight;
-
-            if (optGridVertical)
+        }
+        else
+        {
+            for (int i = 0; i < _gridCols; i++)
             {
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          gridHeightInner, twoCellWidth, shade,
-                                          false, false);
+                PCLWriter.Text(prnWriter, posX, posY, 0, "_" + _hexChars[i]);
 
-                posX += (_gridDimHalf * _cellWidth);
-
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          gridHeightInner, twoCellWidth, shade,
-                                          false, false);
+                posX += _cellWidth;
             }
-            else
-            {
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          twoCellHeight, gridWidthInner, shade,
-                                          false, false);
-
-                posY += (_gridDimHalf * _cellHeight);
-
-                PCLWriter.RectangleShaded(prnWriter, posX, posY,
-                                          twoCellHeight, gridWidthInner, shade,
-                                          false, false);
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Cell column header and trailer labels.                         //
-            // Content depends on whether the Horizontal or Vertical grid     //
-            // option was selected.                                           //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            PCLWriter.Font(prnWriter, true, "19U", "s0p20h0s0b4099T");
-
-            posX = (short)(marginX + (_cellWidth / 3));
-            posY = _posYGrid + _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "hex");
-
-            posX = (short)(marginX + gridWidthInner +
-                           _cellWidth + (_cellWidth / 5));
-
-            posY = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "dec");
-
-            //----------------------------------------------------------------//
-
-            PCLWriter.Font(prnWriter, true, "19U", "s0p12h0s0b4099T");
-
-            posX = (short)(marginX + _cellWidth + (_cellWidth / 4));
-            posY = _posYGrid + _lineSpacing;
-
-            if (optGridVertical)
-            {
-                for (int i = 0; i < _gridCols; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, _hexChars[i] + "_");
-
-                    posX += _cellWidth;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _gridCols; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, "_" + _hexChars[i]);
-
-                    posX += _cellWidth;
-                }
-            }
-
-            posX = (short)(marginX + _cellWidth + (_cellWidth / 5));
-            posY = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
-
-            if (optGridVertical)
-            {
-                for (int i = 0; i < _gridCols; i++)
-                {
-                    string tmpStr = (i * _gridDim).ToString();
-
-                    int len = tmpStr.Length;
-
-                    if (len == 2)
-                        tmpStr = " " + tmpStr;
-                    else if (len == 1)
-                        tmpStr = "  " + tmpStr;
-
-                    PCLWriter.Text(prnWriter, posX, posY, 0, tmpStr);
-
-                    posX += _cellWidth;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _gridCols; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, "+" + i);
-
-                    posX += _cellWidth;
-                }
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Cell row labels.                                               //
-            // Content depends on whether the Horizontal or Vertical grid     //
-            // option was selected.                                           //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            posX = (short)(marginX + (_cellWidth / 4));
-            posY = _posYGrid + _cellHeight + _lineSpacing;
-
-            if (optGridVertical)
-            {
-                for (int i = 0; i < _gridRows; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, "_" + _hexChars[i]);
-
-                    posY += _cellHeight;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _gridRows; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, _hexChars[i] + "_");
-
-                    posY += _cellHeight;
-                }
-            }
-
-            posX = (short)(marginX + gridWidthInner + _cellWidth +
-                                                      (_cellWidth / 8));
-            posY = _posYGrid + _cellHeight + _lineSpacing;
-
-            if (optGridVertical)
-            {
-                for (int i = 0; i < _gridRows; i++)
-                {
-                    PCLWriter.Text(prnWriter, posX, posY, 0, "+" + i);
-
-                    posY += _cellHeight;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < _gridRows; i++)
-                {
-                    string tmpStr = (i * _gridDim).ToString();
-
-                    int len = tmpStr.Length;
-
-                    if (len == 2)
-                        tmpStr = " " + tmpStr;
-                    else if (len == 1)
-                        tmpStr = "  " + tmpStr;
-
-                    PCLWriter.Text(prnWriter, posX, posY, 0, tmpStr);
-
-                    posY += _cellHeight;
-                }
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Header text.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            PCLWriter.Font(prnWriter, true, "19U", "s1p12v0s0b16602T");
-
-            posX = marginX;
-            posY = _posYDesc;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL font:");
-
-            posY += _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "Size:");
-
-            posY += _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "Symbol set:");
-
-            posY += _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, "Description:");
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Footer text.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            posY = _posYSelData;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "PCL font selection sequence:");
-
-            //----------------------------------------------------------------//
-
-            PCLWriter.Font(prnWriter, true, "19U", "s1p6v0s0b16602T");
-
-            posX = (short)(marginX + (_cellWidth * _gridDimHalf));
-
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           "(the content of the grid is undefined if no" +
-                           " font with these characteristics is available)");
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Overlay end.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.StopDef);
         }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e n e r a t e P a g e                                            //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Write individual test data page sequences to output file.          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        posX = (short)(marginX + _cellWidth + (_cellWidth / 5));
+        posY = _posYGrid + gridHeightInner + _cellHeight + _lineSpacing;
 
-        private static void generatePage(
-            BinaryWriter prnWriter,
-            PCLFonts.eFontType fontType,
-            bool prnDiskFontDataKnown,
-            bool formAsMacro,
-            bool showC0Chars,
-            bool optGridVertical,
-            bool fontBound,
-            string fontId,
-            string fontDesc,
-            string symSetId,
-            string fontLoadDesc,
-            string fontSelDesc,
-            string fontSelSeq,
-            string symbolSetName,
-            ushort sampleRangeOffset,
-            PCLTextParsingMethods.eIndex indxTextParseMethod,
-            double fontSize,
-            bool sizeIsHeight,
-            ushort logXOffset,
-            bool fontSelectById,
-            ushort fontIdNo,
-            string fontFilename,
-            bool symSetUserSet,
-            bool showMapCodesUCS2,
-            bool showMapCodesUTF8,
-            bool symSetUserActEmbed,
-            string symSetUserFile)
+        if (optGridVertical)
         {
-            const int rangeC0Max = 0x1f;
-            const int singleByteMax = 0xff;
-            const int indxMajorC0Start = 0;
-            const int indxMajorC0End = 2;
-            const int sizeSingleByteSet = 256;
+            for (int i = 0; i < _gridCols; i++)
+            {
+                string tmpStr = (i * _gridDim).ToString();
 
-            short marginX = (short)(_marginX - logXOffset);
+                int len = tmpStr.Length;
 
-            short posX,
-                  posY,
-                  posXStart,
-                  posYStart;
+                if (len == 2)
+                    tmpStr = " " + tmpStr;
+                else if (len == 1)
+                    tmpStr = "  " + tmpStr;
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Background image.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
+                PCLWriter.Text(prnWriter, posX, posY, 0, tmpStr);
 
-            if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, _macroId,
-                                       PCLWriter.eMacroControl.Call);
+                posX += _cellWidth;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _gridCols; i++)
+            {
+                PCLWriter.Text(prnWriter, posX, posY, 0, "+" + i);
+
+                posX += _cellWidth;
+            }
+        }
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Cell row labels.                                               //
+        // Content depends on whether the Horizontal or Vertical grid     //
+        // option was selected.                                           //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        posX = (short)(marginX + (_cellWidth / 4));
+        posY = _posYGrid + _cellHeight + _lineSpacing;
+
+        if (optGridVertical)
+        {
+            for (int i = 0; i < _gridRows; i++)
+            {
+                PCLWriter.Text(prnWriter, posX, posY, 0, "_" + _hexChars[i]);
+
+                posY += _cellHeight;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _gridRows; i++)
+            {
+                PCLWriter.Text(prnWriter, posX, posY, 0, _hexChars[i] + "_");
+
+                posY += _cellHeight;
+            }
+        }
+
+        posX = (short)(marginX + gridWidthInner + _cellWidth +
+                                                  (_cellWidth / 8));
+        posY = _posYGrid + _cellHeight + _lineSpacing;
+
+        if (optGridVertical)
+        {
+            for (int i = 0; i < _gridRows; i++)
+            {
+                PCLWriter.Text(prnWriter, posX, posY, 0, "+" + i);
+
+                posY += _cellHeight;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < _gridRows; i++)
+            {
+                string tmpStr = (i * _gridDim).ToString();
+
+                int len = tmpStr.Length;
+
+                if (len == 2)
+                    tmpStr = " " + tmpStr;
+                else if (len == 1)
+                    tmpStr = "  " + tmpStr;
+
+                PCLWriter.Text(prnWriter, posX, posY, 0, tmpStr);
+
+                posY += _cellHeight;
+            }
+        }
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Header text.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        PCLWriter.Font(prnWriter, true, "19U", "s1p12v0s0b16602T");
+
+        posX = marginX;
+        posY = _posYDesc;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "PCL font:");
+
+        posY += _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "Size:");
+
+        posY += _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "Symbol set:");
+
+        posY += _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, "Description:");
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Footer text.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        posY = _posYSelData;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "PCL font selection sequence:");
+
+        //----------------------------------------------------------------//
+
+        PCLWriter.Font(prnWriter, true, "19U", "s1p6v0s0b16602T");
+
+        posX = (short)(marginX + (_cellWidth * _gridDimHalf));
+
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                       "(the content of the grid is undefined if no" +
+                       " font with these characteristics is available)");
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Overlay end.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, _macroId,
+                                   PCLWriter.eMacroControl.StopDef);
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e n e r a t e P a g e                                            //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Write individual test data page sequences to output file.          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static void generatePage(
+        BinaryWriter prnWriter,
+        PCLFonts.eFontType fontType,
+        bool prnDiskFontDataKnown,
+        bool formAsMacro,
+        bool showC0Chars,
+        bool optGridVertical,
+        bool fontBound,
+        string fontId,
+        string fontDesc,
+        string symSetId,
+        string fontLoadDesc,
+        string fontSelDesc,
+        string fontSelSeq,
+        string symbolSetName,
+        ushort sampleRangeOffset,
+        PCLTextParsingMethods.eIndex indxTextParseMethod,
+        double fontSize,
+        bool sizeIsHeight,
+        ushort logXOffset,
+        bool fontSelectById,
+        ushort fontIdNo,
+        string fontFilename,
+        bool symSetUserSet,
+        bool showMapCodesUCS2,
+        bool showMapCodesUTF8,
+        bool symSetUserActEmbed,
+        string symSetUserFile)
+    {
+        const int rangeC0Max = 0x1f;
+        const int singleByteMax = 0xff;
+        const int indxMajorC0Start = 0;
+        const int indxMajorC0End = 2;
+        const int sizeSingleByteSet = 256;
+
+        short marginX = (short)(_marginX - logXOffset);
+
+        short posX,
+              posY,
+              posXStart,
+              posYStart;
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Background image.                                              //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (formAsMacro)
+            PCLWriter.MacroControl(prnWriter, _macroId,
+                                   PCLWriter.eMacroControl.Call);
+        else
+            generateOverlay(prnWriter, false, optGridVertical, logXOffset);
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Descriptive text.                                              //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        PCLWriter.Font(prnWriter, true, "19U", "s0p10h0s3b4099T");
+
+        posX = (short)(marginX + ((_cellWidth * 7) / 2));
+        posY = _posYDesc;
+
+        if ((fontType == PCLFonts.eFontType.Download) ||
+            (fontType == PCLFonts.eFontType.PrnDisk))
+        {
+            const int maxLen = 51;
+            const int halfLen = (maxLen - 5) / 2;
+
+            int len = fontFilename.Length;
+
+            if (len < maxLen)
+                PCLWriter.Text(prnWriter, posX, posY, 0, fontFilename);
             else
-                generateOverlay(prnWriter, false, optGridVertical, logXOffset);
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Descriptive text.                                              //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            PCLWriter.Font(prnWriter, true, "19U", "s0p10h0s3b4099T");
-
-            posX = (short)(marginX + ((_cellWidth * 7) / 2));
-            posY = _posYDesc;
-
-            if ((fontType == PCLFonts.eFontType.Download) ||
-                (fontType == PCLFonts.eFontType.PrnDisk))
-            {
-                const int maxLen = 51;
-                const int halfLen = (maxLen - 5) / 2;
-
-                int len = fontFilename.Length;
-
-                if (len < maxLen)
-                    PCLWriter.Text(prnWriter, posX, posY, 0, fontFilename);
-                else
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                   fontFilename.Substring(0, halfLen) +
-                                   " ... " +
-                                   fontFilename.Substring(len - halfLen,
-                                                          halfLen));
-            }
-            else
-                PCLWriter.Text(prnWriter, posX, posY, 0, fontId);
-
-            //----------------------------------------------------------------//
-
-            posY += _lineSpacing;
-
-            if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-                (!prnDiskFontDataKnown))
                 PCLWriter.Text(prnWriter, posX, posY, 0,
-                               "characteristics not known");
-            else if (sizeIsHeight)
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               fontSize.ToString("F2") + " point");
-            else
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               fontSize.ToString("F2") +
-                               " characters-per-inch");
+                               fontFilename.Substring(0, halfLen) +
+                               " ... " +
+                               fontFilename.Substring(len - halfLen,
+                                                      halfLen));
+        }
+        else
+            PCLWriter.Text(prnWriter, posX, posY, 0, fontId);
 
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            posY += _lineSpacing;
+        posY += _lineSpacing;
 
-            if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-                (!prnDiskFontDataKnown))
-            {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               "characteristics not known");
-            }
-            else if (sampleRangeOffset == 0)
-            {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                symSetId + " (" + symbolSetName + ")");
-            }
-            else
-            {
-                string offsetText;
+        if ((fontType == PCLFonts.eFontType.PrnDisk) &&
+            (!prnDiskFontDataKnown))
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                           "characteristics not known");
+        else if (sizeIsHeight)
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                           fontSize.ToString("F2") + " point");
+        else
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                           fontSize.ToString("F2") +
+                           " characters-per-inch");
 
-                offsetText = ": Range offset 0x" +
-                             sampleRangeOffset.ToString("X4");
+        //----------------------------------------------------------------//
 
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                symSetId + " (" + symbolSetName + ")" +
-                                offsetText);
-            }
+        posY += _lineSpacing;
 
-            //----------------------------------------------------------------//
+        if ((fontType == PCLFonts.eFontType.PrnDisk) &&
+            (!prnDiskFontDataKnown))
+        {
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                           "characteristics not known");
+        }
+        else if (sampleRangeOffset == 0)
+        {
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                            symSetId + " (" + symbolSetName + ")");
+        }
+        else
+        {
+            string offsetText;
 
-            PCLWriter.Font(prnWriter, true, "19U", "s0p15h0s3b4099T");
-
-            posY += _lineSpacing;
-
-            PCLWriter.Text(prnWriter, posX, posY, 0, fontDesc);
-
-            //----------------------------------------------------------------//
-
-            if (symSetUserSet)
-            {
-                const int maxLen = 61;
-                const int halfLen = (maxLen - 5) / 2;
-
-                int len = symSetUserFile.Length;
-
-                posY += _lineSpacing / 2;
-
-                if (len < maxLen)
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                   "Symbol set file: " + symSetUserFile);
-                else
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                   "Symbol set file: " +
-                                   symSetUserFile.Substring(0, halfLen) +
-                                   " ... " +
-                                   symSetUserFile.Substring(len - halfLen,
-                                                            halfLen));
-            }
-
-            //----------------------------------------------------------------//
-
-            posX = (short)(marginX + _cellWidth);
-            posY = _posYSelData + _cellHeight;
-
-            PCLWriter.Font(prnWriter, true, "19U", "s0p10h0s3b4099T");
-
-            if (fontLoadDesc != string.Empty)
-            {
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                                fontLoadDesc);
-
-                posY += _lineSpacing;
-            }
+            offsetText = ": Range offset 0x" +
+                         sampleRangeOffset.ToString("X4");
 
             PCLWriter.Text(prnWriter, posX, posY, 0,
-                            fontSelDesc);
+                            symSetId + " (" + symbolSetName + ")" +
+                            offsetText);
+        }
 
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            if (((fontType == PCLFonts.eFontType.Download) ||
-                 (fontType == PCLFonts.eFontType.PrnDisk)) &&
-                (fontSelectById))
-            {
-                if (fontBound)
-                    PCLWriter.Font(prnWriter, true, string.Empty,
-                                   (fontIdNo + "X"));
-                else
-                    PCLWriter.Font(prnWriter, true, symSetId,
-                                   (fontIdNo + "X"));
+        PCLWriter.Font(prnWriter, true, "19U", "s0p15h0s3b4099T");
 
-                if (fontSelSeq != string.Empty)
-                    PCLWriter.Font(prnWriter, true, string.Empty, fontSelSeq);
-            }
+        posY += _lineSpacing;
+
+        PCLWriter.Text(prnWriter, posX, posY, 0, fontDesc);
+
+        //----------------------------------------------------------------//
+
+        if (symSetUserSet)
+        {
+            const int maxLen = 61;
+            const int halfLen = (maxLen - 5) / 2;
+
+            int len = symSetUserFile.Length;
+
+            posY += _lineSpacing / 2;
+
+            if (len < maxLen)
+                PCLWriter.Text(prnWriter, posX, posY, 0,
+                               "Symbol set file: " + symSetUserFile);
             else
-            {
-                PCLWriter.Font(prnWriter, true, symSetId, fontSelSeq);
-            }
+                PCLWriter.Text(prnWriter, posX, posY, 0,
+                               "Symbol set file: " +
+                               symSetUserFile.Substring(0, halfLen) +
+                               " ... " +
+                               symSetUserFile.Substring(len - halfLen,
+                                                        halfLen));
+        }
 
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Grid.                                                          //
-            //                                                                //
-            //----------------------------------------------------------------//
+        //----------------------------------------------------------------//
 
-            int startIndxMajor;
+        posX = (short)(marginX + _cellWidth);
+        posY = _posYSelData + _cellHeight;
 
-            bool checkSingleByteCodes = false;
-            bool utf8;
-            bool twoByteMethod;
-            bool validCodePoint = true;
+        PCLWriter.Font(prnWriter, true, "19U", "s0p10h0s3b4099T");
 
-            bool[] validSingleByteCodes = new bool[sizeSingleByteSet];
+        if (fontLoadDesc != string.Empty)
+        {
+            PCLWriter.Text(prnWriter, posX, posY, 0,
+                            fontLoadDesc);
 
-            //----------------------------------------------------------------//
+            posY += _lineSpacing;
+        }
 
-            utf8 = false;
-            twoByteMethod = false;
+        PCLWriter.Text(prnWriter, posX, posY, 0,
+                        fontSelDesc);
+
+        //----------------------------------------------------------------//
+
+        if (((fontType == PCLFonts.eFontType.Download) ||
+             (fontType == PCLFonts.eFontType.PrnDisk)) &&
+            (fontSelectById))
+        {
+            if (fontBound)
+                PCLWriter.Font(prnWriter, true, string.Empty,
+                               (fontIdNo + "X"));
+            else
+                PCLWriter.Font(prnWriter, true, symSetId,
+                               (fontIdNo + "X"));
+
+            if (fontSelSeq != string.Empty)
+                PCLWriter.Font(prnWriter, true, string.Empty, fontSelSeq);
+        }
+        else
+        {
+            PCLWriter.Font(prnWriter, true, symSetId, fontSelSeq);
+        }
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Grid.                                                          //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        int startIndxMajor;
+
+        bool checkSingleByteCodes = false;
+        bool utf8;
+        bool twoByteMethod;
+        bool validCodePoint = true;
+
+        bool[] validSingleByteCodes = new bool[sizeSingleByteSet];
+
+        //----------------------------------------------------------------//
+
+        utf8 = false;
+        twoByteMethod = false;
+
+        if ((indxTextParseMethod ==
+                PCLTextParsingMethods.eIndex.m83_UTF8) ||
+            (indxTextParseMethod ==
+                PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+            utf8 = true;
+        else if (indxTextParseMethod ==
+                  PCLTextParsingMethods.eIndex.m2_2_byte)
+            twoByteMethod = true;
+
+        //----------------------------------------------------------------//
+
+        if (indxTextParseMethod !=
+            PCLTextParsingMethods.eIndex.not_specified)
+        {
+            PCLWriter.TextParsingMethod(
+                prnWriter,
+                PCLTextParsingMethods.GetValue((int)indxTextParseMethod));
+
+            //------------------------------------------------------------//
 
             if ((indxTextParseMethod ==
                     PCLTextParsingMethods.eIndex.m83_UTF8) ||
                 (indxTextParseMethod ==
                     PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
-                utf8 = true;
-            else if (indxTextParseMethod ==
-                      PCLTextParsingMethods.eIndex.m2_2_byte)
-                twoByteMethod = true;
-
-            //----------------------------------------------------------------//
-
-            if (indxTextParseMethod !=
-                PCLTextParsingMethods.eIndex.not_specified)
             {
-                PCLWriter.TextParsingMethod(
-                    prnWriter,
-                    PCLTextParsingMethods.GetValue((int)indxTextParseMethod));
+                //--------------------------------------------------------//
+                //                                                        //
+                // A UTF-8 Text Parsing Method has been specified - the   //
+                // 'character set' may consist of:                        //
+                //                                                        //
+                //  - A mix of single-byte and variable multi-byte        //
+                //    ranges.                                             //
+                //    We expect that all single-byte code-points (before  //
+                //    transformation) should be valid (hence we exclude   //
+                //    UTF-8 from the 'check single bytes'check).          //
+                //                                                        //
+                //--------------------------------------------------------//
 
-                //------------------------------------------------------------//
+                utf8 = true;
 
-                if ((indxTextParseMethod ==
-                        PCLTextParsingMethods.eIndex.m83_UTF8) ||
-                    (indxTextParseMethod ==
-                        PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+                checkSingleByteCodes = false;
+            }
+            else if (indxTextParseMethod ==
+                        PCLTextParsingMethods.eIndex.m2_2_byte)
+            {
+                //--------------------------------------------------------//
+                //                                                        //
+                // A Text Parsing Method (other than UTF-8) has been      //
+                // specified where the 'character set' consists of:       //
+                // may consist of:                                        //
+                //                                                        //
+                //  - All double-byte code-point values                   //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                checkSingleByteCodes = false;
+            }
+            else
+            {
+                //--------------------------------------------------------//
+                //                                                        //
+                // A Text Parsing Method (other than UTF-8) has been      //
+                // specified - dependent on method, the 'character set'   //
+                // may consist of:                                        //
+                //                                                        //
+                //  - All single-byte code-point values                   //
+                //  - All double-byte code-point values                   //
+                //  - A mix of single-byte and double-byte ranges         //
+                //                                                        //
+                // For the single-byte range (0x00 -> 0xff), set up a     //
+                // table showing which single-byte values are permitted.  //
+                //                                                        //
+                //--------------------------------------------------------//
+
+                int blockMin,
+                      blockMax;
+
+                ushort[] rangesSingle =
+                    PCLTextParsingMethods.GetRangeDataSingle(
+                                            (int)indxTextParseMethod);
+
+                int ctRangeData = 0;
+
+                utf8 = false;
+
+                checkSingleByteCodes = true;
+
+                if (rangesSingle != null)
+                    ctRangeData = (rangesSingle.Length / 2);
+
+                for (int i = 0; i < sizeSingleByteSet; i++)
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // A UTF-8 Text Parsing Method has been specified - the   //
-                    // 'character set' may consist of:                        //
-                    //                                                        //
-                    //  - A mix of single-byte and variable multi-byte        //
-                    //    ranges.                                             //
-                    //    We expect that all single-byte code-points (before  //
-                    //    transformation) should be valid (hence we exclude   //
-                    //    UTF-8 from the 'check single bytes'check).          //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    utf8 = true;
-
-                    checkSingleByteCodes = false;
+                    validSingleByteCodes[i] = false;
                 }
-                else if (indxTextParseMethod ==
-                            PCLTextParsingMethods.eIndex.m2_2_byte)
+
+                for (int i = 0; i < ctRangeData; i += 2)
                 {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // A Text Parsing Method (other than UTF-8) has been      //
-                    // specified where the 'character set' consists of:       //
-                    // may consist of:                                        //
-                    //                                                        //
-                    //  - All double-byte code-point values                   //
-                    //                                                        //
-                    //--------------------------------------------------------//
+                    blockMin = rangesSingle[i];
+                    blockMax = rangesSingle[i + 1];
 
-                    checkSingleByteCodes = false;
-                }
-                else
-                {
-                    //--------------------------------------------------------//
-                    //                                                        //
-                    // A Text Parsing Method (other than UTF-8) has been      //
-                    // specified - dependent on method, the 'character set'   //
-                    // may consist of:                                        //
-                    //                                                        //
-                    //  - All single-byte code-point values                   //
-                    //  - All double-byte code-point values                   //
-                    //  - A mix of single-byte and double-byte ranges         //
-                    //                                                        //
-                    // For the single-byte range (0x00 -> 0xff), set up a     //
-                    // table showing which single-byte values are permitted.  //
-                    //                                                        //
-                    //--------------------------------------------------------//
-
-                    int blockMin,
-                          blockMax;
-
-                    ushort[] rangesSingle =
-                        PCLTextParsingMethods.GetRangeDataSingle(
-                                                (int)indxTextParseMethod);
-
-                    int ctRangeData = 0;
-
-                    utf8 = false;
-
-                    checkSingleByteCodes = true;
-
-                    if (rangesSingle != null)
-                        ctRangeData = (rangesSingle.Length / 2);
-
-                    for (int i = 0; i < sizeSingleByteSet; i++)
+                    for (int j = blockMin; j <= blockMax; j++)
                     {
-                        validSingleByteCodes[i] = false;
+                        validSingleByteCodes[j] = true;
                     }
+                }
+            }
+        }
 
-                    for (int i = 0; i < ctRangeData; i += 2)
+        //----------------------------------------------------------------//
+
+        if ((showC0Chars) || (sampleRangeOffset != 0))
+            startIndxMajor = indxMajorC0Start;
+        else
+            startIndxMajor = indxMajorC0End;
+
+        //----------------------------------------------------------------//
+
+        if (optGridVertical)
+        {
+            posX = (short)(marginX + (_cellWidth * (startIndxMajor + 1)) +
+                                      (_cellWidth / 3));
+            posY = _posYGrid + (_cellHeight * 2 / 3);
+        }
+        else
+        {
+            posX = (short)(marginX + (_cellWidth / 3));
+            posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
+                                        (_cellHeight * 2 / 3));
+        }
+
+        posXStart = posX;
+        posYStart = posY;
+
+        //----------------------------------------------------------------//
+
+        for (int indxMajor = startIndxMajor;
+                   indxMajor < _gridDim;
+                   indxMajor++)
+        {
+            PCLWriter.CursorPosition(prnWriter, posX, posY);
+
+            PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
+
+            for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
+            {
+                PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Pop);
+
+                if (optGridVertical)
+                    PCLWriter.CursorRelative(prnWriter, 0, _cellHeight);
+                else
+                    PCLWriter.CursorRelative(prnWriter, _cellWidth, 0);
+
+                PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
+
+                ushort codeVal = (ushort)(sampleRangeOffset +
+                                           (indxMajor * _gridDim) +
+                                           indxMinor);
+
+                validCodePoint = true;
+
+                if ((checkSingleByteCodes) &&
+                    (codeVal <= singleByteMax))
+                {
+                    //------------------------------------------------//
+                    //                                                //
+                    // Text Parsing Method (other than UTF-8)         //
+                    // specified; check if this code-point is valid   //
+                    // for the method.                                //
+                    // Don't print it if it is not in the allowed     //
+                    // list appropriate to the method.                //
+                    //                                                //
+                    //------------------------------------------------//
+
+                    validCodePoint = validSingleByteCodes[codeVal];
+                }
+
+                if (validCodePoint)
+                {
+                    if (utf8)
                     {
-                        blockMin = rangesSingle[i];
-                        blockMax = rangesSingle[i + 1];
+                        //------------------------------------------------//
+                        //                                                //
+                        // Convert code-point value to UTF-8 sequence.    //
+                        //                                                //
+                        // If we are using a user-defined symbol set file //
+                        // with an 'index' (rather than 'embed') action,  //
+                        // determine the target 'mapped' code-point.      //
+                        //                                                //
+                        //------------------------------------------------//
 
-                        for (int j = blockMin; j <= blockMax; j++)
+                        byte[] utf8Seq = new byte[4];
+                        int utf8Len = 0;
+
+                        if ((symSetUserSet) && (!symSetUserActEmbed))
                         {
-                            validSingleByteCodes[j] = true;
+                            ushort mapVal;
+
+                            if (codeVal <= _symSetUserMapMax)
+                            {
+                                mapVal = _symSetUserMap[codeVal];
+                            }
+                            else
+                            {
+                                mapVal = 0xffff;
+                            }
+
+                            codeVal = mapVal;
                         }
+
+                        if (codeVal <= rangeC0Max)
+                        {
+                            //--------------------------------------------//
+                            //                                            //
+                            // Code-point is in the C0 range - print it   //
+                            // via the 'transparent print' mechanism.     //
+                            //                                            //
+                            //--------------------------------------------//
+
+                            PCLWriter.TransparentPrint(prnWriter, 1);
+
+                            byte[] x = new byte[1];
+
+                            x[0] = (byte)(codeVal);
+
+                            prnWriter.Write(x, 0, 1);
+                        }
+                        else
+                        {
+                            //--------------------------------------------//
+                            //                                            //
+                            // Print UTF-8 coded value.                   //
+                            //                                            //
+                            //--------------------------------------------//
+
+                            PrnParseDataUTF8.ConvertUTF32ToUTF8Bytes(
+                                codeVal,
+                                ref utf8Len,
+                                ref utf8Seq);
+
+                            prnWriter.Write(utf8Seq, 0, utf8Len);
+                        }
+                    }
+                    else if ((codeVal <= singleByteMax) &&
+                             (!twoByteMethod))
+                    {
+                        //------------------------------------------------//
+                        //                                                //
+                        // Not UTF-8 and not using two-byte parse method. //
+                        // Convert code-point to single-byte value.       //
+                        // If code-point is in the C0 range, print it via //
+                        // the 'transparent print' mechanism.             //
+                        //                                                //
+                        //------------------------------------------------//
+
+                        if (codeVal <= rangeC0Max)
+                        {
+                            PCLWriter.TransparentPrint(prnWriter, 1);
+                        }
+
+                        byte[] x = new byte[1];
+
+                        x[0] = (byte)(codeVal);
+
+                        prnWriter.Write(x, 0, 1);
+                    }
+                    else
+                    {
+                        //------------------------------------------------//
+                        //                                                //
+                        // Not UTF-8; convert code-point to double-byte   //
+                        // value.                                         //
+                        // If code-point is in the C0 range, print it via //
+                        // the 'transparent print' mechanism.             //
+                        //                                                //
+                        //------------------------------------------------//
+
+                        if (codeVal <= rangeC0Max)
+                        {
+                            PCLWriter.TransparentPrint(prnWriter, 2);
+                        }
+
+                        byte[] x = new byte[2];
+
+                        x[0] = (byte)((codeVal >> 8) & 0xff);
+                        x[1] = (byte)(codeVal & 0xff);
+
+                        prnWriter.Write(x, 0, 2);
                     }
                 }
             }
 
-            //----------------------------------------------------------------//
+            PCLWriter.CursorPushPop(prnWriter,
+                     PCLWriter.ePushPop.Pop);
 
+            if (optGridVertical)
+                posX += _cellWidth;
+            else
+                posY += _cellHeight;
+        }
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Resets, etc.                                                   //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (indxTextParseMethod !=
+            PCLTextParsingMethods.eIndex.not_specified)
+        {
+            PCLWriter.TextParsingMethod(
+                prnWriter,
+                PCLTextParsingMethods.eIndex.m0_1_byte_default);
+        }
+
+        //----------------------------------------------------------------//
+        //                                                                //
+        // Mapping of target code-points.                                 //
+        //                                                                //
+        //----------------------------------------------------------------//
+
+        if (showMapCodesUCS2)
+        {
             if ((showC0Chars) || (sampleRangeOffset != 0))
                 startIndxMajor = indxMajorC0Start;
             else
                 startIndxMajor = indxMajorC0End;
 
-            //----------------------------------------------------------------//
+            //------------------------------------------------------------//
+            //                                                            //
+            // Unicode target code-point value (print at top of cell).    //
+            // Print target Unicode code-points referenced by the         //
+            // user-defined symbol set file, or the current Unicode range //
+            // (whichever is relevant).                                   //
+            //                                                            //
+            //------------------------------------------------------------//
 
-            if (optGridVertical)
-            {
-                posX = (short)(marginX + (_cellWidth * (startIndxMajor + 1)) +
-                                          (_cellWidth / 3));
-                posY = _posYGrid + (_cellHeight * 2 / 3);
-            }
-            else
-            {
-                posX = (short)(marginX + (_cellWidth / 3));
-                posY = (short)(_posYGrid + (_cellHeight * (startIndxMajor + 1)) +
-                                            (_cellHeight * 2 / 3));
-            }
+            posX = (short)(posXStart - ((_cellWidth * 7) / 24));
+            posY = (short)(posYStart - (_cellHeight / 2));
 
-            posXStart = posX;
-            posYStart = posY;
-
-            //----------------------------------------------------------------//
+            PCLWriter.Font(prnWriter, true, "19U", "s1p6v0s0b16602T");
 
             for (int indxMajor = startIndxMajor;
                        indxMajor < _gridDim;
                        indxMajor++)
             {
+                ushort codeVal,
+                       mapVal;
+
                 PCLWriter.CursorPosition(prnWriter, posX, posY);
 
                 PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
@@ -1084,344 +1293,134 @@ namespace PCLParaphernalia
 
                     PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
 
-                    ushort codeVal = (ushort)(sampleRangeOffset +
-                                               (indxMajor * _gridDim) +
-                                               indxMinor);
+                    codeVal = (ushort)(((indxMajor * _gridDim) +
+                                         indxMinor) + sampleRangeOffset);
 
-                    validCodePoint = true;
-
-                    if ((checkSingleByteCodes) &&
-                        (codeVal <= singleByteMax))
+                    if (symSetUserSet)
                     {
-                        //------------------------------------------------//
-                        //                                                //
-                        // Text Parsing Method (other than UTF-8)         //
-                        // specified; check if this code-point is valid   //
-                        // for the method.                                //
-                        // Don't print it if it is not in the allowed     //
-                        // list appropriate to the method.                //
-                        //                                                //
-                        //------------------------------------------------//
-
-                        validCodePoint = validSingleByteCodes[codeVal];
-                    }
-
-                    if (validCodePoint)
-                    {
-                        if (utf8)
+                        if (codeVal <= _symSetUserMapMax)
                         {
-                            //------------------------------------------------//
-                            //                                                //
-                            // Convert code-point value to UTF-8 sequence.    //
-                            //                                                //
-                            // If we are using a user-defined symbol set file //
-                            // with an 'index' (rather than 'embed') action,  //
-                            // determine the target 'mapped' code-point.      //
-                            //                                                //
-                            //------------------------------------------------//
-
-                            byte[] utf8Seq = new byte[4];
-                            int utf8Len = 0;
-
-                            if ((symSetUserSet) && (!symSetUserActEmbed))
-                            {
-                                ushort mapVal;
-
-                                if (codeVal <= _symSetUserMapMax)
-                                {
-                                    mapVal = _symSetUserMap[codeVal];
-                                }
-                                else
-                                {
-                                    mapVal = 0xffff;
-                                }
-
-                                codeVal = mapVal;
-                            }
-
-                            if (codeVal <= rangeC0Max)
-                            {
-                                //--------------------------------------------//
-                                //                                            //
-                                // Code-point is in the C0 range - print it   //
-                                // via the 'transparent print' mechanism.     //
-                                //                                            //
-                                //--------------------------------------------//
-
-                                PCLWriter.TransparentPrint(prnWriter, 1);
-
-                                byte[] x = new byte[1];
-
-                                x[0] = (byte)(codeVal);
-
-                                prnWriter.Write(x, 0, 1);
-                            }
-                            else
-                            {
-                                //--------------------------------------------//
-                                //                                            //
-                                // Print UTF-8 coded value.                   //
-                                //                                            //
-                                //--------------------------------------------//
-
-                                PrnParseDataUTF8.ConvertUTF32ToUTF8Bytes(
-                                    codeVal,
-                                    ref utf8Len,
-                                    ref utf8Seq);
-
-                                prnWriter.Write(utf8Seq, 0, utf8Len);
-                            }
-                        }
-                        else if ((codeVal <= singleByteMax) &&
-                                 (!twoByteMethod))
-                        {
-                            //------------------------------------------------//
-                            //                                                //
-                            // Not UTF-8 and not using two-byte parse method. //
-                            // Convert code-point to single-byte value.       //
-                            // If code-point is in the C0 range, print it via //
-                            // the 'transparent print' mechanism.             //
-                            //                                                //
-                            //------------------------------------------------//
-
-                            if (codeVal <= rangeC0Max)
-                            {
-                                PCLWriter.TransparentPrint(prnWriter, 1);
-                            }
-
-                            byte[] x = new byte[1];
-
-                            x[0] = (byte)(codeVal);
-
-                            prnWriter.Write(x, 0, 1);
+                            mapVal = _symSetUserMap[codeVal];
                         }
                         else
                         {
-                            //------------------------------------------------//
-                            //                                                //
-                            // Not UTF-8; convert code-point to double-byte   //
-                            // value.                                         //
-                            // If code-point is in the C0 range, print it via //
-                            // the 'transparent print' mechanism.             //
-                            //                                                //
-                            //------------------------------------------------//
-
-                            if (codeVal <= rangeC0Max)
-                            {
-                                PCLWriter.TransparentPrint(prnWriter, 2);
-                            }
-
-                            byte[] x = new byte[2];
-
-                            x[0] = (byte)((codeVal >> 8) & 0xff);
-                            x[1] = (byte)(codeVal & 0xff);
-
-                            prnWriter.Write(x, 0, 2);
+                            mapVal = 0xffff;
                         }
+                    }
+                    else
+                    {
+                        mapVal = codeVal;
+                    }
+
+                    if (mapVal != 0xffff)
+                    {
+                        string seq = mapVal.ToString("X4");
+                        int seqLen = seq.Length;
+
+                        prnWriter.Write(("U+" + seq).ToCharArray(),
+                                        0, seqLen + 2);
                     }
                 }
 
                 PCLWriter.CursorPushPop(prnWriter,
-                         PCLWriter.ePushPop.Pop);
+                     PCLWriter.ePushPop.Pop);
 
                 if (optGridVertical)
                     posX += _cellWidth;
                 else
                     posY += _cellHeight;
             }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Resets, etc.                                                   //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            if (indxTextParseMethod !=
-                PCLTextParsingMethods.eIndex.not_specified)
-            {
-                PCLWriter.TextParsingMethod(
-                    prnWriter,
-                    PCLTextParsingMethods.eIndex.m0_1_byte_default);
-            }
-
-            //----------------------------------------------------------------//
-            //                                                                //
-            // Mapping of target code-points.                                 //
-            //                                                                //
-            //----------------------------------------------------------------//
-
-            if (showMapCodesUCS2)
-            {
-                if ((showC0Chars) || (sampleRangeOffset != 0))
-                    startIndxMajor = indxMajorC0Start;
-                else
-                    startIndxMajor = indxMajorC0End;
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Unicode target code-point value (print at top of cell).    //
-                // Print target Unicode code-points referenced by the         //
-                // user-defined symbol set file, or the current Unicode range //
-                // (whichever is relevant).                                   //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                posX = (short)(posXStart - ((_cellWidth * 7) / 24));
-                posY = (short)(posYStart - (_cellHeight / 2));
-
-                PCLWriter.Font(prnWriter, true, "19U", "s1p6v0s0b16602T");
-
-                for (int indxMajor = startIndxMajor;
-                           indxMajor < _gridDim;
-                           indxMajor++)
-                {
-                    ushort codeVal,
-                           mapVal;
-
-                    PCLWriter.CursorPosition(prnWriter, posX, posY);
-
-                    PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
-
-                    for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
-                    {
-                        PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Pop);
-
-                        if (optGridVertical)
-                            PCLWriter.CursorRelative(prnWriter, 0, _cellHeight);
-                        else
-                            PCLWriter.CursorRelative(prnWriter, _cellWidth, 0);
-
-                        PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
-
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
-
-                        if (symSetUserSet)
-                        {
-                            if (codeVal <= _symSetUserMapMax)
-                            {
-                                mapVal = _symSetUserMap[codeVal];
-                            }
-                            else
-                            {
-                                mapVal = 0xffff;
-                            }
-                        }
-                        else
-                        {
-                            mapVal = codeVal;
-                        }
-
-                        if (mapVal != 0xffff)
-                        {
-                            string seq = mapVal.ToString("X4");
-                            int seqLen = seq.Length;
-
-                            prnWriter.Write(("U+" + seq).ToCharArray(),
-                                            0, seqLen + 2);
-                        }
-                    }
-
-                    PCLWriter.CursorPushPop(prnWriter,
-                         PCLWriter.ePushPop.Pop);
-
-                    if (optGridVertical)
-                        posX += _cellWidth;
-                    else
-                        posY += _cellHeight;
-                }
-            }
-
-            if (showMapCodesUTF8)
-            {
-                if ((showC0Chars) || (sampleRangeOffset != 0))
-                    startIndxMajor = indxMajorC0Start;
-                else
-                    startIndxMajor = indxMajorC0End;
-
-                //------------------------------------------------------------//
-                //                                                            //
-                // Equivalent UTF-8 representation of target code-point       //
-                // value (print at bottom of cell).                           //
-                //                                                            //
-                //------------------------------------------------------------//
-
-                posX = (short)(posXStart - ((_cellWidth * 7) / 24));
-                posY = (short)(posYStart + ((_cellHeight * 3) / 10));
-
-                PCLWriter.Font(prnWriter, true, "19U", "s1p5v0s0b16602T");
-
-                for (int indxMajor = startIndxMajor;
-                           indxMajor < _gridDim;
-                           indxMajor++)
-                {
-                    ushort codeVal,
-                           mapVal;
-
-                    PCLWriter.CursorPosition(prnWriter, posX, posY);
-
-                    PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
-
-                    for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
-                    {
-                        PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Pop);
-
-                        if (optGridVertical)
-                            PCLWriter.CursorRelative(prnWriter, 0, _cellHeight);
-                        else
-                            PCLWriter.CursorRelative(prnWriter, _cellWidth, 0);
-
-                        PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
-
-                        codeVal = (ushort)(((indxMajor * _gridDim) +
-                                             indxMinor) + sampleRangeOffset);
-
-                        if (symSetUserSet)
-                        {
-                            if (codeVal <= _symSetUserMapMax)
-                            {
-                                mapVal = _symSetUserMap[codeVal];
-                            }
-                            else
-                            {
-                                mapVal = 0xffff;
-                            }
-                        }
-                        else
-                        {
-                            mapVal = codeVal;
-                        }
-
-                        if (mapVal != 0xffff)
-                        {
-                            string utf8Hex = null;
-                            int utf8HexLen = 0;
-
-                            PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(
-                                mapVal,
-                                true,
-                                ref utf8Hex);
-
-                            utf8HexLen = utf8Hex.Length;
-
-                            prnWriter.Write(utf8Hex.ToCharArray(),
-                                             0, utf8HexLen);
-                        }
-                    }
-
-                    PCLWriter.CursorPushPop(prnWriter,
-                         PCLWriter.ePushPop.Pop);
-
-                    if (optGridVertical)
-                        posX += _cellWidth;
-                    else
-                        posY += _cellHeight;
-                }
-            }
-
-            //----------------------------------------------------------------//
-
-            PCLWriter.FormFeed(prnWriter);
         }
+
+        if (showMapCodesUTF8)
+        {
+            if ((showC0Chars) || (sampleRangeOffset != 0))
+                startIndxMajor = indxMajorC0Start;
+            else
+                startIndxMajor = indxMajorC0End;
+
+            //------------------------------------------------------------//
+            //                                                            //
+            // Equivalent UTF-8 representation of target code-point       //
+            // value (print at bottom of cell).                           //
+            //                                                            //
+            //------------------------------------------------------------//
+
+            posX = (short)(posXStart - ((_cellWidth * 7) / 24));
+            posY = (short)(posYStart + ((_cellHeight * 3) / 10));
+
+            PCLWriter.Font(prnWriter, true, "19U", "s1p5v0s0b16602T");
+
+            for (int indxMajor = startIndxMajor;
+                       indxMajor < _gridDim;
+                       indxMajor++)
+            {
+                ushort codeVal,
+                       mapVal;
+
+                PCLWriter.CursorPosition(prnWriter, posX, posY);
+
+                PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
+
+                for (int indxMinor = 0; indxMinor < _gridDim; indxMinor++)
+                {
+                    PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Pop);
+
+                    if (optGridVertical)
+                        PCLWriter.CursorRelative(prnWriter, 0, _cellHeight);
+                    else
+                        PCLWriter.CursorRelative(prnWriter, _cellWidth, 0);
+
+                    PCLWriter.CursorPushPop(prnWriter, PCLWriter.ePushPop.Push);
+
+                    codeVal = (ushort)(((indxMajor * _gridDim) +
+                                         indxMinor) + sampleRangeOffset);
+
+                    if (symSetUserSet)
+                    {
+                        if (codeVal <= _symSetUserMapMax)
+                        {
+                            mapVal = _symSetUserMap[codeVal];
+                        }
+                        else
+                        {
+                            mapVal = 0xffff;
+                        }
+                    }
+                    else
+                    {
+                        mapVal = codeVal;
+                    }
+
+                    if (mapVal != 0xffff)
+                    {
+                        string utf8Hex = null;
+                        int utf8HexLen = 0;
+
+                        PrnParseDataUTF8.ConvertUTF32ToUTF8HexString(
+                            mapVal,
+                            true,
+                            ref utf8Hex);
+
+                        utf8HexLen = utf8Hex.Length;
+
+                        prnWriter.Write(utf8Hex.ToCharArray(),
+                                         0, utf8HexLen);
+                    }
+                }
+
+                PCLWriter.CursorPushPop(prnWriter,
+                     PCLWriter.ePushPop.Pop);
+
+                if (optGridVertical)
+                    posX += _cellWidth;
+                else
+                    posY += _cellHeight;
+            }
+        }
+
+        //----------------------------------------------------------------//
+
+        PCLWriter.FormFeed(prnWriter);
     }
 }

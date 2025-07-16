@@ -1,80 +1,79 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PCL 'status readback' Location Type object.
+/// 
+/// © Chris Hutchinson 2010
+/// 
+/// </summary>
+
+class PCLLocationType
 {
-    /// <summary>
-    /// 
-    /// Class handles a PCL 'status readback' Location Type object.
-    /// 
-    /// © Chris Hutchinson 2010
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class PCLLocationType
+    private readonly PCLLocationTypes.eType _locationType;
+    private readonly string _locationName;
+    private readonly string _locationIdPCL;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L L o c a t i o n T y p e                                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLLocationType(PCLLocationTypes.eType type,
+                           string id,
+                           string name)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _locationType = type;
+        _locationIdPCL = id;
+        _locationName = name;
+    }
 
-        private readonly PCLLocationTypes.eType _locationType;
-        private readonly string _locationName;
-        private readonly string _locationIdPCL;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t I d P C L                                                   //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the identifier value.                                       //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L L o c a t i o n T y p e                                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string GetIdPCL()
+    {
+        return _locationIdPCL;
+    }
 
-        public PCLLocationType(PCLLocationTypes.eType type,
-                               string id,
-                               string name)
-        {
-            _locationType = type;
-            _locationIdPCL = id;
-            _locationName = name;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t N a m e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the location type name.                                     //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t I d P C L                                                   //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the identifier value.                                       //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string GetName()
+    {
+        return _locationName;
+    }
 
-        public string GetIdPCL()
-        {
-            return _locationIdPCL;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t T y p e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the entity type.                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t N a m e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the location type name.                                     //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string GetName()
-        {
-            return _locationName;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t T y p e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the entity type.                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public PCLLocationTypes.eType GetType()
-        {
-            return _locationType;
-        }
+    public PCLLocationTypes.eType GetType()
+    {
+        return _locationType;
     }
 }

@@ -1,364 +1,363 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class defines a set of PCL 'status readback' Entity Type objects.
+/// 
+/// © Chris Hutchinson 2017
+/// 
+/// </summary>
+
+static class PrnParseRowTypes
 {
-    /// <summary>
-    /// 
-    /// Class defines a set of PCL 'status readback' Entity Type objects.
-    /// 
-    /// © Chris Hutchinson 2017
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    static class PrnParseRowTypes
+    public enum eType
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        MsgError = 0,
+        MsgWarning,
+        MsgComment,
+        MsgDiag,
+        DataBinary,
+        DataText,
+        PCLSeqComplex,
+        PCLSeqSimple,
+        PCLControlCode,
+        PCLDecode,
+        PCLFontHddr,
+        PCLFontChar,
+        HPGL2Command,
+        HPGL2ControlCode,
+        PCLXLStreamHddr,
+        PCLXLWhiteSpace,
+        PCLXLOperator,
+        PCLXLAttribute,
+        PCLXLDataType,
+        PCLXLDataValue,
+        PCLXLFontHddr,
+        PCLXLFontChar,
+        PJLCommand,
+        PMLSeq,
+        PrescribeCommand
+    }
 
-        public enum eType
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Must keep this in the same order as the eType enumeration.         //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    private static readonly PrnParseRowType[] _rowTypes =
+    {
+        new PrnParseRowType(eType.MsgError,
+                            "Error message"),
+        new PrnParseRowType(eType.MsgWarning,
+                             "Warning message"),
+        new PrnParseRowType(eType.MsgComment,
+                            "Comment"),
+        new PrnParseRowType(eType.MsgDiag,
+                            "Diagnostic"),
+        new PrnParseRowType(eType.DataBinary,
+                            "Binary data"),
+        new PrnParseRowType(eType.DataText,
+                            "Text data"),
+        new PrnParseRowType(eType.PCLSeqComplex,
+                            "PCL complex sequence"),
+        new PrnParseRowType(eType.PCLSeqSimple,
+                            "PCL simple sequence"),
+        new PrnParseRowType(eType.PCLControlCode,
+                            "PCL control code"),
+        new PrnParseRowType(eType.PCLDecode,
+                            "PCL binary data decode"),
+        new PrnParseRowType(eType.PCLFontHddr,
+                            "PCL soft font header"),
+        new PrnParseRowType(eType.PCLFontChar,
+                            "PCL soft font character"),
+        new PrnParseRowType(eType.HPGL2Command,
+                            "HP-GL/2 command"),
+        new PrnParseRowType(eType.HPGL2ControlCode,
+                            "HP-GL/2 control code"),
+        new PrnParseRowType(eType.PCLXLStreamHddr,
+                            "PCL XL stream header"),
+        new PrnParseRowType(eType.PCLXLWhiteSpace,
+                            "PCL XL whitespace"),
+        new PrnParseRowType(eType.PCLXLOperator,
+                            "PCL XL operator"),
+        new PrnParseRowType(eType.PCLXLAttribute,
+                            "PCL XL attribute"),
+        new PrnParseRowType(eType.PCLXLDataType,
+                            "PCL XL data type"),
+        new PrnParseRowType(eType.PCLXLDataValue,
+                            "PCL XL data value"),
+        new PrnParseRowType(eType.PCLXLFontHddr,
+                            "PCL XL soft font header"),
+        new PrnParseRowType(eType.PCLXLFontChar,
+                            "PCL XL soft font character"),
+        new PrnParseRowType(eType.PJLCommand,
+                            "PJL command"),
+        new PrnParseRowType(eType.PMLSeq,
+                            "PML sequence"),
+        new PrnParseRowType(eType.PrescribeCommand,
+                            "Prescribe command")
+   };
+
+    private static readonly int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t C o u n t                                                    //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return count of Entity Type definitions.                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static int GetCount()
+    {
+        return _rowTypeCount;
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t D e s c                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return description associated with specified row type index.       //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static string GetDesc(int selection)
+    {
+        return _rowTypes[selection].GetDesc();
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t T y p e                                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return type of type.                                               //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static eType GetType(int selection)
+    {
+        return _rowTypes[selection].GetType();
+    }
+
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s e t D e f a u l t C l r s                                        //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Sets default background/foreground colours for each row type.      //
+    //                                                                    //
+    // Use the colours defined by the standard 'Colors' class object.     //
+    // This list should consist of 140 standard colours (as defined in    //
+    // .net, Unix X11, etc.) plus the 'transparent' colour.               //
+    // This list is unlikely to change, so we can store the indices of    //
+    // the selected colours and be relatively confident that these will   //
+    // always refer to the same actual colours.                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public static void SetDefaultClrs(
+        ref int[] indxClrMapBack,
+        ref int[] indxClrMapFore)
+    {
+        eType rowType;
+
+        for (int i = 0; i < _rowTypeCount; i++)
         {
-            MsgError = 0,
-            MsgWarning,
-            MsgComment,
-            MsgDiag,
-            DataBinary,
-            DataText,
-            PCLSeqComplex,
-            PCLSeqSimple,
-            PCLControlCode,
-            PCLDecode,
-            PCLFontHddr,
-            PCLFontChar,
-            HPGL2Command,
-            HPGL2ControlCode,
-            PCLXLStreamHddr,
-            PCLXLWhiteSpace,
-            PCLXLOperator,
-            PCLXLAttribute,
-            PCLXLDataType,
-            PCLXLDataValue,
-            PCLXLFontHddr,
-            PCLXLFontChar,
-            PJLCommand,
-            PMLSeq,
-            PrescribeCommand
-        }
+            rowType = (eType)i;
 
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Must keep this in the same order as the eType enumeration.         //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        private static readonly PrnParseRowType[] _rowTypes =
-        {
-            new PrnParseRowType(eType.MsgError,
-                                "Error message"),
-            new PrnParseRowType(eType.MsgWarning,
-                                 "Warning message"),
-            new PrnParseRowType(eType.MsgComment,
-                                "Comment"),
-            new PrnParseRowType(eType.MsgDiag,
-                                "Diagnostic"),
-            new PrnParseRowType(eType.DataBinary,
-                                "Binary data"),
-            new PrnParseRowType(eType.DataText,
-                                "Text data"),
-            new PrnParseRowType(eType.PCLSeqComplex,
-                                "PCL complex sequence"),
-            new PrnParseRowType(eType.PCLSeqSimple,
-                                "PCL simple sequence"),
-            new PrnParseRowType(eType.PCLControlCode,
-                                "PCL control code"),
-            new PrnParseRowType(eType.PCLDecode,
-                                "PCL binary data decode"),
-            new PrnParseRowType(eType.PCLFontHddr,
-                                "PCL soft font header"),
-            new PrnParseRowType(eType.PCLFontChar,
-                                "PCL soft font character"),
-            new PrnParseRowType(eType.HPGL2Command,
-                                "HP-GL/2 command"),
-            new PrnParseRowType(eType.HPGL2ControlCode,
-                                "HP-GL/2 control code"),
-            new PrnParseRowType(eType.PCLXLStreamHddr,
-                                "PCL XL stream header"),
-            new PrnParseRowType(eType.PCLXLWhiteSpace,
-                                "PCL XL whitespace"),
-            new PrnParseRowType(eType.PCLXLOperator,
-                                "PCL XL operator"),
-            new PrnParseRowType(eType.PCLXLAttribute,
-                                "PCL XL attribute"),
-            new PrnParseRowType(eType.PCLXLDataType,
-                                "PCL XL data type"),
-            new PrnParseRowType(eType.PCLXLDataValue,
-                                "PCL XL data value"),
-            new PrnParseRowType(eType.PCLXLFontHddr,
-                                "PCL XL soft font header"),
-            new PrnParseRowType(eType.PCLXLFontChar,
-                                "PCL XL soft font character"),
-            new PrnParseRowType(eType.PJLCommand,
-                                "PJL command"),
-            new PrnParseRowType(eType.PMLSeq,
-                                "PML sequence"),
-            new PrnParseRowType(eType.PrescribeCommand,
-                                "Prescribe command")
-       };
-
-        private static readonly int _rowTypeCount = _rowTypes.GetUpperBound(0) + 1;
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t C o u n t                                                    //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return count of Entity Type definitions.                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static int GetCount()
-        {
-            return _rowTypeCount;
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t D e s c                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return description associated with specified row type index.       //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static string GetDesc(int selection)
-        {
-            return _rowTypes[selection].GetDesc();
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t T y p e                                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return type of type.                                               //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static eType GetType(int selection)
-        {
-            return _rowTypes[selection].GetType();
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s e t D e f a u l t C l r s                                        //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Sets default background/foreground colours for each row type.      //
-        //                                                                    //
-        // Use the colours defined by the standard 'Colors' class object.     //
-        // This list should consist of 140 standard colours (as defined in    //
-        // .net, Unix X11, etc.) plus the 'transparent' colour.               //
-        // This list is unlikely to change, so we can store the indices of    //
-        // the selected colours and be relatively confident that these will   //
-        // always refer to the same actual colours.                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public static void SetDefaultClrs(
-            ref int[] indxClrMapBack,
-            ref int[] indxClrMapFore)
-        {
-            eType rowType;
-
-            for (int i = 0; i < _rowTypeCount; i++)
+            switch (rowType)
             {
-                rowType = (eType)i;
+                case PrnParseRowTypes.eType.MsgError:
 
-                switch (rowType)
-                {
-                    case PrnParseRowTypes.eType.MsgError:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Crimson;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Yellow;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Crimson;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Yellow;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.MsgWarning:
 
-                    case PrnParseRowTypes.eType.MsgWarning:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Red;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.White;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Red;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.White;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.MsgComment:
 
-                    case PrnParseRowTypes.eType.MsgComment:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Bisque;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Bisque;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.MsgDiag:
 
-                    case PrnParseRowTypes.eType.MsgDiag:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Fuchsia;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Yellow;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Fuchsia;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Yellow;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.DataBinary:
 
-                    case PrnParseRowTypes.eType.DataBinary:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Ivory;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.SlateGray;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Ivory;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.SlateGray;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.DataText:
 
-                    case PrnParseRowTypes.eType.DataText:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Azure;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Azure;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLSeqComplex:
 
-                    case PrnParseRowTypes.eType.PCLSeqComplex:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightYellow;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkBlue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightYellow;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkBlue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLSeqSimple:
 
-                    case PrnParseRowTypes.eType.PCLSeqSimple:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightYellow;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightYellow;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLControlCode:
 
-                    case PrnParseRowTypes.eType.PCLControlCode:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Honeydew;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Honeydew;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLDecode:
 
-                    case PrnParseRowTypes.eType.PCLDecode:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.White;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.White;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLFontHddr:
 
-                    case PrnParseRowTypes.eType.PCLFontHddr:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.BlueViolet;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.BlueViolet;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLFontChar:
 
-                    case PrnParseRowTypes.eType.PCLFontChar:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkMagenta;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkMagenta;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.HPGL2Command:
 
-                    case PrnParseRowTypes.eType.HPGL2Command:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LemonChiffon;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LemonChiffon;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.HPGL2ControlCode:
 
-                    case PrnParseRowTypes.eType.HPGL2ControlCode:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.PaleGoldenrod;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.PaleGoldenrod;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLStreamHddr:
 
-                    case PrnParseRowTypes.eType.PCLXLStreamHddr:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightGreen;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightGreen;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLWhiteSpace:
 
-                    case PrnParseRowTypes.eType.PCLXLWhiteSpace:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.SeaShell;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.SeaShell;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLOperator:
 
-                    case PrnParseRowTypes.eType.PCLXLOperator:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Red;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Red;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLAttribute:
 
-                    case PrnParseRowTypes.eType.PCLXLAttribute:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.MistyRose;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Red;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.MistyRose;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Red;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLDataType:
 
-                    case PrnParseRowTypes.eType.PCLXLDataType:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.FloralWhite;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.FloralWhite;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLDataValue:
 
-                    case PrnParseRowTypes.eType.PCLXLDataValue:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.FloralWhite;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.FloralWhite;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLFontHddr:
 
-                    case PrnParseRowTypes.eType.PCLXLFontHddr:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PCLXLFontChar:
 
-                    case PrnParseRowTypes.eType.PCLXLFontChar:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkMagenta;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.LightCyan;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.DarkMagenta;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PJLCommand:
 
-                    case PrnParseRowTypes.eType.PJLCommand:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Khaki;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Khaki;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PMLSeq:
 
-                    case PrnParseRowTypes.eType.PMLSeq:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Lavender;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.Lavender;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Blue;
+                    break;
 
-                        break;
+                case PrnParseRowTypes.eType.PrescribeCommand:
 
-                    case PrnParseRowTypes.eType.PrescribeCommand:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.PeachPuff;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.PeachPuff;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Teal;
+                    break;
 
-                        break;
+                default:
 
-                    default:
+                    indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.White;
+                    indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
 
-                        indxClrMapBack[i] = (int)PrnParseConstants.eStdClrs.White;
-                        indxClrMapFore[i] = (int)PrnParseConstants.eStdClrs.Black;
-
-                        break;
-                }
+                    break;
             }
         }
     }

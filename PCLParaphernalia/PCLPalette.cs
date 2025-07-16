@@ -1,206 +1,205 @@
-﻿namespace PCLParaphernalia
+﻿namespace PCLParaphernalia;
+
+/// <summary>
+/// 
+/// Class handles a PCL Palette object.
+/// 
+/// © Chris Hutchinson 2014
+/// 
+/// </summary>
+
+class PCLPalette
 {
-    /// <summary>
-    /// 
-    /// Class handles a PCL Palette object.
-    /// 
-    /// © Chris Hutchinson 2014
-    /// 
-    /// </summary>
+    //--------------------------------------------------------------------//
+    //                                                        F i e l d s //
+    // Class variables.                                                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-    class PCLPalette
+    private readonly string _name;
+
+    private readonly bool _flagMonochrome;
+
+    private readonly short _paletteId;
+    private readonly byte _ctClrItems;
+    private byte _crntClrItem;
+
+    private byte _clrItemWhite;
+    private byte _clrItemBlack;
+
+    private readonly byte[] _colourIds;
+    private readonly string[] _colourNames;
+
+    //--------------------------------------------------------------------//
+    //                                              C o n s t r u c t o r //
+    // P C L P a l e t t e                                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
+
+    public PCLPalette(string name,
+                       bool flagMonochrome,
+                       short paletteId,
+                       byte ctClrItems)
     {
-        //--------------------------------------------------------------------//
-        //                                                        F i e l d s //
-        // Class variables.                                                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+        _name = name;
+        _flagMonochrome = flagMonochrome;
+        _paletteId = paletteId;
+        _ctClrItems = ctClrItems;
 
-        private readonly string _name;
+        _colourIds = new byte[ctClrItems];
+        _colourNames = new string[ctClrItems];
 
-        private readonly bool _flagMonochrome;
+        _crntClrItem = 0;
+        _clrItemWhite = 0;
+        _clrItemBlack = 0;
+    }
 
-        private readonly short _paletteId;
-        private readonly byte _ctClrItems;
-        private byte _crntClrItem;
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // a d d C o l o u r                                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Add a colour to the next slot in the palette.                      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        private byte _clrItemWhite;
-        private byte _clrItemBlack;
+    public void AddColour(string name,
+                           byte id)
+    {
+        _colourNames[_crntClrItem] = name;
+        _colourIds[_crntClrItem] = id;
 
-        private readonly byte[] _colourIds;
-        private readonly string[] _colourNames;
+        _crntClrItem++;
+    }
 
-        //--------------------------------------------------------------------//
-        //                                              C o n s t r u c t o r //
-        // P C L P a l e t t e                                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // C l r I t e m B l a c k                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public PCLPalette(string name,
-                           bool flagMonochrome,
-                           short paletteId,
-                           byte ctClrItems)
-        {
-            _name = name;
-            _flagMonochrome = flagMonochrome;
-            _paletteId = paletteId;
-            _ctClrItems = ctClrItems;
+    public byte ClrItemBlack
+    {
+        get { return _clrItemBlack; }
+    }
 
-            _colourIds = new byte[ctClrItems];
-            _colourNames = new string[ctClrItems];
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // C l r I t e m W h i t e                                            //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-            _crntClrItem = 0;
-            _clrItemWhite = 0;
-            _clrItemBlack = 0;
-        }
+    public byte ClrItemWhite
+    {
+        get { return _clrItemWhite; }
+    }
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // a d d C o l o u r                                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Add a colour to the next slot in the palette.                      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // C t C l r I t e m s                                                //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the count of colour items in the palette.                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        public void AddColour(string name,
-                               byte id)
-        {
-            _colourNames[_crntClrItem] = name;
-            _colourIds[_crntClrItem] = id;
+    public byte CtClrItems
+    {
+        get { return _ctClrItems; }
+    }
 
-            _crntClrItem++;
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t C o l o u r I d                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Get the PCL colour identifier for the specified colour entry.      //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // C l r I t e m B l a c k                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public byte GetColourId(int item)
+    {
+        return _colourIds[item];
+    }
 
-        public byte ClrItemBlack
-        {
-            get { return _clrItemBlack; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // g e t C o l o u r N a m e                                          //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Get the colour name for the specified colour entry.                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // C l r I t e m W h i t e                                            //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string GetColourName(int item)
+    {
+        return _colourNames[item];
+    }
 
-        public byte ClrItemWhite
-        {
-            get { return _clrItemWhite; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // M o n o c h r o m e                                                //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // C t C l r I t e m s                                                //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the count of colour items in the palette.                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public bool Monochrome
+    {
+        get { return _flagMonochrome; }
+    }
 
-        public byte CtClrItems
-        {
-            get { return _ctClrItems; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // P a l e t t e I d                                                  //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the PCL identifier value for the palette.                   //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t C o l o u r I d                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Get the PCL colour identifier for the specified colour entry.      //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public short PaletteId
+    {
+        get { return _paletteId; }
+    }
 
-        public byte GetColourId(int item)
-        {
-            return _colourIds[item];
-        }
+    //--------------------------------------------------------------------//
+    //                                                    P r o p e r t y //
+    // P a l e t t e N a m e                                              //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Return the palette name.                                           //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // g e t C o l o u r N a m e                                          //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Get the colour name for the specified colour entry.                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public string PaletteName
+    {
+        get { return _name; }
+    }
 
-        public string GetColourName(int item)
-        {
-            return _colourNames[item];
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s e t C l r I t e m B l a c k                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Set the Black index to the current entry.                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // M o n o c h r o m e                                                //
-        //                                                                    //
-        //--------------------------------------------------------------------//
+    public void SetClrItemBlack()
+    {
+        _clrItemBlack = (byte)(_crntClrItem - 1);
+    }
 
-        public bool Monochrome
-        {
-            get { return _flagMonochrome; }
-        }
+    //--------------------------------------------------------------------//
+    //                                                        M e t h o d //
+    // s e t C l r I t e m W h i t e                                      //
+    //--------------------------------------------------------------------//
+    //                                                                    //
+    // Set the White index to the current entry.                          //
+    //                                                                    //
+    //--------------------------------------------------------------------//
 
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // P a l e t t e I d                                                  //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the PCL identifier value for the palette.                   //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public short PaletteId
-        {
-            get { return _paletteId; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                    P r o p e r t y //
-        // P a l e t t e N a m e                                              //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Return the palette name.                                           //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public string PaletteName
-        {
-            get { return _name; }
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s e t C l r I t e m B l a c k                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Set the Black index to the current entry.                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public void SetClrItemBlack()
-        {
-            _clrItemBlack = (byte)(_crntClrItem - 1);
-        }
-
-        //--------------------------------------------------------------------//
-        //                                                        M e t h o d //
-        // s e t C l r I t e m W h i t e                                      //
-        //--------------------------------------------------------------------//
-        //                                                                    //
-        // Set the White index to the current entry.                          //
-        //                                                                    //
-        //--------------------------------------------------------------------//
-
-        public void SetClrItemWhite()
-        {
-            _clrItemWhite = (byte)(_crntClrItem - 1);
-        }
+    public void SetClrItemWhite()
+    {
+        _clrItemWhite = (byte)(_crntClrItem - 1);
     }
 }
