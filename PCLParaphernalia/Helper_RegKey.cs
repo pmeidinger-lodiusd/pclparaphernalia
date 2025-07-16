@@ -84,10 +84,9 @@ static class Helper_RegKey
         RegistryKey parentKeyName,
         string subKeyName)
     {
-        using (RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName))
-        {
-            return subKey != null;
-        }
+        using RegistryKey subKey = parentKeyName.OpenSubKey(subKeyName);
+
+        return subKey != null;
     }
 
     //--------------------------------------------------------------------//
