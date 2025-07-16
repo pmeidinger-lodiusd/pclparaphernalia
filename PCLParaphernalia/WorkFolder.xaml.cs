@@ -174,7 +174,7 @@ namespace PCLParaphernalia
 
             DialogResult dlgResult = folderDialog.ShowDialog();
 
-            if (dlgResult.ToString() == "OK")
+            if (dlgResult == System.Windows.Forms.DialogResult.OK)
             {
                 selected = true;
                 targetFolder = folderDialog.SelectedPath;
