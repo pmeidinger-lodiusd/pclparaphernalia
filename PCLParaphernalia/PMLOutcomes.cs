@@ -66,7 +66,7 @@ static class PMLOutcomes
             tag = _unknownTag;
         }
 
-        description = tag.getDesc();
+        description = tag.GetDesc();
 
         tag.IncrementStatisticsCount(1);   // Statistical data
 
@@ -219,7 +219,7 @@ static class PMLOutcomes
 
     public static string GetDesc(byte selection)
     {
-        return _tags[selection].getDesc();
+        return _tags[selection].GetDesc();
     }
 
     //--------------------------------------------------------------------//

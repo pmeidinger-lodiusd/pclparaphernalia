@@ -241,7 +241,7 @@ static class PCLXLWhitespaces
         else
             tag = _tagUnknown;
 
-        tag.incrementStatisticsCount(level);
+        tag.IncrementStatisticsCount(level);
     }
 
     //--------------------------------------------------------------------//
