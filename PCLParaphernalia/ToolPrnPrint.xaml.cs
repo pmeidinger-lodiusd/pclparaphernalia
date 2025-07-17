@@ -41,7 +41,7 @@ public partial class ToolPrnPrint : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -61,7 +61,7 @@ public partial class ToolPrnPrint : Window
 
         string filename = _prnFilename;
 
-        selected = selectPrnFile(ref filename);
+        selected = SelectPrnFile(ref filename);
 
         if (selected)
         {
@@ -89,7 +89,7 @@ public partial class ToolPrnPrint : Window
             ToolCommonData.eToolSubIds.None,
             ToolCommonData.ePrintLang.Unknown);
 
-        copyPrnFile(_prnFilename, binWriter);
+        CopyPrnFile(_prnFilename, binWriter);
 
         TargetCore.RequestStreamWrite(false);
     }
@@ -103,14 +103,14 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool copyPrnFile(string prnFilename,
+    public static bool CopyPrnFile(string prnFilename,
                                       BinaryWriter prnWriter)
     {
         bool OK = true;
 
         bool fileOpen = false;
 
-        fileOpen = prnOpen(prnFilename);
+        fileOpen = PrnOpen(prnFilename);
 
         if (!fileOpen)
         {
@@ -137,7 +137,7 @@ public partial class ToolPrnPrint : Window
                     prnWriter.Write(buf, 0, readSize);
             }
 
-            prnClose();
+            PrnClose();
         }
 
         return OK;
@@ -149,7 +149,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+    public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
     {
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -163,7 +163,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         //  _initialised = false;
 
@@ -173,7 +173,7 @@ public partial class ToolPrnPrint : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        resetTarget();
+        ResetTarget();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -181,7 +181,7 @@ public partial class ToolPrnPrint : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
         txtFilename.Text = _prnFilename;
 
@@ -197,7 +197,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         ToolPrnPrintPersist.LoadDataGeneral(ref _prnFilename);
     }
@@ -211,7 +211,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         ToolPrnPrintPersist.SaveDataGeneral(_prnFilename);
     }
@@ -225,7 +225,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void prnClose()
+    public static void PrnClose()
     {
         _binReader.Close();
         _ipStream.Close();
@@ -240,7 +240,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool prnOpen(string fileName)
+    public static bool PrnOpen(string fileName)
     {
         bool open = false;
 
@@ -290,9 +290,9 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {
@@ -337,7 +337,7 @@ public partial class ToolPrnPrint : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool selectPrnFile(ref string prnFilename)
+    private bool SelectPrnFile(ref string prnFilename)
     {
         OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 

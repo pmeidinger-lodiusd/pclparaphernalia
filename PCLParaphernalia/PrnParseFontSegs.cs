@@ -59,7 +59,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool decodeCharCompReq(bool complement,
+    public bool DecodeCharCompReq(bool complement,
                                      bool format_MSL,
                                      bool PCL,
                                      int fileOffset,
@@ -287,7 +287,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool processSegData(byte[] buf,
+    public bool ProcessSegData(byte[] buf,
                                   int fileOffset,
                                   bool PCL,
                                   bool firstSeg,
@@ -437,7 +437,7 @@ class PrnParseFontSegs
                     switch (segType)
                     {
                         case 0x4150:
-                            processSeg_AP(segSize,
+                            ProcessSeg_AP(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -447,7 +447,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4252:
-                            processSeg_BR(segSize,
+                            ProcessSeg_BR(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -457,7 +457,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4343:
-                            processSeg_CC(segSize,
+                            ProcessSeg_CC(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -467,7 +467,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4345:
-                            processSeg_CE(segSize,
+                            ProcessSeg_CE(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -477,7 +477,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4350:
-                            processSeg_CP(segSize,
+                            ProcessSeg_CP(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -487,7 +487,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4743:
-                            processSeg_GC(segSize,
+                            ProcessSeg_GC(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -497,7 +497,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4749:
-                            processSeg_GI(segSize,
+                            ProcessSeg_GI(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -507,7 +507,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4754:
-                            processSeg_GT(segSize,
+                            ProcessSeg_GT(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -517,7 +517,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x4946:
-                            processSeg_IF(segSize,
+                            ProcessSeg_IF(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -527,7 +527,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5041:
-                            processSeg_PA(segSize,
+                            ProcessSeg_PA(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -537,7 +537,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5046:
-                            processSeg_PF(segSize,
+                            ProcessSeg_PF(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -547,7 +547,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5446:
-                            processSeg_TF(segSize,
+                            ProcessSeg_TF(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -557,7 +557,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5645:
-                            processSeg_VE(segSize,
+                            ProcessSeg_VE(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -567,7 +567,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5649:
-                            processSeg_VI(segSize,
+                            ProcessSeg_VI(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -577,7 +577,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5652:
-                            processSeg_VR(segSize,
+                            ProcessSeg_VR(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -587,7 +587,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5654:
-                            processSeg_VT(segSize,
+                            ProcessSeg_VT(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -597,7 +597,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x5857:
-                            processSeg_XW(segSize,
+                            ProcessSeg_XW(segSize,
                                            segHddrLen,
                                            ref bufRem,
                                            ref bufOffset,
@@ -617,7 +617,7 @@ class PrnParseFontSegs
                             break;
 
                         default:
-                            processSegUnknown(segType,
+                            ProcessSegUnknown(segType,
                                                segSize,
                                                segHddrLen,
                                                ref bufRem,
@@ -845,7 +845,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -858,7 +858,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
                 }
@@ -875,7 +875,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSegUnknown(int segType,
+    private void ProcessSegUnknown(int segType,
                                    int segSize,
                                    int segHddrLen,
                                    ref int bufRem,
@@ -995,7 +995,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1018,7 +1018,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_AP(int segSize,
+    private void ProcessSeg_AP(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -1141,7 +1141,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1164,7 +1164,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_BR(int segSize,
+    private void ProcessSeg_BR(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -1318,7 +1318,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1331,7 +1331,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
                 }
@@ -1348,7 +1348,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_CC(int segSize,
+    private void ProcessSeg_CC(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -1452,7 +1452,7 @@ class PrnParseFontSegs
             //                                                            //
             //------------------------------------------------------------//
 
-            decodeCharCompReq(
+            DecodeCharCompReq(
                 true,
                 false,
                 _PCL,
@@ -1482,7 +1482,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1505,7 +1505,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_CE(int segSize,
+    private void ProcessSeg_CE(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -1628,7 +1628,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1651,7 +1651,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_CP(int segSize,
+    private void ProcessSeg_CP(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -1826,7 +1826,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -1849,7 +1849,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_GC(int segSize,
+    private void ProcessSeg_GC(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -2112,7 +2112,7 @@ class PrnParseFontSegs
             }
             else
             {
-                reportError(
+                ReportError(
                     "Possibly corrupt: 'Region Count' value " + numRegions,
                     "makes minimum segment header size " +
                         (minSegLen + varSegSize) + " bytes",
@@ -2139,7 +2139,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -2152,7 +2152,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
                 }
@@ -2169,7 +2169,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_GI(int segSize,
+    private void ProcessSeg_GI(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -2288,7 +2288,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -2311,7 +2311,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_GT(int segSize,
+    private void ProcessSeg_GT(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -2716,7 +2716,7 @@ class PrnParseFontSegs
 
                     if ((offset > segSize) || ((offset + size) > segSize))
                     {
-                        reportError(
+                        ReportError(
                             "Offset and/or size incompatible with" +
                                 " segment size",
                             string.Empty, string.Empty);
@@ -2725,7 +2725,7 @@ class PrnParseFontSegs
             }
             else
             {
-                reportError(
+                ReportError(
                     "Possibly corrupt: 'Table Count' value " + numTables,
                     "makes minimum segment header size " +
                         (minSegLen + varSegSize) + " bytes",
@@ -2752,7 +2752,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -2775,7 +2775,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_IF(int segSize,
+    private void ProcessSeg_IF(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -2894,7 +2894,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -2917,7 +2917,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_PA(int segSize,
+    private void ProcessSeg_PA(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -3067,7 +3067,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -3090,7 +3090,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_PF(int segSize,
+    private void ProcessSeg_PF(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -3209,7 +3209,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -3232,7 +3232,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_TF(int segSize,
+    private void ProcessSeg_TF(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -3351,7 +3351,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -3374,7 +3374,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_VE(int segSize,
+    private void ProcessSeg_VE(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -3601,7 +3601,7 @@ class PrnParseFontSegs
             }
             else
             {
-                reportError(
+                ReportError(
                     "Possibly corrupt: 'Range Count' value " + numRanges,
                     "makes minimum segment header size " +
                         (minSegLen + varSegSize) + " bytes",
@@ -3628,7 +3628,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -3641,7 +3641,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
                 }
@@ -3658,7 +3658,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_VI(int segSize,
+    private void ProcessSeg_VI(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -3833,7 +3833,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -3856,7 +3856,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_VR(int segSize,
+    private void ProcessSeg_VR(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -4017,7 +4017,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -4030,7 +4030,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
                 }
@@ -4047,7 +4047,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_VT(int segSize,
+    private void ProcessSeg_VT(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -4257,7 +4257,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -4270,7 +4270,7 @@ class PrnParseFontSegs
 
                 if (_segRem != 0)
                 {
-                    reportError(
+                    ReportError(
                         "Segment remainder " + _segRem + " non-zero",
                         string.Empty, string.Empty);
 
@@ -4288,7 +4288,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSeg_XW(int segSize,
+    private void ProcessSeg_XW(int segSize,
                                int segHddrLen,
                                ref int bufRem,
                                ref int bufOffset,
@@ -4407,7 +4407,7 @@ class PrnParseFontSegs
 
             if ((segSize - minSegLen) > hddrDataRem)
             {
-                reportError(
+                ReportError(
                     "Segment (size " + segSize + ") larger than",
                     "remainder (" + hddrDataRem + ") of segmented data",
                     "Header is  internally inconsistent");
@@ -4430,7 +4430,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void reportError(string line1,
+    private void ReportError(string line1,
                               string line2,
                               string line3)
     {

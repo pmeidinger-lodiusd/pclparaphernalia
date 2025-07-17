@@ -82,7 +82,7 @@ class PrnParsePJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool findPJLTerminator(
+    private bool FindPJLTerminator(
         int bufRem,
         int bufOffset,
         ref int commandLen,
@@ -174,7 +174,7 @@ class PrnParsePJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool parseBuffer(
+    public bool ParseBuffer(
         byte[] buf,
         ref int fileOffset,
         ref int bufRem,
@@ -218,12 +218,12 @@ class PrnParsePJL
         //----------------------------------------------------------------//
 
         if (linkData.IsContinuation())
-            seqInvalid = parseContinuation(ref bufRem,
+            seqInvalid = ParseContinuation(ref bufRem,
                                             ref bufOffset,
                                             ref crntPDL,
                                             ref endReached);
         else
-            seqInvalid = parseSequences(ref bufRem,
+            seqInvalid = ParseSequences(ref bufRem,
                                          ref bufOffset,
                                          ref crntPDL,
                                          ref endReached);
@@ -240,7 +240,7 @@ class PrnParsePJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseContinuation(
+    private bool ParseContinuation(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -305,7 +305,7 @@ class PrnParsePJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequences(
+    private bool ParseSequences(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -454,7 +454,7 @@ class PrnParsePJL
                     //                                                             //
                     //-------------------------------------------------------------//
 
-                    badSeq = processPJLCommand(ref bufRem,
+                    badSeq = ProcessPJLCommand(ref bufRem,
                                                 ref bufOffset,
                                                 ref continuation,
                                                 ref langSwitch,
@@ -518,7 +518,7 @@ class PrnParsePJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool processPJLCommand(
+    private bool ProcessPJLCommand(
         ref int bufRem,
         ref int bufOffset,
         ref bool continuation,

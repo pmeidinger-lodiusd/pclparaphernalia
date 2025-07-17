@@ -65,7 +65,7 @@ static class TargetCore
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static eTarget getType()
+    public static eTarget GetType()
     {
         return _targetType;
     }

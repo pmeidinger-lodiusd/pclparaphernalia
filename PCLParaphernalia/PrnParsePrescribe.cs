@@ -80,7 +80,7 @@ class PrnParsePrescribe
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool findCommandTerminator(
+    private bool FindCommandTerminator(
         int bufRem,
         int bufOffset,
         ref int commandLen,
@@ -172,7 +172,7 @@ class PrnParsePrescribe
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool parseBuffer(
+    public bool ParseBuffer(
         byte[] buf,
         ref int fileOffset,
         ref int bufRem,
@@ -214,12 +214,12 @@ class PrnParsePrescribe
         //----------------------------------------------------------------//
 
         if (linkData.IsContinuation())
-            seqInvalid = parseContinuation(ref bufRem,
+            seqInvalid = ParseContinuation(ref bufRem,
                                             ref bufOffset,
                                             ref crntPDL,
                                             ref endReached);
         else
-            seqInvalid = parseSequences(ref bufRem,
+            seqInvalid = ParseSequences(ref bufRem,
                                          ref bufOffset,
                                          ref crntPDL,
                                          ref endReached);
@@ -241,7 +241,7 @@ class PrnParsePrescribe
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseContinuation(
+    private bool ParseContinuation(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -302,7 +302,7 @@ class PrnParsePrescribe
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequences(
+    private bool ParseSequences(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -320,13 +320,11 @@ class PrnParsePrescribe
 
         if (!_linkData.PrescribeIntroRead)
         {
-            if ((_buf[bufOffset] ==
-                    PrnParseConstants.prescribeSCRCDelimiter)
+            if ((_buf[bufOffset] == PrnParseConstants.prescribeSCRCDelimiter)
                                   &&
                 (_buf[bufOffset + 1] == _linkData.PrescribeSCRC)
                                   &&
-                (_buf[bufOffset + 2] ==
-                    PrnParseConstants.prescribeSCRCDelimiter))
+                (_buf[bufOffset + 2] == PrnParseConstants.prescribeSCRCDelimiter))
             {
                 string seq = _ascii.GetString(_buf, bufOffset, 3);
                 //  String desc = PrescribeCommands.getDescCmdIntro();
@@ -367,8 +365,7 @@ class PrnParsePrescribe
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((_endOffset != -1) &&
-                ((_fileOffset + bufOffset) > _endOffset))
+            if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
             {
                 endReached = true;
             }
@@ -401,7 +398,7 @@ class PrnParsePrescribe
                 //                                                        //
                 //--------------------------------------------------------//
 
-                badSeq = processCommand(ref bufRem,
+                badSeq = ProcessCommand(ref bufRem,
                                          ref bufOffset,
                                          ref continuation,
                                          ref langSwitch,
@@ -431,7 +428,7 @@ class PrnParsePrescribe
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool processCommand(
+    private bool ProcessCommand(
         ref int bufRem,
         ref int bufOffset,
         ref bool continuation,
@@ -648,8 +645,7 @@ class PrnParsePrescribe
                 //                                                        //
                 //--------------------------------------------------------//
 
-                if ((cmdRem == 1) &&
-                         (crntByte == PrnParseConstants.asciiSemiColon))
+                if ((cmdRem == 1) && (crntByte == PrnParseConstants.asciiSemiColon))
 
                 {
                     // nextstage = Parameters or Terminator;

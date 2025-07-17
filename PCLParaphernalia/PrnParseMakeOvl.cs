@@ -41,7 +41,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool breakpoint(PrnParseLinkData linkData,
+    public static bool Breakpoint(PrnParseLinkData linkData,
                                     Stream ipStream,
                                     BinaryReader binReader,
                                     BinaryWriter binWriter)
@@ -398,7 +398,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool checkActionPCL(
+    public static bool CheckActionPCL(
         bool comboSeq,
         bool seqComplete,
         int vInt,
@@ -448,7 +448,7 @@ static class PrnParseMakeOvl
                 makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
                 makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
 
-                checkActionPCLMacroClash(vInt, table);
+                CheckActionPCLMacroClash(vInt, table);
             }
             else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
             {
@@ -501,7 +501,7 @@ static class PrnParseMakeOvl
                 makeOvlActNew = PrnParseConstants.eOvlAct.Terminate;
                 makeOvlShowNew = PrnParseConstants.eOvlShow.Terminate;
 
-                checkActionPCLMacroClash(vInt, table);
+                CheckActionPCLMacroClash(vInt, table);
             }
             else if (makeOvlActCrnt == PrnParseConstants.eOvlAct.PageChange)
             {
@@ -704,7 +704,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void checkActionPCLMacroClash(
+    public static void CheckActionPCLMacroClash(
         int vInt,
         DataTable table)
     {
@@ -749,7 +749,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool checkActionPCLXLAttr(
+    public static bool CheckActionPCLXLAttr(
         bool firstPass,
         PrnParseConstants.eOvlAct attrOvlAct,
         PrnParseConstants.eOvlShow operOvlShow,
@@ -858,7 +858,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool checkActionPCLXLOper(
+    public static bool CheckActionPCLXLOper(
         bool firstPass,
         bool operHasAttrList,
         PrnParseConstants.eOvlAct operOvlAct,
@@ -1236,7 +1236,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static bool checkActionPCLXLPushGS(
+    public static bool CheckActionPCLXLPushGS(
         int hddrEnd,
         long fileOffset,
         PrnParseLinkData linkData,
@@ -1320,7 +1320,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void insertHeaderPCL(PrnParsePCL parserPCL,
+    public static void InsertHeaderPCL(PrnParsePCL parserPCL,
                                        DataTable table,
                                        BinaryWriter binWriter,
                                        bool encapsulate,
@@ -1329,13 +1329,13 @@ static class PrnParseMakeOvl
     {
         PrnParseConstants.eOffsetPosition crntPos;
 
-        parserPCL.setTable(table);
+        parserPCL.SetTable(table);
 
         crntPos = PrnParseConstants.eOffsetPosition.StartOfFile;
 
         if (encapsulate)
         {
-            insertSequencePCL(
+            InsertSequencePCL(
                 parserPCL,
                 binWriter,
                 0x26, // & //
@@ -1346,7 +1346,7 @@ static class PrnParseMakeOvl
 
             crntPos = PrnParseConstants.eOffsetPosition.CrntPosition;
 
-            insertSequencePCL(
+            InsertSequencePCL(
                 parserPCL,
                 binWriter,
                 0x26, // & //
@@ -1358,7 +1358,7 @@ static class PrnParseMakeOvl
 
         if (restoreCursor)
         {
-            insertSequencePCL(
+            InsertSequencePCL(
                 parserPCL,
                 binWriter,
                 0x26, // & //
@@ -1378,7 +1378,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void insertSequencePCL(
+    private static void InsertSequencePCL(
         PrnParsePCL parserPCL,
         BinaryWriter binWriter,
         byte iChar,
@@ -1474,7 +1474,7 @@ static class PrnParseMakeOvl
                   _ascii.GetString(seqBuf, 3, 1);
         }
 
-        parserPCL.parseSequenceComplexDisplay(
+        parserPCL.ParseSequenceComplexDisplay(
             (int)position,
             prefixLen,
             true,
@@ -1521,7 +1521,7 @@ static class PrnParseMakeOvl
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void insertTrailerPCL(PrnParsePCL parserPCL,
+    public static void InsertTrailerPCL(PrnParsePCL parserPCL,
                                         DataTable table,
                                         BinaryWriter binWriter,
                                         bool encapsulate,
@@ -1529,13 +1529,13 @@ static class PrnParseMakeOvl
     {
         PrnParseConstants.eOffsetPosition crntPos;
 
-        parserPCL.setTable(table);
+        parserPCL.SetTable(table);
 
         crntPos = PrnParseConstants.eOffsetPosition.EndOfFile;
 
         if (restoreCursor)
         {
-            insertSequencePCL(
+            InsertSequencePCL(
                 parserPCL,
                 binWriter,
                 0x26, // & //
@@ -1549,7 +1549,7 @@ static class PrnParseMakeOvl
 
         if (encapsulate)
         {
-            insertSequencePCL(
+            InsertSequencePCL(
                 parserPCL,
                 binWriter,
                 0x26, // & //

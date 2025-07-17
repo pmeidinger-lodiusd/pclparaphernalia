@@ -109,7 +109,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool parseBuffer(
+    public bool ParseBuffer(
         byte[] buf,
         ref int fileOffset,
         ref int bufRem,
@@ -172,12 +172,12 @@ class PrnParsePCL
         //----------------------------------------------------------------//
 
         if (linkData.IsContinuation())
-            seqInvalid = parseContinuation(ref bufRem,
+            seqInvalid = ParseContinuation(ref bufRem,
                                             ref bufOffset,
                                             ref crntPDL,
                                             ref endReached);
         else
-            seqInvalid = parseSequence(ref bufRem,
+            seqInvalid = ParseSequence(ref bufRem,
                                         ref bufOffset,
                                         ref crntPDL,
                                         ref endReached);
@@ -194,7 +194,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseContinuation(
+    private bool ParseContinuation(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -967,7 +967,7 @@ class PrnParsePCL
             //                                                            //
             //------------------------------------------------------------//
 
-            badSeq = parseSequenceComplex(ref bufRem,
+            badSeq = ParseSequenceComplex(ref bufRem,
                                            ref bufOffset,
                                            ref continuation,
                                            ref breakpoint,
@@ -988,7 +988,7 @@ class PrnParsePCL
             //                                                                   //
             //-------------------------------------------------------------------//
 
-            badSeq = parseSequenceComplex(ref bufRem,
+            badSeq = ParseSequenceComplex(ref bufRem,
                                            ref bufOffset,
                                            ref continuation,
                                            ref breakpoint,
@@ -1030,7 +1030,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequence(
+    private bool ParseSequence(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -1230,7 +1230,7 @@ class PrnParsePCL
                         //                                                //
                         //------------------------------------------------//
 
-                        badSeq = parseSequenceComplex(ref bufRem,
+                        badSeq = ParseSequenceComplex(ref bufRem,
                                                        ref bufOffset,
                                                        ref continuation,
                                                        ref breakpoint,
@@ -1246,7 +1246,7 @@ class PrnParsePCL
                     }
                     else
                     {
-                        seqKnown = parseSequenceSimple(ref bufRem,
+                        seqKnown = ParseSequenceSimple(ref bufRem,
                                                         ref bufOffset,
                                                         ref breakpoint);
 
@@ -1300,7 +1300,7 @@ class PrnParsePCL
                     //                                                    //
                     //----------------------------------------------------//
 
-                    badSeq = parseSequenceComplex(ref bufRem,
+                    badSeq = ParseSequenceComplex(ref bufRem,
                                                    ref bufOffset,
                                                    ref continuation,
                                                    ref breakpoint,
@@ -1421,7 +1421,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequenceComplex(
+    private bool ParseSequenceComplex(
         ref int bufRem,
         ref int bufOffset,
         ref bool continuation,
@@ -2098,7 +2098,7 @@ class PrnParsePCL
                         //                                                //
                         //------------------------------------------------//
 
-                        _parseHPGL2.resetHPGL2();
+                        _parseHPGL2.ResetHPGL2();
                     }
 
                     if (actType ==
@@ -2220,7 +2220,7 @@ class PrnParsePCL
 
                     _linkData.SetPrefixData(prefixLen, iChar, gChar);
 
-                    breakpoint = PrnParseMakeOvl.checkActionPCL(
+                    breakpoint = PrnParseMakeOvl.CheckActionPCL(
                                     comboSeq,
                                     seqComplete,
                                     vInt,
@@ -2309,7 +2309,7 @@ class PrnParsePCL
 
                 if (seqProprietary)
                 {
-                    parseSequenceComplexDisplay(_fileOffset + seqStart,
+                    ParseSequenceComplexDisplay(_fileOffset + seqStart,
                                                  prefixLen,
                                                  comboFirst,
                                                  makeOvlShow,
@@ -2329,7 +2329,7 @@ class PrnParsePCL
                             makeOvlAct = PrnParseConstants.eOvlAct.None;
                         }
 
-                        parseSequenceComplexDisplay(_fileOffset + seqStart,
+                        ParseSequenceComplexDisplay(_fileOffset + seqStart,
                                                      prefixLen,
                                                      comboFirst,
                                                      makeOvlShow,
@@ -2341,12 +2341,12 @@ class PrnParsePCL
                         if ((actType == PrnParseConstants.eActPCL.StyleData)
                               && (_interpretStyle))
                         {
-                            processStyleData(vInt);
+                            ProcessStyleData(vInt);
                         }
                     }
                     else
                     {
-                        parseSequenceComplexDisplay(
+                        ParseSequenceComplexDisplay(
                             _fileOffset + seqStart,
                             prefixLen,
                             comboFirst,
@@ -2502,7 +2502,7 @@ class PrnParsePCL
                         i += binDataLen;
                         vPosCrnt += binDataLen;
 
-                        continuation = parseSequenceEmbeddedData(
+                        continuation = ParseSequenceEmbeddedData(
                                             ref bufRem,
                                             ref bufOffset,
                                             ref binDataLen,
@@ -2673,7 +2673,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void parseSequenceComplexDisplay(
+    public void ParseSequenceComplexDisplay(
         int offset,
         int prefixLen,
         bool firstPart,
@@ -2816,7 +2816,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequenceEmbeddedData(
+    private bool ParseSequenceEmbeddedData(
         ref int bufRem,
         ref int bufOffset,
         ref int binDataLen,
@@ -3509,7 +3509,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequenceSimple(
+    private bool ParseSequenceSimple(
         ref int bufRem,
         ref int bufOffset,
         ref bool breakpoint)
@@ -3579,7 +3579,7 @@ class PrnParsePCL
 
                 _linkData.MakeOvlAct = makeOvlAct;
 
-                breakpoint = PrnParseMakeOvl.checkActionPCL(
+                breakpoint = PrnParseMakeOvl.CheckActionPCL(
                                 false,
                                 true,
                                 -1,
@@ -3634,7 +3634,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processStyleData(int style)
+    private void ProcessStyleData(int style)
     {
         int index;
 
@@ -3824,7 +3824,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void resetPCL()
+    private void ResetPCL()
 
     {
         _textParsingMethod =
@@ -3841,7 +3841,7 @@ class PrnParsePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void setTable(DataTable table)
+    public void SetTable(DataTable table)
     {
         _table = table;
     }

@@ -789,7 +789,7 @@ static class PrnParseData
                         {
                             linkData.MakeOvlAct = makeOvlAct;
 
-                            foundTerm = PrnParseMakeOvl.checkActionPCL(
+                            foundTerm = PrnParseMakeOvl.CheckActionPCL(
                                 false,
                                 true,
                                 -1,

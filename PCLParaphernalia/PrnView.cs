@@ -59,7 +59,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void addRow(DataTable table,
+    private void AddRow(DataTable table,
                         string offset,
                         string hexVal,
                         string textVal)
@@ -90,7 +90,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void closeInputPrn()
+    private void CloseInputPrn()
     {
         _binReader.Close();
         _ipStream.Close();
@@ -105,7 +105,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool openInputPrn(string fileName,
+    private bool OpenInputPrn(string fileName,
                                  ref long fileSize)
     {
         bool open = false;
@@ -174,7 +174,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool viewFile(string prnFilename,
+    public bool ViewFile(string prnFilename,
                             PrnParseOptions options,
                             DataTable table)
     {
@@ -182,7 +182,7 @@ class PrnView
 
         bool ipOpen = false;
 
-        ipOpen = openInputPrn(prnFilename, ref _fileSize);
+        ipOpen = OpenInputPrn(prnFilename, ref _fileSize);
 
         if (!ipOpen)
         {
@@ -190,9 +190,9 @@ class PrnView
         }
         else
         {
-            viewFileAction(options, table);
+            ViewFileAction(options, table);
 
-            closeInputPrn();
+            CloseInputPrn();
         }
 
         return OK;
@@ -207,7 +207,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void viewFileAction(PrnParseOptions options,
+    private void ViewFileAction(PrnParseOptions options,
                                 DataTable table)
     {
         int blockLen,
@@ -251,7 +251,7 @@ class PrnView
         _ipStream.Seek(offsetStart, SeekOrigin.Begin);
 
         if (offsetStart != 0)
-            addRow(table,
+            AddRow(table,
                     "Comment",
                     "Start Offset   = " + offsetStart +
                     " (0x" + offsetStart.ToString("X8") +
@@ -259,7 +259,7 @@ class PrnView
                     string.Empty);
 
         if (offsetEnd != -1)
-            addRow(table,
+            AddRow(table,
                     "Comment",
                     "End   Offset   = " + offsetEnd +
                     " (0x" + offsetEnd.ToString("X8") +
@@ -327,7 +327,7 @@ class PrnView
 
                     offsetStr = string.Format(offsetFormat, offsetCrnt);
 
-                    sliceLen = viewFileSlice(buf,
+                    sliceLen = ViewFileSlice(buf,
                                               offsetStr,
                                               i,
                                               sliceLen,
@@ -368,7 +368,7 @@ class PrnView
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private int viewFileSlice(byte[] buf,
+    private int ViewFileSlice(byte[] buf,
                                 string crntOffset,
                                 int blockOffset,
                                 int sliceMax,
@@ -472,7 +472,7 @@ class PrnView
         //                                                                //
         //----------------------------------------------------------------//
 
-        addRow(table, crntOffset, hexBuf.ToString(), strBuf.ToString());
+        AddRow(table, crntOffset, hexBuf.ToString(), strBuf.ToString());
 
         return sliceLen;
     }

@@ -1293,7 +1293,7 @@ public partial class ToolTrayMap : Window
 
     public void resetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {

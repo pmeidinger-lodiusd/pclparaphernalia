@@ -41,7 +41,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generate(
+    public static void Generate(
         int indxInfoType,
         ReportCore.eRptFileFmt rptFileFmt,
         ReportCore.eRptChkMarks rptChkMarks,
@@ -102,7 +102,7 @@ static class ToolPrintLangReport
             ReportCore.DocInitialise(rptFileFmt, writer, true, false,
                                       0, null,
                                       null, null);
-            reportHeader(infoType,
+            ReportHeader(infoType,
                           rptFileFmt,
                           writer,
                           dgSeq,
@@ -125,32 +125,32 @@ static class ToolPrintLangReport
                           flagSymSetMap);
 
             if (infoType == ToolCommonData.eToolSubIds.PCL)
-                reportBodyPCLSeqs(rptFileFmt, rptChkMarks,
+                ReportBodyPCLSeqs(rptFileFmt, rptChkMarks,
                                   writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.HPGL2)
-                reportBodyHPGL2Commands(rptFileFmt, writer, dgSeq);
+                ReportBodyHPGL2Commands(rptFileFmt, writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.PCLXLTags)
-                reportBodyPCLXLTags(rptFileFmt, rptChkMarks,
+                ReportBodyPCLXLTags(rptFileFmt, rptChkMarks,
                                     writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.PCLXLEnums)
-                reportBodyPCLXLEnums(rptFileFmt, writer, dgSeq);
+                ReportBodyPCLXLEnums(rptFileFmt, writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.PJLCmds)
-                reportBodyPJLCommands(rptFileFmt, writer, dgSeq);
+                ReportBodyPJLCommands(rptFileFmt, writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.PMLTags)
-                reportBodyPMLTags(rptFileFmt, writer, dgSeq);
+                ReportBodyPMLTags(rptFileFmt, writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.SymbolSets)
-                reportBodySymbolSets(rptFileFmt, rptChkMarks,
+                ReportBodySymbolSets(rptFileFmt, rptChkMarks,
                                       writer, dgSeq,
                                       flagSymSetMap, flagOptRptWrap,
                                       symSetMapType);
             else if (infoType == ToolCommonData.eToolSubIds.Fonts)
-                reportBodyFonts(rptFileFmt, rptChkMarks,
+                ReportBodyFonts(rptFileFmt, rptChkMarks,
                                  writer, dgSeq,
                                  flagSymSetList, flagOptRptWrap);
             else if (infoType == ToolCommonData.eToolSubIds.PaperSizes)
-                reportBodyPaperSizes(rptFileFmt, writer, dgSeq);
+                ReportBodyPaperSizes(rptFileFmt, writer, dgSeq);
             else if (infoType == ToolCommonData.eToolSubIds.PrescribeCmds)
-                reportBodyPrescribeCommands(rptFileFmt, writer, dgSeq);
+                ReportBodyPrescribeCommands(rptFileFmt, writer, dgSeq);
 
             ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -167,7 +167,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyFonts(
+    private static void ReportBodyFonts(
         ReportCore.eRptFileFmt rptFileFmt,
         ReportCore.eRptChkMarks rptChkMarks,
         object writer,
@@ -525,7 +525,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyHPGL2Commands(
+    private static void ReportBodyHPGL2Commands(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -601,7 +601,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPaperSizes(
+    private static void ReportBodyPaperSizes(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -695,7 +695,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPCLSeqs(
+    private static void ReportBodyPCLSeqs(
         ReportCore.eRptFileFmt rptFileFmt,
         ReportCore.eRptChkMarks rptChkMarks,
         object writer,
@@ -848,7 +848,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPCLXLEnums(
+    private static void ReportBodyPCLXLEnums(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -932,7 +932,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPCLXLTags(
+    private static void ReportBodyPCLXLTags(
         ReportCore.eRptFileFmt rptFileFmt,
         ReportCore.eRptChkMarks rptChkMarks,
         object writer,
@@ -1106,7 +1106,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPJLCommands(
+    private static void ReportBodyPJLCommands(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -1182,7 +1182,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPMLTags(
+    private static void ReportBodyPMLTags(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -1286,7 +1286,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyPrescribeCommands(
+    private static void ReportBodyPrescribeCommands(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         DataGrid dgSeq)
@@ -1362,7 +1362,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodySymbolSets(
+    private static void ReportBodySymbolSets(
         ReportCore.eRptFileFmt rptFileFmt,
         ReportCore.eRptChkMarks rptChkMarks,
         object writer,
@@ -1850,7 +1850,7 @@ static class ToolPrintLangReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportHeader(ToolCommonData.eToolSubIds infoType,
+    private static void ReportHeader(ToolCommonData.eToolSubIds infoType,
                                      ReportCore.eRptFileFmt rptFileFmt,
                                      object writer,
                                      DataGrid dgSeq,
@@ -1984,18 +1984,16 @@ static class ToolPrintLangReport
 
             ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Select",
-                                 ((flagPCLOptDiscrete == true) ?
-                                    "Show" : "Do not show") +
-                                 " discrete values for enumerated sequences",
+                                 (flagPCLOptDiscrete ? "Show" : "Do not show") +
+                                    " discrete values for enumerated sequences",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
 
             ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Select",
-                                 ((flagPCLOptObsolete == true) ?
-                                    "Show" : "Do not show") +
-                                 " obsolete sequences",
+                                 (flagPCLOptObsolete ? "Show" : "Do not show") +
+                                    " obsolete sequences",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);
@@ -2121,9 +2119,8 @@ static class ToolPrintLangReport
 
             ReportCore.TableRowPair(writer, rptFileFmt,
                                  "Select",
-                                 ((flagPCLXLOptReserved == true) ?
-                                    "Show" : "Do not show") +
-                                 " reserved values",
+                                 (flagPCLXLOptReserved ? "Show" : "Do not show") +
+                                    " reserved values",
                                  _colSpanNone, _colSpanNone,
                                  _maxSizeNameTag, maxLineLen,
                                  _flagNone, _flagNone, _flagNone);

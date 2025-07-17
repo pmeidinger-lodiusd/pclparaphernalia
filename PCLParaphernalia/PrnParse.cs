@@ -268,7 +268,7 @@ class PrnParse
                     {
                         case ToolCommonData.ePrintLang.PCL:
 
-                            badSeq = _parsePCL.parseBuffer(
+                            badSeq = _parsePCL.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -282,7 +282,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.PCL3GUI:
 
-                            badSeq = _parsePCL.parseBuffer(
+                            badSeq = _parsePCL.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -296,7 +296,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.HPGL2:
 
-                            badSeq = _parseHPGL2.parseBuffer(
+                            badSeq = _parseHPGL2.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -310,7 +310,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.PJL:
 
-                            badSeq = _parsePJL.parseBuffer(
+                            badSeq = _parsePJL.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -324,7 +324,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.PCLXL:
 
-                            badSeq = _parsePCLXL.parseBuffer(
+                            badSeq = _parsePCLXL.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -342,7 +342,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.XL2HB:
 
-                            badSeq = _parsePCLXL.parseBuffer(
+                            badSeq = _parsePCLXL.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -360,7 +360,7 @@ class PrnParse
 
                         case ToolCommonData.ePrintLang.Prescribe:
 
-                            badSeq = _parsePrescribe.parseBuffer(
+                            badSeq = _parsePrescribe.ParseBuffer(
                                 buf,
                                 ref fileOffset,
                                 ref bufRem,
@@ -503,7 +503,7 @@ class PrnParse
                         //                                                //
                         //------------------------------------------------//
 
-                        endReached = PrnParseMakeOvl.breakpoint(
+                        endReached = PrnParseMakeOvl.Breakpoint(
                             _linkData,
                             _ipStream,
                             _binReader,
@@ -686,7 +686,7 @@ class PrnParse
 
             _linkData.MakeOvlAct = PrnParseConstants.eOvlAct.EndOfFile;
 
-            PrnParseMakeOvl.breakpoint(_linkData,
+            PrnParseMakeOvl.Breakpoint(_linkData,
                                         _ipStream,
                                         _binReader,
                                         _binWriter);
@@ -1161,7 +1161,7 @@ class PrnParse
 
         linkData.MacroLevelAdjust(true);
 
-        badSeq = _parsePCL.parseBuffer(buf,
+        badSeq = _parsePCL.ParseBuffer(buf,
                                         ref fileOffset,
                                         ref bufRem,
                                         ref bufOffset,
@@ -1334,7 +1334,7 @@ class PrnParse
             else
                 _linkData.MakeOvlMacroId = -1;
 
-            PrnParseMakeOvl.insertHeaderPCL(_parsePCL,
+            PrnParseMakeOvl.InsertHeaderPCL(_parsePCL,
                                              _table,
                                              _binWriter,
                                              encapsulate,
@@ -1345,7 +1345,7 @@ class PrnParse
 
             if (_linkData.MakeOvlAct != PrnParseConstants.eOvlAct.Terminate)
             {
-                PrnParseMakeOvl.insertTrailerPCL(_parsePCL,
+                PrnParseMakeOvl.InsertTrailerPCL(_parsePCL,
                                                   _table,
                                                   _binWriter,
                                                   encapsulate,
@@ -1404,7 +1404,7 @@ class PrnParse
             else
                 _linkData.MakeOvlStreamName = string.Empty;
 
-            _parsePCLXL.makeOverlayInsertHeader(_binWriter,
+            _parsePCLXL.MakeOverlayInsertHeader(_binWriter,
                                                  encapsulate,
                                                  streamName,
                                                  _table);
@@ -1413,7 +1413,7 @@ class PrnParse
 
             if (_linkData.MakeOvlAct != PrnParseConstants.eOvlAct.Terminate)
             {
-                _parsePCLXL.makeOverlayInsertTrailer(_binWriter,
+                _parsePCLXL.MakeOverlayInsertTrailer(_binWriter,
                                                       restoreGS,
                                                       encapsulate,
                                                       _table);

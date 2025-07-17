@@ -66,7 +66,7 @@ class PrnParseHPGL2
 
     public PrnParseHPGL2()
     {
-        resetHPGL2();
+        ResetHPGL2();
     }
 
     //--------------------------------------------------------------------//
@@ -78,7 +78,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayHPGL2Command(ref int bufOffset,
+    private void DisplayHPGL2Command(ref int bufOffset,
                                      int seqLen,
                                      int prefixLen,
                                      bool binarySeq,
@@ -465,7 +465,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool parseBuffer(
+    public bool ParseBuffer(
         byte[] buf,
         ref int fileOffset,
         ref int bufRem,
@@ -510,11 +510,11 @@ class PrnParseHPGL2
         //----------------------------------------------------------------//
 
         if (linkData.IsContinuation())
-            seqInvalid = parseContinuation(ref bufRem,
+            seqInvalid = ParseContinuation(ref bufRem,
                                             ref bufOffset,
                                             ref endReached);
         else
-            seqInvalid = parseSequences(ref bufRem,
+            seqInvalid = ParseSequences(ref bufRem,
                                          ref bufOffset,
                                          ref crntPDL,
                                          ref endReached);
@@ -531,7 +531,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseContinuation(
+    private bool ParseContinuation(
         ref int bufRem,
         ref int bufOffset,
     //  ref ToolCommonData.ePrintLang    xcrntPDL,
@@ -594,7 +594,7 @@ class PrnParseHPGL2
                 //                                                                //
                 //----------------------------------------------------------------//
 
-                displayHPGL2Command(ref bufOffset,
+                DisplayHPGL2Command(ref bufOffset,
                                     bufRem,
                                     0,
                                     true,
@@ -616,7 +616,7 @@ class PrnParseHPGL2
 
                 int seqLen = termPos + 1;
 
-                displayHPGL2Command(ref bufOffset,
+                DisplayHPGL2Command(ref bufOffset,
                                     seqLen,
                                     0,
                                     true,
@@ -679,7 +679,7 @@ class PrnParseHPGL2
 
             continuation = true;
 
-            badSeq = processHPGL2Command(ref bufRem,
+            badSeq = ProcessHPGL2Command(ref bufRem,
                                           ref bufOffset,
                                           ref continuation);
 
@@ -720,7 +720,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool parseSequences(
+    private bool ParseSequences(
         ref int bufRem,
         ref int bufOffset,
         ref ToolCommonData.ePrintLang crntPDL,
@@ -843,7 +843,7 @@ class PrnParseHPGL2
                     //                                                    //
                     //----------------------------------------------------//
 
-                    badSeq = processHPGL2Command(ref bufRem,
+                    badSeq = ProcessHPGL2Command(ref bufRem,
                                                   ref bufOffset,
                                                   ref continuation);
 
@@ -862,7 +862,7 @@ class PrnParseHPGL2
                     //                                                    //
                     //----------------------------------------------------//
 
-                    displayHPGL2Command(ref bufOffset,
+                    DisplayHPGL2Command(ref bufOffset,
                                          1,
                                          0,
                                          false,
@@ -982,7 +982,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool processHPGL2Command(ref int bufRem,
+    private bool ProcessHPGL2Command(ref int bufRem,
                                         ref int bufOffset,
                                         ref bool continuation)
     {
@@ -1114,7 +1114,7 @@ class PrnParseHPGL2
 
             seqLen = HPGL2MnemonicLen;
 
-            displayHPGL2Command(ref bufOffset,
+            DisplayHPGL2Command(ref bufOffset,
                                 seqLen,
                                 HPGL2MnemonicLen,
                                 false,
@@ -1363,7 +1363,7 @@ class PrnParseHPGL2
                 //                                                        //
                 //--------------------------------------------------------//
 
-                displayHPGL2Command(ref bufOffset,
+                DisplayHPGL2Command(ref bufOffset,
                                     seqLen,
                                     HPGL2MnemonicLen,
                                     true,
@@ -1406,7 +1406,7 @@ class PrnParseHPGL2
                 //                                                        //
                 //--------------------------------------------------------//
 
-                displayHPGL2Command(ref bufOffset,
+                DisplayHPGL2Command(ref bufOffset,
                                     seqLen,
                                     HPGL2MnemonicLen,
                                     optBinarySeq,
@@ -1475,7 +1475,7 @@ class PrnParseHPGL2
                     seqLen++;
                 }
 
-                displayHPGL2Command(ref bufOffset,
+                DisplayHPGL2Command(ref bufOffset,
                                     seqLen,
                                     HPGL2MnemonicLen,
                                     optBinarySeq,
@@ -1505,7 +1505,7 @@ class PrnParseHPGL2
                 //                                                        //
                 //--------------------------------------------------------//
 
-                resetHPGL2();
+                ResetHPGL2();
             }
             else if (seqKnown && optSetLabelTerm)
             {
@@ -1638,7 +1638,7 @@ class PrnParseHPGL2
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetHPGL2()
+    public void ResetHPGL2()
     {
         _labelTerm = PrnParseConstants.asciiETX;
         _labelTrans = false;

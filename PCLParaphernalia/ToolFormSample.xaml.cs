@@ -1807,7 +1807,7 @@ public partial class ToolFormSample : Window
 
     public void ResetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {

@@ -788,7 +788,7 @@ public partial class ToolPatternGenerate : Window
 
     public void resetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {

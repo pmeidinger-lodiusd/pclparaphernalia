@@ -698,7 +698,7 @@ public partial class ToolMiscSamples : Window
 
             case (int)eSampleType.Unicode:
 
-                setFlagUnicodeFormAsMacro(true, _crntPDL);
+                SetFlagUnicodeFormAsMacro(true, _crntPDL);
                 break;
         }
     }
@@ -744,7 +744,7 @@ public partial class ToolMiscSamples : Window
 
             case (int)eSampleType.Unicode:
 
-                setFlagUnicodeFormAsMacro(false, _crntPDL);
+                SetFlagUnicodeFormAsMacro(false, _crntPDL);
                 break;
         }
     }
@@ -944,7 +944,7 @@ public partial class ToolMiscSamples : Window
         }
         else if (_indxSampleType == (int)eSampleType.Unicode)
         {
-            initialiseDataUnicode();
+            InitialiseDataUnicode();
 
             cbSampleType.SelectedIndex = (int)eSampleType.Unicode;
 
@@ -1007,7 +1007,7 @@ public partial class ToolMiscSamples : Window
         MetricsLoadDataLogPage();
         MetricsLoadDataPattern();
         MetricsLoadDataTxtMod();
-        metricsLoadDataUnicode();
+        MetricsLoadDataUnicode();
 
         //----------------------------------------------------------------//
 
@@ -1071,7 +1071,7 @@ public partial class ToolMiscSamples : Window
         MetricsSaveDataLogPage();
         MetricsSaveDataPattern();
         MetricsSaveDataTxtMod();
-        metricsSaveDataUnicode();
+        MetricsSaveDataUnicode();
     }
 
     //--------------------------------------------------------------------//
@@ -1135,7 +1135,7 @@ public partial class ToolMiscSamples : Window
 
     public void ResetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {

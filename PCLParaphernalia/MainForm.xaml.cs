@@ -194,19 +194,19 @@ public partial class MainForm : Window
 
         TargetCore.InitialiseSettings();
 
-        if (TargetCore.getType() == TargetCore.eTarget.File)
+        if (TargetCore.GetType() == TargetCore.eTarget.File)
         {
             menuItemTargetFile.IsChecked = true;
             menuItemTargetNetPrinter.IsChecked = false;
             menuItemTargetWinPrinter.IsChecked = false;
         }
-        else if (TargetCore.getType() == TargetCore.eTarget.NetPrinter)
+        else if (TargetCore.GetType() == TargetCore.eTarget.NetPrinter)
         {
             menuItemTargetFile.IsChecked = false;
             menuItemTargetNetPrinter.IsChecked = true;
             menuItemTargetWinPrinter.IsChecked = false;
         }
-        else if (TargetCore.getType() == TargetCore.eTarget.WinPrinter)
+        else if (TargetCore.GetType() == TargetCore.eTarget.WinPrinter)
         {
             menuItemTargetFile.IsChecked = false;
             menuItemTargetNetPrinter.IsChecked = false;

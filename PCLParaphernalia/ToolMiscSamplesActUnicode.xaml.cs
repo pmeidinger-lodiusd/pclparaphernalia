@@ -112,7 +112,7 @@ public partial class ToolMiscSamples : Window
                 else
                     _indxUnicodeFontPCL = indxFont;
 
-                setFontOptionsVariants(_indxUnicodeFontPCL,
+                SetFontOptionsVariants(_indxUnicodeFontPCL,
                                         samePreset,
                                         ref _unicodeFontVarPCL);
             }
@@ -123,7 +123,7 @@ public partial class ToolMiscSamples : Window
                 else
                     _indxUnicodeFontPCLXL = indxFont;
 
-                setFontOptionsVariants(_indxUnicodeFontPCLXL,
+                SetFontOptionsVariants(_indxUnicodeFontPCLXL,
                                         samePreset,
                                         ref _unicodeFontVarPCLXL);
             }
@@ -139,7 +139,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseDataUnicode()
+    private void InitialiseDataUnicode()
     {
         int index,
               ctr;
@@ -195,7 +195,7 @@ public partial class ToolMiscSamples : Window
 
             cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCL;
 
-            setFontOptionsVariants(_indxUnicodeFontPCL,
+            SetFontOptionsVariants(_indxUnicodeFontPCL,
                                     true,
                                     ref _unicodeFontVarPCL);
 
@@ -212,7 +212,7 @@ public partial class ToolMiscSamples : Window
 
             cbUnicodeFont.SelectedIndex = _indxUnicodeFontPCLXL;
 
-            setFontOptionsVariants(_indxUnicodeFontPCLXL,
+            SetFontOptionsVariants(_indxUnicodeFontPCLXL,
                                     true,
                                     ref _unicodeFontVarPCLXL);
 
@@ -224,7 +224,7 @@ public partial class ToolMiscSamples : Window
 
         _initialised = true;
 
-        initialiseDescUnicode();
+        InitialiseDescUnicode();
 
         cbUnicodeCp_SelectionChanged(this, null);
     }
@@ -238,7 +238,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseDescUnicode()
+    private void InitialiseDescUnicode()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -314,7 +314,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsLoadDataUnicode()
+    public void MetricsLoadDataUnicode()
     {
         int tmpInt = 0;
 
@@ -347,7 +347,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSaveDataUnicode()
+    public void MetricsSaveDataUnicode()
     {
         ToolMiscSamplesPersist.SaveDataTypeUnicode(
             "PCL",
@@ -442,7 +442,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setFlagUnicodeFormAsMacro(
+    private void SetFlagUnicodeFormAsMacro(
         bool setFlag,
         ToolCommonData.ePrintLang crntPDL)
     {
@@ -473,7 +473,7 @@ public partial class ToolMiscSamples : Window
     //                                                                    // 
     //--------------------------------------------------------------------//
 
-    private void setFontOptionsVariants(int indxFont,
+    private void SetFontOptionsVariants(int indxFont,
                                          bool samePreset,
                                          ref PCLFonts.eVariant fontVar)
     {

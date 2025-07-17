@@ -269,7 +269,7 @@ class PrnParseFontCharPCL
             //                                                            //
             //------------------------------------------------------------//
 
-            processDescriptor(ref bufRem,
+            ProcessDescriptor(ref bufRem,
                               ref bufOffset);
 
             bufRem -= _charDescLen;
@@ -319,13 +319,11 @@ class PrnParseFontCharPCL
 
             if (_charFormat == ePCLCharFormat.Intellifont)
             {
-                processIntellifontDataHddr(ref bufRem,
-                                            ref bufOffset);
+                ProcessIntellifontDataHddr(ref bufRem, ref bufOffset);
             }
             else if (_charFormat == ePCLCharFormat.TrueType)
             {
-                processTrueTypeDataHddr(ref bufRem,
-                                         ref bufOffset);
+                ProcessTrueTypeDataHddr(ref bufRem, ref bufOffset);
             }
             else
             {
@@ -343,18 +341,15 @@ class PrnParseFontCharPCL
 
             if (_charFormat == ePCLCharFormat.Raster)
             {
-                processRasterDataBody(ref bufRem,
-                                       ref bufOffset);
+                ProcessRasterDataBody(ref bufRem, ref bufOffset);
             }
             else if (_charFormat == ePCLCharFormat.Intellifont)
             {
-                processIntellifontDataBody(ref bufRem,
-                                            ref bufOffset);
+                ProcessIntellifontDataBody(ref bufRem, ref bufOffset);
             }
             else if (_charFormat == ePCLCharFormat.TrueType)
             {
-                processTrueTypeDataBody(ref bufRem,
-                                         ref bufOffset);
+                ProcessTrueTypeDataBody(ref bufRem, ref bufOffset);
             }
             else
             {
@@ -372,7 +367,7 @@ class PrnParseFontCharPCL
 
             if (_charFormat == ePCLCharFormat.Raster)
             {
-                processRasterDataRem(ref bufRem,
+                ProcessRasterDataRem(ref bufRem,
                                       ref bufOffset);
             }
             else
@@ -390,7 +385,7 @@ class PrnParseFontCharPCL
             //                                                            //
             //------------------------------------------------------------//
 
-            processChecksum(ref bufRem,
+            ProcessChecksum(ref bufRem,
                             ref bufOffset);
 
         }
@@ -617,7 +612,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processChecksum(ref int bufRem,
+    private void ProcessChecksum(ref int bufRem,
                                   ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -778,7 +773,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processDescriptor(ref int bufRem,
+    private void ProcessDescriptor(ref int bufRem,
                                    ref int bufOffset)
     {
         uint ui32a;
@@ -1185,7 +1180,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processIntellifontDataBody(ref int bufRem,
+    private void ProcessIntellifontDataBody(ref int bufRem,
                                              ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -1280,7 +1275,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processIntellifontDataHddr(ref int bufRem,
+    private void ProcessIntellifontDataHddr(ref int bufRem,
                                             ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -1537,7 +1532,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processRasterDataBody(ref int bufRem,
+    private void ProcessRasterDataBody(ref int bufRem,
                                         ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -1644,7 +1639,7 @@ class PrnParseFontCharPCL
 
             if (_drawCharShape)
             {
-                rasterDraw(bufOffset, binDataLen, shapeTooLarge);
+                RasterDraw(bufOffset, binDataLen, shapeTooLarge);
             }
 
             //------------------------------------------------------------//
@@ -1667,7 +1662,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processRasterDataRem(ref int bufRem,
+    private void ProcessRasterDataRem(ref int bufRem,
                                       ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -1701,7 +1696,7 @@ class PrnParseFontCharPCL
             _nextStage = eStage.EndOK;
         }
 
-        if ((binDataLen) != 0)
+        if (binDataLen != 0)
         {
             //------------------------------------------------------------//
             //                                                            //
@@ -1758,7 +1753,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processTrueTypeDataBody(ref int bufRem,
+    private void ProcessTrueTypeDataBody(ref int bufRem,
                                           ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -1852,7 +1847,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processTrueTypeDataHddr(ref int bufRem,
+    private void ProcessTrueTypeDataHddr(ref int bufRem,
                                          ref int bufOffset)
     {
         PrnParseConstants.eContType contType;
@@ -2007,7 +2002,7 @@ class PrnParseFontCharPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void rasterDraw(int bufOffset,
+    private void RasterDraw(int bufOffset,
                              int dataLen,
                              bool shapeTooLarge)
     {

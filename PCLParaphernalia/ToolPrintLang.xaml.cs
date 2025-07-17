@@ -180,7 +180,7 @@ public partial class ToolPrintLang : Window
                                          ref rptChkMarks,
                                          ref flagOptRptWrap);
 
-        ToolPrintLangReport.generate(_subsetTypes[_indxType],
+        ToolPrintLangReport.Generate(_subsetTypes[_indxType],
                                       rptFileFmt,
                                       rptChkMarks,
                                       dgSeq,

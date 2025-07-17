@@ -468,7 +468,7 @@ public partial class ToolSoftFontGenerate : Window
             _symSetUserFile = filename;
             txtSymSetFile.Text = _symSetUserFile;
 
-            checkPCLSymSetFile();
+            CheckPCLSymSetFile();
 
             setSymSetAttributesTarget();
         }
@@ -1010,7 +1010,7 @@ public partial class ToolSoftFontGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void checkPCLSymSetFile()
+    private void CheckPCLSymSetFile()
     {
         bool flagOK = true;
 
@@ -1275,7 +1275,7 @@ public partial class ToolSoftFontGenerate : Window
             grpPCLCharComp.Visibility = Visibility.Hidden;
             grpSymSetMapType.Visibility = Visibility.Hidden;
 
-            checkPCLSymSetFile();
+            CheckPCLSymSetFile();
 
             setSymSetAttributesTarget();
         }
@@ -2288,7 +2288,7 @@ bitVal;
         _symSetUnbound = false;
         _symSetUserSet = true;
 
-        checkPCLSymSetFile();
+        CheckPCLSymSetFile();
 
         setSymSetAttributesTarget();
 
@@ -3440,7 +3440,7 @@ bitVal;
         {
             _symSetUserFile = txtSymSetFile.Text;
 
-            checkPCLSymSetFile();
+            CheckPCLSymSetFile();
 
             setSymSetAttributesTarget();
         }

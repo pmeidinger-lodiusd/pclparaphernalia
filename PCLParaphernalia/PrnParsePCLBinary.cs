@@ -4346,7 +4346,7 @@ class PrnParsePCLBinary
 
             offset += 2;
 
-            _parseFontHddrPCL.ParseSegs.decodeCharCompReq(
+            _parseFontHddrPCL.ParseSegs.DecodeCharCompReq(
                 false,
                 (format == format_MSL),
                 true,

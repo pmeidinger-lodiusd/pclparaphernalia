@@ -210,7 +210,7 @@ class PrnParseFontHddrPCLXL
 
             int dummy = 0;
 
-            continuation = _parseSegs.processSegData(_buf,
+            continuation = _parseSegs.ProcessSegData(_buf,
                                                       _fileOffset,
                                                       false,
                                                       _firstSeg,

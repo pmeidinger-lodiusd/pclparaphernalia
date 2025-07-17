@@ -300,7 +300,7 @@ class PrnParseFontHddrPCL
                 else
                     largeSegs = false;
 
-                continuation = _parseSegs.processSegData(_buf,
+                continuation = _parseSegs.ProcessSegData(_buf,
                                                           _fileOffset,
                                                           true,
                                                           _firstSeg,
@@ -2993,7 +2993,7 @@ class PrnParseFontHddrPCL
                                     &&
                 (_hddrDescLen > 85))
             {
-                _parseSegs.decodeCharCompReq(
+                _parseSegs.DecodeCharCompReq(
                     true,
                     true,
                     true,

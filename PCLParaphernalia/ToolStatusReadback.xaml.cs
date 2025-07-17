@@ -212,7 +212,7 @@ public partial class ToolStatusReadback : Window
             //                                                            //
             //------------------------------------------------------------//
 
-            _targetType = TargetCore.getType();
+            _targetType = TargetCore.GetType();
 
             if (_targetType == TargetCore.eTarget.File)
             {
@@ -1046,7 +1046,7 @@ public partial class ToolStatusReadback : Window
 
     public void ResetTarget()
     {
-        TargetCore.eTarget targetType = TargetCore.getType();
+        TargetCore.eTarget targetType = TargetCore.GetType();
 
         if (targetType == TargetCore.eTarget.File)
         {
