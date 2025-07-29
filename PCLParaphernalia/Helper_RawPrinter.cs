@@ -219,7 +219,7 @@ public class Helper_RawPrinter
 
         FileStream fs = new FileStream(szFileName, FileMode.Open);
 
-        BinaryReader br = new BinaryReader(fs);
+        using BinaryReader br = new BinaryReader(fs);
 
         //----------------------------------------------------------------//
         //                                                                //
