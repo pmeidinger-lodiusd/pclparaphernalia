@@ -57,9 +57,13 @@ public partial class ToolMiscSamples : Window
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
             if (_indxPatternTypePCL == ePatternType.Shading)
+            {
                 rbPatternTypeShading.IsChecked = true;
+            }
             else if (_indxPatternTypePCL == ePatternType.XHatch)
+            {
                 rbPatternTypeXHatch.IsChecked = true;
+            }
             else
             {
                 _indxPatternTypePCL = ePatternType.Shading;
@@ -72,9 +76,13 @@ public partial class ToolMiscSamples : Window
         else
         {
             if (_indxPatternTypePCLXL == ePatternType.Shading)
+            {
                 rbPatternTypeShading.IsChecked = true;
+            }
             else if (_indxPatternTypePCLXL == ePatternType.XHatch)
+            {
                 rbPatternTypeXHatch.IsChecked = true;
+            }
             else
             {
                 _indxPatternTypePCLXL = ePatternType.Shading;
@@ -102,30 +110,16 @@ public partial class ToolMiscSamples : Window
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
             if (_indxPatternTypePCL == ePatternType.Shading)
-            {
-                txtPatternDesc.Text =
-                    "Shows samples of built-in and user-defined" +
-                    " Shading patterns.";
-            }
+                txtPatternDesc.Text = "Shows samples of built-in and user-defined Shading patterns.";
             else
-            {
-                txtPatternDesc.Text =
-                    "Shows samples of built-in and user-defined" +
-                    " Cross-Hatch patterns.";
-            }
+                txtPatternDesc.Text = "Shows samples of built-in and user-defined Cross-Hatch patterns.";
         }
         else
         {
             if (_indxPatternTypePCLXL == ePatternType.Shading)
-            {
-                txtPatternDesc.Text =
-                    "Shows samples of user-defined Shading patterns.";
-            }
+                txtPatternDesc.Text = "Shows samples of user-defined Shading patterns.";
             else
-            {
-                txtPatternDesc.Text =
-                    "Shows samples of user-defined Cross-hatch patterns.";
-            }
+                txtPatternDesc.Text = "Shows samples of user-defined Cross-hatch patterns.";
         }
     }
 
@@ -239,12 +233,8 @@ public partial class ToolMiscSamples : Window
         ToolCommonData.ePrintLang crntPDL)
     {
         if (crntPDL == ToolCommonData.ePrintLang.PCL)
-        {
             _flagPatternFormAsMacroPCL = setFlag;
-        }
         else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
-        {
             _flagPatternFormAsMacroPCLXL = setFlag;
-        }
     }
 }

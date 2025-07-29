@@ -250,15 +250,12 @@ class PCLXLAttrEnum
                 if (_attrTagLen == 1)
                     attr = "0x" + _attrTagA.ToString("x2") + "  ";
                 else
-                    attr = "0x" + _attrTagA.ToString("x2") +
-                                  _attrTagB.ToString("x2");
+                    attr = "0x" + _attrTagA.ToString("x2") + _attrTagB.ToString("x2");
 
                 if (_value < 0x00ffff)
-                    text = oper + " " +
-                           attr + " " + _value.ToString();
+                    text = oper + " " + attr + " " + _value.ToString();
                 else
-                    text = oper + " " +
-                            attr + " 0x" + _value.ToString("x8");
+                    text = oper + " " + attr + " 0x" + _value.ToString("x8");
             }
 
             return text;

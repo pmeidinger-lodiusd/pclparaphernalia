@@ -143,8 +143,7 @@ static class ToolMiscSamplesActUnicodePCL
         PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
         if (formAsMacro)
-            generateOverlay(prnWriter, true, logXOffset,
-                            indxPaperSize, indxOrientation);
+            generateOverlay(prnWriter, true, logXOffset, indxPaperSize, indxOrientation);
 
         PCLWriter.PageHeader(prnWriter,
                              indxPaperSize,
@@ -204,8 +203,7 @@ static class ToolMiscSamplesActUnicodePCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                              PCLWriter.eMacroControl.StartDef);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.StartDef);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -288,8 +286,7 @@ static class ToolMiscSamplesActUnicodePCL
                               0);
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, 0,
-                                   PCLWriter.eMacroControl.StopDef);
+            PCLWriter.MacroControl(prnWriter, 0, PCLWriter.eMacroControl.StopDef);
     }
 
     //--------------------------------------------------------------------//
@@ -324,11 +321,9 @@ static class ToolMiscSamplesActUnicodePCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                                   PCLWriter.eMacroControl.Call);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
         else
-            generateOverlay(prnWriter, false, logXOffset,
-                            indxPaperSize, indxOrientation);
+            generateOverlay(prnWriter, false, logXOffset, indxPaperSize, indxOrientation);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -347,11 +342,9 @@ static class ToolMiscSamplesActUnicodePCL
         posY = _posYData;
 
         if (codePoint < 0x010000)
-            PCLWriter.Text(prnWriter, posX, posY, 0, "U+" +
-                           codePoint.ToString("x4"));
+            PCLWriter.Text(prnWriter, posX, posY, 0, "U+" + codePoint.ToString("x4"));
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0, "U+" +
-                           codePoint.ToString("x6"));
+            PCLWriter.Text(prnWriter, posX, posY, 0, "U+" + codePoint.ToString("x6"));
 
         PrnParseDataUTF8.ConvertUTF32ToUTF8Bytes(codePoint,
                                                   ref utf8Len,

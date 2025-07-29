@@ -186,22 +186,25 @@ static class ToolPrintAreaPCL
         PCLWriter.StdJobHeader(prnWriter, pjlCommand);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true,
-                            paperWidth, paperLength, logXOffset, scaleText);
+            GenerateOverlay(prnWriter, true, paperWidth, paperLength, logXOffset, scaleText);
 
         if (customPaperSize)
+        {
             PCLWriter.PageHeaderCustom(prnWriter,
                                         indxPaperType,
                                         indxOrientation,
                                         indxPlexMode,
                                         paperWidth,
                                         paperLength);
+        }
         else
+        {
             PCLWriter.PageHeader(prnWriter,
                                   indxPaperSize,
                                   indxPaperType,
                                   indxOrientation,
                                   indxPlexMode);
+        }
     }
 
     //--------------------------------------------------------------------//
@@ -265,8 +268,7 @@ static class ToolPrintAreaPCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                              PCLWriter.eMacroControl.StartDef);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.StartDef);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -607,11 +609,9 @@ static class ToolPrintAreaPCL
         posY = _posYDesc;
 
         if (customPaperSize)
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPaperSizes.GetNameAndDesc(indxPaperSize));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetNameAndDesc(indxPaperSize));
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPaperSizes.GetName(indxPaperSize));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetName(indxPaperSize));
 
         posY += lineInc;
 
@@ -626,12 +626,9 @@ static class ToolPrintAreaPCL
         posY += lineInc;
 
         if (rearFace)
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPlexModes.GetName(indxPlexMode) +
-                        ": rear face");
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPlexModes.GetName(indxPlexMode) + ": rear face");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPlexModes.GetName(indxPlexMode));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPlexModes.GetName(indxPlexMode));
 
         posY += lineInc;
 

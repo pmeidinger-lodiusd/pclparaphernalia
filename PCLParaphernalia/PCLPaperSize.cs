@@ -512,11 +512,9 @@ class PCLPaperSize
                                  PCLOrientations.eAspect aspect)
     {
         if (aspect == PCLOrientations.eAspect.Portrait)
-            return (ushort)((_sizeLongEdge * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_sizeLongEdge * sessionUPI) / _sizeUnitsPerInch);
         else
-            return (ushort)((_sizeShortEdge * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_sizeShortEdge * sessionUPI) / _sizeUnitsPerInch);
     }
 
     //--------------------------------------------------------------------//
@@ -532,11 +530,9 @@ class PCLPaperSize
                                 PCLOrientations.eAspect aspect)
     {
         if (aspect == PCLOrientations.eAspect.Portrait)
-            return (ushort)((_sizeShortEdge * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_sizeShortEdge * sessionUPI) / _sizeUnitsPerInch);
         else
-            return (ushort)((_sizeLongEdge * sessionUPI) /
-                            _sizeUnitsPerInch);
+            return (ushort)((_sizeLongEdge * sessionUPI) / _sizeUnitsPerInch);
     }
 
     //--------------------------------------------------------------------//

@@ -228,8 +228,7 @@ class PrnView
 
         //----------------------------------------------------------------//
 
-        if (options.IndxGenOffsetFormat ==
-            PrnParseConstants.eOptOffsetFormats.Hexadecimal)
+        if (options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Hexadecimal)
             offsetFormat = "{0:x8}";
         else
             offsetFormat = "{0:d10}";
@@ -251,20 +250,24 @@ class PrnView
         _ipStream.Seek(offsetStart, SeekOrigin.Begin);
 
         if (offsetStart != 0)
+        {
             AddRow(table,
                     "Comment",
                     "Start Offset   = " + offsetStart +
                     " (0x" + offsetStart.ToString("X8") +
                     ") requested",
                     string.Empty);
+        }
 
         if (offsetEnd != -1)
+        {
             AddRow(table,
                     "Comment",
                     "End   Offset   = " + offsetEnd +
                     " (0x" + offsetEnd.ToString("X8") +
                     ") requested",
                     string.Empty);
+        }
 
         //----------------------------------------------------------------//
 
@@ -405,12 +408,10 @@ class PrnView
             crntByte = buf[j];
 
             if (((crntByte < 32) || (crntByte == 0x7f)) ||
-                ((_indxCharSetName ==
-                    PrnParseConstants.eOptCharSets.ASCII)
+                ((_indxCharSetName == PrnParseConstants.eOptCharSets.ASCII)
                                        &&
                  (crntByte >= 0x80)) ||
-                ((_indxCharSetName ==
-                    PrnParseConstants.eOptCharSets.ISO_8859_1)
+                ((_indxCharSetName == PrnParseConstants.eOptCharSets.ISO_8859_1)
                                        &&
                  (crntByte >= 0x80) && (crntByte <= 0x9f)))
             {

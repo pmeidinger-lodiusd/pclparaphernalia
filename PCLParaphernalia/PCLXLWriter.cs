@@ -2384,13 +2384,17 @@ static class PCLXLWriter
                         coordX, coordY);
 
         if (relativePoint)
+        {
             AddOperator(ref buffer,
                         ref indBuf,
                         PCLXLOperators.eTag.SetCursorRel);
+        }
         else
+        {
             AddOperator(ref buffer,
                         ref indBuf,
                         PCLXLOperators.eTag.SetCursor);
+        }
 
         AddAttrUbyteArray(ref buffer,
                           ref indBuf,

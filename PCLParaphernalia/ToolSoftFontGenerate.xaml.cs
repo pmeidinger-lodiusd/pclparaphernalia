@@ -324,10 +324,7 @@ public partial class ToolSoftFontGenerate : Window
                      MessageBoxButton.YesNo,
                      MessageBoxImage.Warning);
 
-            if (msgBoxResult == MessageBoxResult.Yes)
-                proceed = true;
-            else
-                proceed = false;
+            proceed = msgBoxResult == MessageBoxResult.Yes;
         }
         else if (licenceType == ToolSoftFontGenTTF.eLicenceType.OwnerOnly)
         {
@@ -342,10 +339,7 @@ public partial class ToolSoftFontGenerate : Window
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning);
 
-            if (msgBoxResult == MessageBoxResult.Yes)
-                proceed = true;
-            else
-                proceed = false;
+            proceed = msgBoxResult == MessageBoxResult.Yes;
         }
 
         if (proceed)
@@ -579,11 +573,9 @@ public partial class ToolSoftFontGenerate : Window
             if (_symSetUnbound)
                 _sizeCharSet = cSizeCharSet_UCS_2;
             else if (_symSetUserSet)
-                _sizeCharSet =
-                    PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                _sizeCharSet = PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
             else
-                _sizeCharSet =
-                    PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
+                _sizeCharSet = PCLSymbolSets.GetMapArrayMax(_indxSymSetTarget) + 1;
 
             _ttfHandler = new ToolSoftFontGenTTF(_tableLogDonor,
                                                   _tableLogMapping,
@@ -745,10 +737,7 @@ public partial class ToolSoftFontGenerate : Window
                 rbPCLTIgnore.Visibility = Visibility.Visible; // should already be visible?
                 rbPCLTUse.Visibility = Visibility.Visible;    // should already be visible?
 
-                if (_flagUsePCLT)
-                    usePCLT = true;
-                else
-                    usePCLT = false;
+                usePCLT = _flagUsePCLT;
             }
             else
             {
@@ -983,22 +972,13 @@ public partial class ToolSoftFontGenerate : Window
             if (_fontFiles[_indxFont].Contains("\\"))
                 _fontFilenameTTF = _fontFiles[_indxFont];
             else
-                _fontFilenameTTF = _fontsFolder + "\\" +
-                                   _fontFiles[_indxFont];
+                _fontFilenameTTF = _fontsFolder + "\\" + _fontFiles[_indxFont];
 
             txtTTFFile.Text = _fontFilenameTTF;
         }
 
-        if (allowFontFileSelect)
-        {
-            txtTTFFile.IsReadOnly = false;
-            btnTTFFontFileBrowse.IsEnabled = true;
-        }
-        else
-        {
-            txtTTFFile.IsReadOnly = true;
-            btnTTFFontFileBrowse.IsEnabled = false;
-        }
+        txtTTFFile.IsReadOnly = !allowFontFileSelect;
+        btnTTFFontFileBrowse.IsEnabled = allowFontFileSelect;
     }
 
     //--------------------------------------------------------------------//
@@ -1254,10 +1234,10 @@ public partial class ToolSoftFontGenerate : Window
 
         txtSymSetFile.Text = _symSetUserFile;
 
-        if (_symSetMapPCL)
-            rbMapSymSetPCL.IsChecked = true;
-        else
+        if (!_symSetMapPCL)
             rbMapSymSetStd.IsChecked = true;
+        else
+            rbMapSymSetPCL.IsChecked = true;
 
         //----------------------------------------------------------------//
 
@@ -1291,10 +1271,7 @@ public partial class ToolSoftFontGenerate : Window
 
         //----------------------------------------------------------------//
 
-        if (_flagLogVerbose)
-            chkLogVerbose.IsChecked = true;
-        else
-            chkLogVerbose.IsChecked = false;
+        chkLogVerbose.IsChecked = _flagLogVerbose;
 
         //----------------------------------------------------------------//
 
@@ -1305,10 +1282,7 @@ public partial class ToolSoftFontGenerate : Window
 
         //----------------------------------------------------------------//
 
-        if (_flagSegGTLastPCL)
-            chkPCLSegGTLast.IsChecked = true;
-        else
-            chkPCLSegGTLast.IsChecked = false;
+        chkPCLSegGTLast.IsChecked = _flagSegGTLastPCL;
 
         //----------------------------------------------------------------//
 
@@ -1827,15 +1801,9 @@ bitVal;
             string.Empty);
 
         if (monoSpaced)
-            ToolSoftFontGenLog.LogNameAndValue(
-                _tableLogTarget, false, false,
-                "Spacing:",
-                "Value:   " + "0 (= fixed-pitch)");
+            ToolSoftFontGenLog.LogNameAndValue( _tableLogTarget, false, false, "Spacing:", "Value:   " + "0 (= fixed-pitch)");
         else
-            ToolSoftFontGenLog.LogNameAndValue(
-                _tableLogTarget, false, false,
-                "Spacing:",
-                "Value:   " + "1 (= proportionally-spaced)");
+            ToolSoftFontGenLog.LogNameAndValue( _tableLogTarget, false, false, "Spacing:", "Value:   " + "1 (= proportionally-spaced)");
 
         ToolSoftFontGenLog.LogNameAndValue(
             _tableLogTarget, false, false,
@@ -3377,14 +3345,12 @@ bitVal;
 
         if (validatePCLXLSymSetNo(true, ref _symSetNoPCLXL))
         {
-            {
-                PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
-                                                 ref idNum,
-                                                 ref idAlpha);
+            PCLSymbolSets.TranslateKind1ToId(_symSetNoPCLXL,
+                                                ref idNum,
+                                                ref idAlpha);
 
-                PCLSymbolSets.GetNameForId(_symSetNoPCLXL,
-                                            ref name);
-            }
+            PCLSymbolSets.GetNameForId(_symSetNoPCLXL,
+                                        ref name);
         }
 
         txtPCLXLSymSetIdNum.Text = idNum;
@@ -3491,12 +3457,9 @@ bitVal;
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
+        if (OK && ((value < minVal) || (value > maxVal)))
         {
-            if ((value < minVal) || (value > maxVal))
-            {
-                OK = false;
-            }
+            OK = false;
         }
 
         if (OK)
@@ -3651,12 +3614,9 @@ bitVal;
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
+        if (OK && ((value < minVal) || (value > maxVal)))
         {
-            if ((value < minVal) || (value > maxVal))
-            {
-                OK = false;
-            }
+            OK = false;
         }
 
         if (OK)
@@ -3723,12 +3683,9 @@ bitVal;
 
         OK = sbyte.TryParse(crntText, out value);
 
-        if (OK)
+        if (OK && ((value < minVal) || (value > maxVal)))
         {
-            if ((value < minVal) || (value > maxVal))
-            {
-                OK = false;
-            }
+            OK = false;
         }
 
         if (OK)

@@ -193,8 +193,7 @@ static class PCLXLDataTypes
             {
                 if (incUsedSeqsOnly)
                     displaySeq = false;
-                else if ((excUnusedResTags) &&
-                         (kvp.Value.FlagReserved == true))
+                else if (excUnusedResTags && kvp.Value.FlagReserved)
                     displaySeq = false;
             }
 
@@ -285,8 +284,7 @@ static class PCLXLDataTypes
         {
             tagReserved = kvp.Value.FlagReserved;
 
-            if ((incResTags == true) ||
-                ((incResTags == false) && (!tagReserved)))
+            if (incResTags || (!incResTags && !tagReserved))
             {
                 count++;
                 grid.Items.Add(kvp.Value);

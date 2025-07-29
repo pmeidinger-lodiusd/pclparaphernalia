@@ -157,8 +157,7 @@ static class ToolMiscSamplesActPatternXHatchPCL
         PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true, logXOffset,
-                            indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, true, logXOffset, indxPaperSize, indxOrientation);
 
         PCLWriter.PageHeader(prnWriter,
                              indxPaperSize,
@@ -218,8 +217,7 @@ static class ToolMiscSamplesActPatternXHatchPCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                              PCLWriter.eMacroControl.StartDef);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.StartDef);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -344,8 +342,7 @@ static class ToolMiscSamplesActPatternXHatchPCL
                               0);
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, 0,
-                                   PCLWriter.eMacroControl.StopDef);
+            PCLWriter.MacroControl(prnWriter, 0, PCLWriter.eMacroControl.StopDef);
     }
 
     //--------------------------------------------------------------------//
@@ -374,11 +371,9 @@ static class ToolMiscSamplesActPatternXHatchPCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                                   PCLWriter.eMacroControl.Call);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
         else
-            GenerateOverlay(prnWriter, false, logXOffset,
-                            indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, false, logXOffset, indxPaperSize, indxOrientation);
 
         rectHeight = _lineInc / 2;
         rectWidth = _lineInc;

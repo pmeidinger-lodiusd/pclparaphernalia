@@ -202,11 +202,9 @@ static class PCLComplexSeqs
                 valGeneric = kvp.Value.FlagValGeneric;
                 valVarious = kvp.Value.FlagValVarious;
 
-                if ((incDiscreteVal) && (valGeneric))
+                if (incDiscreteVal && valGeneric)
                     displaySeq = false;
-                else if ((!incDiscreteVal) &&
-                         (!valGeneric) &&
-                         (!valVarious))
+                else if (!incDiscreteVal && !valGeneric && !valVarious)
                     displaySeq = false;
             }
 
@@ -282,8 +280,7 @@ static class PCLComplexSeqs
             {
                 if (incUsedSeqsOnly)
                     displaySeq = false;
-                else if ((excUnusedObsSeqs) &&
-                         (kvp.Value.FlagObsolete == true))
+                else if (excUnusedObsSeqs && kvp.Value.FlagObsolete)
                     displaySeq = false;
             }
 

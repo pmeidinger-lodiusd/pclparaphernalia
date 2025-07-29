@@ -566,8 +566,7 @@ public partial class ToolFormSample : Window
         if (!File.Exists(filename))
             idPresent = false;
         else
-            idPresent = PCLDownloadMacro.CheckMacroFile(filename,
-                                                         ref macroId);
+            idPresent = PCLDownloadMacro.CheckMacroFile(filename, ref macroId);
 
         if (idPresent)
         {
@@ -629,8 +628,7 @@ public partial class ToolFormSample : Window
         if (!File.Exists(filename))
             idPresent = false;
         else
-            idPresent = PCLXLDownloadStream.CheckStreamFile(filename,
-                                                             ref streamName);
+            idPresent = PCLXLDownloadStream.CheckStreamFile(filename, ref streamName);
 
         if (idPresent)
         {
@@ -1052,11 +1050,9 @@ public partial class ToolFormSample : Window
                                                ref _flagPrintDescTextPCLXL);
 
         if (indxMethodTemp < (int)ToolFormSamplePCLX.eStreamMethod.Max)
-            _indxMethodPCLXL =
-                (ToolFormSamplePCLX.eStreamMethod)indxMethodTemp;
+            _indxMethodPCLXL = (ToolFormSamplePCLX.eStreamMethod)indxMethodTemp;
         else
-            _indxMethodPCLXL =
-                ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
+            _indxMethodPCLXL = ToolFormSamplePCLX.eStreamMethod.ExecuteBegin;
 
         ToolFormSamplePersist.LoadDataPCL(ref _flagMainOnPrnDiskPCL,
                                            ref _flagRearOnPrnDiskPCL,
@@ -1283,11 +1279,9 @@ public partial class ToolFormSample : Window
 
                 rbPCLMethodOverlay.Visibility = Visibility.Hidden;
 
-                if (_indxMethodPCL ==
-                    ToolFormSamplePCL.eMacroMethod.Overlay)
+                if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
                 {
-                    _indxMethodPCL =
-                        ToolFormSamplePCL.eMacroMethod.CallBegin;
+                    _indxMethodPCL = ToolFormSamplePCL.eMacroMethod.CallBegin;
 
                     rbPCLMethodCallBegin.IsChecked = true;
                 }
@@ -1314,27 +1308,21 @@ public partial class ToolFormSample : Window
                 grpPCLRearFormData.Visibility = Visibility.Hidden;
             }
 
-            if (_indxMethodPCL ==
-                    ToolFormSamplePCL.eMacroMethod.CallEnd)
+            if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.CallEnd)
                 rbPCLMethodCallEnd.IsChecked = true;
-            else if (_indxMethodPCL ==
-                    ToolFormSamplePCL.eMacroMethod.ExecuteBegin)
+            else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteBegin)
                 rbPCLMethodExecuteBegin.IsChecked = true;
-            else if (_indxMethodPCL ==
-                    ToolFormSamplePCL.eMacroMethod.ExecuteEnd)
+            else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.ExecuteEnd)
                 rbPCLMethodExecuteEnd.IsChecked = true;
-            else if (_indxMethodPCL ==
-                    ToolFormSamplePCL.eMacroMethod.Overlay)
+            else if (_indxMethodPCL == ToolFormSamplePCL.eMacroMethod.Overlay)
                 rbPCLMethodOverlay.IsChecked = true;
             else
                 rbPCLMethodCallBegin.IsChecked = true;
 
-            if ((_flagMainFormPCL) && (!_flagMainOnPrnDiskPCL) &&
-                (File.Exists(_formFileMainPCL)))
+            if (_flagMainFormPCL && (!_flagMainOnPrnDiskPCL) && File.Exists(_formFileMainPCL))
                 CheckPCLFormFile(true, _formFileMainPCL);
 
-            if ((_flagRearFormPCL) && (!_flagRearOnPrnDiskPCL) &&
-                (File.Exists(_formFileRearPCL)))
+            if (_flagRearFormPCL && (!_flagRearOnPrnDiskPCL) && File.Exists(_formFileRearPCL))
                 CheckPCLFormFile(false, _formFileRearPCL);
         }
         else
@@ -1386,10 +1374,12 @@ public partial class ToolFormSample : Window
             chkPCLXLGSPushPop.IsChecked = _flagGSPushPopPCLXL;
 
             if (_flagRearFormPCLXL)
+            {
                 if (_flagMainFormPCLXL)
                     rbPCLXLOptFormBoth.IsChecked = true;
                 else
                     rbPCLXLOptFormRear.IsChecked = true;
+            }
             else
                 rbPCLXLOptFormMain.IsChecked = true;
 
@@ -1409,16 +1399,15 @@ public partial class ToolFormSample : Window
                 grpPCLXLRearFormData.Visibility = Visibility.Hidden;
             }
 
-            if (_indxMethodPCLXL ==
-                    ToolFormSamplePCLX.eStreamMethod.ExecuteEnd)
+            if (_indxMethodPCLXL == ToolFormSamplePCLX.eStreamMethod.ExecuteEnd)
                 rbPCLXLMethodExecuteEnd.IsChecked = true;
             else
                 rbPCLXLMethodExecuteBegin.IsChecked = true;
 
-            if ((_flagMainFormPCLXL) && (File.Exists(_formFileMainPCLXL)))
+            if (_flagMainFormPCLXL && File.Exists(_formFileMainPCLXL))
                 CheckPCLXLFormFile(true, _formFileMainPCLXL);
 
-            if ((_flagRearFormPCLXL) && (File.Exists(_formFileRearPCLXL)))
+            if (_flagRearFormPCLXL && File.Exists(_formFileRearPCLXL))
                 CheckPCLXLFormFile(false, _formFileRearPCLXL);
         }
     }
@@ -2301,9 +2290,8 @@ public partial class ToolFormSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -2380,7 +2368,7 @@ public partial class ToolFormSample : Window
 
         //----------------------------------------------------------------//
 
-        if ((_flagMainFormPCL))
+        if (_flagMainFormPCL)
         {
             if ((!_flagMainOnPrnDiskPCL) &&
                 (!File.Exists(_formFileMainPCL)))
@@ -2400,7 +2388,7 @@ public partial class ToolFormSample : Window
 
         //----------------------------------------------------------------//
 
-        if ((OK) && (_flagRearFormPCL))
+        if (OK && _flagRearFormPCL)
         {
             if ((!_flagRearOnPrnDiskPCL) &&
                 (!File.Exists(_formFileRearPCL)))
@@ -2420,7 +2408,7 @@ public partial class ToolFormSample : Window
 
         //----------------------------------------------------------------//
 
-        if ((OK) && (_flagMainFormPCL) && (_flagRearFormPCL))
+        if (OK && _flagMainFormPCL && _flagRearFormPCL)
         {
             if (_macroIdMainPCL == _macroIdRearPCL)
             {
@@ -2472,9 +2460,8 @@ public partial class ToolFormSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -2554,11 +2541,7 @@ public partial class ToolFormSample : Window
 
         len = crntText.Length;
 
-        if (crntText == string.Empty)
-        {
-            OK = false;
-        }
-        else if (len > maxLen)
+        if (crntText == string.Empty || len > maxLen)
         {
             OK = false;
         }
@@ -2626,7 +2609,7 @@ public partial class ToolFormSample : Window
     {
         bool OK = true;
 
-        if ((_flagMainFormPCLXL))
+        if (_flagMainFormPCLXL)
         {
             if (!File.Exists(_formFileMainPCLXL))
             {
@@ -2643,7 +2626,7 @@ public partial class ToolFormSample : Window
             }
         }
 
-        if ((OK) && (_flagRearFormPCLXL))
+        if (OK && _flagRearFormPCLXL)
         {
             if (!File.Exists(_formFileRearPCLXL))
             {
@@ -2660,7 +2643,7 @@ public partial class ToolFormSample : Window
             }
         }
 
-        if ((OK) && (_flagMainFormPCLXL) && (_flagRearFormPCLXL))
+        if (OK && _flagMainFormPCLXL && _flagRearFormPCLXL)
         {
             if (_formNameMainPCLXL == _formNameRearPCLXL)
             {
@@ -2712,9 +2695,8 @@ public partial class ToolFormSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {

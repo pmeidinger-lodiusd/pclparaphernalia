@@ -102,7 +102,8 @@ static class ToolStatusReadbackPJLFS
 
             return false;
         }
-        else if (!File.Exists(fileName))
+
+        if (!File.Exists(fileName))
         {
             MessageBox.Show("Binary source file '" + fileName +
                             "' does not exist.",
@@ -112,23 +113,21 @@ static class ToolStatusReadbackPJLFS
 
             return false;
         }
-        else
+
+        _ipStream = File.Open(fileName,
+                                FileMode.Open,
+                                FileAccess.Read,
+                                FileShare.None);
+
+        if (_ipStream != null)
         {
-            _ipStream = File.Open(fileName,
-                                  FileMode.Open,
-                                  FileAccess.Read,
-                                  FileShare.None);
+            open = true;
 
-            if (_ipStream != null)
-            {
-                open = true;
+            FileInfo fi = new FileInfo(fileName);
 
-                FileInfo fi = new FileInfo(fileName);
+            fileSize = fi.Length;
 
-                fileSize = fi.Length;
-
-                _binReader = new BinaryReader(_ipStream);
-            }
+            _binReader = new BinaryReader(_ipStream);
         }
 
         return open;
@@ -171,19 +170,17 @@ static class ToolStatusReadbackPJLFS
 
             return false;
         }
-        else
+
+        _opStream = File.Open(fileName,
+                                FileMode.OpenOrCreate,
+                                FileAccess.Write,
+                                FileShare.None);
+
+        if (_opStream != null)
         {
-            _opStream = File.Open(fileName,
-                                  FileMode.OpenOrCreate,
-                                  FileAccess.Write,
-                                  FileShare.None);
+            open = true;
 
-            if (_opStream != null)
-            {
-                open = true;
-
-                _binWriter = new BinaryWriter(_opStream);
-            }
+            _binWriter = new BinaryWriter(_opStream);
         }
 
         return open;
@@ -847,8 +844,7 @@ static class ToolStatusReadbackPJLFS
 
             for (int i = 0; i < textSize.Length; i++)
             {
-                if ((indxText + i >= cmdLen) ||
-                    (textSize[i] != replyBlock[indxText + i]))
+                if ((indxText + i >= cmdLen) || (textSize[i] != replyBlock[indxText + i]))
                     sizeTextFound = false;
             }
         }

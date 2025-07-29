@@ -442,10 +442,7 @@ static class PrnParseData
 
         while (!foundEsc && !foundTerm && !continuation && len > 0)
         {
-            if (firstChar && ignoreFirst)
-                ignoreFE = true;
-            else
-                ignoreFE = false;
+            ignoreFE = firstChar && ignoreFirst;
 
             c1 = buf[offset];
 
@@ -479,46 +476,40 @@ static class PrnParseData
             multiByteChar = false;
             utf8Char = false;
 
-            if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m21_1_or_2_byte_Asian7bit)
+            if (textMode == (int)PCLTextParsingMethods.ePCLVal.m21_1_or_2_byte_Asian7bit)
             {
                 if (c1 >= 0x21)
                     multiByteChar = true;
             }
-            else if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m2_2_byte)
+            else if (textMode == (int)PCLTextParsingMethods.ePCLVal.m2_2_byte)
             {
                 if (c1 != 0x1b)
                     multiByteChar = true;
             }
-            else if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m31_1_or_2_byte_ShiftJIS)
+            else if (textMode == (int)PCLTextParsingMethods.ePCLVal.m31_1_or_2_byte_ShiftJIS)
             {
                 if ((c1 >= 0x81) && (c1 <= 0x9f))
                     multiByteChar = true;
                 else if ((c1 >= 0xe0) && (c1 <= 0xfc))
                     multiByteChar = true;
             }
-            else if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m38_1_or_2_byte_Asian8bit)
+            else if (textMode == (int)PCLTextParsingMethods.ePCLVal.m38_1_or_2_byte_Asian8bit)
             {
                 if (c1 >= 0x80)
                     multiByteChar = true;
             }
-            else if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m83_UTF8)
+            else if (textMode == (int)PCLTextParsingMethods.ePCLVal.m83_UTF8)
             {
                 if (c1 >= 0x80)
                     utf8Char = true;
             }
-            else if (textMode ==
-                (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt)
+            else if (textMode == (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt)
             {
                 if (c1 >= 0x80)
                     utf8Char = true;
             }
 
-            if ((multiByteChar) || (utf8Char))
+            if (multiByteChar || utf8Char)
                 multiByteData = true;
 
             //------------------------------------------------------------//
@@ -1037,17 +1028,11 @@ static class PrnParseData
             charType = eCharType.DEL;
         else if (charVal < 0x21)
             charType = eCharType.C0Controls;
-        else if ((showCharSet == PrnParseConstants.eOptCharSets.ASCII)
-                                &&
-                    (charVal >= 0x80))
+        else if ((showCharSet == PrnParseConstants.eOptCharSets.ASCII) && (charVal >= 0x80))
             charType = eCharType.Extended;
-        else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1)
-                                &&
-                    (charVal >= 0xa0))
+        else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1) && (charVal >= 0xa0))
             charType = eCharType.Graphic;
-        else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1)
-                                   &&
-                    (charVal >= 0x80))
+        else if ((showCharSet == PrnParseConstants.eOptCharSets.ISO_8859_1) && (charVal >= 0x80))
             charType = eCharType.C1Controls;
         else
             charType = eCharType.Graphic;

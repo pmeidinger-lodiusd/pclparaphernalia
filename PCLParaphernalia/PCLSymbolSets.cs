@@ -1532,11 +1532,9 @@ static class PCLSymbolSets
         _sets[_indxUserSet].MapArrayUserSet = mapArray;
 
         if (symSetType == PCLSymSetTypes.eIndex.Bound_16bit)
-            _sets[_indxUserSet].ParsingMethod =
-                PCLTextParsingMethods.eIndex.m83_UTF8;
+            _sets[_indxUserSet].ParsingMethod = PCLTextParsingMethods.eIndex.m83_UTF8;
         else
-            _sets[_indxUserSet].ParsingMethod =
-                PCLTextParsingMethods.eIndex.not_specified;
+            _sets[_indxUserSet].ParsingMethod = PCLTextParsingMethods.eIndex.not_specified;
     }
 
     //--------------------------------------------------------------------//

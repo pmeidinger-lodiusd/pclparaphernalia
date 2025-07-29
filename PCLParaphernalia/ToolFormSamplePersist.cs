@@ -510,49 +510,29 @@ static class ToolFormSamplePersist
                             RegistryValueKind.DWord);
 
             if (flagMacroRemove)
-                subKey.SetValue(_nameFlagMacroRemove,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMacroRemove, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagMacroRemove,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMacroRemove, _flagFalse, RegistryValueKind.DWord);
 
             if (flagMainForm)
-                subKey.SetValue(_nameFlagMainForm,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMainForm, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagMainForm,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMainForm, _flagFalse, RegistryValueKind.DWord);
 
             if (flagRearForm)
-                subKey.SetValue(_nameFlagRearForm,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearForm, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagRearForm,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearForm, _flagFalse, RegistryValueKind.DWord);
 
             if (flagRearBPlate)
-                subKey.SetValue(_nameFlagRearBPlate,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearBPlate, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagRearBPlate,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearBPlate, _flagFalse, RegistryValueKind.DWord);
 
             if (flagPrintDescText)
-                subKey.SetValue(_nameFlagPrintDescText,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagPrintDescText, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagPrintDescText,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagPrintDescText, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -585,49 +565,33 @@ static class ToolFormSamplePersist
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
             if (flagMainOnPrnDisk)
-                subKey.SetValue(_nameFlagMainOnPrnDisk,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMainOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagMainOnPrnDisk,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMainOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
 
             if (flagRearOnPrnDisk)
-                subKey.SetValue(_nameFlagRearOnPrnDisk,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearOnPrnDisk, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagRearOnPrnDisk,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRearOnPrnDisk, _flagFalse, RegistryValueKind.DWord);
 
             if (formFileMain != null)
             {
-                subKey.SetValue(_nameFormFileMain,
-                                formFileMain,
-                                RegistryValueKind.String);
+                subKey.SetValue(_nameFormFileMain, formFileMain, RegistryValueKind.String);
             }
 
             if (formFileRear != null)
             {
-                subKey.SetValue(_nameFormFileRear,
-                                formFileRear,
-                                RegistryValueKind.String);
+                subKey.SetValue(_nameFormFileRear, formFileRear, RegistryValueKind.String);
             }
 
             if (prnDiskFileMain != null)
             {
-                subKey.SetValue(_namePrnDiskFileMain,
-                                 prnDiskFileMain,
-                                 RegistryValueKind.String);
+                subKey.SetValue(_namePrnDiskFileMain, prnDiskFileMain, RegistryValueKind.String);
             }
 
             if (prnDiskFileRear != null)
             {
-                subKey.SetValue(_namePrnDiskFileRear,
-                                 prnDiskFileRear,
-                                 RegistryValueKind.String);
+                subKey.SetValue(_namePrnDiskFileRear, prnDiskFileRear, RegistryValueKind.String);
             }
 
             subKey.SetValue(_nameMacroIdMain,

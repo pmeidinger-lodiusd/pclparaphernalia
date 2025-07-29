@@ -197,11 +197,9 @@ static class ToolMiscSamplesActLogOperPCL
         if (flagOptColour)
         {
             if (idClrT1 == idClrBlack)                                   // ***** DO WE NEED TO DISTINGUISH THIS *****
-                WritePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                              false);
+                WritePattern(prnWriter, _patternId, idClrT1, idClrT2, false);
             else
-                WritePattern(prnWriter, _patternId, idClrT1, idClrT2,
-                              true);
+                WritePattern(prnWriter, _patternId, idClrT1, idClrT2, true);
         }
         else
         {

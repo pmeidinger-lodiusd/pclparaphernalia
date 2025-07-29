@@ -352,11 +352,8 @@ public partial class ToolTrayMap : Window
                                   CultureInfo.InvariantCulture,
                                   out sheetIndx);
 
-        if (flagOK)
-        {
-            if (sheetIndx > _maxSheetNo)
-                flagOK = false;
-        }
+        if (flagOK && sheetIndx > _maxSheetNo)
+            flagOK = false;
 
         if (!flagOK)
         {

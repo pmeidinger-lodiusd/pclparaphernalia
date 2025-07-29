@@ -333,7 +333,7 @@ static class TargetWinPrint
             ClosePrinter(hPrinter);
         }
 
-        if (bSuccess == false)
+        if (!bSuccess)
         {
             //------------------------------------------------------------//
             //                                                            //
@@ -480,7 +480,7 @@ static class TargetWinPrint
             ClosePrinter(hPrinter);
         }
 
-        if (bSuccess == false)
+        if (!bSuccess)
         {
             //------------------------------------------------------------//
             //                                                            //

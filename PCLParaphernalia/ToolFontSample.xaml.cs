@@ -892,8 +892,7 @@ public partial class ToolFontSample : Window
         _indxPDL = cbPDL.SelectedIndex;
         _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-        if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
-           (!_symSetUserFileValid))
+        if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) && (!_symSetUserFileValid))
         {
             flagOK = CheckPCLSymSetFile();
         }
@@ -1057,10 +1056,7 @@ public partial class ToolFontSample : Window
 
                     //----------------------------------------------------//
 
-                    if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
-                        symSetUserSet = true;
-                    else
-                        symSetUserSet = false;
+                    symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
 
                     //----------------------------------------------------//
 
@@ -1132,19 +1128,14 @@ public partial class ToolFontSample : Window
                         _fontPrnDiskMacroIdPCL,
                         fontFilename,
                         symSetUserSet,
-                        (_mapCodesRelevant == true) ? _showMapCodesUCS2PCL : false,
-                        (_mapCodesRelevant == true) ? _showMapCodesUTF8PCL : false,
+                        _mapCodesRelevant ? _showMapCodesUCS2PCL : false,
+                        _mapCodesRelevant ? _showMapCodesUTF8PCL : false,
                         _symSetUserActEmbedPCL,
                         _symSetUserFile);
                 }
                 else    // if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                 {
-                    bool symSetUserSet;
-
-                    if (_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet)
-                        symSetUserSet = true;
-                    else
-                        symSetUserSet = false;
+                    bool symSetUserSet = _symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet;
 
                     if (ValidatePCLXLFontCharacteristics())
                         SetFontSelectData();
@@ -1168,8 +1159,8 @@ public partial class ToolFontSample : Window
                         _downloadRemovePCLXL,
                         _fontFilenamePCLXL,
                         symSetUserSet,
-                        (_mapCodesRelevant == true) ? _showMapCodesUCS2PCLXL : false,
-                        (_mapCodesRelevant == true) ? _showMapCodesUTF8PCLXL : false,
+                        _mapCodesRelevant ? _showMapCodesUCS2PCLXL : false,
+                        _mapCodesRelevant ? _showMapCodesUTF8PCLXL : false,
                         _symSetUserFile);
                 }
 
@@ -2183,10 +2174,7 @@ public partial class ToolFontSample : Window
 
                 chkPCLPrnDiskDataKnown.Visibility = Visibility.Visible;
 
-                if (_prnDiskFontDataKnownPCL)
-                    chkPCLPrnDiskDataKnown.IsChecked = true;
-                else
-                    chkPCLPrnDiskDataKnown.IsChecked = false;
+                chkPCLPrnDiskDataKnown.IsChecked = _prnDiskFontDataKnownPCL;
             }
             else // if (_fontType == PCLFonts.eFontType.Custom)
             {
@@ -2523,15 +2511,9 @@ public partial class ToolFontSample : Window
 
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
-            if (_showMapCodesUCS2PCL)
-                chkOptShowMapCodesUCS2.IsChecked = true;
-            else
-                chkOptShowMapCodesUCS2.IsChecked = false;
+            chkOptShowMapCodesUCS2.IsChecked = _showMapCodesUCS2PCL;
 
-            if (_showMapCodesUTF8PCL)
-                chkOptShowMapCodesUTF8.IsChecked = true;
-            else
-                chkOptShowMapCodesUTF8.IsChecked = false;
+            chkOptShowMapCodesUTF8.IsChecked = _showMapCodesUTF8PCL;
 
             if (_symSetUserActEmbedPCL)
                 rbSymSetUserActEmbed.IsChecked = true;
@@ -2540,15 +2522,9 @@ public partial class ToolFontSample : Window
         }
         else if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
         {
-            if (_showMapCodesUCS2PCLXL)
-                chkOptShowMapCodesUCS2.IsChecked = true;
-            else
-                chkOptShowMapCodesUCS2.IsChecked = false;
+            chkOptShowMapCodesUCS2.IsChecked = _showMapCodesUCS2PCLXL;
 
-            if (_showMapCodesUTF8PCLXL)
-                chkOptShowMapCodesUTF8.IsChecked = true;
-            else
-                chkOptShowMapCodesUTF8.IsChecked = false;
+            chkOptShowMapCodesUTF8.IsChecked = _showMapCodesUTF8PCLXL;
 
             rbSymSetUserActIndex.IsChecked = true;
         }
@@ -2777,46 +2753,36 @@ public partial class ToolFontSample : Window
 
         //----------------------------------------------------------------//
 
-        if ((_indxOrientationPCL < 0) ||
-            (_indxOrientationPCL >= _ctOrientations))
+        if ((_indxOrientationPCL < 0) || (_indxOrientationPCL >= _ctOrientations))
             _indxOrientationPCL = 0;
 
-        if ((_indxPaperSizePCL < 0) ||
-            (_indxPaperSizePCL >= _ctPaperSizes))
+        if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))
             _indxPaperSizePCL = 0;
 
-        if ((_indxPaperTypePCL < 0) ||
-            (_indxPaperTypePCL >= _ctPaperTypes))
+        if ((_indxPaperTypePCL < 0) || (_indxPaperTypePCL >= _ctPaperTypes))
             _indxPaperTypePCL = 0;
 
-        if ((_indxFontPCL < 0) ||
-            (_indxFontPCL >= _ctFonts))
+        if ((_indxFontPCL < 0) || (_indxFontPCL >= _ctFonts))
             _indxFontPCL = 0;
 
-        if ((_indxSymSetPCL < 0) ||
-            (_indxSymSetPCL >= _ctSymSets))
+        if ((_indxSymSetPCL < 0) || (_indxSymSetPCL >= _ctSymSets))
             _indxSymSetPCL = 0;
 
         //----------------------------------------------------------------//
 
-        if ((_indxOrientationPCLXL < 0) ||
-            (_indxOrientationPCLXL >= _ctOrientations))
+        if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
             _indxOrientationPCLXL = 0;
 
-        if ((_indxPaperSizePCLXL < 0) ||
-            (_indxPaperSizePCLXL >= _ctPaperSizes))
+        if ((_indxPaperSizePCLXL < 0) || (_indxPaperSizePCLXL >= _ctPaperSizes))
             _indxPaperSizePCLXL = 0;
 
-        if ((_indxPaperTypePCLXL < 0) ||
-            (_indxPaperTypePCLXL >= _ctPaperTypes))
+        if ((_indxPaperTypePCLXL < 0) || (_indxPaperTypePCLXL >= _ctPaperTypes))
             _indxPaperTypePCLXL = 0;
 
-        if ((_indxFontPCLXL < 0) ||
-            (_indxFontPCLXL >= _ctFonts))
+        if ((_indxFontPCLXL < 0) || (_indxFontPCLXL >= _ctFonts))
             _indxFontPCLXL = 0;
 
-        if ((_indxSymSetPCLXL < 0) ||
-            (_indxSymSetPCLXL >= _ctSymSets))
+        if ((_indxSymSetPCLXL < 0) || (_indxSymSetPCLXL >= _ctSymSets))
             _indxSymSetPCLXL = 0;
     }
 
@@ -3064,30 +3030,15 @@ public partial class ToolFontSample : Window
 
             _indxFontPCL = cbFont.SelectedIndex;
 
-            if (chkOptFormAsMacro.IsChecked == true)
-                _formAsMacroPCL = true;
-            else
-                _formAsMacroPCL = false;
+            _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
 
-            if (chkOptShowC0Chars.IsChecked == true)
-                _showC0CharsPCL = true;
-            else
-                _showC0CharsPCL = false;
+            _showC0CharsPCL = chkOptShowC0Chars.IsChecked == true;
 
-            if (chkOptShowMapCodesUCS2.IsChecked == true)
-                _showMapCodesUCS2PCL = true;
-            else
-                _showMapCodesUCS2PCL = false;
+            _showMapCodesUCS2PCL = chkOptShowMapCodesUCS2.IsChecked == true;
 
-            if (chkOptShowMapCodesUTF8.IsChecked == true)
-                _showMapCodesUTF8PCL = true;
-            else
-                _showMapCodesUTF8PCL = false;
+            _showMapCodesUTF8PCL = chkOptShowMapCodesUTF8.IsChecked == true;
 
-            if (rbSymSetUserActEmbed.IsChecked == true)
-                _symSetUserActEmbedPCL = true;
-            else
-                _symSetUserActEmbedPCL = false;
+            _symSetUserActEmbedPCL = rbSymSetUserActEmbed.IsChecked == true;
         }
         else
         {
@@ -3097,25 +3048,13 @@ public partial class ToolFontSample : Window
 
             _indxFontPCLXL = cbFont.SelectedIndex;
 
-            if (chkOptFormAsMacro.IsChecked == true)
-                _formAsMacroPCLXL = true;
-            else
-                _formAsMacroPCLXL = false;
+            _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
 
-            if (chkOptShowC0Chars.IsChecked == true)
-                _showC0CharsPCLXL = true;
-            else
-                _showC0CharsPCLXL = false;
+            _showC0CharsPCLXL = chkOptShowC0Chars.IsChecked == true;
 
-            if (chkOptShowMapCodesUCS2.IsChecked == true)
-                _showMapCodesUCS2PCLXL = true;
-            else
-                _showMapCodesUCS2PCLXL = false;
+            _showMapCodesUCS2PCLXL = chkOptShowMapCodesUCS2.IsChecked == true;
 
-            if (chkOptShowMapCodesUTF8.IsChecked == true)
-                _showMapCodesUTF8PCLXL = true;
-            else
-                _showMapCodesUTF8PCLXL = false;
+            _showMapCodesUTF8PCLXL = chkOptShowMapCodesUTF8.IsChecked == true;
         }
     }
 
@@ -3664,13 +3603,9 @@ public partial class ToolFontSample : Window
                     showDetails = false;
 
                 if (_prnDiskLoadViaMacro)
-                    _fontDesc = "prn disk load (id=" +
-                               _fontPrnDiskIdPCL + "); " +
-                                "via macro (id=" +
-                                _fontPrnDiskMacroIdPCL + "); ";
+                    _fontDesc = "prn disk load (id=" + _fontPrnDiskIdPCL + "); " + "via macro (id=" + _fontPrnDiskMacroIdPCL + "); ";
                 else
-                    _fontDesc = "prn disk load (id=" +
-                                _fontPrnDiskIdPCL + "); ";
+                    _fontDesc = "prn disk load (id=" + _fontPrnDiskIdPCL + "); ";
             }
             else
             {
@@ -3756,8 +3691,7 @@ public partial class ToolFontSample : Window
 
         //----------------------------------------------------------------//
 
-        if ((_fontType == PCLFonts.eFontType.PrnDisk) &&
-            (!_prnDiskFontDataKnownPCL))
+        if ((_fontType == PCLFonts.eFontType.PrnDisk) && (!_prnDiskFontDataKnownPCL))
         {
             cbSymSet.IsEnabled = false;
         }
@@ -3907,10 +3841,7 @@ public partial class ToolFontSample : Window
             else
                 rbPCLSelectByChar.IsChecked = true;
 
-            if (_downloadRemovePCL)
-                chkPCLSoftFontRemove.IsChecked = true;
-            else
-                chkPCLSoftFontRemove.IsChecked = false;
+            chkPCLSoftFontRemove.IsChecked = _downloadRemovePCL;
 
             SetFontOptionsPCLBasic(true, false);
             SetFontOptionsPCLDesign(true, false);
@@ -3986,10 +3917,7 @@ public partial class ToolFontSample : Window
                 rbPCLSelectByChar.IsEnabled = false;
             }
 
-            if (_prnDiskRemovePCL)
-                chkPCLSoftFontRemove.IsChecked = true;
-            else
-                chkPCLSoftFontRemove.IsChecked = false;
+            chkPCLSoftFontRemove.IsChecked = _prnDiskRemovePCL;
         }
         else if (_fontType == PCLFonts.eFontType.Custom)
         {
@@ -4093,28 +4021,14 @@ public partial class ToolFontSample : Window
             rbPCLSymSetBound.Visibility = Visibility.Visible;
             rbPCLSymSetUnbound.Visibility = Visibility.Visible;
 
-            if (enabled)
-            {
-                rbPCLScBitmap.IsEnabled = true;
-                rbPCLScalable.IsEnabled = true;
+            rbPCLScBitmap.IsEnabled = enabled;
+            rbPCLScalable.IsEnabled = enabled;
 
-                rbPCLSpaceFixP.IsEnabled = true;
-                rbPCLSpaceProp.IsEnabled = true;
+            rbPCLSpaceFixP.IsEnabled = enabled;
+            rbPCLSpaceProp.IsEnabled = enabled;
 
-                rbPCLSymSetBound.IsEnabled = true;
-                rbPCLSymSetUnbound.IsEnabled = true;
-            }
-            else
-            {
-                rbPCLScBitmap.IsEnabled = false;
-                rbPCLScalable.IsEnabled = false;
-
-                rbPCLSpaceFixP.IsEnabled = false;
-                rbPCLSpaceProp.IsEnabled = false;
-
-                rbPCLSymSetBound.IsEnabled = false;
-                rbPCLSymSetUnbound.IsEnabled = false;
-            }
+            rbPCLSymSetBound.IsEnabled = enabled;
+            rbPCLSymSetUnbound.IsEnabled = enabled;
 
             if (_fontScalable)
                 rbPCLScalable.IsChecked = true;
@@ -4165,18 +4079,9 @@ public partial class ToolFontSample : Window
             txtPCLWeight.Visibility = Visibility.Visible;
             txtPCLTypeface.Visibility = Visibility.Visible;
 
-            if (enabled)
-            {
-                txtPCLStyle.IsEnabled = true;
-                txtPCLWeight.IsEnabled = true;
-                txtPCLTypeface.IsEnabled = true;
-            }
-            else
-            {
-                txtPCLStyle.IsEnabled = false;
-                txtPCLWeight.IsEnabled = false;
-                txtPCLTypeface.IsEnabled = false;
-            }
+            txtPCLStyle.IsEnabled = enabled;
+            txtPCLWeight.IsEnabled = enabled;
+            txtPCLTypeface.IsEnabled = enabled;
 
             txtPCLStyle.Text = _fontStylePCL.ToString();
             txtPCLWeight.Text = _fontWeightPCL.ToString();
@@ -4334,10 +4239,7 @@ public partial class ToolFontSample : Window
                 lbPCLXLHeightComment.Visibility = Visibility.Visible;
             }
 
-            if (_downloadRemovePCLXL)
-                chkPCLXLSoftFontRemove.IsChecked = true;
-            else
-                chkPCLXLSoftFontRemove.IsChecked = false;
+            chkPCLXLSoftFontRemove.IsChecked = _downloadRemovePCLXL;
         }
         else if (_fontType == PCLFonts.eFontType.PrnDisk)
         {
@@ -4606,10 +4508,8 @@ public partial class ToolFontSample : Window
         else
             selSeqAttr = "<Esc>(" + _fontSelSeqPCL;
 
-        if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
-            (!_symSetUserActEmbedPCL))
-            symSetId = PCLSymbolSets.GetId(
-                                PCLSymbolSets.IndexUnicode);
+        if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) && (!_symSetUserActEmbedPCL))
+            symSetId = PCLSymbolSets.GetId(PCLSymbolSets.IndexUnicode);
         else
             symSetId = _symSetId;
 
@@ -4684,13 +4584,11 @@ public partial class ToolFontSample : Window
         {
             _fontLoadDescPCL = string.Empty;
 
-            _fontSelDescPCL = "<Esc>(" + symSetId +
-                              selSeqAttr;
+            _fontSelDescPCL = "<Esc>(" + symSetId + selSeqAttr;
         }
 
         if (_fontLoadDescPCL != string.Empty)
-            txtPCLSelSeq.Text = _fontLoadDescPCL + " .-. " +
-                                _fontSelDescPCL;
+            txtPCLSelSeq.Text = _fontLoadDescPCL + " .-. " + _fontSelDescPCL;
         else
             txtPCLSelSeq.Text = _fontSelDescPCL;
     }
@@ -4709,8 +4607,7 @@ public partial class ToolFontSample : Window
         if ((_symSetGroup == PCLSymbolSets.eSymSetGroup.UserSet) &&
             (!_symSetUserActEmbedPCLXL)) // this should always be true
         {
-            _symSetNo = PCLSymbolSets.GetKind1(
-                                PCLSymbolSets.IndexUnicode);
+            _symSetNo = PCLSymbolSets.GetKind1(PCLSymbolSets.IndexUnicode);
         }
 
         txtPCLXLFontName.Text = _fontNamePCLXL;
@@ -4878,8 +4775,7 @@ public partial class ToolFontSample : Window
                     seq += height.ToString("F2") + "v";
                 else
                     // Bitmap; fixed-pitch
-                    seq += height.ToString("F2") + "v" +
-                           pitch.ToString("F2") + "h";
+                    seq += height.ToString("F2") + "v" + pitch.ToString("F2") + "h";
             }
 
             seq += style.ToString() + "s" +
@@ -4979,7 +4875,7 @@ public partial class ToolFontSample : Window
             found = false;
 
             for (int i = 0;
-                 (i < _ctParseMethods) && (found == false);
+                 (i < _ctParseMethods) && (!found);
                  i++)
             {
                 if (_subsetParseMethods[i] == _indxParseMethod)
@@ -5041,7 +4937,7 @@ public partial class ToolFontSample : Window
             found = false;
 
             for (int i = 0;
-                 (i < _ctParseMethods) && (found == false);
+                 (i < _ctParseMethods) && (!found);
                  i++)
             {
                 if (_subsetParseMethods[i] == _indxParseMethod)
@@ -6105,8 +6001,7 @@ public partial class ToolFontSample : Window
 
         if (crntText == string.Empty)
         {
-            if ((_fontType == PCLFonts.eFontType.Download) &&
-                 (_downloadSelByIdPCL) && (!_fontScalable))
+            if ((_fontType == PCLFonts.eFontType.Download) && _downloadSelByIdPCL && (!_fontScalable))
                 value = 0;
             else if (_fontProportional)
                 value = 0;
@@ -6186,9 +6081,8 @@ public partial class ToolFontSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -6255,9 +6149,8 @@ public partial class ToolFontSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -6324,9 +6217,8 @@ public partial class ToolFontSample : Window
 
         OK = short.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -6393,9 +6285,8 @@ public partial class ToolFontSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -6468,9 +6359,8 @@ public partial class ToolFontSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (OK)
         {
@@ -6775,9 +6665,8 @@ public partial class ToolFontSample : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (!OK)
         {

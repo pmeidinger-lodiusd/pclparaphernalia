@@ -909,9 +909,7 @@ public partial class ToolPatternGenerate : Window
         {
 
             if (_patternStateBtns[i] == true)
-            {
                 setBtns.Append(" " + i);
-            }
         }
 
         MessageBox.Show(setBtns.ToString(),

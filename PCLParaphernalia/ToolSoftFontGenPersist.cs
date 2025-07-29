@@ -464,40 +464,24 @@ static class ToolSoftFontGenPersist
             }
 
             if (flagFormat16)
-                subKey.SetValue(_nameFlagFormat16,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormat16, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormat16,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormat16, _flagFalse, RegistryValueKind.DWord);
 
             if (flagCharCompSpecific)
-                subKey.SetValue(_nameFlagCharCompSpecific,
-                                 _flagTrue,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagCharCompSpecific, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagCharCompSpecific,
-                                 _flagFalse,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagCharCompSpecific, _flagFalse, RegistryValueKind.DWord);
 
             if (flagVMetrics)
-                subKey.SetValue(_nameFlagVMetrics,
-                                 _flagTrue,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagVMetrics, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagVMetrics,
-                                 _flagFalse,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagVMetrics, _flagFalse, RegistryValueKind.DWord);
 
             if (flagSegGTLast)
-                subKey.SetValue(_nameFlagSegGTLast,
-                                 _flagTrue,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSegGTLast, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagSegGTLast,
-                                 _flagFalse,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSegGTLast, _flagFalse, RegistryValueKind.DWord);
 
             tmpInt64 = (long)charCompUnicode;
 
@@ -537,13 +521,9 @@ static class ToolSoftFontGenPersist
             }
 
             if (flagVMetrics)
-                subKey.SetValue(_nameFlagVMetrics,
-                                 _flagTrue,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagVMetrics, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagVMetrics,
-                                 _flagFalse,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagVMetrics, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -604,13 +584,9 @@ static class ToolSoftFontGenPersist
                             RegistryValueKind.DWord);
 
             if (flagUsePCLT)
-                subKey.SetValue(_nameFlagUsePCLT,
-                                 _flagTrue,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagUsePCLT, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagUsePCLT,
-                                 _flagFalse,
-                                 RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagUsePCLT, _flagFalse, RegistryValueKind.DWord);
 
             if (adhocFontFile != null)
             {

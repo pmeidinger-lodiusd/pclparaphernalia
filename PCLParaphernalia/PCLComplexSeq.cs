@@ -282,15 +282,20 @@ class PCLComplexSeq
                 value = " (#=" + _value.ToString() + ")";
             else
                 value = string.Empty;
+
             if (_flagNilValue)
             {
                 if (_flagNilGChar)
+                {
                     seq = "<Esc>" + (char)_keyPChar +
                                     (char)_keyTChar;
+                }
                 else
+                {
                     seq = "<Esc>" + (char)_keyPChar +
                                     (char)_keyGChar +
                                     (char)_keyTChar;
+                }
             }
             else if (_flagNilGChar)
             {

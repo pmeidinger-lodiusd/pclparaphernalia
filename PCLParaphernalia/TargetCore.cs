@@ -117,34 +117,24 @@ static class TargetCore
         //----------------------------------------------------------------//
 
         if (crntToolId == ToolCommonData.eToolIds.FontSample)
-            ToolFontSamplePersist.LoadDataCapture(crntPDL,
-                                                   ref _saveFilename);
+            ToolFontSamplePersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.FormSample)
-            ToolFormSamplePersist.LoadDataCapture(crntPDL,
-                                                   ref _saveFilename);
+            ToolFormSamplePersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-            ToolImageBitmapPersist.LoadDataCapture(crntPDL,
-                                                    ref _saveFilename);
+            ToolImageBitmapPersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.PrintArea)
-            ToolPrintAreaPersist.LoadDataCapture(crntPDL,
-                                                  ref _saveFilename);
+            ToolPrintAreaPersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.PrnPrint)
-            ToolPrnPrintPersist.LoadDataCapture(crntPDL,
-                                                 ref _saveFilename);
+            ToolPrnPrintPersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
-            ToolStatusReadbackPersist.LoadDataCapture(crntPDL,
-                                                       ref _saveFilename);
+            ToolStatusReadbackPersist.LoadDataCapture(crntPDL, ref _saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.TrayMap)
-            ToolTrayMapPersist.LoadDataCapture(crntPDL,
-                                                ref _saveFilename);
+            ToolTrayMapPersist.LoadDataCapture(crntPDL, ref _saveFilename);
 
         //----------------------------------------------------------------//
 
         else if (crntToolId == ToolCommonData.eToolIds.MiscSamples)
-            ToolMiscSamplesPersist.LoadDataCapture(
-                         crntToolSubId,
-                         crntPDL,
-                         ref _saveFilename);
+            ToolMiscSamplesPersist.LoadDataCapture(crntToolSubId, crntPDL, ref _saveFilename);
 
         //----------------------------------------------------------------//
 
@@ -183,14 +173,11 @@ static class TargetCore
 
         if (crntToolId == ToolCommonData.eToolIds.MakeOverlay)
             ToolMakeOverlayPersist.LoadDataRpt(ref tmpFmt);
-        else if (crntToolId == ToolCommonData.eToolIds.PrintLang)
-            ToolPrintLangPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks,
-                                              ref _flagOptRptWrap);
+        else if (crntToolId == ToolCommonData.eToolIds.PrintLang) ToolPrintLangPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks, ref _flagOptRptWrap);
         else if (crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
             ToolPrnAnalysePersist.LoadDataRpt(ref tmpFmt);
         else if (crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-            ToolSoftFontGenPersist.LoadDataRpt(ref tmpFmt,
-                                                ref tmpChkMarks);
+            ToolSoftFontGenPersist.LoadDataRpt(ref tmpFmt, ref tmpChkMarks);
         else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
             ToolStatusReadbackPersist.LoadDataRpt(ref tmpFmt);
         else if (crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
@@ -201,7 +188,9 @@ static class TargetCore
         //----------------------------------------------------------------//
 
         if (flagNA)
+        {
             tmpFmt = indxFmtNA;
+        }
         else
         {
             if (tmpFmt >= indxFmtNA)
@@ -316,33 +305,24 @@ static class TargetCore
         //----------------------------------------------------------------//
 
         if (crntToolId == ToolCommonData.eToolIds.FontSample)
-            ToolFontSamplePersist.SaveDataCapture(crntPDL,
-                                                   saveFilename);
+            ToolFontSamplePersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.FormSample)
-            ToolFormSamplePersist.SaveDataCapture(crntPDL,
-                                                   saveFilename);
+            ToolFormSamplePersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-            ToolImageBitmapPersist.SaveDataCapture(crntPDL,
-                                                   saveFilename);
+            ToolImageBitmapPersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.PrintArea)
-            ToolPrintAreaPersist.SaveDataCapture(crntPDL,
-                                                  saveFilename);
+            ToolPrintAreaPersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.PrnPrint)
-            ToolPrnPrintPersist.SaveDataCapture(crntPDL,
-                                                 saveFilename);
+            ToolPrnPrintPersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.StatusReadback)
-            ToolStatusReadbackPersist.SaveDataCapture(crntPDL,
-                                                       saveFilename);
+            ToolStatusReadbackPersist.SaveDataCapture(crntPDL, saveFilename);
         else if (crntToolId == ToolCommonData.eToolIds.TrayMap)
-            ToolTrayMapPersist.SaveDataCapture(crntPDL,
-                                                saveFilename);
+            ToolTrayMapPersist.SaveDataCapture(crntPDL, saveFilename);
 
         //----------------------------------------------------------------//
 
         else if (crntToolId == ToolCommonData.eToolIds.MiscSamples)
-            ToolMiscSamplesPersist.SaveDataCapture(crntToolSubId,
-                                                    crntPDL,
-                                                    saveFilename);
+            ToolMiscSamplesPersist.SaveDataCapture(crntToolSubId, crntPDL, saveFilename);
 
         //----------------------------------------------------------------//
 
@@ -376,8 +356,7 @@ static class TargetCore
         if (crntToolId == ToolCommonData.eToolIds.MakeOverlay)
             ToolMakeOverlayPersist.SaveDataRpt(tmpFmt);
         else if (crntToolId == ToolCommonData.eToolIds.PrintLang)
-            ToolPrintLangPersist.SaveDataRpt(tmpFmt, tmpChkMarks,
-                                              flagOptRptWrap);
+            ToolPrintLangPersist.SaveDataRpt(tmpFmt, tmpChkMarks, flagOptRptWrap);
         else if (crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
             ToolPrnAnalysePersist.SaveDataRpt(tmpFmt);
         else if (crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)

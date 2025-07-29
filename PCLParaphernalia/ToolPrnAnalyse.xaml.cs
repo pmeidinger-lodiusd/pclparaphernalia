@@ -163,7 +163,7 @@ public partial class ToolPrnAnalyse : Window
 
             initialiseGridContent();
 
-            viewFile.viewFile(_prnFilename,
+            viewFile.ViewFile(_prnFilename,
                                _options,
                                _tableContent);
 
@@ -282,11 +282,7 @@ public partial class ToolPrnAnalyse : Window
         ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
         ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-        if (_options.IndxGenOffsetFormat ==
-            PrnParseConstants.eOptOffsetFormats.Decimal)
-            flagOffsetHex = false;
-        else
-            flagOffsetHex = true;
+        flagOffsetHex = _options.IndxGenOffsetFormat != PrnParseConstants.eOptOffsetFormats.Decimal;
 
         TargetCore.MetricsReturnFileRpt(ToolCommonData.eToolIds.PrnAnalyse,
                                          ref rptFileFmt,
@@ -351,11 +347,7 @@ public partial class ToolPrnAnalyse : Window
 
             _tableStatistics.Clear();
 
-            if (level ==
-                PrnParseConstants.eOptStatsLevel.ReferencedOnly)
-                incUsedSeqsOnly = true;
-            else
-                incUsedSeqsOnly = false;
+            incUsedSeqsOnly = level == PrnParseConstants.eOptStatsLevel.ReferencedOnly;
 
             PrescribeCommands.DisplayStatsCounts(_tableStatistics,
                                                   incUsedSeqsOnly);
@@ -456,8 +448,7 @@ public partial class ToolPrnAnalyse : Window
         }
         else if (headername == PrnParseConstants.cRptA_colName_Offset)
         {
-            if (_options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Decimal)
+            if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
                 e.Column.Header = headername + ": dec";
             else
                 e.Column.Header = headername + ": hex";
@@ -536,8 +527,7 @@ public partial class ToolPrnAnalyse : Window
 
         if (headername == PrnParseConstants.cRptC_colName_Offset)
         {
-            if (_options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Decimal)
+            if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
                 e.Column.Header = headername + ": dec";
             else
                 e.Column.Header = headername + ": hex";

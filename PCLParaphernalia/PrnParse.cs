@@ -404,8 +404,8 @@ class PrnParse
 
                         string langName;
 
-                        makeMacroScan = (_parseType == eParseType.ScanForPDL);
-                        makeMacroRun = (_parseType == eParseType.MakeOverlay);
+                        makeMacroScan = _parseType == eParseType.ScanForPDL;
+                        makeMacroRun = _parseType == eParseType.MakeOverlay;
 
                         if (makeMacroScan)
                             endReached = true;
@@ -415,9 +415,11 @@ class PrnParse
                             case ToolCommonData.ePrintLang.PCL:
                                 langName = "PCL";
 
-                                if ((makeMacroScan) || (makeMacroRun))
+                                if (makeMacroScan || makeMacroRun)
+                                {
                                     if (_crntPDL == ToolCommonData.ePrintLang.Prescribe)
                                         endReached = false;
+                                }
 
                                 break;
 
@@ -436,11 +438,14 @@ class PrnParse
                             case ToolCommonData.ePrintLang.PJL:
                                 langName = "PJL";
 
-                                if ((makeMacroScan) || (makeMacroRun))
-                                    if ((_linkData.IsEofSet) && (bufRem == 0))
+                                if (makeMacroScan || makeMacroRun)
+                                {
+                                    if (_linkData.IsEofSet && (bufRem == 0))
                                         newPDL = ToolCommonData.ePrintLang.PCL;
                                     else
                                         endReached = false;
+                                }
+
                                 break;
 
                             case ToolCommonData.ePrintLang.PostScript:
@@ -450,7 +455,7 @@ class PrnParse
                             case ToolCommonData.ePrintLang.Prescribe:
                                 langName = "Prescribe";
 
-                                if ((makeMacroScan) || (makeMacroRun))
+                                if (makeMacroScan || makeMacroRun)
                                     if (bufOffset == 0)
                                         endReached = false;
 
@@ -491,8 +496,7 @@ class PrnParse
 
                     if ((_parseType == eParseType.MakeOverlay)
                                   &&
-                        (_linkData.MakeOvlAct !=
-                            PrnParseConstants.eOvlAct.None))
+                        (_linkData.MakeOvlAct != PrnParseConstants.eOvlAct.None))
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -515,8 +519,7 @@ class PrnParse
 
                     if (_linkData.IsContinuation())
                     {
-                        if (_linkData.GetContType() ==
-                            PrnParseConstants.eContType.Abort)
+                        if (_linkData.GetContType() == PrnParseConstants.eContType.Abort)
                         {
                             endReached = true;
 
@@ -551,11 +554,9 @@ class PrnParse
                                 contDataLen = _linkData.DataLen;
 
                                 if (contDataLen > 0)
-                                    _ipStream.Seek(contDataLen,
-                                                    SeekOrigin.Begin);
+                                    _ipStream.Seek(contDataLen, SeekOrigin.Begin);
                                 else
-                                    _ipStream.Seek(contDataLen,
-                                                    SeekOrigin.Current);
+                                    _ipStream.Seek(contDataLen, SeekOrigin.Current);
 
                                 bufRem = 0;
                             }
@@ -650,7 +651,7 @@ class PrnParse
                 {
                     if (_crntPDL == ToolCommonData.ePrintLang.PCLXL)
                     {
-                        _parsePCLXL.processStoredEmbeddedData(true);
+                        _parsePCLXL.ProcessStoredEmbeddedData(true);
                     }
                 }
             }
@@ -752,8 +753,7 @@ class PrnParse
                     string.Empty,
                     "Start Language = PCLXL requested");
 
-                if (indxXLBinding ==
-                    PrnParseConstants.ePCLXLBinding.Unknown)
+                if (indxXLBinding == PrnParseConstants.ePCLXLBinding.Unknown)
                 {
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
@@ -764,8 +764,7 @@ class PrnParse
                         string.Empty,
                         "Stream Header not yet read");
                 }
-                else if (indxXLBinding ==
-                    PrnParseConstants.ePCLXLBinding.BinaryLSFirst)
+                else if (indxXLBinding == PrnParseConstants.ePCLXLBinding.BinaryLSFirst)
                 {
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
@@ -777,8 +776,7 @@ class PrnParse
                         "Stream Header assumed: " +
                         "binary low-byte first");
                 }
-                else if (indxXLBinding ==
-                    PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                else if (indxXLBinding == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                 {
                     PrnParseCommon.AddTextRow(
                         PrnParseRowTypes.eType.MsgComment,
@@ -837,6 +835,7 @@ class PrnParse
             }
 
             if (offsetStart != 0)
+            {
                 PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
@@ -847,8 +846,10 @@ class PrnParse
                     "Start Offset   = " + offsetStart +
                     " (0x" + offsetStart.ToString("X8") +
                     ") requested");
+            }
 
             if (offsetEnd != -1)
+            {
                 PrnParseCommon.AddTextRow(
                     PrnParseRowTypes.eType.MsgComment,
                     _table,
@@ -859,6 +860,7 @@ class PrnParse
                     "End   Offset   = " + offsetEnd +
                     " (0x" + offsetEnd.ToString("X8") +
                     ") requested");
+            }
         }
 
         if (_fileSize == 0)
@@ -1067,7 +1069,6 @@ class PrnParse
             {
                 _subStream = File.Create(_subFilename);
             }
-
             catch (IOException e)
             {
                 PrnParseCommon.AddTextRow(
@@ -1190,7 +1191,7 @@ class PrnParse
         ToolCommonData.ePrintLang newPDL,
         PCLXLOperators.eEmbedDataType type)
     {
-        if ((_subFileOpen) && (_parseType == eParseType.Analyse))
+        if (_subFileOpen && (_parseType == eParseType.Analyse))
         {
             //------------------------------------------------------------//
             //                                                            //
@@ -1253,7 +1254,6 @@ class PrnParse
             {
                 File.Delete(_subFilename);
             }
-
             catch (IOException e)
             {
                 MessageBox.Show("IO Exception:\r\n" +
@@ -1578,7 +1578,6 @@ class PrnParse
         {
             _opStream = File.Create(tmpFilename);
         }
-
         catch (IOException e)
         {
             PrnParseCommon.AddTextRow(
@@ -1654,7 +1653,6 @@ class PrnParse
         {
             _ipStream.Close();
         }
-
         catch (IOException e)
         {
             MessageBox.Show("IO Exception:\r\n" +
@@ -1729,7 +1727,6 @@ class PrnParse
                                       FileAccess.Read,
                                       FileShare.None);
             }
-
             catch (IOException e)
             {
                 MessageBox.Show("IO Exception:\r\n" +

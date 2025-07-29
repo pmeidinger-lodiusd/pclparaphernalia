@@ -107,7 +107,7 @@ class ToolSoftFontGenPCLCommon
 
         int sizeGTDirectory;
 
-        if ((pdlIsPCLXL) || (fmt16))
+        if (pdlIsPCLXL || fmt16)
             segHddrSize = cSizeSegHddrFmt16;
         else
             segHddrSize = cSizeSegHddrFmt15;
@@ -211,7 +211,7 @@ class ToolSoftFontGenPCLCommon
                 segmentsLen += segLenCC;
         }
 
-        if ((tabvmtxPresent) && (flagVMetrics))
+        if (tabvmtxPresent && flagVMetrics)
             segmentsLen += segLenVR;
 
         return segmentsLen;
@@ -355,10 +355,13 @@ class ToolSoftFontGenPCLCommon
     {
         if (string.IsNullOrEmpty(fontFilename))
             throw new ArgumentException($"'{nameof(fontFilename)}' cannot be null or empty.", nameof(fontFilename));
+
         if (binWriter is null)
             throw new ArgumentNullException(nameof(binWriter));
+
         if (opStream is null)
             throw new ArgumentNullException(nameof(opStream));
+
         SaveFileDialog saveDialog = ToolCommonFunctions.CreateSaveFileDialog(fontFilename);
 
         if (pdlIsPCLXL)
@@ -975,7 +978,7 @@ class ToolSoftFontGenPCLCommon
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((!pdlIsPCLXL) || (symSetUnbound))
+            if ((!pdlIsPCLXL) || symSetUnbound)
             {
                 WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                             _metrics_hhea.TableLength,
@@ -990,7 +993,7 @@ class ToolSoftFontGenPCLCommon
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((!pdlIsPCLXL) || (symSetUnbound))
+            if ((!pdlIsPCLXL) || symSetUnbound)
             {
                 WriteHddrSegDataGTTableData(pdlIsPCLXL,
                                             _metrics_hmtx.TableLength,
@@ -1028,7 +1031,7 @@ class ToolSoftFontGenPCLCommon
                                             ref sumMod256);
             }
 
-            if ((tabvmtxPresent) && (flagVMetrics))
+            if (tabvmtxPresent && (flagVMetrics))
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1041,7 +1044,7 @@ class ToolSoftFontGenPCLCommon
 
                 if (tabLen != 0)
                 {
-                    if ((!pdlIsPCLXL) || (symSetUnbound))
+                    if ((!pdlIsPCLXL) || symSetUnbound)
                     {
                         WriteHddrSegDataGTTableData(
                             pdlIsPCLXL,
@@ -1412,7 +1415,7 @@ class ToolSoftFontGenPCLCommon
     {
         bool flagOK = true;
 
-        if ((pdlIsPCLXL) || (fmt16))
+        if (pdlIsPCLXL || fmt16)
         {
             byte[] segHddrFmt16 = new byte[cSizeSegHddrFmt16];
 
@@ -1492,57 +1495,58 @@ class ToolSoftFontGenPCLCommon
             }
 
             if (flagOK)
-
+            {
                 flagOK = WriteHddrSegDataPA(pdlIsPCLXL, fmt16,
                                              panoseData,
                                              ref sumMod256);
+            }
         }
 
-        if ((flagOK) && (!segGTLast))
+        if (flagOK && (!segGTLast))
+        {
             flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16,
                                          symSetUnbound,
                                          tabvmtxPresent,
                                          flagVMetrics,
                                          ref sumMod256);
+        }
 
         if (flagOK)
         {
             if (glyphZeroExists)
-                flagOK = WriteHddrSegDataGC(pdlIsPCLXL, fmt16,
-                                             ref sumMod256);
+                flagOK = WriteHddrSegDataGC(pdlIsPCLXL, fmt16, ref sumMod256);
 
             if (flagOK)
             {
                 if (pdlIsPCLXL)
+                {
                     flagOK = WriteHddrSegDataVI(pdlIsPCLXL, fmt16,
                                                  conversionText,
                                                  ref sumMod256);
+                }
                 else
+                {
                     flagOK = WriteHddrSegDataCP(pdlIsPCLXL, fmt16,
                                                  conversionText,
                                                  ref sumMod256);
+                }
             }
         }
 
-        if (flagOK)
+        if (flagOK && tabvmtxPresent && flagVMetrics)
+            flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16, ref sumMod256);
+
+        if (flagOK && segGTLast)
         {
-            if ((tabvmtxPresent) && (flagVMetrics))
-            {
-                flagOK = WriteHddrSegDataVR(pdlIsPCLXL, fmt16,
-                                             ref sumMod256);
-            }
-        }
-
-        if ((flagOK) && (segGTLast))
             flagOK = WriteHddrSegDataGT(pdlIsPCLXL, fmt16,
                                          symSetUnbound,
                                          tabvmtxPresent,
                                          flagVMetrics,
                                          ref sumMod256);
+        }
 
         if (flagOK)
-            flagOK = WriteHddrSegDataNull(pdlIsPCLXL, fmt16,
-                                           ref sumMod256);
+            flagOK = WriteHddrSegDataNull(pdlIsPCLXL, fmt16, ref sumMod256);
 
         return flagOK;
     }

@@ -218,10 +218,7 @@ public partial class ToolSymbolSetGenerate : Window
                             _subsetSymSets[_indxDonorSymSetSubset],
                             _flagDonorSymSetMapPCL);
 
-            if (sizeDonorSet > cSizeCharSet_8bit)
-                _flagMultiByteSet = true;
-            else
-                _flagMultiByteSet = false;
+            _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
             setMultiByteData(_flagMultiByteSet);
 
@@ -580,8 +577,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC0 = true;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
-                        _offsetMin);
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -598,8 +594,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC0 = false;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
-                        _offsetMin);
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -616,8 +611,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC1 = true;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
-                        _offsetMin);
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -634,8 +628,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC1 = false;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
-                        _offsetMin);
+            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -667,8 +660,8 @@ public partial class ToolSymbolSetGenerate : Window
         else
         {
             btnDefineSymSet.IsEnabled = false;
-            btnGenerateSymSet.IsEnabled = false;
-            btnLogSave.IsEnabled = false;
+            btnGenerateSymSet.IsEnabled = false;    // TODO: same as above?
+            btnLogSave.IsEnabled = false;           // TODO: same as above?
         }
     }
 
@@ -761,15 +754,9 @@ public partial class ToolSymbolSetGenerate : Window
         else
             rbMapDec.IsChecked = true;
 
-        if (_flagIgnoreC0)
-            chkIgnoreC0.IsChecked = true;
-        else
-            chkIgnoreC0.IsChecked = false;
+        chkIgnoreC0.IsChecked = _flagIgnoreC0;
 
-        if (_flagIgnoreC1)
-            chkIgnoreC1.IsChecked = true;
-        else
-            chkIgnoreC1.IsChecked = false;
+        chkIgnoreC1.IsChecked = _flagIgnoreC1;
 
         if (_flagIndexUnicode)
             rbIndexUnicode.IsChecked = true;
@@ -1037,7 +1024,7 @@ bitVal;
 
         //----------------------------------------------------------------//
 
-        if ((offset == 0) && (ignoreC0))
+        if ((offset == 0) && ignoreC0)
         {
             txtMap0x00.Text = noGlyph.ToString(format);
             txtMap0x01.Text = noGlyph.ToString(format);
@@ -1585,17 +1572,11 @@ bitVal;
         {
             if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
             {
-                if (ignoreC0)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC0;
             }
             else if ((i >= cCodePointC1Min) && (i <= cCodePointC1Max))
             {
-                if (ignoreC1)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC1;
             }
             else
             {
@@ -1622,17 +1603,11 @@ bitVal;
         {
             if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
             {
-                if (ignoreC0)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC0;
             }
             else if ((i >= cCodePointC1Min) && (i <= cCodePointC1Max))
             {
-                if (ignoreC1)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC1;
             }
             else
             {
@@ -1659,17 +1634,11 @@ bitVal;
         {
             if ((i >= cCodePointC0Min) && (i <= cCodePointC0Max))
             {
-                if (ignoreC0)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC0;
             }
             else if ((i >= cCodePointC1Min) && (i <= cCodePointC1Max))
             {
-                if (ignoreC1)
-                    codePointSig = false;
-                else
-                    codePointSig = true;
+                codePointSig = !ignoreC1;
             }
             else
             {
@@ -1835,17 +1804,11 @@ bitVal;
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
-                    if ((_targetCharCollReqUnicode & bitVal) != 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    item.IsChecked = (_targetCharCollReqUnicode & bitVal) != 0;
                 }
                 else
                 {
-                    if ((_targetCharCollReqAllUnicode & bitVal) != 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    item.IsChecked = (_targetCharCollReqAllUnicode & bitVal) != 0;
                 }
             }
 
@@ -1863,17 +1826,11 @@ bitVal;
 
                 if (bitType == PCLCharCollections.eBitType.Collection)
                 {
-                    if ((_targetCharCollReqMSL & bitVal) != 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    item.IsChecked = (_targetCharCollReqMSL & bitVal) != 0;
                 }
                 else
                 {
-                    if ((_targetCharCollReqAllMSL & bitVal) != 0)
-                        item.IsChecked = true;
-                    else
-                        item.IsChecked = false;
+                    item.IsChecked = (_targetCharCollReqAllMSL & bitVal) != 0;
                 }
             }
 
@@ -2656,11 +2613,8 @@ bitVal;
                                   CultureInfo.InvariantCulture,
                                   out mapIndx);
 
-        if (flagOK)
-        {
-            if (mapIndx > _sizeCharSet)
-                flagOK = false;
-        }
+        if (flagOK && mapIndx > _sizeCharSet)
+            flagOK = false;
 
         if (!flagOK)
         {
@@ -3006,9 +2960,8 @@ bitVal;
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < minVal) || (value > maxVal))
-                OK = false;
+        if (OK && ((value < minVal) || (value > maxVal)))
+            OK = false;
 
         if (!OK)
         {

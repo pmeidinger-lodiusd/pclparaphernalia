@@ -116,9 +116,7 @@ class PCLSymbolSet
         get
         {
             if (!_mapped)
-            {
                 return false;
-            }
             else if (PCLSymSetMaps.NullMapPCL((int)_mapId))
                 return false;
             else
@@ -156,9 +154,7 @@ class PCLSymbolSet
         get
         {
             if (!_mapped)
-            {
                 return false;
-            }
             else if (PCLSymSetMaps.NullMapStd((int)_mapId))
                 return false;
             else

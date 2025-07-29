@@ -78,8 +78,7 @@ static class ToolMiscSamplesActTxtModChrPCLXL
         GenerateJobHeader(prnWriter);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true,
-                            indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, true, indxPaperSize, indxOrientation);
 
         GeneratePage(prnWriter,
                      indxPaperSize,

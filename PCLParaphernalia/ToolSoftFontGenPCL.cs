@@ -522,20 +522,16 @@ class ToolSoftFontGenPCL
                 {
                     indBuf += 4;
 
-                    if ((glyphCompFlags &
-                        ToolSoftFontGenTTF.mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS) != 0)
+                    if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_ARG_1_AND_2_ARE_WORDS) != 0)
                         indBuf += 4;
                     else
                         indBuf += 2;
 
-                    if ((glyphCompFlags &
-                        ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO) != 0)
+                    if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_TWO_BY_TWO) != 0)
                         indBuf += 8;
-                    else if ((glyphCompFlags &
-                        ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE) != 0)
+                    else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_AN_X_AND_Y_SCALE) != 0)
                         indBuf += 4;
-                    else if ((glyphCompFlags &
-                        ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_SCALE) != 0)
+                    else if ((glyphCompFlags & ToolSoftFontGenTTF.mask_glyf_compFlag_WE_HAVE_A_SCALE) != 0)
                         indBuf += 2;
                 }
             } while ((glyphCompFlags &

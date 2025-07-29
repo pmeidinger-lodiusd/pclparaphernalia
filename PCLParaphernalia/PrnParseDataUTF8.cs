@@ -636,26 +636,22 @@ static class PrnParseDataUTF8
             //       C# does not support fall through.                      // 
 
             case 4:
-                utf8Seq[seqPos--] =
-                    (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                 codepoint >>= 6;
                 goto case 3;
 
             case 3:
-                utf8Seq[seqPos--] =
-                    (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                 codepoint >>= 6;
                 goto case 2;
 
             case 2:
-                utf8Seq[seqPos--] =
-                    (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
+                utf8Seq[seqPos--] = (byte)((codepoint | cTrailByteMark) & cTrailByteMask);
                 codepoint >>= 6;
                 goto case 1;
 
             case 1:
-                utf8Seq[seqPos--] =
-                    (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
+                utf8Seq[seqPos--] = (byte)(codepoint | cLeadByteMarksUTF8[utf8SeqLen - 1]);
                 break;
         }
 
@@ -696,6 +692,9 @@ static class PrnParseDataUTF8
 
         switch (utf8SeqLen)
         {
+            // note: everything falls through hence use of GOTO (!!) as     //
+            //       C# does not support fall through.                      // 
+
             case 6:
                 codepoint += utf8Seq[seqPos++];
                 codepoint <<= 6;

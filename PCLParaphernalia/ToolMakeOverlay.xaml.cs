@@ -226,8 +226,7 @@ public partial class ToolMakeOverlay : Window
         ReportCore.eRptFileFmt rptFileFmt = ReportCore.eRptFileFmt.NA;
         ReportCore.eRptChkMarks rptChkMarks = ReportCore.eRptChkMarks.NA;
 
-        if (_options.IndxGenOffsetFormat ==
-            PrnParseConstants.eOptOffsetFormats.Decimal)
+        if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
             flagOffsetHex = false;
         else
             flagOffsetHex = true;
@@ -422,8 +421,7 @@ public partial class ToolMakeOverlay : Window
         }
         else if (headername == PrnParseConstants.cRptA_colName_Offset)
         {
-            if (_options.IndxGenOffsetFormat ==
-                PrnParseConstants.eOptOffsetFormats.Decimal)
+            if (_options.IndxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
                 e.Column.Header = headername + ": dec";
             else
                 e.Column.Header = headername + ": hex";
@@ -958,12 +956,9 @@ public partial class ToolMakeOverlay : Window
 
         OK = ushort.TryParse(crntText, out value);
 
-        if (OK)
+        if (OK && ((value < minVal) || (value > maxVal)))
         {
-            if ((value < minVal) || (value > maxVal))
-            {
-                OK = false;
-            }
+            OK = false;
         }
 
         if (OK)

@@ -367,10 +367,14 @@ static class PCLWriter
             priSec = ')';
 
         if (symSet != string.Empty)
+        {
             seq = "\x1b" + priSec + symSet +
                   "\x1b" + priSec + fontSel;
+        }
         else
+        {
             seq = "\x1b" + priSec + fontSel;
+        }
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1176,13 +1180,9 @@ static class PCLWriter
         string seq = string.Empty;
 
         if (opaque)
-        {
             seq = "\x1b" + "*v1O";
-        }
         else
-        {
             seq = "\x1b" + "*v0O";
-        }
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1528,17 +1528,23 @@ static class PCLWriter
         string posSeq;
 
         if (floating)
+        {
             posSeq = string.Empty;
+        }
         else if (relative)
+        {
             posSeq = "\x1b" + "*p" +
                        (coordX > 0 ? "+" : string.Empty) +
                        coordX + "x" +       // Position: Horizontal
                        (coordY > 0 ? "+" : string.Empty) +
                        coordY + "Y";        // Position: Vertical
+        }
         else
+        {
             posSeq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y";        // Position: Vertical
+        }
 
         //----------------------------------------------------------------//
 
@@ -1595,17 +1601,23 @@ static class PCLWriter
         string posSeq;
 
         if (floating)
+        {
             posSeq = string.Empty;
+        }
         else if (relative)
+        {
             posSeq = "\x1b" + "*p" +
                        (coordX > 0 ? "+" : string.Empty) +
                        coordX + "x" +       // Position: Horizontal
                        (coordY > 0 ? "+" : string.Empty) +
                        coordY + "Y";        // Position: Vertical
+        }
         else
+        {
             posSeq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y";        // Position: Vertical
+        }
 
         //----------------------------------------------------------------//
 
@@ -1644,17 +1656,23 @@ static class PCLWriter
         string posSeq;
 
         if (floating)
+        {
             posSeq = string.Empty;
+        }
         else if (relative)
+        {
             posSeq = "\x1b" + "*p" +
                        (coordX > 0 ? "+" : string.Empty) +
                        coordX + "x" +       // Position: Horizontal
                        (coordY > 0 ? "+" : string.Empty) +
                        coordY + "Y";        // Position: Vertical
+        }
         else
+        {
             posSeq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y";        // Position: Vertical
+        }
 
         //----------------------------------------------------------------//
 
@@ -1704,17 +1722,23 @@ static class PCLWriter
         string posSeq;
 
         if (floating)
+        {
             posSeq = string.Empty;
+        }
         else if (relative)
+        {
             posSeq = "\x1b" + "*p" +
                        (coordX > 0 ? "+" : string.Empty) +
                        coordX + "x" +       // Position: Horizontal
                        (coordY > 0 ? "+" : string.Empty) +
                        coordY + "Y";        // Position: Vertical
+        }
         else
+        {
             posSeq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y";        // Position: Vertical
+        }
 
         //----------------------------------------------------------------//
 
@@ -1859,13 +1883,9 @@ static class PCLWriter
         string seq = string.Empty;
 
         if (opaque)
-        {
             seq = "\x1b" + "*v1N";
-        }
         else
-        {
             seq = "\x1b" + "*v0N";
-        }
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1919,9 +1939,7 @@ static class PCLWriter
         string seq;
 
         if (formAsMacro)
-        {
             MacroControl(prnWriter, macroId, eMacroControl.Delete);
-        }
 
         seq = "\x1b" + "E" +                // Printer Reset
               "\x1b" + "%-12345X";          // Universal Exit Language

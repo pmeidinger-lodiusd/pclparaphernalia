@@ -143,8 +143,7 @@ static class ToolMiscSamplesActLogPagePCL
         PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true,
-                            paperWidth, paperLength, logXOffset);
+            GenerateOverlay(prnWriter, true, paperWidth, paperLength, logXOffset);
 
         PCLWriter.PageHeader(prnWriter,
                              indxPaperSize,
@@ -408,13 +407,11 @@ static class ToolMiscSamplesActLogPagePCL
 
         if (stdPage)
         {
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "PCL Standard Logical Page sample");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL Standard Logical Page sample");
         }
         else
         {
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      "PCL Define Logical Page sample");
+            PCLWriter.Text(prnWriter, posX, posY, 0, "PCL Define Logical Page sample");
         }
 
         //----------------------------------------------------------------//

@@ -366,7 +366,7 @@ static class ToolSymbolSetGenReport
                 {
                     val = " ".PadLeft(lcCol, ' ');
                 }
-                else if ((flagIgnoreC1) &&
+                else if (flagIgnoreC1 &&
                          ((mapIndx >= cCodePointC1Min) &&
                           (mapIndx <= cCodePointC1Max)))
                 {

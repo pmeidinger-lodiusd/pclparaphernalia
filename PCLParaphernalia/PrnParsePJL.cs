@@ -942,23 +942,17 @@ class PrnParsePJL
 
                 langLen = lang.Length;
 
-                if ((langLen >= 5) &&
-                    (lang.Substring(0, 5) == "PCLXL"))
+                if ((langLen >= 5) && (lang.Substring(0, 5) == "PCLXL"))
                     crntPDL = ToolCommonData.ePrintLang.PCLXL;
-                else if ((langLen >= 7) &&
-                         (lang.Substring(0, 7) == "PCL3GUI"))
+                else if ((langLen >= 7) && (lang.Substring(0, 7) == "PCL3GUI"))
                     crntPDL = ToolCommonData.ePrintLang.PCL3GUI;
-                else if ((langLen >= 3) &&
-                         (lang.Substring(0, 3) == "PCL"))
+                else if ((langLen >= 3) && (lang.Substring(0, 3) == "PCL"))
                     crntPDL = ToolCommonData.ePrintLang.PCL;
-                else if ((langLen >= 10) &&
-                         (lang.Substring(0, 10) == "POSTSCRIPT"))
+                else if ((langLen >= 10) && (lang.Substring(0, 10) == "POSTSCRIPT"))
                     crntPDL = ToolCommonData.ePrintLang.PostScript;
-                else if ((langLen >= 4) &&
-                         (lang.Substring(0, 4) == "HPGL"))
+                else if ((langLen >= 4) && (lang.Substring(0, 4) == "HPGL"))
                     crntPDL = ToolCommonData.ePrintLang.HPGL2;
-                else if ((langLen >= 5) &&
-                         (lang.Substring(0, 5) == "XL2HB"))
+                else if ((langLen >= 5) && (lang.Substring(0, 5) == "XL2HB"))
                     crntPDL = ToolCommonData.ePrintLang.XL2HB;
                 else
                     crntPDL = ToolCommonData.ePrintLang.Unknown;

@@ -330,13 +330,9 @@ public partial class ToolStatusReadback : Window
             txtPJLFSLocPath.Text = filename;
 
             if (upload)
-            {
                 _binTgtFilenamePJLFS = filename;
-            }
             else
-            {
                 _binSrcFilenamePJLFS = filename;
-            }
         }
     }
 
@@ -363,13 +359,17 @@ public partial class ToolStatusReadback : Window
             ref flagOptRptWrap);
 
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
+        {
             ToolStatusReadbackReport.generate(rptFileFmt,
                                               txtReply,
                                               ref _reportFilenamePCL);
+        }
         else if (_crntPDL == ToolCommonData.ePrintLang.PJL)
+        {
             ToolStatusReadbackReport.generate(rptFileFmt,
                                               txtReply,
                                               ref _reportFilenamePJL);
+        }
     }
 
     //--------------------------------------------------------------------//
@@ -424,8 +424,7 @@ public partial class ToolStatusReadback : Window
     {
         _indxPJLCategory = cbPJLCategory.SelectedIndex;
 
-        if (PJLCategories.GetType(_indxPJLCategory) ==
-            PJLCategories.eCategoryType.Custom)
+        if (PJLCategories.GetType(_indxPJLCategory) == PJLCategories.eCategoryType.Custom)
             txtPJLCustomCat.Visibility = Visibility.Visible;
         else
             txtPJLCustomCat.Visibility = Visibility.Hidden;
@@ -601,8 +600,7 @@ public partial class ToolStatusReadback : Window
     {
         _indxPJLVariable = cbPJLVariable.SelectedIndex;
 
-        if (PJLVariables.GetType(_indxPJLVariable) ==
-            PJLVariables.eVarType.Custom)
+        if (PJLVariables.GetType(_indxPJLVariable) == PJLVariables.eVarType.Custom)
             txtPJLCustomVar.Visibility = Visibility.Visible;
         else
             txtPJLCustomVar.Visibility = Visibility.Hidden;
@@ -837,15 +835,13 @@ public partial class ToolStatusReadback : Window
 
                 if (_reqTypePJL == PJLCommands.eRequestType.Category)
                 {
-                    if (PJLCategories.GetType(_indxPJLCategory) ==
-                        PJLCategories.eCategoryType.Custom)
+                    if (PJLCategories.GetType(_indxPJLCategory) == PJLCategories.eCategoryType.Custom)
                         txtPJLCustomCat.Visibility = Visibility.Visible;
 
                 }
                 else if (_reqTypePJL == PJLCommands.eRequestType.Variable)
                 {
-                    if (PJLVariables.GetType(_indxPJLVariable) ==
-                        PJLVariables.eVarType.Custom)
+                    if (PJLVariables.GetType(_indxPJLVariable) == PJLVariables.eVarType.Custom)
                         txtPJLCustomVar.Visibility = Visibility.Visible;
                 }
             }
@@ -903,30 +899,24 @@ public partial class ToolStatusReadback : Window
 
         //----------------------------------------------------------------//
 
-        if ((_indxPCLEntityType < 0) ||
-            (_indxPCLEntityType >= _ctPCLEntityTypes))
+        if ((_indxPCLEntityType < 0) || (_indxPCLEntityType >= _ctPCLEntityTypes))
             _indxPCLEntityType = 0;
 
-        if ((_indxPCLLocType < 0) ||
-            (_indxPCLLocType >= _ctPCLLocTypes))
+        if ((_indxPCLLocType < 0) || (_indxPCLLocType >= _ctPCLLocTypes))
             _indxPCLLocType = 0;
 
         //----------------------------------------------------------------//
 
-        if ((_indxPJLCategory < 0) ||
-            (_indxPJLCategory >= _ctPJLCategories))
+        if ((_indxPJLCategory < 0) || (_indxPJLCategory >= _ctPJLCategories))
             _indxPJLCategory = 0;
 
-        if ((_indxPJLCommand < 0) ||
-            (_indxPJLCommand >= _ctPJLCommands))
+        if ((_indxPJLCommand < 0) || (_indxPJLCommand >= _ctPJLCommands))
             _indxPJLCommand = 0;
 
-        if ((_indxPJLVariable < 0) ||
-            (_indxPJLVariable >= _ctPJLVariables))
+        if ((_indxPJLVariable < 0) || (_indxPJLVariable >= _ctPJLVariables))
             _indxPJLVariable = 0;
 
-        if ((_indxPJLFSCommand < 0) ||
-            (_indxPJLFSCommand >= _ctPJLFSCommands))
+        if ((_indxPJLFSCommand < 0) || (_indxPJLFSCommand >= _ctPJLFSCommands))
             _indxPJLFSCommand = 0;
     }
 
@@ -1381,8 +1371,7 @@ public partial class ToolStatusReadback : Window
     {
         if (_reqTypePJLFS == PJLCommands.eRequestType.FSInit)
             _objVolPJLFS = txtPJLFSPath.Text;
-        else if ((_reqTypePJLFS == PJLCommands.eRequestType.FSDirList) ||
-                 (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir))
+        else if ((_reqTypePJLFS == PJLCommands.eRequestType.FSDirList) || (_reqTypePJLFS == PJLCommands.eRequestType.FSMkDir))
             _objDirPJLFS = txtPJLFSPath.Text;
         else
             _objPathPJLFS = txtPJLFSPath.Text;
@@ -1454,9 +1443,8 @@ public partial class ToolStatusReadback : Window
 
         OK = int.TryParse(crntText, out value);
 
-        if (OK)
-            if (value < 0)
-                OK = false;
+        if (OK && value < 0)
+            OK = false;
 
         if (OK)
         {
@@ -1529,9 +1517,8 @@ public partial class ToolStatusReadback : Window
 
         OK = int.TryParse(crntText, out value);
 
-        if (OK)
-            if (value < 0)
-                OK = false;
+        if (OK && value < 0)
+            OK = false;
 
         if (OK)
         {

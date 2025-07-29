@@ -610,8 +610,7 @@ static class ToolImageBitmapPCLXL
         }
 
         if ((paperType < PCLPaperTypes.GetCount()) &&
-            (PCLPaperTypes.GetType(paperType) !=
-                PCLPaperTypes.eEntryType.NotSet))
+            (PCLPaperTypes.GetType(paperType) != PCLPaperTypes.eEntryType.NotSet))
         {
             PCLXLWriter.AddAttrUbyteArray(ref bufStd,
                                     ref indStd,

@@ -295,10 +295,7 @@ class PrnParseFontHddrPCL
                                     ||
                      (_hddrFormat == ePCLFontFormat.Universal))
             {
-                if (_hddrFormat == ePCLFontFormat.Universal)
-                    largeSegs = true;
-                else
-                    largeSegs = false;
+                largeSegs = _hddrFormat == ePCLFontFormat.Universal;
 
                 continuation = _parseSegs.ProcessSegData(_buf,
                                                           _fileOffset,
@@ -318,10 +315,12 @@ class PrnParseFontHddrPCL
                 _firstSeg = false;
 
                 if (!continuation)
+                {
                     if (validSegs)
                         _nextStage = eStage.ShowCopyright;
                     else
                         _nextStage = eStage.BadSeqA;
+                }
             }
             else
             {
@@ -1146,34 +1145,28 @@ class PrnParseFontHddrPCL
             switch (_fontType)
             {
                 case 0:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Bound_7bit);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Bound_7bit);
                     break;
 
                 case 1:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Bound_8bit);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Bound_8bit);
                     break;
 
                 case 2:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Bound_PC8);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Bound_PC8);
                     break;
 
                 case 3:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Bound_16bit);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Bound_16bit);
                     break;
 
                 case 10:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Unbound_MSL);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Unbound_MSL);
                     _boundFont = false;
                     break;
 
                 case 11:
-                    itemDesc = PCLSymSetTypes.GetDescStd(
-                                   (int)PCLSymSetTypes.eIndex.Unbound_Unicode);
+                    itemDesc = PCLSymSetTypes.GetDescStd((int)PCLSymSetTypes.eIndex.Unbound_Unicode);
                     _boundFont = false;
                     break;
 
@@ -2786,7 +2779,9 @@ class PrnParseFontHddrPCL
                         text1 = string.Empty;
 
                     if (ix1 == 0)
+                    {
                         text3 = "On baseline";
+                    }
                     else if (ix2 < 0)
                     {
                         ix2 = -ix2;

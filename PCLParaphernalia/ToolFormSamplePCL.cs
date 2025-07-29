@@ -518,26 +518,21 @@ static class ToolFormSamplePCL
                 posY += incPosY;
 
                 if (flagMainOnPrnDisk)
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    "Main form printer file:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Main form printer file:");
                 else
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    "Main form download file:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Main form download file:");
 
                 posY += incPosY;
 
                 if (flagRearOnPrnDisk)
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    "Rear form printer file:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Rear form printer file:");
                 else
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                                    "Rear form download file:");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Rear form download file:");
 
                 posY += incPosY;
 
                 if ((flagRearForm) && (flagRearBPlate))
-                    PCLWriter.Text(prnWriter, posX, posY, 0,
-                        "Rear Form is boilerplate");
+                    PCLWriter.Text(prnWriter, posX, posY, 0, "Rear Form is boilerplate");
             }
 
             //------------------------------------------------------------//

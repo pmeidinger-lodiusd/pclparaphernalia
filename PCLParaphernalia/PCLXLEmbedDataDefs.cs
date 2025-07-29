@@ -67,8 +67,7 @@ static class PCLXLEmbedDataDefs
         {
             tagReserved = kvp.Value.FlagReserved;
 
-            if ((incResTags == true) ||
-                ((incResTags == false) && (!tagReserved)))
+            if (incResTags || (!incResTags && !tagReserved))
             {
                 count++;
                 grid.Items.Add(kvp.Value);

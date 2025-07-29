@@ -159,10 +159,8 @@ public partial class ToolMiscSamples : Window
         for (int i = 0; i < ctr; i++)
         {
             if ((PCLFonts.IsBoundFont(i) == false) &&
-                ((PCLFonts.GetType(i) ==
-                 PCLFonts.eFontType.PresetTypeface) ||
-                (PCLFonts.GetType(i) ==
-                 PCLFonts.eFontType.PresetFamilyMember)))
+                ((PCLFonts.GetType(i) == PCLFonts.eFontType.PresetTypeface) ||
+                (PCLFonts.GetType(i) == PCLFonts.eFontType.PresetFamilyMember)))
             {
                 _subsetUnicodeFonts[index++] = i;
                 cbUnicodeFont.Items.Add(PCLFonts.GetName(i));
@@ -447,19 +445,9 @@ public partial class ToolMiscSamples : Window
         ToolCommonData.ePrintLang crntPDL)
     {
         if (crntPDL == ToolCommonData.ePrintLang.PCL)
-        {
-            if (setFlag)
-                _flagUnicodeFormAsMacroPCL = true;
-            else
-                _flagUnicodeFormAsMacroPCL = false;
-        }
+            _flagUnicodeFormAsMacroPCL = setFlag;
         else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
-        {
-            if (setFlag)
-                _flagUnicodeFormAsMacroPCLXL = true;
-            else
-                _flagUnicodeFormAsMacroPCLXL = false;
-        }
+            _flagUnicodeFormAsMacroPCLXL = setFlag;
     }
 
     //--------------------------------------------------------------------//
@@ -533,25 +521,25 @@ public partial class ToolMiscSamples : Window
 
         if (samePreset)
         {
-            if ((varR) && (fontVar == PCLFonts.eVariant.Regular))
+            if (varR && (fontVar == PCLFonts.eVariant.Regular))
             {
                 rbUnicodeFontVarR.IsChecked = true;
                 varSet = true;
             }
 
-            if ((varI) && (fontVar == PCLFonts.eVariant.Italic))
+            if (varI && (fontVar == PCLFonts.eVariant.Italic))
             {
                 rbUnicodeFontVarI.IsChecked = true;
                 varSet = true;
             }
 
-            if ((varB) && (fontVar == PCLFonts.eVariant.Bold))
+            if (varB && (fontVar == PCLFonts.eVariant.Bold))
             {
                 rbUnicodeFontVarB.IsChecked = true;
                 varSet = true;
             }
 
-            if ((varBI) && (fontVar == PCLFonts.eVariant.BoldItalic))
+            if (varBI && (fontVar == PCLFonts.eVariant.BoldItalic))
             {
                 rbUnicodeFontVarBI.IsChecked = true;
                 varSet = true;

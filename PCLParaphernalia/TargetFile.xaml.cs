@@ -125,17 +125,14 @@ public partial class TargetFile : Window
         if (_crntSubId == ToolCommonData.eToolSubIds.None)
         {
             txtCrntTool.Text =
-                Enum.GetName(typeof(ToolCommonData.eToolIds),
-                              _crntToolId);
+                Enum.GetName(typeof(ToolCommonData.eToolIds), _crntToolId);
         }
         else
         {
             txtCrntTool.Text =
-                Enum.GetName(typeof(ToolCommonData.eToolIds),
-                              _crntToolId) +
+                Enum.GetName(typeof(ToolCommonData.eToolIds), _crntToolId) +
                 "|" +
-                Enum.GetName(typeof(ToolCommonData.eToolSubIds),
-                              _crntSubId);
+                Enum.GetName(typeof(ToolCommonData.eToolSubIds), _crntSubId);
         }
 
         txtCrntPDL.Text = _crntPDL.ToString();

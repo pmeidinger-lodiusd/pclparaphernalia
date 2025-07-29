@@ -367,8 +367,7 @@ class PrnParseFontCharPCL
 
             if (_charFormat == ePCLCharFormat.Raster)
             {
-                ProcessRasterDataRem(ref bufRem,
-                                      ref bufOffset);
+                ProcessRasterDataRem(ref bufRem, ref bufOffset);
             }
             else
             {
@@ -1567,7 +1566,7 @@ class PrnParseFontCharPCL
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((_drawCharShape) && (!shapeTooLarge))
+            if (_drawCharShape && !shapeTooLarge)
             {
                 contType = PrnParseConstants.eContType.PCLFontChar;
 

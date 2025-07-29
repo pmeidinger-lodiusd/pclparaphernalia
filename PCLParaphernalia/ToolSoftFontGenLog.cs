@@ -138,14 +138,11 @@ static class ToolSoftFontGenLog
                                 string message)
     {
         if (type == MessageBoxImage.Information)
-            LogNameAndValue(
-                table, true, true, "*** COMMENT ***", message);
+            LogNameAndValue( table, true, true, "*** COMMENT ***", message);
         else if (type == MessageBoxImage.Warning)
-            LogNameAndValue(
-                table, true, true, "*** WARNING ***", message);
+            LogNameAndValue( table, true, true, "*** WARNING ***", message);
         else
-            LogNameAndValue(
-                table, true, true, "*** ERROR ***", message);
+            LogNameAndValue( table, true, true, "*** ERROR ***", message);
 
         MessageBox.Show(message,
                          "Processing font",
@@ -251,13 +248,9 @@ static class ToolSoftFontGenLog
                 row = table.NewRow();
 
                 if (firstLine)
-                {
                     row[colName] = name;
-                }
                 else
-                {
                     row[colName] = string.Empty;
-                }
 
                 //----------------------------------------------------//
                 //                                                    //

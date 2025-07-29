@@ -165,13 +165,11 @@ class PCLXLPalette
     {
         if (item == 0)
         {
-            return item.ToString() +
-                   " (" + _colourNames[_clrItemBlack] + ")";
+            return item.ToString() + " (" + _colourNames[_clrItemBlack] + ")";
         }
         else if (item == 255)
         {
-            return item.ToString() +
-                   " (" + _colourNames[_clrItemWhite] + ")";
+            return item.ToString() + " (" + _colourNames[_clrItemWhite] + ")";
         }
         else
         {

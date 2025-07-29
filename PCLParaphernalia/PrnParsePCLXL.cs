@@ -279,8 +279,7 @@ class PrnParsePCLXL
                                        encapsulate);
 
             if (encapsulate)
-                descText = "PopGS (encapsulated within" +
-                           " ReadStream structure)";
+                descText = "PopGS (encapsulated within ReadStream structure)";
             else
                 descText = "PopGS";
 
@@ -390,10 +389,8 @@ class PrnParsePCLXL
             _linkData.MakeOvlPos =
                 PrnParseConstants.eOvlPos.BeforeFirstPage;
 
-            if ((_startMode ==
-                    PrnParseConstants.ePCLXLBinding.BinaryLSFirst) ||
-                (_startMode ==
-                    PrnParseConstants.ePCLXLBinding.BinaryMSFirst))
+            if ((_startMode == PrnParseConstants.ePCLXLBinding.BinaryLSFirst) ||
+                (_startMode == PrnParseConstants.ePCLXLBinding.BinaryMSFirst))
             {
                 _hddrRead = true;
                 _bindType = _startMode;
@@ -510,21 +507,13 @@ class PrnParsePCLXL
 
             if (_crntOperEmbedType != PCLXLOperators.eEmbedDataType.None)
             {
-                if (((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.PassThrough) &&
-                     (_analysePassThrough))
+                if (((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.PassThrough) && _analysePassThrough)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.Stream) &&
-                     (_analyseStreams))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.Stream) && _analyseStreams)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.FontHeader) &&
-                     (_analyseFontHddr))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.FontHeader) && _analyseFontHddr)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.FontChar) &&
-                     (_analyseFontChar)))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.FontChar) && _analyseFontChar))
                 {
                     _analysisOwner.EmbeddedDataStore(_buf,
                                                       bufOffset,
@@ -1559,8 +1548,7 @@ class PrnParsePCLXL
                 }
                 else
                 {
-                    if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUbyte)
+                    if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1576,8 +1564,7 @@ class PrnParsePCLXL
                         else
                             arraySize = _buf[bufOffset + 2];
                     }
-                    else if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUint16)
+                    else if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUint16)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1594,8 +1581,7 @@ class PrnParsePCLXL
                         }
                         else
                         {
-                            if (_bindType ==
-                                PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                            if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                             {
                                 arraySize = (_buf[bufOffset + 2] * 256) +
                                              _buf[bufOffset + 3];
@@ -1743,8 +1729,7 @@ class PrnParsePCLXL
                     //                                                    //
                     //----------------------------------------------------//
 
-                    if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUbyte)
+                    if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1761,8 +1746,7 @@ class PrnParsePCLXL
                                      makeOvlShow,
                                      PrnParseRowTypes.eType.PCLXLDataType);
                     }
-                    else if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUint16)
+                    else if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUint16)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1824,8 +1808,7 @@ class PrnParsePCLXL
                                  makeOvlShow,
                                  PrnParseRowTypes.eType.PCLXLDataType);
 
-                    if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUbyte)
+                    if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUbyte)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1851,8 +1834,7 @@ class PrnParsePCLXL
                                      makeOvlShow,
                                      PrnParseRowTypes.eType.PCLXLDataType);
                     }
-                    else if (_buf[bufOffset + 1] ==
-                        PrnParseConstants.pclxlDataTypeUint16)
+                    else if (_buf[bufOffset + 1] == PrnParseConstants.pclxlDataTypeUint16)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -1922,7 +1904,7 @@ class PrnParsePCLXL
                 //                                                        //
                 //--------------------------------------------------------//
             }
-            else if ((_attrEnumerated) &&
+            else if (_attrEnumerated &&
                      (groupSize == 1) &&
                      (!arrayType) &&
                      ((baseType == PCLXLDataTypes.eBaseType.Ubyte) ||
@@ -1975,8 +1957,7 @@ class PrnParsePCLXL
                     else
                         valLen = 4;
 
-                    if (_bindType ==
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                    if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                     {
                         for (int j = 0; j < valLen; j++)
                         {
@@ -2041,8 +2022,7 @@ class PrnParsePCLXL
                                  PrnParseRowTypes.eType.PCLXLDataValue);
 
                     if (decodeIndent != 0)
-                        text = new string(' ', decodeIndent) +
-                               "Enumerated value not recognised";
+                        text = new string(' ', decodeIndent) + "Enumerated value not recognised";
                     else
                         text = "Enumerated value not recognised";
 
@@ -2472,8 +2452,7 @@ class PrnParsePCLXL
 
                 _embedDataRem = 0;
 
-                if (_bindType ==
-                    PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -2661,21 +2640,13 @@ class PrnParsePCLXL
 
             if (_crntOperEmbedType != PCLXLOperators.eEmbedDataType.None)
             {
-                if (((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.PassThrough) &&
-                     (_analysePassThrough))
+                if (((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.PassThrough) && _analysePassThrough)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.Stream) &&
-                     (_analyseStreams))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.Stream) && _analyseStreams)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.FontHeader) &&
-                     (_analyseFontHddr))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.FontHeader) && _analyseFontHddr)
                                              ||
-                    ((_crntOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.FontChar) &&
-                     (_analyseFontChar)))
+                    ((_crntOperEmbedType == PCLXLOperators.eEmbedDataType.FontChar) && _analyseFontChar))
                 {
                     _analysisOwner.EmbeddedDataStore(_buf,
                                                       bufOffset,
@@ -2885,16 +2856,14 @@ class PrnParsePCLXL
 
                 if (_buf[bufOffset] == 0x27)
                 {
-                    _bindType =
-                        PrnParseConstants.ePCLXLBinding.ASCII;
+                    _bindType = PrnParseConstants.ePCLXLBinding.ASCII;
                     bindText = "' = ASCII (not supported by analyser)";
 
                     invalidSeqFound = true;
                 }
                 else if (_buf[bufOffset] == 0x28)
                 {
-                    _bindType =
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst;
+                    _bindType = PrnParseConstants.ePCLXLBinding.BinaryMSFirst;
                     bindText = "( = binary: most significant byte first";
 
                     if (_parseType == PrnParse.eParseType.MakeOverlay)
@@ -2904,14 +2873,12 @@ class PrnParsePCLXL
                 }
                 else if (_buf[bufOffset] == 0x29)
                 {
-                    _bindType =
-                        PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
+                    _bindType = PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
                     bindText = ") = binary: least significant byte first";
                 }
                 else
                 {
-                    _bindType =
-                        PrnParseConstants.ePCLXLBinding.Unknown;
+                    _bindType = PrnParseConstants.ePCLXLBinding.Unknown;
                     bindText = "*** unknown ***";
 
                     invalidSeqFound = true;
@@ -2987,8 +2954,7 @@ class PrnParsePCLXL
                          string.Empty,
                          "Assume binding is binary (low-byte first)");
 
-                    _bindType =
-                        PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
+                    _bindType = PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
                 }
             }
 
@@ -3137,12 +3103,7 @@ class PrnParsePCLXL
                 //                                                        //
                 //--------------------------------------------------------//
 
-                bool operHasAttrList;
-
-                if (bufOffset == _attrDataStart)
-                    operHasAttrList = false;
-                else
-                    operHasAttrList = true;
+                bool operHasAttrList = bufOffset != _attrDataStart;
 
                 _breakpoint = PrnParseMakeOvl.CheckActionPCLXLOper(
                                 false,
@@ -3179,8 +3140,7 @@ class PrnParsePCLXL
                              PrnParseRowTypes.eType.PCLXLOperator);
 
                 if (_linkData.MakeOvlEncapsulate)
-                    descText = "SetPageScale (encapsulated within" +
-                               " ReadStream structure)";
+                    descText = "SetPageScale (encapsulated within ReadStream structure)";
                 else
                     descText = "SetPageScale";
 
@@ -3223,9 +3183,7 @@ class PrnParsePCLXL
                 }
                 else
                 {
-                    text = _operNum.ToString() +
-                           " (within embedded " +
-                           _crntEmbedType.ToString() + ")";
+                    text = _operNum.ToString() + " (within embedded " + _crntEmbedType.ToString() + ")";
                     //   " at level " +_analysisLevel.ToString ();
                 }
 
@@ -3298,9 +3256,7 @@ class PrnParsePCLXL
 
         if (_prevOperEmbedType == _crntOperEmbedType)
         {
-            if ((_prevOperEmbedType ==
-                PCLXLOperators.eEmbedDataType.FontChar) &&
-                (_analyseFontChar))
+            if ((_prevOperEmbedType == PCLXLOperators.eEmbedDataType.FontChar) && _analyseFontChar)
             {
                 _analysisOwner.EmbeddedPCLXLAnalyse(
                     ToolCommonData.ePrintLang.PCLXL,
@@ -3309,33 +3265,25 @@ class PrnParsePCLXL
         }
         else
         {
-            if ((_prevOperEmbedType ==
-                PCLXLOperators.eEmbedDataType.PassThrough) &&
-                (_analysePassThrough))
+            if ((_prevOperEmbedType == PCLXLOperators.eEmbedDataType.PassThrough) && _analysePassThrough)
             {
                 _analysisOwner.EmbeddedPCLXLAnalyse(
                     ToolCommonData.ePrintLang.PCL,
                     PCLXLOperators.eEmbedDataType.PassThrough);
             }
-            else if ((_prevOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.Stream) &&
-                (_analyseStreams))
+            else if ((_prevOperEmbedType == PCLXLOperators.eEmbedDataType.Stream) && _analyseStreams)
             {
                 _analysisOwner.EmbeddedPCLXLAnalyse(
                     ToolCommonData.ePrintLang.PCLXL,
                     PCLXLOperators.eEmbedDataType.Stream);
             }
-            else if ((_prevOperEmbedType ==
-                        PCLXLOperators.eEmbedDataType.FontHeader) &&
-                (_analyseFontHddr))
+            else if ((_prevOperEmbedType == PCLXLOperators.eEmbedDataType.FontHeader) && _analyseFontHddr)
             {
                 _analysisOwner.EmbeddedPCLXLAnalyse(
                     ToolCommonData.ePrintLang.PCLXL,
                     PCLXLOperators.eEmbedDataType.FontHeader);
             }
-            else if ((_prevOperEmbedType ==
-                PCLXLOperators.eEmbedDataType.FontChar) &&
-                (_analyseFontChar))
+            else if ((_prevOperEmbedType == PCLXLOperators.eEmbedDataType.FontChar) && _analyseFontChar)
             {
                 _analysisOwner.EmbeddedPCLXLAnalyse(
                     ToolCommonData.ePrintLang.PCLXL,
@@ -3516,8 +3464,7 @@ class PrnParsePCLXL
             sliceLen = unitSize;
             decodeMax = _decodeAreaMax - decodeIndent;
 
-            if ((baseType == PCLXLDataTypes.eBaseType.Ubyte) &&
-                (treatUbyteAsAscii))
+            if ((baseType == PCLXLDataTypes.eBaseType.Ubyte) && treatUbyteAsAscii)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -3529,8 +3476,7 @@ class PrnParsePCLXL
                 stringAscii = true;
                 sliceLen = _decodeSliceMax;
             }
-            else if ((baseType == PCLXLDataTypes.eBaseType.Uint16) &&
-                (treatUint16AsUnicode))
+            else if ((baseType == PCLXLDataTypes.eBaseType.Uint16) && treatUint16AsUnicode)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -4105,8 +4051,7 @@ class PrnParsePCLXL
 
                     uiTot = 0;
 
-                    if (_bindType ==
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                    if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                     {
                         for (int j = 0; j < sliceLen; j++)
                         {
@@ -4162,8 +4107,7 @@ class PrnParsePCLXL
 
                     uiTot = 0;
 
-                    if (_bindType ==
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                    if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                     {
                         for (int j = 0; j < sliceLen; j++)
                         {
@@ -4231,8 +4175,7 @@ class PrnParsePCLXL
                     iTot = 0;
                     msByte = true;
 
-                    if (_bindType ==
-                        PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
+                    if (_bindType == PrnParseConstants.ePCLXLBinding.BinaryMSFirst)
                     {
                         for (int j = 0; j < sliceLen; j++)
                         {

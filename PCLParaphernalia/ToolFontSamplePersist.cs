@@ -907,13 +907,17 @@ static class ToolFontSamplePersist
                             RegistryValueKind.DWord);
 
             if (flagOptGridVertical)
+            {
                 subKey.SetValue(_nameFlagOptGridVertical,
                                 _flagTrue,
                                 RegistryValueKind.DWord);
+            }
             else
+            {
                 subKey.SetValue(_nameFlagOptGridVertical,
                                 _flagFalse,
                                 RegistryValueKind.DWord);
+            }
         }
     }
 
@@ -964,51 +968,31 @@ static class ToolFontSamplePersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
 
             if (flagShowC0Chars)
-                subKey.SetValue(_nameFlagShowC0Chars,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowC0Chars, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagShowC0Chars,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowC0Chars, _flagFalse, RegistryValueKind.DWord);
 
             if (flagShowMapCodesUCS2)
-                subKey.SetValue(_nameFlagShowMapCodesUCS2,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagShowMapCodesUCS2,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowMapCodesUCS2, _flagFalse, RegistryValueKind.DWord);
 
             if (flagShowMapCodesUTF8)
-                subKey.SetValue(_nameFlagShowMapCodesUTF8,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagShowMapCodesUTF8,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagShowMapCodesUTF8, _flagFalse, RegistryValueKind.DWord);
 
             if (pdlName == _subKeyPCL)
             {
                 if (flagSymSetUserActEmbed)
-                    subKey.SetValue(_nameFlagSymSetUserActEmbed,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagTrue, RegistryValueKind.DWord);
                 else
-                    subKey.SetValue(_nameFlagSymSetUserActEmbed,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSymSetUserActEmbed, _flagFalse, RegistryValueKind.DWord);
             }
         }
     }
@@ -1046,31 +1030,19 @@ static class ToolFontSamplePersist
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
             if (flagProportional)
-                subKey.SetValue(_nameFlagProportional,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagProportional,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
 
             if (flagScalable)
-                subKey.SetValue(_nameFlagScalable,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagScalable,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
 
             if (flagBound)
-                subKey.SetValue(_nameFlagBound,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagBound,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
 
             subKey.SetValue(_nameStyle,
                             style,
@@ -1141,32 +1113,20 @@ static class ToolFontSamplePersist
         {
             if (downloadFile != null)
             {
-                subKey.SetValue(_nameDownloadFile,
-                                downloadFile,
-                                RegistryValueKind.String);
+                subKey.SetValue(_nameDownloadFile, downloadFile, RegistryValueKind.String);
             }
 
-            subKey.SetValue(_nameDownloadId,
-                            downloadId,
-                            RegistryValueKind.DWord);
+            subKey.SetValue(_nameDownloadId, downloadId, RegistryValueKind.DWord);
 
             if (flagDownloadRemove)
-                subKey.SetValue(_nameFlagDownloadRemove,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagDownloadRemove, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagDownloadRemove,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagDownloadRemove, _flagFalse, RegistryValueKind.DWord);
 
             if (flagSelectById)
-                subKey.SetValue(_nameFlagSelectById,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagSelectById,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
 
             subKey.SetValue(_nameHeight,
                             height * _sizeFactor,
@@ -1310,67 +1270,39 @@ static class ToolFontSamplePersist
                             RegistryValueKind.DWord);
 
             if (flagRamDataRemove)
-                subKey.SetValue(_nameFlagRamDataRemove,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRamDataRemove, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagRamDataRemove,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagRamDataRemove, _flagFalse, RegistryValueKind.DWord);
 
             if (flagSelById)
-                subKey.SetValue(_nameFlagSelectById,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSelectById, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagSelectById,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagSelectById, _flagFalse, RegistryValueKind.DWord);
 
             if (flagLoadViaMacro)
-                subKey.SetValue(_nameFlagMassStoreViaMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMassStoreViaMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagMassStoreViaMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMassStoreViaMacro, _flagFalse, RegistryValueKind.DWord);
 
             if (flagDetailsKnown)
-                subKey.SetValue(_nameFlagDetailsKnown,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagDetailsKnown, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagDetailsKnown,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagDetailsKnown, _flagFalse, RegistryValueKind.DWord);
 
             if (flagProportional)
-                subKey.SetValue(_nameFlagProportional,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagProportional, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagProportional,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagProportional, _flagFalse, RegistryValueKind.DWord);
 
             if (flagScalable)
-                subKey.SetValue(_nameFlagScalable,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagScalable, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagScalable,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagScalable, _flagFalse, RegistryValueKind.DWord);
 
             if (flagBound)
-                subKey.SetValue(_nameFlagBound,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagBound, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagBound,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagBound, _flagFalse, RegistryValueKind.DWord);
 
             subKey.SetValue(_nameStyle,
                             style,

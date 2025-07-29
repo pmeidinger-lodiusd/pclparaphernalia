@@ -172,15 +172,9 @@ class PrnParsePCL
         //----------------------------------------------------------------//
 
         if (linkData.IsContinuation())
-            seqInvalid = ParseContinuation(ref bufRem,
-                                            ref bufOffset,
-                                            ref crntPDL,
-                                            ref endReached);
+            seqInvalid = ParseContinuation(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
         else
-            seqInvalid = ParseSequence(ref bufRem,
-                                        ref bufOffset,
-                                        ref crntPDL,
-                                        ref endReached);
+            seqInvalid = ParseSequence(ref bufRem, ref bufOffset, ref crntPDL, ref endReached);
 
         return seqInvalid;
     }
@@ -878,10 +872,8 @@ class PrnParsePCL
 
             string typeText;
 
-            if ((_textParsingMethod ==
-                (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
-                (_textParsingMethod ==
-                (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+            if ((_textParsingMethod == (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                (_textParsingMethod == (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
                 typeText = "UTF-8 data";
             else
                 typeText = "Data";
@@ -1044,8 +1036,7 @@ class PrnParsePCL
         bool seqKnown = false;
         bool dummyBool = false;
 
-        while (!continuation && !breakpoint && !langSwitch &&
-               !endReached && (bufRem > 0))
+        while (!continuation && !breakpoint && !langSwitch && !endReached && (bufRem > 0))
         {
             //------------------------------------------------------------//
             //                                                            //
@@ -1054,8 +1045,7 @@ class PrnParsePCL
             //                                                            //
             //------------------------------------------------------------//
 
-            if ((_endOffset != -1) &&
-                ((_fileOffset + bufOffset) > _endOffset))
+            if ((_endOffset != -1) && ((_fileOffset + bufOffset) > _endOffset))
             {
                 endReached = true;
             }
@@ -1089,11 +1079,9 @@ class PrnParsePCL
                     }
                     else
                     {
-                        if ((_buf[bufOffset + 1]
-                            == _linkData.PrescribeSCRC)
+                        if ((_buf[bufOffset + 1] == _linkData.PrescribeSCRC)
                                               &&
-                            (_buf[bufOffset + 2] ==
-                            PrnParseConstants.prescribeSCRCDelimiter))
+                            (_buf[bufOffset + 2] == PrnParseConstants.prescribeSCRCDelimiter))
                         {
                             langSwitch = true;
                             crntPDL = ToolCommonData.ePrintLang.Prescribe;
@@ -1117,10 +1105,8 @@ class PrnParsePCL
 
                     string typeText;
 
-                    if ((_textParsingMethod ==
-                        (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
-                        (_textParsingMethod ==
-                        (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
+                    if ((_textParsingMethod == (int)PCLTextParsingMethods.ePCLVal.m83_UTF8) ||
+                        (_textParsingMethod == (int)PCLTextParsingMethods.ePCLVal.m1008_UTF8_alt))
                         typeText = "UTF-8 data";
                     else
                         typeText = "Data";
@@ -1148,8 +1134,7 @@ class PrnParsePCL
                         _indxOffsetFormat,
                         _analysisLevel);
 
-                    if (_parseType == PrnParse.eParseType.MakeOverlay &&
-                        _linkData.MakeOvlPageMark == true)
+                    if (_parseType == PrnParse.eParseType.MakeOverlay && _linkData.MakeOvlPageMark)
                     {
                         PrnParseConstants.eOvlPos makeOvlPos;
 
@@ -1195,11 +1180,9 @@ class PrnParsePCL
                 _linkData.ResetPCLComboData();
 
                 if ((bufRem >= 2) &&
-                         (_buf[bufOffset + 1] >=
-                            PrnParseConstants.pclSimpleICharLow)
+                         (_buf[bufOffset + 1] >= PrnParseConstants.pclSimpleICharLow)
                                        &&
-                         (_buf[bufOffset + 1] <=
-                            PrnParseConstants.pclSimpleICharHigh))
+                         (_buf[bufOffset + 1] <= PrnParseConstants.pclSimpleICharHigh))
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -1288,11 +1271,9 @@ class PrnParsePCL
                 }
                 else if ((bufRem >= 3)     // min = 3 if nil-G with no value
                                        &&
-                         (_buf[bufOffset + 1] >=
-                            PrnParseConstants.pclComplexICharLow)
+                         (_buf[bufOffset + 1] >= PrnParseConstants.pclComplexICharLow)
                                        &&
-                         (_buf[bufOffset + 1] <=
-                            PrnParseConstants.pclComplexICharHigh))
+                         (_buf[bufOffset + 1] <= PrnParseConstants.pclComplexICharHigh))
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -1684,8 +1665,7 @@ class PrnParsePCL
             {
                 // already processed above
             }
-            else if ((i == vPosNext) &&
-                     (crntByte == PrnParseConstants.asciiAngleLeft))
+            else if ((i == vPosNext) && (crntByte == PrnParseConstants.asciiAngleLeft))
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1802,8 +1782,7 @@ class PrnParsePCL
                                      &&
                              (crntByte <= PrnParseConstants.asciiDigit9))
                     {
-                        vInt = (vInt * 10) +
-                               (crntByte - PrnParseConstants.asciiDigit0);
+                        vInt = (vInt * 10) + (crntByte - PrnParseConstants.asciiDigit0);
                     }
                     else
                     {
@@ -1988,7 +1967,7 @@ class PrnParsePCL
                 }
                 */
 
-                if ((!seqProprietary) && (CheckStandardTable))
+                if (!seqProprietary && CheckStandardTable)
                 {
                     //----------------------------------------------------//
                     //                                                    //
@@ -2101,8 +2080,7 @@ class PrnParsePCL
                         _parseHPGL2.ResetHPGL2();
                     }
 
-                    if (actType ==
-                        PrnParseConstants.eActPCL.SwitchToHPGL2)
+                    if (actType == PrnParseConstants.eActPCL.SwitchToHPGL2)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -2113,8 +2091,7 @@ class PrnParsePCL
                         crntPDL = ToolCommonData.ePrintLang.HPGL2;
                         seqComplete = true;
                     }
-                    else if (actType ==
-                        PrnParseConstants.eActPCL.SwitchToPJL)
+                    else if (actType == PrnParseConstants.eActPCL.SwitchToPJL)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -2125,8 +2102,7 @@ class PrnParsePCL
                         crntPDL = ToolCommonData.ePrintLang.PJL;
                         seqComplete = true;
                     }
-                    else if (actType ==
-                        PrnParseConstants.eActPCL.TextParsing)
+                    else if (actType == PrnParseConstants.eActPCL.TextParsing)
                     {
                         //------------------------------------------------//
                         //                                                //
@@ -2292,8 +2268,7 @@ class PrnParsePCL
                 {
                     if ((optDisplayHexVal) &&
                         (vCheck)) // vCheck ensures we don't do this for invalid or fractional values
-                        val = _ascii.GetString(_buf, vPosCrnt, vLen) +
-                            " (0x" + vInt.ToString("x") + ")";
+                        val = _ascii.GetString(_buf, vPosCrnt, vLen) + " (0x" + vInt.ToString("x") + ")";
                     else
                         val = _ascii.GetString(_buf, vPosCrnt, vLen);
                 }
@@ -2322,8 +2297,7 @@ class PrnParsePCL
                 {
                     if (seqKnown)
                     {
-                        if ((makeOvlAct ==
-                                PrnParseConstants.eOvlAct.IdMacro) &&
+                        if ((makeOvlAct == PrnParseConstants.eOvlAct.IdMacro) &&
                             (vInt != _linkData.MakeOvlMacroId))
                         {
                             makeOvlAct = PrnParseConstants.eOvlAct.None;
@@ -2756,15 +2730,11 @@ class PrnParsePCL
                 {
                     if (value.Length == 0)
                     {
-                        descText = description.Substring(0, ptr) +
-                                  "0" +
-                                  description.Substring(ptr + 1);
+                        descText = description.Substring(0, ptr) + "0" + description.Substring(ptr + 1);
                     }
                     else
                     {
-                        descText = description.Substring(0, ptr) +
-                                   value +
-                                   description.Substring(ptr + 1);
+                        descText = description.Substring(0, ptr) + value + description.Substring(ptr + 1);
                     }
                 }
             }

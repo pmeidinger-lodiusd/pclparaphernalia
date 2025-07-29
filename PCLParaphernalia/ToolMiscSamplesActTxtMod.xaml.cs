@@ -58,11 +58,17 @@ public partial class ToolMiscSamples : Window
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
             if (_indxTxtModTypePCL == eTxtModType.Chr)
+            {
                 rbTxtModTypeChr.IsChecked = true;
+            }
             else if (_indxTxtModTypePCL == eTxtModType.Pat)
+            {
                 rbTxtModTypePat.IsChecked = true;
+            }
             else if (_indxTxtModTypePCL == eTxtModType.Rot)
+            {
                 rbTxtModTypeRot.IsChecked = true;
+            }
             else
             {
                 _indxTxtModTypePCL = eTxtModType.Chr;
@@ -70,19 +76,22 @@ public partial class ToolMiscSamples : Window
                 rbTxtModTypeChr.IsChecked = true;
             }
 
-            if (_flagTxtModFormAsMacroPCL)
-                chkOptFormAsMacro.IsChecked = true;
-            else
-                chkOptFormAsMacro.IsChecked = false;
+            chkOptFormAsMacro.IsChecked = _flagTxtModFormAsMacroPCL;
         }
         else
         {
             if (_indxTxtModTypePCLXL == eTxtModType.Chr)
+            {
                 rbTxtModTypeChr.IsChecked = true;
+            }
             else if (_indxTxtModTypePCLXL == eTxtModType.Pat)
+            {
                 rbTxtModTypePat.IsChecked = true;
+            }
             else if (_indxTxtModTypePCLXL == eTxtModType.Rot)
+            {
                 rbTxtModTypeRot.IsChecked = true;
+            }
             else
             {
                 _indxTxtModTypePCLXL = eTxtModType.Chr;
@@ -90,10 +99,7 @@ public partial class ToolMiscSamples : Window
                 rbTxtModTypeChr.IsChecked = true;
             }
 
-            if (_flagTxtModFormAsMacroPCL)
-                chkOptFormAsMacro.IsChecked = true;
-            else
-                chkOptFormAsMacro.IsChecked = false;
+            chkOptFormAsMacro.IsChecked = _flagTxtModFormAsMacroPCL;
         }
 
         InitialiseDescTxtMod();
@@ -316,12 +322,8 @@ public partial class ToolMiscSamples : Window
         ToolCommonData.ePrintLang crntPDL)
     {
         if (crntPDL == ToolCommonData.ePrintLang.PCL)
-        {
             _flagTxtModFormAsMacroPCL = setFlag;
-        }
         else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
-        {
             _flagTxtModFormAsMacroPCLXL = setFlag;
-        }
     }
 }

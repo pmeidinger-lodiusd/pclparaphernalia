@@ -1572,8 +1572,8 @@ static class ToolPrintLangReport
                 //                                                        //
                 //--------------------------------------------------------//
 
-                data[6] = (mapStd) ? chkTrue6a : chkFalse6a;
-                data[7] = (mapPCL) ? chkTrue7a : chkFalse7a;
+                data[6] = mapStd ? chkTrue6a : chkFalse6a;
+                data[7] = mapPCL ? chkTrue7a : chkFalse7a;
 
                 ReportCore.TableRowText(writer, rptFileFmt, colCt, data,
                                          colNames, colSizes);

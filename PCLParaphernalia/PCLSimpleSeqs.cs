@@ -104,8 +104,7 @@ static class PCLSimpleSeqs
         {
             seqObsolete = kvp.Value.FlagObsolete;
 
-            if ((incObsSeqs == true) ||
-                ((incObsSeqs == false) && (!seqObsolete)))
+            if (incObsSeqs || (!incObsSeqs && !seqObsolete))
             {
                 count++;
                 grid.Items.Add(kvp.Value);
@@ -177,8 +176,7 @@ static class PCLSimpleSeqs
             {
                 if (incUsedSeqsOnly)
                     displaySeq = false;
-                else if ((excUnusedObsSeqs) &&
-                         (kvp.Value.FlagObsolete == true))
+                else if (excUnusedObsSeqs && kvp.Value.FlagObsolete)
                     displaySeq = false;
             }
 

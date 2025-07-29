@@ -83,9 +83,7 @@ static class PCLDownloadMacro
             {
                 x = _binReader.ReadByte();
 
-                if (x == 'y')
-                    foundTerm = true;
-                else if (x == 'Y')
+                if (x == 'y' || x == 'Y')
                     foundTerm = true;
                 else if (x < '\x30')
                     flagOK = false;

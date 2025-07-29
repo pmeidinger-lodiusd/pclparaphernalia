@@ -569,10 +569,7 @@ public partial class ToolPrintArea : Window
 
         cbPDL.SelectedIndex = (byte)_indxPDL;
 
-        if (_flagCustomUseMetric)
-            rbCustomUseMetric.IsChecked = true;
-        else
-            rbCustomUseMetric.IsChecked = false;
+        rbCustomUseMetric.IsChecked = _flagCustomUseMetric;
 
         _initialised = true;
     }
@@ -621,38 +618,30 @@ public partial class ToolPrintArea : Window
 
         //----------------------------------------------------------------//
 
-        if ((_indxOrientationPCL < 0) ||
-            (_indxOrientationPCL >= _ctOrientations))
+        if ((_indxOrientationPCL < 0) || (_indxOrientationPCL >= _ctOrientations))
             _indxOrientationPCL = 0;
 
-        if ((_indxPaperSizePCL < 0) ||
-            (_indxPaperSizePCL >= _ctPaperSizes))
+        if ((_indxPaperSizePCL < 0) || (_indxPaperSizePCL >= _ctPaperSizes))
             _indxPaperSizePCL = 0;
 
-        if ((_indxPaperTypePCL < 0) ||
-            (_indxPaperTypePCL >= _ctPaperTypes))
+        if ((_indxPaperTypePCL < 0) || (_indxPaperTypePCL >= _ctPaperTypes))
             _indxPaperTypePCL = 0;
 
-        if ((_indxPJLCommandPCL < 0) ||
-            (_indxPJLCommandPCL >= _ctPJLCommands))
+        if ((_indxPJLCommandPCL < 0) || (_indxPJLCommandPCL >= _ctPJLCommands))
             _indxPJLCommandPCL = 0;
 
         //----------------------------------------------------------------//
 
-        if ((_indxOrientationPCLXL < 0) ||
-            (_indxOrientationPCLXL >= _ctOrientations))
+        if ((_indxOrientationPCLXL < 0) || (_indxOrientationPCLXL >= _ctOrientations))
             _indxOrientationPCLXL = 0;
 
-        if ((_indxPaperSizePCLXL < 0) ||
-            (_indxPaperSizePCLXL >= _ctPaperSizes))
+        if ((_indxPaperSizePCLXL < 0) || (_indxPaperSizePCLXL >= _ctPaperSizes))
             _indxPaperSizePCLXL = 0;
 
-        if ((_indxPaperTypePCLXL < 0) ||
-            (_indxPaperTypePCLXL >= _ctPaperTypes))
+        if ((_indxPaperTypePCLXL < 0) || (_indxPaperTypePCLXL >= _ctPaperTypes))
             _indxPaperTypePCLXL = 0;
 
-        if ((_indxPJLCommandPCLXL < 0) ||
-            (_indxPJLCommandPCLXL >= _ctPJLCommands))
+        if ((_indxPJLCommandPCLXL < 0) || (_indxPJLCommandPCLXL >= _ctPJLCommands))
             _indxPJLCommandPCLXL = 0;
     }
 
@@ -812,10 +801,7 @@ public partial class ToolPrintArea : Window
             _customShortEdgeDotsPCL = _customShortEdgeDots;
             _customLongEdgeDotsPCL = _customLongEdgeDots;
 
-            if (chkOptFormAsMacro.IsChecked == true)
-                _formAsMacroPCL = true;
-            else
-                _formAsMacroPCL = false;
+            _formAsMacroPCL = chkOptFormAsMacro.IsChecked == true;
         }
         else
         {
@@ -829,10 +815,7 @@ public partial class ToolPrintArea : Window
             _customShortEdgeDotsPCLXL = _customShortEdgeDots;
             _customLongEdgeDotsPCLXL = _customLongEdgeDots;
 
-            if (chkOptFormAsMacro.IsChecked == true)
-                _formAsMacroPCLXL = true;
-            else
-                _formAsMacroPCLXL = false;
+            _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
         }
     }
 
@@ -1016,8 +999,7 @@ public partial class ToolPrintArea : Window
             }
             else
             {
-                txtIdEnum.Text =
-                    PCLPaperSizes.GetIdPCL(indxPaperSize).ToString();
+                txtIdEnum.Text = PCLPaperSizes.GetIdPCL(indxPaperSize).ToString();
                 _flagTrayIdUnknown = false;
             }
 
@@ -1269,11 +1251,14 @@ public partial class ToolPrintArea : Window
         txtLogPageMarginLRImperial.Text
             = (Math.Round((marginsLogical *
                             _unitsToInches), 3)).ToString("F3");
+
         txtLogPageMarginTBImperial.Text
             = zero.ToString("F3");
+
         txtLogPageWidthImperial.Text
             = (Math.Round((widthLogical *
                             _unitsToInches), 3)).ToString("F3");
+
         txtLogPageLengthImperial.Text
             = (Math.Round((lengthLogical *
                             _unitsToInches), 3)).ToString("F3");
@@ -1304,7 +1289,7 @@ public partial class ToolPrintArea : Window
     private void txtLongEdgeImperial_LostFocus(object sender,
                                              RoutedEventArgs e)
     {
-        if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
+        if (_flagCustomPaperSize && (!_flagCustomUseMetric))
         {
             if (ValidateEdgeImperial(false, true))
             {
@@ -1337,7 +1322,7 @@ public partial class ToolPrintArea : Window
     private void txtLongEdgeMetric_LostFocus(object sender,
                                              RoutedEventArgs e)
     {
-        if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
+        if (_flagCustomPaperSize && _flagCustomUseMetric)
         {
             if (ValidateEdgeMetric(false, true))
             {
@@ -1370,7 +1355,7 @@ public partial class ToolPrintArea : Window
     private void txtShortEdgeImperial_LostFocus(object sender,
                                                 RoutedEventArgs e)
     {
-        if ((_flagCustomPaperSize) && (!_flagCustomUseMetric))
+        if (_flagCustomPaperSize && (!_flagCustomUseMetric))
         {
             if (ValidateEdgeImperial(true, true))
             {
@@ -1403,7 +1388,7 @@ public partial class ToolPrintArea : Window
     private void txtShortEdgeMetric_LostFocus(object sender,
                                               RoutedEventArgs e)
     {
-        if ((_flagCustomPaperSize) && (_flagCustomUseMetric))
+        if (_flagCustomPaperSize && _flagCustomUseMetric)
         {
             if (ValidateEdgeMetric(true, true))
             {
@@ -1482,7 +1467,9 @@ public partial class ToolPrintArea : Window
         OK = double.TryParse(crntText, out value);
 
         if ((value < minVal) || (value > maxVal))
+        {
             OK = false;
+        }
         else
         {
             valueDots = (ushort)(value * scaleToDots);
@@ -1551,15 +1538,13 @@ public partial class ToolPrintArea : Window
 
                 if (shortEdge)
                 {
-                    _customShortEdgeDots =
-                        (ushort)(defValShort * scaleToDots);
+                    _customShortEdgeDots = (ushort)(defValShort * scaleToDots);
 
                     txtShortEdgeImperial.Text = newText;
                 }
                 else
                 {
-                    _customLongEdgeDots =
-                        (ushort)(defValLong * scaleToDots);
+                    _customLongEdgeDots = (ushort)(defValLong * scaleToDots);
 
                     txtLongEdgeImperial.Text = newText;
                 }
@@ -1649,7 +1634,9 @@ public partial class ToolPrintArea : Window
         OK = double.TryParse(crntText, out value);
 
         if ((value < minVal) || (value > maxVal))
+        {
             OK = false;
+        }
         else
         {
             valueDots = (ushort)(value * scaleToDots);
@@ -1719,15 +1706,13 @@ public partial class ToolPrintArea : Window
 
                 if (shortEdge)
                 {
-                    _customShortEdgeDots =
-                        (ushort)(defValShort * scaleToDots);
+                    _customShortEdgeDots = (ushort)(defValShort * scaleToDots);
 
                     txtShortEdgeMetric.Text = newText;
                 }
                 else
                 {
-                    _customLongEdgeDots =
-                        (ushort)(defValLong * scaleToDots);
+                    _customLongEdgeDots =(ushort)(defValLong * scaleToDots);
 
                     txtLongEdgeMetric.Text = newText;
                 }

@@ -136,8 +136,7 @@ static class ToolMiscSamplesActTxtModPatPCL
         PCLWriter.StdJobHeader(prnWriter, string.Empty);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true, logXOffset,
-                            indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, true, logXOffset, indxPaperSize, indxOrientation);
 
         PCLWriter.PageHeader(prnWriter,
                              indxPaperSize,
@@ -201,8 +200,7 @@ static class ToolMiscSamplesActTxtModPatPCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                              PCLWriter.eMacroControl.StartDef);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.StartDef);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -379,8 +377,7 @@ static class ToolMiscSamplesActTxtModPatPCL
                               0);
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, 0,
-                                   PCLWriter.eMacroControl.StopDef);
+            PCLWriter.MacroControl(prnWriter, 0, PCLWriter.eMacroControl.StopDef);
     }
 
     //--------------------------------------------------------------------//
@@ -409,11 +406,9 @@ static class ToolMiscSamplesActTxtModPatPCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                                   PCLWriter.eMacroControl.Call);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.Call);
         else
-            GenerateOverlay(prnWriter, false, logXOffset,
-                            indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, false, logXOffset, indxPaperSize, indxOrientation);
 
         //----------------------------------------------------------------//
         //                                                                //

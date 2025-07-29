@@ -110,8 +110,7 @@ static class ToolMiscSamplesActPatternShadePCLXL
         GenerateJobHeader(prnWriter);
 
         if (formAsMacro)
-            GenerateOverlay(prnWriter, true,
-                             indxPaperSize, indxOrientation);
+            GenerateOverlay(prnWriter, true, indxPaperSize, indxOrientation);
 
         GeneratePage(prnWriter,
                      indxPaperSize,
@@ -196,9 +195,7 @@ static class ToolMiscSamplesActPatternShadePCLXL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-        {
             PCLXLWriter.StreamHeader(prnWriter, true, _formName);
-        }
 
         PCLXLWriter.AddOperator(ref buffer,
                           ref indBuf,

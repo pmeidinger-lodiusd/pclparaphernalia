@@ -694,17 +694,11 @@ public partial class ToolMiscSamples : Window
     {
         if (crntPDL == ToolCommonData.ePrintLang.PCL)
         {
-            if (setFlag)
-                _flagColourFormAsMacroPCL = true;
-            else
-                _flagColourFormAsMacroPCL = false;
+            _flagColourFormAsMacroPCL = setFlag;
         }
         else if (crntPDL == ToolCommonData.ePrintLang.PCLXL)
         {
-            if (setFlag)
-                _flagColourFormAsMacroPCLXL = true;
-            else
-                _flagColourFormAsMacroPCLXL = false;
+            _flagColourFormAsMacroPCLXL = setFlag;
         }
     }
 

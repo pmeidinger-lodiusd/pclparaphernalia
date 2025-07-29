@@ -1149,6 +1149,7 @@ class ToolSoftFontGenTTF
         if (glyphPresent)
         {
             _glyphData[glyphId].GetAdvance(ref advWidthThis);
+
             if (advWidthThis > 0)
                 defPCLPitch = advWidthThis;
             else
@@ -1434,13 +1435,9 @@ class ToolSoftFontGenTTF
                 text_OS_2_avgWidth);
 
             if (monoSpaced_panose)
-                text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily +
-                                   " & Proportion = " + panoseProportion +
-                                   " indicates font is monospaced";
+                text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily + " & Proportion = " + panoseProportion + " indicates font is monospaced";
             else
-                text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily +
-                                   " & Proportion = " + panoseProportion +
-                                   " indicates font is not monospaced";
+                text_OS_2_panose = "OS/2 | Panose: Family = " + panoseFamily + " & Proportion = " + panoseProportion + " indicates font is not monospaced";
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableDonor, false, false,
@@ -1448,13 +1445,9 @@ class ToolSoftFontGenTTF
                 text_OS_2_panose);
 
             if (_post_isFixedPitch == 0)
-                text_post = "post | isFixedPitch = 0x" +
-                            _post_isFixedPitch.ToString("x8") +
-                            " (= proportionally-spaced)";
+                text_post = "post | isFixedPitch = 0x" + _post_isFixedPitch.ToString("x8") + " (= proportionally-spaced)";
             else
-                text_post = "post | isFixedPitch = 0x" +
-                            _post_isFixedPitch.ToString("x8") +
-                            " (= fixed-pitch)";
+                text_post = "post | isFixedPitch = 0x" + _post_isFixedPitch.ToString("x8") + " (= fixed-pitch)";
 
             ToolSoftFontGenLog.LogNameAndValue(
                 _tableDonor, false, false,
@@ -1726,7 +1719,7 @@ class ToolSoftFontGenTTF
                      _tab_maxp.TablePadLen +
                      _tab_prep.TablePadLen;
 
-        if ((!pdlIsPCLXL) || (symSetUnbound))
+        if ((!pdlIsPCLXL) || symSetUnbound)
         {
             sizeTables = sizeTables +
                          _tab_hhea.TablePadLen +
@@ -2039,39 +2032,25 @@ class ToolSoftFontGenTTF
             }
 
             if (flagOK)
-            {
                 flagOK = ReadData_OS_2();
-            }
 
             if (flagOK)
-            {
                 flagOK = ReadData_head();
-            }
 
             if (flagOK)
-            {
                 flagOK = ReadData_hhea();
-            }
 
-            if ((flagOK) && (_tab_vhea.TableLength != 0))
-            {
+            if (flagOK && (_tab_vhea.TableLength != 0))
                 flagOK = ReadData_vhea();
-            }
 
             if (flagOK)
-            {
                 flagOK = ReadData_maxp();
-            }
 
             if (flagOK)
-            {
                 flagOK = ReadData_PCLT();
-            }
 
             if (flagOK)
-            {
                 flagOK = ReadData_post();
-            }
 
             //------------------------------------------------------------//
             //                                                            //
@@ -2312,9 +2291,7 @@ class ToolSoftFontGenTTF
         }
 
         if (flagOK)
-        {
             target = slice[0];
-        }
 
         return flagOK;
     }
@@ -2363,9 +2340,7 @@ class ToolSoftFontGenTTF
         }
 
         if (flagOK)
-        {
             target = ByteArrayToInt16(slice);
-        }
 
         return flagOK;
     }
@@ -2414,9 +2389,7 @@ class ToolSoftFontGenTTF
         }
 
         if (flagOK)
-        {
             target = ByteArrayToUInt16(slice);
-        }
 
         return flagOK;
     }
@@ -2516,9 +2489,7 @@ class ToolSoftFontGenTTF
         }
 
         if (flagOK)
-        {
             target = ByteArrayToUInt64(slice);
-        }
 
         return flagOK;
     }
@@ -3055,12 +3026,10 @@ class ToolSoftFontGenTTF
                         flagOK = ReadBytesAsUInt16(-1, ref fmt4SegCountx2);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1,
-                                                    ref fmt4SearchRange);
+                        flagOK = ReadBytesAsUInt16(-1, ref fmt4SearchRange);
 
                     if (flagOK)
-                        flagOK = ReadBytesAsUInt16(-1,
-                                                    ref fmt4EntrySelector);
+                        flagOK = ReadBytesAsUInt16(-1, ref fmt4EntrySelector);
 
                     if (flagOK)
                         flagOK = ReadBytesAsUInt16(-1, ref fmt4RangeShift);
@@ -3126,15 +3095,19 @@ class ToolSoftFontGenTTF
                     flagOK = false;
 
                     if (encodingUnicode)
+                    {
                         ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
                             "'" + tabName + "' sub-table " + subTabNo +
                             " for Unicode is not format 4");
+                    }
                     else
+                    {
                         ToolSoftFontGenLog.LogError(
                             _tableDonor, MessageBoxImage.Error,
                             "'" + tabName + "' sub-table " + subTabNo +
                             " for Symbol is not format 4");
+                    }
                 }
             }
         }
@@ -3189,24 +3162,16 @@ class ToolSoftFontGenTTF
                                     fmt4SegCountx2,
                                     ref indexEndCode);
             if (flagOK)
-                flagOK = ReadByteArray(baseStartCode,
-                                        fmt4SegCountx2,
-                                        ref indexStartCode);
+                flagOK = ReadByteArray(baseStartCode, fmt4SegCountx2, ref indexStartCode);
 
             if (flagOK)
-                flagOK = ReadByteArray(baseIdDelta,
-                                        fmt4SegCountx2,
-                                        ref indexIdDelta);
+                flagOK = ReadByteArray(baseIdDelta, fmt4SegCountx2, ref indexIdDelta);
 
             if (flagOK)
-                flagOK = ReadByteArray(baseIdRangeOffset,
-                                        fmt4SegCountx2,
-                                        ref indexIdRangeOffset);
+                flagOK = ReadByteArray(baseIdRangeOffset, fmt4SegCountx2, ref indexIdRangeOffset);
 
             if (flagOK)
-                flagOK = ReadByteArray(baseGlyphIdArray,
-                                        sizeGlyphIdArray,
-                                        ref glyphIdArray);
+                flagOK = ReadByteArray(baseGlyphIdArray, sizeGlyphIdArray, ref glyphIdArray);
 
             if (flagOK)
             {
@@ -3659,34 +3624,19 @@ class ToolSoftFontGenTTF
                                             ref _head_unitsPerEm);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16((int)(tabOffset + 36),
-                                               ref _head_xMin);
-                }
+                    flagOK = ReadBytesAsInt16((int)(tabOffset + 36), ref _head_xMin);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16(-1,
-                                               ref _head_yMin);
-                }
+                    flagOK = ReadBytesAsInt16(-1, ref _head_yMin);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16(-1,
-                                               ref _head_xMax);
-                }
+                    flagOK = ReadBytesAsInt16(-1, ref _head_xMax);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16(-1,
-                                               ref _head_yMax);
-                }
+                    flagOK = ReadBytesAsInt16(-1, ref _head_yMax);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16((int)(tabOffset + 50),
-                                               ref _head_indxLocFmt);
-                }
+                    flagOK = ReadBytesAsInt16((int)(tabOffset + 50), ref _head_indxLocFmt);
             }
         }
 
@@ -3800,22 +3750,13 @@ class ToolSoftFontGenTTF
                                            ref _hhea_ascender);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16(-1,
-                                               ref _hhea_descender);
-                }
+                    flagOK = ReadBytesAsInt16(-1, ref _hhea_descender);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsInt16(-1,
-                                               ref _hhea_lineGap);
-                }
+                    flagOK = ReadBytesAsInt16(-1, ref _hhea_lineGap);
 
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 34),
-                                                ref _hhea_numHMetrics);
-                }
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 34), ref _hhea_numHMetrics);
             }
         }
 
@@ -4038,9 +3979,7 @@ class ToolSoftFontGenTTF
                     ref offsetThis);
 
                 if (flagOK)
-                {
                     flagOK = ReadBytesAsUInt32(-1, ref offsetNext);
-                }
             }
             else
             {
@@ -4222,10 +4161,7 @@ class ToolSoftFontGenTTF
                 flagOK = ReadBytesAsUInt16((int)(tabOffset + 4),
                                             ref _maxp_numGlyphs);
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 30),
-                                                ref _maxp_maxCompDepth);
-                }
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 30), ref _maxp_maxCompDepth);
             }
         }
 
@@ -4347,10 +4283,7 @@ class ToolSoftFontGenTTF
                 flagOK = ReadBytesAsUInt16((int)(tabOffset + 2),
                                             ref nameRecCount);
                 if (flagOK)
-                {
-                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 4),
-                                                ref stringsOffset);
-                }
+                    flagOK = ReadBytesAsUInt16((int)(tabOffset + 4), ref stringsOffset);
 
                 if (flagOK)
                 {
@@ -4444,8 +4377,8 @@ class ToolSoftFontGenTTF
         if (flagOK)
         {
             //  if (logIdData)
-            {
-            }
+            //{
+            //}
 
             const int maxNameRecStrLen = 2048;
 
@@ -4801,48 +4734,28 @@ class ToolSoftFontGenTTF
             flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsInt16(-1,
-                                           ref _OS_2_xAvgCharWidth);
-            }
+                flagOK = ReadBytesAsInt16(-1, ref _OS_2_xAvgCharWidth);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _OS_2_usWeightClass);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _OS_2_usWeightClass);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _OS_2_usWidthClass);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _OS_2_usWidthClass);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _OS_2_fsType);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _OS_2_fsType);
 
             if (flagOK)
-            {
-                flagOK = ReadByteArray((int)(tabOffset + 32),
-                                        cSizePanose,
-                                        ref _OS_2_panose);
-            }
+                flagOK = ReadByteArray((int)(tabOffset + 32), cSizePanose, ref _OS_2_panose);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16((int)(tabOffset + 62),
-                                            ref _OS_2_fsSelection);
-            }
+                flagOK = ReadBytesAsUInt16((int)(tabOffset + 62), ref _OS_2_fsSelection);
 
             if (flagOK)
             {
                 _OS_2_sTypoDescender = 0;
 
-                flagOK = ReadBytesAsInt16((int)(tabOffset + 70),
-                                           ref _OS_2_sTypoDescender);
+                flagOK = ReadBytesAsInt16((int)(tabOffset + 70), ref _OS_2_sTypoDescender);
             }
 
             if (flagOK)
@@ -4850,8 +4763,7 @@ class ToolSoftFontGenTTF
                 _OS_2_sxHeight = 0;
 
                 if (tabLength >= 88)
-                    flagOK = ReadBytesAsInt16((int)(tabOffset + 86),
-                                               ref _OS_2_sxHeight);
+                    flagOK = ReadBytesAsInt16((int)(tabOffset + 86), ref _OS_2_sxHeight);
             }
 
             if (!flagOK)
@@ -5158,52 +5070,28 @@ class ToolSoftFontGenTTF
                                         ref version);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt32(-1,
-                                            ref _PCLT_fontNo);
-            }
+                flagOK = ReadBytesAsUInt32(-1, ref _PCLT_fontNo);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_pitch);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_pitch);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_xHeight);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_xHeight);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_style);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_style);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_typeFamily);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_typeFamily);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_capHeight);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_capHeight);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt16(-1,
-                                            ref _PCLT_symSet);
-            }
+                flagOK = ReadBytesAsUInt16(-1, ref _PCLT_symSet);
 
             if (flagOK)
-            {
-                flagOK = ReadByteArray(-1, 16,
-                                        ref _PCLT_typeface);
-            }
+                flagOK = ReadByteArray(-1, 16, ref _PCLT_typeface);
             /*
             if (flagOK)
             {
@@ -5219,34 +5107,19 @@ class ToolSoftFontGenTTF
             */
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt64(-1,
-                                            ref _PCLT_charComp);
-            }
+                flagOK = ReadBytesAsUInt64(-1, ref _PCLT_charComp);
 
             if (flagOK)
-            {
-                flagOK = ReadByteArray(-1, 6,
-                                        ref fileName);
-            }
+                flagOK = ReadByteArray(-1, 6, ref fileName);
 
             if (flagOK)
-            {
-                flagOK = ReadByteAsSByte(-1,
-                                          ref _PCLT_strokeWeight);
-            }
+                flagOK = ReadByteAsSByte(-1, ref _PCLT_strokeWeight);
 
             if (flagOK)
-            {
-                flagOK = ReadByteAsSByte(-1,
-                                          ref _PCLT_widthType);
-            }
+                flagOK = ReadByteAsSByte(-1, ref _PCLT_widthType);
 
             if (flagOK)
-            {
-                flagOK = ReadByteAsUByte(-1,
-                                          ref _PCLT_serifStyle);
-            }
+                flagOK = ReadByteAsUByte(-1, ref _PCLT_serifStyle);
 
             if (!flagOK)
             {
@@ -5305,9 +5178,7 @@ class ToolSoftFontGenTTF
                     _tableDonor, false, false,
                     "DIAG: table = " + tabName + ":",
                     "symbol set = " + _PCLT_symSet.ToString() +
-                    " (= " +
-                    PCLSymbolSets.TranslateKind1ToId(_PCLT_symSet) +
-                    " )");
+                    " (= " + PCLSymbolSets.TranslateKind1ToId(_PCLT_symSet) + " )");
 
                 ToolSoftFontGenLog.LogNameAndValue(
                     _tableDonor, false, false,
@@ -5400,10 +5271,7 @@ class ToolSoftFontGenTTF
             flagOK = ReadBytesAsUInt16((int)tabOffset, ref tabVersion);
 
             if (flagOK)
-            {
-                flagOK = ReadBytesAsUInt32((int)(tabOffset + 12),
-                                            ref _post_isFixedPitch);
-            }
+                flagOK = ReadBytesAsUInt32((int)(tabOffset + 12), ref _post_isFixedPitch);
 
             //----------------------------------------------------------------//
             //                                                                //
@@ -5708,11 +5576,7 @@ class ToolSoftFontGenTTF
             _tabvmtxPresent = true;
 
             if (flagOK)
-            {
-                flagOK = ReadByteArray(-1,
-                                        tsbArraySize,
-                                        ref tsbArray);
-            }
+                flagOK = ReadByteArray(-1, tsbArraySize, ref tsbArray);
 
             if (flagOK)
             {
@@ -5812,11 +5676,7 @@ class ToolSoftFontGenTTF
             flagOK = ReadBytesAsUInt16(dirOffset + 4, ref numTables);
 
             if (!flagOK)
-            {
-                ToolSoftFontGenLog.LogError(
-                    _tableDonor, MessageBoxImage.Error,
-                    "Error reading number of tables");
-            }
+                ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, "Error reading number of tables");
         }
 
         //----------------------------------------------------------------//
@@ -5831,11 +5691,7 @@ class ToolSoftFontGenTTF
             flagOK = FontFileSeek(dirOffset + 12);
 
             if (!flagOK)
-            {
-                ToolSoftFontGenLog.LogError(
-                    _tableDonor, MessageBoxImage.Error,
-                    "Error repositioning to start of table directory");
-            }
+                ToolSoftFontGenLog.LogError( _tableDonor, MessageBoxImage.Error, "Error repositioning to start of table directory");
         }
 
         if (flagOK)
@@ -5862,14 +5718,10 @@ class ToolSoftFontGenTTF
                 }
 
                 if (flagOK)
-                {
                     flagOK = ReadBytesAsUInt32(-1, ref tabOffset);
-                }
 
                 if (flagOK)
-                {
                     flagOK = ReadBytesAsUInt32(-1, ref tabLength);
-                }
 
                 if (flagOK)
                 {
@@ -6046,20 +5898,18 @@ class ToolSoftFontGenTTF
             if (getTTCData)
             {
                 if (_tab_name.ZeroLength())
-                {
                     flagOK = false;
-                }
             }
             else
             {
-                if ((_tab_cmap.ZeroLength()) ||
-                    (_tab_glyf.ZeroLength()) ||
-                    (_tab_head.ZeroLength()) ||
-                    (_tab_hhea.ZeroLength()) ||
-                    (_tab_hmtx.ZeroLength()) ||
-                    (_tab_loca.ZeroLength()) ||
-                    (_tab_maxp.ZeroLength()) ||
-                    (_tab_name.ZeroLength()))
+                if (_tab_cmap.ZeroLength() ||
+                    _tab_glyf.ZeroLength() ||
+                    _tab_head.ZeroLength() ||
+                    _tab_hhea.ZeroLength() ||
+                    _tab_hmtx.ZeroLength() ||
+                    _tab_loca.ZeroLength() ||
+                    _tab_maxp.ZeroLength() ||
+                    _tab_name.ZeroLength())
                 {
                     flagOK = false;
                 }

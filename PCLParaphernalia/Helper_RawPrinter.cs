@@ -181,7 +181,7 @@ public class Helper_RawPrinter
             ClosePrinter(hPrinter);
         }
 
-        if (bSuccess == false)
+        if (!bSuccess)
         {
             //------------------------------------------------------------//
             //                                                            //

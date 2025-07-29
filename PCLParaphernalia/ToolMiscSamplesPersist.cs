@@ -818,22 +818,14 @@ static class ToolMiscSamplesPersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
 
             if (flagMapHex)
-                subKey.SetValue(_nameFlagMapHex,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMapHex, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagMapHex,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagMapHex, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -971,24 +963,16 @@ static class ToolMiscSamplesPersist
                              RegistryValueKind.DWord);
 
             if (flagUseMacros)
-                subKey.SetValue(_nameFlagUseMacros,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagUseMacros, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagUseMacros,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagUseMacros, _flagFalse, RegistryValueKind.DWord);
 
             if (pdlName == _subKeyPCLXL)
             {
                 if (flagSrcTextPat)
-                    subKey.SetValue(_nameFlagSrcTextPat,
-                                    _flagTrue,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSrcTextPat, _flagTrue, RegistryValueKind.DWord);
                 else
-                    subKey.SetValue(_nameFlagSrcTextPat,
-                                    _flagFalse,
-                                    RegistryValueKind.DWord);
+                    subKey.SetValue(_nameFlagSrcTextPat, _flagFalse, RegistryValueKind.DWord);
             }
         }
     }
@@ -1038,22 +1022,14 @@ static class ToolMiscSamplesPersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
 
             if (flagAddStdPage)
-                subKey.SetValue(_nameFlagAddStdPage,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagAddStdPage, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagAddStdPage,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagAddStdPage, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -1086,13 +1062,9 @@ static class ToolMiscSamplesPersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -1125,13 +1097,9 @@ static class ToolMiscSamplesPersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
         }
     }
 
@@ -1175,13 +1143,9 @@ static class ToolMiscSamplesPersist
                             RegistryValueKind.DWord);
 
             if (flagFormAsMacro)
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagTrue,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagTrue, RegistryValueKind.DWord);
             else
-                subKey.SetValue(_nameFlagFormAsMacro,
-                                _flagFalse,
-                                RegistryValueKind.DWord);
+                subKey.SetValue(_nameFlagFormAsMacro, _flagFalse, RegistryValueKind.DWord);
         }
     }
 }

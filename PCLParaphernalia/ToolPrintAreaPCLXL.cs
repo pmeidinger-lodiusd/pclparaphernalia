@@ -359,9 +359,7 @@ static class ToolPrintAreaPCLXL
                               PCLXLOperators.eTag.LineRelPath);
 
             if (i == 0)
-            {
                 posY1 = -_rulerDiv;
-            }
         }
 
         PCLXLWriter.AddOperator(ref buffer,
@@ -449,9 +447,7 @@ static class ToolPrintAreaPCLXL
                               PCLXLOperators.eTag.LineRelPath);
 
             if (i == 0)
-            {
                 posX1 = -_rulerDiv;
-            }
         }
 
         PCLXLWriter.AddOperator(ref buffer,
@@ -1047,13 +1043,9 @@ static class ToolPrintAreaPCLXL
         posY += lineInc;
 
         if (pjlCommand == string.Empty)
-            PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_Courier, ptSize,
-                       posX, posY, "<none>");
+            PCLXLWriter.Text(prnWriter, false, false, PCLXLWriter.advances_Courier, ptSize, posX, posY, "<none>");
         else
-            PCLXLWriter.Text(prnWriter, false, false,
-                       PCLXLWriter.advances_Courier, ptSize,
-                       posX, posY, pjlCommand);
+            PCLXLWriter.Text(prnWriter, false, false, PCLXLWriter.advances_Courier, ptSize, posX, posY, pjlCommand);
 
         //----------------------------------------------------------------//
         //                                                                //

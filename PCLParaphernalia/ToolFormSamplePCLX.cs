@@ -29,9 +29,9 @@ static class ToolFormSamplePCLX
 
     private static readonly string[] streamMethodNames =
     {
-      "Execute stream (@ start of page)",
-      "Execute stream (@ end of page)",
-      "Max - invalid"
+        "Execute stream (@ start of page)",
+        "Execute stream (@ end of page)",
+        "Max - invalid"
     };
 
     //--------------------------------------------------------------------//
@@ -204,12 +204,10 @@ static class ToolFormSamplePCLX
         if (flagStreamRemove)
         {
             if (flagMainForm)
-                PCLXLWriter.StreamRemove(prnWriter,
-                                         formNameMain);
+                PCLXLWriter.StreamRemove(prnWriter, formNameMain);
 
             if (flagRearForm)
-                PCLXLWriter.StreamRemove(prnWriter,
-                                         formNameRear);
+                PCLXLWriter.StreamRemove(prnWriter, formNameRear);
         }
 
         PCLXLWriter.StdJobTrailer(prnWriter, false, string.Empty);
@@ -263,8 +261,8 @@ static class ToolFormSamplePCLX
         int indBuf = 0;
         int crntPtSize;
 
-        altOrient = (indxOrientation != indxOrientRear);
-        firstPage = (pageNo == 1);
+        altOrient = indxOrientation != indxOrientRear;
+        firstPage = pageNo == 1;
 
         if (flagFrontFace)
         {
@@ -706,10 +704,12 @@ static class ToolFormSamplePCLX
             //------------------------------------------------------------//
 
             if (!flagSimplexJob)
+            {
                 if (!flagRearForm)
                     flagFrontFace = !flagFrontFace;
                 else if (!flagRearBPlate)
                     flagFrontFace = !flagFrontFace;
+            }
         }
     }
 }

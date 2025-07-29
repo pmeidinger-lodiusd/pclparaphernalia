@@ -590,8 +590,7 @@ static class ToolMiscSamplesActColourRGBPCLXL
         }
 
         if ((indxPaperType < PCLPaperTypes.GetCount()) &&
-            (PCLPaperTypes.GetType(indxPaperType) !=
-                PCLPaperTypes.eEntryType.NotSet))
+            (PCLPaperTypes.GetType(indxPaperType) != PCLPaperTypes.eEntryType.NotSet))
         {
             PCLXLWriter.AddAttrUbyteArray(ref bufStd,
                                     ref indStd,

@@ -712,10 +712,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagGenDiagFileAccess =
-                (bool)chkGenDiagFileAccess.IsChecked;
-        }
+            _flagGenDiagFileAccess = (bool)chkGenDiagFileAccess.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -731,10 +728,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagGenMiscAutoAnalyse =
-                (bool)chkGenMiscAutoAnalyse.IsChecked;
-        }
+            _flagGenMiscAutoAnalyse =(bool)chkGenMiscAutoAnalyse.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -750,10 +744,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                             RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagHPGL2MiscBinData =
-                (bool)chkHPGL2MiscBinData.IsChecked;
-        }
+            _flagHPGL2MiscBinData = (bool)chkHPGL2MiscBinData.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -831,9 +822,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                        RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLFontHddr = (bool)chkPCLFontHddr.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -849,9 +838,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                            RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLMacroDisplay = (bool)chkPCLMacroDisplay.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -867,9 +854,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                           RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLMiscBinData = (bool)chkPCLMiscBinData.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -885,9 +870,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                             RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLMiscStyleData = (bool)chkPCLMiscStyleData.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -903,10 +886,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransAlphaNumId =
-                (bool)chkPCLTransAlphaNumId.IsChecked;
-        }
+            _flagPCLTransAlphaNumId = (bool)chkPCLTransAlphaNumId.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -923,10 +903,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                 RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransColourLookup =
-                (bool)chkPCLTransColourLookup.IsChecked;
-        }
+            _flagPCLTransColourLookup = (bool)chkPCLTransColourLookup.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -943,10 +920,8 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                           RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransConfIO =
-                (bool)chkPCLTransConfIO.IsChecked;
-        }
+            _flagPCLTransConfIO = (bool)chkPCLTransConfIO.IsChecked;
+
     }
 
     //--------------------------------------------------------------------//
@@ -963,10 +938,8 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                  RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransConfImageData =
-                (bool)chkPCLTransConfImageData.IsChecked;
-        }
+            _flagPCLTransConfImageData = (bool)chkPCLTransConfImageData.IsChecked;
+
     }
 
     //--------------------------------------------------------------------//
@@ -983,10 +956,8 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                   RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransConfRasterData =
-                (bool)chkPCLTransConfRasterData.IsChecked;
-        }
+            _flagPCLTransConfRasterData = (bool)chkPCLTransConfRasterData.IsChecked;
+
     }
 
     //--------------------------------------------------------------------//
@@ -1003,10 +974,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransDefLogPage =
-                (bool)chkPCLTransDefLogPage.IsChecked;
-        }
+            _flagPCLTransDefLogPage = (bool)chkPCLTransDefLogPage.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1023,10 +991,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                              RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransDefSymSet =
-                (bool)chkPCLTransDefSymSet.IsChecked;
-        }
+            _flagPCLTransDefSymSet = (bool)chkPCLTransDefSymSet.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1043,10 +1008,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                 RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransDitherMatrix =
-                (bool)chkPCLTransDitherMatrix.IsChecked;
-        }
+            _flagPCLTransDitherMatrix = (bool)chkPCLTransDitherMatrix.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1063,10 +1025,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransDriverConf =
-                (bool)chkPCLTransDriverConf.IsChecked;
-        }
+            _flagPCLTransDriverConf = (bool)chkPCLTransDriverConf.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1083,10 +1042,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransEscEncText =
-                (bool)chkPCLTransEscEncText.IsChecked;
-        }
+            _flagPCLTransEscEncText = (bool)chkPCLTransEscEncText.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1103,10 +1059,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransPaletteConf =
-                (bool)chkPCLTransPaletteConf.IsChecked;
-        }
+            _flagPCLTransPaletteConf = (bool)chkPCLTransPaletteConf.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1123,10 +1076,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransUserPattern =
-                (bool)chkPCLTransUserPattern.IsChecked;
-        }
+            _flagPCLTransUserPattern = (bool)chkPCLTransUserPattern.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1143,10 +1093,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                   RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLTransViewIlluminant =
-                (bool)chkPCLTransViewIlluminant.IsChecked;
-        }
+            _flagPCLTransViewIlluminant = (bool)chkPCLTransViewIlluminant.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1163,10 +1110,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                  RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLXLEncPCLFontSelect =
-                (bool)chkPCLXLEncPCLFontSelect.IsChecked;
-        }
+            _flagPCLXLEncPCLFontSelect = (bool)chkPCLXLEncPCLFontSelect.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1183,10 +1127,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                   RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLXLEncPCLPassThrough =
-                (bool)chkPCLXLEncPCLPassThrough.IsChecked;
-        }
+            _flagPCLXLEncPCLPassThrough = (bool)chkPCLXLEncPCLPassThrough.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1203,10 +1144,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                               RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLXLEncUserStream =
-                (bool)chkPCLXLEncUserStream.IsChecked;
-        }
+            _flagPCLXLEncUserStream = (bool)chkPCLXLEncUserStream.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1284,10 +1222,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                          RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagPCLXLFontHddr =
-                (bool)chkPCLXLFontHddr.IsChecked;
-        }
+            _flagPCLXLFontHddr = (bool)chkPCLXLFontHddr.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1303,9 +1238,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                             RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLXLMiscBinData = (bool)chkPCLXLMiscBinData.IsChecked;
-        }
     }
     //--------------------------------------------------------------------//
     //                                                        M e t h o d //
@@ -1320,9 +1253,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                             RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLXLMiscOperPos = (bool)chkPCLXLMiscOperPos.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -1338,9 +1269,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                             RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPCLXLMiscVerbose = (bool)chkPCLXLMiscVerbose.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -1356,9 +1285,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                           RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPMLMiscVerbose = (bool)chkPMLMiscVerbose.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -1374,9 +1301,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                         RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPMLWithinPCL = (bool)chkPMLWithinPCL.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -1392,9 +1317,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                         RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
             _flagPMLWithinPJL = (bool)chkPMLWithinPJL.IsChecked;
-        }
     }
 
     //--------------------------------------------------------------------//
@@ -1411,10 +1334,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                  RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagStatsExcUnusedPCLObs =
-                (bool)chkStatsExcUnusedPCLObs.IsChecked;
-        }
+            _flagStatsExcUnusedPCLObs = (bool)chkStatsExcUnusedPCLObs.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1431,10 +1351,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
                                                    RoutedEventArgs e)
     {
         if (!_inhibitChecks)
-        {
-            _flagStatsExcUnusedPCLXLRes =
-                (bool)chkStatsExcUnusedPCLXLRes.IsChecked;
-        }
+            _flagStatsExcUnusedPCLXLRes = (bool)chkStatsExcUnusedPCLXLRes.IsChecked;
     }
 
     //--------------------------------------------------------------------//
@@ -1446,8 +1363,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void Initialise(PrnParseOptions options,
-                            long fileSize)
+    private void Initialise(PrnParseOptions options,long fileSize)
     {
         _initialised = false;
 
@@ -1625,11 +1541,9 @@ public partial class ToolPrnAnalyseOptDlg : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        if (_indxCharSetName ==
-            PrnParseConstants.eOptCharSets.ASCII)
+        if (_indxCharSetName == PrnParseConstants.eOptCharSets.ASCII)
             rbCharSetNameASCII.IsChecked = true;
-        else if (_indxCharSetName ==
-            PrnParseConstants.eOptCharSets.ISO_8859_1)
+        else if (_indxCharSetName == PrnParseConstants.eOptCharSets.ISO_8859_1)
             rbCharSetNameISO88591.IsChecked = true;
         else
             rbCharSetNameWinANSI.IsChecked = true;
@@ -1638,20 +1552,15 @@ public partial class ToolPrnAnalyseOptDlg : Window
 
         sldrCharSetSubCode.IsEnabled = false;
 
-        if (_indxCharSetSubAct ==
-            PrnParseConstants.eOptCharSetSubActs.Mnemonics)
+        if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Mnemonics)
             rbCharSetSubActMnemonics.IsChecked = true;
-        else if (_indxCharSetSubAct ==
-            PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace)
+        else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace)
             rbCharSetSubActMnemonicsAndSpaces.IsChecked = true;
-        else if (_indxCharSetSubAct ==
-            PrnParseConstants.eOptCharSetSubActs.Hex)
+        else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Hex)
             rbCharSetSubActHex.IsChecked = true;
-        else if (_indxCharSetSubAct ==
-            PrnParseConstants.eOptCharSetSubActs.Dots)
+        else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Dots)
             rbCharSetSubActDots.IsChecked = true;
-        else if (_indxCharSetSubAct ==
-            PrnParseConstants.eOptCharSetSubActs.Spaces)
+        else if (_indxCharSetSubAct == PrnParseConstants.eOptCharSetSubActs.Spaces)
             rbCharSetSubActSpaces.IsChecked = true;
         else
         {
@@ -1935,17 +1844,13 @@ public partial class ToolPrnAnalyseOptDlg : Window
 
             _valCurFOffsetMax = (int)fileSize;
 
-            if (_indxCurFInitLang ==
-                ToolCommonData.ePrintLang.PCL)
+            if (_indxCurFInitLang == ToolCommonData.ePrintLang.PCL)
                 rbCurFInitLangPCL.IsChecked = true;
-            else if (_indxCurFInitLang ==
-                ToolCommonData.ePrintLang.PCLXL)
+            else if (_indxCurFInitLang == ToolCommonData.ePrintLang.PCLXL)
                 rbCurFInitLangPCLXL.IsChecked = true;
-            else if (_indxCurFInitLang ==
-                ToolCommonData.ePrintLang.HPGL2)
+            else if (_indxCurFInitLang == ToolCommonData.ePrintLang.HPGL2)
                 rbCurFInitLangHPGL2.IsChecked = true;
-            else if (_indxCurFInitLang ==
-                ToolCommonData.ePrintLang.PJL)
+            else if (_indxCurFInitLang == ToolCommonData.ePrintLang.PJL)
                 rbCurFInitLangPJL.IsChecked = true;
             else
                 rbCurFInitLangPostScript.IsChecked = true;
@@ -1960,11 +1865,9 @@ public partial class ToolPrnAnalyseOptDlg : Window
             {
                 grpCurFXLBind.Visibility = Visibility.Visible;
 
-                if (_indxCurFXLBinding ==
-                    PrnParseConstants.ePCLXLBinding.Unknown)
+                if (_indxCurFXLBinding == PrnParseConstants.ePCLXLBinding.Unknown)
                     rbCurFXLBindUnknown.IsChecked = true;
-                else if (_indxCurFXLBinding ==
-                    PrnParseConstants.ePCLXLBinding.BinaryLSFirst)
+                else if (_indxCurFXLBinding == PrnParseConstants.ePCLXLBinding.BinaryLSFirst)
                     rbCurFXLBindLS.IsChecked = true;
                 else
                     rbCurFXLBindMS.IsChecked = true;
@@ -1973,8 +1876,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
 
             //------------------------------------------------------------//
 
-            if (_indxCurFOffsetFormat ==
-                    PrnParseConstants.eOptOffsetFormats.Hexadecimal)
+            if (_indxCurFOffsetFormat == PrnParseConstants.eOptOffsetFormats.Hexadecimal)
             {
                 rbCurFOffsetHex.IsChecked = true;
 
@@ -2020,8 +1922,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        if (_indxGenOffsetFormat ==
-            PrnParseConstants.eOptOffsetFormats.Hexadecimal)
+        if (_indxGenOffsetFormat == PrnParseConstants.eOptOffsetFormats.Hexadecimal)
             rbGenOffsetHex.IsChecked = true;
         else
             rbGenOffsetDec.IsChecked = true;
@@ -2289,8 +2190,7 @@ public partial class ToolPrnAnalyseOptDlg : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        if (_indxStatsLevel ==
-            PrnParseConstants.eOptStatsLevel.ReferencedOnly)
+        if (_indxStatsLevel == PrnParseConstants.eOptStatsLevel.ReferencedOnly)
         {
             rbStatsLevUsedOnly.IsChecked = true;
 
@@ -2305,15 +2205,9 @@ public partial class ToolPrnAnalyseOptDlg : Window
             chkStatsExcUnusedPCLXLRes.IsEnabled = true;
         }
 
-        if (_flagStatsExcUnusedPCLObs)
-            chkStatsExcUnusedPCLObs.IsChecked = true;
-        else
-            chkStatsExcUnusedPCLObs.IsChecked = false;
+        chkStatsExcUnusedPCLObs.IsChecked = _flagStatsExcUnusedPCLObs;
 
-        if (_flagStatsExcUnusedPCLXLRes)
-            chkStatsExcUnusedPCLXLRes.IsChecked = true;
-        else
-            chkStatsExcUnusedPCLXLRes.IsChecked = false;
+        chkStatsExcUnusedPCLXLRes.IsChecked = _flagStatsExcUnusedPCLXLRes;
     }
 
     //--------------------------------------------------------------------//
@@ -2331,14 +2225,11 @@ public partial class ToolPrnAnalyseOptDlg : Window
         if (!_inhibitChecks)
         {
             if (rbCharSetNameASCII.IsChecked == true)
-                _indxCharSetName =
-                    PrnParseConstants.eOptCharSets.ASCII;
+                _indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
             else if (rbCharSetNameISO88591.IsChecked == true)
-                _indxCharSetName =
-                    PrnParseConstants.eOptCharSets.ISO_8859_1;
+                _indxCharSetName = PrnParseConstants.eOptCharSets.ISO_8859_1;
             else
-                _indxCharSetName =
-                    PrnParseConstants.eOptCharSets.Win_ANSI;
+                _indxCharSetName = PrnParseConstants.eOptCharSets.Win_ANSI;
         }
     }
 
@@ -2360,24 +2251,18 @@ public partial class ToolPrnAnalyseOptDlg : Window
             txtCharSetSubCode.IsEnabled = false;
 
             if (rbCharSetSubActMnemonics.IsChecked == true)
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.Mnemonics;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Mnemonics;
             else if (rbCharSetSubActMnemonicsAndSpaces.IsChecked == true)
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.MnemonicsIncSpace;
             else if (rbCharSetSubActHex.IsChecked == true)
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.Hex;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
             else if (rbCharSetSubActDots.IsChecked == true)
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.Dots;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Dots;
             else if (rbCharSetSubActSpaces.IsChecked == true)
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.Spaces;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Spaces;
             else
             {
-                _indxCharSetSubAct =
-                    PrnParseConstants.eOptCharSetSubActs.Substitute;
+                _indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Substitute;
 
                 txtCharSetSubCode.IsEnabled = true;
             }
@@ -2401,24 +2286,27 @@ public partial class ToolPrnAnalyseOptDlg : Window
             grpCurFXLBind.Visibility = Visibility.Hidden;
 
             if (rbCurFInitLangPCL.IsChecked == true)
-                _indxCurFInitLang =
-                    ToolCommonData.ePrintLang.PCL;
+            {
+                _indxCurFInitLang = ToolCommonData.ePrintLang.PCL;
+            }
             else if (rbCurFInitLangPCLXL.IsChecked == true)
             {
-                _indxCurFInitLang =
-                    ToolCommonData.ePrintLang.PCLXL;
+                _indxCurFInitLang = ToolCommonData.ePrintLang.PCLXL;
 
                 grpCurFXLBind.Visibility = Visibility.Visible;
             }
             else if (rbCurFInitLangHPGL2.IsChecked == true)
-                _indxCurFInitLang =
-                    ToolCommonData.ePrintLang.HPGL2;
+            {
+                _indxCurFInitLang = ToolCommonData.ePrintLang.HPGL2;
+            }
             else if (rbCurFInitLangPJL.IsChecked == true)
-                _indxCurFInitLang =
-                    ToolCommonData.ePrintLang.PJL;
+            {
+                _indxCurFInitLang = ToolCommonData.ePrintLang.PJL;
+            }
             else
-                _indxCurFInitLang =
-                    ToolCommonData.ePrintLang.PostScript;
+            {
+                _indxCurFInitLang = ToolCommonData.ePrintLang.PostScript;
+            }
         }
     }
 
@@ -2474,14 +2362,11 @@ public partial class ToolPrnAnalyseOptDlg : Window
         if (!_inhibitChecks)
         {
             if (rbCurFXLBindUnknown.IsChecked == true)
-                _indxCurFXLBinding =
-                    PrnParseConstants.ePCLXLBinding.Unknown;
+                _indxCurFXLBinding = PrnParseConstants.ePCLXLBinding.Unknown;
             else if (rbCurFXLBindLS.IsChecked == true)
-                _indxCurFXLBinding =
-                    PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
+                _indxCurFXLBinding = PrnParseConstants.ePCLXLBinding.BinaryLSFirst;
             else
-                _indxCurFXLBinding =
-                    PrnParseConstants.ePCLXLBinding.BinaryMSFirst;
+                _indxCurFXLBinding = PrnParseConstants.ePCLXLBinding.BinaryMSFirst;
         }
     }
 
@@ -2501,18 +2386,14 @@ public partial class ToolPrnAnalyseOptDlg : Window
         {
             if (rbGenOffsetHex.IsChecked == true)
             {
-                _indxGenOffsetFormat =
-                    PrnParseConstants.eOptOffsetFormats.Hexadecimal;
-                _indxCurFOffsetFormat =
-                    PrnParseConstants.eOptOffsetFormats.Hexadecimal;
+                _indxGenOffsetFormat = PrnParseConstants.eOptOffsetFormats.Hexadecimal;
+                _indxCurFOffsetFormat = PrnParseConstants.eOptOffsetFormats.Hexadecimal;
                 rbCurFOffsetHex.IsChecked = true;
             }
             else
             {
-                _indxGenOffsetFormat =
-                   PrnParseConstants.eOptOffsetFormats.Decimal;
-                _indxCurFOffsetFormat =
-                   PrnParseConstants.eOptOffsetFormats.Decimal;
+                _indxGenOffsetFormat = PrnParseConstants.eOptOffsetFormats.Decimal;
+                _indxCurFOffsetFormat = PrnParseConstants.eOptOffsetFormats.Decimal;
                 rbCurFOffsetDec.IsChecked = true;
             }
         }
@@ -2534,16 +2415,14 @@ public partial class ToolPrnAnalyseOptDlg : Window
         {
             if (rbStatsLevUsedOnly.IsChecked == true)
             {
-                _indxStatsLevel =
-                    PrnParseConstants.eOptStatsLevel.ReferencedOnly;
+                _indxStatsLevel =PrnParseConstants.eOptStatsLevel.ReferencedOnly;
 
                 chkStatsExcUnusedPCLObs.IsEnabled = false;
                 chkStatsExcUnusedPCLXLRes.IsEnabled = false;
             }
             else
             {
-                _indxStatsLevel =
-                    PrnParseConstants.eOptStatsLevel.All;
+                _indxStatsLevel = PrnParseConstants.eOptStatsLevel.All;
 
                 chkStatsExcUnusedPCLObs.IsEnabled = true;
                 chkStatsExcUnusedPCLXLRes.IsEnabled = true;
@@ -2898,9 +2777,8 @@ public partial class ToolPrnAnalyseOptDlg : Window
 
         OK = int.TryParse(crntText, out value);
 
-        if (OK)
-            if ((value < 0) || (value > _fileSize))
-                OK = false;
+        if (OK && ((value < 0) || (value > _fileSize)))
+            OK = false;
 
         if (OK)
         {

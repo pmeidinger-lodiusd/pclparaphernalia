@@ -915,15 +915,10 @@ public partial class ToolPrintLang : Window
                 _ctItems += PCLControlCodes.DisplaySeqList(dgSeq);
 
             if (chkPCLSeqSimple.IsChecked == true)
-                _ctItems +=
-                    PCLSimpleSeqs.DisplaySeqList(dgSeq,
-                                                 _flagPCLOptObsolete);
+                _ctItems += PCLSimpleSeqs.DisplaySeqList(dgSeq, _flagPCLOptObsolete);
 
             if (chkPCLSeqComplex.IsChecked == true)
-                _ctItems +=
-                    PCLComplexSeqs.DisplaySeqList(dgSeq,
-                                                  _flagPCLOptObsolete,
-                                                  _flagPCLOptDiscrete);
+                _ctItems += PCLComplexSeqs.DisplaySeqList(dgSeq, _flagPCLOptObsolete, _flagPCLOptDiscrete);
 
             txtCount.Text = _ctItems.ToString();
         }
@@ -981,29 +976,19 @@ public partial class ToolPrintLang : Window
             _ctItems = 0;
 
             if (_flagPCLXLTagAttrDef)
-                _ctItems +=
-                    PCLXLAttrDefiners.DisplayTags(dgSeq,
-                                                  _flagPCLXLOptReserved);
+                _ctItems += PCLXLAttrDefiners.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
             if (_flagPCLXLTagEmbedDataLen)
-                _ctItems +=
-                    PCLXLEmbedDataDefs.DisplayTags(dgSeq,
-                                                   _flagPCLXLOptReserved);
+                _ctItems += PCLXLEmbedDataDefs.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
             if (_flagPCLXLTagAttribute)
-                _ctItems +=
-                    PCLXLAttributes.DisplayTags(dgSeq,
-                                                _flagPCLXLOptReserved);
+                _ctItems += PCLXLAttributes.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
             if (_flagPCLXLTagDataType)
-                _ctItems +=
-                    PCLXLDataTypes.DisplayTags(dgSeq,
-                                               _flagPCLXLOptReserved);
+                _ctItems += PCLXLDataTypes.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
             if (_flagPCLXLTagOperator)
-                _ctItems +=
-                    PCLXLOperators.DisplayTags(dgSeq,
-                                               _flagPCLXLOptReserved);
+                _ctItems += PCLXLOperators.DisplayTags(dgSeq, _flagPCLXLOptReserved);
 
             if (_flagPCLXLTagWhitespace)
                 _ctItems += PCLXLWhitespaces.DisplayTags(dgSeq);
@@ -1318,13 +1303,9 @@ public partial class ToolPrintLang : Window
             rbSymSetMapBoth.IsChecked = true;
 
         if (_flagSymSetMap)
-        {
             grpSymSetMapType.Visibility = Visibility.Visible;
-        }
         else
-        {
             grpSymSetMapType.Visibility = Visibility.Hidden;
-        }
 
         //----------------------------------------------------------------//
 
@@ -1707,9 +1688,7 @@ public partial class ToolPrintLang : Window
         dgSeq.Columns.Add(colFlagVar_BI);
 
         if (_flagSymSetList)
-        {
             dgSeq.Columns.Add(colSymbolSets);
-        }
 
         Binding bindId = new Binding("Typeface");
         bindId.Mode = BindingMode.OneWay;
@@ -1765,17 +1744,14 @@ public partial class ToolPrintLang : Window
         colFlagVar_BI.Binding = bindFlagVar_BI;
 
         if (_flagSymSetList)
-        {
             colSymbolSets.Binding = bindSymbolSets;
-        }
 
         dgSeq.FontFamily = _fontProp;
         colTypeface.FontFamily = _fontFixed;
         colBound.FontFamily = _fontFixed;
+
         if (_flagSymSetList)
-        {
             colSymbolSets.FontFamily = _fontFixed;
-        }
     }
 
     //--------------------------------------------------------------------//

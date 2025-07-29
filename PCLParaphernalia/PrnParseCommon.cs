@@ -96,33 +96,28 @@ static class PrnParseCommon
 
             if (offset < 0)
             {
-                if (offset ==
-                    (int)PrnParseConstants.eOffsetPosition.StartOfFile)
+                if (offset == (int)PrnParseConstants.eOffsetPosition.StartOfFile)
                     offsetText = "<Start>";
-                else if (offset ==
-                    (int)PrnParseConstants.eOffsetPosition.EndOfFile)
+                else if (offset == (int)PrnParseConstants.eOffsetPosition.EndOfFile)
                     offsetText = "<End>";
                 else
                     offsetText = string.Empty;
             }
             else
             {
-                if (indxOffsetFormat ==
-                    PrnParseConstants.eOptOffsetFormats.Decimal)
+                if (indxOffsetFormat == PrnParseConstants.eOptOffsetFormats.Decimal)
                 {
                     if (level == 0)
                         offsetText = string.Format("{0:d10}", offset);
                     else
-                        offsetText = string.Format("{0:d2}", level) + ":" +
-                                     string.Format("{0:d10}", offset);
+                        offsetText = string.Format("{0:d2}", level) + ":" + string.Format("{0:d10}", offset);
                 }
                 else
                 {
                     if (level == 0)
                         offsetText = string.Format("{0:x8}", offset);
                     else
-                        offsetText = string.Format("{0:x2}", level) + ":" +
-                                     string.Format("{0:x8}", offset);
+                        offsetText = string.Format("{0:x2}", level) + ":" + string.Format("{0:x8}", offset);
                 }
             }
 
@@ -171,8 +166,7 @@ static class PrnParseCommon
         }
         else if ((_parseType == PrnParse.eParseType.MakeOverlay)
                                        &&
-                 (makeOvlShow ==
-                    PrnParseConstants.eOvlShow.None))
+                 (makeOvlShow == PrnParseConstants.eOvlShow.None))
         {
             //------------------------------------------------------------//
             //                                                            //

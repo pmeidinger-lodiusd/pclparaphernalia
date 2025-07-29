@@ -367,8 +367,7 @@ static class ToolFontSamplePCL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, _macroId,
-                                   PCLWriter.eMacroControl.StartDef);
+            PCLWriter.MacroControl(prnWriter, _macroId, PCLWriter.eMacroControl.StartDef);
 
         PCLWriter.Font(prnWriter, true, "19U", "s1p24v0s3b16602T");
 
@@ -788,11 +787,7 @@ static class ToolFontSamplePCL
             if (len < maxLen)
                 PCLWriter.Text(prnWriter, posX, posY, 0, fontFilename);
             else
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                               fontFilename.Substring(0, halfLen) +
-                               " ... " +
-                               fontFilename.Substring(len - halfLen,
-                                                      halfLen));
+                PCLWriter.Text(prnWriter, posX, posY, 0, fontFilename.Substring(0, halfLen) + " ... " + fontFilename.Substring(len - halfLen, halfLen));
         }
         else
             PCLWriter.Text(prnWriter, posX, posY, 0, fontId);
@@ -801,8 +796,7 @@ static class ToolFontSamplePCL
 
         posY += _lineSpacing;
 
-        if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-            (!prnDiskFontDataKnown))
+        if ((fontType == PCLFonts.eFontType.PrnDisk) && (!prnDiskFontDataKnown))
             PCLWriter.Text(prnWriter, posX, posY, 0,
                            "characteristics not known");
         else if (sizeIsHeight)
@@ -817,8 +811,7 @@ static class ToolFontSamplePCL
 
         posY += _lineSpacing;
 
-        if ((fontType == PCLFonts.eFontType.PrnDisk) &&
-            (!prnDiskFontDataKnown))
+        if ((fontType == PCLFonts.eFontType.PrnDisk) && (!prnDiskFontDataKnown))
         {
             PCLWriter.Text(prnWriter, posX, posY, 0,
                            "characteristics not known");
@@ -860,15 +853,19 @@ static class ToolFontSamplePCL
             posY += _lineSpacing / 2;
 
             if (len < maxLen)
+            {
                 PCLWriter.Text(prnWriter, posX, posY, 0,
                                "Symbol set file: " + symSetUserFile);
+            }
             else
+            {
                 PCLWriter.Text(prnWriter, posX, posY, 0,
                                "Symbol set file: " +
                                symSetUserFile.Substring(0, halfLen) +
                                " ... " +
                                symSetUserFile.Substring(len - halfLen,
                                                         halfLen));
+            }
         }
 
         //----------------------------------------------------------------//
@@ -896,11 +893,9 @@ static class ToolFontSamplePCL
             (fontSelectById))
         {
             if (fontBound)
-                PCLWriter.Font(prnWriter, true, string.Empty,
-                               (fontIdNo + "X"));
+                PCLWriter.Font(prnWriter, true, string.Empty, (fontIdNo + "X"));
             else
-                PCLWriter.Font(prnWriter, true, symSetId,
-                               (fontIdNo + "X"));
+                PCLWriter.Font(prnWriter, true, symSetId, (fontIdNo + "X"));
 
             if (fontSelSeq != string.Empty)
                 PCLWriter.Font(prnWriter, true, string.Empty, fontSelSeq);
@@ -930,19 +925,15 @@ static class ToolFontSamplePCL
         utf8 = false;
         twoByteMethod = false;
 
-        if ((indxTextParseMethod ==
-                PCLTextParsingMethods.eIndex.m83_UTF8) ||
-            (indxTextParseMethod ==
-                PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+        if ((indxTextParseMethod == PCLTextParsingMethods.eIndex.m83_UTF8) ||
+            (indxTextParseMethod == PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
             utf8 = true;
-        else if (indxTextParseMethod ==
-                  PCLTextParsingMethods.eIndex.m2_2_byte)
+        else if (indxTextParseMethod == PCLTextParsingMethods.eIndex.m2_2_byte)
             twoByteMethod = true;
 
         //----------------------------------------------------------------//
 
-        if (indxTextParseMethod !=
-            PCLTextParsingMethods.eIndex.not_specified)
+        if (indxTextParseMethod != PCLTextParsingMethods.eIndex.not_specified)
         {
             PCLWriter.TextParsingMethod(
                 prnWriter,
@@ -950,10 +941,8 @@ static class ToolFontSamplePCL
 
             //------------------------------------------------------------//
 
-            if ((indxTextParseMethod ==
-                    PCLTextParsingMethods.eIndex.m83_UTF8) ||
-                (indxTextParseMethod ==
-                    PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
+            if ((indxTextParseMethod == PCLTextParsingMethods.eIndex.m83_UTF8) ||
+                (indxTextParseMethod == PCLTextParsingMethods.eIndex.m1008_UTF8_alt))
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -972,8 +961,7 @@ static class ToolFontSamplePCL
 
                 checkSingleByteCodes = false;
             }
-            else if (indxTextParseMethod ==
-                        PCLTextParsingMethods.eIndex.m2_2_byte)
+            else if (indxTextParseMethod == PCLTextParsingMethods.eIndex.m2_2_byte)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -1236,8 +1224,7 @@ static class ToolFontSamplePCL
         //                                                                //
         //----------------------------------------------------------------//
 
-        if (indxTextParseMethod !=
-            PCLTextParsingMethods.eIndex.not_specified)
+        if (indxTextParseMethod != PCLTextParsingMethods.eIndex.not_specified)
         {
             PCLWriter.TextParsingMethod(
                 prnWriter,

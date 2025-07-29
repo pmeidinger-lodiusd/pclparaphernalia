@@ -1168,13 +1168,11 @@ static class ReportCore
                                  bool firstItem)
     {
         if (rptFileFmt == eRptFileFmt.html)
-            LineItemHtml((HtmlTextWriter)writer,
-                          txtVal, sizeVal, firstItem);
+            LineItemHtml((HtmlTextWriter)writer, txtVal, sizeVal, firstItem);
         else if (rptFileFmt == eRptFileFmt.xml)
             LineItemXml((XmlWriter)writer, txtVal);
         else
-            LineItemText((StreamWriter)writer, txtVal,
-                          sizeVal, firstItem);
+            LineItemText((StreamWriter)writer, txtVal, sizeVal, firstItem);
     }
 
     //--------------------------------------------------------------------//
@@ -1366,13 +1364,11 @@ static class ReportCore
                                       int[] colSizes)
     {
         if (rptFileFmt == eRptFileFmt.html)
-            TableHddrDataHtml((HtmlTextWriter)writer, plain,
-                               colCt, colHddrs);
+            TableHddrDataHtml((HtmlTextWriter)writer, plain, colCt, colHddrs);
         else if (rptFileFmt == eRptFileFmt.xml)
             TableHddrDataXml((XmlWriter)writer, plain, colCt, colHddrs);
         else
-            TableHddrDataText((StreamWriter)writer, colCt, colHddrs,
-                               colSizes);
+            TableHddrDataText((StreamWriter)writer, colCt, colHddrs, colSizes);
     }
 
     //--------------------------------------------------------------------//
@@ -1683,14 +1679,11 @@ static class ReportCore
                                      int[] colSizes)
     {
         if (rptFileFmt == eRptFileFmt.html)
-            TableRowDataHtml((HtmlTextWriter)writer, rptChkMarks,
-                              colCt, rowType, row, colNames);
+            TableRowDataHtml((HtmlTextWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
         else if (rptFileFmt == eRptFileFmt.xml)
-            TableRowDataXml((XmlWriter)writer, rptChkMarks,
-                             colCt, rowType, row, colNames);
+            TableRowDataXml((XmlWriter)writer, rptChkMarks, colCt, rowType, row, colNames);
         else
-            TableRowDataText((StreamWriter)writer, rptChkMarks,
-                              colCt, rowType, row, colNames, colSizes);
+            TableRowDataText((StreamWriter)writer, rptChkMarks, colCt, rowType, row, colNames, colSizes);
     }
 
     //--------------------------------------------------------------------//
@@ -1958,8 +1951,7 @@ static class ReportCore
 
         if (padClass != string.Empty)
             if (nameAsHddr)
-                htmlWriter.AddAttribute("class",
-                                         padClass + " " + "fmtAdorn");
+                htmlWriter.AddAttribute("class", padClass + " " + "fmtAdorn");
             else
                 htmlWriter.AddAttribute("class", padClass);
         else if (nameAsHddr)
@@ -2094,19 +2086,16 @@ static class ReportCore
 
         xmlWriter.WriteStartElement("name");
         if (colSpanName != -1)
-            xmlWriter.WriteAttributeString("colspan",
-                                            colSpanName.ToString());
+            xmlWriter.WriteAttributeString("colspan", colSpanName.ToString());
         if (nameAsHddr)
-            xmlWriter.WriteAttributeString("txtfmt",
-                                            "fmtAdorn");
+            xmlWriter.WriteAttributeString("txtfmt", "fmtAdorn");
 
         xmlWriter.WriteString(txtName);
         xmlWriter.WriteEndElement();
 
         xmlWriter.WriteStartElement("value");
         if (colSpanName != -1)
-            xmlWriter.WriteAttributeString("colspan",
-                                            colSpanVal.ToString());
+            xmlWriter.WriteAttributeString("colspan", colSpanVal.ToString());
         xmlWriter.WriteString(txtVal);
         xmlWriter.WriteEndElement();
 
@@ -2132,8 +2121,7 @@ static class ReportCore
         if (rptFileFmt == eRptFileFmt.html)
             TableRowTextHtml((HtmlTextWriter)writer, colCt, data);
         else if (rptFileFmt == eRptFileFmt.xml)
-            TableRowTextXml((XmlWriter)writer, colCt,
-                          data, colNames);
+            TableRowTextXml((XmlWriter)writer, colCt, data, colNames);
         else
             TableRowTextText((StreamWriter)writer, colCt, data, colSizes);
     }
@@ -2225,10 +2213,12 @@ static class ReportCore
         for (int i = 0; i < colCt; i++)
         {
             xmlWriter.WriteStartElement(colNames[i].ToLower());
+            
             if ((i == 0) && (data[0] == string.Empty))
                 xmlWriter.WriteCharEntity((char)0xa0);
             else
                 xmlWriter.WriteString(data[i]);
+            
             xmlWriter.WriteEndElement();
         }
 

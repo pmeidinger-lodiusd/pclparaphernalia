@@ -603,11 +603,9 @@ static class ToolTrayMapPCL
         }
 
         if (formAsMacro)
-            PCLWriter.MacroControl(prnWriter, macroIdFront,
-                                   PCLWriter.eMacroControl.Call);
+            PCLWriter.MacroControl(prnWriter, macroIdFront, PCLWriter.eMacroControl.Call);
         else
-            GenerateOverlayFront(prnWriter, false,
-                                  _noForm, scaleFactor);
+            GenerateOverlayFront(prnWriter, false, _noForm, scaleFactor);
 
         //----------------------------------------------------------------//
 
@@ -621,15 +619,11 @@ static class ToolTrayMapPCL
 
         if (simplex)
         {
-            PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() +
-                                                " of " +
-                                                pageCount.ToString());
+            PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
         }
         else
         {
-            PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() +
-                                                " of " +
-                                                pageCount.ToString());
+            PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());
         }
 
         //----------------------------------------------------------------//
@@ -639,8 +633,7 @@ static class ToolTrayMapPCL
         if (indxPaperSize >= PCLPaperSizes.GetCount())
             PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPaperSizes.GetName(indxPaperSize));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperSizes.GetName(indxPaperSize));
 
         //----------------------------------------------------------------//
 
@@ -648,12 +641,10 @@ static class ToolTrayMapPCL
 
         if (indxPaperType >= PCLPaperTypes.GetCount())
             PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
-        else if (PCLPaperTypes.GetType(indxPaperType) ==
-                PCLPaperTypes.eEntryType.NotSet)
+        else if (PCLPaperTypes.GetType(indxPaperType) == PCLPaperTypes.eEntryType.NotSet)
             PCLWriter.Text(prnWriter, posX, posY, 0, "<not set>");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPaperTypes.GetName(indxPaperType));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPaperTypes.GetName(indxPaperType));
 
         //----------------------------------------------------------------//
 
@@ -662,8 +653,7 @@ static class ToolTrayMapPCL
         if (indxPlexMode >= PCLPlexModes.GetCount())
             PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLPlexModes.GetName(indxPlexMode));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLPlexModes.GetName(indxPlexMode));
 
         //----------------------------------------------------------------//
 
@@ -672,8 +662,7 @@ static class ToolTrayMapPCL
         if (indxOrientFront >= PCLOrientations.GetCount())
             PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                      PCLOrientations.GetName(indxOrientFront));
+            PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientFront));
 
         //----------------------------------------------------------------//
 
@@ -682,11 +671,9 @@ static class ToolTrayMapPCL
         if (indxPaperTray == PCLTrayDatas.GetIdNotSetPCL())
             PCLWriter.Text(prnWriter, posX, posY, 0, "<not set>");
         else if (indxPaperTray == _trayIdAutoSelectPCL)
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           indxPaperTray.ToString() + " (auto-select)");
+            PCLWriter.Text(prnWriter, posX, posY, 0, indxPaperTray.ToString() + " (auto-select)");
         else
-            PCLWriter.Text(prnWriter, posX, posY, 0,
-                           indxPaperTray.ToString());
+            PCLWriter.Text(prnWriter, posX, posY, 0, indxPaperTray.ToString());
 
         //----------------------------------------------------------------//
         //                                                                // 
@@ -706,11 +693,9 @@ static class ToolTrayMapPCL
             PCLWriter.PageFace(prnWriter, false);
 
             if (formAsMacro)
-                PCLWriter.MacroControl(prnWriter, macroIdRear,
-                                       PCLWriter.eMacroControl.Call);
+                PCLWriter.MacroControl(prnWriter, macroIdRear, PCLWriter.eMacroControl.Call);
             else
-                GenerateOverlayRear(prnWriter, false,
-                                     _noForm, scaleFactor);
+                GenerateOverlayRear(prnWriter, false, _noForm, scaleFactor);
 
             //----------------------------------------------------------------//
 
@@ -731,8 +716,7 @@ static class ToolTrayMapPCL
             if (indxOrientRear >= PCLOrientations.GetCount())
                 PCLWriter.Text(prnWriter, posX, posY, 0, "*** unknown ***");
             else
-                PCLWriter.Text(prnWriter, posX, posY, 0,
-                          PCLOrientations.GetName(indxOrientRear));
+                PCLWriter.Text(prnWriter, posX, posY, 0, PCLOrientations.GetName(indxOrientRear));
         }
 
         PCLWriter.FormFeed(prnWriter);

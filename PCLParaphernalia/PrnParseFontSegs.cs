@@ -170,8 +170,7 @@ class PrnParseFontSegs
             else if ((!complement) && (charCollIndex == 0x00))
                 codeDesc = "'000' = MSL";
             else
-                codeDesc = "'" + charCollIndex.ToString() +
-                          "' not MSL value!";
+                codeDesc = "'" + charCollIndex.ToString() + "' not MSL value!";
         }
         else
         {
@@ -180,8 +179,7 @@ class PrnParseFontSegs
             else if ((!complement) && (charCollIndex == 0x01))
                 codeDesc = "'001' = Unicode";
             else
-                codeDesc = "'" + charCollIndex.ToString() +
-                           "' not Unicode value!";
+                codeDesc = "'" + charCollIndex.ToString() + "' not Unicode value!";
         }
 
         PrnParseCommon.AddTextRow(
@@ -202,11 +200,9 @@ class PrnParseFontSegs
         if (charCollVal == 0)
         {
             if (complement)
-                codeDesc = "All bits unset - compatible with any" +
-                           " character set";
+                codeDesc = "All bits unset - compatible with any character set";
             else
-                codeDesc = "All bits unset - compatible with any" +
-                           " typeface";
+                codeDesc = "All bits unset - compatible with any typeface";
 
             PrnParseCommon.AddTextRow(
                 rowType,
@@ -240,11 +236,9 @@ class PrnParseFontSegs
                     listIndex = PCLCharCollections.GetindexForKey(i);
 
                     if (format_MSL)
-                        codeDesc =
-                            PCLCharCollections.GetDescMSL(listIndex);
+                        codeDesc = PCLCharCollections.GetDescMSL(listIndex);
                     else
-                        codeDesc =
-                            PCLCharCollections.GetDescUnicode(listIndex);
+                        codeDesc = PCLCharCollections.GetDescUnicode(listIndex);
 
                     PrnParseCommon.AddTextRow(
                         rowType,
@@ -3603,10 +3597,8 @@ class PrnParseFontSegs
             {
                 ReportError(
                     "Possibly corrupt: 'Range Count' value " + numRanges,
-                    "makes minimum segment header size " +
-                        (minSegLen + varSegSize) + " bytes",
-                    "This is larger than application buffer size of " +
-                        PrnParseConstants.bufSize + " bytes");
+                    "makes minimum segment header size " + (minSegLen + varSegSize) + " bytes",
+                    "This is larger than application buffer size of " + PrnParseConstants.bufSize + " bytes");
             }
 
             //------------------------------------------------------------//

@@ -211,6 +211,7 @@ class PCLFont
             else
                 // Bitmap; fixed-pitch
                 cmd.Append(",3,").Append(_pitch);
+
             cmd.Append(",4,").Append(_pointSize);
         }
 
@@ -650,8 +651,7 @@ class PCLFont
 
         if ((!symSetFound) && (!_bound))
         {
-            if (PCLSymbolSets.GetKind1(PCLSymbolSets.IndexUnicode) ==
-                symSetNo)
+            if (PCLSymbolSets.GetKind1(PCLSymbolSets.IndexUnicode) == symSetNo)
             {
                 symSetFound = true;
             }

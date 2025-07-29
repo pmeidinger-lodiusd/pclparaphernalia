@@ -97,9 +97,7 @@ static class TargetPersist
         {
             if (Helper_RegKey.KeyExists(subKey, _subKeyTargetPrinter))
                 // update from v2_5_0_0
-                Helper_RegKey.RenameKey(subKey,
-                                       _subKeyTargetPrinter,
-                                       _subKeyTargetNetPrinter);
+                Helper_RegKey.RenameKey(subKey, _subKeyTargetPrinter, _subKeyTargetNetPrinter);
         }
 
         //----------------------------------------------------------------//

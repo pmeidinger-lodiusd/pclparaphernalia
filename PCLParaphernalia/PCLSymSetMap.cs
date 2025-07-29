@@ -395,11 +395,9 @@ class PCLSymSetMap
                     for (int j = 0; j < rowCt; j++)
                     {
                         if (rowId < 0x10)
-                            map.Append("0x" + rowId.ToString("X1") +
-                                        "0->   ");
+                            map.Append("0x" + rowId.ToString("X1") + "0->   ");
                         else
-                            map.Append("0x" + rowId.ToString("X3") +
-                                        "0-> ");
+                            map.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                         cell = (rowId * rowLen);
 
@@ -419,12 +417,13 @@ class PCLSymSetMap
                                 mapValStd = _mapDataStd[i][mapIndx];
 
                                 if (mapValPCL == mapValStd)
+                                {
                                     map.Append("---- ");
+                                }
                                 else
                                 {
                                     difference = true;
-                                    map.Append(mapValPCL.ToString("X4") +
-                                                " ");
+                                    map.Append(mapValPCL.ToString("X4") + " ");
                                 }
 
                                 mapIndx++;
@@ -608,8 +607,7 @@ class PCLSymSetMap
             else if (_flagNullMapStd)
                 return MappingPCL;
             else
-                return "Not defined" +
-                       " - see Standard (Strict) mapping definition";
+                return "Not defined - see Standard (Strict) mapping definition";
         }
     }
 
@@ -695,11 +693,9 @@ class PCLSymSetMap
                     for (int j = 0; j < rowCt; j++)
                     {
                         if (rowId < 0x10)
-                            map.Append("0x" + rowId.ToString("X1") +
-                                       "0->   ");
+                            map.Append("0x" + rowId.ToString("X1") + "0->   ");
                         else
-                            map.Append("0x" + rowId.ToString("X3") +
-                                       "0-> ");
+                            map.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                         cell = (rowId * rowLen);
 
@@ -843,11 +839,9 @@ class PCLSymSetMap
                     for (int j = 0; j < rowCt; j++)
                     {
                         if (rowId < 0x10)
-                            crntRow.Append("0x" + rowId.ToString("X1") +
-                                            "0->   ");
+                            crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                         else
-                            crntRow.Append("0x" + rowId.ToString("X3") +
-                                            "0-> ");
+                            crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                         cell = (rowId * rowLen);
 
@@ -867,12 +861,13 @@ class PCLSymSetMap
                                 mapValStd = _mapDataStd[i][mapIndx];
 
                                 if (mapValPCL == mapValStd)
+                                {
                                     crntRow.Append("---- ");
+                                }
                                 else
                                 {
                                     difference = true;
-                                    crntRow.Append(mapValPCL.ToString("X4") +
-                                                     " ");
+                                    crntRow.Append(mapValPCL.ToString("X4") + " ");
                                 }
 
                                 mapIndx++;
@@ -898,7 +893,9 @@ class PCLSymSetMap
             }
 
             if (difference)
+            {
                 return mapRows;
+            }
             else
             {
                 string[] mapRowsSame = new string[1] { "none" };
@@ -996,11 +993,9 @@ class PCLSymSetMap
                     for (int j = 0; j < rowCt; j++)
                     {
                         if (rowId < 0x10)
-                            crntRow.Append("0x" + rowId.ToString("X1") +
-                                            "0->   ");
+                            crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                         else
-                            crntRow.Append("0x" + rowId.ToString("X3") +
-                                            "0-> ");
+                            crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                         cell = (rowId * rowLen);
 
@@ -1170,11 +1165,9 @@ class PCLSymSetMap
                     for (int j = 0; j < rowCt; j++)
                     {
                         if (rowId < 0x10)
-                            crntRow.Append("0x" + rowId.ToString("X1") +
-                                            "0->   ");
+                            crntRow.Append("0x" + rowId.ToString("X1") + "0->   ");
                         else
-                            crntRow.Append("0x" + rowId.ToString("X3") +
-                                            "0-> ");
+                            crntRow.Append("0x" + rowId.ToString("X3") + "0-> ");
 
                         cell = (rowId * rowLen);
 

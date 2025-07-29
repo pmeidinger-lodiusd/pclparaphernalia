@@ -217,19 +217,11 @@ class PrnParseFontCharPCLXL
             //------------------------------------------------------------//
 
             if (_charFormat == ePCLXLCharFormat.Bitmap)
-            {
-                ProcessRasterDataBody(ref bufRem,
-                                       ref bufOffset);
-            }
+                ProcessRasterDataBody(ref bufRem, ref bufOffset);
             else if (_charFormat == ePCLXLCharFormat.TrueType)
-            {
-                ProcessTrueTypeDataBody(ref bufRem,
-                                         ref bufOffset);
-            }
+                ProcessTrueTypeDataBody(ref bufRem, ref bufOffset);
             else
-            {
                 _nextStage = eStage.BadSeqA;
-            }
         }
 
         if ((_nextStage == eStage.ShowDataRem) && (_charRem != 0))
@@ -241,19 +233,11 @@ class PrnParseFontCharPCLXL
             //------------------------------------------------------------//
 
             if (_charFormat == ePCLXLCharFormat.Bitmap)
-            {
-                ProcessRasterDataRem(ref bufRem,
-                                      ref bufOffset);
-            }
+                ProcessRasterDataRem(ref bufRem, ref bufOffset);
             else if (_charFormat == ePCLXLCharFormat.TrueType)
-            {
-                ProcessTrueTypeDataBody(ref bufRem,
-                                         ref bufOffset);
-            }
+                ProcessTrueTypeDataBody(ref bufRem, ref bufOffset);
             else
-            {
                 _nextStage = eStage.BadSeqA;
-            }
         }
 
         if (_nextStage == eStage.EndOK)

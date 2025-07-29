@@ -86,8 +86,7 @@ static class ToolMiscSamplesActUnicodePCLXL
         generateJobHeader(prnWriter);
 
         if (formAsMacro)
-            generateOverlay(prnWriter, true,
-                             indxPaperSize, indxOrientation);
+            generateOverlay(prnWriter, true, indxPaperSize, indxOrientation);
 
         generatePage(prnWriter,
                      indxPaperSize,
@@ -175,9 +174,7 @@ static class ToolMiscSamplesActUnicodePCLXL
         //----------------------------------------------------------------//
 
         if (formAsMacro)
-        {
             PCLXLWriter.StreamHeader(prnWriter, true, _formName);
-        }
 
         PCLXLWriter.AddOperator(ref buffer,
                           ref indBuf,
@@ -564,16 +561,20 @@ static class ToolMiscSamplesActUnicodePCLXL
         posY = _posYData;
 
         if (codePoint < 0x010000)
+        {
             PCLXLWriter.Text(prnWriter, false, false,
                               PCLXLWriter.advances_ArialRegular, ptSize,
                               posX, posY,
                               "U+" + codePoint.ToString("x4"));
+        }
         else
+        {
             // should not happen 'cos XL only supports 16-bit values !
             PCLXLWriter.Text(prnWriter, false, false,
                               PCLXLWriter.advances_ArialRegular, ptSize,
                               posX, posY,
                               "U+" + codePoint.ToString("x6"));
+        }
 
         PrnParseDataUTF8.ConvertUTF32ToUTF8Bytes(codePoint,
                                                   ref utf8Len,
