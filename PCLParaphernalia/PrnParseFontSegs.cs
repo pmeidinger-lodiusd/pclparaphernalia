@@ -601,7 +601,7 @@ class PrnParseFontSegs
                             break;
 
                         case 0x00ffff:
-                            processSegNull(segSize,
+                            ProcessSegNull(segSize,
                                             segHddrLen,
                                             ref bufRem,
                                             ref bufOffset,
@@ -663,7 +663,7 @@ class PrnParseFontSegs
                 hddrRem -= binDataLen;
             }
 
-            if ((binDataLen) != 0)
+            if (binDataLen != 0)
             {
                 //--------------------------------------------------------//
                 //                                                        //
@@ -722,7 +722,7 @@ class PrnParseFontSegs
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void processSegNull(int segSize,
+    private void ProcessSegNull(int segSize,
                                 int segHddrLen,
                                 ref int bufRem,
                                 ref int bufOffset,
