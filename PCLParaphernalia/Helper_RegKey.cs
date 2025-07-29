@@ -108,7 +108,7 @@ static class Helper_RegKey
         string oldSubKeyName,
         string newSubKeyName)
     {
-        RegistryKey subKey = parentKey.OpenSubKey(oldSubKeyName);
+        using RegistryKey subKey = parentKey.OpenSubKey(oldSubKeyName);
 
         if (subKey != null)
         {

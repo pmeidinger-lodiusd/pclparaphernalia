@@ -1373,7 +1373,7 @@ public partial class ToolSoftFontGenerate : Window
 
             RegistryKey keyMain = Registry.LocalMachine;
 
-            RegistryKey key = keyMain.OpenSubKey(_fontRegistryKey);
+            using RegistryKey key = keyMain.OpenSubKey(_fontRegistryKey);
 
             _ctTTFFonts = 0;
 
