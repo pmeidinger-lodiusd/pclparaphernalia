@@ -138,7 +138,7 @@ public partial class ToolTrayMap : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = _crntPDL;
     }
@@ -167,7 +167,7 @@ public partial class ToolTrayMap : Window
         _indxPDL = cbPDL.SelectedIndex;
         _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-        pdlOptionsStore();
+        PdlOptionsStore();
 
         //------------------------------------------------------------//
         //                                                            //
@@ -312,7 +312,7 @@ public partial class ToolTrayMap : Window
             }
         }
 
-        sheetDataRestore();
+        SheetDataRestore();
     }
 
     //--------------------------------------------------------------------//
@@ -631,12 +631,12 @@ public partial class ToolTrayMap : Window
     {
         if (_initialised)
         {
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
         }
     }
 
@@ -749,7 +749,7 @@ public partial class ToolTrayMap : Window
     {
         if (_initialised && cbSheetCt.HasItems)
         {
-            sheetDataResetVisibility();
+            SheetDataResetVisibility();
         }
     }
 
@@ -809,7 +809,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         int index;
 
@@ -1000,7 +1000,7 @@ public partial class ToolTrayMap : Window
 
         //----------------------------------------------------------------//
 
-        resetTarget();
+        ResetTarget();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1008,8 +1008,8 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        initialisePCL();
-        initialisePCLXL();
+        InitialisePCL();
+        InitialisePCLXL();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1017,9 +1017,9 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
-        pdlOptionsRestore();
+        PdlOptionsRestore();
 
         cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -1030,7 +1030,7 @@ public partial class ToolTrayMap : Window
         else
             cbSheetCt.SelectedIndex = _sheetCtPCLXL - 1;
 
-        sheetDataResetVisibility();
+        SheetDataResetVisibility();
     }
 
     //--------------------------------------------------------------------//
@@ -1042,7 +1042,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialisePCL()
+    private void InitialisePCL()
     {
         _indxPaperSizePCL = new int[_maxSheetNo];
         _indxPaperTypePCL = new int[_maxSheetNo];
@@ -1061,7 +1061,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialisePCLXL()
+    private void InitialisePCLXL()
     {
         _indxPaperSizePCLXL = new int[_maxSheetNo];
         _indxPaperTypePCLXL = new int[_maxSheetNo];
@@ -1080,7 +1080,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         ToolTrayMapPersist.LoadDataCommon(ref _indxPDL);
 
@@ -1184,9 +1184,9 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
-        pdlOptionsStore();
+        PdlOptionsStore();
 
         //  trayIdSetStore();
 
@@ -1234,7 +1234,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsRestore()
+    private void PdlOptionsRestore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -1249,7 +1249,7 @@ public partial class ToolTrayMap : Window
             chkOptFormAsMacro.IsChecked = _formAsMacroPCLXL;
         }
 
-        sheetDataRestore();
+        SheetDataRestore();
     }
 
     //--------------------------------------------------------------------//
@@ -1261,7 +1261,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsStore()
+    private void PdlOptionsStore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -1276,7 +1276,7 @@ public partial class ToolTrayMap : Window
             _formAsMacroPCLXL = chkOptFormAsMacro.IsChecked == true;
         }
 
-        sheetDataStore();
+        SheetDataStore();
     }
 
     //--------------------------------------------------------------------//
@@ -1288,7 +1288,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         TargetCore.eTarget targetType = TargetCore.GetType();
 
@@ -1338,7 +1338,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void sheetDataResetVisibility()
+    private void SheetDataResetVisibility()
     {
         int sheetCt;
 
@@ -1440,7 +1440,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void sheetDataRestore()
+    private void SheetDataRestore()
     {
         int itemAutoPCL = _srcAutoSelectPCL + 1;
         int itemAutoPCLXL = _srcAutoSelectPCLXL + 1;
@@ -1584,7 +1584,7 @@ public partial class ToolTrayMap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void sheetDataStore()
+    private void SheetDataStore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {

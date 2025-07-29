@@ -101,7 +101,7 @@ public partial class ToolPatternGenerate : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = _crntPDL;
     }
@@ -121,7 +121,7 @@ public partial class ToolPatternGenerate : Window
 
         string filename = _bitmapFilename;
 
-        selected = selectImageFile(ref filename);
+        selected = SelectImageFile(ref filename);
 
         if (selected)
         {
@@ -420,12 +420,12 @@ public partial class ToolPatternGenerate : Window
     {
         if (_initialised)
         {
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             /*
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
@@ -486,7 +486,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         int index;
 
@@ -564,14 +564,14 @@ public partial class ToolPatternGenerate : Window
         */
         //----------------------------------------------------------------//
 
-        resetTarget();
+        ResetTarget();
 
         //----------------------------------------------------------------//
         //                                                                //
         // Reinstate settings from persistent storage.                    //
         //                                                                //
         //----------------------------------------------------------------//
-        metricsLoad();
+        MetricsLoad();
 
         /*
         grpProps.Visibility = Visibility.Hidden;
@@ -585,7 +585,7 @@ public partial class ToolPatternGenerate : Window
         txtFilename.Text = _bitmapFilename;
         */
 
-        pdlOptionsRestore();
+        PdlOptionsRestore();
 
         cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -629,7 +629,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         /*
         Int32 tempPosX = 100,
@@ -704,7 +704,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         /*
         ToolImageBitmapPersist.saveDataCommon(_indxPDL,
@@ -736,7 +736,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsRestore()
+    private void PdlOptionsRestore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -761,7 +761,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsStore()
+    private void PdlOptionsStore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -786,7 +786,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         TargetCore.eTarget targetType = TargetCore.GetType();
 
@@ -833,7 +833,7 @@ public partial class ToolPatternGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool selectImageFile(ref string selectedName)
+    private bool SelectImageFile(ref string selectedName)
     {
         bool selected = false;
         /*

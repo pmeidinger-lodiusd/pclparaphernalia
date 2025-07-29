@@ -95,7 +95,7 @@ public partial class ToolImageBitmap : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = _crntPDL;
     }
@@ -115,7 +115,7 @@ public partial class ToolImageBitmap : Window
 
         string filename = _bitmapFilename;
 
-        selected = selectImageFile(ref filename);
+        selected = SelectImageFile(ref filename);
 
         if (selected)
         {
@@ -152,7 +152,7 @@ public partial class ToolImageBitmap : Window
         _indxPDL = cbPDL.SelectedIndex;
         _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-        pdlOptionsStore();
+        PdlOptionsStore();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -392,12 +392,12 @@ public partial class ToolImageBitmap : Window
     {
         if (_initialised)
         {
-            pdlOptionsStore();
+            PdlOptionsStore();
 
             _indxPDL = cbPDL.SelectedIndex;
             _crntPDL = (ToolCommonData.ePrintLang)_subsetPDLs[_indxPDL];
 
-            pdlOptionsRestore();
+            PdlOptionsRestore();
 
             if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             {
@@ -454,7 +454,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         int index;
 
@@ -531,7 +531,7 @@ public partial class ToolImageBitmap : Window
 
         //----------------------------------------------------------------//
 
-        resetTarget();
+        ResetTarget();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -539,7 +539,7 @@ public partial class ToolImageBitmap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
         grpProps.Visibility = Visibility.Hidden;
 
@@ -551,7 +551,7 @@ public partial class ToolImageBitmap : Window
 
         txtFilename.Text = _bitmapFilename;
 
-        pdlOptionsRestore();
+        PdlOptionsRestore();
 
         cbPDL.SelectedIndex = (byte)_indxPDL;
 
@@ -567,7 +567,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         int tempPosX = 100,
               tempPosY = 100;
@@ -640,7 +640,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         ToolImageBitmapPersist.SaveDataCommon(_indxPDL,
                                               _bitmapFilename,
@@ -670,7 +670,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsRestore()
+    private void PdlOptionsRestore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -696,7 +696,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void pdlOptionsStore()
+    private void PdlOptionsStore()
     {
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
@@ -726,7 +726,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         TargetCore.eTarget targetType = TargetCore.GetType();
 
@@ -773,7 +773,7 @@ public partial class ToolImageBitmap : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool selectImageFile(ref string selectedName)
+    private bool SelectImageFile(ref string selectedName)
     {
         OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(selectedName);
 

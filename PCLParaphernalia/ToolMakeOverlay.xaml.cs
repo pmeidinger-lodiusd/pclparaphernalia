@@ -237,14 +237,14 @@ public partial class ToolMakeOverlay : Window
                                          ref flagOptRptWrap);
 
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
-            ToolMakeOverlayReport.generate(rptFileFmt,
+            ToolMakeOverlayReport.Generate(rptFileFmt,
                                            _tableProgress,
                                             _prnFilename,
                                             _ovlFilenamePCL,
                                             flagOffsetHex,
                                             _options);
         else
-            ToolMakeOverlayReport.generate(rptFileFmt,
+            ToolMakeOverlayReport.Generate(rptFileFmt,
                                            _tableProgress,
                                             _prnFilename,
                                             _ovlFilenamePCLXL,

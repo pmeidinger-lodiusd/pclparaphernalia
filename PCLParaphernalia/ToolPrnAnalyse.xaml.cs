@@ -78,7 +78,7 @@ public partial class ToolPrnAnalyse : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -114,7 +114,7 @@ public partial class ToolPrnAnalyse : Window
             _tableAnalysis.Clear();
             _tableStatistics.Clear();
 
-            initialiseGridAnalysis();
+            InitialiseGridAnalysis();
 
             parseFile.Analyse(_prnFilename,
                                _options,
@@ -161,7 +161,7 @@ public partial class ToolPrnAnalyse : Window
 
             _tableContent.Clear();
 
-            initialiseGridContent();
+            InitialiseGridContent();
 
             viewFile.ViewFile(_prnFilename,
                                _options,
@@ -204,7 +204,7 @@ public partial class ToolPrnAnalyse : Window
         bool selected;
         string filename = _prnFilename;
 
-        selected = prnFileSelect(ref filename);
+        selected = PrnFileSelect(ref filename);
 
         if (selected)
         {
@@ -227,7 +227,7 @@ public partial class ToolPrnAnalyse : Window
             _redoContent = true;
             _redoStatistics = true;
 
-            prnFileProcess(filename);
+            PrnFileProcess(filename);
         }
     }
 
@@ -556,7 +556,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+    public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
     {
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -570,7 +570,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         //    _initialised = false;
 
@@ -627,7 +627,7 @@ public partial class ToolPrnAnalyse : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
         _fileSize = -1;
 
@@ -660,9 +660,9 @@ public partial class ToolPrnAnalyse : Window
 
         //----------------------------------------------------------------//
 
-        initialiseGridAnalysis();
-        initialiseGridContent();
-        initialiseGridStatistics();
+        InitialiseGridAnalysis();
+        InitialiseGridContent();
+        InitialiseGridStatistics();
 
         //----------------------------------------------------------------//
 
@@ -678,7 +678,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseGridAnalysis()
+    private void InitialiseGridAnalysis()
     {
         _tableAnalysis = new DataTable("Analysis");
 
@@ -713,7 +713,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseGridContent()
+    private void InitialiseGridContent()
     {
         _tableContent = new DataTable("Content");
 
@@ -744,7 +744,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseGridStatistics()
+    private void InitialiseGridStatistics()
     {
         _tableStatistics = new DataTable("Statistics");
 
@@ -779,7 +779,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         ToolPrnAnalysePersist.LoadData(ref _prnFilename);
 
@@ -795,7 +795,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         ToolPrnAnalysePersist.SaveData(_prnFilename);
 
@@ -811,7 +811,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private long prnFileGetSize(string fileName)
+    private long PrnFileGetSize(string fileName)
     {
         Stream ipStream = null;
 
@@ -874,11 +874,11 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void prnFileProcess(string filename)
+    public void PrnFileProcess(string filename)
     {
         _prnFilename = filename;
 
-        _fileSize = prnFileGetSize(_prnFilename);
+        _fileSize = PrnFileGetSize(_prnFilename);
 
         txtFileName.Text = _prnFilename;
         txtFileSize.Text = _fileSize.ToString();
@@ -912,7 +912,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool prnFileSelect(ref string prnFilename)
+    private bool PrnFileSelect(ref string prnFilename)
     {
         OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(prnFilename);
 
@@ -977,7 +977,7 @@ public partial class ToolPrnAnalyse : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         // dummy method
     }

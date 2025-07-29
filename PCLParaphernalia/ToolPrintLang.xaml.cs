@@ -117,7 +117,7 @@ public partial class ToolPrintLang : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -136,25 +136,25 @@ public partial class ToolPrintLang : Window
         eInfoType infoType = (eInfoType)_indxType;
 
         if (infoType == eInfoType.PCL)
-            displayPCLSeqs();
+            DisplayPCLSeqs();
         else if (infoType == eInfoType.HPGL2)
-            displayHPGL2Commands();
+            DisplayHPGL2Commands();
         else if (infoType == eInfoType.PCLXLTags)
-            displayPCLXLTags();
+            DisplayPCLXLTags();
         else if (infoType == eInfoType.PCLXLEnums)
-            displayPCLXLEnums();
+            DisplayPCLXLEnums();
         else if (infoType == eInfoType.PJLCmds)
-            displayPJLCmds();
+            DisplayPJLCmds();
         else if (infoType == eInfoType.PMLTags)
             displayPMLTags();
         else if (infoType == eInfoType.SymbolSets)
-            displaySymbolSetData();
+            DisplaySymbolSetData();
         else if (infoType == eInfoType.Fonts)
-            displayFontData();
+            DisplayFontData();
         else if (infoType == eInfoType.PaperSizes)
-            displayPaperSizeData();
+            DisplayPaperSizeData();
         else if (infoType == eInfoType.PrescribeCmds)
-            displayPrescribeCmds();
+            DisplayPrescribeCmds();
 
         btnSaveReport.Visibility = Visibility.Visible;
     }
@@ -225,7 +225,7 @@ public partial class ToolPrintLang : Window
         lbFontMapComment2.Visibility = Visibility.Visible;
         lbFontMapComment3.Visibility = Visibility.Visible;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -247,7 +247,7 @@ public partial class ToolPrintLang : Window
         lbFontMapComment2.Visibility = Visibility.Hidden;
         lbFontMapComment3.Visibility = Visibility.Hidden;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -264,7 +264,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLOptDiscrete = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -281,7 +281,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLOptDiscrete = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -298,7 +298,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLOptObsolete = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -315,7 +315,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLOptObsolete = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -332,7 +332,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqComplex = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -349,7 +349,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqComplex = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -366,7 +366,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqControl = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -383,7 +383,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqControl = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -400,7 +400,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqSimple = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -417,7 +417,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLSeqSimple = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -434,7 +434,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLOptReserved = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -451,7 +451,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLOptReserved = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -468,7 +468,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagAttrDef = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -485,7 +485,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagAttrDef = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -502,7 +502,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagAttribute = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -519,7 +519,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagAttribute = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -536,7 +536,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagDataType = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -553,7 +553,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagDataType = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -570,7 +570,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagEmbedDataLen = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -587,7 +587,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagEmbedDataLen = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -604,7 +604,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagOperator = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -621,7 +621,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagOperator = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -638,7 +638,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagWhitespace = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -655,7 +655,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPCLXLTagWhitespace = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -672,7 +672,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagAction = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -689,7 +689,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagAction = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -706,7 +706,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagDataType = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -723,7 +723,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagDataType = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -740,7 +740,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagOutcome = true;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -757,7 +757,7 @@ public partial class ToolPrintLang : Window
     {
         _flagPMLTagOutcome = false;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -778,7 +778,7 @@ public partial class ToolPrintLang : Window
         //  grpSymSetMapSet.Visibility = Visibility.Visible;
         grpSymSetMapType.Visibility = Visibility.Visible;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -799,7 +799,7 @@ public partial class ToolPrintLang : Window
         //   grpSymSetMapSet.Visibility = Visibility.Hidden;
         grpSymSetMapType.Visibility = Visibility.Hidden;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -811,7 +811,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void clearDetails()
+    private void ClearDetails()
     {
         if (_initialised)
         {
@@ -832,9 +832,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayFontData()
+    private void DisplayFontData()
     {
-        setColsFonts();
+        SetColsFonts();
 
         dgSeq.Items.Clear();
 
@@ -852,9 +852,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayHPGL2Commands()
+    private void DisplayHPGL2Commands()
     {
-        setColsHPGL2();
+        SetColsHPGL2();
 
         dgSeq.Items.Clear();
 
@@ -872,9 +872,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPaperSizeData()
+    private void DisplayPaperSizeData()
     {
-        setColsPaperSizes();
+        SetColsPaperSizes();
 
         dgSeq.Items.Clear();
 
@@ -892,7 +892,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPCLSeqs()
+    private void DisplayPCLSeqs()
     {
         if ((!_flagPCLSeqSimple) &&
             (!_flagPCLSeqComplex) &&
@@ -905,7 +905,7 @@ public partial class ToolPrintLang : Window
         }
         else
         {
-            setColsPCL();
+            SetColsPCL();
 
             dgSeq.Items.Clear();
 
@@ -933,9 +933,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPCLXLEnums()
+    private void DisplayPCLXLEnums()
     {
-        setColsPCLXLEnums();
+        SetColsPCLXLEnums();
 
         dgSeq.Items.Clear();
 
@@ -953,7 +953,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPCLXLTags()
+    private void DisplayPCLXLTags()
     {
         if ((!_flagPCLXLTagDataType) &&
             (!_flagPCLXLTagAttribute) &&
@@ -969,7 +969,7 @@ public partial class ToolPrintLang : Window
         }
         else
         {
-            setColsPCLXLTags();
+            SetColsPCLXLTags();
 
             dgSeq.Items.Clear();
 
@@ -1006,9 +1006,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPJLCmds()
+    private void DisplayPJLCmds()
     {
-        setColsPJLCmds();
+        SetColsPJLCmds();
 
         dgSeq.Items.Clear();
 
@@ -1039,7 +1039,7 @@ public partial class ToolPrintLang : Window
         }
         else
         {
-            setColsPMLTags();
+            SetColsPMLTags();
 
             dgSeq.Items.Clear();
 
@@ -1067,9 +1067,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displayPrescribeCmds()
+    private void DisplayPrescribeCmds()
     {
-        setColsPrescribeCmds();
+        SetColsPrescribeCmds();
 
         dgSeq.Items.Clear();
 
@@ -1087,9 +1087,9 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void displaySymbolSetData()
+    private void DisplaySymbolSetData()
     {
-        setColsSymbolSets();
+        SetColsSymbolSets();
 
         dgSeq.Items.Clear();
 
@@ -1104,7 +1104,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+    public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
     {
         crntPDL = ToolCommonData.ePrintLang.Unknown;
     }
@@ -1118,7 +1118,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         eInfoType infoType;
 
@@ -1140,7 +1140,7 @@ public partial class ToolPrintLang : Window
 
         //----------------------------------------------------------------//
 
-        resetTarget();
+        ResetTarget();
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1148,7 +1148,7 @@ public partial class ToolPrintLang : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
         infoType = (eInfoType)_indxType;
 
@@ -1156,61 +1156,61 @@ public partial class ToolPrintLang : Window
         {
             rbSelTypeHPGL2.IsChecked = true;
             tabInfoType.SelectedItem = tabHPGL2;
-            setColsHPGL2();
+            SetColsHPGL2();
         }
         else if (infoType == eInfoType.PCL)
         {
             rbSelTypePCL.IsChecked = true;
             tabInfoType.SelectedItem = tabPCL;
-            setColsPCL();
+            SetColsPCL();
         }
         else if (infoType == eInfoType.PCLXLEnums)
         {
             rbSelTypePCLXLEnums.IsChecked = true;
             tabInfoType.SelectedItem = tabPCLXLEnums;
-            setColsPCLXLEnums();
+            SetColsPCLXLEnums();
         }
         else if (infoType == eInfoType.PCLXLTags)
         {
             rbSelTypePCLXLTags.IsChecked = true;
             tabInfoType.SelectedItem = tabPCLXLTags;
-            setColsPCLXLTags();
+            SetColsPCLXLTags();
         }
         else if (infoType == eInfoType.PJLCmds)
         {
             rbSelTypePJLCmds.IsChecked = true;
             tabInfoType.SelectedItem = tabPJLCmds;
-            setColsPJLCmds();
+            SetColsPJLCmds();
         }
         else if (infoType == eInfoType.PMLTags)
         {
             rbSelTypePMLTags.IsChecked = true;
             tabInfoType.SelectedItem = tabPMLTags;
-            setColsPMLTags();
+            SetColsPMLTags();
         }
         else if (infoType == eInfoType.SymbolSets)
         {
             rbSelTypeSymbolSets.IsChecked = true;
             tabInfoType.SelectedItem = tabSymbolSets;
-            setColsSymbolSets();
+            SetColsSymbolSets();
         }
         else if (infoType == eInfoType.Fonts)
         {
             rbSelTypeFonts.IsChecked = true;
             tabInfoType.SelectedItem = tabFonts;
-            setColsFonts();
+            SetColsFonts();
         }
         else if (infoType == eInfoType.PaperSizes)
         {
             rbSelTypePaperSizes.IsChecked = true;
             tabInfoType.SelectedItem = tabPaperSizes;
-            setColsPaperSizes();
+            SetColsPaperSizes();
         }
         else
         {
             rbSelTypePCL.IsChecked = true;
             tabInfoType.SelectedItem = tabPCL;
-            setColsPCL();
+            SetColsPCL();
         }
 
         _initialised = true;
@@ -1225,7 +1225,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         int tmpInt = 0;
 
@@ -1334,7 +1334,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         ToolPrintLangPersist.SaveDataCommon(_indxType,
                                              _saveFilename);
@@ -1378,9 +1378,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabFonts;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsFonts();
+        SetColsFonts();
     }
 
     //--------------------------------------------------------------------//
@@ -1398,9 +1398,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabHPGL2;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsHPGL2();
+        SetColsHPGL2();
     }
 
     //--------------------------------------------------------------------//
@@ -1419,9 +1419,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPaperSizes;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPaperSizes();
+        SetColsPaperSizes();
     }
 
     //--------------------------------------------------------------------//
@@ -1439,9 +1439,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPCL;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPCL();
+        SetColsPCL();
     }
 
     //--------------------------------------------------------------------//
@@ -1459,9 +1459,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPCLXLEnums;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPCLXLEnums();
+        SetColsPCLXLEnums();
     }
 
     //--------------------------------------------------------------------//
@@ -1479,9 +1479,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPCLXLTags;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPCLXLTags();
+        SetColsPCLXLTags();
     }
 
     //--------------------------------------------------------------------//
@@ -1499,9 +1499,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPJLCmds;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPJLCmds();
+        SetColsPJLCmds();
     }
 
     //--------------------------------------------------------------------//
@@ -1519,9 +1519,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPMLTags;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPMLTags();
+        SetColsPMLTags();
     }
 
     //--------------------------------------------------------------------//
@@ -1540,9 +1540,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabPrescribeCmds;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsPrescribeCmds();
+        SetColsPrescribeCmds();
     }
 
     //--------------------------------------------------------------------//
@@ -1560,9 +1560,9 @@ public partial class ToolPrintLang : Window
 
         tabInfoType.SelectedItem = tabSymbolSets;
 
-        clearDetails();
+        ClearDetails();
 
-        setColsSymbolSets();
+        SetColsSymbolSets();
     }
 
     //--------------------------------------------------------------------//
@@ -1578,7 +1578,7 @@ public partial class ToolPrintLang : Window
     {
         _symSetMapType = eSymSetMapType.Both;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -1594,7 +1594,7 @@ public partial class ToolPrintLang : Window
     {
         _symSetMapType = eSymSetMapType.PCL;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -1610,7 +1610,7 @@ public partial class ToolPrintLang : Window
     {
         _symSetMapType = eSymSetMapType.Std;
 
-        clearDetails();
+        ClearDetails();
     }
 
     //--------------------------------------------------------------------//
@@ -1622,7 +1622,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         btnGenerate.Content = "Display requested data";
     }
@@ -1636,7 +1636,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsFonts()
+    private void SetColsFonts()
     {
         DataGridTextColumn colTypeface = new DataGridTextColumn();
         DataGridTextColumn colName = new DataGridTextColumn();
@@ -1763,7 +1763,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsHPGL2()
+    private void SetColsHPGL2()
     {
         DataGridTextColumn colMnemonic = new DataGridTextColumn();
         DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -1797,7 +1797,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPaperSizes()
+    private void SetColsPaperSizes()
     {
         DataGridTextColumn colName = new DataGridTextColumn();
         DataGridTextColumn colDesc = new DataGridTextColumn();
@@ -1861,7 +1861,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPCL()
+    private void SetColsPCL()
     {
         DataGridTextColumn colSequence = new DataGridTextColumn();
         DataGridTextColumn colType = new DataGridTextColumn();
@@ -1920,7 +1920,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPCLXLEnums()
+    private void SetColsPCLXLEnums()
     {
         DataGridTextColumn colTagOper = new DataGridTextColumn();
         DataGridTextColumn colTagAttr = new DataGridTextColumn();
@@ -1969,7 +1969,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPCLXLTags()
+    private void SetColsPCLXLTags()
     {
         DataGridTextColumn colTag = new DataGridTextColumn();
         DataGridTextColumn colType = new DataGridTextColumn();
@@ -2051,7 +2051,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPJLCmds()
+    private void SetColsPJLCmds()
     {
         DataGridTextColumn colCmd = new DataGridTextColumn();
         DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -2085,7 +2085,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPMLTags()
+    private void SetColsPMLTags()
     {
         DataGridTextColumn colTag = new DataGridTextColumn();
         DataGridTextColumn colType = new DataGridTextColumn();
@@ -2126,7 +2126,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsPrescribeCmds()
+    private void SetColsPrescribeCmds()
     {
         DataGridTextColumn colCmd = new DataGridTextColumn();
         DataGridTextColumn colDescription = new DataGridTextColumn();
@@ -2160,7 +2160,7 @@ public partial class ToolPrintLang : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setColsSymbolSets()
+    private void SetColsSymbolSets()
     {
         DataGridTextColumn colGroup = new DataGridTextColumn();
         DataGridTextColumn colType = new DataGridTextColumn();

@@ -123,7 +123,7 @@ public partial class ToolSymbolSetGenerate : Window
     {
         InitializeComponent();
 
-        initialise();
+        Initialise();
 
         crntPDL = ToolCommonData.ePrintLang.PCL;
     }
@@ -144,7 +144,7 @@ public partial class ToolSymbolSetGenerate : Window
             _symSetMapTarget[_offsetMin + i] = cCodePointUnused;
         }
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -164,7 +164,7 @@ public partial class ToolSymbolSetGenerate : Window
             _symSetMapTarget[i] = cCodePointUnused;
         }
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -201,7 +201,7 @@ public partial class ToolSymbolSetGenerate : Window
 
         //----------------------------------------------------------------//
 
-        setTargetSymSetFilename();
+        SetTargetSymSetFilename();
 
         if (_flagDonorSymSetUserSet)
         {
@@ -220,7 +220,7 @@ public partial class ToolSymbolSetGenerate : Window
 
             _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
-            setMultiByteData(_flagMultiByteSet);
+            SetMultiByteData(_flagMultiByteSet);
 
             for (int i = 0; i < sizeDonorSet; i++)
             {
@@ -233,7 +233,7 @@ public partial class ToolSymbolSetGenerate : Window
             }
         }
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
 
         btnDefineSymSet.IsEnabled = false;
         btnGenerateSymSet.IsEnabled = true;
@@ -257,7 +257,7 @@ public partial class ToolSymbolSetGenerate : Window
 
         string filename = _donorSymSetFile;
 
-        selected = selectDonorSymSetFile(ref filename);
+        selected = SelectDonorSymSetFile(ref filename);
 
         if (selected)
         {
@@ -267,7 +267,7 @@ public partial class ToolSymbolSetGenerate : Window
             ToolCommonFunctions.GetFolderName(_donorSymSetFile,
                                                ref _donorSymSetFolder);
 
-            donorSymSetChange();
+            DonorSymSetChange();
         }
     }
 
@@ -284,7 +284,7 @@ public partial class ToolSymbolSetGenerate : Window
     {
         ToolSymbolSetGenPCL PCLHandler = new ToolSymbolSetGenPCL();
 
-        mapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
+        MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
                     ref _codeMin, ref _codeMax, ref _codeCt,
                     ref _targetSymSetType);
 
@@ -361,7 +361,7 @@ public partial class ToolSymbolSetGenerate : Window
 
         string filename = _targetSymSetFile;
 
-        selected = selectTargetSymSetFile(ref filename);
+        selected = SelectTargetSymSetFile(ref filename);
 
         if (selected)
         {
@@ -408,7 +408,7 @@ public partial class ToolSymbolSetGenerate : Window
         if (e.PropertyName == "IsChecked")
         {
             if (!_flagCharCollReqInhibit)
-                setTargetCharCollReqArray(_flagIndexUnicode);
+                SetTargetCharCollReqArray(_flagIndexUnicode);
         }
     }
 
@@ -427,7 +427,7 @@ public partial class ToolSymbolSetGenerate : Window
     {
         if (_initialised && cbDonorSymSet.HasItems)
         {
-            setDonorSymSetAttributes();
+            SetDonorSymSetAttributes();
 
             btnDefineSymSet.IsEnabled = true;
             btnGenerateSymSet.IsEnabled = false;
@@ -452,9 +452,9 @@ public partial class ToolSymbolSetGenerate : Window
         {
             _indxOffsets = cbOffsetRange.SelectedIndex;
 
-            setOffsetData();
+            SetOffsetData();
 
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+            MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                         _offsetMin);
         }
     }
@@ -468,7 +468,7 @@ public partial class ToolSymbolSetGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool checkDonorSymSetFile()
+    private bool CheckDonorSymSetFile()
     {
         bool flagOK = true;
 
@@ -490,7 +490,7 @@ public partial class ToolSymbolSetGenerate : Window
             //                                                            //
             //------------------------------------------------------------//
 
-            selected = selectDonorSymSetFile(ref filename);
+            selected = SelectDonorSymSetFile(ref filename);
 
             if (selected)
             {
@@ -532,7 +532,7 @@ public partial class ToolSymbolSetGenerate : Window
 
                 _flagMultiByteSet = sizeDonorSet > cSizeCharSet_8bit;
 
-                setMultiByteData(_flagMultiByteSet);
+                SetMultiByteData(_flagMultiByteSet);
 
                 _symSetMapUserSet = PCLSymbolSets.GetMapArrayUserSet();
 
@@ -577,7 +577,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC0 = true;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+            MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -594,7 +594,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC0 = false;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+            MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -611,7 +611,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC1 = true;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+            MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -628,7 +628,7 @@ public partial class ToolSymbolSetGenerate : Window
         _flagIgnoreC1 = false;
 
         if (_initialised)
-            mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
+            MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1, _offsetMin);
     }
 
     //--------------------------------------------------------------------//
@@ -640,14 +640,14 @@ public partial class ToolSymbolSetGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void donorSymSetChange()
+    private void DonorSymSetChange()
     {
         bool flagOK = true;
 
         if (_flagDonorSymSetUserSet)
-            flagOK = checkDonorSymSetFile();
+            flagOK = CheckDonorSymSetFile();
 
-        setDonorSymSetAttributes();
+        SetDonorSymSetAttributes();
 
         grpTargetSymSetDetails.Visibility = Visibility.Hidden;
 
@@ -671,7 +671,7 @@ public partial class ToolSymbolSetGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void giveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
+    public void GiveCrntPDL(ref ToolCommonData.ePrintLang crntPDL)
     {
         crntPDL = ToolCommonData.ePrintLang.PCL;
     }
@@ -685,7 +685,7 @@ public partial class ToolSymbolSetGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialise()
+    private void Initialise()
     {
         _initialised = false;
 
@@ -697,7 +697,7 @@ public partial class ToolSymbolSetGenerate : Window
 
         _sizeCharSet = cSizeCharSet_8bit;
 
-        initialiseSymSetList();
+        InitialiseSymSetList();
 
         btnDefineSymSet.IsEnabled = true;
         btnGenerateSymSet.IsEnabled = false;
@@ -709,7 +709,7 @@ public partial class ToolSymbolSetGenerate : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        metricsLoad();
+        MetricsLoad();
 
         //     mapDisplay (_flagMapHex, _flagIgnoreC0, _flagIgnoreC1);
 
@@ -729,7 +729,7 @@ public partial class ToolSymbolSetGenerate : Window
 
         //----------------------------------------------------------------//
 
-        setOffsetRanges();
+        SetOffsetRanges();
 
         _symSetMap8bit = new ushort[cSizeCharSet_8bit];
         _symSetMapTarget = _symSetMap8bit;
@@ -739,13 +739,13 @@ public partial class ToolSymbolSetGenerate : Window
 
         btnCodePtClearAll.Visibility = Visibility.Hidden;
 
-        setMultiByteData(_flagMultiByteSet);
+        SetMultiByteData(_flagMultiByteSet);
 
-        donorSymSetChange();
+        DonorSymSetChange();
 
         //----------------------------------------------------------------//
 
-        initialiseCharCollReqLists();
+        InitialiseCharCollReqLists();
 
         //----------------------------------------------------------------//
 
@@ -769,7 +769,7 @@ public partial class ToolSymbolSetGenerate : Window
             cbCharColls.Visibility = Visibility.Visible;
             tblkCharCollsText.Visibility = Visibility.Visible;
 
-            populateCharCollReq(_flagIndexUnicode);
+            PopulateCharCollReq(_flagIndexUnicode);
 
             if (_flagIndexUnicode)
                 _targetCharCollReq = _targetCharCollReqUnicode;
@@ -788,7 +788,7 @@ public partial class ToolSymbolSetGenerate : Window
                 _targetCharCollReq = _targetCharCollReqAllMSL;
         }
 
-        setTargetCharCollReqValue(_targetCharCollReq);
+        SetTargetCharCollReqValue(_targetCharCollReq);
 
         _initialised = true;
     }
@@ -802,7 +802,7 @@ public partial class ToolSymbolSetGenerate : Window
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseCharCollReqLists()
+    private void InitialiseCharCollReqLists()
     {
         int bitNo;
 
@@ -902,7 +902,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void initialiseSymSetList()
+    private void InitialiseSymSetList()
     {
         int index;
 
@@ -930,7 +930,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void mapDisplay(bool hexDisplay,
+    private void MapDisplay(bool hexDisplay,
                              bool ignoreC0,
                              bool ignoreC1,
                              ushort offset)
@@ -1518,7 +1518,7 @@ bitVal;
 
         //----------------------------------------------------------------//
 
-        mapMetrics(ignoreC0, ignoreC1, _sizeCharSet,
+        MapMetrics(ignoreC0, ignoreC1, _sizeCharSet,
                     ref codeMin, ref codeMax, ref codeCt,
                     ref _targetSymSetType);
 
@@ -1549,7 +1549,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void mapMetrics(bool ignoreC0,
+    private void MapMetrics(bool ignoreC0,
                              bool ignoreC1,
                              int setSize,
                              ref ushort codeMin,
@@ -1702,7 +1702,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void metricsLoad()
+    private void MetricsLoad()
     {
         ToolSymbolSetGenPersist.LoadDataDonor(
             ref _indxDonorSymSetSubset,
@@ -1737,7 +1737,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void metricsSave()
+    public void MetricsSave()
     {
         ToolSymbolSetGenPersist.SaveDataDonor(
             _indxDonorSymSetSubset,
@@ -1782,7 +1782,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void populateCharCollReq(bool flagIndexUnicode)
+    private void PopulateCharCollReq(bool flagIndexUnicode)
     {
         ulong bitVal;
 
@@ -1812,7 +1812,7 @@ bitVal;
                 }
             }
 
-            setTargetCharCollReqValue(_targetCharCollReqUnicode);
+            SetTargetCharCollReqValue(_targetCharCollReqUnicode);
         }
         else
         {
@@ -1834,7 +1834,7 @@ bitVal;
                 }
             }
 
-            setTargetCharCollReqValue(_targetCharCollReqMSL);
+            SetTargetCharCollReqValue(_targetCharCollReqMSL);
         }
 
         _flagCharCollReqInhibit = false;
@@ -1863,7 +1863,7 @@ bitVal;
         else
             _targetCharCollReq = _targetCharCollReqAllMSL;
 
-        setTargetCharCollReqValue(_targetCharCollReq);
+        SetTargetCharCollReqValue(_targetCharCollReq);
     }
 
     //--------------------------------------------------------------------//
@@ -1881,7 +1881,7 @@ bitVal;
     {
         _flagCharCollReqSpecific = true;
 
-        populateCharCollReq(_flagIndexUnicode);
+        PopulateCharCollReq(_flagIndexUnicode);
 
         cbCharColls.Visibility = Visibility.Visible;
         tblkCharCollsText.Visibility = Visibility.Visible;
@@ -1891,7 +1891,7 @@ bitVal;
         else
             _targetCharCollReq = _targetCharCollReqMSL;
 
-        setTargetCharCollReqValue(_targetCharCollReq);
+        SetTargetCharCollReqValue(_targetCharCollReq);
     }
 
     //--------------------------------------------------------------------//
@@ -1908,7 +1908,7 @@ bitVal;
     {
         _flagDonorSymSetMapPCL = true;
 
-        donorSymSetChange();
+        DonorSymSetChange();
     }
 
     //--------------------------------------------------------------------//
@@ -1925,7 +1925,7 @@ bitVal;
     {
         _flagDonorSymSetMapPCL = false;
 
-        donorSymSetChange();
+        DonorSymSetChange();
     }
 
     //--------------------------------------------------------------------//
@@ -1953,7 +1953,7 @@ bitVal;
         btnGenerateSymSet.IsEnabled = false;
         btnLogSave.IsEnabled = false;
 
-        donorSymSetChange();
+        DonorSymSetChange();
     }
 
     //--------------------------------------------------------------------//
@@ -1982,7 +1982,7 @@ bitVal;
         btnGenerateSymSet.IsEnabled = false;
         btnLogSave.IsEnabled = false;
 
-        donorSymSetChange();
+        DonorSymSetChange();
     }
 
     //--------------------------------------------------------------------//
@@ -2001,7 +2001,7 @@ bitVal;
 
         if (_flagCharCollReqSpecific)
         {
-            populateCharCollReq(_flagIndexUnicode);
+            PopulateCharCollReq(_flagIndexUnicode);
 
             MessageBox.Show("Specific 'Character collection" +
                              " requirements' settings need to be" +
@@ -2015,7 +2015,7 @@ bitVal;
         {
             _targetCharCollReq = _targetCharCollReqAllMSL;
 
-            setTargetCharCollReqValue(_targetCharCollReq);
+            SetTargetCharCollReqValue(_targetCharCollReq);
         }
     }
 
@@ -2035,7 +2035,7 @@ bitVal;
 
         if (_flagCharCollReqSpecific)
         {
-            populateCharCollReq(_flagIndexUnicode);
+            PopulateCharCollReq(_flagIndexUnicode);
 
             MessageBox.Show("Specific 'Character collection" +
                              " requirements' settings need to be " +
@@ -2049,7 +2049,7 @@ bitVal;
         {
             _targetCharCollReq = _targetCharCollReqAllUnicode;
 
-            setTargetCharCollReqValue(_targetCharCollReq);
+            SetTargetCharCollReqValue(_targetCharCollReq);
         }
     }
 
@@ -2067,7 +2067,7 @@ bitVal;
     {
         _flagMapHex = false;
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -2085,7 +2085,7 @@ bitVal;
     {
         _flagMapHex = true;
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -2111,9 +2111,9 @@ bitVal;
 
         cbOffsetRange.SelectedIndex = 0;
 
-        setOffsetData();
+        SetOffsetData();
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -2156,9 +2156,9 @@ bitVal;
 
         cbOffsetRange.SelectedIndex = 0;
 
-        setOffsetData();
+        SetOffsetData();
 
-        mapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
+        MapDisplay(_flagMapHex, _flagIgnoreC0, _flagIgnoreC1,
                     _offsetMin);
     }
 
@@ -2171,7 +2171,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public void resetTarget()
+    public void ResetTarget()
     {
         // dummy method
     }
@@ -2186,7 +2186,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool selectDonorSymSetFile(ref string symSetFilename)
+    private bool SelectDonorSymSetFile(ref string symSetFilename)
     {
         OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
@@ -2211,7 +2211,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool selectTargetSymSetFile(ref string symSetFilename)
+    private bool SelectTargetSymSetFile(ref string symSetFilename)
     {
         OpenFileDialog openDialog = ToolCommonFunctions.CreateOpenFileDialog(symSetFilename);
 
@@ -2236,7 +2236,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setDonorSymSetAttributes()
+    private void SetDonorSymSetAttributes()
     {
         string idNum = string.Empty,
                idAlpha = string.Empty;
@@ -2350,7 +2350,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setMultiByteData(bool multiByte)
+    private void SetMultiByteData(bool multiByte)
     {
         if (multiByte)
         {
@@ -2394,7 +2394,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setOffsetData()
+    private void SetOffsetData()
     {
         _offsetMin = (ushort)(_indxOffsets * 256);
         _offsetMax = (ushort)(_offsetMin + 0xff);
@@ -2426,7 +2426,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setOffsetRanges()
+    private void SetOffsetRanges()
     {
         _initialisedOffsets = false;
 
@@ -2453,7 +2453,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setTargetCharCollReqArray(bool flagIndexUnicode)
+    private void SetTargetCharCollReqArray(bool flagIndexUnicode)
     {
         ulong targetCharCollReq = 0,
                bitVal;
@@ -2474,7 +2474,7 @@ bitVal;
             }
         }
 
-        setTargetCharCollReqValue(targetCharCollReq);
+        SetTargetCharCollReqValue(targetCharCollReq);
 
         //----------------------------------------------------------------//
 
@@ -2493,7 +2493,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setTargetCharCollReqValue(ulong arrayVal)
+    private void SetTargetCharCollReqValue(ulong arrayVal)
     {
         tblkCharColls.Text = "0x" + arrayVal.ToString("x16");
     }
@@ -2507,7 +2507,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setTargetSymSetAttributes()
+    private void SetTargetSymSetAttributes()
     {
         string symSetId = txtTargetSymSetIdNum.Text +
                           txtTargetSymSetIdAlpha.Text;
@@ -2526,7 +2526,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void setTargetSymSetFilename()
+    private void SetTargetSymSetFilename()
     {
         string mapType;
 
@@ -2559,7 +2559,7 @@ bitVal;
     {
         _donorSymSetFile = txtDonorSymSetFile.Text;
 
-        donorSymSetChange();
+        DonorSymSetChange();
     }
 
     //--------------------------------------------------------------------//
@@ -2626,7 +2626,7 @@ bitVal;
         }
         else
         {
-            flagOK = validateMapEntry(source, (ushort)(_offsetMin + mapIndx));
+            flagOK = ValidateMapEntry(source, (ushort)(_offsetMin + mapIndx));
 
             if (flagOK)
             {
@@ -2641,7 +2641,7 @@ bitVal;
                 else
                     format = string.Empty;
 
-                mapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
+                MapMetrics(_flagIgnoreC0, _flagIgnoreC1, _sizeCharSet,
                             ref codeMin, ref codeMax, ref codeCt,
                             ref _targetSymSetType);
 
@@ -2704,11 +2704,11 @@ bitVal;
     private void txtTargetSymSetIdAlpha_LostFocus(object sender,
                                                    RoutedEventArgs e)
     {
-        if (validateTargetSymSetIdAlpha(true))
+        if (ValidateTargetSymSetIdAlpha(true))
         {
-            setTargetSymSetAttributes();
+            SetTargetSymSetAttributes();
 
-            setTargetSymSetFilename();
+            SetTargetSymSetFilename();
         }
     }
 
@@ -2724,11 +2724,11 @@ bitVal;
     private void txtTargetSymSetIdAlpha_TextChanged(object sender,
                                                      TextChangedEventArgs e)
     {
-        if (validateTargetSymSetIdAlpha(false))
+        if (ValidateTargetSymSetIdAlpha(false))
         {
-            setTargetSymSetAttributes();
+            SetTargetSymSetAttributes();
 
-            setTargetSymSetFilename();
+            SetTargetSymSetFilename();
         }
     }
 
@@ -2762,11 +2762,11 @@ bitVal;
     private void txtTargetSymSetIdNum_LostFocus(object sender,
                                                  RoutedEventArgs e)
     {
-        if (validateTargetSymSetIdNum(true))
+        if (ValidateTargetSymSetIdNum(true))
         {
-            setTargetSymSetAttributes();
+            SetTargetSymSetAttributes();
 
-            setTargetSymSetFilename();
+            SetTargetSymSetFilename();
         }
     }
 
@@ -2782,11 +2782,11 @@ bitVal;
     private void txtTargetSymSetIdNum_TextChanged(object sender,
                                                    TextChangedEventArgs e)
     {
-        if (validateTargetSymSetIdNum(false))
+        if (ValidateTargetSymSetIdNum(false))
         {
-            setTargetSymSetAttributes();
+            SetTargetSymSetAttributes();
 
-            setTargetSymSetFilename();
+            SetTargetSymSetFilename();
         }
     }
 
@@ -2799,7 +2799,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool validateMapEntry(TextBox source,
+    private bool ValidateMapEntry(TextBox source,
                                       ushort mapIndx)
     {
         bool OK = true;
@@ -2866,7 +2866,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool validateTargetSymSetIdAlpha(bool lostFocusEvent)
+    private bool ValidateTargetSymSetIdAlpha(bool lostFocusEvent)
     {
         const char minVal = 'A';
         const char maxVal = 'Z';
@@ -2946,7 +2946,7 @@ bitVal;
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool validateTargetSymSetIdNum(bool lostFocusEvent)
+    private bool ValidateTargetSymSetIdNum(bool lostFocusEvent)
     {
         const ushort minVal = 0;
         const ushort maxVal = 1023;

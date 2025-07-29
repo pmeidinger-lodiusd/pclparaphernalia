@@ -253,7 +253,7 @@ public partial class MainForm : Window
             toolPrnAnalyse_Selected(this, null);
 
             if (filename != string.Empty)
-                _subFormToolPrnAnalyse.prnFileProcess(filename);
+                _subFormToolPrnAnalyse.PrnFileProcess(filename);
         }
         else
         {
@@ -332,17 +332,17 @@ public partial class MainForm : Window
         else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
             _subFormToolPrintArea.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
-            _subFormToolPrintLang.giveCrntPDL(ref _crntPDL);
+            _subFormToolPrintLang.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-            _subFormToolPrnAnalyse.giveCrntPDL(ref _crntPDL);
+            _subFormToolPrnAnalyse.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
             _subFormToolPrnPrint.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-            _subFormToolSoftFontGenerate.giveCrntPDL(ref _crntPDL);
+            _subFormToolSoftFontGenerate.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
             _subFormToolStatusReadback.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
-            _subFormToolSymbolSetGenerate.giveCrntPDL(ref _crntPDL);
+            _subFormToolSymbolSetGenerate.GiveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
             _subFormToolTrayMap.giveCrntPDL(ref _crntPDL);
         else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
@@ -386,7 +386,7 @@ public partial class MainForm : Window
         else if (_crntToolId == ToolCommonData.eToolIds.FormSample)
             _subFormToolFormSample.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-            _subFormToolImageBitmap.resetTarget();
+            _subFormToolImageBitmap.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.MakeOverlay)
             _subFormToolMakeOverlay.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
@@ -396,19 +396,19 @@ public partial class MainForm : Window
         else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
             _subFormToolPrintArea.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
-            _subFormToolPrintLang.resetTarget();
+            _subFormToolPrintLang.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-            _subFormToolPrnAnalyse.resetTarget();
+            _subFormToolPrnAnalyse.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
             _subFormToolPrnPrint.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-            _subFormToolSoftFontGenerate.resetTarget();
+            _subFormToolSoftFontGenerate.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
             _subFormToolStatusReadback.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
-            _subFormToolSymbolSetGenerate.resetTarget();
+            _subFormToolSymbolSetGenerate.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
-            _subFormToolTrayMap.resetTarget();
+            _subFormToolTrayMap.ResetTarget();
         else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
             _subFormToolXXXDiags.ResetTarget();
     }
@@ -432,7 +432,7 @@ public partial class MainForm : Window
         else if (_crntToolId == ToolCommonData.eToolIds.FormSample)
             _subFormToolFormSample.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.ImageBitmap)
-            _subFormToolImageBitmap.metricsSave();
+            _subFormToolImageBitmap.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.MakeOverlay)
             _subFormToolMakeOverlay.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.MiscSamples)
@@ -442,19 +442,19 @@ public partial class MainForm : Window
         else if (_crntToolId == ToolCommonData.eToolIds.PrintArea)
             _subFormToolPrintArea.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.PrintLang)
-            _subFormToolPrintLang.metricsSave();
+            _subFormToolPrintLang.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.PrnAnalyse)
-            _subFormToolPrnAnalyse.metricsSave();
+            _subFormToolPrnAnalyse.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.PrnPrint)
             _subFormToolPrnPrint.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.SoftFontGenerate)
-            _subFormToolSoftFontGenerate.metricsSave();
+            _subFormToolSoftFontGenerate.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.StatusReadback)
             _subFormToolStatusReadback.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.SymbolSetGenerate)
-            _subFormToolSymbolSetGenerate.metricsSave();
+            _subFormToolSymbolSetGenerate.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.TrayMap)
-            _subFormToolTrayMap.metricsSave();
+            _subFormToolTrayMap.MetricsSave();
         else if (_crntToolId == ToolCommonData.eToolIds.XXXDiags)
             _subFormToolXXXDiags.MetricsSave();
     }

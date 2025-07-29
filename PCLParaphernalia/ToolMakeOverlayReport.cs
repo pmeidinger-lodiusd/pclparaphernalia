@@ -41,7 +41,7 @@ static class ToolMakeOverlayReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generate(
+    public static void Generate(
         ReportCore.eRptFileFmt rptFileFmt,
         DataTable table,
         string prnFilename,
@@ -83,7 +83,7 @@ static class ToolMakeOverlayReport
                 string[] rowClrBack = new string[ctClrMapRowTypes];
                 string[] rowClrFore = new string[ctClrMapRowTypes];
 
-                getRowColourStyleData(options,
+                GetRowColourStyleData(options,
                                        ref rowClasses,
                                        ref rowClrBack,
                                        ref rowClrFore);
@@ -99,7 +99,7 @@ static class ToolMakeOverlayReport
                                           null, null);
             }
 
-            reportHeader(rptFileFmt, writer,
+            ReportHeader(rptFileFmt, writer,
                           prnFilename, ovlFilename);
 
             reportBody(rptFileFmt, writer,
@@ -120,7 +120,7 @@ static class ToolMakeOverlayReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void getRowColourStyleData(
+    private static void GetRowColourStyleData(
         PrnParseOptions options,
         ref string[] classes,
         ref string[] clrBack,
@@ -267,7 +267,7 @@ static class ToolMakeOverlayReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportHeader(
+    private static void ReportHeader(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         string prnFilename,
