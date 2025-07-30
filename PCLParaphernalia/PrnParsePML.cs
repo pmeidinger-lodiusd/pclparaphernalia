@@ -68,7 +68,7 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool processPMLASCIIHex(byte[] buf,
+    public bool ProcessPMLASCIIHex(byte[] buf,
                                        int fileOffset,
                                        int seqDataLen,
                                        int bufOffset,
@@ -209,7 +209,7 @@ class PrnParsePML
             }
             else
             {
-                invalidSeqFound = processPMLSeq(seqLen, 0, false);
+                invalidSeqFound = ProcessPMLSeq(seqLen, 0, false);
 
             }
         }
@@ -257,7 +257,7 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public bool processPMLEmbedded(byte[] buf,
+    public bool ProcessPMLEmbedded(byte[] buf,
                                       int fileOffset,
                                       int dataLen,
                                       int bufOffset,
@@ -314,7 +314,7 @@ class PrnParsePML
 
         //----------------------------------------------------------------//
 
-        seqOK = !processPMLSeq(dataLen, bufOffset, true);
+        seqOK = !ProcessPMLSeq(dataLen, bufOffset, true);
 
         //----------------------------------------------------------------//
 
@@ -357,17 +357,14 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private bool processPMLSeq(int seqLen,
+    private bool ProcessPMLSeq(int seqLen,
                                    int seqOffset,
                                    bool hddrExpected)
     {
         const byte cPMLReplyTypeMin = 0x80;
         //  const Byte cPMLErrorTypeMin = 0x80;
 
-        bool invalidSeqFound = false;
-
-        int partOffset,
-              partLen,
+        int partLen,
               dataLen,
               remLen;
 
@@ -376,8 +373,8 @@ class PrnParsePML
 
         string tagDesc = string.Empty;
 
-        invalidSeqFound = false;
-        partOffset = 0;
+        bool invalidSeqFound = false;
+        int partOffset = 0;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -389,7 +386,7 @@ class PrnParsePML
         {
             partLen = 4;
 
-            showElement(PrnParseConstants.ePMLSeqType.Hddr,
+            ShowElement(PrnParseConstants.ePMLSeqType.Hddr,
                          PMLDataTypes.eTag.String,
                          seqOffset + partOffset,
                          partLen,
@@ -426,7 +423,7 @@ class PrnParsePML
             //                                                            //
             //------------------------------------------------------------//
 
-            showElement(PrnParseConstants.ePMLSeqType.RequestAction,
+            ShowElement(PrnParseConstants.ePMLSeqType.RequestAction,
                          PMLDataTypes.eTag.Unknown,
                          seqOffset + partOffset,
                          partLen,
@@ -457,7 +454,7 @@ class PrnParsePML
 
                     tagDesc = tagDesc + " / " + dataLen;
 
-                    showElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
+                    ShowElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
                                  PMLDataTypes.eTag.Unknown,
                                  seqOffset + partOffset,
                                  partLen,
@@ -477,7 +474,7 @@ class PrnParsePML
                         {
                             partLen = 2;
 
-                            showElement(PrnParseConstants.ePMLSeqType.RequestData,
+                            ShowElement(PrnParseConstants.ePMLSeqType.RequestData,
                                          PMLDataTypes.eTag.StringHddr,
                                          seqOffset + partOffset,
                                          partLen,
@@ -490,7 +487,7 @@ class PrnParsePML
 
                         partLen = dataLen;
 
-                        showElement(PrnParseConstants.ePMLSeqType.RequestData,
+                        ShowElement(PrnParseConstants.ePMLSeqType.RequestData,
                                      (PMLDataTypes.eTag)dataType,
                                      seqOffset + partOffset,
                                      partLen,
@@ -535,7 +532,7 @@ class PrnParsePML
             //                                                            //
             //------------------------------------------------------------//
 
-            showElement(PrnParseConstants.ePMLSeqType.ReplyAction,
+            ShowElement(PrnParseConstants.ePMLSeqType.ReplyAction,
                          PMLDataTypes.eTag.Unknown,
                          seqOffset + partOffset,
                          partLen,
@@ -559,7 +556,7 @@ class PrnParsePML
 
                 PMLOutcomes.CheckTag(crntByte, ref tagDesc);
 
-                showElement(PrnParseConstants.ePMLSeqType.ReplyOutcome,
+                ShowElement(PrnParseConstants.ePMLSeqType.ReplyOutcome,
                              PMLDataTypes.eTag.Unknown,
                              seqOffset + partOffset,
                              partLen,
@@ -591,7 +588,7 @@ class PrnParsePML
 
                     tagDesc = tagDesc + " / " + dataLen;
 
-                    showElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
+                    ShowElement(PrnParseConstants.ePMLSeqType.RequestTypeLen,
                                  PMLDataTypes.eTag.Unknown,
                                  seqOffset + partOffset,
                                  partLen,
@@ -611,7 +608,7 @@ class PrnParsePML
                         {
                             partLen = 2;
 
-                            showElement(PrnParseConstants.ePMLSeqType.RequestData,
+                            ShowElement(PrnParseConstants.ePMLSeqType.RequestData,
                                          PMLDataTypes.eTag.StringHddr,
                                          seqOffset + partOffset,
                                          partLen,
@@ -624,7 +621,7 @@ class PrnParsePML
 
                         partLen = dataLen;
 
-                        showElement(PrnParseConstants.ePMLSeqType.RequestData,
+                        ShowElement(PrnParseConstants.ePMLSeqType.RequestData,
                                      (PMLDataTypes.eTag)dataType,
                                      seqOffset + partOffset,
                                      partLen,
@@ -674,7 +671,7 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private void showElement(PrnParseConstants.ePMLSeqType seqType,
+    private void ShowElement(PrnParseConstants.ePMLSeqType seqType,
                               PMLDataTypes.eTag dataType,
                               int seqOffset,
                               int seqLen,
@@ -687,16 +684,9 @@ class PrnParsePML
               chunkIpLen,
               chunkOpLen,
               chunkOffset,
-              sliceOffset,
               ipPtr,
               heldItem,
               heldItemLen;
-
-        bool firstLine,
-                firstSlice,
-                lastSlice,
-                chunkComplete,
-                seqError;
 
         string seq,
                decode;
@@ -709,13 +699,13 @@ class PrnParsePML
         //                                                                //
         //----------------------------------------------------------------//
 
-        firstLine = true;
-        firstSlice = true;
-        lastSlice = false;
-        chunkComplete = false;
-        seqError = false;
+        bool firstLine = true;
+        bool firstSlice = true;
+        bool lastSlice = false;
+        bool chunkComplete = false;
+        bool seqError = false;
 
-        sliceOffset = seqOffset;
+        int sliceOffset = seqOffset;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -798,7 +788,7 @@ class PrnParsePML
             }
             else
             {
-                decode = showElementDecodeData(ref chunkOp,
+                decode = ShowElementDecodeData(ref chunkOp,
                                                 ref chunkIpLen,
                                                 ref chunkOpLen,
                                                 ref heldItem,
@@ -824,7 +814,7 @@ class PrnParsePML
             //                                                            //
             //------------------------------------------------------------//
 
-            seq = showElementSeqData(sliceLen,
+            seq = ShowElementSeqData(sliceLen,
                                       sliceOffset,
                                       chunkIpLen,
                                       chunkOffset,
@@ -910,7 +900,7 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private string showElementDecodeData(
+    private string ShowElementDecodeData(
         ref StringBuilder chunkOp,
         ref int chunkIpLen,
         ref int chunkOpLen,
@@ -1353,7 +1343,7 @@ class PrnParsePML
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private string showElementSeqData(int sliceLen,
+    private string ShowElementSeqData(int sliceLen,
                                        int sliceOffset,
                                        int chunkIpLen,
                                        int chunkOffset,
