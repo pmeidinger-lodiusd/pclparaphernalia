@@ -62,7 +62,7 @@ static class ToolFontSamplePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generateJob(
+    public static void GenerateJob(
         BinaryWriter prnWriter,
         PCLFonts.eFontType fontType,
         int indxPaperSize,
@@ -150,7 +150,7 @@ static class ToolFontSamplePCL
 
         //----------------------------------------------------------------//
 
-        generateJobHeader(prnWriter,
+        GenerateJobHeader(prnWriter,
                           fontType,
                           prnDiskFontLoadViaMacro,
                           indxPaperSize,
@@ -170,7 +170,7 @@ static class ToolFontSamplePCL
         {
             ushort rangeOffset = sampleRangeOffsets[i];
 
-            generatePage(prnWriter,
+            GeneratePage(prnWriter,
                          fontType,
                          prnDiskFontDataKnown,
                          formAsMacro,
@@ -204,7 +204,7 @@ static class ToolFontSamplePCL
         else
             fontMacroRemove = false;
 
-        generateJobTrailer(prnWriter,
+        GenerateJobTrailer(prnWriter,
                            formAsMacro,
                            downloadFont,
                            downloadFontRemove,
@@ -225,7 +225,7 @@ static class ToolFontSamplePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateJobHeader(
+    private static void GenerateJobHeader(
         BinaryWriter prnWriter,
         PCLFonts.eFontType fontType,
         bool prnDiskFontLoadViaMacro,
@@ -278,7 +278,7 @@ static class ToolFontSamplePCL
 
         if (formAsMacro)
         {
-            generateOverlay(prnWriter, true, optGridVertical, logXOffset);
+            GenerateOverlay(prnWriter, true, optGridVertical, logXOffset);
         }
 
         PCLWriter.PageHeader(prnWriter,
@@ -297,7 +297,7 @@ static class ToolFontSamplePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateJobTrailer(BinaryWriter prnWriter,
+    private static void GenerateJobTrailer(BinaryWriter prnWriter,
                                            bool formAsMacro,
                                            bool downloadFont,
                                            bool downloadFontRemove,
@@ -339,7 +339,7 @@ static class ToolFontSamplePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateOverlay(BinaryWriter prnWriter,
+    private static void GenerateOverlay(BinaryWriter prnWriter,
                                         bool formAsMacro,
                                         bool optGridVertical,
                                         ushort logXOffset)
@@ -711,7 +711,7 @@ static class ToolFontSamplePCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generatePage(
+    private static void GeneratePage(
         BinaryWriter prnWriter,
         PCLFonts.eFontType fontType,
         bool prnDiskFontDataKnown,
@@ -763,7 +763,7 @@ static class ToolFontSamplePCL
             PCLWriter.MacroControl(prnWriter, _macroId,
                                    PCLWriter.eMacroControl.Call);
         else
-            generateOverlay(prnWriter, false, optGridVertical, logXOffset);
+            GenerateOverlay(prnWriter, false, optGridVertical, logXOffset);
 
         //----------------------------------------------------------------//
         //                                                                //

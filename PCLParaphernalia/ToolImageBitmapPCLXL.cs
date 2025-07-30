@@ -23,7 +23,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateImage(BinaryWriter prnWriter,
+    private static void GenerateImage(BinaryWriter prnWriter,
                                       float destPosX,
                                       float destPosY,
                                       int destScalePercentX,
@@ -81,7 +81,7 @@ static class ToolImageBitmapPCLXL
             return;
         }
 
-        generateImageHeader(prnWriter,
+        GenerateImageHeader(prnWriter,
                             srcBitsPerPixel,
                             srcWidth,
                             srcHeight,
@@ -94,12 +94,12 @@ static class ToolImageBitmapPCLXL
                             srcPaletteEntries,
                             srcBlackWhite);
 
-        generateImageData(prnWriter,
+        GenerateImageData(prnWriter,
                           srcBitsPerPixel,
                           srcWidth,
                           srcHeight);
 
-        generateImageTrailer(prnWriter);
+        GenerateImageTrailer(prnWriter);
     }
 
     //--------------------------------------------------------------------//
@@ -111,7 +111,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateImageData(BinaryWriter prnWriter,
+    private static void GenerateImageData(BinaryWriter prnWriter,
                                           ushort srcBitsPerPixel,
                                           int srcWidth,
                                           int srcHeight)
@@ -258,7 +258,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateImageHeader(BinaryWriter prnWriter,
+    private static void GenerateImageHeader(BinaryWriter prnWriter,
                                             ushort srcBitsPerPixel,
                                             int srcWidth,
                                             int srcHeight,
@@ -516,7 +516,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateImageTrailer(BinaryWriter prnWriter)
+    private static void GenerateImageTrailer(BinaryWriter prnWriter)
     {
         const int sizeStd = 16;
 
@@ -546,7 +546,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generateJob(BinaryWriter prnWriter,
+    public static void GenerateJob(BinaryWriter prnWriter,
                                    int paperSize,
                                    int paperType,
                                    int orientation,
@@ -555,18 +555,18 @@ static class ToolImageBitmapPCLXL
                                    int destScalePercentX,
                                    int destScalePercentY)
     {
-        generateJobHeader(prnWriter,
+        GenerateJobHeader(prnWriter,
                           paperSize,
                           paperType,
                           orientation);
 
-        generateImage(prnWriter,
+        GenerateImage(prnWriter,
                       destPosX,
                       destPosY,
                       destScalePercentX,
                       destScalePercentY);
 
-        generateJobTrailer(prnWriter);
+        GenerateJobTrailer(prnWriter);
     }
 
     //--------------------------------------------------------------------//
@@ -578,7 +578,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateJobHeader(BinaryWriter prnWriter,
+    private static void GenerateJobHeader(BinaryWriter prnWriter,
                                           int paperSize,
                                           int paperType,
                                           int orientation)
@@ -666,7 +666,7 @@ static class ToolImageBitmapPCLXL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void generateJobTrailer(BinaryWriter prnWriter)
+    private static void GenerateJobTrailer(BinaryWriter prnWriter)
     {
         const int sizeStd = 32;
 

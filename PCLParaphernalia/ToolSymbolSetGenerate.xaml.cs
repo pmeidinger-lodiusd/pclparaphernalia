@@ -330,7 +330,7 @@ public partial class ToolSymbolSetGenerate : Window
             ref rptChkMarks,    // not used by this tool //
             ref flagOptRptWrap);
 
-        ToolSymbolSetGenReport.generate(rptFileFmt,
+        ToolSymbolSetGenReport.Generate(rptFileFmt,
                                          _targetSymSetFile,
                                          _targetSymSetNo,
                                          _symSetMapTarget,

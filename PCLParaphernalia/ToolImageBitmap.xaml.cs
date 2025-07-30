@@ -215,7 +215,7 @@ public partial class ToolImageBitmap : Window
                 }
                 else    // if (_crntPDL == (Int32)ToolCommonData.ePrintLang.PCLXL)
                 {
-                    ToolImageBitmapPCLXL.generateJob(
+                    ToolImageBitmapPCLXL.GenerateJob(
                         binWriter,
                         _subsetPaperSizes[_indxPaperSizePCLXL],
                         _subsetPaperTypes[_indxPaperTypePCLXL],

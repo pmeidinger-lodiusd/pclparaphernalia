@@ -21,7 +21,7 @@ static class ToolStatusReadbackPJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generateRequest(BinaryWriter prnWriter,
+    public static void GenerateRequest(BinaryWriter prnWriter,
                                         PJLCommands.eCmdIndex cmdIndx,
                                         int indexCategory,
                                         int indexVariable,
@@ -150,7 +150,7 @@ static class ToolStatusReadbackPJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static string readResponse()
+    public static string ReadResponse()
     {
         const int replyBufLen = 32768;
 
@@ -251,7 +251,7 @@ static class ToolStatusReadbackPJL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void sendRequest()
+    public static void SendRequest()
     {
         TargetCore.RequestStreamWrite(true);
     }

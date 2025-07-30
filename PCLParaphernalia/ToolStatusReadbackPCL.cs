@@ -21,7 +21,7 @@ static class ToolStatusReadbackPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generateRequest(BinaryWriter prnWriter,
+    public static void GenerateRequest(BinaryWriter prnWriter,
                                        int indexEntity,
                                        int indexLocType)
     {
@@ -67,7 +67,7 @@ static class ToolStatusReadbackPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static string readResponse()
+    public static string ReadResponse()
     {
         const int replyBufLen = 32768;
 
@@ -169,7 +169,7 @@ static class ToolStatusReadbackPCL
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void sendRequest()
+    public static void SendRequest()
     {
         TargetCore.RequestStreamWrite(true);
     }

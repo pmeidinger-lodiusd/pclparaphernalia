@@ -1099,7 +1099,7 @@ public partial class ToolFontSample : Window
 
                     //----------------------------------------------------//
 
-                    ToolFontSamplePCL.generateJob(
+                    ToolFontSamplePCL.GenerateJob(
                         binWriter,
                         _fontType,
                         _subsetPaperSizes[_indxPaperSizePCL],

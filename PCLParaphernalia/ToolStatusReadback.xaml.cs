@@ -157,7 +157,7 @@ public partial class ToolStatusReadback : Window
                 //                                                        //
                 //--------------------------------------------------------//
 
-                ToolStatusReadbackPCL.generateRequest(requestWriter,
+                ToolStatusReadbackPCL.GenerateRequest(requestWriter,
                                                        _indxPCLEntityType,
                                                        _indxPCLLocType);
             }
@@ -169,7 +169,7 @@ public partial class ToolStatusReadback : Window
                 //                                                        //
                 //--------------------------------------------------------//
 
-                ToolStatusReadbackPJL.generateRequest(requestWriter,
+                ToolStatusReadbackPJL.GenerateRequest(requestWriter,
                                                        _cmdIndxPJL,
                                                        _indxPJLCategory,
                                                        _indxPJLVariable,
@@ -194,7 +194,7 @@ public partial class ToolStatusReadback : Window
                 else
                     path = _objPathPJLFS;
 
-                ToolStatusReadbackPJLFS.generateRequest(requestWriter,
+                ToolStatusReadbackPJLFS.GenerateRequest(requestWriter,
                                                          _cmdIndxPJLFS,
                                                          _flagPJLFSSecJob,
                                                          _passwordPJLFS,
@@ -234,9 +234,9 @@ public partial class ToolStatusReadback : Window
                     //                                                    //
                     //----------------------------------------------------//
 
-                    ToolStatusReadbackPCL.sendRequest();
+                    ToolStatusReadbackPCL.SendRequest();
 
-                    txtReply.Text = ToolStatusReadbackPCL.readResponse();
+                    txtReply.Text = ToolStatusReadbackPCL.ReadResponse();
                 }
                 else if (!_flagPJLFS)
                 {
@@ -247,9 +247,9 @@ public partial class ToolStatusReadback : Window
                     //                                                    //
                     //----------------------------------------------------//
 
-                    ToolStatusReadbackPJL.sendRequest();
+                    ToolStatusReadbackPJL.SendRequest();
 
-                    txtReply.Text = ToolStatusReadbackPJL.readResponse();
+                    txtReply.Text = ToolStatusReadbackPJL.ReadResponse();
                 }
                 else
                 {
@@ -261,9 +261,9 @@ public partial class ToolStatusReadback : Window
                     //                                                        //
                     //--------------------------------------------------------//
 
-                    ToolStatusReadbackPJLFS.sendRequest(_cmdIndxPJLFS);
+                    ToolStatusReadbackPJLFS.SendRequest(_cmdIndxPJLFS);
 
-                    txtReply.Text = ToolStatusReadbackPJLFS.readResponse(
+                    txtReply.Text = ToolStatusReadbackPJLFS.ReadResponse(
                         _cmdIndxPJLFS,
                         _binTgtFilenamePJLFS);
                 }
@@ -360,13 +360,13 @@ public partial class ToolStatusReadback : Window
 
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
         {
-            ToolStatusReadbackReport.generate(rptFileFmt,
+            ToolStatusReadbackReport.Generate(rptFileFmt,
                                               txtReply,
                                               ref _reportFilenamePCL);
         }
         else if (_crntPDL == ToolCommonData.ePrintLang.PJL)
         {
-            ToolStatusReadbackReport.generate(rptFileFmt,
+            ToolStatusReadbackReport.Generate(rptFileFmt,
                                               txtReply,
                                               ref _reportFilenamePJL);
         }

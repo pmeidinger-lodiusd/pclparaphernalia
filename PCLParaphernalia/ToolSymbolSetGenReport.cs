@@ -53,7 +53,7 @@ static class ToolSymbolSetGenReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generate(ReportCore.eRptFileFmt rptFileFmt,
+    public static void Generate(ReportCore.eRptFileFmt rptFileFmt,
                                  string symSetFilename,
                                  ushort symSetNo,
                                  ushort[] symSetMap,
@@ -94,14 +94,14 @@ static class ToolSymbolSetGenReport
                                       0, null,
                                       null, null);
 
-            reportHddr(rptFileFmt, writer, symSetFilename);
+            ReportHddr(rptFileFmt, writer, symSetFilename);
 
-            reportBodyMain(rptFileFmt, writer, symSetNo,
+            ReportBodyMain(rptFileFmt, writer, symSetNo,
                             codeMin, codeMax, codeCt, charCollReq,
                             flagIgnoreC0, flagIgnoreC1, flagMapHex,
                             symSetType);
 
-            reportBodyMap(rptFileFmt, writer, symSetMap,
+            ReportBodyMap(rptFileFmt, writer, symSetMap,
                            codeMin, codeMax,
                            flagIgnoreC0, flagIgnoreC1, flagMapHex);
 
@@ -120,7 +120,7 @@ static class ToolSymbolSetGenReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyMain(
+    private static void ReportBodyMain(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
     //  String symSetFilename,
@@ -223,7 +223,7 @@ static class ToolSymbolSetGenReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBodyMap(
+    private static void ReportBodyMap(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         ushort[] symSetMap,
@@ -404,7 +404,7 @@ static class ToolSymbolSetGenReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportHddr(ReportCore.eRptFileFmt rptFileFmt,
+    private static void ReportHddr(ReportCore.eRptFileFmt rptFileFmt,
                                     object writer,
                                     string symSetFilename)
     {

@@ -993,7 +993,7 @@ class PrnParsePJL
 
                     if (seqLen > 0)
                         invalidSeqFound =
-                            parsePML.processPMLASCIIHex(_buf,
+                            parsePML.ProcessPMLASCIIHex(_buf,
                                                         _fileOffset,
                                                         seqLen,
                                                         quoteStart + 1,

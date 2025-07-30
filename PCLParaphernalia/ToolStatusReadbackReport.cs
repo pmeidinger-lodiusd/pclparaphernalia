@@ -64,7 +64,7 @@ static class ToolStatusReadbackReport
             ReportCore.HddrTitle(writer, rptFileFmt, false,
                                   "*** Status Readback response data ***");
 
-            reportBody(rptFileFmt, writer, txtReply);
+            ReportBody(rptFileFmt, writer, txtReply);
 
             ReportCore.DocFinalise(rptFileFmt, writer);
 
@@ -81,7 +81,7 @@ static class ToolStatusReadbackReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void reportBody(
+    private static void ReportBody(
         ReportCore.eRptFileFmt rptFileFmt,
         object writer,
         TextBox txtReply)

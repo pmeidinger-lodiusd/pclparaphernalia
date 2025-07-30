@@ -802,7 +802,7 @@ class PrnParsePCLBinary
                 {
                     PrnParsePML parsePML = new PrnParsePML();
 
-                    dataOK = parsePML.processPMLEmbedded(buf,
+                    dataOK = parsePML.ProcessPMLEmbedded(buf,
                                                          fileOffset,
                                                          binDataLen,
                                                          dataStart,
@@ -5603,7 +5603,7 @@ class PrnParsePCLBinary
             {
                 PrnParsePML parsePML = new PrnParsePML();
 
-                dataOK = parsePML.processPMLEmbedded(buf,
+                dataOK = parsePML.ProcessPMLEmbedded(buf,
                                                      fileOffset,
                                                      binDataLen,
                                                      bufOffset,

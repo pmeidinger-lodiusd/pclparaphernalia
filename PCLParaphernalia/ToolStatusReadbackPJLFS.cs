@@ -42,7 +42,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void binSrcFileClose()
+    private static void BinSrcFileClose()
     {
         _binReader.Close();
         _ipStream.Close();
@@ -57,7 +57,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void binSrcFileCopy(BinaryWriter prnWriter)
+    private static void BinSrcFileCopy(BinaryWriter prnWriter)
     {
         const int bufSize = 2048;
         int readSize;
@@ -88,7 +88,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static bool binSrcFileOpen(string fileName,
+    private static bool BinSrcFileOpen(string fileName,
                                            ref long fileSize)
     {
         bool open = false;
@@ -142,7 +142,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void binTgtFileClose()
+    private static void BinTgtFileClose()
     {
         _binWriter.Close();
         _opStream.Close();
@@ -157,7 +157,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static bool binTgtFileOpen(string fileName)
+    private static bool BinTgtFileOpen(string fileName)
     {
         bool open = false;
 
@@ -195,7 +195,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static void binTgtFileWrite(byte[] buf,
+    private static void BinTgtFileWrite(byte[] buf,
                                          int bufOffset,
                                          int writeLen)
     {
@@ -211,7 +211,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generateRequest(BinaryWriter prnWriter,
+    public static void GenerateRequest(BinaryWriter prnWriter,
                                         PJLCommands.eCmdIndex cmdIndx,
                                         bool secJob,
                                         string password,
@@ -255,7 +255,7 @@ static class ToolStatusReadbackPJLFS
 
                 long fileSize = 0;
 
-                OK = binSrcFileOpen(binSrcFilename, ref fileSize);
+                OK = BinSrcFileOpen(binSrcFilename, ref fileSize);
 
                 if (OK)
                 {
@@ -269,8 +269,8 @@ static class ToolStatusReadbackPJLFS
 
                     // Read and send content of binSrcFilename
 
-                    binSrcFileCopy(prnWriter);
-                    binSrcFileClose();
+                    BinSrcFileCopy(prnWriter);
+                    BinSrcFileClose();
 
                     // terminate job with UEL
 
@@ -334,7 +334,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static string readResponse(
+    public static string ReadResponse(
         PJLCommands.eCmdIndex cmdIndx,
         string binTgtFilenamePJLFS)
     {
@@ -352,7 +352,7 @@ static class ToolStatusReadbackPJLFS
             //                                                            //
             //------------------------------------------------------------//
 
-            return readResponseQuery();
+            return ReadResponseQuery();
         }
         else if (reqType == PJLCommands.eRequestType.FSUpload)
         {
@@ -363,7 +363,7 @@ static class ToolStatusReadbackPJLFS
             //                                                            //
             //------------------------------------------------------------//
 
-            return readResponseUpload(binTgtFilenamePJLFS);
+            return ReadResponseUpload(binTgtFilenamePJLFS);
         }
         else
         {
@@ -396,7 +396,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static string readResponseQuery()
+    private static string ReadResponseQuery()
     {
         const int replyBufLen = 32768;
 
@@ -512,7 +512,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static string readResponseUpload(string binTgtFilename)
+    private static string ReadResponseUpload(string binTgtFilename)
     {
         const int replyBufLen = 32768;
 
@@ -520,7 +520,7 @@ static class ToolStatusReadbackPJLFS
 
         bool binFileOpen = false;
 
-        binFileOpen = binTgtFileOpen(binTgtFilename);
+        binFileOpen = BinTgtFileOpen(binTgtFilename);
 
         if (!binFileOpen)
         {
@@ -637,7 +637,7 @@ static class ToolStatusReadbackPJLFS
 
                         cmdLen += 1;    // account for <LF> byte //
 
-                        binSize = readResponseUploadSize(replyBlock, cmdLen);
+                        binSize = ReadResponseUploadSize(replyBlock, cmdLen);
 
                         reply = Encoding.ASCII.GetString(replyBlock,
                                                           0,
@@ -676,7 +676,7 @@ static class ToolStatusReadbackPJLFS
 
                         binTot = binLen;
 
-                        binTgtFileWrite(replyBlock, cmdLen, binLen);
+                        BinTgtFileWrite(replyBlock, cmdLen, binLen);
                     }
                     else
                     {
@@ -697,7 +697,7 @@ static class ToolStatusReadbackPJLFS
                         binSize = -1;
                         binRem = 0;
 
-                        binTgtFileWrite(replyBlock, 0, blockLen);
+                        BinTgtFileWrite(replyBlock, 0, blockLen);
                     }
                 }
                 else
@@ -741,7 +741,7 @@ static class ToolStatusReadbackPJLFS
 
                     binTot += binLen;
 
-                    binTgtFileWrite(replyBlock, 0, binLen);
+                    BinTgtFileWrite(replyBlock, 0, binLen);
                 }
 
                 if ((supLen != 0) && (!supDataWritten))
@@ -773,7 +773,7 @@ static class ToolStatusReadbackPJLFS
 
             TargetCore.ResponseCloseConnection();
 
-            binTgtFileClose();
+            BinTgtFileClose();
 
             //--------------------------------------------------------//
             //                                                        //
@@ -820,7 +820,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    private static int readResponseUploadSize(byte[] replyBlock,
+    private static int ReadResponseUploadSize(byte[] replyBlock,
                                                  int cmdLen)
     {
         int binSize = 0;
@@ -954,7 +954,7 @@ static class ToolStatusReadbackPJLFS
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void sendRequest(PJLCommands.eCmdIndex cmdIndx)
+    public static void SendRequest(PJLCommands.eCmdIndex cmdIndx)
     {
         PJLCommands.eRequestType reqType =
             PJLCommands.GetType(cmdIndx);
