@@ -765,8 +765,7 @@ public class PrnParseOptions
     {
         int i1 = 0,
               i2 = 0,
-              i3 = 0,
-              max;
+              i3 = 0;
 
         //----------------------------------------------------------------//
 
@@ -774,7 +773,7 @@ public class PrnParseOptions
                                              ref i2,
                                              ref i3);
 
-        max = (int)PrnParseConstants.eOptCharSets.Max;
+        int max = (int)PrnParseConstants.eOptCharSets.Max;
 
         if ((i1 < 0) || (i1 >= max))
             i1 = (int)PrnParseConstants.eOptCharSets.ISO_8859_1;
@@ -864,8 +863,7 @@ public class PrnParseOptions
 
     private void MetricsLoadGen()
     {
-        int i1 = 0,
-              max;
+        int i1 = 0;
 
         //----------------------------------------------------------------//
 
@@ -873,7 +871,7 @@ public class PrnParseOptions
                                               ref _flagGenMiscAutoAnalyse,
                                               ref _flagGenDiagFileAccess);
 
-        max = (int)PrnParseConstants.eOptOffsetFormats.Max;
+        int max = (int)PrnParseConstants.eOptOffsetFormats.Max;
 
         if ((i1 < 0) || (i1 >= max))
             i1 = (int)PrnParseConstants.eOptOffsetFormats.Decimal;
@@ -981,8 +979,7 @@ public class PrnParseOptions
 
     private void MetricsLoadStats()
     {
-        int i1 = 0,
-              max;
+        int i1 = 0;
 
         //----------------------------------------------------------------//
 
@@ -991,7 +988,7 @@ public class PrnParseOptions
             ref _flagStatsExcUnusedPCLObs,
             ref _flagStatsExcUnusedPCLXLRes);
 
-        max = (int)PrnParseConstants.eOptStatsLevel.Max;
+        int max = (int)PrnParseConstants.eOptStatsLevel.Max;
 
         if ((i1 < 0) || (i1 >= max))
             i1 = (int)PrnParseConstants.eOptStatsLevel.ReferencedOnly;

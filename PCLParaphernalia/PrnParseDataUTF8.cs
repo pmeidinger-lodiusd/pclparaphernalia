@@ -261,10 +261,9 @@ static class PrnParseDataUTF8
 
         long codepoint = 0;
 
-        byte leadByte,
-             trailByte;
+        byte trailByte;
 
-        leadByte = seq[0];
+        byte leadByte = seq[0];
 
         switch (seqLen)
         {
@@ -468,14 +467,11 @@ static class PrnParseDataUTF8
         ref int utf8SeqLen,
         ref byte[] utf8Seq)
     {
-        eUTF8Result result;
         int seqPos;
 
-        uint codepoint;
+        eUTF8Result result = eUTF8Result.success;
 
-        result = eUTF8Result.success;
-
-        codepoint = utf32Value;
+        uint codepoint = utf32Value;
 
         if ((codepoint >= cSurrogateHiLo) &&
             (codepoint <= cSurrogateLoHi))
@@ -570,19 +566,14 @@ static class PrnParseDataUTF8
         bool flag_0x_Prefix,
         ref string utf8Hex)
     {
-        eUTF8Result result;
         int seqPos;
         int utf8SeqLen = 0;
 
         byte[] utf8Seq = new byte[4];
 
-        uint codepoint;
+        eUTF8Result result = eUTF8Result.success;
 
-        StringBuilder utf8HexVal = new StringBuilder();
-
-        result = eUTF8Result.success;
-
-        codepoint = utf32Value;
+        uint codepoint = utf32Value;
 
         if ((codepoint >= cSurrogateHiLo) &&
             (codepoint <= cSurrogateLoHi))
@@ -655,7 +646,7 @@ static class PrnParseDataUTF8
                 break;
         }
 
-        utf8HexVal.Clear();
+        StringBuilder utf8HexVal = new StringBuilder();
 
         if (flag_0x_Prefix)
             utf8HexVal.Append("0x");

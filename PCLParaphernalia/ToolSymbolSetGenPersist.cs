@@ -65,14 +65,12 @@ static class ToolSymbolSetGenPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
-                             "\\" + _subKeyDonor;
+        string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
+                     "\\" + _subKeyDonor;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -139,15 +137,13 @@ static class ToolSymbolSetGenPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
         long tmpInt64;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
-                             "\\" + _subKeyTarget;
+        string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
+                     "\\" + _subKeyTarget;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -200,9 +196,7 @@ static class ToolSymbolSetGenPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
+        string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
                              "\\" + _subKeyDonor;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -271,12 +265,10 @@ static class ToolSymbolSetGenPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         long tmpInt64;
 
-        key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
-                             "\\" + _subKeyTarget;
+        string key = _subKeyTools + "\\" + _subKeyToolsSymSetGen +
+                     "\\" + _subKeyTarget;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {

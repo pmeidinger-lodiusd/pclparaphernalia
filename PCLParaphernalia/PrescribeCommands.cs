@@ -130,20 +130,14 @@ static class PrescribeCommands
     public static void DisplayStatsCounts(DataTable table,
                                            bool incUsedSeqsOnly)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
-        displaySeq = true;
-
         //----------------------------------------------------------------//
 
-        count = _cmdIntro.StatsCtTotal;
+        int count = _cmdIntro.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -237,11 +231,7 @@ static class PrescribeCommands
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "___________________";
@@ -328,6 +318,7 @@ static class PrescribeCommands
         return _cmds[key.ToString()].Name;
     }
     */
+
     //--------------------------------------------------------------------//
     //                                                        M e t h o d //
     // p o p u l a t e T a b l e                                          //

@@ -88,11 +88,9 @@ static class PMLOutcomes
         int count = 0;
 
         bool displaySeq,
-                hddrWritten;
+                hddrWritten = false;
 
         DataRow row;
-
-        hddrWritten = false;
 
         //----------------------------------------------------------------//
 
@@ -137,11 +135,7 @@ static class PMLOutcomes
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "_____________";

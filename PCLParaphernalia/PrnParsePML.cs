@@ -85,8 +85,7 @@ class PrnParsePML
 
         bool invalidSeqFound = false;
 
-        int seqLen = 0,
-              offset;
+        int offset;
 
         //----------------------------------------------------------------//
 
@@ -103,7 +102,7 @@ class PrnParsePML
                                ref _indxCharSetSubAct,
                                ref _valCharSetSubCode);
 
-        seqLen = seqDataLen / 2;
+        int seqLen = seqDataLen / 2;
 
         //----------------------------------------------------------------//
 
@@ -947,10 +946,9 @@ class PrnParsePML
 
             int j,
                   k,
-                  thisByte,
-                  item;
+                  thisByte;
 
-            item = heldItem;
+            int item = heldItem;
             itemLen = heldItemLen;
 
             for (j = 0; j < sliceLen; j++)
@@ -1019,15 +1017,12 @@ class PrnParsePML
             }
             else
             {
-                int iSub,
-                      iTot;
-
-                bool msByte;
+                int iSub;
 
                 string tempStr;
 
-                iTot = 0;
-                msByte = true;
+                int iTot = 0;
+                bool msByte = true;
 
                 for (int j = 0; j < sliceLen; j++)
                 {
@@ -1073,15 +1068,12 @@ class PrnParsePML
             }
             else
             {
-                int iSub,
-                      iTot;
-
-                bool msByte;
+                int iSub;
 
                 string tempStr;
 
-                iTot = 0;
-                msByte = true;
+                int iTot = 0;
+                bool msByte = true;
 
                 for (int j = 0; j < sliceLen; j++)
                 {
@@ -1128,8 +1120,7 @@ class PrnParsePML
             }
             else
             {
-                uint uiSub,
-                       uiTot;
+                uint uiSub;
 
                 byte[] byteArray;
 
@@ -1137,7 +1128,7 @@ class PrnParsePML
 
                 string tempStr;
 
-                uiTot = 0;
+                uint uiTot = 0;
 
                 for (int j = 0; j < sliceLen; j++)
                 {
@@ -1360,14 +1351,10 @@ class PrnParsePML
               hexEnd = 0,
               sub;
 
-        bool useEllipsis,
-                displaySlice;
-
         char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
-        useEllipsis = false;
-        displaySlice = false;
-        seq.Clear();
+        bool useEllipsis = false;
+        bool displaySlice = false;
 
         if (_verboseMode || seqError)
         {

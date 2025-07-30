@@ -462,12 +462,11 @@ static class TargetCore
 
             SaveFileDialog saveDialog;
 
-            int ptr,
-                  len;
+            int len;
 
             string saveDirectory;
 
-            ptr = _saveFilename.LastIndexOf("\\");
+            int ptr = _saveFilename.LastIndexOf("\\");
 
             if (ptr <= 0)
             {
@@ -560,11 +559,9 @@ static class TargetCore
             //                                                            //
             //------------------------------------------------------------//
 
-            bool OK;
-
             IPAddress ipAddress = new IPAddress(0x00);
 
-            OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress,
+            bool OK = TargetNetPrint.CheckIPAddress(_netPrinterAddress,
                                                ref ipAddress);
 
             if (!OK)

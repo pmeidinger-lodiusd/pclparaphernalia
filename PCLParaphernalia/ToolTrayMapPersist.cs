@@ -181,14 +181,12 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         byte[] buffer = { 0x00 };
 
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
-                             "\\" + _subKeyPCL;
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                     "\\" + _subKeyPCL;
 
         if (MainFormData.VersionChange)
         {
@@ -246,14 +244,12 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         byte[] buffer = { 0x00 };
 
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
-                             "\\" + _subKeyPCLXL;
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+                     "\\" + _subKeyPCLXL;
 
         if (MainFormData.VersionChange)
         {
@@ -317,9 +313,7 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                              "\\" + pdlName +
                              "\\" + _subKeySheetRoot +
                              sheetNo.ToString("D2");
@@ -431,9 +425,7 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                              "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -467,9 +459,7 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                              "\\" + _subKeyPCLXL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -510,9 +500,7 @@ static class ToolTrayMapPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
+        string key = _subKeyTools + "\\" + _subKeyToolsTrayMap +
                              "\\" + pdlName +
                              "\\" + _subKeySheetRoot +
                              sheetNo.ToString("D2");

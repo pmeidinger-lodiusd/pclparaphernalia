@@ -86,14 +86,11 @@ static class PCLComplexSeqs
 
         PCLComplexSeq seq;
 
-        string keyRoot,
-               key;
-
-        keyRoot = iChar.ToString("X2") +
+        string keyRoot = iChar.ToString("X2") +
                   gChar.ToString("X2") +
                   tChar.ToString("X2");
 
-        key = keyRoot + ":" + vInt.ToString("X4");
+        string key = keyRoot + ":" + vInt.ToString("X4");
 
         if ((vCheck) && (_seqs.IndexOfKey(key) != -1))
         {
@@ -231,20 +228,14 @@ static class PCLComplexSeqs
                                            bool incUsedSeqsOnly,
                                            bool excUnusedObsSeqs)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _seqUnknown.StatsCtTotal;
+        int count = _seqUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -316,11 +307,7 @@ static class PCLComplexSeqs
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "____________________________";
@@ -7899,9 +7886,7 @@ static class PCLComplexSeqs
         const bool flagNone = false;
         const bool flagDiscrete = true;
 
-        int ctFonts;
-
-        ctFonts = PCLFonts.GetCount();
+        int ctFonts = PCLFonts.GetCount();
 
         if (ctFonts > 0)
         {
@@ -7960,9 +7945,7 @@ static class PCLComplexSeqs
         const bool flagNone = false;
         const bool flagDiscrete = true;
 
-        int count;
-
-        count = PCLPaperSizes.GetCount();
+        int count = PCLPaperSizes.GetCount();
 
         if (count > 0)
         {
@@ -8007,9 +7990,7 @@ static class PCLComplexSeqs
         const bool flagDiscrete = true;
         const bool flagNilGChar = true;
 
-        int ctSymsets;
-
-        ctSymsets = PCLSymbolSets.GetCount();
+        int ctSymsets = PCLSymbolSets.GetCount();
 
         if (ctSymsets > 0)
         {

@@ -184,8 +184,6 @@ static class ToolStatusReadbackPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
         string oldFile;
 
@@ -230,8 +228,8 @@ static class ToolStatusReadbackPersist
             }
         }
 
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
-                             "\\" + _subKeyPCL;
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                     "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -265,8 +263,6 @@ static class ToolStatusReadbackPersist
     {
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
-
-        string key;
 
         string oldKey = _subKeyTools + "\\" + _subKeyToolsStatusReadback;
         string oldFile;
@@ -312,8 +308,8 @@ static class ToolStatusReadbackPersist
             }
         }
 
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
-                             "\\" + _subKeyPJL;
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                     "\\" + _subKeyPJL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -357,14 +353,12 @@ static class ToolStatusReadbackPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
-                             "\\" + _subKeyPJLFS;
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+                     "\\" + _subKeyPJLFS;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -502,9 +496,7 @@ static class ToolStatusReadbackPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                              "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -545,9 +537,7 @@ static class ToolStatusReadbackPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                              "\\" + _subKeyPJL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -606,9 +596,7 @@ static class ToolStatusReadbackPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
+        string key = _subKeyTools + "\\" + _subKeyToolsStatusReadback +
                              "\\" + _subKeyPJLFS;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))

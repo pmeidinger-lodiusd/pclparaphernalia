@@ -1198,11 +1198,9 @@ public partial class ToolFontSample : Window
     private void btnPCLSoftFontFileBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _fontFilenamePCL;
 
-        selected = SelectPCLFontFile(ref filename);
+        bool selected = SelectPCLFontFile(ref filename);
 
         if (selected)
         {
@@ -1310,12 +1308,11 @@ public partial class ToolFontSample : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        bool selected;
         bool flagOK = true;
 
         string filename = _symSetUserFile;
 
-        selected = SelectSymSetFile(ref filename);
+        bool selected = SelectSymSetFile(ref filename);
 
         if (selected)
         {
@@ -1431,9 +1428,7 @@ public partial class ToolFontSample : Window
     {
         if (_initialised && cbParseMethod.HasItems)
         {
-            int index;
-
-            index = cbParseMethod.SelectedIndex;
+            int index = cbParseMethod.SelectedIndex;
 
             _indxParseMethod = _subsetParseMethods[index];
 
@@ -1764,11 +1759,9 @@ public partial class ToolFontSample : Window
 
     private void CheckSymSetType()
     {
-        int indxSymSet;
-
         grpSymSetFile.Visibility = Visibility.Hidden;
 
-        indxSymSet = cbSymSet.SelectedIndex;
+        int indxSymSet = cbSymSet.SelectedIndex;
 
         if (indxSymSet != -1)
         {
@@ -2092,9 +2085,7 @@ public partial class ToolFontSample : Window
     {
         bool samePreset = false;
 
-        int indxFont = 0;
-
-        indxFont = cbFont.SelectedIndex;
+        int indxFont = cbFont.SelectedIndex;
 
         _fontType = PCLFonts.GetType(_subsetFonts[indxFont]);
 
@@ -3705,9 +3696,6 @@ public partial class ToolFontSample : Window
 
             cbSymSet.IsEnabled = false;
 
-            int index,
-                  indxSymSet;
-
             string idNum = string.Empty,
                    idAlpha = string.Empty;
 
@@ -3715,8 +3703,8 @@ public partial class ToolFontSample : Window
                                               ref idNum,
                                               ref idAlpha);
 
-            index = PCLSymbolSets.GetIndexForId(_symSetNo);
-            indxSymSet = 0;
+            int index = PCLSymbolSets.GetIndexForId(_symSetNo);
+            int indxSymSet = 0;
 
             for (int i = 0; i < _ctSymSets; i++)
             {
@@ -4285,8 +4273,6 @@ public partial class ToolFontSample : Window
             //                                                            //
             //------------------------------------------------------------//
 
-            double fontHeight;
-
             int fontIndx = _subsetFonts[indxFont];
 
             txtPCLXLFontName.IsEnabled = false;
@@ -4299,7 +4285,7 @@ public partial class ToolFontSample : Window
             if (_fontBound)
                 _symSetNo = PCLFonts.GetSymbolSetNumber(fontIndx);
 
-            fontHeight = PCLFonts.GetPCLXLHeight(fontIndx);
+            double fontHeight = PCLFonts.GetPCLXLHeight(fontIndx);
 
             if (fontHeight != 0)
                 _fontHeightPCLXL = fontHeight;
@@ -4682,14 +4668,12 @@ public partial class ToolFontSample : Window
         short weight,
         ushort typeface)
     {
-        PCLFonts.eFontType fontType;
-
         string seq = string.Empty;
 
         bool sizeSelect = false,
                 fullSelect = false;
 
-        fontType = PCLFonts.GetType(indxFont);
+        PCLFonts.eFontType fontType = PCLFonts.GetType(indxFont);
 
         if (fontType == PCLFonts.eFontType.Download)
         {
@@ -5021,12 +5005,10 @@ public partial class ToolFontSample : Window
     {
         bool setIdText = false;
 
-        int indxSymSetEntry,
-              indxSymSet;
+        int indxSymSetEntry;
+        int indxSymSet = cbSymSet.SelectedIndex;
 
         _settingSymSetAttributes = true;
-
-        indxSymSet = cbSymSet.SelectedIndex;
 
         if (indxSymSet != -1)
         {
@@ -5878,9 +5860,7 @@ public partial class ToolFontSample : Window
 
     private bool ValidatePCLFontCharacteristics()
     {
-        bool OK = true;
-
-        OK = ValidatePCLFontHeight(false);
+        bool OK = ValidatePCLFontHeight(false);
 
         if (OK)
             OK = ValidatePCLFontPitch(false);
@@ -6075,11 +6055,9 @@ public partial class ToolFontSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLStyle.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -6143,11 +6121,9 @@ public partial class ToolFontSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLTypeface.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -6211,11 +6187,9 @@ public partial class ToolFontSample : Window
 
         short value;
 
-        bool OK = true;
-
         string crntText = txtPCLWeight.Text;
 
-        OK = short.TryParse(crntText, out value);
+        bool OK = short.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -6279,11 +6253,9 @@ public partial class ToolFontSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLSoftFontId.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -6353,11 +6325,9 @@ public partial class ToolFontSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLSoftFontMacroId.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -6415,9 +6385,7 @@ public partial class ToolFontSample : Window
 
     private bool ValidatePCLXLFontCharacteristics()
     {
-        bool OK = true;
-
-        OK = ValidatePCLXLFontName(false);
+        bool OK = ValidatePCLXLFontName(false);
 
         if (OK)
             OK = ValidatePCLXLFontHeight(false);
@@ -6524,6 +6492,7 @@ public partial class ToolFontSample : Window
 
         len = crntText.Length;
 
+        // TODO: OK will always be false? len and maxLen are initialized to 0 and 20 respectively -- PMM
         if (crntText == string.Empty)
         {
             OK = false;
@@ -6583,14 +6552,13 @@ public partial class ToolFontSample : Window
         const char badVal = 'X';
         const char defVal = _defaultSymSetIdAlpha;
 
-        int value = 0,
-              len;
+        int value = 0;
 
         bool OK = true;
 
         string crntText = txtSymSetIdAlpha.Text;
 
-        len = crntText.Length;
+        int len = crntText.Length;
 
         if (len != 1)
         {
@@ -6659,11 +6627,9 @@ public partial class ToolFontSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtSymSetIdNum.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;

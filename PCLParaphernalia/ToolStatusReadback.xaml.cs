@@ -307,8 +307,7 @@ public partial class ToolStatusReadback : Window
 
     private void btnPJLFSLocPathBrowse_Click(object sender, EventArgs e)
     {
-        bool selected,
-                upload;
+        bool upload;
 
         string filename;
 
@@ -323,7 +322,7 @@ public partial class ToolStatusReadback : Window
             filename = _binSrcFilenamePJLFS;
         }
 
-        selected = SelectLocBinFile(upload, ref filename);
+        bool selected = SelectLocBinFile(upload, ref filename);
 
         if (selected)
         {
@@ -1426,8 +1425,6 @@ public partial class ToolStatusReadback : Window
 
         string boxName;
 
-        bool OK = true;
-
         if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
         {
             boxName = "Count";
@@ -1441,7 +1438,7 @@ public partial class ToolStatusReadback : Window
 
         string crntText = txtPJLFSOpt1.Text;
 
-        OK = int.TryParse(crntText, out value);
+        bool OK = int.TryParse(crntText, out value);
 
         if (OK && value < 0)
             OK = false;
@@ -1500,8 +1497,6 @@ public partial class ToolStatusReadback : Window
 
         string boxName;
 
-        bool OK = true;
-
         if (_reqTypePJLFS == PJLCommands.eRequestType.FSDirList)
         {
             boxName = "Entry";
@@ -1515,7 +1510,7 @@ public partial class ToolStatusReadback : Window
 
         string crntText = txtPJLFSOpt2.Text;
 
-        OK = int.TryParse(crntText, out value);
+        bool OK = int.TryParse(crntText, out value);
 
         if (OK && value < 0)
             OK = false;

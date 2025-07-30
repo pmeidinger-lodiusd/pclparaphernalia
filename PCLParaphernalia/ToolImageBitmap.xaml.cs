@@ -111,11 +111,9 @@ public partial class ToolImageBitmap : Window
 
     private void btnFilenameBrowse_Click(object sender, RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _bitmapFilename;
 
-        selected = SelectImageFile(ref filename);
+        bool selected = SelectImageFile(ref filename);
 
         if (selected)
         {
@@ -136,8 +134,6 @@ public partial class ToolImageBitmap : Window
     private void btnGenerate_Click(object sender, RoutedEventArgs e)
     {
         int result = 0;
-
-        bool bitmapOpen = false;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -160,7 +156,7 @@ public partial class ToolImageBitmap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
+        bool bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
         if (!bitmapOpen)
         {
@@ -264,9 +260,7 @@ public partial class ToolImageBitmap : Window
 
         bool srcBlackWhite = false;
 
-        bool bitmapOpen = false;
-
-        bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
+        bool bitmapOpen = ToolImageBitmapCore.BitmapOpen(_bitmapFilename);
 
         if (!bitmapOpen)
         {

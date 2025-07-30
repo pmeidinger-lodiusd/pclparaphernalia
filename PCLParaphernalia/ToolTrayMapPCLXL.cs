@@ -220,13 +220,7 @@ static class ToolTrayMapPCLXL
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        short posX,
-              posY,
-              posYInc;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         if (formAsMacro)
         {
@@ -263,9 +257,9 @@ static class ToolTrayMapPCLXL
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-        posX = (short)(scaleFactor * _posXName);
-        posY = (short)(scaleFactor * _posYHddr);
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)(scaleFactor * _posXName);
+        short posY = (short)(scaleFactor * _posYHddr);
 
         PCLXLWriter.Text(prnWriter, formAsMacro, false,
                    PCLXLWriter.advances_ArialBold, ptSizeHddr,
@@ -444,16 +438,10 @@ static class ToolTrayMapPCLXL
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        short posX,
-              posY,
-              posYInc;
-
         int ptSizeHddr = (int)(scaleFactor * 24),
               ptSizeMain = (int)(scaleFactor * 18);
 
-        indBuf = 0;
+        int indBuf = 0;
 
         if (formAsMacro)
         {
@@ -490,10 +478,9 @@ static class ToolTrayMapPCLXL
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-
-        posX = (short)(scaleFactor * _posXName);
-        posY = (short)(scaleFactor * _posYHddr);
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)(scaleFactor * _posXName);
+        short posY = (short)(scaleFactor * _posYHddr);
 
         PCLXLWriter.Text(prnWriter, formAsMacro, false,
                    PCLXLWriter.advances_ArialBold, ptSizeHddr,
@@ -746,19 +733,13 @@ static class ToolTrayMapPCLXL
 
         byte[] bufStd = new byte[sizeStd];
 
-        int indStd;
-
         int ptSizeMain = (int)(scaleFactor * 20);
-
-        short posX,
-              posY,
-              posYInc;
 
         string tmpStr;
 
         bool simplex = PCLPlexModes.IsSimplex(indxPlexMode);
 
-        indStd = 0;
+        int indStd = 0;
 
         PCLXLWriter.PageBegin(prnWriter,
                                indxPaperSize,
@@ -833,10 +814,9 @@ static class ToolTrayMapPCLXL
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-
-        posX = (short)(scaleFactor * _posXValue);
-        posY = (short)(scaleFactor * _posYDesc);
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)(scaleFactor * _posXValue);
+        short posY = (short)(scaleFactor * _posYDesc);
 
         tmpStr = pageNo.ToString() + " of " + pageCount.ToString();
 

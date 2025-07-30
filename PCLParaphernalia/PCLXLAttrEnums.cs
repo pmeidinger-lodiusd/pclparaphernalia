@@ -195,8 +195,6 @@ static class PCLXLAttrEnums
 
         PCLXLAttrEnum tag;
 
-        string key;
-
         byte operTag;
 
         if (operEnumeration)
@@ -204,12 +202,12 @@ static class PCLXLAttrEnums
         else
             operTag = 0x00;
 
-        key = operTag.ToString("X2") +
-              attrTagLen.ToString("X2") +
-              attrTagA.ToString("X2") +
-              attrTagB.ToString("X2") +
-              ":" +
-              enumVal.ToString("X8");
+        string key = operTag.ToString("X2") +
+                     attrTagLen.ToString("X2") +
+                     attrTagA.ToString("X2") +
+                     attrTagB.ToString("X2") +
+                     ":" +
+                     enumVal.ToString("X8");
 
         if (_tags.IndexOfKey(key) != -1)
         {
@@ -243,20 +241,14 @@ static class PCLXLAttrEnums
                                            bool incUsedSeqsOnly,
                                            bool excUnusedResTags)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _tagUnknown.StatsCtTotal;
+        int count = _tagUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -326,11 +318,8 @@ static class PCLXLAttrEnums
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
 
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "______________________________";
@@ -3678,9 +3667,7 @@ static class PCLXLAttrEnums
     {
         const bool flagNone = false;
 
-        int ctSymsets;
-
-        ctSymsets = PCLSymbolSets.GetCount();
+        int ctSymsets = PCLSymbolSets.GetCount();
 
         if (ctSymsets > 0)
         {

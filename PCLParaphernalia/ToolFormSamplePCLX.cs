@@ -248,9 +248,7 @@ static class ToolFormSamplePCLX
 
         byte[] buffer = new byte[lenBuf];
 
-        bool altOrient;
         bool pageUsesForm;
-        bool firstPage;
 
         short posX,
               posY;
@@ -261,8 +259,8 @@ static class ToolFormSamplePCLX
         int indBuf = 0;
         int crntPtSize;
 
-        altOrient = indxOrientation != indxOrientRear;
-        firstPage = pageNo == 1;
+        bool altOrient = indxOrientation != indxOrientRear;
+        bool firstPage = pageNo == 1;
 
         if (flagFrontFace)
         {
@@ -664,9 +662,7 @@ static class ToolFormSamplePCLX
                                         string formNameMain,
                                         string formNameRear)
     {
-        bool flagFrontFace;
-
-        flagFrontFace = true;
+        bool flagFrontFace = true;
 
         for (int pageNo = 1; pageNo <= pageCount; pageNo++)
         {

@@ -27,14 +27,12 @@ static class ToolStatusReadbackReport
     //                                                                    //
     //--------------------------------------------------------------------//
 
-    public static void generate(ReportCore.eRptFileFmt rptFileFmt,
+    public static void Generate(ReportCore.eRptFileFmt rptFileFmt,
                                  TextBox txtReply,
                                  ref string saveFilename)
     {
         object stream = null;
         object writer = null;
-
-        bool OK = false;
 
         string saveFolder = null,
                fileExt;
@@ -51,7 +49,7 @@ static class ToolStatusReadbackReport
 
         saveFilename = saveFolder + "\\SR_Resp." + fileExt;
 
-        OK = ReportCore.DocOpen(rptFileFmt,
+        bool OK = ReportCore.DocOpen(rptFileFmt,
                                  ref saveFilename,
                                  ref stream,
                                  ref writer);
@@ -88,11 +86,9 @@ static class ToolStatusReadbackReport
     {
         const int maxLineLen = 127;
 
-        int ct;
-
         ReportCore.LineBlockOpen(writer, rptFileFmt);
 
-        ct = txtReply.LineCount;
+        int ct = txtReply.LineCount;
 
         for (int i = 0; i < ct; i++)
         {

@@ -94,11 +94,7 @@ public static class PCLPalettes
 
     static PCLPalettes()
     {
-        int crntIndex;
-
-        //----------------------------------------------------------------//
-
-        crntIndex = (int)eIndex.PCLMonochrome;
+        int crntIndex = (int)eIndex.PCLMonochrome;
 
         _palettes[crntIndex].AddColour("Black", (byte)eSimpleMono.Black);
         _palettes[crntIndex].SetClrItemBlack();

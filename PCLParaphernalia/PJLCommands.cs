@@ -173,20 +173,14 @@ static class PJLCommands
     public static void DisplayStatsCounts(DataTable table,
                                            bool incUsedSeqsOnly)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _cmdUnknown.StatsCtTotal;
+        int count = _cmdUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -254,11 +248,7 @@ static class PJLCommands
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "_____________";

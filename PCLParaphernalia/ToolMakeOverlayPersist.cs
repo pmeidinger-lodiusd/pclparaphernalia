@@ -100,12 +100,10 @@ static class ToolMakeOverlayPersist
 
         int tmpInt;
 
-        string key;
-
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                             "\\" + _subKeyPCL;
+        string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+                     "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -146,12 +144,10 @@ static class ToolMakeOverlayPersist
 
         int tmpInt;
 
-        string key;
-
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
-                             "\\" + _subKeyPCLXL;
+        string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+                     "\\" + _subKeyPCLXL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -240,9 +236,7 @@ static class ToolMakeOverlayPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+        string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
                              "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -295,9 +289,7 @@ static class ToolMakeOverlayPersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
+        string key = _subKeyTools + "\\" + _subKeyToolsMakeOverlay +
                              "\\" + _subKeyPCLXL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))

@@ -185,8 +185,6 @@ class PrnParsePJL
         PrnParseOptions options,
         DataTable table)
     {
-        bool seqInvalid;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
@@ -201,7 +199,7 @@ class PrnParsePJL
 
         _analysisLevel = _linkData.AnalysisLevel;
 
-        seqInvalid = false;
+        bool seqInvalid = false;
 
         //----------------------------------------------------------------//
 
@@ -246,9 +244,7 @@ class PrnParsePJL
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        PrnParseConstants.eContType contType;
-
-        contType = PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         int prefixLen = 0,
               contDataLen = 0,
@@ -311,10 +307,7 @@ class PrnParsePJL
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        long startPos;
-
-        PrnParseConstants.eContType contType =
-            PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         bool continuation = false;
         bool langSwitch = false;
@@ -322,8 +315,7 @@ class PrnParsePJL
         bool invalidSeqFound = false;
         bool dummyBool = false;
 
-        continuation = false;
-        startPos = _fileOffset + bufOffset;
+        long startPos = _fileOffset + bufOffset;
 
         while (!continuation && !langSwitch &&
                !endReached && (bufRem > 0))
@@ -533,23 +525,14 @@ class PrnParsePJL
         char crntChar,
              normChar;
 
-        int len,
-              cmdLen,
-              cmdRem,
-              langLen,
-              offset,
-              lineStart,
+        int langLen,
               seqLen = 0;
 
         int quoteStart = 0,
               quoteEnd = 0;
 
-        bool invalidSeqFound,
-                endLoop,
-                foundTerm,
-                firstLine;
+        bool endLoop;
 
-        bool foundStartQuote;
         bool seqKnown = false;
         bool noWhitespace = false;
 
@@ -569,24 +552,20 @@ class PrnParsePJL
 
         cmdPart1.Append("@PJL");
 
-        invalidSeqFound = false;
-        foundStartQuote = false;
-        foundTerm = false;
-        firstLine = true;
+        bool invalidSeqFound = false;
+        bool foundStartQuote = false;
+        bool foundTerm = false;
+        bool firstLine = true;
+        
         langSwitch = false;
 
-        lineStart = bufOffset;
-        foundTerm = false;
-
-        len = bufRem;
-        offset = bufOffset;
+        int lineStart = bufOffset;
+        int len = bufRem;
+        int cmdRem = bufRem - _lenPJLIntro;
+        int offset = bufOffset + _lenPJLIntro;
+        int cmdLen = _lenPJLIntro;
 
         continuation = false;
-        foundTerm = false;
-
-        cmdRem = bufRem - _lenPJLIntro;
-        offset = bufOffset + _lenPJLIntro;
-        cmdLen = _lenPJLIntro;
 
         //----------------------------------------------------------------//
         //                                                                //

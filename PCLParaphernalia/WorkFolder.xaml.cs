@@ -67,11 +67,9 @@ public partial class WorkFolder : Window
 
     private void btnFoldernameBrowse_Click(object sender, RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _workFoldername;
 
-        selected = SelectDefWorkFolder(ref filename);
+        bool selected = SelectDefWorkFolder(ref filename);
 
         if (selected)
         {

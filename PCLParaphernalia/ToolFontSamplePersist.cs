@@ -241,11 +241,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + pdlName;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
@@ -336,15 +334,13 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         //----------------------------------------------------------------//
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCL +
                              "\\" + _subKeyCustom;
 
@@ -420,15 +416,13 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         //----------------------------------------------------------------//
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCL +
                              "\\" + _subKeyDownload;
 
@@ -491,15 +485,13 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         //----------------------------------------------------------------//
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCL +
                              "\\" + _subKeyPreset;
 
@@ -565,15 +557,13 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         //----------------------------------------------------------------//
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCL +
                              "\\" + _subKeyPrnDisk;
 
@@ -691,13 +681,11 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCLXL +
                              "\\" + _subKeyCustom;
 
@@ -742,15 +730,13 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         //----------------------------------------------------------------//
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCLXL +
                              "\\" + _subKeyDownload;
 
@@ -800,13 +786,11 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
                              "\\" + _subKeyPCLXL +
                              "\\" + _subKeyPreset;
 
@@ -944,10 +928,8 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + pdlName;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + pdlName;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1021,11 +1003,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCL +
-                             "\\" + _subKeyCustom;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCL +
+                     "\\" + _subKeyCustom;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1103,11 +1083,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCL +
-                             "\\" + _subKeyDownload;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCL +
+                     "\\" + _subKeyDownload;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1173,11 +1151,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCL +
-                             "\\" + _subKeyPreset;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCL +
+                     "\\" + _subKeyPreset;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1246,11 +1222,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCL +
-                             "\\" + _subKeyPrnDisk;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCL +
+                     "\\" + _subKeyPrnDisk;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1359,11 +1333,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCLXL +
-                             "\\" + _subKeyCustom;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCLXL +
+                     "\\" + _subKeyCustom;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1414,11 +1386,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCLXL +
-                             "\\" + _subKeyDownload;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCLXL +
+                     "\\" + _subKeyDownload;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -1478,11 +1448,9 @@ static class ToolFontSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFontSample +
-                             "\\" + _subKeyPCLXL +
-                             "\\" + _subKeyPreset;
+        string key = _subKeyTools + "\\" + _subKeyToolsFontSample +
+                     "\\" + _subKeyPCLXL +
+                     "\\" + _subKeyPreset;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {

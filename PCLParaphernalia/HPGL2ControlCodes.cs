@@ -82,20 +82,14 @@ static class HPGL2ControlCodes
     public static void DisplayStatsCounts(DataTable table,
                                            bool incUsedSeqsOnly)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _tagUnknown.StatsCtTotal;
+        int count = _tagUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;

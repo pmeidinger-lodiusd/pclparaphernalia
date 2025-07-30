@@ -253,11 +253,9 @@ public partial class ToolSymbolSetGenerate : Window
     private void btnDonorSymSetFileBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _donorSymSetFile;
 
-        selected = SelectDonorSymSetFile(ref filename);
+        bool selected = SelectDonorSymSetFile(ref filename);
 
         if (selected)
         {
@@ -844,8 +842,7 @@ public partial class ToolSymbolSetGenerate : Window
                     bitNo = item.BitNo;
                     bitVal = ((ulong)0x01) << bitNo;
 
-                    _targetCharCollReqAllMSL |=
-bitVal;
+                    _targetCharCollReqAllMSL |= bitVal;
                 }
             }
         }
@@ -865,8 +862,7 @@ bitVal;
                     bitNo = item.BitNo;
                     bitVal = ((ulong)0x01) << bitNo;
 
-                    _targetCharCollReqAllUnicode |=
-bitVal;
+                    _targetCharCollReqAllUnicode |= bitVal;
                 }
             }
         }
@@ -2594,9 +2590,7 @@ bitVal;
         ushort mapIndx;
 
         TextBox source = e.Source as TextBox;
-
-        string txtBoxName;
-
+        
         //----------------------------------------------------------------//
         //                                                                //
         // Work out which (mapping) text box has just lost focus.         //
@@ -2606,7 +2600,7 @@ bitVal;
         //                                                                //
         //----------------------------------------------------------------//
 
-        txtBoxName = source.Name; // should be in format txtMap0xpq
+        string txtBoxName = source.Name; // should be in format txtMap0xpq
 
         flagOK = ushort.TryParse(txtBoxName.Substring(8, 2),
                                   NumberStyles.HexNumber,
@@ -2873,14 +2867,13 @@ bitVal;
         const char badVal = 'X';
         const char defVal = _defaultSymSetIdAlpha;
 
-        int value = 0,
-              len;
+        int value = 0;
 
         bool OK = true;
 
         string crntText = txtTargetSymSetIdAlpha.Text;
 
-        len = crntText.Length;
+        int len = crntText.Length;
 
         if (len != 1)
         {
@@ -2954,11 +2947,9 @@ bitVal;
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtTargetSymSetIdNum.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;

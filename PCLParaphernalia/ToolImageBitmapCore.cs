@@ -309,7 +309,6 @@ static class ToolImageBitmapCore
     {
         int result = 0;
 
-        uint temp;
         byte[] id = new byte[2];
 
         _binReader.Read(id, 0, 2);
@@ -325,7 +324,7 @@ static class ToolImageBitmapCore
 
         _fileHeader.fileSize = ReadUInt32LE();
 
-        temp = ReadUInt32LE();
+        uint temp = ReadUInt32LE();
 
         _fileHeader.dataOffset = ReadUInt32LE();
 
@@ -386,20 +385,14 @@ static class ToolImageBitmapCore
     {
         int result = 0;
 
-        ushort bitsPerPixel;
-
-        uint coloursUsed;
-
-        uint entryMax;
-
         byte[] colourData = new byte[4];
 
         _monochromeBlackWhite = false;
 
-        bitsPerPixel = _infoHeader.bitsPerPixel;
-        coloursUsed = _infoHeader.coloursUsed;
+        ushort bitsPerPixel = _infoHeader.bitsPerPixel;
+        uint coloursUsed = _infoHeader.coloursUsed;
 
-        entryMax = (uint)0x00000001 << bitsPerPixel;
+        uint entryMax = (uint)0x00000001 << bitsPerPixel;
 
         if (bitsPerPixel < 16)
         {

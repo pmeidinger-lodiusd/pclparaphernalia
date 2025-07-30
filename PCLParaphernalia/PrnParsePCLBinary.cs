@@ -135,27 +135,15 @@ class PrnParsePCLBinary
             string codeVal,
                    codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
+            PrnParseConstants.eOptCharSets indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
 
-            PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct =
-                PrnParseConstants.eOptCharSetSubActs.Hex;
-            PrnParseConstants.eOptCharSets indxCharSetName =
-                PrnParseConstants.eOptCharSets.ASCII;
             int valCharSetSubCode = 0x20;
-
-            analysisLevel = linkData.AnalysisLevel;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
-            showBinData = options.FlagPCLMiscBinData;
-
-            analysisLevel = linkData.AnalysisLevel;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
-            showBinData = options.FlagPCLMiscBinData;
 
             options.GetOptCharSet(ref indxCharSetName,
                                    ref indxCharSetSubAct,
@@ -325,19 +313,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if (binDataLen != lenStd)
         {
@@ -407,16 +391,10 @@ class PrnParsePCLBinary
             string codeDesc,
                    textDesc;
 
-            int analysisLevel;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
-            bool showBinData;
-
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            int analysisLevel = linkData.AnalysisLevel;
+            bool showBinData = options.FlagPCLMiscBinData;
 
             //------------------------------------------------------------//
 
@@ -593,19 +571,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -663,27 +637,15 @@ class PrnParsePCLBinary
 
             bool dummyBool = false;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
+            PrnParseConstants.eOptCharSets indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
 
-            PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct =
-                PrnParseConstants.eOptCharSetSubActs.Hex;
-            PrnParseConstants.eOptCharSets indxCharSetName =
-                PrnParseConstants.eOptCharSets.ASCII;
             int valCharSetSubCode = 0x20;
-
-            analysisLevel = linkData.AnalysisLevel;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
-            showBinData = options.FlagPCLMiscBinData;
-
-            analysisLevel = linkData.AnalysisLevel;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
-            showBinData = options.FlagPCLMiscBinData;
 
             options.GetOptCharSet(ref indxCharSetName,
                                    ref indxCharSetSubAct,
@@ -844,19 +806,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -1235,17 +1193,13 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        //----------------------------------------------------------------//
-
-        int offset;
-
         string textDesc;
 
         short sint16Val;
 
         //----------------------------------------------------------------//
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         if (binDataLen == fixedLen)
         {
@@ -1303,16 +1257,12 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        //----------------------------------------------------------------//
-
-        int offset;
-
         string codeDesc,
                textDesc;
 
         //----------------------------------------------------------------//
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         if (binDataLen == fixedLen)
         {
@@ -1457,16 +1407,12 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        //----------------------------------------------------------------//
-
-        int offset;
-
         string codeDesc,
                textDesc;
 
         //----------------------------------------------------------------//
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         if (binDataLen == fixedLen)
         {
@@ -1537,16 +1483,12 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        //----------------------------------------------------------------//
-
-        int offset;
-
         string codeDesc,
                textDesc;
 
         //----------------------------------------------------------------//
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         if (binDataLen == fixedLen)
         {
@@ -1735,19 +1677,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -1963,16 +1901,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -2199,16 +2132,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -2432,16 +2360,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -2649,16 +2572,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -2836,16 +2754,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -3098,16 +3011,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -3400,16 +3308,11 @@ class PrnParsePCLBinary
 
         string codeDesc;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -3761,15 +3664,13 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
         if ((binDataLen != lenShort) && (binDataLen != lenLong))
         {
@@ -3832,16 +3733,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             PrnParseCommon.AddDataRow(
                 PrnParseRowTypes.eType.DataBinary,
@@ -4047,15 +3943,13 @@ class PrnParsePCLBinary
 
         int binDataRem;
 
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
         binDataRem = binDataLen;
 
@@ -4127,16 +4021,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -4458,7 +4347,7 @@ class PrnParsePCLBinary
         bool dataOK = true;
 
         int lineLen,
-              offset;
+              offset = bufOffset;
 
         int mapBegin,
               mapEnd,
@@ -4469,23 +4358,15 @@ class PrnParsePCLBinary
         string codeDesc = string.Empty,
                textDesc;
 
-        int codeStart,
+        int codeStart = linkData.EntryNo,
               codeCount;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData,
+        bool showBinData = options.FlagPCLMiscBinData,
                 all_ffs;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-        analysisLevel = linkData.AnalysisLevel;
-        codeStart = linkData.EntryNo;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-
-        offset = bufOffset;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
         //----------------------------------------------------------------//
 
@@ -4618,19 +4499,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -4847,19 +4724,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if (lenMin > bufRem)
         {
@@ -5054,35 +4927,21 @@ class PrnParsePCLBinary
 
         int dataSize,
               planeNo,
-              offset,
-              matrixRem,
-              matrixHeight,
-              matrixWidth,
               rows;
 
         int binDataRem;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
+        ;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
-        PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct =
-            PrnParseConstants.eOptCharSetSubActs.Hex;
-        PrnParseConstants.eOptCharSets indxCharSetName =
-            PrnParseConstants.eOptCharSets.ASCII;
+        PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
+        PrnParseConstants.eOptCharSets indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
+        
         int valCharSetSubCode = 0x20;
-
-        analysisLevel = linkData.AnalysisLevel;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-        showBinData = options.FlagPCLMiscBinData;
-
-        analysisLevel = linkData.AnalysisLevel;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-        showBinData = options.FlagPCLMiscBinData;
 
         options.GetOptCharSet(ref indxCharSetName,
                                ref indxCharSetSubAct,
@@ -5090,12 +4949,12 @@ class PrnParsePCLBinary
 
         planeNo = linkData.EntryNo;
 
-        matrixHeight = linkData.EntrySz1;
-        matrixWidth = linkData.EntrySz2;
+        int matrixHeight = linkData.EntrySz1;
+        int matrixWidth = linkData.EntrySz2;
 
-        matrixRem = linkData.EntryRem;
+        int matrixRem = linkData.EntryRem;
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         //----------------------------------------------------------------//
 
@@ -5229,19 +5088,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -5303,16 +5158,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -5508,15 +5358,13 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        int binDataRem;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -5570,16 +5418,11 @@ class PrnParsePCLBinary
             //                                                            //
             //------------------------------------------------------------//
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             PrnParseData.ProcessBinary(
                 table,
@@ -5645,19 +5488,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -5717,16 +5556,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -5871,46 +5705,32 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        int dataSize,
-              offset;
-
-        int binDataRem;
+        int dataSize;
 
         string codeDesc;
 
         int tripletCt;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData; ;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat; ;
 
-        PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct =
-            PrnParseConstants.eOptCharSetSubActs.Hex;
-        PrnParseConstants.eOptCharSets indxCharSetName =
-            PrnParseConstants.eOptCharSets.ASCII;
+        PrnParseConstants.eOptCharSetSubActs indxCharSetSubAct = PrnParseConstants.eOptCharSetSubActs.Hex;
+        PrnParseConstants.eOptCharSets indxCharSetName = PrnParseConstants.eOptCharSets.ASCII;
+
         int valCharSetSubCode = 0x20;
-
-        analysisLevel = linkData.AnalysisLevel;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-        showBinData = options.FlagPCLMiscBinData;
-
-        analysisLevel = linkData.AnalysisLevel;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-        showBinData = options.FlagPCLMiscBinData;
 
         options.GetOptCharSet(ref indxCharSetName,
                                ref indxCharSetSubAct,
                                ref valCharSetSubCode);
 
-        offset = bufOffset;
+        int offset = bufOffset;
 
         //----------------------------------------------------------------//
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if (binDataRem > bufRem)
             dataSize = (bufRem / 3) * 3;
@@ -6027,15 +5847,13 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        bool dataOK = true;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -6090,16 +5908,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -6412,24 +6225,20 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
+        bool dataOK = true;
+
+        int binDataRem = binDataLen;
+
         if (buf[bufOffset] == 20)
             lenMin = 12;
         else
             lenMin = 8;
-
-        dataOK = true;
-
-        binDataRem = binDataLen;
 
         if ((binDataLen < lenMin) || (binDataLen > lenMax))
         {
@@ -6498,16 +6307,11 @@ class PrnParsePCLBinary
 
             string codeDesc;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -6856,34 +6660,22 @@ class PrnParsePCLBinary
 
         bool dataOK = true;
 
-        int offset;
-
         int chunkSize,
               rowCt,
-              rowNo,
-              rowBytes;
+              rowNo = linkData.EntryNo,
+              rowBytes = linkData.EntrySz1;
 
         int binDataRem;
 
-        int codeStart;
+        int codeStart = linkData.EntryNo;
 
-        int analysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        bool showBinData;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
-        analysisLevel = linkData.AnalysisLevel;
-        codeStart = linkData.EntryNo;
-        showBinData = options.FlagPCLMiscBinData;
-
-        rowBytes = linkData.EntrySz1;
-        //   rowCt    = linkData.EntryCt;
-        rowNo = linkData.EntryNo;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-
-        offset = bufOffset;
+        int offset = bufOffset;
 
         //----------------------------------------------------------------//
 
@@ -6984,19 +6776,15 @@ class PrnParsePCLBinary
 
         PrnParseConstants.eContType contType;
 
-        int binDataRem;
-
-        bool dataOK;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
         //                                                                //
         //----------------------------------------------------------------//
 
-        dataOK = true;
+        bool dataOK = true;
 
-        binDataRem = binDataLen;
+        int binDataRem = binDataLen;
 
         if (binDataLen != lenStd)
         {
@@ -7050,16 +6838,11 @@ class PrnParsePCLBinary
 
             int offset;
 
-            int analysisLevel;
+            int analysisLevel = linkData.AnalysisLevel;
 
-            bool showBinData;
+            bool showBinData = options.FlagPCLMiscBinData;
 
-            PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
-
-            analysisLevel = linkData.AnalysisLevel;
-            showBinData = options.FlagPCLMiscBinData;
-
-            indxOffsetFormat = options.IndxGenOffsetFormat;
+            PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
             //------------------------------------------------------------//
 
@@ -7151,14 +6934,11 @@ class PrnParsePCLBinary
         const int sliceLen = 2;
 
         int iSub,
-              iTot;
+              iTot = 0;
 
-        bool msByte;
+        bool msByte = true;
 
         string tempStr;
-
-        iTot = 0;
-        msByte = true;
 
         for (int j = 0; j < sliceLen; j++)
         {
@@ -7207,15 +6987,13 @@ class PrnParsePCLBinary
         const int sliceLen = 4;
 
         uint uiSub,
-               uiTot;
+               uiTot = 0;
 
         byte[] byteArray;
 
         float f;
 
         string tempStr;
-
-        uiTot = 0;
 
         for (int j = 0; j < sliceLen; j++)
         {

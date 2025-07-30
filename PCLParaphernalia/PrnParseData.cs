@@ -158,11 +158,10 @@ static class PrnParseData
             //                                                            //
             //------------------------------------------------------------//
 
-            int sliceLen,
-                  crntOffset;
-            ;
+            int sliceLen;
+            int crntOffset = seqOffset;
 
-            bool firstLine;
+            bool firstLine = true;
 
             string preamble;
 
@@ -170,9 +169,6 @@ static class PrnParseData
                 preamble = "    [ ";
             else
                 preamble = "[ ";
-
-            firstLine = true;
-            crntOffset = seqOffset;
 
             for (int i = 0; i < seqLen; i += iBytesPerLine)
             {
@@ -316,8 +312,6 @@ static class PrnParseData
         byte highByte,
              lowByte;
 
-        int charVal;
-
         if (highByteFirst)
         {
             highByte = byteA;
@@ -329,7 +323,7 @@ static class PrnParseData
             lowByte = byteA;
         }
 
-        charVal = (highByte * 256) + lowByte;
+        int charVal = (highByte * 256) + lowByte;
 
         return ProcessValue(charVal,
                              showCCAction,
@@ -1003,15 +997,12 @@ static class PrnParseData
     {
         string outStr = string.Empty;
 
-        byte highByte,
-             lowByte;
-
         eCharType charType;
 
         string ccName;
 
-        highByte = (byte)((charVal >> 8) & 0xff);
-        lowByte = (byte)(charVal & 0xff);
+        byte highByte = (byte)((charVal >> 8) & 0xff);
+        byte lowByte = (byte)(charVal & 0xff);
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1244,20 +1235,17 @@ static class PrnParseData
                                        int sliceOffset,
                                        int sliceLen)
     {
-        StringBuilder seq = new StringBuilder();
 
         byte crntByte;
 
-        int hexPtr,
+        int hexPtr = 0,
               hexStart = 0,
               hexEnd = 0,
               sub;
 
-        bool useEllipsis;
-
         char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
-        useEllipsis = false;
+        bool useEllipsis = false;
 
         //-----------------------------------------------------------------//
         //                                                                 //
@@ -1277,8 +1265,6 @@ static class PrnParseData
             hexEnd = sliceOffset + sliceLen;
         }
 
-        hexPtr = 0;
-
         for (int j = hexStart; j < hexEnd; j++)
         {
             sub = (buf[j]);
@@ -1291,7 +1277,8 @@ static class PrnParseData
             hexBuf[hexPtr++] = (char)crntByte;
         }
 
-        seq.Clear();
+        StringBuilder seq = new StringBuilder();
+
         seq.Append("0x");
         seq.Append(hexBuf, 0, hexPtr);
 

@@ -69,8 +69,6 @@ static class ToolSymbolSetGenReport
         object stream = null;
         object writer = null;
 
-        bool OK = false;
-
         string fileExt;
         string saveFilename = null;
 
@@ -83,7 +81,7 @@ static class ToolSymbolSetGenReport
 
         saveFilename = symSetFilename + "_report." + fileExt;
 
-        OK = ReportCore.DocOpen(rptFileFmt,
+        bool OK = ReportCore.DocOpen(rptFileFmt,
                                  ref saveFilename,
                                  ref stream,
                                  ref writer);
@@ -255,9 +253,7 @@ static class ToolSymbolSetGenReport
         string[] colNames = new string[colCt];
         int[] colSizes = new int[colCt];
 
-        int ctItems;
-
-        ctItems = symSetMap.Length;
+        int ctItems = symSetMap.Length;
 
         //----------------------------------------------------------------//
         //                                                                //

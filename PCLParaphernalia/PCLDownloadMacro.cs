@@ -122,7 +122,6 @@ static class PCLDownloadMacro
     public static bool CheckMacroFile(string filename,
                                          ref int macroId)
     {
-        bool fileOpen = false;
         bool macroIdPresent = false;
 
         long fileSize = 0;
@@ -133,7 +132,7 @@ static class PCLDownloadMacro
         //                                                                //
         //----------------------------------------------------------------//
 
-        fileOpen = MacroFileOpen(filename, ref fileSize);
+        bool fileOpen = MacroFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {
@@ -180,11 +179,9 @@ static class PCLDownloadMacro
     {
         bool OK = true;
 
-        bool fileOpen = false;
-
         long fileSize = 0;
 
-        fileOpen = MacroFileOpen(filename, ref fileSize);
+        bool fileOpen = MacroFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {

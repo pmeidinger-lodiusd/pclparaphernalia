@@ -1851,13 +1851,11 @@ class PrnParseFontCharPCL
     {
         PrnParseConstants.eContType contType;
 
-        int hddrLen;
-
         ushort charDataSize;
 
         short glyphID;
 
-        hddrLen = 4;
+        int hddrLen = 4;
 
         if (bufRem < hddrLen)
         {
@@ -2072,22 +2070,19 @@ class PrnParseFontCharPCL
             //                                                            //
             //------------------------------------------------------------//
 
-            bool firstLine;
 
-            int bytesPerRow,
-                  sliceLen,
-                  crntOffset,
+            int sliceLen,
                   sub;
 
             string rowImage;
 
-            bytesPerRow = (_charWidth / 8);
+            int bytesPerRow = (_charWidth / 8);
 
             if (_charWidth - (bytesPerRow * 8) != 0)
                 bytesPerRow++;
 
-            firstLine = true;
-            crntOffset = bufOffset;
+            bool firstLine = true;
+            int crntOffset = bufOffset;
 
             for (int i = 0; i < dataLen; i += bytesPerRow)
             {
@@ -2172,20 +2167,17 @@ class PrnParseFontCharPCL
             //                                                            //
             //------------------------------------------------------------//
 
-            bool firstLine,
-                    blackDot;
+            bool blackDot;
 
-            int pos,
-                  crntOffset,
-                  colCt,
+            int colCt,
                   dotCt,
                   rptCt;
 
             string rowImage;
 
-            firstLine = true;
-            crntOffset = bufOffset;
-            pos = 0;
+            bool firstLine = true;
+            int crntOffset = bufOffset;
+            int pos = 0;
 
             while (pos < dataLen)
             {

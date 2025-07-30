@@ -86,9 +86,7 @@ class PrnParseHPGL2
                                      bool continuation,
                                      string desc)
     {
-        int len;
-
-        len = seqLen;
+        int len = seqLen;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -177,15 +175,9 @@ class PrnParseHPGL2
             int sliceLen,
                   sliceLenMax,
                   sliceStart,
-                  sliceOffset,
-                  seqBufOffset,
                   ccAdjust;
 
-            bool firstSlice,
-                    firstSliceAfterCC,
-                    nonGraphics,
-                    knownCC;
-            ;
+            bool knownCC;
 
             string seq = string.Empty,
                    ccDesc = string.Empty;
@@ -194,11 +186,12 @@ class PrnParseHPGL2
             byte seqByte,
                  ccByte;
 
-            firstSlice = true;
-            firstSliceAfterCC = false;
-            nonGraphics = false;
-            sliceOffset = 0;
-            seqBufOffset = 0;
+            bool firstSlice = true;
+            bool firstSliceAfterCC = false;
+            bool nonGraphics = false;
+            
+            int sliceOffset = 0;
+            int seqBufOffset = 0;
 
             if (continuation)
             {
@@ -537,9 +530,7 @@ class PrnParseHPGL2
     //  ref ToolCommonData.ePrintLang    xcrntPDL,
         ref bool endReached)
     {
-        PrnParseConstants.eContType contType;
-
-        contType = PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         int prefixLen = 0,
               contDataLen = 0,
@@ -726,8 +717,7 @@ class PrnParseHPGL2
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        PrnParseConstants.eContType contType =
-            PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         bool continuation = false;
         bool langSwitch = false;
@@ -1015,13 +1005,11 @@ class PrnParseHPGL2
                 optQuoted = false,
                 optSymbolMode = false;
 
-        bool invalidSeqFound;
-
         string desc = string.Empty,
                command,
                showChar;
 
-        invalidSeqFound = false;
+        bool invalidSeqFound = false;
 
         //----------------------------------------------------------------//
         //                                                                //

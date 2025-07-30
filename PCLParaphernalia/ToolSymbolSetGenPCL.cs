@@ -268,13 +268,12 @@ class ToolSymbolSetGenPCL
     {
         SaveFileDialog saveDialog;
 
-        int ptr,
-              len;
+        int len;
 
         string saveDirectory;
         string tmpFilename;
 
-        ptr = symSetFilename.LastIndexOf("\\");
+        int ptr = symSetFilename.LastIndexOf("\\");
 
         if (ptr <= 0)
         {
@@ -348,9 +347,6 @@ class ToolSymbolSetGenPCL
                             ulong charCollReq,
                             byte symSetType)
     {
-        int mapSize;
-        int descSize;
-
         ushort valUInt16;
 
         uint valUInt32;
@@ -364,8 +360,8 @@ class ToolSymbolSetGenPCL
         //                                                                //
         //----------------------------------------------------------------//
 
-        mapSize = (codeMax - codeMin + 1) * 2;
-        descSize = mapSize + cSizeHddrFixed;
+        int mapSize = (codeMax - codeMin + 1) * 2;
+        int descSize = mapSize + cSizeHddrFixed;
 
         PCLWriter.SymSetDownloadDesc(_binWriter, (uint)descSize);
 

@@ -120,8 +120,6 @@ class PrnParsePCL
         PrnParseOptions options,
         DataTable table)
     {
-        bool seqInvalid;
-
         //-------------------------------------------------------------------------//
         //                                                                         //
         // Initialise.                                                             //
@@ -136,7 +134,7 @@ class PrnParsePCL
 
         _analysisLevel = linkData.AnalysisLevel;
 
-        seqInvalid = false;
+        bool seqInvalid = false;
 
         //----------------------------------------------------------------//
 
@@ -194,8 +192,6 @@ class PrnParsePCL
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        PrnParseConstants.eContType contType;
-
         int prefixLen = 0,
               contDataLen = 0,
               downloadRem = 0,
@@ -215,7 +211,7 @@ class PrnParsePCL
         byte prefixA = 0x00,
              prefixB = 0x00;
 
-        contType = PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         _linkData.GetContData(ref contType,
                                ref prefixLen,
@@ -1411,23 +1407,19 @@ class PrnParsePCL
         //  Boolean CheckExtensionTable,
         bool CheckStandardTable)
     {
-        bool invalidSeq = true;
+        bool invalidSeq = false;
 
-        PrnParseConstants.eContType contType =
-            PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
-        PrnParseConstants.eActPCL actType =
-            PrnParseConstants.eActPCL.None;
+        PrnParseConstants.eActPCL actType = PrnParseConstants.eActPCL.None;
 
-        PrnParseConstants.eOvlAct makeOvlAct =
-            PrnParseConstants.eOvlAct.None;
+        PrnParseConstants.eOvlAct makeOvlAct = PrnParseConstants.eOvlAct.None;
 
-        PrnParseConstants.eOvlShow makeOvlShow =
-            PrnParseConstants.eOvlShow.None;
+        PrnParseConstants.eOvlShow makeOvlShow = PrnParseConstants.eOvlShow.None;
 
         byte gChar = 0x20,
              iChar = 0x20,
-             p_or_TChar,
+             p_or_TChar = 0x20,
              crntByte;
 
         int vLen = 0,
@@ -1438,11 +1430,11 @@ class PrnParsePCL
               seqPos,
               seqStart,
               prefixLen = 0,
-              binDataLen,
+              binDataLen = 0,
               contDataLen = 0,
               downloadRem = 0,
               endPos,
-              vInt,
+              vInt = 0,
               vPosFirst,
               vPosNext,
               vPosCrnt;
@@ -1451,7 +1443,7 @@ class PrnParsePCL
         long comboStart = 0;
 
         bool seqKnown,
-                seqComplete,
+                seqComplete = false,
                 seqProprietary = false,
                 comboSeq = false,
                 comboFirst = false,
@@ -1469,36 +1461,21 @@ class PrnParsePCL
         // Boolean optValueAngleQuoted;
 
         bool vCheck,
-                vInvalid,
+                vInvalid = false,
                 vCharInvalid,
-                vNegative,
-                vFractional,
-                vSignFound,
-                vStarted,
-                vQuotedStart,
-                vQuotedEnd,
-                vNumberStarted;
+                vNegative = false,
+                vFractional = false,
+                vSignFound = false,
+                vStarted = false,
+                vQuotedStart = false,
+                vQuotedEnd = false,
+                vNumberStarted = false;
 
         string descComplex = string.Empty,
                typeText,
                vendorName;
 
-        invalidSeq = false;
-        seqComplete = false;
         continuation = false;
-        vInvalid = false;
-        vNegative = false;
-        vFractional = false;
-        vSignFound = false;
-        vStarted = false;
-        vQuotedStart = false;
-        vQuotedEnd = false;
-        vNumberStarted = false;
-
-        vInt = 0;
-        binDataLen = 0;
-
-        p_or_TChar = 0x20;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -2799,7 +2776,7 @@ class PrnParsePCL
         bool seqComplete,
         ref bool invalidSeqFound)
     {
-        bool continuation,
+        bool continuation = false,
                 hddrOK,
                 charOK,
                 dataOK;
@@ -2810,7 +2787,6 @@ class PrnParsePCL
 
         int downloadRem = 0;
 
-        continuation = false;
         invalidSeqFound = false;
 
         if (binDataLen == 0)
@@ -3484,8 +3460,6 @@ class PrnParsePCL
         ref int bufOffset,
         ref bool breakpoint)
     {
-        byte iChar;
-
         bool seqKnown = false;
         bool optObsolete = false;
         bool optResetHPGL2 = false;
@@ -3498,7 +3472,7 @@ class PrnParsePCL
 
         string descSimple = string.Empty;
 
-        iChar = _buf[bufOffset + 1];
+        byte iChar = _buf[bufOffset + 1];
 
         seqKnown = PCLSimpleSeqs.CheckSimpleSeq(
             (_analysisLevel + _macroLevel),
@@ -3606,11 +3580,9 @@ class PrnParsePCL
 
     private void ProcessStyleData(int style)
     {
-        int index;
-
         string itemDesc;
 
-        index = (style >> 5) & 0x1f;
+        int index = (style >> 5) & 0x1f;
 
         switch (index)
         {

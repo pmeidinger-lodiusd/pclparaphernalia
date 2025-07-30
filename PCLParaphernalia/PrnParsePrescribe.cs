@@ -6,7 +6,7 @@ namespace PCLParaphernalia;
 /// <summary>
 /// 
 /// Class provides routines associated with 'parsing' of
-	/// Kyocera Prescribe commands.
+/// Kyocera Prescribe commands.
 /// 
 /// © Chris Hutchinson 2017
 /// 
@@ -183,8 +183,6 @@ class PrnParsePrescribe
         PrnParseOptions options,
         DataTable table)
     {
-        bool seqInvalid;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
@@ -199,7 +197,7 @@ class PrnParsePrescribe
 
         _analysisLevel = _linkData.AnalysisLevel;
 
-        seqInvalid = false;
+        bool seqInvalid = false;
 
         //----------------------------------------------------------------//
 
@@ -247,9 +245,7 @@ class PrnParsePrescribe
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        PrnParseConstants.eContType contType;
-
-        contType = PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         int prefixLen = 0,
               contDataLen = 0,
@@ -308,15 +304,12 @@ class PrnParsePrescribe
         ref ToolCommonData.ePrintLang crntPDL,
         ref bool endReached)
     {
-        long startPos;
-
         bool continuation = false;
         bool langSwitch = false;
         bool badSeq = false;
         bool invalidSeqFound = false;
 
-        continuation = false;
-        startPos = _fileOffset + bufOffset;
+        long startPos = _fileOffset + bufOffset;
 
         if (!_linkData.PrescribeIntroRead)
         {
@@ -435,8 +428,7 @@ class PrnParsePrescribe
         ref bool langSwitch,
         ref ToolCommonData.ePrintLang crntPDL)
     {
-        PrnParseConstants.eContType contType =
-            PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         byte crntByte,
              cmdParaByte1 = 0x3f;
@@ -444,24 +436,14 @@ class PrnParsePrescribe
         char crntChar,
              normChar;
 
-        int len,
-              cmdLen,
-              cmdRem,
-              cmdStart,
-              offset,
-              lineStart;
-
         int quoteStart = 0,
               quoteEnd = 0;
 
-        bool invalidSeqFound,
-                cmdParaByte1Found,
-                endLoop,
-                foundTerm;
+        bool cmdParaByte1Found,
+                endLoop;
 
-        //  Boolean flagWithinQuote;
-        bool flagWithinQuoteDouble;
-        bool flagWithinQuoteSingle;
+        bool flagWithinQuoteDouble = false;
+        bool flagWithinQuoteSingle = false;
         bool cmdKnown = false;
         bool flagCmdExit = false;
         bool flagCmdSetCRC = false;
@@ -472,22 +454,20 @@ class PrnParsePrescribe
 
         StringBuilder cmd = new StringBuilder();
 
-        invalidSeqFound = false;
-        foundTerm = false;
+        bool invalidSeqFound = false;
+        bool foundTerm = false;
         langSwitch = false;
 
-        lineStart = bufOffset;
-        foundTerm = false;
+        int lineStart = bufOffset;
 
-        len = bufRem;
-        offset = bufOffset;
+        int len = bufRem;
+        int offset = bufOffset;
 
         continuation = false;
-        foundTerm = false;
 
-        cmdRem = bufRem;
-        cmdStart = offset;
-        cmdLen = 0;
+        int cmdRem = bufRem;
+        int cmdStart = offset;
+        int cmdLen = 0;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -506,10 +486,6 @@ class PrnParsePrescribe
         // recursive continuation actions).                               //
         //                                                                //
         //----------------------------------------------------------------//
-
-        //  flagWithinQuote = false;
-        flagWithinQuoteDouble = false;
-        flagWithinQuoteSingle = false;
 
         while ((!foundTerm) && (cmdRem > 0) && (cmdLen < _maxCmdLen))
         {
@@ -736,15 +712,15 @@ class PrnParsePrescribe
                   sliceOffset,
                   ccAdjust;
 
-            bool firstSlice;
+            bool firstSlice = true;
 
             string seq = string.Empty;
 
             byte[] seqBuf = new byte[PrnParseConstants.cRptA_colMax_Seq];
 
-            firstSlice = true;
             sliceOffset = 0;
 
+            // TODO: Always true, why is this here? -- PMM
             if (firstSlice)
                 sliceLenMax = PrnParseConstants.cRptA_colMax_Seq;
             else

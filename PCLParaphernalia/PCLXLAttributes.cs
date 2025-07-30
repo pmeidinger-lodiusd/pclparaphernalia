@@ -202,9 +202,7 @@ static class PCLXLAttributes
 
         PCLXLAttribute tag;
 
-        int key;
-
-        key = key = (((tagLen1 * 256) + tagA) * 256) + tagB;
+        int key = (((tagLen1 * 256) + tagA) * 256) + tagB;
 
         if (_tags.IndexOfKey(key) != -1)
         {
@@ -244,20 +242,14 @@ static class PCLXLAttributes
                                            bool incUsedSeqsOnly,
                                            bool excUnusedResTags)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _tagUnknown.StatsCtTotal;
+        int count = _tagUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -329,11 +321,7 @@ static class PCLXLAttributes
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "______________________";
@@ -429,9 +417,7 @@ static class PCLXLAttributes
     {
         PCLXLAttribute tag;
 
-        int key;
-
-        key = key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
+        int key = (((tagLen * 256) + tagByteA) * 256) + tagByteB;
 
         if (_tags.IndexOfKey(key) != -1)
             tag = _tags[key];

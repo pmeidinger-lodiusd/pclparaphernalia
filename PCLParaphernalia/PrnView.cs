@@ -68,11 +68,7 @@ class PrnView
         const int colHex = 1;
         const int colText = 2;
 
-        DataRow row;
-
-        //  Int32 rowNo = _fixedRows + _rowCt;
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[colOffset] = offset;
         row[colHex] = hexVal;
@@ -180,11 +176,9 @@ class PrnView
     {
         bool OK = true;
 
-        bool ipOpen = false;
+        bool isOpen = OpenInputPrn(prnFilename, ref _fileSize);
 
-        ipOpen = OpenInputPrn(prnFilename, ref _fileSize);
-
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
         }
@@ -378,10 +372,6 @@ class PrnView
                                 //                      Int32     rowNo,
                                 DataTable table)
     {
-        int sliceLen;
-
-        bool endSlice;
-
         byte crntByte;
 
         char cx;
@@ -391,7 +381,7 @@ class PrnView
         StringBuilder hexBuf = new StringBuilder();
         StringBuilder strBuf = new StringBuilder();
 
-        sliceLen = sliceMax;
+        int sliceLen = sliceMax;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -399,7 +389,7 @@ class PrnView
         //                                                                //
         //----------------------------------------------------------------//
 
-        endSlice = false;
+        bool endSlice = false;
 
         for (int j = blockOffset;
                 (j < (blockOffset + sliceLen) && (!endSlice));

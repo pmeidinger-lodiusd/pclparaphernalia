@@ -328,14 +328,11 @@ public partial class ToolTrayMap : Window
         object sender,
         SelectionChangedEventArgs e)
     {
-        bool flagOK = false;
-
         ushort sheetIndx;
 
         ComboBox source = e.Source as ComboBox;
 
-        string cbName;
-
+       
         //----------------------------------------------------------------//
         //                                                                //
         // Work out which combo box has just changed.                     //
@@ -345,12 +342,12 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        cbName = source.Name; // should be in format cbnn_xyz
+        string cbName = source.Name; // should be in format cbnn_xyz
 
-        flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                  NumberStyles.HexNumber,
-                                  CultureInfo.InvariantCulture,
-                                  out sheetIndx);
+        bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
         if (flagOK && sheetIndx > _maxSheetNo)
             flagOK = false;
@@ -387,14 +384,10 @@ public partial class ToolTrayMap : Window
         object sender,
         SelectionChangedEventArgs e)
     {
-        bool flagOK = false;
-
         ushort sheetIndx;
 
         ComboBox source = e.Source as ComboBox;
-
-        string cbName;
-
+        
         //----------------------------------------------------------------//
         //                                                                //
         // Work out which combo box has just changed.                     //
@@ -404,12 +397,12 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        cbName = source.Name; // should be in format cbnn_xyz
+        string cbName = source.Name; // should be in format cbnn_xyz
 
-        flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                  NumberStyles.HexNumber,
-                                  CultureInfo.InvariantCulture,
-                                  out sheetIndx);
+        bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
         if (flagOK && sheetIndx > _maxSheetNo)
             flagOK = false;
@@ -447,14 +440,10 @@ public partial class ToolTrayMap : Window
         object sender,
         SelectionChangedEventArgs e)
     {
-        bool flagOK = false;
-
         ushort sheetIndx;
 
         ComboBox source = e.Source as ComboBox;
-
-        string cbName;
-
+        
         //----------------------------------------------------------------//
         //                                                                //
         // Work out which combo box has just changed.                     //
@@ -464,12 +453,12 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        cbName = source.Name; // should be in format cbnn_xyz
+        string cbName = source.Name; // should be in format cbnn_xyz
 
-        flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                  NumberStyles.HexNumber,
-                                  CultureInfo.InvariantCulture,
-                                  out sheetIndx);
+        bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
         if (flagOK && sheetIndx > _maxSheetNo)
             flagOK = false;
@@ -509,13 +498,9 @@ public partial class ToolTrayMap : Window
     {
         if (!_inhibitTrayIdChange)
         {
-            bool flagOK = false;
-
             ushort sheetIndx;
 
             ComboBox source = e.Source as ComboBox;
-
-            string cbName;
 
             //------------------------------------------------------------//
             //                                                            //
@@ -526,12 +511,12 @@ public partial class ToolTrayMap : Window
             //                                                            //
             //------------------------------------------------------------//
 
-            cbName = source.Name; // should be in format cbnn_xyz
+            string cbName = source.Name; // should be in format cbnn_xyz
 
-            flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                      NumberStyles.HexNumber,
-                                      CultureInfo.InvariantCulture,
-                                      out sheetIndx);
+            bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
             if (flagOK && sheetIndx > _maxSheetNo)
                 flagOK = false;
@@ -570,13 +555,9 @@ public partial class ToolTrayMap : Window
         object sender,
         SelectionChangedEventArgs e)
     {
-        bool flagOK = false;
-
         ushort sheetIndx;
 
         ComboBox source = e.Source as ComboBox;
-
-        string cbName;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -587,12 +568,12 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        cbName = source.Name; // should be in format cbnn_xyz
+        string cbName = source.Name; // should be in format cbnn_xyz
 
-        flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                  NumberStyles.HexNumber,
-                                  CultureInfo.InvariantCulture,
-                                  out sheetIndx);
+        bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
         if (flagOK && sheetIndx > _maxSheetNo)
             flagOK = false;
@@ -653,13 +634,10 @@ public partial class ToolTrayMap : Window
         object sender,
         SelectionChangedEventArgs e)
     {
-        bool flagOK = false;
-
         ushort sheetIndx;
 
         ComboBox source = e.Source as ComboBox;
 
-        string cbName;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -670,12 +648,12 @@ public partial class ToolTrayMap : Window
         //                                                                //
         //----------------------------------------------------------------//
 
-        cbName = source.Name; // should be in format cbnn_xyz
+        string cbName = source.Name; // should be in format cbnn_xyz
 
-        flagOK = ushort.TryParse(cbName.Substring(2, 2),
-                                  NumberStyles.HexNumber,
-                                  CultureInfo.InvariantCulture,
-                                  out sheetIndx);
+        bool flagOK = ushort.TryParse(cbName.Substring(2, 2),
+                          NumberStyles.HexNumber,
+                          CultureInfo.InvariantCulture,
+                          out sheetIndx);
 
         if (flagOK && sheetIndx > _maxSheetNo)
             flagOK = false;
@@ -1340,9 +1318,7 @@ public partial class ToolTrayMap : Window
 
     private void SheetDataResetVisibility()
     {
-        int sheetCt;
-
-        sheetCt = (cbSheetCt.SelectedIndex) + 1;
+        int sheetCt = (cbSheetCt.SelectedIndex) + 1;
 
         if (_crntPDL == ToolCommonData.ePrintLang.PCL)
             _sheetCtPCL = sheetCt;

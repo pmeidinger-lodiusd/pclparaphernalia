@@ -53,8 +53,6 @@ static class PCLDownloadSymSet
     {
         bool flagOK = true;
 
-        bool fileOpen = false;
-
         long fileSize = 0,
                offset = 0;
 
@@ -64,7 +62,7 @@ static class PCLDownloadSymSet
         //                                                                //
         //----------------------------------------------------------------//
 
-        fileOpen = SymSetFileOpen(filename, ref fileSize);
+        bool fileOpen = SymSetFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {
@@ -284,7 +282,7 @@ static class PCLDownloadSymSet
                 maxPos = (int)(fileSize - 1);
 
             for (pos = offset;
-                 (flagOK) && (!foundTerm) && (pos < maxPos);
+                 flagOK && (!foundTerm) && (pos < maxPos);
                  pos++)
             {
                 x = _binReader.ReadByte();
@@ -389,11 +387,9 @@ static class PCLDownloadSymSet
             //                                                            //
             //------------------------------------------------------------//
 
-            ushort symSetDes;
-
             int codeCt;
 
-            symSetDes = (ushort)((buf[2] * 256) + buf[3]);
+            ushort symSetDes = (ushort)((buf[2] * 256) + buf[3]);
 
             format = buf[4];
             type = buf[5];
@@ -571,11 +567,9 @@ static class PCLDownloadSymSet
     {
         bool OK = true;
 
-        bool fileOpen = false;
-
         long fileSize = 0;
 
-        fileOpen = SymSetFileOpen(filename, ref fileSize);
+        bool fileOpen = SymSetFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {
@@ -620,7 +614,7 @@ static class PCLDownloadSymSet
     private static bool SymSetFileOpen(string fileName,
                                           ref long fileSize)
     {
-        bool open = false;
+        bool fileOpen = false;
 
         if (string.IsNullOrEmpty(fileName))
         {
@@ -643,23 +637,23 @@ static class PCLDownloadSymSet
         }
         else
         {
-            _ipStream = File.Open(fileName,
-                                  FileMode.Open,
-                                  FileAccess.Read,
-                                  FileShare.None);
+        _ipStream = File.Open(fileName,
+                                FileMode.Open,
+                                FileAccess.Read,
+                                FileShare.None);
 
-            if (_ipStream != null)
-            {
-                open = true;
+        if (_ipStream != null)
+        {
+            fileOpen = true;
 
-                FileInfo fi = new FileInfo(fileName);
+            FileInfo fi = new FileInfo(fileName);
 
-                fileSize = fi.Length;
+            fileSize = fi.Length;
 
-                _binReader = new BinaryReader(_ipStream);
-            }
+            _binReader = new BinaryReader(_ipStream);
+        }
         }
 
-        return open;
+        return fileOpen;
     }
 }

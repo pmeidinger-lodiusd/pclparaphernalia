@@ -162,9 +162,7 @@ static class PCLSymSetTypes
 
     public static eIndex GetIndexForIdPCL(byte idPCL)
     {
-        string entry;
-
-        entry = Enum.GetName(typeof(eIdPCL), idPCL);
+        string entry = Enum.GetName(typeof(eIdPCL), idPCL);
 
         if (entry == null)
             return eIndex.Bound_PC8;

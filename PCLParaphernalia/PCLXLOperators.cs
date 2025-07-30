@@ -214,20 +214,14 @@ static class PCLXLOperators
                                            bool incUsedSeqsOnly,
                                            bool excUnusedResTags)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _tagUnknown.StatsCtTotal;
+        int count = _tagUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -299,11 +293,7 @@ static class PCLXLOperators
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "_____________________";

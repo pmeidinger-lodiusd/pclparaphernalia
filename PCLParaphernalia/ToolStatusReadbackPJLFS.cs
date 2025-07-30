@@ -62,11 +62,9 @@ static class ToolStatusReadbackPJLFS
         const int bufSize = 2048;
         int readSize;
 
-        bool endLoop;
-
         byte[] buf = new byte[bufSize];
 
-        endLoop = false;
+        bool endLoop = false;
 
         while (!endLoop)
         {
@@ -91,8 +89,6 @@ static class ToolStatusReadbackPJLFS
     private static bool BinSrcFileOpen(string fileName,
                                            ref long fileSize)
     {
-        bool open = false;
-
         if (string.IsNullOrEmpty(fileName))
         {
             MessageBox.Show("Binary source filename is null.",
@@ -113,6 +109,8 @@ static class ToolStatusReadbackPJLFS
 
             return false;
         }
+
+        bool open = false;
 
         _ipStream = File.Open(fileName,
                                 FileMode.Open,
@@ -159,8 +157,6 @@ static class ToolStatusReadbackPJLFS
 
     private static bool BinTgtFileOpen(string fileName)
     {
-        bool open = false;
-
         if (string.IsNullOrEmpty(fileName))
         {
             MessageBox.Show("Target filename is null.",
@@ -170,6 +166,8 @@ static class ToolStatusReadbackPJLFS
 
             return false;
         }
+
+        bool open = false;
 
         _opStream = File.Open(fileName,
                                 FileMode.OpenOrCreate,
@@ -518,9 +516,7 @@ static class ToolStatusReadbackPJLFS
 
         string reply = string.Empty;
 
-        bool binFileOpen = false;
-
-        binFileOpen = BinTgtFileOpen(binTgtFilename);
+        bool binFileOpen = BinTgtFileOpen(binTgtFilename);
 
         if (!binFileOpen)
         {

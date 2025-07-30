@@ -119,10 +119,7 @@ static class PrnParseMakeOvl
 
             const int bufSize = 1024;
 
-            long skipBegin,
-                  skipEnd,
-                  comboStart = 0,
-                  crntPos,
+            long comboStart = 0,
                   syncLen,
                   fragLen;
 
@@ -141,9 +138,9 @@ static class PrnParseMakeOvl
                                       ref comboModified,
                                       ref comboStart);
 
-            crntPos = linkData.MakeOvlOffset;
-            skipBegin = linkData.MakeOvlSkipBegin;
-            skipEnd = linkData.MakeOvlSkipEnd;
+            long crntPos = linkData.MakeOvlOffset;
+            long skipBegin = linkData.MakeOvlSkipBegin;
+            long skipEnd = linkData.MakeOvlSkipEnd;
 
             if (skipBegin >= 0)
             {
@@ -414,9 +411,6 @@ static class PrnParseMakeOvl
 
         int analysisLevel;
 
-        long seqBegin,
-              seqEnd;
-
         PrnParseConstants.eOvlPos makeOvlPosCrnt = linkData.MakeOvlPos;
         PrnParseConstants.eOvlAct makeOvlActCrnt = linkData.MakeOvlAct;
         PrnParseConstants.eOvlShow makeOvlShowCrnt = linkData.MakeOvlShow;
@@ -429,8 +423,8 @@ static class PrnParseMakeOvl
 
         comboModified = linkData.PclComboModified;
 
-        seqBegin = fileOffset + seqStart;
-        seqEnd = seqBegin + fragLen;
+        long seqBegin = fileOffset + seqStart;
+        long seqEnd = seqBegin + fragLen;
 
         if (makeOvlPosCrnt == PrnParseConstants.eOvlPos.BeforeFirstPage)
         {
@@ -762,18 +756,13 @@ static class PrnParseMakeOvl
     {
         bool breakpoint = false;
 
-        int analysisLevel;
-
-        long seqBegin,
-              seqEnd;
-
         PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
         PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
 
-        analysisLevel = linkData.AnalysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        seqBegin = fileOffset + attrDataStart;
-        seqEnd = fileOffset + attrPos + 2;    // what about 2-byte tags?
+        long seqBegin = fileOffset + attrDataStart;
+        long seqEnd = fileOffset + attrPos + 2;    // what about 2-byte tags?
 
         if (makeOvlPos == PrnParseConstants.eOvlPos.WithinOtherPages)
         {
@@ -871,18 +860,13 @@ static class PrnParseMakeOvl
     {
         bool breakpoint = false;
 
-        int analysisLevel;
-
-        long seqBegin,
-              seqEnd;
-
         PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
         PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
 
-        analysisLevel = linkData.AnalysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        seqBegin = fileOffset + operDataStart;
-        seqEnd = fileOffset + operPos + 1;
+        long seqBegin = fileOffset + operDataStart;
+        long seqEnd = fileOffset + operPos + 1;
 
         if (makeOvlPos == PrnParseConstants.eOvlPos.BeforeFirstPage)
         {
@@ -1247,18 +1231,13 @@ static class PrnParseMakeOvl
 
         bool encapsulate = linkData.MakeOvlEncapsulate;
 
-        int analysisLevel;
-
-        long seqBegin,
-              seqEnd;
-
         PrnParseConstants.eOvlPos makeOvlPos = linkData.MakeOvlPos;
         PrnParseConstants.eOvlAct makeOvlAct = linkData.MakeOvlAct;
 
-        analysisLevel = linkData.AnalysisLevel;
+        int analysisLevel = linkData.AnalysisLevel;
 
-        seqBegin = fileOffset + hddrEnd;
-        seqEnd = fileOffset + hddrEnd;
+        long seqBegin = fileOffset + hddrEnd;
+        long seqEnd = fileOffset + hddrEnd;
 
         if (linkData.MakeOvlRestoreStateXL)
         {
@@ -1402,14 +1381,9 @@ static class PrnParseMakeOvl
                 optValueIsLen = false,
                 optDisplayHexVal = false;
 
-        short vInt16;
-
         int prefixLen = 0;
 
-        bool vCheck = false;
-
-        string descComplex = string.Empty,
-               typeText = string.Empty;
+        string descComplex = string.Empty;
 
         string seq = string.Empty;
 
@@ -1420,14 +1394,11 @@ static class PrnParseMakeOvl
         //                                                                //
         //----------------------------------------------------------------//
 
-        typeText = "PCL Parameterised";
+        string typeText = "PCL Parameterised";
 
-        vInt16 = 0;
+        short vInt16 = 0;
 
-        if (short.TryParse(value, out vInt16))
-            vCheck = true;
-        else
-            vCheck = false;
+        bool vCheck = short.TryParse(value, out vInt16);
 
         seqKnown = PCLComplexSeqs.CheckComplexSeq(
                         0,
@@ -1527,11 +1498,9 @@ static class PrnParseMakeOvl
                                         bool encapsulate,
                                         bool restoreCursor)
     {
-        PrnParseConstants.eOffsetPosition crntPos;
-
         parserPCL.SetTable(table);
 
-        crntPos = PrnParseConstants.eOffsetPosition.EndOfFile;
+        PrnParseConstants.eOffsetPosition crntPos = PrnParseConstants.eOffsetPosition.EndOfFile;
 
         if (restoreCursor)
         {

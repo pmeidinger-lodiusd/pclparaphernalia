@@ -667,10 +667,7 @@ static class PCLFonts
                                             ref ushort typeface,
                                             ref string fontName)
     {
-        bool typefacePreset;
-
-        typefacePreset = _fonts[indxFont].GetPCLFontIdData(ref typeface,
-                                                            ref fontName);
+        bool typefacePreset = _fonts[indxFont].GetPCLFontIdData(ref typeface, ref fontName);
 
         return typefacePreset;
     }

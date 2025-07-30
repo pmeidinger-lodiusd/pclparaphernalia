@@ -96,9 +96,6 @@ static class ToolFontSamplePCL
         bool symSetUserActEmbed,
         string symSetUserFile)
     {
-        PCLOrientations.eAspect aspect;
-
-        ushort logXOffset;
         ushort symSetKind1 = 0;
 
         int pageCt = sampleRangeOffsets.Length;
@@ -108,10 +105,10 @@ static class ToolFontSamplePCL
 
         //----------------------------------------------------------------//
 
-        aspect = PCLOrientations.GetAspect(indxOrientation);
+        PCLOrientations.eAspect aspect = PCLOrientations.GetAspect(indxOrientation);
 
-        logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
-                                                    _unitsPerInch, aspect);
+        ushort logXOffset = PCLPaperSizes.GetLogicalOffset(indxPaperSize,
+                                            _unitsPerInch, aspect);
 
         //----------------------------------------------------------------//
 
@@ -914,16 +911,14 @@ static class ToolFontSamplePCL
         int startIndxMajor;
 
         bool checkSingleByteCodes = false;
-        bool utf8;
-        bool twoByteMethod;
         bool validCodePoint = true;
 
         bool[] validSingleByteCodes = new bool[sizeSingleByteSet];
 
         //----------------------------------------------------------------//
 
-        utf8 = false;
-        twoByteMethod = false;
+        bool utf8 = false;
+        bool twoByteMethod = false;
 
         if ((indxTextParseMethod == PCLTextParsingMethods.eIndex.m83_UTF8) ||
             (indxTextParseMethod == PCLTextParsingMethods.eIndex.m1008_UTF8_alt))

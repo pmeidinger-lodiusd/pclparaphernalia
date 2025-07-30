@@ -25,18 +25,14 @@ static class ToolStatusReadbackPCL
                                        int indexEntity,
                                        int indexLocType)
     {
-        string seq;
-
-        PCLEntityTypes.eType entityType;
-
-        string entityIdPCL;
-        string locTypeIdPCL;
-
         if (indexEntity < PCLEntityTypes.GetCount())
         {
-            entityType = PCLEntityTypes.GetType(indexEntity);
-            entityIdPCL = PCLEntityTypes.GetIdPCL(indexEntity);
-            locTypeIdPCL = PCLLocationTypes.GetIdPCL(indexLocType);
+            PCLEntityTypes.eType entityType = PCLEntityTypes.GetType(indexEntity);
+            string entityIdPCL = PCLEntityTypes.GetIdPCL(indexEntity);
+            string locTypeIdPCL = PCLLocationTypes.GetIdPCL(indexLocType);
+
+            string seq;
+
 
             if (entityType == PCLEntityTypes.eType.Memory)
             {

@@ -255,9 +255,7 @@ static class PCLSymbolSets
     public static void GetNameForId(ushort kind1,
                                     ref string name)
     {
-        int index = -1;
-
-        index = GetIndexForId(kind1);
+        int index = GetIndexForId(kind1);
 
         if (index == -1)
             name = "unknown";
@@ -1549,11 +1547,9 @@ static class PCLSymbolSets
 
     public static void SetDataUserSetDefault(ushort symSetNo)
     {
-        int index;
-
         ushort[] mapArray;
 
-        index = GetIndexForId(symSetNo);
+        int index = GetIndexForId(symSetNo);
 
         if (index == -1)
             mapArray = PCLSymSetMaps.GetMapArrayUserSet();
@@ -1583,15 +1579,13 @@ static class PCLSymbolSets
         ushort kind1Num = 0,
                kind1Alpha = 0;
 
-        int len;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Check that field length is within limits.                      //
         //                                                                //
         //----------------------------------------------------------------//
 
-        len = symbolSetId.Length;
+        int len = symbolSetId.Length;
 
         if ((len < 2) || (len > 5))
             dataValid = false;

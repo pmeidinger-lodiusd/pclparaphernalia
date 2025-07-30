@@ -136,7 +136,6 @@ static class PCLXLDownloadStream
     public static bool CheckStreamFile(string filename,
                                           ref string streamName)
     {
-        bool fileOpen = false;
         bool streamNamePresent = false;
 
         long fileSize = 0;
@@ -147,7 +146,7 @@ static class PCLXLDownloadStream
         //                                                                //
         //----------------------------------------------------------------//
 
-        fileOpen = StreamFileOpen(filename, ref fileSize);
+        bool fileOpen = StreamFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {
@@ -207,13 +206,11 @@ static class PCLXLDownloadStream
                                           string streamName,
                                           bool encapsulated)
     {
-        bool fileOpen = false;
-
         bool OK = true;
 
         long fileSize = 0;
 
-        fileOpen = StreamFileOpen(filename, ref fileSize);
+        bool fileOpen = StreamFileOpen(filename, ref fileSize);
 
         if (!fileOpen)
         {

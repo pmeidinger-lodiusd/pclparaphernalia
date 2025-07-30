@@ -190,11 +190,9 @@ static class PCLXLWriter
                                        float valReal32_x,
                                        float valReal32_y)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Real32XY;
 
-        tempArray = BitConverter.GetBytes(valReal32_x);
+        byte[] tempArray = BitConverter.GetBytes(valReal32_x);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -229,11 +227,9 @@ static class PCLXLWriter
                                      PCLXLAttributes.eTag attributeTag,
                                      short valSint16)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Sint16;
 
-        tempArray = BitConverter.GetBytes(valSint16);
+        byte[] tempArray = BitConverter.GetBytes(valSint16);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -260,12 +256,10 @@ static class PCLXLWriter
                                           short arraySize,
                                           short[] arraySint16)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Sint16Array;
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        tempArray = BitConverter.GetBytes(arraySize);
+        byte[] tempArray = BitConverter.GetBytes(arraySize);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -301,11 +295,9 @@ static class PCLXLWriter
                                         short valSint16_x2,
                                         short valSint16_y2)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Sint16Box;
 
-        tempArray = BitConverter.GetBytes(valSint16_x1);
+        byte[] tempArray = BitConverter.GetBytes(valSint16_x1);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -347,11 +339,9 @@ static class PCLXLWriter
                                        short valSint16_x,
                                        short valSint16_y)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Sint16XY;
 
-        tempArray = BitConverter.GetBytes(valSint16_x);
+        byte[] tempArray = BitConverter.GetBytes(valSint16_x);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -412,12 +402,10 @@ static class PCLXLWriter
                                          short arraySize,
                                          short[] arraySint16)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.UbyteArray;
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        tempArray = BitConverter.GetBytes(arraySize);
+        byte[] tempArray = BitConverter.GetBytes(arraySize);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -450,12 +438,10 @@ static class PCLXLWriter
                                          short arraySize,
                                          byte[] arrayUbyte)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.UbyteArray;
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        tempArray = BitConverter.GetBytes(arraySize);
+        byte[] tempArray = BitConverter.GetBytes(arraySize);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -490,14 +476,11 @@ static class PCLXLWriter
                                          PCLXLAttributes.eTag attributeTag,
                                          string valString)
     {
-        byte[] tempArray;
-        short arraySize;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.UbyteArray;
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        arraySize = (short)valString.Length;
-        tempArray = BitConverter.GetBytes(arraySize);
+        short arraySize = (short)valString.Length;
+        byte[] tempArray = BitConverter.GetBytes(arraySize);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -528,11 +511,9 @@ static class PCLXLWriter
                                      PCLXLAttributes.eTag attributeTag,
                                      ushort valUint16)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        tempArray = BitConverter.GetBytes(valUint16);
+        byte[] tempArray = BitConverter.GetBytes(valUint16);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -559,12 +540,10 @@ static class PCLXLWriter
                                           short arraySize,
                                           ushort[] arrayUint16)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16Array;
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16;
 
-        tempArray = BitConverter.GetBytes(arraySize);
+        byte[] tempArray = BitConverter.GetBytes(arraySize);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -600,11 +579,9 @@ static class PCLXLWriter
                                         ushort valUint16_x2,
                                         ushort valUint16_y2)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16Box;
 
-        tempArray = BitConverter.GetBytes(valUint16_x1);
+        byte[] tempArray = BitConverter.GetBytes(valUint16_x1);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -646,11 +623,9 @@ static class PCLXLWriter
                                        ushort valUint16_x,
                                        ushort valUint16_y)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint16XY;
 
-        tempArray = BitConverter.GetBytes(valUint16_x);
+        byte[] tempArray = BitConverter.GetBytes(valUint16_x);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -681,11 +656,9 @@ static class PCLXLWriter
                                      PCLXLAttributes.eTag attributeTag,
                                      uint valUint32)
     {
-        byte[] tempArray;
-
         buffer[bufIndex++] = (byte)PCLXLDataTypes.eTag.Uint32;
 
-        tempArray = BitConverter.GetBytes(valUint32);
+        byte[] tempArray = BitConverter.GetBytes(valUint32);
 
         buffer[bufIndex++] = tempArray[0];
         buffer[bufIndex++] = tempArray[1];
@@ -711,9 +684,8 @@ static class PCLXLWriter
                                          ref int bufIndex,
                                          int dataLen)
     {
-        byte[] tempArray;
 
-        tempArray = BitConverter.GetBytes(dataLen);
+        byte[] tempArray = BitConverter.GetBytes(dataLen);
 
         if (dataLen < 256)
         {
@@ -760,14 +732,9 @@ static class PCLXLWriter
                                   bool embeddedStream,
                                   short charAngle)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrSint16 +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrSint16 + cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -799,14 +766,9 @@ static class PCLXLWriter
                                  bool embeddedStream,
                                  float charBoldValue)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrReal32 +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrReal32 + cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -839,14 +801,9 @@ static class PCLXLWriter
                                   float charScaleX,
                                   float charScaleY)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrReal32XY +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrReal32XY + cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -880,14 +837,10 @@ static class PCLXLWriter
                                   float charShearX,
                                   float charShearY)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrReal32XY +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrReal32XY +
+         cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -922,9 +875,7 @@ static class PCLXLWriter
     {
         int lenBuf;
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         if (hddrLen > 256)
             lenBuf = 5;
@@ -966,18 +917,13 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf,
-              len;
-
-        float charSize;
-
-        indBuf = 0;
 
         //----------------------------------------------------------------//
 
-        charSize = (pointSize * _sessionUPI) / _pointsPerInch;
+        float charSize = (pointSize * _sessionUPI) / _pointsPerInch;
 
-        len = fontName.Length;
+        int indBuf = 0;
+        int len = fontName.Length;
 
         if (len < lenHPFontName)
         {
@@ -1028,15 +974,11 @@ static class PCLXLWriter
                                       short fontNameLen,
                                       byte[] fontName)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrUbyteArrayBase +
-                 (cSizeAttrUbyteArrayUnit * fontNameLen) +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrUbyteArrayBase +
+                     (cSizeAttrUbyteArrayUnit * fontNameLen) +
+                     cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -1068,13 +1010,9 @@ static class PCLXLWriter
     public static void FontCharEnd(BinaryWriter prnWriter,
                                     bool embeddedStream)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeOperator;
+        int lenBuf = cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -1102,13 +1040,9 @@ static class PCLXLWriter
                                      ushort charCode,
                                      ushort charDataSize)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
+        int lenBuf = cSizeAttrUint16 + cSizeAttrUint16 + cSizeOperator;
         byte[] buffer = new byte[lenBuf];
 
         //----------------------------------------------------------------//
@@ -1146,16 +1080,13 @@ static class PCLXLWriter
                                       byte[] fontName,
                                       byte fontFormat)
     {
-        int lenBuf;
 
-        int indBuf;
+        int indBuf = 0;
 
-        indBuf = 0;
-
-        lenBuf = cSizeAttrUbyteArrayBase +
-                 (cSizeAttrUbyteArrayUnit * fontNameLen) +
-                 cSizeAttrUbyte +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrUbyteArrayBase +
+                     (cSizeAttrUbyteArrayUnit * fontNameLen) +
+                     cSizeAttrUbyte +
+                     cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -1192,13 +1123,9 @@ static class PCLXLWriter
     public static void FontHddrEnd(BinaryWriter prnWriter,
                                     bool embeddedStream)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeOperator;
+        int lenBuf = cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -1225,13 +1152,9 @@ static class PCLXLWriter
                                      bool embeddedStream,
                                      ushort hddrLen)
     {
-        int lenBuf;
+        int indBuf = 0;
 
-        int indBuf;
-
-        indBuf = 0;
-
-        lenBuf = cSizeAttrUint16 + cSizeOperator;
+        int lenBuf = cSizeAttrUint16 + cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -1269,14 +1192,11 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf,
-              len;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         //----------------------------------------------------------------//
 
-        len = fontName.Length;
+        int len = fontName.Length;
 
         if (len < lenHPFontName)
         {
@@ -1340,9 +1260,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         PCLXLWriter.AddAttrUbyte(ref buffer,
                                  ref indBuf,
@@ -1393,9 +1311,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         PCLXLWriter.AddOperator(ref buffer,
                                 ref indBuf,
@@ -1426,11 +1342,8 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf,
-              dataLen;
-
-        indBuf = 0;
-        dataLen = data.Length;
+        int indBuf = 0;
+        int dataLen = data.Length;
 
         PCLXLWriter.AddAttrUint16(ref buffer,
                                    ref indBuf,
@@ -1496,11 +1409,9 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
         bool flagSimplexJob = PCLPlexModes.IsSimplex(indxPlexMode);
 
-        indBuf = 0;
+        int indBuf = 0;
 
         if (indxOrientation < PCLOrientations.GetCount())
         {
@@ -1626,9 +1537,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         AddAttrUint16(ref buffer,
                        ref indBuf,
@@ -1667,9 +1576,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         PCLXLWriter.AddAttrUbyte(ref buffer,
                                  ref indBuf,
@@ -1742,11 +1649,8 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf,
-              patLen;
-
-        indBuf = 0;
-        patLen = pattern.Length;
+        int indBuf = 0;
+        int patLen = pattern.Length;
 
         PCLXLWriter.AddAttrUbyte(ref buffer,
                                  ref indBuf,
@@ -1856,9 +1760,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         //----------------------------------------------------------------//
 
@@ -1890,11 +1792,8 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf,
-              patLen;
-
-        indBuf = 0;
-        patLen = pattern.Length;
+        int indBuf = 0;
+        int patLen = pattern.Length;
 
         //----------------------------------------------------------------//
 
@@ -1958,14 +1857,10 @@ static class PCLXLWriter
                                   ushort height,
                                   ushort width)
     {
-        int lenBuf;
 
-        int indBuf;
+        int indBuf = 0;
 
-        indBuf = 0;
-
-        lenBuf = cSizeAttrUint16Box +
-                 cSizeOperator;
+        int lenBuf = cSizeAttrUint16Box + cSizeOperator;
 
         byte[] buffer = new byte[lenBuf];
 
@@ -2003,11 +1898,9 @@ static class PCLXLWriter
 
         byte[] bufStd = new byte[lenStd];
 
-        string seq;
-
         int indStd;
 
-        seq = "\x1b" + "%-12345X";          // Universal Exit Language
+        string seq = "\x1b" + "%-12345X";          // Universal Exit Language
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -2132,9 +2025,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         AddAttrUbyteArray(ref buffer,
                            ref indBuf,
@@ -2163,9 +2054,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         AddOperator(ref buffer,
                      ref indBuf,
@@ -2198,9 +2087,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         PCLXLWriter.AddAttrUbyteArray(ref buffer,
                                       ref indBuf,
@@ -2232,9 +2119,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         if (embeddedStream)
         {
@@ -2355,20 +2240,15 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
+        float advance;
 
-        short textLen;
-
-        float scaleFactor,
-               advance;
-
-        indBuf = 0;
-
-        scaleFactor = pointSize / cAdvanceTablePPI;
+        int indBuf = 0;
 
         //----------------------------------------------------------------//
+        
+        float scaleFactor = pointSize / cAdvanceTablePPI;
 
-        textLen = (short)text.Length;
+        short textLen = (short)text.Length;
 
         short[] tmpAdvance = new short[textLen];
 
@@ -2430,18 +2310,15 @@ static class PCLXLWriter
                                      float pointSize,
                                      string text)
     {
-        short textLen;
-
-        float scaleFactor,
-               advance;
+        float advance;
 
         short totalAdvance = 0;
 
-        scaleFactor = pointSize / cAdvanceTablePPI;
-
         //----------------------------------------------------------------//
 
-        textLen = (short)text.Length;
+        float scaleFactor = pointSize / cAdvanceTablePPI;
+
+        short textLen = (short)text.Length;
 
         for (int i = 0; i < textLen; i++)
         {
@@ -2477,13 +2354,9 @@ static class PCLXLWriter
         short[] advanceArray = { 0x00 };
         ushort[] codePointArray = { 0x00 };
 
-        int indBuf;
+        int indBuf = 0;
 
-        float scaleFactor;
-
-        indBuf = 0;
-
-        scaleFactor = pointSize / cAdvanceTablePPI;
+        float scaleFactor = pointSize / cAdvanceTablePPI;
 
         //----------------------------------------------------------------//
 
@@ -2544,30 +2417,22 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
+        float advance;
 
-        short textLen;
+        int indBuf = 0;
 
-        float scaleFactor,
-               advance;
-
-        double radians,
-               tangent;
-
-        indBuf = 0;
-
-        scaleFactor = pointSize / cAdvanceTablePPI;
+        float scaleFactor = pointSize / cAdvanceTablePPI;
 
         // Calculate the tangent of specified angle (given in degrees).
         // If angle is positive, make tangent negative to cause Y decrement
         // If angle is negative, make tangent positive to cause Y increment
 
-        radians = angle * (Math.PI / 180);
-        tangent = -Math.Tan(radians);
+        double radians = angle * (Math.PI / 180);
+        double tangent = -Math.Tan(radians);
 
         //----------------------------------------------------------------//
 
-        textLen = (short)text.Length;
+        short textLen = (short)text.Length;
 
         short[] tmpAdvanceX = new short[textLen];
         short[] tmpAdvanceY = new short[textLen];
@@ -2632,9 +2497,7 @@ static class PCLXLWriter
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
-        indBuf = 0;
+        int indBuf = 0;
 
         AddOperator(ref buffer,
                      ref indBuf,
@@ -2661,12 +2524,9 @@ static class PCLXLWriter
     {
         if (embeddedStream)
         {
-            int lenTemp;
-            int indTemp;
+            int indTemp = 0;
 
-            indTemp = 0;
-
-            lenTemp = cSizeAttrUint32 + cSizeOperator;
+            int lenTemp = cSizeAttrUint32 + cSizeOperator;
 
             if (indBuf > 256)
                 lenTemp += cSizeEmbedDataInt32;

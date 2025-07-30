@@ -219,8 +219,6 @@ static class ToolFontSamplePCLXL
                              0x00, 0xc0, 0xc0, 0x00, 0x00, 0x00,
                              0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
-        int indBuf;
-
         short crntPtSize;
 
         short posX1,
@@ -228,7 +226,7 @@ static class ToolFontSamplePCLXL
               posY1,
               posY2;
 
-        indBuf = 0;
+        int indBuf = 0;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1143,8 +1141,6 @@ static class ToolFontSamplePCLXL
 
         byte[] buffer = new byte[lenBuf];
 
-        int indBuf;
-
         short posX,
               posY,
               posXStart,
@@ -1162,7 +1158,7 @@ static class ToolFontSamplePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        indBuf = 0;
+        int indBuf = 0;
 
         symSetId = PCLSymbolSets.TranslateKind1ToId(symSetKind1);
         charSize = PCLXLWriter.GetCharSize((float)pointSize);

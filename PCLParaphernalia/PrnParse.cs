@@ -122,8 +122,6 @@ class PrnParse
     {
         bool OK = true;
 
-        bool ipOpen = false;
-
         _options = options;
         _table = table;
         _prnFilename = prnFilename;
@@ -132,9 +130,9 @@ class PrnParse
 
         //  _perCentMax = 0;
 
-        ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
+        bool isOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
         }
@@ -399,13 +397,10 @@ class PrnParse
 
                     if (newPDL != _crntPDL)
                     {
-                        bool makeMacroScan,
-                                makeMacroRun;
-
                         string langName;
 
-                        makeMacroScan = _parseType == eParseType.ScanForPDL;
-                        makeMacroRun = _parseType == eParseType.MakeOverlay;
+                        bool makeMacroScan = _parseType == eParseType.ScanForPDL;
+                        bool makeMacroRun = _parseType == eParseType.MakeOverlay;
 
                         if (makeMacroScan)
                             endReached = true;
@@ -899,17 +894,15 @@ class PrnParse
     {
         bool OK = true;
 
-        bool ipOpen = false;
-
         _options = options;
         _table = table;
         _prnFilename = prnFilename;
 
         _flagDiagFileAccess = _options.FlagGenDiagFileAccess;
 
-        ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
+        bool isOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
         }
@@ -1153,8 +1146,6 @@ class PrnParse
         PrnParseOptions options,
         DataTable table)
     {
-        bool badSeq;
-
         ToolCommonData.ePrintLang crntPDL =
             ToolCommonData.ePrintLang.PCL;
 
@@ -1162,7 +1153,7 @@ class PrnParse
 
         linkData.MacroLevelAdjust(true);
 
-        badSeq = _parsePCL.ParseBuffer(buf,
+        bool badSeq = _parsePCL.ParseBuffer(buf,
                                         ref fileOffset,
                                         ref bufRem,
                                         ref bufOffset,
@@ -1308,15 +1299,13 @@ class PrnParse
                                    int macroId)
     {
         bool OK = true;
-
-        bool ipOpen = false;
-
+        
         _options = options;
         _table = table;
 
-        ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
+        bool isOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
         }
@@ -1378,14 +1367,12 @@ class PrnParse
     {
         bool OK = true;
 
-        bool ipOpen = false;
-
         _options = options;
         _table = table;
 
-        ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
+        bool isOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
         }
@@ -1441,13 +1428,11 @@ class PrnParse
     {
         bool OK = true;
 
-        bool ipOpen = false;
-
         _options = options;
 
-        ipOpen = PrnFileOpen(prnFilename, ref _fileSize);
+        bool isOpen = PrnFileOpen(prnFilename, ref _fileSize);
 
-        if (!ipOpen)
+        if (!isOpen)
         {
             OK = false;
 
@@ -1518,10 +1503,7 @@ class PrnParse
     private void OvlFileOpen(bool makeOvlXL,
                              ref string ovlFilename)
     {
-        SaveFileDialog saveDialog;
-
-        int ptr,
-              len;
+        int len;
 
         string saveDirectory,
                tmpFilename;
@@ -1532,7 +1514,7 @@ class PrnParse
         //                                                                //
         //----------------------------------------------------------------//
 
-        ptr = ovlFilename.LastIndexOf("\\");
+        int ptr = ovlFilename.LastIndexOf("\\");
 
         if (ptr <= 0)
         {
@@ -1548,7 +1530,7 @@ class PrnParse
                                                    len - ptr - 1);
         }
 
-        saveDialog = new SaveFileDialog();
+        SaveFileDialog saveDialog = new SaveFileDialog();
 
         if (makeOvlXL)
         {

@@ -218,12 +218,10 @@ static class ToolFormSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         int tmpInt;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + pdlName;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + pdlName;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -290,14 +288,12 @@ static class ToolFormSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
         int tmpInt;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + _subKeyPCL;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -350,12 +346,10 @@ static class ToolFormSamplePersist
 
         int tmpInt;
 
-        string key;
-
         string defWorkFolder = ToolCommonData.DefWorkFolder;
 
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + _subKeyPCLXL;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + _subKeyPCLXL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -474,10 +468,8 @@ static class ToolFormSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + pdlName;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + pdlName;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -557,10 +549,8 @@ static class ToolFormSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + _subKeyPCL;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + _subKeyPCL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {
@@ -622,10 +612,8 @@ static class ToolFormSamplePersist
         RegistryKey keyMain =
             Registry.CurrentUser.CreateSubKey(_mainKey);
 
-        string key;
-
-        key = _subKeyTools + "\\" + _subKeyToolsFormSample +
-                             "\\" + _subKeyPCLXL;
+        string key = _subKeyTools + "\\" + _subKeyToolsFormSample +
+                     "\\" + _subKeyPCLXL;
 
         using (RegistryKey subKey = keyMain.CreateSubKey(key))
         {

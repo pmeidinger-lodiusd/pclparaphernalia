@@ -234,9 +234,7 @@ public class Helper_RawPrinter
 
         IntPtr pUnmanagedBytes = new IntPtr(0);
 
-        int nLength;
-
-        nLength = Convert.ToInt32(fs.Length);
+        int nLength = Convert.ToInt32(fs.Length);
 
         //----------------------------------------------------------------//
         //                                                                //

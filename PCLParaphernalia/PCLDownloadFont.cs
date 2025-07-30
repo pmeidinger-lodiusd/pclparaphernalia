@@ -71,11 +71,9 @@ static class PCLDownloadFont
     {
         bool OK = true;
 
-        bool fileOpen = false;
-
         long fileSize = 0;
 
-        fileOpen = FontFileOpen(fontFilename, ref fileSize);
+        bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
         if (!fileOpen)
         {

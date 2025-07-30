@@ -1189,11 +1189,8 @@ static class ReportCore
                                       int maxSizeVal,
                                       bool firstItem)
     {
-        int valPos,
-              valLen;
-
-        valLen = txtVal.Length;
-        valPos = 0;
+        int valLen = txtVal.Length;
+        int valPos = 0;
 
         if (firstItem)
         {
@@ -1238,14 +1235,11 @@ static class ReportCore
                                       int maxSizeVal,
                                       bool blankBefore)
     {
-        int valPos,
-              valLen;
-
         if (blankBefore)
             txtWriter.WriteLine();
 
-        valLen = txtVal.Length;
-        valPos = 0;
+        int valLen = txtVal.Length;
+        int valPos = 0;
 
         while (valPos + maxSizeVal < valLen)
         {
@@ -1950,10 +1944,12 @@ static class ReportCore
         //----------------------------------------------------------------//
 
         if (padClass != string.Empty)
+        {
             if (nameAsHddr)
                 htmlWriter.AddAttribute("class", padClass + " " + "fmtAdorn");
             else
                 htmlWriter.AddAttribute("class", padClass);
+        }
         else if (nameAsHddr)
             htmlWriter.AddAttribute("class", "fmtAdorn");
 

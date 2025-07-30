@@ -587,11 +587,9 @@ static class ToolImageBitmapPCLXL
 
         byte[] bufStd = new byte[sizeStd];
 
-        int indStd;
-
         PCLXLWriter.StdJobHeader(prnWriter, string.Empty);
 
-        indStd = 0;
+        int indStd = 0;
 
         if (orientation < PCLOrientations.GetCount())
         {
@@ -672,9 +670,7 @@ static class ToolImageBitmapPCLXL
 
         byte[] bufStd = new byte[sizeStd];
 
-        int indStd;
-
-        indStd = 0;
+        int indStd = 0;
 
         PCLXLWriter.AddAttrUint16(ref bufStd,
                             ref indStd,

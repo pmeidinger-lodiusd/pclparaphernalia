@@ -92,8 +92,7 @@ public partial class ToolMakeOverlay : Window
 
     private void btnGenerate_Click(object sender, RoutedEventArgs e)
     {
-        PrnParse parseFile = new PrnParse(PrnParse.eParseType.MakeOverlay,
-                                           0);
+        PrnParse parseFile = new PrnParse(PrnParse.eParseType.MakeOverlay, 0);
 
         _tableProgress.Clear();
 
@@ -139,11 +138,9 @@ public partial class ToolMakeOverlay : Window
     private void btnPCLOvlFilenameBrowse_Click(object sender,
                                                 RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _ovlFilenamePCL;
 
-        selected = SelectOvlFilePCL(ref filename);
+        bool selected = SelectOvlFilePCL(ref filename);
 
         if (selected)
         {
@@ -165,11 +162,9 @@ public partial class ToolMakeOverlay : Window
     private void btnPCLXLOvlFilenameBrowse_Click(object sender,
                                                 RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _ovlFilenamePCLXL;
 
-        selected = SelectOvlFilePCLXL(ref filename);
+        bool selected = SelectOvlFilePCLXL(ref filename);
 
         if (selected)
         {
@@ -190,11 +185,9 @@ public partial class ToolMakeOverlay : Window
     private void btnPrnFilenameBrowse_Click(object sender,
                                             RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _prnFilename;
 
-        selected = SelectPrnFile(ref filename);
+        bool selected = SelectPrnFile(ref filename);
 
         if (selected)
         {
@@ -267,22 +260,17 @@ public partial class ToolMakeOverlay : Window
     {
         bool validPDL = false;
 
-        int ptr;
-
-        ToolCommonData.ePrintLang scanPDL;
-
-        PrnParse parseFile = new PrnParse(PrnParse.eParseType.ScanForPDL,
-                                           0);
+        PrnParse parseFile = new PrnParse(PrnParse.eParseType.ScanForPDL, 0);
 
         _tableProgress.Clear();
 
-        scanPDL = ToolCommonData.ePrintLang.Unknown;
+        ToolCommonData.ePrintLang scanPDL = ToolCommonData.ePrintLang.Unknown;
 
         parseFile.MakeOverlayScan(_prnFilename,
                                    _options,
                                    ref scanPDL);
 
-        ptr = _prnFilename.LastIndexOf(".");
+        int ptr = _prnFilename.LastIndexOf(".");
 
         if (ptr <= 0)
             ptr = _prnFilename.Length;
@@ -443,28 +431,22 @@ public partial class ToolMakeOverlay : Window
         DataRowView rowView = (DataRowView)e.Row.Item;
         DataRow row = rowView.Row;
 
-        bool nullRow =
-            row.IsNull(PrnParseConstants.cRptA_colName_RowType);
+        bool nullRow = row.IsNull(PrnParseConstants.cRptA_colName_RowType);
 
         if (!nullRow)
         {
             if (_flagClrMapUseClr)
             {
-                int indxClrBack,
-                      indxClrFore;
-
-                int rowType;
-
                 Color clrBack = new Color(),
                       clrFore = new Color();
 
                 SolidColorBrush brushBack = new SolidColorBrush(),
                                 brushFore = new SolidColorBrush();
 
-                rowType = (int)row[PrnParseConstants.cRptA_colName_RowType];
+                int rowType = (int)row[PrnParseConstants.cRptA_colName_RowType];
 
-                indxClrBack = _indxClrMapBack[rowType];
-                indxClrFore = _indxClrMapFore[rowType];
+                int indxClrBack = _indxClrMapBack[rowType];
+                int indxClrFore = _indxClrMapFore[rowType];
 
                 clrBack = (Color)_stdClrsPropertyInfo[indxClrBack].GetValue(null, null);
                 clrFore = (Color)_stdClrsPropertyInfo[indxClrFore].GetValue(null, null);
@@ -950,11 +932,9 @@ public partial class ToolMakeOverlay : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLMacroId.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
         {

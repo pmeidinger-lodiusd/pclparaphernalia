@@ -90,9 +90,7 @@ static class PCLWriter
     public static void CharDownloadCode(BinaryWriter prnWriter,
                                         ushort codepoint)
     {
-        string seq;
-
-        seq = "\x1b" + "*c" + codepoint + "E";
+        string seq = "\x1b" + "*c" + codepoint + "E";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -110,9 +108,7 @@ static class PCLWriter
     public static void CharDownloadDesc(BinaryWriter prnWriter,
                                         ushort hddrLen)
     {
-        string seq;
-
-        seq = "\x1b" + "(s" + hddrLen + "W";
+        string seq = "\x1b" + "(s" + hddrLen + "W";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -194,13 +190,11 @@ static class PCLWriter
                                       short coordX,
                                       short coordY)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
-                       coordX +
-                       "x" +                // Position: Horizontal
-                       coordY +
-                       "Y";                 // Position: Vertical
+        string seq = "\x1b" + "*p" +
+                              coordX +
+                              "x" +                // Position: Horizontal
+                              coordY +
+                              "Y";                 // Position: Vertical
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -302,16 +296,13 @@ static class PCLWriter
                                    ushort pageHeight)
     {
         const int defLogPageDataLen = 10;
-
-        string seq;
-
         byte[] buffer = new byte[defLogPageDataLen];
 
         byte[] tempArray;
 
-        seq = "\x1b" + "&a" +
-                       defLogPageDataLen +
-                       "W";                 // Define Logical Page
+        string seq = "\x1b" + "&a" +
+                     defLogPageDataLen +
+                     "W";                 // Define Logical Page
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -391,9 +382,7 @@ static class PCLWriter
     public static void FontDownloadHddr(BinaryWriter prnWriter,
                                          uint hddrLen)
     {
-        string seq;
-
-        seq = "\x1b" + ")s" + hddrLen + "W";
+        string seq = "\x1b" + ")s" + hddrLen + "W";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -410,9 +399,7 @@ static class PCLWriter
     public static void FontDownloadID(BinaryWriter prnWriter,
                                       ushort downloadID)
     {
-        string seq;
-
-        seq = "\x1b" + "*c" + downloadID + "D";
+        string seq = "\x1b" + "*c" + downloadID + "D";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -429,9 +416,7 @@ static class PCLWriter
     public static void FontDownloadRemove(BinaryWriter prnWriter,
                                           ushort downloadID)
     {
-        string seq;
-
-        seq = "\x1b" + "*c" + downloadID + "d2F";
+        string seq = "\x1b" + "*c" + downloadID + "d2F";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -472,11 +457,9 @@ static class PCLWriter
                                             ushort fontID,
                                             string filename)
     {
-        string seq;
-
         int fnLen = filename.Length + 1;
 
-        seq = "\x1b" + "*c" + fontID + "D" +
+        string seq = "\x1b" + "*c" + fontID + "D" +
               "\x1b" + "&n" + fnLen + "W" + "\x01" + filename;
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
@@ -496,14 +479,12 @@ static class PCLWriter
                                             ushort fontMacroId,
                                             string filename)
     {
-        string seq;
-
         int fnLen = filename.Length + 1;
 
-        seq = "\x1b" + "*c" + fontID + "D" +
-              "\x1b" + "&f" + fontMacroId + "Y" +
-              "\x1b" + "&n" + fnLen + "W" + "\x05" + filename +
-              "\x1b" + "&f3X";
+        string seq = "\x1b" + "*c" + fontID + "D" +
+                     "\x1b" + "&f" + fontMacroId + "Y" +
+                     "\x1b" + "&n" + fnLen + "W" + "\x05" + filename +
+                     "\x1b" + "&f3X";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -519,9 +500,7 @@ static class PCLWriter
 
     public static void FormFeed(BinaryWriter prnWriter)
     {
-        byte[] x = new byte[1];
-
-        x[0] = 0x0C;
+        byte[] x = new byte[1] { 0x0C };
 
         prnWriter.Write(x, 0, 1);
     }
@@ -543,12 +522,10 @@ static class PCLWriter
                                       short length,
                                       short stroke)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
+        string seq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y" +       // Position: Vertical
-              "\x1b" + "*c" +
+                     "\x1b" + "*c" +
                        length + "a" +       // Rectangle Size: Horizontal
                        stroke + "b" +       // Rectangle Size: Vertical
                        "0P";                // Fill Rectangle: Solid Area
@@ -573,12 +550,10 @@ static class PCLWriter
                                     short length,
                                     short stroke)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
+        string seq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y" +       // Position: Vertical
-              "\x1b" + "*c" +
+                     "\x1b" + "*c" +
                        stroke + "a" +       // Rectangle Size: Horizontal
                        length + "b" +       // Rectangle Size: Vertical
                        "0P";                // Fill Rectangle: Solid Area
@@ -647,9 +622,7 @@ static class PCLWriter
     public static void MacroDownloadId(BinaryWriter prnWriter,
                                         ushort downloadId)
     {
-        string seq;
-
-        seq = "\x1b" + "&f" + downloadId + "Y";
+        string seq = "\x1b" + "&f" + downloadId + "Y";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -668,12 +641,10 @@ static class PCLWriter
                                              ushort downloadID,
                                              string filename)
     {
-        string seq;
-
         int fnLen = filename.Length + 1;
 
-        seq = "\x1b" + "&f" + downloadID + "Y" +
-              "\x1b" + "&n" + fnLen + "W" + "\x05" + filename;
+        string seq = "\x1b" + "&f" + downloadID + "Y" +
+                     "\x1b" + "&n" + fnLen + "W" + "\x05" + filename;
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1227,20 +1198,13 @@ static class PCLWriter
                                      short height,
                                      short width)
     {
-        string seq;
+        short dpHeight = (short)((height * pointsPerInch * 10) / sessionUPI);
+        short dpWidth = (short)((width * pointsPerInch * 10) / sessionUPI);
 
-        short dpHeight,
-              dpWidth;
-
-        dpHeight = (short)((height * pointsPerInch * 10) /
-                             sessionUPI);
-        dpWidth = (short)((width * pointsPerInch * 10) /
-                             sessionUPI);
-
-        seq = "\x1b" + "*p" +
+        string seq = "\x1b" + "*p" +
                        coordX + "x" +       // Position: Horizontal
                        coordY + "Y" +       // Position: Vertical
-              "\x1b" + "*c" +
+                     "\x1b" + "*c" +
                        dpWidth + "x" +      // Picture Frame: Horizontal
                        dpHeight + "y" +     // Picture Frame: Vertical
                        "0T";                // Set Anchor Point
@@ -1260,11 +1224,9 @@ static class PCLWriter
     public static void PrintDirection(BinaryWriter prnWriter,
                                       short ccwAngle)
     {
-        string seq;
-
-        seq = "\x1b" + "&a" +               // print direction
-                       ccwAngle +
-                       "P";
+        string seq = "\x1b" + "&a" +               // print direction
+                              ccwAngle +
+                              "P";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1284,14 +1246,12 @@ static class PCLWriter
                                    int srcHeight,
                                    int compressMode)
     {
-        string seq;
-
-        seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
-                       srcWidth + "s" +     // Source Width
-                       srcHeight + "t" +    // Source Height
-                       "1A" +               // Start Raster Graphics: at X
-              "\x1b" + "*b" +
-                       compressMode + "M";  // Compression mode
+        string seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
+                              srcWidth + "s" +     // Source Width
+                              srcHeight + "t" +    // Source Height
+                              "1A" +               // Start Raster Graphics: at X
+                     "\x1b" + "*b" +
+                              compressMode + "M";  // Compression mode
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1327,14 +1287,12 @@ static class PCLWriter
                                    int destScalePercentY,
                                    int compressionMode)
     {
-        string seq;
-
         int destWidth = 0,
               destHeight = 0;
 
-        seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
-                       srcWidth + "s" +     // Source Width
-                       srcHeight + "T";     // Source Height
+        string seq = "\x1b" + "*r0f" +             // Raster Presentation: Logical
+                              srcWidth + "s" +     // Source Width
+                              srcHeight + "T";     // Source Height
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1392,10 +1350,8 @@ static class PCLWriter
     public static void RasterCompressionMode(BinaryWriter prnWriter,
                                              int compressMode)
     {
-        string seq;
-
-        seq = "\x1b" + "*b" +
-                       compressMode + "M";  // Compression mode
+        string seq = "\x1b" + "*b" +
+                              compressMode + "M";  // Compression mode
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1411,9 +1367,7 @@ static class PCLWriter
 
     public static void RasterEnd(BinaryWriter prnWriter)
     {
-        string seq;
-
-        seq = "\x1b" + "*rC";               // End Raster Graphics
+        string seq = "\x1b" + "*rC";               // End Raster Graphics
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1431,8 +1385,6 @@ static class PCLWriter
                                          int indxRasterResolution,
                                          bool valueIsIndex)
     {
-        string seq;
-
         ushort rasterRes;
 
         if (valueIsIndex)
@@ -1445,9 +1397,9 @@ static class PCLWriter
             rasterRes = (ushort)indxRasterResolution;
         }
 
-        seq = "\x1b" + "*t" +
-                       rasterRes +
-                       "R";                 // Raster Resolution
+        string seq = "\x1b" + "*t" +
+                              rasterRes +
+                              "R";                 // Raster Resolution
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1465,11 +1417,9 @@ static class PCLWriter
                                             int rowLength,
                                             byte[] buffer)
     {
-        string seq;
-
-        seq = "\x1b" + "*b" +
-                       rowLength +
-                       "V";                 // Transfer Raster Data: Plane
+        string seq = "\x1b" + "*b" +
+                              rowLength +
+                              "V";                 // Transfer Raster Data: Plane
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1490,11 +1440,9 @@ static class PCLWriter
                                          int rowLength,
                                          byte[] buffer)
     {
-        string seq;
-
-        seq = "\x1b" + "*b" +
-                       rowLength +
-                       "W";                 // Transfer Raster Data: Row
+        string seq = "\x1b" + "*b" +
+                              rowLength +
+                              "W";                 // Transfer Raster Data: Row
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1523,8 +1471,6 @@ static class PCLWriter
                                         bool floating,
                                         bool relative)
     {
-        string seq;
-
         string posSeq;
 
         if (floating)
@@ -1548,7 +1494,7 @@ static class PCLWriter
 
         //----------------------------------------------------------------//
 
-        seq = posSeq +                      // Position or null
+        string seq = posSeq +               // Position or null
               "\x1b" + "*c" +
                        width + "a" +        // Rectangle Size: Horizontal
                        stroke + "b" +       // Rectangle Size: Vertical
@@ -1596,8 +1542,6 @@ static class PCLWriter
                                        bool floating,
                                        bool relative)
     {
-        string seq;
-
         string posSeq;
 
         if (floating)
@@ -1621,7 +1565,7 @@ static class PCLWriter
 
         //----------------------------------------------------------------//
 
-        seq = posSeq +                      // Position or null
+        string seq = posSeq +               // Position or null
               "\x1b" + "*c" +
                        shade + "g" +        // Fill Shade
                        width + "a" +        // Rectangle Size: Horizontal
@@ -1717,8 +1661,6 @@ static class PCLWriter
                                          bool floating,
                                          bool relative)
     {
-        string seq;
-
         string posSeq;
 
         if (floating)
@@ -1742,12 +1684,12 @@ static class PCLWriter
 
         //----------------------------------------------------------------//
 
-        seq = posSeq +                      // Position or null
-              "\x1b" + "*c" +
-                       patternID + "g" +    // Pattern ID
-                       width + "a" +        // Rectangle Size: Horizontal
-                       height + "b" +       // Rectangle Size: Vertical
-                       "4P";                // Fill Rectangle: User pattern
+        string seq = posSeq +               // Position or null
+                    "\x1b" + "*c" +
+                             patternID + "g" +    // Pattern ID
+                             width + "a" +        // Rectangle Size: Horizontal
+                             height + "b" +       // Rectangle Size: Vertical
+                             "4P";                // Fill Rectangle: User pattern
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1771,16 +1713,14 @@ static class PCLWriter
                                        short width,
                                        short hatch_id)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
-                       coordX + "x" +       // Position: Horizontal
-                       coordY + "Y" +       // Position: Vertical
-              "\x1b" + "*c" +
-                       hatch_id + "g" +     // Cross-hatch id
-                       width + "a" +        // Rectangle Size: Horizontal
-                       height + "b" +       // Rectangle Size: Vertical
-                       "3P";                // Fill Rectangle: Cross-hatch
+        string seq = "\x1b" + "*p" +
+                              coordX + "x" +       // Position: Horizontal
+                              coordY + "Y" +       // Position: Vertical
+                     "\x1b" + "*c" +
+                              hatch_id + "g" +     // Cross-hatch id
+                              width + "a" +        // Rectangle Size: Horizontal
+                              height + "b" +       // Rectangle Size: Vertical
+                              "3P";                // Fill Rectangle: Cross-hatch
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1799,9 +1739,7 @@ static class PCLWriter
     public static void SetForegroundColour(BinaryWriter prnWriter,
                                             byte colourIndex)
     {
-        string seq;
-
-        seq = "\x1b" + "*v" + colourIndex + "S";
+        string seq = "\x1b" + "*v" + colourIndex + "S";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1818,9 +1756,7 @@ static class PCLWriter
     public static void SetROP(BinaryWriter prnWriter,
                                int operation)
     {
-        string seq;
-
-        seq = "\x1b" + "*l" + operation + "O";
+        string seq = "\x1b" + "*l" + operation + "O";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1838,11 +1774,9 @@ static class PCLWriter
     public static void SetTextLength(BinaryWriter prnWriter,
                                      short lines)
     {
-        string seq;
-
-        seq = "\x1b" + "&l" +              // tray identifier
-                       lines +              // number of lines
-                       "F";
+        string seq  = "\x1b" + "&l" +              // tray identifier
+                               lines +             // number of lines
+                               "F";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1859,12 +1793,10 @@ static class PCLWriter
     public static void SetVMI(BinaryWriter prnWriter,
                               float increment)
     {
-        string seq;
-
-        seq = "\x1b" + "&l" +             // set VMI
-                       increment +          // 1/48 inch increments 
-                       "C";
-
+        string seq = "\x1b" + "&l" +               // set VMI
+                              increment +          // 1/48 inch increments 
+                              "C";
+       
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
 
@@ -1902,9 +1834,7 @@ static class PCLWriter
     public static void StdJobHeader(BinaryWriter prnWriter,
                                     string pjlCommand)
     {
-        string seq;
-
-        seq = "\x1b" + "%-12345X";          // Universal Exit Language
+        string seq = "\x1b" + "%-12345X";          // Universal Exit Language
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -1936,13 +1866,11 @@ static class PCLWriter
                                      bool formAsMacro,
                                      short macroId)
     {
-        string seq;
-
         if (formAsMacro)
             MacroControl(prnWriter, macroId, eMacroControl.Delete);
 
-        seq = "\x1b" + "E" +                // Printer Reset
-              "\x1b" + "%-12345X";          // Universal Exit Language
+        string seq = "\x1b" + "E" +                // Printer Reset
+                     "\x1b" + "%-12345X";          // Universal Exit Language
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1959,9 +1887,7 @@ static class PCLWriter
     public static void SymSetDownloadCode(BinaryWriter prnWriter,
                                            ushort symSetNo)
     {
-        string seq;
-
-        seq = "\x1b" + "*c" + symSetNo + "R";
+        string seq = "\x1b" + "*c" + symSetNo + "R";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1978,9 +1904,7 @@ static class PCLWriter
     public static void SymSetDownloadDesc(BinaryWriter prnWriter,
                                            uint descLen)
     {
-        string seq;
-
-        seq = "\x1b" + "(f" + descLen + "W";
+        string seq = "\x1b" + "(f" + descLen + "W";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -1997,9 +1921,7 @@ static class PCLWriter
     public static void SymSetDownloadRemove(BinaryWriter prnWriter,
                                              ushort symSetNo)
     {
-        string seq;
-
-        seq = "\x1b" + "*c" + symSetNo + "r2S";
+        string seq = "\x1b" + "*c" + symSetNo + "r2S";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -2042,11 +1964,9 @@ static class PCLWriter
                             short spacing,
                             string text)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
-                       coordX + "x" +       // Position: Horizontal
-                       coordY + "Y";        // Position: Vertical
+        string seq = "\x1b" + "*p" +
+                              coordX + "x" +       // Position: Horizontal
+                              coordY + "Y";        // Position: Vertical
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -2092,11 +2012,9 @@ static class PCLWriter
                                     bool resetRotation,
                                     string text)
     {
-        string seq;
-
-        seq = "\x1b" + "*p" +
-                       coordX + "x" +       // Position: Horizontal
-                       coordY + "Y";        // Position: Vertical
+        string seq = "\x1b" + "*p" +
+                              coordX + "x" +       // Position: Horizontal
+                              coordY + "Y";        // Position: Vertical
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
 
@@ -2142,11 +2060,9 @@ static class PCLWriter
         BinaryWriter prnWriter,
         PCLTextParsingMethods.eIndex eMethod)
     {
-        string seq;
-
         byte indx = (byte)eMethod;
 
-        seq = "\x1b" + "&t" +
+        string seq = "\x1b" + "&t" +
               PCLTextParsingMethods.GetValue(indx).ToString() +
               "P";
 
@@ -2165,9 +2081,7 @@ static class PCLWriter
     public static void TextParsingMethod(BinaryWriter prnWriter,
                                          int parseMethod)
     {
-        string seq;
-
-        seq = "\x1b" + "&t" + parseMethod.ToString() + "P";
+        string seq = "\x1b" + "&t" + parseMethod.ToString() + "P";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }
@@ -2184,11 +2098,9 @@ static class PCLWriter
     public static void TransparentPrint(BinaryWriter prnWriter,
                                         short byteCount)
     {
-        string seq;
-
-        seq = "\x1b" + "&p" +               // transparent print
-                       byteCount +
-                       "X";
+        string seq = "\x1b" + "&p" +               // transparent print
+                              byteCount +
+                              "X";
 
         prnWriter.Write(seq.ToCharArray(), 0, seq.Length);
     }

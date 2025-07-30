@@ -48,9 +48,8 @@ class PCLCharCollItems
             new ObservableCollection<PCLCharCollItem>();
 
         PCLCharCollections.eBitType bitType;
-        int collsCt;
 
-        collsCt = PCLCharCollections.GetCollsCount();
+        int collsCt = PCLCharCollections.GetCollsCount();
 
         int bitNo;
         string desc;
@@ -117,9 +116,8 @@ class PCLCharCollItems
             new ObservableCollection<PCLCharCollItem>();
 
         PCLCharCollections.eBitType bitType;
-        int collsCt;
 
-        collsCt = PCLCharCollections.GetCollsCount();
+        int collsCt = PCLCharCollections.GetCollsCount();
 
         int bitNo;
         string desc;
@@ -176,9 +174,8 @@ class PCLCharCollItems
             new ObservableCollection<PCLCharCollItem>();
 
         PCLCharCollections.eBitType bitType;
-        int collsCt;
 
-        collsCt = PCLCharCollections.GetCollsCount();
+        int collsCt = PCLCharCollections.GetCollsCount();
 
         int bitNo;
         string desc;

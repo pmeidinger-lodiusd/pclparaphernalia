@@ -88,11 +88,9 @@ static class PrnParseCommon
         }
         else
         {
-            DataRow row;
-
             string offsetText;
 
-            row = table.NewRow();
+            DataRow row = table.NewRow();
 
             if (offset < 0)
             {
@@ -185,9 +183,7 @@ static class PrnParseCommon
         }
         else
         {
-            DataRow row;
-
-            row = table.NewRow();
+            DataRow row = table.NewRow();
 
             if (_parseType == PrnParse.eParseType.MakeOverlay)
             {

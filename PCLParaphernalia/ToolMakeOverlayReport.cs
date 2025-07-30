@@ -52,8 +52,6 @@ static class ToolMakeOverlayReport
         object stream = null;
         object writer = null;
 
-        bool OK = false;
-
         string fileExt;
         string saveFilename = null;
 
@@ -66,7 +64,7 @@ static class ToolMakeOverlayReport
 
         saveFilename = ovlFilename + "_report." + fileExt;
 
-        OK = ReportCore.DocOpen(rptFileFmt,
+        bool OK = ReportCore.DocOpen(rptFileFmt,
                                  ref saveFilename,
                                  ref stream,
                                  ref writer);
@@ -200,22 +198,16 @@ static class ToolMakeOverlayReport
 
         string c1Hddr;
 
-        string[] colHddrs;
-        string[] colNames;
-        int[] colSizes;
-
-        int ctItems;
-
-        ctItems = table.Rows.Count;
+        int ctItems = table.Rows.Count;
 
         if (flagOffsetHex)
             c1Hddr = c1Name + ": hex";
         else
             c1Hddr = c1Name + ": dec";
 
-        colHddrs = new string[colCt] { c0Name, c1Hddr, c2Name, c3Name, c4Name };
-        colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
-        colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };
+        string[] colHddrs = new string[colCt] { c0Name, c1Hddr, c2Name, c3Name, c4Name };
+        string[] colNames = new string[colCt] { c0Name, c1Name, c2Name, c3Name, c4Name };
+        int[] colSizes = new int[colCt] { lc0, lc1, lc2, lc3, lc4 };
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -273,13 +265,9 @@ static class ToolMakeOverlayReport
         string prnFilename,
         string ovlFilename)
     {
-        int maxLineLen = 0;
+        string title = "*** Make Overlay report ***:";
 
-        string title = string.Empty;
-
-        title = "*** Make Overlay report ***:";
-
-        maxLineLen = PrnParseConstants.cRptA_colMax_Action +
+        int maxLineLen = PrnParseConstants.cRptA_colMax_Action +
                      PrnParseConstants.cRptA_colMax_Offset +
                      PrnParseConstants.cRptA_colMax_Type +
                      PrnParseConstants.cRptA_colMax_Seq +

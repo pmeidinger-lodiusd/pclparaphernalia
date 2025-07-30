@@ -240,19 +240,15 @@ static class ToolTrayMapPCL
               ptSizeMain = (int)(scaleFactor * 18),
               ptSizeSub = (int)(scaleFactor * 8);
 
-        short posX,
-              posY,
-              posYInc;
-
         if (formAsMacro)
             PCLWriter.MacroControl(prnWriter, macroId,
                                    PCLWriter.eMacroControl.StartDef);
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-        posX = (short)((scaleFactor * _posXName) - _logPageOffset);
-        posY = (short)(scaleFactor * _posYHddr);
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)((scaleFactor * _posXName) - _logPageOffset);
+        short posY = (short)(scaleFactor * _posYHddr);
 
         PCLWriter.Font(prnWriter, true,
                         "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
@@ -328,10 +324,6 @@ static class ToolTrayMapPCL
                                               short macroId,
                                               float scaleFactor)
     {
-        short posX,
-              posY,
-              posYInc;
-
         int ptSizeHddr = (int)(scaleFactor * 24),
               ptSizeMain = (int)(scaleFactor * 18);
 
@@ -341,10 +333,9 @@ static class ToolTrayMapPCL
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-
-        posX = (short)((scaleFactor * _posXName) - _logPageOffset);
-        posY = (short)(scaleFactor * _posYHddr);
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)((scaleFactor * _posXName) - _logPageOffset);
+        short posY = (short)(scaleFactor * _posYHddr);
 
         PCLWriter.Font(prnWriter, true,
                         "19U", "s1p" + ptSizeHddr + "v0s3b16602T");
@@ -580,10 +571,6 @@ static class ToolTrayMapPCL
                                      float scaleFactor,
                                      bool formAsMacro)
     {
-        short posX,
-              posY,
-              posYInc;
-
         int pitchMain = (int)(6 / scaleFactor);
 
         bool simplex = PCLPlexModes.IsSimplex(indxPlexMode);
@@ -609,14 +596,14 @@ static class ToolTrayMapPCL
 
         //----------------------------------------------------------------//
 
-        posYInc = (short)(scaleFactor * _posYIncMain);
-
-        posX = (short)((scaleFactor * _posXValue) - _logPageOffset);
-        posY = (short)((scaleFactor * _posYDesc));
+        short posYInc = (short)(scaleFactor * _posYIncMain);
+        short posX = (short)((scaleFactor * _posXValue) - _logPageOffset);
+        short posY = (short)((scaleFactor * _posYDesc));
 
         PCLWriter.Font(prnWriter, true,
                         "19U", "s0p" + pitchMain + "h0s3b4099T");
 
+        // TODO: Why are these the same? -- PMM
         if (simplex)
         {
             PCLWriter.Text(prnWriter, posX, posY, 0, pageNo.ToString() + " of " + pageCount.ToString());

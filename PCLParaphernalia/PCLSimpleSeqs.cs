@@ -127,20 +127,14 @@ static class PCLSimpleSeqs
                                            bool incUsedSeqsOnly,
                                            bool excUnusedObsSeqs)
     {
-        int count = 0;
-
-        bool displaySeq,
-                hddrWritten;
+        bool displaySeq = true,
+                hddrWritten = false;
 
         DataRow row;
 
-        hddrWritten = false;
-
         //----------------------------------------------------------------//
 
-        displaySeq = true;
-
-        count = _seqUnknown.StatsCtTotal;
+        int count = _seqUnknown.StatsCtTotal;
 
         if (count == 0)
             displaySeq = false;
@@ -212,11 +206,7 @@ static class PCLSimpleSeqs
 
     public static void DisplayStatsCountsHddr(DataTable table)
     {
-        DataRow row;
-
-        //----------------------------------------------------------------//
-
-        row = table.NewRow();
+        DataRow row = table.NewRow();
 
         row[0] = string.Empty;
         row[1] = "_____________________";

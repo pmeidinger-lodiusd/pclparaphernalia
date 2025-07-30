@@ -209,9 +209,6 @@ static class ToolImageBitmapPCL
                                             uint srcPaletteEntries,
                                             bool srcBlackWhite)
     {
-        short coordX,
-              coordY;
-
         uint paletteEntries = 0;
 
         byte bitsPerIndex = 0x00;
@@ -224,8 +221,8 @@ static class ToolImageBitmapPCL
         //                                                                //
         //----------------------------------------------------------------//
 
-        coordX = (short)(destPosX * 600);
-        coordY = (short)(destPosY * 600);
+        short coordX = (short)(destPosX * 600);
+        short coordY = (short)(destPosY * 600);
 
         PCLWriter.PalettePushPop(prnWriter, PCLWriter.ePushPop.Push);
 

@@ -332,8 +332,6 @@ class PrnParsePCLXL
         DataTable table,
         bool firstCall)
     {
-        bool seqInvalid;
-
         //----------------------------------------------------------------//
         //                                                                //
         // Initialise.                                                    //
@@ -351,7 +349,7 @@ class PrnParsePCLXL
         _analysisLevel = _linkData.AnalysisLevel;
         _crntEmbedType = _linkData.PclxlEmbedType;
 
-        seqInvalid = false;
+        bool seqInvalid = false;
 
         //----------------------------------------------------------------//
 
@@ -431,9 +429,7 @@ class PrnParsePCLXL
         ref bool endReached,
         bool firstCall)
     {
-        PrnParseConstants.eContType contType;
-
-        contType = PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         int prefixLen = 0,
               contDataLen = 0,
@@ -646,8 +642,7 @@ class PrnParsePCLXL
         ref bool endReached,
         bool firstCall)
     {
-        PrnParseConstants.eContType contType =
-            PrnParseConstants.eContType.None;
+        PrnParseConstants.eContType contType = PrnParseConstants.eContType.None;
 
         byte crntByte;
 
@@ -1031,10 +1026,7 @@ class PrnParsePCLXL
     {
         PrnParseConstants.eContType contType;
 
-        PrnParseConstants.eOvlAct attrOvlAct =
-            PrnParseConstants.eOvlAct.None;
-
-        byte crntByte;
+        PrnParseConstants.eOvlAct attrOvlAct = PrnParseConstants.eOvlAct.None;
 
         bool dummyBool = false;
 
@@ -1050,7 +1042,7 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        crntByte = _buf[bufOffset];
+        byte crntByte = _buf[bufOffset];
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -1155,6 +1147,7 @@ class PrnParsePCLXL
             //------------------------------------------------------------//
 
             _attrIDFound = true;
+
             if (_attrIDLen == 1)
             {
                 _attrID1 = _buf[bufOffset + 1];
@@ -1427,12 +1420,7 @@ class PrnParsePCLXL
     {
         PrnParseConstants.eContType contType;
 
-        PCLXLDataTypes.eBaseType baseType =
-            PCLXLDataTypes.eBaseType.Unknown;
-
-        PrnParseConstants.eOvlShow makeOvlShow;
-
-        byte crntByte;
+        PCLXLDataTypes.eBaseType baseType = PCLXLDataTypes.eBaseType.Unknown;
 
         int groupSize = 1,
               unitSize = 1,
@@ -1442,7 +1430,7 @@ class PrnParsePCLXL
 
         bool seqKnown,
                 arrayType = false,
-                invalidArray,
+                invalidArray = false,
                 flagReserved = false,
                 invalidSeqFound = false;
 
@@ -1455,12 +1443,9 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        invalidSeqFound = false;
-        invalidArray = false;
+        PrnParseConstants.eOvlShow makeOvlShow = _linkData.MakeOvlShow;
 
-        makeOvlShow = _linkData.MakeOvlShow;
-
-        crntByte = _buf[bufOffset];
+        byte crntByte = _buf[bufOffset];
 
         if (!_attrDataStarted)
         {
@@ -2382,13 +2367,7 @@ class PrnParsePCLXL
     {
         PrnParseConstants.eContType contType;
 
-        PrnParseConstants.eOvlShow makeOvlShow;
-
-        byte crntByte;
-
         int dataLenSize;
-
-        bool invalidSeqFound;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -2396,11 +2375,11 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        invalidSeqFound = false;
+        bool invalidSeqFound = false;
 
-        makeOvlShow = _linkData.MakeOvlShow;
+        PrnParseConstants.eOvlShow makeOvlShow = _linkData.MakeOvlShow;
 
-        crntByte = _buf[bufOffset];
+        byte crntByte = _buf[bufOffset];
 
         if (crntByte == PrnParseConstants.pclxlEmbedDataByte)
             dataLenSize = 1;
@@ -2988,8 +2967,7 @@ class PrnParsePCLXL
 
         string desc = string.Empty;
 
-        PrnParseConstants.eOvlAct operOvlAct =
-            PrnParseConstants.eOvlAct.None;
+        PrnParseConstants.eOvlAct operOvlAct = PrnParseConstants.eOvlAct.None;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -3304,12 +3282,8 @@ class PrnParsePCLXL
     private void ProcessWhiteSpaceTag(ref int bufRem,
                                        ref int bufOffset)
     {
-        byte crntByte;
-
         string desc = string.Empty,
                mnemonic = string.Empty;
-
-        bool seqKnown;
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -3317,7 +3291,7 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        crntByte = _buf[bufOffset];
+        byte crntByte = _buf[bufOffset];
 
         //----------------------------------------------------------------//
         //                                                                //
@@ -3325,7 +3299,7 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        seqKnown = PCLXLWhitespaces.CheckTag(crntByte,
+        bool seqKnown = PCLXLWhitespaces.CheckTag(crntByte,
                                               ref mnemonic,
                                               ref desc);
         if (seqKnown)
@@ -3390,24 +3364,16 @@ class PrnParsePCLXL
               chunkIpLen,
               chunkOpLen,
               chunkOffset,
-              sliceOffset,
               groupSize = 0,
               unitSize = 0,
               decodeIndent = 0,
               decodeMax = 0,
               ipPtr;
 
-        bool firstLine = false,
-                firstSlice = false,
-                lastSlice = false,
-                chunkComplete = false,
-                deferItem = false,
+        bool deferItem = false,
                 arrayType = false,
                 treatUbyteAsAscii = false,
-                treatUint16AsUnicode = false,
-                stringAscii = false,
-                stringUnicode = false,
-                seqError = false;
+                treatUint16AsUnicode = false;
 
         string seq = string.Empty,
                decode = string.Empty;
@@ -3420,15 +3386,15 @@ class PrnParsePCLXL
         //                                                                //
         //----------------------------------------------------------------//
 
-        firstLine = true;
-        firstSlice = true;
-        lastSlice = false;
-        chunkComplete = false;
-        stringAscii = false;
-        stringUnicode = false;
-        seqError = false;
+        bool firstLine = true;
+        bool firstSlice = true;
+        bool lastSlice = false;
+        bool chunkComplete = false;
+        bool stringAscii = false;
+        bool stringUnicode = false;
+        bool seqError = false;
 
-        sliceOffset = bufOffset;
+        int sliceOffset = bufOffset;
 
         if (useDesc)
         {
@@ -4341,14 +4307,10 @@ class PrnParsePCLXL
               hexEnd = 0,
               sub;
 
-        bool useEllipsis,
-                displaySlice;
-
         char[] hexBuf = new char[(_decodeSliceMax * 2) + 1];
 
-        useEllipsis = false;
-        displaySlice = false;
-        seq.Clear();
+        bool useEllipsis = false;
+        bool displaySlice = false;
 
         if (_verboseMode || seqError)
         {

@@ -65,13 +65,11 @@ static class PCLXLDownloadFont
     public static bool FontFileCopy(BinaryWriter prnWriter,
                                        string fontFilename)
     {
-        bool fileOpen = false;
-
         bool OK = true;
 
         long fileSize = 0;
 
-        fileOpen = FontFileOpen(fontFilename, ref fileSize);
+        bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
         if (!fileOpen)
         {
@@ -188,8 +186,6 @@ static class PCLXLDownloadFont
                                                  ref bool bound,
                                                  ref ushort symSetNo)
     {
-        bool fileOpen = false;
-
         bool OK = true;
 
         ushort hddrOffset = 0;
@@ -201,7 +197,7 @@ static class PCLXLDownloadFont
         //                                                                //
         //----------------------------------------------------------------//
 
-        fileOpen = FontFileOpen(fontFilename, ref fileSize);
+        bool fileOpen = FontFileOpen(fontFilename, ref fileSize);
 
         if (!fileOpen)
         {

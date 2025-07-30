@@ -358,9 +358,7 @@ static class ToolFormSamplePCL
     {
         const short incPosY = 150;
 
-        bool altOrient;
         bool pageUsesForm;
-        bool firstPage;
 
         short posX,
               posY;
@@ -368,9 +366,9 @@ static class ToolFormSamplePCL
         int macroId;
         int indxOrient;
 
-        altOrient = (indxOrientation != indxOrientRear);
-        firstPage = (pageNo == 1);
-
+        bool altOrient = (indxOrientation != indxOrientRear);
+        bool firstPage = (pageNo == 1);
+        
         if (flagFrontFace)
         {
             indxOrient = indxOrientation;

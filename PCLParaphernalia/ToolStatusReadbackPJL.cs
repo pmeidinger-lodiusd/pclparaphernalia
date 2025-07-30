@@ -28,16 +28,12 @@ static class ToolStatusReadbackPJL
                                         string customCat,
                                         string customVar)
     {
-        string seq;
-
         if (cmdIndx != PJLCommands.eCmdIndex.Unknown)
         {
-            PJLCommands.eRequestType reqType;
+            PJLCommands.eRequestType reqType = PJLCommands.GetType(cmdIndx);
+            string cmdName = PJLCommands.GetName(cmdIndx);
 
-            string cmdName;
-
-            reqType = PJLCommands.GetType(cmdIndx);
-            cmdName = PJLCommands.GetName(cmdIndx);
+            string seq;
 
             if (reqType == PJLCommands.eRequestType.Category)
             {

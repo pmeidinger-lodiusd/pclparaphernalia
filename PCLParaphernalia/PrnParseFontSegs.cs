@@ -78,32 +78,22 @@ class PrnParseFontSegs
 
         bool dataOK = true;
 
-        ulong charCollArray,
-               charCollVal,
-               charCollIndex,
-               bitVal;
-
-        int offset;
+        ulong bitVal;
 
         string codeDesc,
                textDesc;
 
-        int analysisLevel;
         int listIndex;
 
         bool bitSet,
                 bitSig;
 
-        bool showBinData;
+        int analysisLevel = linkData.AnalysisLevel;
+        bool showBinData = options.FlagPCLMiscBinData;
 
-        PrnParseConstants.eOptOffsetFormats indxOffsetFormat;
+        PrnParseConstants.eOptOffsetFormats indxOffsetFormat = options.IndxGenOffsetFormat;
 
-        analysisLevel = linkData.AnalysisLevel;
-        showBinData = options.FlagPCLMiscBinData;
-
-        indxOffsetFormat = options.IndxGenOffsetFormat;
-
-        offset = bufOffset;
+        int offset = bufOffset;
 
         if (complement)
             textDesc = "Char. Complement";
@@ -121,7 +111,7 @@ class PrnParseFontSegs
         //                                                                //
         //----------------------------------------------------------------//
 
-        charCollArray = 0;
+        ulong charCollArray = 0;
 
         for (int i = 0; i < arrayBytes; i++)
         {
@@ -135,8 +125,8 @@ class PrnParseFontSegs
         //                                                                //
         //----------------------------------------------------------------//
 
-        charCollVal = 0;
-        charCollIndex = 0;
+        ulong charCollVal = 0;
+        ulong charCollIndex = 0;
 
         for (int i = 0; i < arrayBits; i++)
         {
@@ -882,15 +872,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -1024,15 +1009,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;   // TODO when we discover the segment format     //
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;   // TODO when we discover the segment format     //
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -1170,17 +1150,12 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
         ushort ui16a;
 
-        minSegSize = 4;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 4;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -1354,15 +1329,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 8;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 8;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -1664,19 +1634,14 @@ class PrnParseFontSegs
         string textA,
                textB;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
         int cpyRem,
               sliceLen,
               cpyOffset;
 
-        minSegSize = segSize;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = segSize;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -1855,22 +1820,16 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              varSegSize,
-              minSegLen;
-
         ushort ui16a,
                numRegions = 0;
 
         bool numRegionsOK = false;
 
-        minSegSize = 6;
-        varSegSize = 0;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 6;
+        int varSegSize = 0;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -2175,15 +2134,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;   // TODO if we ever discover the segment format  //
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;   // TODO if we ever discover the segment format  //
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -2317,12 +2271,6 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              varSegSize,
-              minSegLen;
-
         int tableOffset,
               padBytes;
 
@@ -2338,11 +2286,11 @@ class PrnParseFontSegs
 
         bool numTablesOK = false;
 
-        minSegSize = 12;
-        varSegSize = 0;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 12;
+        int varSegSize = 0;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -3096,15 +3044,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;   // TODO if we ever discover the segment format  //
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;   // TODO if we ever discover the segment format  //
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -3238,15 +3181,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;   // TODO if we ever discover the segment format  //
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;   // TODO if we ever discover the segment format  //
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -3380,22 +3318,16 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              varSegSize,
-              minSegLen;
-
         ushort ui16a,
                numRanges = 0;
 
         bool numRangesOK = false;
 
-        minSegSize = 2;
-        varSegSize = 0;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 2;
+        int varSegSize = 0;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -3669,19 +3601,14 @@ class PrnParseFontSegs
         string textA,
                textB;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
         int sliceLen,
               infRem,
               infOffset;
 
-        minSegSize = segSize;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = segSize;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -3860,19 +3787,14 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
         short si16a;
 
         ushort ui16a;
 
-        minSegSize = 4;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 4;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -4051,20 +3973,15 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
         int eoTMOffset;
 
         ushort ui16a,
                numSubs;
 
-        minSegSize = segSize;
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = segSize;
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {
@@ -4292,15 +4209,10 @@ class PrnParseFontSegs
 
         PrnParseConstants.eContType contType;
 
-        int baseOffset,
-              dataOffset,
-              minSegSize,
-              minSegLen;
-
-        minSegSize = 0;   // TODO if we ever discover the segment format  //
-        minSegLen = segHddrLen + minSegSize;
-        baseOffset = bufOffset + _fileOffset;
-        dataOffset = bufOffset + segHddrLen;
+        int minSegSize = 0;   // TODO if we ever discover the segment format  //
+        int minSegLen = segHddrLen + minSegSize;
+        int baseOffset = bufOffset + _fileOffset;
+        int dataOffset = bufOffset + segHddrLen;
 
         if (bufRem < minSegLen)
         {

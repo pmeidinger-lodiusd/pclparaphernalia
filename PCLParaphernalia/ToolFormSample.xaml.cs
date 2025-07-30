@@ -317,11 +317,9 @@ public partial class ToolFormSample : Window
     private void btnPCLFormFileMainBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _formFileMainPCL;
 
-        selected = SelectPCLFormFile(ref filename);
+        bool selected = SelectPCLFormFile(ref filename);
 
         if (selected)
         {
@@ -344,11 +342,9 @@ public partial class ToolFormSample : Window
     private void btnPCLFormFileRearBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _formFileRearPCL;
 
-        selected = SelectPCLFormFile(ref filename);
+        bool selected = SelectPCLFormFile(ref filename);
 
         if (selected)
         {
@@ -371,11 +367,9 @@ public partial class ToolFormSample : Window
     private void btnPCLXLFormFileMainBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _formFileMainPCLXL;
 
-        selected = SelectPCLXLFormFile(ref filename);
+        bool selected = SelectPCLXLFormFile(ref filename);
 
         if (selected)
         {
@@ -398,11 +392,9 @@ public partial class ToolFormSample : Window
     private void btnPCLXLFormFileRearBrowse_Click(object sender,
                                                  RoutedEventArgs e)
     {
-        bool selected;
-
         string filename = _formFileRearPCLXL;
 
-        selected = SelectPCLXLFormFile(ref filename);
+        bool selected = SelectPCLXLFormFile(ref filename);
 
         if (selected)
         {
@@ -2270,8 +2262,6 @@ public partial class ToolFormSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText;
         string side;
 
@@ -2288,7 +2278,7 @@ public partial class ToolFormSample : Window
             crntText = txtPCLMacroIdMain.Text;
         }
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -2454,11 +2444,9 @@ public partial class ToolFormSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLTestPageCount.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
@@ -2522,8 +2510,6 @@ public partial class ToolFormSample : Window
         string crntText;
         string side;
 
-        int len = 0;
-
         bool OK = true;
 
         if (rearForm)
@@ -2539,7 +2525,7 @@ public partial class ToolFormSample : Window
             crntText = txtPCLXLFormNameMain.Text;
         }
 
-        len = crntText.Length;
+        int len = crntText.Length;
 
         if (crntText == string.Empty || len > maxLen)
         {
@@ -2689,11 +2675,9 @@ public partial class ToolFormSample : Window
 
         ushort value;
 
-        bool OK = true;
-
         string crntText = txtPCLXLTestPageCount.Text;
 
-        OK = ushort.TryParse(crntText, out value);
+        bool OK = ushort.TryParse(crntText, out value);
 
         if (OK && ((value < minVal) || (value > maxVal)))
             OK = false;
